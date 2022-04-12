@@ -1,128 +1,126 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:sbsi/generated/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
+import 'package:sbsi/utils/logger.dart';
+import 'common/app_themes.dart';
+import 'firebase_options.dart';
+import 'router/route_config.dart';
+import 'services/index.dart';
+import 'services/notification_service.dart';
 
-void main() {
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  logger.i("Handling a background message: ${message.messageId}");
+}
+
+void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  /// AWAIT SERVICES INITIALIZATION.
+  await Hive.initFlutter();
+  await initServices();
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+/// Is a smart move to make your Services intiialize before you run the Flutter app.
+/// as you can control the execution flow (maybe you need to load some Theme configuration,
+/// apiKey, language defined by the User... so load SettingService before running ApiService.
+/// so GetMaterialApp() doesnt have to rebuild, and takes the values directly.
+Future initServices() async {
+  /// Here is where you put get_storage, hive, shared_pref initialization.
+  /// or moor connection, or whatever that's async.
+  await Get.putAsync(() => ApiService().init());
+  await Get.putAsync(() => StoreService().init());
+  await Get.putAsync(() => CacheService().init());
+  await Get.putAsync(() => AuthService().init());
+  await Get.putAsync(() => SettingService().init());
+  await Get.putAsync(() => NotificationService().init());
+  Get.find<AuthService>().removeToken();
+  FlutterNativeSplash.remove();
+}
+
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+  State<StatefulWidget> createState() {
+    return _MyAppState();
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class _MyAppState extends State<MyApp> {
+  bool isFirstRun = false;
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  final apiService = Get.find<ApiService>();
+  final storeService = Get.find<StoreService>();
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  var _counter = "";
-
-  static const platform = MethodChannel('VNPTEKYC');
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              _counter,
-              style: Theme.of(context).textTheme.headline4?.copyWith(fontSize: 10),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _getBatteryLevel,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-
-  Future<void> _getBatteryLevel() async {
+  /// hàm này để load những dữ liệu 1 lần vào local
+  Future<void> loadStockDB() async {
     try {
-      String data = await platform.invokeMethod('EKYC');
-      var mapData = jsonDecode(data);
-      if (kDebugMode) {
-        Logger().d(mapData);
+      if (storeService.listStockCompany.isEmpty) {
+        var response = await apiService.getAllStockCompanyData();
+        await storeService.saveListStockCompany(response);
       }
-      setState(() {
-        _counter = data;
-      });
-    } on PlatformException catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
-      }
+    } catch (e) {
+      logger.d(e.toString());
+    }
+  }
+
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance);
+
+  @override
+  void initState() {
+    Get.find<NotificationService>().setup();
+    loadStockDB();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: hideKeyboard,
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppThemes.lightTheme,
+        darkTheme: AppThemes.darkTheme,
+        themeMode: ThemeMode.light,
+        initialRoute: RouteConfig.login,
+        getPages: RouteConfig.getPages,
+        builder: EasyLoading.init(),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          S.delegate,
+        ],
+        navigatorObservers: <NavigatorObserver>[observer],
+        locale: Get.find<SettingService>().currentLocate.value,
+        supportedLocales: S.delegate.supportedLocales,
+      ),
+    );
+  }
+
+  void hideKeyboard() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus?.unfocus();
     }
   }
 }

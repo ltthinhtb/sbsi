@@ -4,7 +4,10 @@ import android.R.attr
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import com.vnptit.idg.sdk.activity.VnptFrontActivity
 import com.vnptit.idg.sdk.activity.VnptIdentityActivity
+import com.vnptit.idg.sdk.activity.VnptOcrActivity
+import com.vnptit.idg.sdk.activity.VnptPortraitActivity
 import com.vnptit.idg.sdk.utils.KeyIntentConstants
 import com.vnptit.idg.sdk.utils.KeyResultConstants.*
 import com.vnptit.idg.sdk.utils.SDKEnum
@@ -24,9 +27,7 @@ class MainActivity : FlutterActivity() {
         "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIbU3eVRT3GHbhc+2rEaCWVRCg+Dm4sJtMSIbgD6lZome5EHAiyWknZPQZvOeFfa09bCJC3vAXHJnjkzrum+TOkCAwEAAQ=="
 
 
-
     private lateinit var _result: MethodChannel.Result
-
 
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
@@ -38,7 +39,7 @@ class MainActivity : FlutterActivity() {
         ).setMethodCallHandler { call, result ->
             _result = result
             if (call.method == "EKYC") {
-                getEKYCVNPT()
+                getOrcFront()
             } else {
                 result.notImplemented()
             }
@@ -70,6 +71,31 @@ class MainActivity : FlutterActivity() {
         startActivityForResult(intent, 1)
     }
 
+    private fun getOrcFront() {
+        val intent = Intent(this, VnptPortraitActivity::class.java)
+        intent.putExtra(KeyIntentConstants.ACCESS_TOKEN, ACCESS_TOKEN)
+        intent.putExtra(KeyIntentConstants.TOKEN_ID, TOKEN_ID)
+        intent.putExtra(KeyIntentConstants.TOKEN_KEY, TOKEN_KEY)
+        intent.putExtra(KeyIntentConstants.DOCUMENT_TYPE, SDKEnum.DocumentTypeEnum.IDENTITY_CARD.value)
+        intent.putExtra(KeyIntentConstants.SELECT_DOCUMENT, false)
+        intent.putExtra(KeyIntentConstants.VERSION_SDK, SDKEnum.VersionSDKEnum.ADVANCED.value)
+        intent.putExtra(KeyIntentConstants.SHOW_RESULT, true)
+        intent.putExtra(KeyIntentConstants.SHOW_DIALOG_SUPPORT, true)
+        intent.putExtra(KeyIntentConstants.CAMERA_FOR_PORTRAIT, SDKEnum.CameraTypeEnum.FRONT.value)
+        intent.putExtra(KeyIntentConstants.SHOW_SWITCH, false)
+        intent.putExtra(KeyIntentConstants.CALL_ADD_FACE, false)
+        intent.putExtra(KeyIntentConstants.LIVENESS_STANDARD, false)
+        intent.putExtra(KeyIntentConstants.LIVENESS_ADVANCED, false)
+        intent.putExtra(KeyIntentConstants.CHECK_MASKED_FACE, false)
+        intent.putExtra(KeyIntentConstants.CHECK_LIVENESS_CARD, false)
+        intent.putExtra(KeyIntentConstants.CHANGE_THEME, true)
+        //intent.putExtra(KeyIntentConstants.LOGO, "logo.jpg")
+        intent.putExtra(KeyIntentConstants.VALIDATE_POSTCODE, true)
+        intent.putExtra(KeyIntentConstants.LANGUAGE, SDKEnum.LanguageEnum.VIETNAMESE.value)
+        startActivityForResult(intent, 1)
+    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && data != null) {
@@ -89,9 +115,8 @@ class MainActivity : FlutterActivity() {
                 val imagePortrait: String? = data.getStringExtra(PORTRAIT_IMAGE)
                 _result.success(strDataInfo.toString())
             }
-        }
-        else {
-            _result.error("Lỗi","Lỗi",null)
+        } else {
+            _result.error("Lỗi", "Lỗi", null)
         }
     }
 
