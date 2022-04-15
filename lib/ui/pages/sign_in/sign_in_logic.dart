@@ -50,7 +50,7 @@ class SignInLogic extends GetxController with Validator {
 
           /// nếu cờ bằng 1 thì là đổi mật khẩu lần đầu
           if (result.data?.iFlag == 1) {
-            return await Get.to(ChangePasswordPage(isFirst: true))
+            return await Get.to(const ChangePasswordPage(isFirst: true))
                 ?.then((value) {
               /// lấy lại mật khẩu mới
               if (value is String) {

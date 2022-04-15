@@ -1,12 +1,16 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/validator.dart';
+import '../../../utils/logger.dart';
 import '../../widgets/button/button_text.dart';
 import 'sign_in_logic.dart';
 
@@ -66,13 +70,13 @@ class _SignInPageState extends State<SignInPage> with Validator {
                       S.of(context).login,
                       style: headline6?.copyWith(fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     Form(
                       key: state.formKeyUser,
                       child: AppTextFieldWidget(
                           inputController: state.usernameTextController,
                           hintText: S.of(context).user_name,
-                          hintTextStyle: TextStyle(color: AppColors.grayB5),
+                          hintTextStyle: const TextStyle(color: AppColors.grayB5),
                           validator: (value) => checkUser(value!),
                           focusNode: state.forcusNodeUsername,
                           onFieldSubmitted: (v) {
@@ -85,7 +89,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
                       key: state.formKeyPass,
                       child: AppTextFieldWidget(
                         obscureText: true,
-                        hintTextStyle: TextStyle(color: AppColors.grayB5),
+                        hintTextStyle: const TextStyle(color: AppColors.grayB5),
                         inputController: state.passwordTextController,
                         hintText: S.of(context).password,
                         validator: (value) => checkPass(value!),
@@ -105,7 +109,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
                               title: S.of(context).login,
                             ),
                           ),
-                          SizedBox(width: 23.17),
+                          const SizedBox(width: 23.17),
                           SvgPicture.asset(
                             "assets/icon_svg/face_id.svg",
                             color: Theme.of(context).primaryColor,
@@ -113,7 +117,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
                         ],
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     ButtonText(
                       voidCallback: () {},
                       title: S.of(context).forgot_pass,
@@ -121,17 +125,19 @@ class _SignInPageState extends State<SignInPage> with Validator {
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               ButtonFill(
-                  voidCallback: () {},
+                  voidCallback: () {
+                    nativeCode();
+                  },
                   title: S.of(context).register_online,
                   style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
                       backgroundColor:
                           MaterialStateProperty.all(AppColors.buttonOrange),
                       padding: ButtonStyleButton.allOrNull<EdgeInsetsGeometry>(
-                          EdgeInsets.symmetric(horizontal: 24, vertical: 7)),
+                          const EdgeInsets.symmetric(horizontal: 24, vertical: 7)),
                       shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
-                          RoundedRectangleBorder(
+                          const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(8),
                         ),
@@ -148,6 +154,29 @@ class _SignInPageState extends State<SignInPage> with Validator {
         ),
       )),
     );
+  }
+
+  Future<void> nativeCode() async {
+    const platform = MethodChannel('sbsi-vnpt/ekyc');
+    try {
+      String result = await platform.invokeMethod('frontEKYC');
+      Logger().d(result);
+
+      // Map data = jsonDecode(result);
+      // Logger().d(data);
+
+      String result1 = await platform.invokeMethod('rearEKYC');
+
+      Logger().d(result1);
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //         builder: (context) => Scaffold(
+      //               body: Image.file(File(result)),
+      //          )));
+    } on PlatformException catch (e) {
+      logger.e(e.toString());
+    }
   }
 
   @override

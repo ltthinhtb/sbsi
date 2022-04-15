@@ -82,7 +82,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
-        padding: EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.only(bottom: 20),
         child: MaterialButton(
           minWidth: width - 30,
           height: 50,

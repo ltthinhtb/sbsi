@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Statement": MessageLookupByLibrary.simpleMessage("Sao kê"),
         "about_choose": MessageLookupByLibrary.simpleMessage("Đã lựa chọn"),
         "account": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "account_info":
@@ -49,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Giá khớp trung bình"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
         "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh"),
+        "bond": MessageLookupByLibrary.simpleMessage("Trái phiếu"),
         "bond_assets":
             MessageLookupByLibrary.simpleMessage("Tài sản trái phiếu"),
         "bond_code": MessageLookupByLibrary.simpleMessage("Mã trái phiếu"),
@@ -212,6 +214,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pay": MessageLookupByLibrary.simpleMessage("Thanh toán"),
         "pay_type":
             MessageLookupByLibrary.simpleMessage("Phương thức thanh toán"),
+        "payment": MessageLookupByLibrary.simpleMessage("Nộp tiền"),
         "permission_to_buy": MessageLookupByLibrary.simpleMessage("Quyền mua"),
         "phone": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_not_valid":
@@ -314,6 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_assets": MessageLookupByLibrary.simpleMessage("Tổng tài sản"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị CK"),
+        "transfer": MessageLookupByLibrary.simpleMessage("Chuyển tiền"),
         "transfer_information":
             MessageLookupByLibrary.simpleMessage("Thông tin giao dịch"),
         "transfer_payment":
@@ -323,6 +327,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "user": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "user_guide": MessageLookupByLibrary.simpleMessage("Hướng dẫn sử dụng"),
         "user_name": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
+        "variable": MessageLookupByLibrary.simpleMessage("Biến động"),
         "vol_is_not_integer": MessageLookupByLibrary.simpleMessage(
             "Khối lượng phải là số nguyên"),
         "vol_is_not_positive":

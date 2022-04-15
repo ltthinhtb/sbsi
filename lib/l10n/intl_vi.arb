@@ -233,5 +233,10 @@
   "decrease": "Giảm giá",
   "remember_account": "Ghi nhớ tài khoản",
   "authentication_by_face_id": "Xác thực bằng Face ID",
-  "register_online" : "Mở tài khoản online"
+  "register_online" : "Mở tài khoản online",
+  "transfer" : "Chuyển tiền",
+  "bond" : "Trái phiếu",
+  "payment" : "Nộp tiền",
+  "Statement" : "Sao kê",
+  "variable" : "Biến động"
 }

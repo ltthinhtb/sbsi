@@ -1,0 +1,103 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:sbsi/ui/pages/home/home_logic.dart';
+import '../../../../common/app_colors.dart';
+import '../../../../common/app_images.dart';
+import '../../../../generated/l10n.dart';
+import '../../../../router/route_config.dart';
+
+class AppBarHome extends StatelessWidget {
+  const AppBarHome({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final body2 = Theme.of(context).textTheme.bodyText2;
+    return Container(
+      height: 207 / 812 * MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: Stack(
+        children: [
+          Container(
+            height: 164 / 812 * MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: const BorderRadius.only(
+                    bottomRight: Radius.circular(16),
+                    bottomLeft: Radius.circular(16))),
+            child: Padding(
+              padding: EdgeInsets.zero,
+              child: Row(
+                children: [
+                  const SizedBox(width: 17),
+                  GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {},
+                      child: SvgPicture.asset(AppImages.user)),
+                  const SizedBox(width: 12),
+                  Expanded(child: Obx(() {
+                    return Text(
+                      Get.find<HomeLogic>()
+                              .authService
+                              .token
+                              .value
+                              ?.data
+                              ?.name ??
+                          "",
+                      style: body2?.copyWith(color: AppColors.white),
+                    );
+                  })),
+                  GestureDetector(
+                      onTap: () {},
+                      child: SvgPicture.asset(AppImages.search_normal)),
+                  const SizedBox(width: 20),
+                  GestureDetector(
+                      onTap: () {
+                        Get.toNamed(RouteConfig.notification);
+                      },
+                      child: SvgPicture.asset(AppImages.notification)),
+                  const SizedBox(width: 15),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 86 / 812 * MediaQuery.of(context).size.height,
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                  color: AppColors.white,
+                  boxShadow: [
+                    const BoxShadow(
+                        blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.10)),
+                    const BoxShadow(
+                        blurRadius: 4, color: Color.fromRGBO(0, 0, 0, 0.10)),
+                    const BoxShadow(
+                        blurRadius: 20, color: Color.fromRGBO(0, 0, 0, 0.10))
+                  ],
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                children: [
+                  SvgPicture.asset(AppImages.amount),
+                  const SizedBox(width: 15),
+                  Column(
+                    children: [
+                      Text(
+                        S.of(context).total_assets,
+                        style: body2?.copyWith(
+                          color: AppColors.textSecond,
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

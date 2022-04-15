@@ -16,7 +16,7 @@ class AppColors {
   static const Color red_op = Color(0xFFFFD4D4);
   static const Color gray88 = Color(0xff888888);
   static const Color grayD7 = Color(0xffD7D7D7);
-  static const Color grayC4 = Color(0xffC4C4C4);
+  static const Color grayF4 = Color(0xffF4F4F4);
   static const Color grayF2 = Color(0xffF2F2F2);
   static const Color grayB5 = Color(0xffB5B5B5);
   static const Color grayBorder = Color(0xffCCCCCC);
@@ -57,6 +57,7 @@ class AppColors {
 
   ///Text
   static const Color textBlack = Color(0xFF282324);
+  static const Color textSecond = Color(0xFF595959);
   static const Color textWhite = Color(0xFF89a3b1);
   static const Color textGrey = Color(0xFFB1B1B1);
   static const Color textGreen = Color(0xFF20A837);
@@ -77,6 +78,7 @@ class AppColors {
 
   /// Tabs
   static const Color imageBG = Color(0xFF919191);
+  static const Color tabIn = Color(0xFFFFF3DC);
 
   ///BottomNavigationBar
   static const Color bottomNavigationBar = Color(0xFF919191);

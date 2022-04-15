@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Statement": MessageLookupByLibrary.simpleMessage("Statement"),
         "about_choose": MessageLookupByLibrary.simpleMessage("About choose"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "account_info": MessageLookupByLibrary.simpleMessage("Account info"),
@@ -48,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Average match price"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Bank account"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
+        "bond": MessageLookupByLibrary.simpleMessage("Bond"),
         "bond_assets": MessageLookupByLibrary.simpleMessage("Bond assets"),
         "bond_code": MessageLookupByLibrary.simpleMessage("Bond code"),
         "bond_history": MessageLookupByLibrary.simpleMessage("Bond history"),
@@ -205,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),
         "pay_type": MessageLookupByLibrary.simpleMessage("Payment type"),
+        "payment": MessageLookupByLibrary.simpleMessage("Payment"),
         "permission_to_buy":
             MessageLookupByLibrary.simpleMessage("Permission buy"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
@@ -307,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_assets": MessageLookupByLibrary.simpleMessage("Total assets"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),
+        "transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
         "transfer_information":
             MessageLookupByLibrary.simpleMessage("Transfer information"),
         "transfer_payment":
@@ -316,6 +320,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_guide": MessageLookupByLibrary.simpleMessage("User guide"),
         "user_name": MessageLookupByLibrary.simpleMessage("Username"),
+        "variable": MessageLookupByLibrary.simpleMessage("Variable"),
         "vol_is_not_integer":
             MessageLookupByLibrary.simpleMessage("Volumn must be an integer"),
         "vol_is_not_positive":

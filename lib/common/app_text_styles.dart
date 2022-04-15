@@ -72,6 +72,11 @@ class AppTextStyle {
       fontStyle: FontStyle.normal,
       fontSize: 14,
       fontWeight: FontWeight.w400);
+  static TextStyle ButtonMediumn = const TextStyle(
+      fontFamily: "Nunito",
+      fontStyle: FontStyle.normal,
+      fontSize: 14,
+      fontWeight: FontWeight.w600);
   static TextStyle caption = const TextStyle(
       fontFamily: "Nunito",
       fontStyle: FontStyle.normal,

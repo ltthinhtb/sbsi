@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:sbsi/model/entities/category_stock.dart';
 import 'package:sbsi/model/response/index_detail.dart';
@@ -8,7 +7,6 @@ import 'package:sbsi/services/index.dart';
 import 'package:sbsi/services/socket/socket.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/enum/vnIndex.dart';
-import 'package:sbsi/utils/logger.dart';
 
 import 'home_state.dart';
 
@@ -87,7 +85,7 @@ class HomeLogic extends GetxController {
             }
           }
         } catch (e) {
-          logger.e(e);
+          // logger.e(e);
         }
       }
     });

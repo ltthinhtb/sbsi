@@ -37,7 +37,7 @@ class AppSnackBar {
       message ?? "Empty message",
       backgroundColor: Colors.red,
       colorText: Colors.white,
-      duration: Duration(seconds: 3)
+      duration: const Duration(seconds: 3)
     );
   }
 }

@@ -117,8 +117,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
                 primaryMeasureAxis: charts.NumericAxisSpec(
                   showAxisLine: false,
                   viewport: charts.NumericExtents(lowestValue, highestValue),
-                  renderSpec: charts.NoneRenderSpec(),
-                  tickProviderSpec: charts.BasicNumericTickProviderSpec(
+                  renderSpec: const charts.NoneRenderSpec(),
+                  tickProviderSpec: const charts.BasicNumericTickProviderSpec(
                     zeroBound: false,
                   ),
                 ),
@@ -165,8 +165,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
               primaryMeasureAxis: charts.NumericAxisSpec(
                 showAxisLine: false,
                 viewport: charts.NumericExtents(lowestValue, highestValue),
-                renderSpec: charts.NoneRenderSpec(),
-                tickProviderSpec: charts.BasicNumericTickProviderSpec(
+                renderSpec: const charts.NoneRenderSpec(),
+                tickProviderSpec: const charts.BasicNumericTickProviderSpec(
                   zeroBound: false,
                 ),
               ),

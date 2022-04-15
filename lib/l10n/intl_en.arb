@@ -233,5 +233,10 @@
   "decrease": "Decrease",
   "remember_account": "Remember account",
   "authentication_by_face_id": "Authentication by Face ID",
-  "register_online": "Register Online"
+  "register_online": "Register Online",
+  "transfer" : "Transfer",
+  "bond" : "Bond",
+  "payment" : "Payment",
+  "Statement" : "Statement",
+  "variable" : "Variable"
 }

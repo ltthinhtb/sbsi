@@ -1,4 +1,3 @@
-
 class AppImages {
   //splash
   static String powered = 'assets/image/powered.png';
@@ -6,6 +5,7 @@ class AppImages {
 
   static String background = 'assets/image/background.png';
 
+  static String banner = 'assets/image/Banner App 1.png';
 
   //sign_up
   static String sign_up_card_id_1 = 'assets/icon_svg/sign_up_card_id.svg';
@@ -21,6 +21,13 @@ class AppImages {
 
   //icon
   static String search_normal = 'assets/icon_svg/search_normal.svg';
+  static String user = 'assets/icon_svg/user.svg';
+
+  static String transfer = 'assets/icon_svg/transfer.svg';
+  static String bond = 'assets/icon_svg/bond.svg';
+  static String payment = 'assets/icon_svg/payment.svg';
+  static String history = 'assets/icon_svg/history.svg';
+
   static String eye = 'assets/icon_svg/eye.svg';
   static String eye_lock = 'assets/icon_svg/eye_lock.svg';
   static String finger = 'assets/icon_svg/finger.svg';
@@ -36,8 +43,7 @@ class AppImages {
   static String add_square = 'assets/icon_svg/add-square.svg';
   static String pencil_2 = 'assets/icon_svg/edit-2.svg';
   static String trash = 'assets/icon_svg/trash.svg';
-
-
+  static String amount = 'assets/icon_svg/amount.svg';
 
   // icon image
   static String present = 'assets/icon_svg/present.svg';
@@ -56,7 +62,4 @@ class AppImages {
 
   static String search_big_size = 'assets/icon_svg/search-big-size.svg';
   static String like_big_size = 'assets/icon_svg/like-big-size.svg';
-
-
-
 }

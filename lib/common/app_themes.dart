@@ -37,7 +37,7 @@ class AppThemes {
   static final TextTheme _lightTextTheme = TextTheme(
     headline5: AppTextStyle.H5Bold.copyWith(color: _lightTextColor),
     headline6: AppTextStyle.H6.copyWith(color: _lightTextColor),
-    headline4: AppTextStyle.H4Bold.copyWith(color: _lightTextColor),
+    headline4: AppTextStyle.H4Regular.copyWith(color: _lightTextColor),
     headline3: AppTextStyle.H3.copyWith(color: _lightTextColor),
     subtitle1: AppTextStyle.subTitle1.copyWith(color: _lightTextColor),
     subtitle2: AppTextStyle.subTitle2.copyWith(color: _lightTextColor),
@@ -52,7 +52,7 @@ class AppThemes {
   static final TextTheme _dartTextTheme = TextTheme(
     headline5: AppTextStyle.H5Bold.copyWith(color: _darkTextColor),
     headline6: AppTextStyle.H6Bold.copyWith(color: _darkTextColor),
-    headline4: AppTextStyle.H4Bold.copyWith(color: _darkTextColor),
+    headline4: AppTextStyle.H4Regular.copyWith(color: _darkTextColor),
     headline3: AppTextStyle.H3.copyWith(color: _darkTextColor),
     subtitle1: AppTextStyle.subTitle1.copyWith(color: _darkTextColor),
     subtitle2: AppTextStyle.subTitle2.copyWith(color: _darkTextColor),
@@ -149,14 +149,14 @@ class AppThemes {
   );
 
   static final TabBarTheme _tabBarTheme = TabBarTheme(
-      unselectedLabelStyle: AppTextStyle.H7Regular,
-      labelColor: AppColors.white,
-      unselectedLabelColor: AppColors.black,
-      labelStyle: AppTextStyle.H7Bold,
+      unselectedLabelStyle: AppTextStyle.ButtonMediumn,
+      labelColor: AppColors.buttonOrange,
+      unselectedLabelColor: AppColors.textBlack,
+      labelStyle: AppTextStyle.ButtonMediumn,
       indicatorSize: TabBarIndicatorSize.tab,
-      labelPadding: const EdgeInsets.symmetric(vertical: 10),
+      labelPadding: const EdgeInsets.symmetric(vertical: 8),
       indicator: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: AppColors.primary));
+          borderRadius: BorderRadius.circular(8), color: AppColors.tabIn));
 
   static const ColorScheme _lightColorScheme = ColorScheme(
     primary: AppColors.primary,
@@ -200,7 +200,7 @@ class AppThemes {
     buttonTheme: _buttonDecorationLightTheme,
     toggleButtonsTheme: _toggleButtonDecorationLightTheme,
     toggleableActiveColor: AppColors.grayF2,
-    backgroundColor: AppColors.grayF2,
+    backgroundColor: AppColors.whiteBack,
     elevatedButtonTheme: _elevatedButtonThemeData,
     textButtonTheme: _textButtonThemeData,
     brightness: Brightness.light,
@@ -209,7 +209,7 @@ class AppThemes {
     colorScheme: _lightColorScheme,
     bottomNavigationBarTheme: _bottomNavigationBarThemeData,
     tabBarTheme: _tabBarTheme,
-    dividerColor: AppColors.line,
+    dividerColor: AppColors.grayF2,
     appBarTheme: AppBarTheme(
         iconTheme: const IconThemeData(color: _lightIconColor),
         titleTextStyle:
