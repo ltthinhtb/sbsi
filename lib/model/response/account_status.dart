@@ -3,7 +3,7 @@ class AccountStatus {
   String? oID;
   int? rc;
   String? rs;
-  List<AccountAssets>? data;
+  AccountAssets? data;
 
   AccountStatus({this.cmd, this.oID, this.rc, this.rs, this.data});
 
@@ -13,10 +13,7 @@ class AccountStatus {
     rc = json['rc'];
     rs = json['rs'];
     if (json['data'] != null) {
-      data = <AccountAssets>[];
-      json['data'].forEach((v) {
-        data!.add(AccountAssets.fromJson(v));
-      });
+      data = AccountAssets.fromJson(json['data']);
     }
   }
 
@@ -27,7 +24,7 @@ class AccountStatus {
     data['rc'] = rc;
     data['rs'] = rs;
     if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+      data['data'] = this.data?.toJson();
     }
     return data;
   }

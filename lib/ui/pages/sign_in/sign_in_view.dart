@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -76,12 +75,13 @@ class _SignInPageState extends State<SignInPage> with Validator {
                       child: AppTextFieldWidget(
                           inputController: state.usernameTextController,
                           hintText: S.of(context).user_name,
-                          hintTextStyle: const TextStyle(color: AppColors.grayB5),
+                          hintTextStyle:
+                              const TextStyle(color: AppColors.grayB5),
                           validator: (value) => checkUser(value!),
-                          focusNode: state.forcusNodeUsername,
+                          focusNode: state.focusNodeUsername,
                           onFieldSubmitted: (v) {
                             FocusScope.of(context)
-                                .requestFocus(state.forcusNodePassword);
+                                .requestFocus(state.focusNodePassword);
                           }),
                     ),
                     const SizedBox(height: 16),
@@ -89,11 +89,10 @@ class _SignInPageState extends State<SignInPage> with Validator {
                       key: state.formKeyPass,
                       child: AppTextFieldWidget(
                         obscureText: true,
-                        hintTextStyle: const TextStyle(color: AppColors.grayB5),
                         inputController: state.passwordTextController,
                         hintText: S.of(context).password,
                         validator: (value) => checkPass(value!),
-                        focusNode: state.forcusNodePassword,
+                        focusNode: state.focusNodePassword,
                       ),
                     ),
                     const SizedBox(height: 32),
@@ -135,7 +134,8 @@ class _SignInPageState extends State<SignInPage> with Validator {
                       backgroundColor:
                           MaterialStateProperty.all(AppColors.buttonOrange),
                       padding: ButtonStyleButton.allOrNull<EdgeInsetsGeometry>(
-                          const EdgeInsets.symmetric(horizontal: 24, vertical: 7)),
+                          const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 7)),
                       shape: ButtonStyleButton.allOrNull<OutlinedBorder>(
                           const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(

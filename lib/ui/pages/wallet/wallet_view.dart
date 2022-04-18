@@ -18,7 +18,7 @@ class WalletPage extends StatefulWidget {
 }
 
 class _WalletPageState extends State<WalletPage> {
-  final logic = Get.put(WalletLogic());
+  final logic = Get.find<WalletLogic>();
   final state = Get.find<WalletLogic>().state;
 
   @override

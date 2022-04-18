@@ -110,7 +110,6 @@ class _MenuTabBarState extends State<MenuTabBar>
               }),
               onChanged: (value) {
                 walletLogic.getPortfolio(account: value!.accCode);
-                walletLogic.getAccountStatus(account: value.accCode);
               },
               items: userState.listAccount
                   .map((e) => DropdownMenuItem<Account>(

@@ -7,7 +7,6 @@ import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
-import 'package:sbsi/ui/pages/main/main_view.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/page/order_detail.dart';
 import 'package:sbsi/ui/widgets/animation_widget/expanded_widget.dart';
@@ -156,7 +155,7 @@ class _OrderListPageState extends State<OrderListPage>
                     child: ButtonFill(
                       voidCallback: () async {
                         bool? _r = await CustomDialog.showConfirmDialog(
-                          mainKey,
+                          context,
                           S.of(context).confirm_cancel_order,
                           [
                             S.of(context).are_you_sure_cancel_all_order,
@@ -188,7 +187,7 @@ class _OrderListPageState extends State<OrderListPage>
                     child: ButtonFill(
                       voidCallback: () async {
                         bool? _r = await CustomDialog.showConfirmDialog(
-                          mainKey,
+                          context,
                           S.of(context).confirm_cancel_order,
                           [
                             S.of(context).are_you_sure_cancel_this_order,

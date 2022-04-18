@@ -6,7 +6,6 @@ import 'package:sbsi/model/response/account_status.dart';
 import 'package:sbsi/model/response/index_detail.dart';
 import 'package:sbsi/model/response/list_account_response.dart';
 import 'package:sbsi/model/response/portfolio.dart';
-import 'package:sbsi/model/response/portfolio_account_status.dart';
 import 'package:sbsi/model/response/stocke_response.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/model/stock_data/cash_balance.dart';

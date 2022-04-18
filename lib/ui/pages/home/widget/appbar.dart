@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/home/home_logic.dart';
+import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
+import 'package:sbsi/utils/money_utils.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
@@ -13,6 +15,8 @@ class AppBarHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final body2 = Theme.of(context).textTheme.bodyText2;
+    final headline6 = Theme.of(context).textTheme.headline6;
+
     return Container(
       height: 207 / 812 * MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
@@ -83,13 +87,25 @@ class AppBarHome extends StatelessWidget {
                   SvgPicture.asset(AppImages.amount),
                   const SizedBox(width: 15),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         S.of(context).total_assets,
                         style: body2?.copyWith(
                           color: AppColors.textSecond,
                         ),
-                      )
+                      ),
+                      const SizedBox(height: 6),
+                      Obx(() {
+                        var accountStatus =
+                            Get.find<WalletLogic>().state.assets.value;
+                        return Text(
+                          MoneyFormat.formatMoneyRound(
+                              '${accountStatus.assets}'),
+                          style:
+                              headline6?.copyWith(fontWeight: FontWeight.bold),
+                        );
+                      })
                     ],
                   )
                 ],

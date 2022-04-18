@@ -5,6 +5,7 @@ import 'package:sbsi/ui/pages/order_list/order_list_view.dart';
 import 'package:sbsi/ui/pages/search/search_view.dart';
 import 'package:sbsi/ui/pages/sign_in/sign_in_view.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
 
 class RouteConfig {
   ///main page
@@ -34,5 +35,6 @@ class MainBinding extends Bindings {
   void dependencies() {
     // TODO: implement dependencies
     Get.lazyPut(() => MainLogic());
+    Get.lazyPut(() => WalletLogic());
   }
 }

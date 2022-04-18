@@ -17,7 +17,7 @@ class ListStockView extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = Get.find<HomeLogic>().state;
     final homeLogic = Get.find<HomeLogic>();
-    final headline6 = Theme.of(context).textTheme.headline6;
+    final caption = Theme.of(context).textTheme.caption?.copyWith(fontSize: 13);
     final headline3 = Theme.of(context).textTheme.headline3;
     final headline4 = Theme.of(context).textTheme.headline4;
     final bodyText1 = Theme.of(context).textTheme.bodyText1;
@@ -97,7 +97,7 @@ class ListStockView extends StatelessWidget {
                                       Text(
                                         state.listShortStock[index].stockCode ??
                                             "",
-                                        style: headline6!.copyWith(
+                                        style: caption!.copyWith(
                                             fontWeight: FontWeight.w700),
                                       ),
                                       const SizedBox(height: 5),
@@ -139,7 +139,7 @@ class ListStockView extends StatelessWidget {
                                         text: TextSpan(
                                           text:
                                               '${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].change}',
-                                          style: headline6.copyWith(
+                                          style: caption.copyWith(
                                               fontWeight: FontWeight.w700,
                                               color: state.listShortStock[index]
                                                   .colorStock
@@ -148,9 +148,9 @@ class ListStockView extends StatelessWidget {
                                             TextSpan(
                                                 text:
                                                     '(${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].percentChange}%)',
-                                                style: headline6.copyWith(
+                                                style: caption.copyWith(
                                                     fontWeight: FontWeight.w700,
-                                                    fontSize: 12,
+                                                    fontSize: 10,
                                                     color: state
                                                         .listShortStock[index]
                                                         .colorStock
@@ -162,8 +162,9 @@ class ListStockView extends StatelessWidget {
                                       Text(
                                           MoneyFormat.formatMoneyRound(
                                               '${state.listShortStock[index].klgd}'),
-                                          style: headline6.copyWith(
+                                          style: caption.copyWith(
                                               fontWeight: FontWeight.w700,
+                                              fontSize: 12,
                                               color: AppColors.textGrey3)),
                                     ],
                                   ),
@@ -181,7 +182,7 @@ class ListStockView extends StatelessWidget {
                                       alignment: Alignment.center,
                                       child: Text(
                                         '${state.listShortStock[index].price?.toStringAsFixed(1)}',
-                                        style: headline6.copyWith(
+                                        style: caption.copyWith(
                                             color: Colors.white,
                                             fontWeight: FontWeight.w700),
                                       ),
@@ -213,7 +214,7 @@ class ListStockView extends StatelessWidget {
                       Text(
                         S.of(context).no_stock_hint_text,
                         textAlign: TextAlign.center,
-                        style: headline6!
+                        style: caption!
                             .copyWith(color: AppColors.gray88, height: 1.2),
                       ),
                       const SizedBox(height: 10),

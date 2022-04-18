@@ -44,7 +44,7 @@ class SignInLogic extends GetxController with Validator {
       try {
         final result = await apiService.signIn(_requestParams);
         if (result != null) {
-          result.data?.defaultAcc = '${result.data?.defaultAcc}1';
+          result.data?.defaultAcc = '${result.data?.defaultAcc}';
           authService.saveToken(result);
           AppLoading.disMissLoading();
 

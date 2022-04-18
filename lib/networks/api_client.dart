@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' as get_x;
 import 'package:sbsi/configs/app_configs.dart';
@@ -12,7 +11,6 @@ import 'package:sbsi/model/response/account_status.dart';
 import 'package:sbsi/model/response/index_detail.dart';
 import 'package:sbsi/model/response/list_account_response.dart';
 import 'package:sbsi/model/response/portfolio.dart';
-import 'package:sbsi/model/response/portfolio_account_status.dart';
 import 'package:sbsi/model/response/stocke_response.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/model/stock_data/cash_balance.dart';
@@ -39,8 +37,7 @@ abstract class ApiClient {
 
   Future<AccountMStatus> getAccountMStatus(RequestParams requestParams);
 
-  Future<PortfolioAccountStatus> getPortfolioAccountStatus(
-      RequestParams requestParams);
+
 
   Future<List<Account>?> getListAccount(RequestParams requestParams);
 
@@ -428,15 +425,6 @@ class _ApiClient implements ApiClient {
     }
   }
 
-  @override
-  Future<PortfolioAccountStatus> getPortfolioAccountStatus(
-      RequestParams requestParams) async {
-    Response _result = await _requestApi(
-        _dio.post(AppConfigs.ENDPOINT_CORE, data: requestParams.toJson()));
-    var _mapData = _decodeMap(_result.data!);
-    final value = PortfolioAccountStatus.fromJson(_mapData);
-    return value;
-  }
 
   @override
   Future<List<IndexDetail>> getListIndexDetail(String listIndex) async {

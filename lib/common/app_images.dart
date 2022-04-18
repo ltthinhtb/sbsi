@@ -49,16 +49,19 @@ class AppImages {
   static String present = 'assets/icon_svg/present.svg';
 
   //icon bottomNavi
-  static String status_up_0 = 'assets/icon_svg/status-up-grey.svg';
-  static String status_up_1 = 'assets/icon_svg/status-up-purple.svg';
-  static String wallet_0 = 'assets/icon_svg/empty-wallet-grey.svg';
-  static String wallet_1 = 'assets/icon_svg/empty-wallet-purple.svg';
-  static String judge_0 = 'assets/icon_svg/judge-grey.svg';
-  static String judge_1 = 'assets/icon_svg/judge-purple.svg';
-  static String document_text_0 = 'assets/icon_svg/document-text-grey.svg';
-  static String document_text_1 = 'assets/icon_svg/document-text-purple.svg';
-  static String category_0 = 'assets/icon_svg/categoty-grey.svg';
-  static String category_1 = 'assets/icon_svg/category-purple.svg';
+  static String homeActive = 'assets/icon_svg/home_active.svg';
+  static String marketActive = 'assets/icon_svg/market_active.svg';
+  static String moleculeActive = 'assets/icon_svg/molecule-active.svg';
+  static String noteActive = 'assets/icon_svg/note-active.svg';
+  static String walletActive = 'assets/icon_svg/wallet-active.svg';
+
+
+
+  static String home = 'assets/icon_svg/home.svg';
+  static String market = 'assets/icon_svg/market.svg';
+  static String molecule = 'assets/icon_svg/molecule.svg';
+  static String note = 'assets/icon_svg/note.svg';
+  static String wallet = 'assets/icon_svg/wallet.svg';
 
   static String search_big_size = 'assets/icon_svg/search-big-size.svg';
   static String like_big_size = 'assets/icon_svg/like-big-size.svg';

@@ -64,7 +64,6 @@ class _ProfitTabBarState extends State<ProfitTabBar>
               }),
               onChanged: (value) {
                 walletLogic.getPortfolio(account: value!.accCode);
-                walletLogic.getAccountStatus(account: value.accCode);
               },
               items: userState.listAccount
                   .map((e) => DropdownMenuItem<Account>(

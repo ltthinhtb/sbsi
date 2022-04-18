@@ -16,43 +16,44 @@ extension MainTabExtension on MainTab {
       case MainTab.home:
         return S.of(context).home;
       case MainTab.product:
-        return S.of(context).wallet;
+        return S.of(context).stock_market;
       case MainTab.assets:
         return S.of(context).order;
       case MainTab.history:
         return S.of(context).order_note;
       case MainTab.profile:
-        return S.of(context).category;
+        return S.of(context).assets;
     }
   }
 
-  String get iconPurple {
+  String get icon {
     switch (this) {
       case MainTab.home:
-        return AppImages.status_up_1;
+        return AppImages.home;
       case MainTab.product:
-        return AppImages.wallet_1;
+        return AppImages.market;
       case MainTab.assets:
-        return AppImages.judge_1;
+        return AppImages.molecule;
       case MainTab.history:
-        return AppImages.document_text_1;
+        return AppImages.note;
       case MainTab.profile:
-        return AppImages.category_1;
+        return AppImages.wallet;
     }
   }
 
-  String get iconGrey {
+  String get iconActive {
     switch (this) {
       case MainTab.home:
-        return AppImages.status_up_0;
+        return AppImages.homeActive;
       case MainTab.product:
-        return AppImages.wallet_0;
+        return AppImages.marketActive;
       case MainTab.assets:
-        return AppImages.judge_0;
+        return AppImages.moleculeActive;
       case MainTab.history:
-        return AppImages.document_text_0;
+        return AppImages.noteActive;
       case MainTab.profile:
-        return AppImages.category_0;
+        return AppImages.walletActive;
     }
   }
+
 }

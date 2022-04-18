@@ -5,11 +5,10 @@ import 'package:sbsi/model/order_data/change_order_data.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 
 class CustomDialog {
-  static Future<bool?> showConfirmDialog(
-      GlobalKey? key, String label, List<String> contents,
+  static Future<bool?> showConfirmDialog( BuildContext context,String label, List<String> contents,
       {List<Color>? buttonColors, List<Color>? textButtonColors}) async {
     return await showDialog<bool>(
-      context: key!.currentContext!,
+      context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Dialog(
@@ -160,13 +159,12 @@ class CustomDialog {
     );
   }
 
-  static Future<ChangeOrderData?> showChangeOrderDialog(
-      GlobalKey? key, String label, List<String> contents,
+  static Future<ChangeOrderData?> showChangeOrderDialog(BuildContext context, String label, List<String> contents,
       {List<Color>? buttonColors, List<Color>? textButtonColors}) async {
     final TextEditingController priceController = TextEditingController();
     final TextEditingController volController = TextEditingController();
     return await showDialog<ChangeOrderData?>(
-      context: key!.currentContext!,
+      context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Dialog(

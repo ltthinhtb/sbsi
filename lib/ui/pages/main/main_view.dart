@@ -5,13 +5,10 @@ import 'package:get/get.dart';
 import 'main_logic.dart';
 import 'tab/main_tab.dart';
 
-final GlobalKey<NavigatorState> mainKey = GlobalKey();
-
 class MainPage extends GetView<MainLogic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: mainKey,
       body: _buildPageView(),
       bottomNavigationBar: _buildBottomNavigationBar(context),
     );
@@ -41,12 +38,12 @@ class MainPage extends GetView<MainLogic> {
               activeIcon: Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: SvgPicture.asset(
-                    MainTab.values[index].iconPurple,
+                    MainTab.values[index].iconActive,
                   )),
               icon: Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: SvgPicture.asset(
-                    MainTab.values[index].iconGrey,
+                    MainTab.values[index].icon,
                   )),
               label: MainTab.values[index].label(context),
             );
@@ -59,9 +56,9 @@ class MainPage extends GetView<MainLogic> {
     });
   }
 
-  // @override
-  // void dispose() {
-  //   Get.delete<MainLogic>();
-  //   super.dispose();
-  // }
+// @override
+// void dispose() {
+//   Get.delete<MainLogic>();
+//   super.dispose();
+// }
 }

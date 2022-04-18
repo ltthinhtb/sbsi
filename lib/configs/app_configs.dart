@@ -5,12 +5,11 @@ class AppConfigs {
 
   ///STAGING
   static const envName = "Staging";
-  static const baseUrl = "http://103.101.160.120:8888/";
+  static const baseUrl = "http://14.238.11.1:9999/";
   static const URL_DATA_sbsi = 'https://info.sbsi.vn/';
   static const URL_DATA_FEED = 'https://sbboard.sbsi.vn/';
   static const INFO_SBSI = 'https://info.sbsi.vn/';
   static const ENDPOINT_CORE = 'TraditionalService';
-  static const VF_HOST = 'http://vftrade.vn:8888/';
   static const NOTIFICATION = 'http://27.71.228.16:8998/';
   static const socketUrl = 'https://sbboard.sbsi.vn/ps'; //Todo: change this
 

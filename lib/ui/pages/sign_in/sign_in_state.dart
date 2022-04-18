@@ -5,11 +5,11 @@ class SignInState {
   late TextEditingController passwordTextController;
   final formKeyUser = GlobalKey<FormState>();
   final formKeyPass = GlobalKey<FormState>();
-  final FocusNode forcusNodeUsername = FocusNode();
-  final FocusNode forcusNodePassword = FocusNode();
+  final FocusNode focusNodeUsername = FocusNode();
+  final FocusNode focusNodePassword = FocusNode();
 
   SignInState() {
-    usernameTextController = TextEditingController(text: '123456');
-    passwordTextController = TextEditingController(text: "1234567");
+    usernameTextController = TextEditingController(text: '022356');
+    passwordTextController = TextEditingController(text: "123456");
   }
 }
