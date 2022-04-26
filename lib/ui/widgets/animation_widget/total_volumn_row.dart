@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
+import 'package:sbsi/utils/money_utils.dart';
 
 class BuyVolumnPainter extends CustomPainter {
   BuyVolumnPainter({
@@ -16,25 +17,25 @@ class BuyVolumnPainter extends CustomPainter {
     // TODO: implement paint
     if (value > 0) {
       Paint _paint = Paint()
-        ..color = AppColors.green_op
+        ..color = AppColors.Pastel2
         ..style = PaintingStyle.fill;
 
       canvas.save();
 
       Rect _rect = Rect.fromLTWH(0, 0, value * size.width, size.height);
-      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(30));
+      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(0));
 
       canvas.drawRRect(_rRect, _paint);
       canvas.restore();
     } else {
       Paint _paint = Paint()
-        ..color = AppColors.green_op
+        ..color = AppColors.Pastel2
         ..style = PaintingStyle.fill;
 
       canvas.save();
 
       Rect _rect = Rect.fromLTWH(0, 0, size.width, size.height);
-      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(30));
+      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(0));
 
       canvas.drawRRect(_rRect, _paint);
       canvas.restore();
@@ -59,27 +60,27 @@ class SellVolumnPainter extends CustomPainter {
     // TODO: implement paint
     if (value > 0) {
       Paint _paint = Paint()
-        ..color = AppColors.red_op
+        ..color = AppColors.Pastel
         ..style = PaintingStyle.fill;
       canvas.translate(size.width, size.height);
       canvas.rotate(pi);
       canvas.save();
 
       Rect _rect = Rect.fromLTWH(0, 0, value * size.width, size.height);
-      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(30));
+      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(0));
 
       canvas.drawRRect(_rRect, _paint);
       canvas.restore();
     } else {
       Paint _paint = Paint()
-        ..color = AppColors.red_op
+        ..color = AppColors.Pastel
         ..style = PaintingStyle.fill;
       canvas.translate(size.width, size.height);
       canvas.rotate(pi);
       canvas.save();
 
       Rect _rect = Rect.fromLTWH(0, 0, size.width, size.height);
-      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(30));
+      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(0));
 
       canvas.drawRRect(_rRect, _paint);
       canvas.restore();
@@ -171,45 +172,49 @@ class _TotalVolumnPercentRowState extends State<TotalVolumnPercentRow>
 
   @override
   Widget build(BuildContext context) {
-    var buyPer = (widget.sum == 0) ? 0 : ((widget.buyValue / widget.sum) * 100);
-    var sellPer =
-        (widget.sum == 0) ? 0 : ((widget.sellValue / widget.sum) * 100);
+    final caption = Theme.of(context).textTheme.caption?.copyWith(fontWeight: FontWeight.w400,fontSize: 13);
     return Container(
       // margin: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  alignment: Alignment.centerLeft,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
                   child: Text(
                     S.of(context).buy,
                     textDirection: TextDirection.ltr,
-                    style: AppTextStyle.caption2.copyWith(color: Colors.black),
+                    style: AppTextStyle.caption2.copyWith(fontWeight: FontWeight.w700),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.centerRight,
+                Container(
+                  child: Text(
+                    S.of(context).price,
+                    textDirection: TextDirection.ltr,
+                    style: AppTextStyle.caption2.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Container(
                   child: Text(
                     S.of(context).sell,
                     textDirection: TextDirection.rtl,
-                    style: AppTextStyle.caption2.copyWith(color: Colors.black),
+                    style: AppTextStyle.caption2.copyWith(fontWeight: FontWeight.w700),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Container(
-            height: 5,
+            height: 9,
           ),
           Row(
             children: [
               Expanded(
                 flex: widget.buyValue > 0 ? widget.buyValue.round() : 1,
                 child: Container(
+                  height: 20,
                   child: CustomPaint(
                     painter: BuyVolumnPainter(
                       value: _animation.value,
@@ -218,9 +223,9 @@ class _TotalVolumnPercentRowState extends State<TotalVolumnPercentRow>
                       padding: EdgeInsets.only(left: widget.padding),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        (buyPer < 20) ? "" : buyPer.toStringAsFixed(1) + "%",
+                        '${MoneyFormat.formatVol10('${widget.buyValue.toStringAsFixed(0)}')}',
                         textDirection: TextDirection.rtl,
-                        style: const TextStyle(color: AppColors.increase),
+                        style: caption,
                       ),
                     ),
                   ),
@@ -229,6 +234,7 @@ class _TotalVolumnPercentRowState extends State<TotalVolumnPercentRow>
               Expanded(
                 flex: widget.sellValue > 0 ? widget.sellValue.round() : 1,
                 child: Container(
+                  height: 20,
                   child: CustomPaint(
                     painter: SellVolumnPainter(
                       value: _animation.value,
@@ -237,9 +243,9 @@ class _TotalVolumnPercentRowState extends State<TotalVolumnPercentRow>
                       padding: EdgeInsets.only(right: widget.padding),
                       alignment: Alignment.centerRight,
                       child: Text(
-                        (sellPer < 20) ? "" : sellPer.toStringAsFixed(1) + "%",
+                        '${MoneyFormat.formatVol10('${widget.sellValue.toStringAsFixed(0)}')}',
                         textDirection: TextDirection.rtl,
-                        style: const TextStyle(color: AppColors.decrease),
+                        style: caption,
                       ),
                     ),
                   ),

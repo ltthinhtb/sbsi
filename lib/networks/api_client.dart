@@ -37,8 +37,6 @@ abstract class ApiClient {
 
   Future<AccountMStatus> getAccountMStatus(RequestParams requestParams);
 
-
-
   Future<List<Account>?> getListAccount(RequestParams requestParams);
 
   Future<Portfolio> getPortfolio(RequestParams requestParams);

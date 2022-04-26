@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sbsi/common/app_colors.dart';
-import 'package:sbsi/common/app_text_styles.dart';
-import 'package:sbsi/utils/stock_utils.dart';
+import 'package:sbsi/utils/money_utils.dart';
 
 class PricePercentPainter extends CustomPainter {
   PricePercentPainter(
       {required this.color, this.value = 0, this.sum = 0, required this.isBuy});
+
   final Color color;
   final double value;
   final num sum;
@@ -27,7 +27,7 @@ class PricePercentPainter extends CustomPainter {
       canvas.save();
 
       Rect _rect = Rect.fromLTWH(0, 0, (value / sum) * size.width, size.height);
-      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(5));
+      RRect _rRect = RRect.fromRectAndRadius(_rect, const Radius.circular(2));
 
       canvas.drawRRect(_rRect, _paint);
       canvas.restore();
@@ -57,6 +57,7 @@ class PricePercentRow extends StatefulWidget {
   final double sum;
   final Color color;
   final double padding;
+
   @override
   _PricePercentRowState createState() => _PricePercentRowState();
 }
@@ -125,7 +126,7 @@ class _PricePercentRowState extends State<PricePercentRow>
   Widget build(BuildContext context) {
     // print(widget.value);
     // print(_animation.value);
-
+    final caption = Theme.of(context).textTheme.caption?.copyWith(fontSize: 12);
     if (widget.isBuy) {
       return Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
@@ -135,11 +136,12 @@ class _PricePercentRowState extends State<PricePercentRow>
                 flex: 1,
                 child: Container(
                   alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.only(left: 20),
                   child: RichText(
                     text: TextSpan(
-                      text: StockUtil.formatVol(widget.value),
-                      style:
-                          AppTextStyle.caption2.copyWith(color: Colors.black),
+                      text: MoneyFormat.formatVol10(
+                          widget.value.toStringAsFixed(0)),
+                      style: caption,
                     ),
                   ),
                 )),
@@ -149,7 +151,7 @@ class _PricePercentRowState extends State<PricePercentRow>
                 child: CustomPaint(
                   painter: PricePercentPainter(
                     isBuy: widget.isBuy,
-                    color: AppColors.green_op,
+                    color: AppColors.Pastel,
                     value: _animation.value,
                     sum: widget.sum,
                   ),
@@ -159,7 +161,7 @@ class _PricePercentRowState extends State<PricePercentRow>
                     child: Text(
                       widget.price.toString(),
                       textDirection: TextDirection.rtl,
-                      style: const TextStyle(color: AppColors.increase),
+                      style: caption?.copyWith(fontWeight: FontWeight.w600,color: AppColors.primary),
                     ),
                   ),
                 ),
@@ -179,7 +181,7 @@ class _PricePercentRowState extends State<PricePercentRow>
                 child: CustomPaint(
                   painter: PricePercentPainter(
                     isBuy: widget.isBuy,
-                    color: AppColors.red_op,
+                    color: AppColors.Pastel2,
                     value: _animation.value,
                     sum: widget.sum,
                   ),
@@ -189,7 +191,7 @@ class _PricePercentRowState extends State<PricePercentRow>
                     child: Text(
                       widget.price.toString(),
                       textDirection: TextDirection.ltr,
-                      style: const TextStyle(color: AppColors.decrease),
+                      style: caption?.copyWith(fontWeight: FontWeight.w600,color: AppColors.active),
                     ),
                   ),
                 ),
@@ -198,11 +200,13 @@ class _PricePercentRowState extends State<PricePercentRow>
             Expanded(
               flex: 1,
               child: Container(
+                padding: const EdgeInsets.only(right: 20),
                 alignment: Alignment.centerRight,
                 child: RichText(
                   text: TextSpan(
-                    text: StockUtil.formatVol(widget.value),
-                    style: AppTextStyle.caption2.copyWith(color: Colors.black),
+                    text: MoneyFormat.formatVol10(
+                        widget.value.toStringAsFixed(0)),
+                    style: caption,
                   ),
                 ),
               ),

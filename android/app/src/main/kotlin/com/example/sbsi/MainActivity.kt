@@ -54,6 +54,8 @@ class MainActivity : FlutterActivity() {
     }
 
 
+
+
     private fun getOrcFront() {
         val intent = Intent(this, VnptOcrActivity::class.java)
         intent.putExtra(KeyIntentConstants.ACCESS_TOKEN, ACCESS_TOKEN)

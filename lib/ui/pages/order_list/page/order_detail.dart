@@ -53,6 +53,7 @@ class _OrderDetailState extends State<OrderDetail> {
     return Scaffold(
       appBar: AppBarCustom(
         title: S.of(context).order_detail,
+        isCenter: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),

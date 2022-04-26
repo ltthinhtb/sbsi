@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:sbsi/common/app_colors.dart';
+
 class StockInfo {
   int? id;
   String? sym;
@@ -29,6 +32,13 @@ class StockInfo {
   String? stockType;
   String? statusInfo;
   String? forceUse;
+
+  Color get color {
+    if(cl == null) return AppColors.yellow;
+    if(cl == 'yellow') return AppColors.yellow;
+    if(cl == "red") return AppColors.decrease;
+    return AppColors.increase;
+  }
 
   StockInfo(
       {this.id,

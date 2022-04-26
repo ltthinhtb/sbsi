@@ -7,7 +7,7 @@ import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/configs/app_configs.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/response/list_account_response.dart';
-import 'package:sbsi/ui/pages/user/user_logic.dart';
+import 'package:sbsi/services/auth_service.dart';
 import 'package:sbsi/ui/widgets/dropdown/app_drop_down.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/money_utils.dart';
@@ -25,8 +25,6 @@ class _MenuTabBarState extends State<MenuTabBar>
     with AutomaticKeepAliveClientMixin {
   final walletState = Get.find<WalletLogic>().state;
   final walletLogic = Get.find<WalletLogic>();
-
-  final userState = Get.find<UserLogic>().state;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +101,7 @@ class _MenuTabBarState extends State<MenuTabBar>
           const SizedBox(height: 20),
           AppDropDownWidget<Account>(
               label: S.of(context).account,
-              value: userState.listAccount.firstWhere(
+              value: Get.find<AuthService>().listAccount.firstWhere(
                   (element) => element.accCode == walletLogic.defAcc,
                   orElse: () {
                 return Account(accCode: walletLogic.defAcc);
@@ -111,7 +109,7 @@ class _MenuTabBarState extends State<MenuTabBar>
               onChanged: (value) {
                 walletLogic.getPortfolio(account: value!.accCode);
               },
-              items: userState.listAccount
+              items: Get.find<AuthService>().listAccount
                   .map((e) => DropdownMenuItem<Account>(
                         value: e,
                         onTap: () {},

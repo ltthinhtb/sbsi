@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
-import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
+import 'package:sbsi/services/auth_service.dart';
 import 'package:sbsi/services/setting_service.dart';
-import 'package:sbsi/ui/commons/app_snackbar.dart';
-import 'package:sbsi/ui/commons/webview.dart';
+import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_state.dart';
 import 'package:sbsi/ui/pages/stock_order/widget/number_input.dart';
-import 'package:sbsi/ui/pages/stock_order/widget/stock_order_appbar.dart';
-import 'package:sbsi/ui/pages/stock_order/widget/stock_order_confirm.dart';
-import 'package:sbsi/ui/widgets/animation_widget/price_row.dart';
 import 'package:sbsi/ui/widgets/animation_widget/switch.dart';
-import 'package:sbsi/ui/widgets/animation_widget/total_volumn_row.dart';
 import 'package:sbsi/utils/extension.dart';
 import 'package:sbsi/utils/order_utils.dart';
 import 'package:sbsi/utils/stock_utils.dart';
+
+import 'widget/card_data.dart';
+import 'widget/stock_3_price.dart';
+import 'widget/stock_cash_balance.dart';
 
 // ignore: must_be_immutable
 class StockOrderPage extends StatefulWidget {
@@ -43,28 +41,31 @@ class _StockOrderPageState extends State<StockOrderPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    searchStockNodeListen();
     setState(() {
       state.isBuy.value = widget.isBuy;
       state.priceController.text = state.price.toString();
       state.volController.text = state.vol.toString();
     });
-    // WidgetsBinding.instance?.addPostFrameCallback((_) {
-    //   StockCompanyData _data = state.allStockCompanyData
-    //       .firstWhere((element) => element.stockCode == "AAA");
-    //   changeStock(_data);
-    // });
   }
 
-  @override
-  void didUpdateWidget(covariant StockOrderPage oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-    if ((widget.selectedStock != null &&
-            widget.selectedStock != oldWidget.selectedStock) ||
-        (widget.isBuy != oldWidget.isBuy)) {
-      changeStock(widget.selectedStock);
-      state.isBuy.value = widget.isBuy;
-    }
+  /// lắng nghe textfield search mã chứng khoán
+  void searchStockNodeListen() {
+    state.stockNode.addListener(() {
+      /// check xem có đang hiện bàn phím không
+      if (state.stockNode.hasFocus) {
+        /// scroll đến chõ mã search mã chứng khoán
+        Scrollable.ensureVisible(state.searchCKKey.currentContext!);
+      } else {
+        /// kiểm tra ở trạng thái cuối trên bàn phím
+        var index = state.allStockCompanyData.indexWhere((stock) =>
+            stock.stockCode?.trim().toLowerCase() ==
+            state.stockController.text.trim().toLowerCase());
+
+        /// nếu mã đó hợp lệ thì load lại trang
+        if (index >= 0) logic.selectStock(state.allStockCompanyData[index]);
+      }
+    });
   }
 
   @override
@@ -75,432 +76,124 @@ class _StockOrderPageState extends State<StockOrderPage> {
 
   void changeStock(StockCompanyData? data) async {
     if (data != null) {
-      await logic.getStockInfo(data);
+      state.selectedStock.value = data;
+      await logic.getStockInfo();
     }
   }
 
-  void unfocus() {
+  void unFocus() {
     return FocusScope.of(context).unfocus();
   }
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: StockOrderAppbar(
-        onLeadingPress: () {},
-        onSelectStockCode: (data) => changeStock(data),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: RefreshIndicator(
-          onRefresh: () async {
-            await logic.refreshPage();
-          },
-          child: ListView(
-            children: [
-              buildTopItem(),
-              buildHeader(),
-              build3Gia(),
-              buildVolPercent(),
-              buildBSButton(),
-              buildPriceTypes(),
-              buildPriceInput(),
-              buildInfoColumn(),
-            ],
-          ),
-        ),
-      ),
-      floatingActionButton: MaterialButton(
-        minWidth: width - 30,
-        height: 50,
-        color: AppColors.primary,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-        onPressed: () async {
-          try {
-            await logic.validateInfo();
-            bool? result = await Get.to(const StockOrderConfirm());
-            print(result);
-            if (result ?? false) {
-              await logic.requestNewOrder();
-            }
-          } catch (e) {
-            print(e);
-            switch (e) {
-              case 0:
-                return AppSnackBar.showError(
-                    message: S.of(context).empty_stockcode);
-              case -1:
-                return AppSnackBar.showError(
-                    message: S.of(context).invalid_price);
-              case -2:
-                return AppSnackBar.showError(
-                    message: S.of(context).invalid_volumn);
-              case -3:
-                return AppSnackBar.showError(
-                    message: S.of(context).vol_is_not_positive);
-              case -4:
-                return AppSnackBar.showError(
-                    message: S.of(context).vol_is_not_integer);
-              default:
-                return AppSnackBar.showError(message: e.toString());
-            }
-          }
-        },
-        child: Text(
-          "Đặt lệnh",
-          style: AppTextStyle.H5Bold.copyWith(color: Colors.white),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    );
-  }
-
-  Widget buildTopItem() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15),
-      child: Container(
-        child: Obx(
-          () => state.selectedStock.value.stockCode != null
-              ? Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        RichText(
-                          text: TextSpan(children: [
-                            TextSpan(
-                              text: state.selectedStock.value.stockCode! + "  ",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6!
-                                  .copyWith(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                            ),
-                            TextSpan(
-                              text: state.selectedStock.value.postTo!,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6!
-                                  .copyWith(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                            ),
-                          ]),
-                        ),
-                        MaterialButton(
-                          onPressed: () {
-                            Get.to(
-                              WebViewPage(
-                                  title: "Chart",
-                                  url:
-                                      "https://info.sbsi.vn/chart/?symbol=${state.selectedStock.value.stockCode}&language=vi&theme=light"),
-                            );
-                          },
-                          shape: const CircleBorder(),
-                          color: Theme.of(context)
-                              .buttonTheme
-                              .colorScheme!
-                              .primaryContainer,
-                          child: SvgPicture.asset(AppImages.switch_diagram),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: RichText(
-                            maxLines: 1,
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: settingService.currentLocate.value ==
-                                        const Locale.fromSubtags(
-                                            languageCode: 'vi')
-                                    ? state.selectedStock.value.nameVn
-                                    : state.selectedStock.value.nameEn ??
-                                        state.selectedStock.value.nameVn,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6!
-                                    .copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w200,
-                                    ),
-                              ),
-                            ]),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+      appBar: AppBarCustom(
+        title: S.of(context).order,
+        isCenter: true,
+        action: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            margin: const EdgeInsets.symmetric(vertical: 11),
+            decoration: BoxDecoration(
+                color: AppColors.tabIn,
+                borderRadius: BorderRadius.circular(16)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Obx(() {
+                  var auth = Get.find<AuthService>().token.value;
+                  return Text('${auth?.data?.user ?? ""}');
+                }),
+                const SizedBox(width: 2),
+                Container(
+                  width: 24,
+                  height: 24,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                      color: AppColors.white, shape: BoxShape.circle),
+                  child: Obx(() {
+                    print(state.account.value.toJson());
+                    return Text(
+                      state.account.value.lastCharacter,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2
+                          ?.copyWith(fontWeight: FontWeight.w700),
+                    );
+                  }),
                 )
-              : Column(
-                  children: const [
-                    Text('Chưa có cổ phiếu nào được chọn'),
-                    Text('Vui lòng chọn cổ phiếu muốn đặt lệnh')
-                  ],
-                ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildHeader() {
-    return Obx(
-      () => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        decoration: BoxDecoration(
-          color: state.selectedStockInfo.value.lastPrice != null
-              ? AppColors.primary2
-              : AppColors.primaryOpacity,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(15),
+              ],
+            ),
           ),
-        ),
-        child: Row(
+          const SizedBox(width: 14),
+        ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await logic.refreshPage();
+        },
+        child: ListView(
           children: [
-            Expanded(
-              flex: 6,
-              child: Text(
-                state.selectedStockInfo.value.lastPrice != null
-                    ? state.selectedStockInfo.value.lastPrice.toString()
-                    : "0.0",
-                style: AppTextStyle.H1.copyWith(
-                  color: state.selectedStockInfo.value.lastPrice != null
-                      ? StockUtil.itemColorWithColor(
-                          state.selectedStockInfo.value.cl!)
-                      : null,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 4,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    state.selectedStockInfo.value.ot != null
-                        ? state.selectedStockInfo.value.ot!
-                        : "0.0",
-                    style: AppTextStyle.bodyText1.copyWith(
-                      color: state.selectedStockInfo.value.ot != null
-                          ? StockUtil.itemColorWithColor(
-                              state.selectedStockInfo.value.cl!)
-                          : null,
-                    ),
-                  ),
-                  Text(
-                    state.selectedStockInfo.value.ot != null
-                        ? logic.getChangePc()
-                        : "0.0%",
-                    style: AppTextStyle.bodyText1.copyWith(
-                      color: state.selectedStockInfo.value.ot != null
-                          ? StockUtil.itemColorWithColor(
-                              state.selectedStockInfo.value.cl!)
-                          : null,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 6,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    S.of(context).volumn,
-                    style: AppTextStyle.caption2,
-                  ),
-                  Text(
-                    state.selectedStockInfo.value.lot != null
-                        ? StockUtil.formatVol10(
-                            state.selectedStockInfo.value.lot!)
-                        : "0",
-                    style: AppTextStyle.bodyText2,
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  RichText(
-                    maxLines: 1,
-                    textAlign: TextAlign.end,
-                    text: TextSpan(
-                      text: S.of(context).ceil,
-                      style:
-                          AppTextStyle.caption2.copyWith(color: Colors.black),
-                    ),
-                  ),
-                  RichText(
-                    maxLines: 1,
-                    textAlign: TextAlign.end,
-                    text: TextSpan(
-                      text: state.selectedStockInfo.value.c != null
-                          ? state.selectedStockInfo.value.c!.toString()
-                          : "0",
-                      style:
-                          AppTextStyle.bodyText2.copyWith(color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  RichText(
-                    maxLines: 1,
-                    textAlign: TextAlign.end,
-                    text: TextSpan(
-                      text: S.of(context).reference_short,
-                      style:
-                          AppTextStyle.caption2.copyWith(color: Colors.black),
-                    ),
-                  ),
-                  RichText(
-                    maxLines: 1,
-                    textAlign: TextAlign.end,
-                    text: TextSpan(
-                      text: state.selectedStockInfo.value.r != null
-                          ? state.selectedStockInfo.value.r!.toString()
-                          : "0",
-                      style:
-                          AppTextStyle.bodyText2.copyWith(color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  RichText(
-                    maxLines: 1,
-                    textAlign: TextAlign.end,
-                    text: TextSpan(
-                      text: S.of(context).floor,
-                      style:
-                          AppTextStyle.caption2.copyWith(color: Colors.black),
-                    ),
-                  ),
-                  RichText(
-                    maxLines: 1,
-                    textAlign: TextAlign.end,
-                    text: TextSpan(
-                      text: state.selectedStockInfo.value.f != null
-                          ? state.selectedStockInfo.value.f!.toString()
-                          : "0",
-                      style:
-                          AppTextStyle.bodyText2.copyWith(color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const SizedBox(height: 16),
+            const CardData(),
+            const SizedBox(height: 16),
+            const Stock3Price(),
+            const SizedBox(height: 16),
+            const StockCashBalance(),
+            buildBSButton(),
+            buildPriceTypes(),
+            buildPriceInput(),
+            buildInfoColumn(),
           ],
         ),
       ),
-    );
-  }
-
-  Widget build3Gia() {
-    return Obx(
-      () => Container(
-        margin: const EdgeInsets.symmetric(vertical: 5),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  PricePercentRow(
-                    sum: state.sumBuyVol.value,
-                    price: state.selectedStockInfo.value.g1?.price ?? "0.0",
-                    value:
-                        state.selectedStockInfo.value.g1?.volumn?.toDouble() ??
-                            0,
-                  ),
-                  PricePercentRow(
-                    sum: state.sumBuyVol.value,
-                    price: state.selectedStockInfo.value.g2?.price ?? "0.0",
-                    value:
-                        state.selectedStockInfo.value.g2?.volumn?.toDouble() ??
-                            0,
-                  ),
-                  PricePercentRow(
-                    sum: state.sumBuyVol.value,
-                    price: state.selectedStockInfo.value.g3?.price ?? "0.0",
-                    value:
-                        state.selectedStockInfo.value.g3?.volumn?.toDouble() ??
-                            0,
-                  )
-                ],
-              ),
-            ),
-            Container(
-              width: 5,
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  PricePercentRow(
-                    isBuy: false,
-                    sum: state.sumSellVol.value,
-                    price: state.selectedStockInfo.value.g4?.price ?? "0.0",
-                    value:
-                        state.selectedStockInfo.value.g4?.volumn?.toDouble() ??
-                            0,
-                  ),
-                  PricePercentRow(
-                    isBuy: false,
-                    sum: state.sumSellVol.value,
-                    price: state.selectedStockInfo.value.g5?.price ?? "0.0",
-                    value:
-                        state.selectedStockInfo.value.g5?.volumn?.toDouble() ??
-                            0,
-                  ),
-                  PricePercentRow(
-                    isBuy: false,
-                    sum: state.sumSellVol.value,
-                    price: state.selectedStockInfo.value.g6?.price ?? "0.0",
-                    value:
-                        state.selectedStockInfo.value.g6?.volumn?.toDouble() ??
-                            0,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildVolPercent() {
-    return Obx(
-      () => Container(
-        // margin: const EdgeInsets.only(bottom: 5),
-        child: TotalVolumnPercentRow(
-          sum: state.sumBSVol.value,
-          buyValue: state.sumBuyVol.value,
-          sellValue: state.sumSellVol.value,
-        ),
-      ),
+      // floatingActionButton: MaterialButton(
+      //   minWidth: width - 30,
+      //   height: 50,
+      //   color: AppColors.primary,
+      //   shape: const RoundedRectangleBorder(
+      //     borderRadius: BorderRadius.all(
+      //       Radius.circular(10),
+      //     ),
+      //   ),
+      //   onPressed: () async {
+      //     try {
+      //       await logic.validateInfo();
+      //       bool? result = await Get.to(const StockOrderConfirm());
+      //       print(result);
+      //       if (result ?? false) {
+      //         await logic.requestNewOrder();
+      //       }
+      //     } catch (e) {
+      //       print(e);
+      //       switch (e) {
+      //         case 0:
+      //           return AppSnackBar.showError(
+      //               message: S.of(context).empty_stockcode);
+      //         case -1:
+      //           return AppSnackBar.showError(
+      //               message: S.of(context).invalid_price);
+      //         case -2:
+      //           return AppSnackBar.showError(
+      //               message: S.of(context).invalid_volumn);
+      //         case -3:
+      //           return AppSnackBar.showError(
+      //               message: S.of(context).vol_is_not_positive);
+      //         case -4:
+      //           return AppSnackBar.showError(
+      //               message: S.of(context).vol_is_not_integer);
+      //         default:
+      //           return AppSnackBar.showError(message: e.toString());
+      //       }
+      //     }
+      //   },
+      //   child: Text(
+      //     "Đặt lệnh",
+      //     style: AppTextStyle.H5Bold.copyWith(color: Colors.white),
+      //   ),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
@@ -535,7 +228,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
           child: Row(
             children: nullString.asMap().entries.map<Widget>((entry) {
               int idx = entry.key;
-              return buidButtonPrice(nullString, idx);
+              return buildButtonPrice(nullString, idx);
             }).toList(),
           ),
         );
@@ -546,7 +239,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
               child: Row(
                 children: pricesHSX.asMap().entries.map<Widget>((entry) {
                   int idx = entry.key;
-                  return buidButtonPrice(pricesHSX, idx);
+                  return buildButtonPrice(pricesHSX, idx);
                 }).toList(),
               ),
             );
@@ -555,7 +248,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
               child: Row(
                 children: pricesHNX.asMap().entries.map<Widget>((entry) {
                   int idx = entry.key;
-                  return buidButtonPrice(pricesHNX, idx);
+                  return buildButtonPrice(pricesHNX, idx);
                 }).toList(),
               ),
             );
@@ -564,7 +257,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
               child: Row(
                 children: pricesUPCOM.asMap().entries.map<Widget>((entry) {
                   int idx = entry.key;
-                  return buidButtonPrice(pricesUPCOM, idx);
+                  return buildButtonPrice(pricesUPCOM, idx);
                 }).toList(),
               ),
             );
@@ -573,7 +266,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
     });
   }
 
-  Widget buidButtonPrice(List<String> prices, int index) {
+  Widget buildButtonPrice(List<String> prices, int index) {
     return Obx(
       () => Expanded(
         child: Padding(
@@ -583,7 +276,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
           ),
           child: MaterialButton(
             onPressed: () {
-              unfocus();
+              unFocus();
               state.priceType.value = prices[index];
               if (state.selectedStock.value.stockCode != null) {
                 if (prices[index] == PriceType.LO) {

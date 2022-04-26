@@ -11,6 +11,8 @@ class AppColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color whiteBack = Color(0xFFF9F9F9);
   static const Color green = Color(0xFF0BC07F);
+  static const Color deActive = Color(0xffBF0C26);
+  static const Color active = Color(0xff03BF4E);
   static const Color green_op = Color(0xFFBFF3EA);
   static const Color red = Color(0xFFF13C23);
   static const Color red_op = Color(0xFFFFD4D4);
@@ -54,6 +56,10 @@ class AppColors {
   ///Divider
   static const Color divider = Color(0xFF606060);
   static const Color dashLine = Color(0xFFECECEC);
+
+  static const Color Pastel = Color(0xFFFFECEC);
+  static const Color Pastel2 = Color(0xFFE6FFE6);
+  static const Color PastelSecond2 = Color(0xFFFFF3DC);
 
   ///Text
   static const Color textBlack = Color(0xFF282324);

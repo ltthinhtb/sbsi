@@ -42,14 +42,20 @@ class Account {
   String? serial;
   String? orderAcc;
 
+  String get lastCharacter {
+    if (accCode == null) return "";
+    if (accCode!.isEmpty) return "";
+    return accCode!.substring(accCode!.length - (1));
+  }
+
   Account(
       {this.accCode,
-        this.accName,
-        this.accType,
-        this.type,
-        this.authen,
-        this.serial,
-        this.orderAcc});
+      this.accName,
+      this.accType,
+      this.type,
+      this.authen,
+      this.serial,
+      this.orderAcc});
 
   Account.fromJson(Map<String, dynamic> json) {
     accCode = json['accCode'];

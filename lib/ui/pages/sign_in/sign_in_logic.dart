@@ -9,7 +9,6 @@ import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/menu/panel/setting/change_password_page/change_password_view.dart';
 import 'package:sbsi/utils/validator.dart';
-
 import 'sign_in_state.dart';
 
 class SignInLogic extends GetxController with Validator {
@@ -65,6 +64,7 @@ class SignInLogic extends GetxController with Validator {
               name: result.data!.name!,
               userID: result.data!.user!,
               category: []));
+          await authService.getListAccount();
           await Get.offAllNamed(RouteConfig.main);
         } else {
           signIn();

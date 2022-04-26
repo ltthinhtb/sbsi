@@ -15,7 +15,7 @@ class MyLogger {
   void d(dynamic message) {
     //Logger().d(message);
     //_print("💙 DEBUG: $message");
-    print("💙 DEBUG: $message");
+    Logger().d("💙 DEBUG: $message");
 
   }
 
@@ -23,7 +23,7 @@ class MyLogger {
   void i(dynamic message) {
     //Logger().i(message);
     //_print("💚️ INFO: $message");
-    print("💚️ INFO: $message");
+    Logger().i("💚️ INFO: $message");
 
   }
 
@@ -31,7 +31,7 @@ class MyLogger {
   void w(dynamic message) {
     //Logger().w(message);
      //_print("💛 WARNING: $message");
-    print("💛 WARNING: $message");
+    Logger().w("💛 WARNING: $message");
 
   }
 

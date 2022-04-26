@@ -7,11 +7,20 @@ import 'package:sbsi/model/stock_data/share_balance.dart';
 import 'package:sbsi/model/stock_data/stock_data.dart';
 import 'package:sbsi/model/stock_data/stock_info.dart';
 
+import '../../../model/response/list_account_response.dart';
+
 class StockOrderState {
-  late TextEditingController stockCodeController;
   final TextEditingController priceController = TextEditingController();
   final TextEditingController volController = TextEditingController();
+
+  final TextEditingController stockController = TextEditingController();
+  final FocusNode stockNode = FocusNode();
+  final searchCKKey = GlobalKey<FormState>();
   List<StockCompanyData> allStockCompanyData = <StockCompanyData>[];
+
+  final account = Account().obs;
+
+  final stockCompanyData = StockCompanyData().obs;
 
   var loading = false.obs;
 
@@ -34,9 +43,7 @@ class StockOrderState {
   var sumSellVol = 0.0.obs;
   var sumBSVol = 0.0.obs;
 
-  StockOrderState({String? stockCode}) {
-    stockCodeController = TextEditingController(text: stockCode ?? 'APS');
-  }
+  StockOrderState() {}
 }
 
-  enum StockExchange { HSX, HNX, UPCOM }
+enum StockExchange { HSX, HNX, UPCOM }

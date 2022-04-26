@@ -7,6 +7,9 @@ class AppImages {
 
   static String banner = 'assets/image/Banner App 1.png';
 
+  static String appbar = 'assets/icon_svg/appbar.svg';
+
+
   //sign_up
   static String sign_up_card_id_1 = 'assets/icon_svg/sign_up_card_id.svg';
   static String sign_up_card_id_2 = 'assets/icon_svg/sign_up_id-card 2.svg';
@@ -44,6 +47,7 @@ class AppImages {
   static String pencil_2 = 'assets/icon_svg/edit-2.svg';
   static String trash = 'assets/icon_svg/trash.svg';
   static String amount = 'assets/icon_svg/amount.svg';
+  static String chart = 'assets/icon_svg/chart.svg';
 
   // icon image
   static String present = 'assets/icon_svg/present.svg';

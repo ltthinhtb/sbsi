@@ -67,7 +67,7 @@ class AppThemes {
   static final ElevatedButtonThemeData _elevatedButtonThemeData =
       ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(vertical: 11,horizontal: 24),
+      padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 24),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(12),
@@ -213,8 +213,7 @@ class AppThemes {
     appBarTheme: AppBarTheme(
         iconTheme: const IconThemeData(color: _lightIconColor),
         titleTextStyle:
-            AppTextStyle.H5Bold.copyWith(color: AppColors.textBlack),
-        backgroundColor: _lightBackgroundColor),
+            AppTextStyle.H5Bold.copyWith(color: AppColors.white)),
     iconTheme: const IconThemeData(
       color: _lightIconColor,
     ),
