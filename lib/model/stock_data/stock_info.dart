@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sbsi/common/app_colors.dart';
 
+import 'stock_socket.dart';
+
 class StockInfo {
   int? id;
   String? sym;
@@ -34,9 +36,9 @@ class StockInfo {
   String? forceUse;
 
   Color get color {
-    if(cl == null) return AppColors.yellow;
-    if(cl == 'yellow') return AppColors.yellow;
-    if(cl == "red") return AppColors.decrease;
+    if (cl == null) return AppColors.yellow;
+    if (cl == 'yellow') return AppColors.yellow;
+    if (cl == "red") return AppColors.decrease;
     return AppColors.increase;
   }
 
@@ -105,6 +107,41 @@ class StockInfo {
     forceUse = json['force_use'];
   }
 
+  StockInfo copyWith(SocketStock stock) {
+    return StockInfo(
+      id: (stock.id)?.toInt() ?? id,
+      sym: stock.sym ?? sym,
+      c: c,
+      f: f,
+      r: r,
+      lastPrice: stock.lastPrice ?? lastPrice,
+      lastVolume: (stock.lastVol)?.toInt() ?? lastVolume,
+      lot: stock.totalVol?.toInt() ?? lot,
+      ot: ot,
+      cl: stock.cl ?? cl,
+      avePrice: avePrice,
+      highPrice: highPrice,
+      lowPrice: lowPrice,
+      fRoom: fRoom,
+      g1: g1,
+      g2: g2,
+      g3: g3,
+      g4: g4,
+      g5: g5,
+      g6: g6,
+      g7: g7,
+      mc: mc,
+      mr: mr,
+      fBVol: fBVol,
+      fSVolume: fSVolume,
+      stepPrice: stepPrice,
+      code: code,
+      stockType: stockType,
+      statusInfo: statusInfo,
+      forceUse: forceUse,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
@@ -145,7 +182,9 @@ class G {
   String? price;
   num? volumn;
   String? status;
+
   G({this.price, this.volumn, this.status});
+
   G.fromJson(String data) {
     if (data.isNotEmpty) {
       List<String> _data = data.split('|');

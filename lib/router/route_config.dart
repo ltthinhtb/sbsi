@@ -5,6 +5,7 @@ import 'package:sbsi/ui/pages/order_list/order_list_view.dart';
 import 'package:sbsi/ui/pages/search/search_view.dart';
 import 'package:sbsi/ui/pages/sign_in/sign_in_view.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/ui/pages/stock_detail/stock_detail_view.dart';
 import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
 
 class RouteConfig {
@@ -17,6 +18,7 @@ class RouteConfig {
   static const String order_list = "/order_list";
   static const String order_detail = "/order_detail";
   static const String notification = "/notification";
+  static const String stockDetail = "/stockDetail";
 
   ///Alias ​​mapping page
   static final List<GetPage> getPages = [
@@ -27,6 +29,8 @@ class RouteConfig {
     GetPage(name: search, page: () => const SearchPage()),
     GetPage(name: order_list, page: () => const OrderListPage()),
     GetPage(name: notification, page: () => NotificationPage()),
+    GetPage(name: stockDetail, page: () => const StockDetailPage()),
+
   ];
 }
 

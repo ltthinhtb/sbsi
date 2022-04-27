@@ -173,12 +173,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "Maximum Available Buy Volumn"),
         "maxVolumeSellAvaiable": MessageLookupByLibrary.simpleMessage(
             "Maximum Available Sell Volumn"),
+        "maxVolumeSellBuy":
+            MessageLookupByLibrary.simpleMessage("Maximum Available Buy Sell"),
         "menu": MessageLookupByLibrary.simpleMessage("Menu"),
         "min_VOLUME": MessageLookupByLibrary.simpleMessage("Min volume"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Money exchange"),
         "month": MessageLookupByLibrary.simpleMessage("Months"),
-        "mr": MessageLookupByLibrary.simpleMessage("MR"),
+        "mr": MessageLookupByLibrary.simpleMessage("Margin rate"),
         "network_error": MessageLookupByLibrary.simpleMessage("Network Error"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "news": MessageLookupByLibrary.simpleMessage("News"),
@@ -228,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "policy_use": MessageLookupByLibrary.simpleMessage("Policy"),
         "popular": MessageLookupByLibrary.simpleMessage("Popular"),
         "pp": MessageLookupByLibrary.simpleMessage("PP"),
+        "pp_1": MessageLookupByLibrary.simpleMessage("PP"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "product": MessageLookupByLibrary.simpleMessage("Product"),
         "profile_info": MessageLookupByLibrary.simpleMessage("Profile info"),
@@ -289,6 +292,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "status_short": MessageLookupByLibrary.simpleMessage("Stt"),
         "stockMarket": MessageLookupByLibrary.simpleMessage("Stock market"),
         "stock_code": MessageLookupByLibrary.simpleMessage("Stock code"),
+        "stock_detail": MessageLookupByLibrary.simpleMessage("Stock Detail"),
         "stock_market": MessageLookupByLibrary.simpleMessage("Stock market"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "success_title1": MessageLookupByLibrary.simpleMessage(

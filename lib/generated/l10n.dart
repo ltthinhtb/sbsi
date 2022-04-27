@@ -1540,10 +1540,10 @@ class S {
     );
   }
 
-  /// `MR`
+  /// `Margin rate`
   String get mr {
     return Intl.message(
-      'MR',
+      'Margin rate',
       name: 'mr',
       desc: '',
       args: [],
@@ -1555,6 +1555,16 @@ class S {
     return Intl.message(
       'PP',
       name: 'pp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PP`
+  String get pp_1 {
+    return Intl.message(
+      'PP',
+      name: 'pp_1',
       desc: '',
       args: [],
     );
@@ -1585,6 +1595,16 @@ class S {
     return Intl.message(
       'Maximum Available Sell Volumn',
       name: 'maxVolumeSellAvaiable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maximum Available Buy Sell`
+  String get maxVolumeSellBuy {
+    return Intl.message(
+      'Maximum Available Buy Sell',
+      name: 'maxVolumeSellBuy',
       desc: '',
       args: [],
     );
@@ -2445,6 +2465,16 @@ class S {
     return Intl.message(
       'Variable',
       name: 'variable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock Detail`
+  String get stock_detail {
+    return Intl.message(
+      'Stock Detail',
+      name: 'stock_detail',
       desc: '',
       args: [],
     );

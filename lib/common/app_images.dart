@@ -48,6 +48,9 @@ class AppImages {
   static String trash = 'assets/icon_svg/trash.svg';
   static String amount = 'assets/icon_svg/amount.svg';
   static String chart = 'assets/icon_svg/chart.svg';
+  static String minusSmall = 'assets/icon_svg/minus-small.svg';
+  static String plusSmall = 'assets/icon_svg/plus-small.svg';
+
 
   // icon image
   static String present = 'assets/icon_svg/present.svg';

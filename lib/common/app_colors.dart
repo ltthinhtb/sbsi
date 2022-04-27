@@ -49,6 +49,9 @@ class AppColors {
 
   ///Shadow
   static const Color shadow = Color(0x25606060);
+  static const Color blackKeyBoard = Color(0xFF363636);
+  static const Color blackKeyBoard1 = Color(0xFF121212);
+  static const Color whiteBoard1 = Color(0xFFEFEFEF);
 
   ///Border
   static const Color border = Color(0xFFC3C3C3);

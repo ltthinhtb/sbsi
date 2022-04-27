@@ -179,13 +179,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "Khối lượng tối đa có thể mua"),
         "maxVolumeSellAvaiable": MessageLookupByLibrary.simpleMessage(
             "Khối lượng tối đa có thể bán"),
+        "maxVolumeSellBuy":
+            MessageLookupByLibrary.simpleMessage("Khối lượng Mua/Bán tối đa"),
         "menu": MessageLookupByLibrary.simpleMessage("Danh mục"),
         "min_VOLUME":
             MessageLookupByLibrary.simpleMessage("Số tiền đầu tư tối thiểu"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Giao dịch tiền"),
         "month": MessageLookupByLibrary.simpleMessage("Tháng"),
-        "mr": MessageLookupByLibrary.simpleMessage("Số dư tiền hợp tác"),
+        "mr": MessageLookupByLibrary.simpleMessage("Tỷ lệ ký quỹ"),
         "network_error": MessageLookupByLibrary.simpleMessage("Lỗi kết nối"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "news": MessageLookupByLibrary.simpleMessage("Tin tức"),
@@ -235,6 +237,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Điều khoản sử dụng"),
         "popular": MessageLookupByLibrary.simpleMessage("Phổ biến"),
         "pp": MessageLookupByLibrary.simpleMessage("Sức mua của mã"),
+        "pp_1": MessageLookupByLibrary.simpleMessage("Sức mua"),
         "price": MessageLookupByLibrary.simpleMessage("Giá"),
         "product": MessageLookupByLibrary.simpleMessage("Sản phẩm"),
         "profile_info":
@@ -297,6 +300,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "status_short": MessageLookupByLibrary.simpleMessage("TT"),
         "stockMarket": MessageLookupByLibrary.simpleMessage("Thị trường"),
         "stock_code": MessageLookupByLibrary.simpleMessage("Mã CK"),
+        "stock_detail":
+            MessageLookupByLibrary.simpleMessage("Chi tiết chứng khoán"),
         "stock_market": MessageLookupByLibrary.simpleMessage("Bảng giá"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "success_title1": MessageLookupByLibrary.simpleMessage(

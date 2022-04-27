@@ -23,8 +23,7 @@ class MainLogic extends GetxController {
   void pushToOrderPage(StockCompanyData data, bool isBuy) {
     switchTap(2);
     state.stockOrderPage
-      ..selectedStock = data
-      ..isBuy = isBuy;
+      ..selectedStock = data;
   }
 
   Future<void> sendToken() async {

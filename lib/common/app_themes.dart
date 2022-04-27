@@ -211,7 +211,7 @@ class AppThemes {
     tabBarTheme: _tabBarTheme,
     dividerColor: AppColors.grayF2,
     appBarTheme: AppBarTheme(
-        iconTheme: const IconThemeData(color: _lightIconColor),
+        iconTheme: const IconThemeData(color: _darkIconColor),
         titleTextStyle:
             AppTextStyle.H5Bold.copyWith(color: AppColors.white)),
     iconTheme: const IconThemeData(

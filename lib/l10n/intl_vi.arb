@@ -148,11 +148,13 @@
   "identity_card": "Chứng minh nhân dân",
   "choose": "Chọn",
   "take_photo_confirm": "Chụp ảnh xác thực",
-  "mr": "Số dư tiền hợp tác",
+  "mr": "Tỷ lệ ký quỹ",
   "pp": "Sức mua của mã",
+  "pp_1": "Sức mua",
   "ee": "Sức mua tài khoản",
   "maxVolumeBuyAvaiable": "Khối lượng tối đa có thể mua",
   "maxVolumeSellAvaiable": "Khối lượng tối đa có thể bán",
+  "maxVolumeSellBuy" : "Khối lượng Mua/Bán tối đa",
   "take_photo_again": "Chụp lại",
   "use_photo": "Dùng ảnh này",
   "profile_info": "Thông tin cá nhân",
@@ -238,5 +240,6 @@
   "bond" : "Trái phiếu",
   "payment" : "Nộp tiền",
   "Statement" : "Sao kê",
-  "variable" : "Biến động"
+  "variable" : "Biến động",
+  "stock_detail": "Chi tiết chứng khoán"
 }

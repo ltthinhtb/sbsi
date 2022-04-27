@@ -33,6 +33,8 @@
 //         "accName": "Đào Duy Minh"
 //     }
 // }
+import 'package:sbsi/utils/money_utils.dart';
+
 class CashBalance {
   String? accCode;
   String? accType;
@@ -45,6 +47,14 @@ class CashBalance {
   String? balance;
   String? color;
   String? accName;
+  String? cashAvaiable;
+
+
+  /// sức mua
+  String get ppAccount {
+    if(accType == "M") return MoneyFormat.formatMoneyRound(pp ?? "");
+    return MoneyFormat.formatMoneyRound(cashAvaiable ?? "");
+  }
 
   CashBalance(
       {this.accCode,
@@ -57,7 +67,7 @@ class CashBalance {
       this.volumeAvaiable,
       this.balance,
       this.color,
-      this.accName});
+      this.accName,this.cashAvaiable});
 
   CashBalance.fromJson(Map<String, dynamic> json) {
     accCode = json['accCode'];
@@ -71,6 +81,7 @@ class CashBalance {
     balance = json['balance'];
     color = json['color'];
     accName = json['accName'];
+    cashAvaiable = json['cashAvaiable'];
   }
 
   Map<String, dynamic> toJson() {
@@ -86,6 +97,7 @@ class CashBalance {
     data['balance'] = balance;
     data['color'] = color;
     data['accName'] = accName;
+    data['cashAvaiable'] = cashAvaiable;
     return data;
   }
 }

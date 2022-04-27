@@ -62,6 +62,7 @@ dependencies:
   #font
   google_fonts: ^2.3.1
   signature: ^5.0.0
+  keyboard_actions: ^3.4.7
 
   #logger:
   logger: ^1.1.0

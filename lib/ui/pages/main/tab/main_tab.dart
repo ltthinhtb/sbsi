@@ -16,7 +16,7 @@ extension MainTabExtension on MainTab {
       case MainTab.home:
         return S.of(context).home;
       case MainTab.product:
-        return S.of(context).stock_market;
+        return S.of(context).stockMarket;
       case MainTab.assets:
         return S.of(context).order;
       case MainTab.history:

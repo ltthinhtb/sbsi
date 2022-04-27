@@ -1,6 +1,5 @@
 import 'package:intl/intl.dart';
 
-import 'logger.dart';
 
 class MoneyFormat {
   static String formatVol10(String _number) {
@@ -12,7 +11,7 @@ class MoneyFormat {
       num = numStr.substring(0, numStr.length - 1);
       return num;
     } catch (e) {
-      logger.e(e.toString());
+      //logger.e(e.toString());
     }
     return '0';
   }

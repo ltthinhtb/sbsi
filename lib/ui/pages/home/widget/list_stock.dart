@@ -10,6 +10,8 @@ import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/chart/custom_chart.dart';
 import 'package:sbsi/utils/money_utils.dart';
 
+import '../../../../router/route_config.dart';
+
 class ListStockView extends StatelessWidget {
   const ListStockView({Key? key}) : super(key: key);
 
@@ -77,118 +79,132 @@ class ListStockView extends StatelessWidget {
                         .cast<double>()
                         .length;
                     return IntrinsicHeight(
-                      child: Container(
-                        color: index % 2 == 1
-                            ? const Color.fromRGBO(
-                                215, 209, 209, 0.10588235294117647)
-                            : null,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                  flex: 74,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        state.listShortStock[index].stockCode ??
-                                            "",
-                                        style: caption!.copyWith(
-                                            fontWeight: FontWeight.w700),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        state.listShortStock[index].stockName ??
-                                            "",
-                                        style: headline3!.copyWith(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 13,
-                                            overflow: TextOverflow.ellipsis,
-                                            color: AppColors.textGrey3),
-                                      )
-                                    ],
-                                  )),
-                              const SizedBox(width: 36),
-                              Expanded(
-                                  flex: 76,
-                                  child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: SizedBox(
-                                        height: 27,
-                                        child: CustomLineChart(
-                                            drawPoint: (sumChart / lengthChart),
-                                            chartColor: state
-                                                .listShortStock[index]
-                                                .stockPrice,
-                                            data: state
-                                                .listShortStock[index].listChart
-                                                .cast<double>()),
-                                      ))),
-                              const SizedBox(width: 11),
-                              Expanded(
-                                flex: 72,
-                                child: Container(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      RichText(
-                                        text: TextSpan(
-                                          text:
-                                              '${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].change}',
-                                          style: caption.copyWith(
-                                              fontWeight: FontWeight.w700,
-                                              color: state.listShortStock[index]
-                                                  .colorStock
-                                                  .withOpacity(1)),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                                text:
-                                                    '(${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].percentChange}%)',
-                                                style: caption.copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 10,
-                                                    color: state
-                                                        .listShortStock[index]
-                                                        .colorStock
-                                                        .withOpacity(1))),
-                                          ],
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(RouteConfig.stockDetail,
+                              arguments: state.listShortStock[index].stockCode);
+                        },
+                        child: Container(
+                          color: index % 2 == 1
+                              ? const Color.fromRGBO(
+                                  215, 209, 209, 0.10588235294117647)
+                              : null,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                    flex: 74,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          state.listShortStock[index]
+                                                  .stockCode ??
+                                              "",
+                                          style: caption!.copyWith(
+                                              fontWeight: FontWeight.w700),
                                         ),
-                                      ),
-                                      const Spacer(),
-                                      Text(
-                                          MoneyFormat.formatMoneyRound(
-                                              '${state.listShortStock[index].klgd}'),
-                                          style: caption.copyWith(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 12,
-                                              color: AppColors.textGrey3)),
-                                    ],
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          state.listShortStock[index]
+                                                  .stockName ??
+                                              "",
+                                          style: headline3!.copyWith(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 13,
+                                              overflow: TextOverflow.ellipsis,
+                                              color: AppColors.textGrey3),
+                                        )
+                                      ],
+                                    )),
+                                const SizedBox(width: 36),
+                                Expanded(
+                                    flex: 76,
+                                    child: Align(
+                                        alignment: Alignment.centerRight,
+                                        child: SizedBox(
+                                          height: 27,
+                                          child: CustomLineChart(
+                                              drawPoint:
+                                                  (sumChart / lengthChart),
+                                              chartColor: state
+                                                  .listShortStock[index]
+                                                  .stockPrice,
+                                              data: state.listShortStock[index]
+                                                  .listChart
+                                                  .cast<double>()),
+                                        ))),
+                                const SizedBox(width: 11),
+                                Expanded(
+                                  flex: 72,
+                                  child: Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        RichText(
+                                          text: TextSpan(
+                                            text:
+                                                '${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].change}',
+                                            style: caption.copyWith(
+                                                fontWeight: FontWeight.w700,
+                                                color: state
+                                                    .listShortStock[index]
+                                                    .colorStock
+                                                    .withOpacity(1)),
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                  text:
+                                                      '(${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].percentChange}%)',
+                                                  style: caption.copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 10,
+                                                      color: state
+                                                          .listShortStock[index]
+                                                          .colorStock
+                                                          .withOpacity(1))),
+                                            ],
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Text(
+                                            MoneyFormat.formatMoneyRound(
+                                                '${state.listShortStock[index].klgd}'),
+                                            style: caption.copyWith(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 12,
+                                                color: AppColors.textGrey3)),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                  flex: 56,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: state
-                                            .listShortStock[index].colorStock),
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        '${state.listShortStock[index].price?.toStringAsFixed(1)}',
-                                        style: caption.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                    flex: 56,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: state.listShortStock[index]
+                                              .colorStock),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          '${state.listShortStock[index].price?.toStringAsFixed(1)}',
+                                          style: caption.copyWith(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w700),
+                                        ),
                                       ),
-                                    ),
-                                  )),
-                            ],
+                                    )),
+                              ],
+                            ),
                           ),
                         ),
                       ),

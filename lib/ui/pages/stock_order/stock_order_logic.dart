@@ -1,10 +1,11 @@
-//
+
 import 'package:get/get.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/services/index.dart';
+import 'package:sbsi/services/socket/socket.dart';
 import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_state.dart';
@@ -12,10 +13,14 @@ import 'package:sbsi/utils/extension.dart';
 import 'package:sbsi/utils/logger.dart';
 import 'package:sbsi/utils/order_utils.dart';
 
+import '../../../model/stock_data/stock_socket.dart';
+
 class StockOrderLogic extends GetxController {
   final StockOrderState state = StockOrderState();
   final ApiService apiService = Get.find();
   final AuthService authService = Get.find();
+
+  final Socket _socket = Socket();
 
   List<StockCompanyData> searchStock(String stockCode) {
     if (stockCode != '') {
@@ -47,13 +52,26 @@ class StockOrderLogic extends GetxController {
     }
   }
 
+  /// chọn mã chứng khoán từ textfield
   void selectStock(StockCompanyData suggestion) {
+    /// hủy kênh socket mã
+    _socket.removeStockSocket(suggestion.stockCode!);
+
     state.selectedStock.value = suggestion;
+
+    /// chọn mã xong update các mã thuộc sàn đó
+    StockExchange.values.forEach((element) {
+      if (element.name == state.selectedStock.value.postTo) {
+        state.tradingOrderList.value = element.priceList;
+      }
+    });
     state.stockController.text = state.selectedStock.value.stockCode ?? "";
     getStockInfo();
   }
 
   Future<void> getStockInfo() async {
+    /// đăng ký socket mã
+    _socket.addStockSocket(state.selectedStock.value.stockCode!);
     var _tokenEntity = authService.token.value;
     try {
       state.loading.value = true;
@@ -73,11 +91,9 @@ class StockOrderLogic extends GetxController {
       state
         ..sumBuyVol.value = getSumBuyVol()
         ..sumSellVol.value = getSumSellVol()
-        ..sumBSVol.value = getSumBSVol()
-        ..stockExchange.value = getStockExchange()
-        ..priceType.value = "MP"
-        ..priceController.text = "MP"
-        ..price.value = state.selectedStockInfo.value.lastPrice!.toString();
+        ..sumBSVol.value = getSumBSVol();
+      state.priceController.text =
+          state.selectedStockInfo.value.lastPrice!.toString();
       await getAccountStatus(_tokenEntity?.data?.defaultAcc);
       await getCashBalance();
       state.loading.value = false;
@@ -86,6 +102,24 @@ class StockOrderLogic extends GetxController {
       AppSnackBar.showError(message: error.toString());
     }
   }
+
+  void socketListen() {
+    _socket.socket.on('public', (data) {
+      if (data != null) {
+        try {
+          if (data['data']['id'] == 3220) {
+            SocketStock stock = SocketStock.fromJson(data['data']);
+            logger.d(stock.toJson());
+            state.selectedStockInfo.value =
+                state.selectedStockInfo.value.copyWith(stock);
+          }
+        } catch (e) {
+          // logger.e(e);
+        }
+      }
+    });
+  }
+
 
   Future<void> refreshPage() async {
     try {
@@ -137,8 +171,6 @@ class StockOrderLogic extends GetxController {
   Future<void> getCashBalance() async {
     try {
       var _tokenEntity = authService.token.value;
-
-      // state.loading.value = true;
       final RequestParams _requestParams = RequestParams(
         group: "Q",
         session: _tokenEntity?.data?.sid,
@@ -146,63 +178,21 @@ class StockOrderLogic extends GetxController {
         data: ParamsObject(
             type: "string",
             cmd: "Web.sCashBalance",
-            p1: _tokenEntity?.data?.defaultAcc ?? "",
+            p1: state.account.value.accCode ?? _tokenEntity?.data?.defaultAcc,
             p2: state.selectedStock.value.stockCode,
             p3: state.priceController.text,
             p4: state.isBuy.value ? "B" : "S"),
       );
       state.selectedCashBalance.value =
           await apiService.getCashBalance(_requestParams);
-      // state.loading.value = false;
     } catch (e) {
-      // state.loading.value = false;
       rethrow;
     }
   }
 
-  Future<void> getShareBalance() async {
-    try {
-      // state.loading.value = true;
-      var _tokenEntity = authService.token.value;
-      final RequestParams _requestParams = RequestParams(
-        group: "Q",
-        session: _tokenEntity?.data?.sid,
-        user: _tokenEntity?.data?.user,
-        data: ParamsObject(
-            type: "string",
-            cmd: "Web.sShareBalance",
-            p1: _tokenEntity?.data?.defaultAcc ?? "",
-            p2: state.selectedStock.value.stockCode,
-            p3: state.priceController.text,
-            p4: state.isBuy.value ? "B" : "S"),
-      );
-      state.selectedShareBalance.value =
-          await apiService.getShareBalance(_requestParams);
-      // state.loading.value = false;
-    } catch (e) {
-      // state.loading.value = false;
-      rethrow;
-    }
-  }
-
-  // Future<void> getStockData(StockCompanyData data) async {
-  //   state.selectedStock.value = data;
-  //   // thêm try catch vào để bắt exception lỗi mạng hoặc data k đúng
-  //   var list = await apiService.getStockData(data.stockCode!);
-  //   if (list.isNotEmpty) {
-  //     state.selectedStockData.value = list.first;
-  //   }
-  //   state
-  //     ..sumBuyVol.value = getSumBuyVol()
-  //     ..sumSellVol.value = getSumSellVol()
-  //     ..sumBSVol.value = getSumBSVol()
-  //     ..stockExchange.value = getStockExchange()
-  //     ..priceType.value = "MP"
-  //     ..price.value = state.selectedStockData.value.lastPrice!.toString();
-  // }
-
-  Future<void> requestNewOrder() async {
+  Future<void> requestNewOrder({required bool isBuy}) async {
     var _tokenEntity = authService.token.value;
+    state.isBuy.value = isBuy;
     String refId =
         '${_tokenEntity?.data?.user}' + ".H." + OrderUtils.getRandom();
     String sReceiveCheckSumValue = OrderUtils.generateMd5(
@@ -223,7 +213,8 @@ class StockOrderLogic extends GetxController {
         account: _tokenEntity?.data!.defaultAcc!,
         side: (state.isBuy.value ? "B" : "S"),
         symbol: state.selectedStock.value.stockCode!,
-        volume: int.tryParse(state.volController.text.replaceAll(",", "")),
+        volume:
+            int.tryParse(state.volController.numberValue.toStringAsFixed(0)),
         price: state.priceController.text,
         advance: "",
         refId: refId,
@@ -237,6 +228,9 @@ class StockOrderLogic extends GetxController {
       logger.d(response);
       AppLoading.disMissLoading();
       AppSnackBar.showSuccess(message: "Đặt lệnh thành công!");
+
+      /// load lại sức mua
+      await getCashBalance();
     } on ErrorException catch (error) {
       AppLoading.disMissLoading();
       AppSnackBar.showError(message: error.message);
@@ -251,8 +245,12 @@ class StockOrderLogic extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    getAllStockCompanyData();
+    /// tạo cổng socket
+    socketListen();
+
     loadAccount();
+    getAllStockCompanyData();
+
   }
 
   void loadAccount() {
@@ -296,17 +294,6 @@ class StockOrderLogic extends GetxController {
     //   throw -2;
     // }
     return;
-  }
-
-  StockExchange getStockExchange() {
-    switch (state.selectedStock.value.postTo) {
-      case "HOSE":
-        return StockExchange.HSX;
-      case "HNX":
-        return StockExchange.HNX;
-      default:
-        return StockExchange.UPCOM;
-    }
   }
 
   String getChangePc() {

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:sbsi/model/entities/category_stock.dart';
 import 'package:sbsi/model/response/index_detail.dart';
@@ -22,11 +21,11 @@ class HomeLogic extends GetxController {
   Future<void> getTopStockData(int type) async {
     try {
       for (var element in state.listShortStock) {
-        removeStockSocket(element.stockCode ?? "");
+        _socket.removeStockSocket(element.stockCode ?? "");
       }
       state.listShortStock.value = await apiService.getTopStock(type);
       for (var element in state.listShortStock) {
-        addStockSocket(element.stockCode ?? "");
+        _socket.addStockSocket(element.stockCode ?? "");
       }
     } catch (e) {
       AppSnackBar.showError(message: e.toString());
@@ -91,17 +90,6 @@ class HomeLogic extends GetxController {
     });
   }
 
-  void addStockSocket(String stock) {
-    var map = {"action": "join", "data": stock};
-    var msg = json.encode(map);
-    _socket.socket.emit("regs", msg);
-  }
-
-  void removeStockSocket(String stock) {
-    var map = {"action": "leave", "data": stock};
-    var msg = json.encode(map);
-    _socket.socket.emit("regs", msg);
-  }
 
   Future<void> addCategory() async {
     if (state.categoryController.text.isNotEmpty) {
@@ -131,7 +119,7 @@ class HomeLogic extends GetxController {
   Future<void> selectCategory(CategoryStock category) async {
     /// xóa stock socket cũ đi
     for (var element in state.category.value.stocks) {
-      removeStockSocket(element);
+      _socket.removeStockSocket(element);
     }
     state.category.value = category;
     state.listStock.value =
@@ -139,7 +127,7 @@ class HomeLogic extends GetxController {
 
     /// cập nhật stock socket mới
     for (var element in state.category.value.stocks) {
-      addStockSocket(element);
+      _socket.addStockSocket(element);
     }
     Get.back(); // đóng bottom sheet
   }

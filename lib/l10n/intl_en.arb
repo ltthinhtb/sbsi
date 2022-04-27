@@ -148,11 +148,13 @@
   "identity_card": "Identity card",
   "choose": "Choose",
   "take_photo_confirm": "Take photo confirm",
-  "mr": "MR",
+  "mr": "Margin rate",
   "pp": "PP",
+  "pp_1": "PP",
   "ee": "EE",
   "maxVolumeBuyAvaiable": "Maximum Available Buy Volumn",
   "maxVolumeSellAvaiable": "Maximum Available Sell Volumn",
+  "maxVolumeSellBuy" : "Maximum Available Buy Sell",
   "take_photo_again": "Take photo again",
   "use_photo": "Use photo",
   "profile_info": "Profile info",
@@ -238,5 +240,6 @@
   "bond" : "Bond",
   "payment" : "Payment",
   "Statement" : "Statement",
-  "variable" : "Variable"
+  "variable" : "Variable",
+  "stock_detail": "Stock Detail"
 }
