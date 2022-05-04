@@ -14,9 +14,12 @@ import 'package:sbsi/model/response/portfolio.dart';
 import 'package:sbsi/model/response/stocke_response.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/model/stock_data/cash_balance.dart';
+import 'package:sbsi/model/stock_data/list_news_stock.dart';
+import 'package:sbsi/model/stock_data/news_detail.dart';
 import 'package:sbsi/model/stock_data/share_balance.dart';
 import 'package:sbsi/model/stock_data/stock_data.dart';
 import 'package:sbsi/model/stock_data/stock_info.dart';
+import 'package:sbsi/model/stock_data/stock_trade_list.dart';
 import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/utils/error_message.dart';
@@ -70,6 +73,12 @@ abstract class ApiClient {
   Future sendToken(Map<String, dynamic> json);
 
   Future<List<StockDataShort>> getTopStock(int type);
+
+  Future<ListStockTrade> getListStockTrade(String stock, String type);
+
+  Future<List<NewsStock>> getListStockNews(String stock);
+
+  Future<NewsDetail> getNewsDetail(int ID);
 }
 
 class _ApiClient implements ApiClient {
@@ -423,7 +432,6 @@ class _ApiClient implements ApiClient {
     }
   }
 
-
   @override
   Future<List<IndexDetail>> getListIndexDetail(String listIndex) async {
     Response _result = await _getApi(
@@ -476,5 +484,35 @@ class _ApiClient implements ApiClient {
     } catch (e) {
       rethrow;
     }
+  }
+
+  @override
+  Future<ListStockTrade> getListStockTrade(String stock, String type) async {
+    Response _result = await _getApi(
+        _dio.get(AppConfigs.INFO_SBSI + type, queryParameters: {"sc": stock}));
+    var data = ListStockTrade.fromJson(_result.data);
+    return data;
+  }
+
+  @override
+  Future<List<NewsStock>> getListStockNews(String stock) async {
+    Response _result = await _getApi(_dio.get(
+        AppConfigs.INFO_SBSI + 'stockNews.pt',
+        queryParameters: {"symbol": stock}));
+    List _mapData = _result.data;
+    List<NewsStock> listStock = [];
+    for (var element in _mapData) {
+      listStock.add(NewsStock.fromJson(element));
+    }
+    return listStock;
+  }
+
+  @override
+  Future<NewsDetail> getNewsDetail(int ID) async {
+    Response _result = await _getApi(_dio.get(
+        AppConfigs.INFO_SBSI + "newsDetail.pt",
+        queryParameters: {"id": ID}));
+    var data = NewsDetail.fromJson(_result.data);
+    return data;
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
-
 import '../../../widgets/animation_widget/price_row.dart';
 import '../../../widgets/animation_widget/total_volumn_row.dart';
 import '../stock_order_logic.dart';

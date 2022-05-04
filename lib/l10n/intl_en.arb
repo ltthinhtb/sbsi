@@ -195,6 +195,7 @@
   "cancel_volumn": "Cancel volumn",
   "order_price": "Order price",
   "aver_match_price": "Average match price",
+  "aver_short": "AVG",
   "order_source": "Order source",
   "confirm_cancel_order": "Cancel order confirmation",
   "confirm_change_order": "Change order confirmation",
@@ -241,5 +242,14 @@
   "payment" : "Payment",
   "Statement" : "Statement",
   "variable" : "Variable",
-  "stock_detail": "Stock Detail"
+  "stock_detail": "Stock Detail",
+  "long_short" : "Short/Long",
+  "total_amount" : "Total volumn",
+  "over_view" : "Over view",
+  "analytics" : "Analytics",
+  "finance" : "Finance",
+  "step_price" : "Step Price",
+  "more" : "More"
+
+
 }

@@ -13,6 +13,18 @@ extension StockOrderService on ApiService {
     return await _apiClient.getStockData(stockCode);
   }
 
+  Future<ListStockTrade> getListStockTrade(String stockCode,String type) async {
+    return await _apiClient.getListStockTrade(stockCode, type);
+  }
+
+  Future<List<NewsStock>> getListStockNews(String stockCode) async {
+    return await _apiClient.getListStockNews(stockCode);
+  }
+
+  Future<NewsDetail> getNewsDetail(int ID) async {
+    return await _apiClient.getNewsDetail(ID);
+  }
+
   Future<StockInfo> getStockInfo(RequestParams requestParams) async {
     return await _apiClient.getStockInfo(requestParams);
   }

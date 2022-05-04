@@ -42,6 +42,43 @@ class StockInfo {
     return AppColors.increase;
   }
 
+  num get totalSellVol {
+    try {
+      num total = 0;
+      if (g4!.volumn != null) {
+        total += g4!.volumn!;
+      }
+      if (g5!.volumn != null) {
+        total += g5!.volumn!;
+      }
+      if (g5!.volumn != null) {
+        total += g5!.volumn!;
+      }
+      return total;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  num get totalBuyVol {
+    try {
+      num total = 0;
+      if (g1!.volumn != null) {
+        total += g1!.volumn!;
+      }
+      if (g2!.volumn != null) {
+        total += g2!.volumn!;
+      }
+      if (g3!.volumn != null) {
+        total += g3!.volumn!;
+      }
+      return total;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+
   StockInfo(
       {this.id,
       this.sym,

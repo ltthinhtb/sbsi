@@ -2010,6 +2010,16 @@ class S {
     );
   }
 
+  /// `AVG`
+  String get aver_short {
+    return Intl.message(
+      'AVG',
+      name: 'aver_short',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Order source`
   String get order_source {
     return Intl.message(
@@ -2475,6 +2485,76 @@ class S {
     return Intl.message(
       'Stock Detail',
       name: 'stock_detail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Short/Long`
+  String get long_short {
+    return Intl.message(
+      'Short/Long',
+      name: 'long_short',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total volumn`
+  String get total_amount {
+    return Intl.message(
+      'Total volumn',
+      name: 'total_amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Over view`
+  String get over_view {
+    return Intl.message(
+      'Over view',
+      name: 'over_view',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Analytics`
+  String get analytics {
+    return Intl.message(
+      'Analytics',
+      name: 'analytics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finance`
+  String get finance {
+    return Intl.message(
+      'Finance',
+      name: 'finance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Step Price`
+  String get step_price {
+    return Intl.message(
+      'Step Price',
+      name: 'step_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More`
+  String get more {
+    return Intl.message(
+      'More',
+      name: 'more',
       desc: '',
       args: [],
     );

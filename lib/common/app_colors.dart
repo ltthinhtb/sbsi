@@ -24,6 +24,7 @@ class AppColors {
   static const Color grayBorder = Color(0xffCCCCCC);
   static const Color grayFA = Color(0xffE6E6E6);
   static const Color disable = Color(0xffE7E7E7);
+  static const Color gray7E = Color(0xff7E7E7E);
   static const Color line = Color(0xffE2E2E2);
   static const Color increase = Color(0xff4DAD4B);
   static const Color decrease = Color(0xffF3363C);
@@ -36,6 +37,7 @@ class AppColors {
   static const Color buyGreen = Color(0xFF03C4A1);
   static const Color ceil = Color(0xFFEE82EE);
   static const Color floor = Color(0xFF146FB4);
+  static const Color table1 = Color(0xFFFFF8EB);
 
   static const Color cardPortfolio = Color.fromRGBO(61, 38, 118, 0.6);
 
@@ -52,6 +54,8 @@ class AppColors {
   static const Color blackKeyBoard = Color(0xFF363636);
   static const Color blackKeyBoard1 = Color(0xFF121212);
   static const Color whiteBoard1 = Color(0xFFEFEFEF);
+  static const Color diveColor = Color(0xFF181717);
+
 
   ///Border
   static const Color border = Color(0xFFC3C3C3);
@@ -72,6 +76,7 @@ class AppColors {
   static const Color textGreen = Color(0xFF20A837);
   static const Color textGrey2 = Color(0xFF858585);
   static const Color textGrey3 = Color(0xFFA9A9A9);
+  static const Color textGrey4 = Color(0xFF929292);
 
   ///TextField
   static const Color textFieldEnabledBorder = Color(0xFFCCCCCC);

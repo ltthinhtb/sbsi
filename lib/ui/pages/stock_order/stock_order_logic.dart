@@ -57,6 +57,9 @@ class StockOrderLogic extends GetxController {
     /// hủy kênh socket mã
     _socket.removeStockSocket(suggestion.stockCode!);
 
+    /// đăng ký socket mã
+    _socket.addStockSocket(suggestion.stockCode!);
+
     state.selectedStock.value = suggestion;
 
     /// chọn mã xong update các mã thuộc sàn đó
@@ -70,8 +73,7 @@ class StockOrderLogic extends GetxController {
   }
 
   Future<void> getStockInfo() async {
-    /// đăng ký socket mã
-    _socket.addStockSocket(state.selectedStock.value.stockCode!);
+
     var _tokenEntity = authService.token.value;
     try {
       state.loading.value = true;
@@ -92,8 +94,8 @@ class StockOrderLogic extends GetxController {
         ..sumBuyVol.value = getSumBuyVol()
         ..sumSellVol.value = getSumSellVol()
         ..sumBSVol.value = getSumBSVol();
-      state.priceController.text =
-          state.selectedStockInfo.value.lastPrice!.toString();
+      // state.priceController.text =
+      //     state.selectedStockInfo.value.lastPrice!.toString();
       await getAccountStatus(_tokenEntity?.data?.defaultAcc);
       await getCashBalance();
       state.loading.value = false;

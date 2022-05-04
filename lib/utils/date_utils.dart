@@ -2,7 +2,7 @@ import 'package:sbsi/configs/app_configs.dart';
 import 'package:intl/intl.dart';
 import 'package:sbsi/utils/logger.dart';
 
-class DateUtils {
+class DateTimeUtils {
   static DateTime? fromString(String date, {String? format}) {
     return DateTimeExtension.fromString(date, format: format);
   }

@@ -193,6 +193,7 @@
   "cancel_volumn": "Khối lượng huỷ",
   "order_price": "Giá đặt",
   "aver_match_price": "Giá khớp trung bình",
+  "aver_short": "TB",
   "order_source": "Nguồn gốc đặt",
   "confirm_cancel_order": "Xác nhận huỷ lệnh",
   "cancel_order": "Huỷ lệnh",
@@ -241,5 +242,12 @@
   "payment" : "Nộp tiền",
   "Statement" : "Sao kê",
   "variable" : "Biến động",
-  "stock_detail": "Chi tiết chứng khoán"
+  "stock_detail": "Chi tiết chứng khoán",
+  "long_short" : "Thấp / cao",
+  "total_amount" : "Tổng KL",
+  "over_view" : "Tổng quan",
+  "analytics" : "Phân tích",
+  "finance" : "Tài chính",
+  "step_price" : "Bước giá",
+  "more" : "Xem thêm"
 }

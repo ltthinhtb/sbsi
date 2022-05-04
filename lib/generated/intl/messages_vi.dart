@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_stock": MessageLookupByLibrary.simpleMessage("Thêm mã theo dõi"),
         "agree": MessageLookupByLibrary.simpleMessage("Đồng ý"),
         "all": MessageLookupByLibrary.simpleMessage("Tất cả"),
+        "analytics": MessageLookupByLibrary.simpleMessage("Phân tích"),
         "are_you_sure_cancel_all_order": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn hủy tất cả lệnh?"),
         "are_you_sure_cancel_this_order": MessageLookupByLibrary.simpleMessage(
@@ -48,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác thực bằng Face ID"),
         "aver_match_price":
             MessageLookupByLibrary.simpleMessage("Giá khớp trung bình"),
+        "aver_short": MessageLookupByLibrary.simpleMessage("TB"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
         "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh"),
         "bond": MessageLookupByLibrary.simpleMessage("Trái phiếu"),
@@ -121,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Lỗi"),
         "failed": MessageLookupByLibrary.simpleMessage("Thất bại"),
         "fee": MessageLookupByLibrary.simpleMessage("Phí đầu tư"),
+        "finance": MessageLookupByLibrary.simpleMessage("Tài chính"),
         "finish": MessageLookupByLibrary.simpleMessage("Hoàn tất"),
         "floor": MessageLookupByLibrary.simpleMessage("Sàn"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
@@ -168,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_face_id":
             MessageLookupByLibrary.simpleMessage("Đăng nhập bằng FaceID"),
         "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+        "long_short": MessageLookupByLibrary.simpleMessage("Thấp / cao"),
         "margin_product":
             MessageLookupByLibrary.simpleMessage("Sản phẩm Margin/Hợp tác"),
         "match": MessageLookupByLibrary.simpleMessage("Khớp"),
@@ -187,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Giao dịch tiền"),
         "month": MessageLookupByLibrary.simpleMessage("Tháng"),
+        "more": MessageLookupByLibrary.simpleMessage("Xem thêm"),
         "mr": MessageLookupByLibrary.simpleMessage("Tỷ lệ ký quỹ"),
         "network_error": MessageLookupByLibrary.simpleMessage("Lỗi kết nối"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
@@ -210,6 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_source": MessageLookupByLibrary.simpleMessage("Nguồn gốc đặt"),
         "order_time": MessageLookupByLibrary.simpleMessage("Thời gian đặt"),
         "order_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng đặt"),
+        "over_view": MessageLookupByLibrary.simpleMessage("Tổng quan"),
         "partial_matched": MessageLookupByLibrary.simpleMessage("Khớp 1 phần"),
         "passport": MessageLookupByLibrary.simpleMessage("Hộ chiếu Việt Nam"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
@@ -298,6 +304,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "statement": MessageLookupByLibrary.simpleMessage("Sao kê"),
         "status": MessageLookupByLibrary.simpleMessage("Trạng thái"),
         "status_short": MessageLookupByLibrary.simpleMessage("TT"),
+        "step_price": MessageLookupByLibrary.simpleMessage("Bước giá"),
         "stockMarket": MessageLookupByLibrary.simpleMessage("Thị trường"),
         "stock_code": MessageLookupByLibrary.simpleMessage("Mã CK"),
         "stock_detail":
@@ -319,6 +326,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tks": MessageLookupByLibrary.simpleMessage("Cảm ơn bạn"),
         "today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
         "total": MessageLookupByLibrary.simpleMessage("Tổng"),
+        "total_amount": MessageLookupByLibrary.simpleMessage("Tổng KL"),
         "total_assets": MessageLookupByLibrary.simpleMessage("Tổng tài sản"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị CK"),

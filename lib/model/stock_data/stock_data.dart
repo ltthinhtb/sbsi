@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 
@@ -35,6 +35,22 @@ class StockData {
   G? g7;
   String? mp;
   Color? color;
+
+  String get changePercent {
+    if (changePc == null) return "";
+    return '${changePc}%';
+  }
+
+  Color get changeColor {
+    if (lastPrice == null) return Colors.transparent;
+    if (r == null) return Colors.transparent;
+
+    return lastPrice! > r! // tham chiếu
+        ? AppColors.increase
+        : lastPrice! < r!
+            ? AppColors.decrease
+            : AppColors.yellow;
+  }
 
   final mapColorChange = <String, dynamic>{
     "lastPrice": false,
@@ -118,9 +134,9 @@ class StockData {
     g7 = G.fromJson(json['g7']);
     mp = json['mp'];
     color = lastPrice == c // sàn
-        ? AppColors.flow
+        ? AppColors.ceil
         : lastPrice == f //trần
-            ? AppColors.primary
+            ? AppColors.flow
             : lastPrice! > r! // tham chiếu
                 ? AppColors.increase
                 : lastPrice! < r!

@@ -51,6 +51,8 @@ class AppImages {
   static String minusSmall = 'assets/icon_svg/minus-small.svg';
   static String plusSmall = 'assets/icon_svg/plus-small.svg';
 
+  static String newsPlace = 'assets/image/news_place.png';
+
 
   // icon image
   static String present = 'assets/icon_svg/present.svg';

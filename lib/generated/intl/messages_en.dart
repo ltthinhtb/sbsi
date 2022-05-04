@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_stock": MessageLookupByLibrary.simpleMessage("Add stock"),
         "agree": MessageLookupByLibrary.simpleMessage("Agree"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
         "are_you_sure_cancel_all_order": MessageLookupByLibrary.simpleMessage(
             "Are you sure to cancel all order?"),
         "are_you_sure_cancel_this_order": MessageLookupByLibrary.simpleMessage(
@@ -47,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Authentication by Face ID"),
         "aver_match_price":
             MessageLookupByLibrary.simpleMessage("Average match price"),
+        "aver_short": MessageLookupByLibrary.simpleMessage("AVG"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Bank account"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
         "bond": MessageLookupByLibrary.simpleMessage("Bond"),
@@ -115,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "failed": MessageLookupByLibrary.simpleMessage("Failed"),
         "fee": MessageLookupByLibrary.simpleMessage("Fee"),
+        "finance": MessageLookupByLibrary.simpleMessage("Finance"),
         "finish": MessageLookupByLibrary.simpleMessage("Finish"),
         "floor": MessageLookupByLibrary.simpleMessage("Floor"),
         "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
@@ -162,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_face_id":
             MessageLookupByLibrary.simpleMessage("Login by FaceID"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "long_short": MessageLookupByLibrary.simpleMessage("Short/Long"),
         "margin_product":
             MessageLookupByLibrary.simpleMessage("Margin product"),
         "match": MessageLookupByLibrary.simpleMessage("Matched"),
@@ -180,6 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Money exchange"),
         "month": MessageLookupByLibrary.simpleMessage("Months"),
+        "more": MessageLookupByLibrary.simpleMessage("More"),
         "mr": MessageLookupByLibrary.simpleMessage("Margin rate"),
         "network_error": MessageLookupByLibrary.simpleMessage("Network Error"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
@@ -203,6 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_source": MessageLookupByLibrary.simpleMessage("Order source"),
         "order_time": MessageLookupByLibrary.simpleMessage("Order time"),
         "order_volumn": MessageLookupByLibrary.simpleMessage("Order volumn"),
+        "over_view": MessageLookupByLibrary.simpleMessage("Over view"),
         "partial_matched":
             MessageLookupByLibrary.simpleMessage("Partial matched"),
         "passport": MessageLookupByLibrary.simpleMessage("Passport"),
@@ -290,6 +296,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "statement": MessageLookupByLibrary.simpleMessage("Statement"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "status_short": MessageLookupByLibrary.simpleMessage("Stt"),
+        "step_price": MessageLookupByLibrary.simpleMessage("Step Price"),
         "stockMarket": MessageLookupByLibrary.simpleMessage("Stock market"),
         "stock_code": MessageLookupByLibrary.simpleMessage("Stock code"),
         "stock_detail": MessageLookupByLibrary.simpleMessage("Stock Detail"),
@@ -311,6 +318,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tks": MessageLookupByLibrary.simpleMessage("Thanks"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
+        "total_amount": MessageLookupByLibrary.simpleMessage("Total volumn"),
         "total_assets": MessageLookupByLibrary.simpleMessage("Total assets"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),

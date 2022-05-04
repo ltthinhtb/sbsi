@@ -81,7 +81,7 @@ class CardData extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '${stockInfo.avePrice ?? ""}',
+                            '',
                             style: caption?.copyWith(color: stockInfo.color),
                           ),
                         ],

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
 
 class AppShadow {
   static final boxShadow = [
-    const BoxShadow(
-      color: AppColors.shadow,
-      blurRadius: 3,
-      offset: Offset(0, 0),
-    ),
+    const BoxShadow(blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.10)),
+    const BoxShadow(blurRadius: 4, color: Color.fromRGBO(0, 0, 0, 0.10)),
+    const BoxShadow(blurRadius: 20, color: Color.fromRGBO(0, 0, 0, 0.10))
   ];
 }

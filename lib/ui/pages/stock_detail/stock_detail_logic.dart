@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
+import 'package:sbsi/networks/error_exception.dart';
 import '../../../model/params/data_params.dart';
 import '../../../model/params/request_params.dart';
 import '../../../services/api/api_service.dart';
 import '../../../services/auth_service.dart';
 import '../../../services/store/store_service.dart';
 import '../../commons/app_snackbar.dart';
+import '../../commons/hoziontal_chart.dart';
 import 'stock_detail_state.dart';
 
 class StockDetailLogic extends GetxController {
@@ -16,6 +18,9 @@ class StockDetailLogic extends GetxController {
   @override
   void onReady() {
     getAllStockCompanyData();
+    getListStockTrade();
+    getListStockCollection();
+    getListStockNews();
     super.onReady();
   }
 
@@ -37,8 +42,10 @@ class StockDetailLogic extends GetxController {
   }
 
   Future initData() async {
-    state.selectedStock.value = state.allStockCompanyData
-        .firstWhere((element) => element.stockCode?.trim().toLowerCase() == state.stockCode.trim().toLowerCase());
+    state.selectedStock.value = state.allStockCompanyData.firstWhere(
+        (element) =>
+            element.stockCode?.trim().toLowerCase() ==
+            state.stockCode.trim().toLowerCase());
     await getStockInfo();
   }
 
@@ -53,13 +60,73 @@ class StockDetailLogic extends GetxController {
           type: "string",
           cmd: "Web.sStockInfo",
           p1: _tokenEntity?.data?.defaultAcc,
-          p2: state.stockCode,
+          p2: state.selectedStock.value.stockCode,
         ),
       );
       state.selectedStockInfo.value =
           await apiService.getStockInfo(_requestParams);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
     } catch (error) {
       AppSnackBar.showError(message: error.toString());
     }
+  }
+
+  Future<void> getListStockTrade() async {
+    try {
+      var response = await apiService.getListStockTrade(
+          state.stockCode, "listLsStockTrade");
+      state.listStockTrade.value = response.data!;
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (error) {
+      AppSnackBar.showError(message: error.toString());
+    }
+  }
+
+  Future<void> getListStockCollection() async {
+    try {
+      var response = await apiService.getListStockTrade(
+          state.stockCode, "collectionPrice");
+      state.listStockCollection.value = response.data!;
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (error) {
+      AppSnackBar.showError(message: error.toString());
+    }
+  }
+
+  Future<void> getListStockNews() async {
+    try {
+      var response = await apiService.getListStockNews(
+          state.stockCode);
+      state.listStockNews.value = response;
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (error) {
+      AppSnackBar.showError(message: error.toString());
+    }
+  }
+
+
+  /// convert dữ liệu sang dạng chart
+  num maxVol = 0;
+
+  List<ChartData> listChart() {
+    List<ChartData> list = [];
+    for (int i = 0;
+        i <
+            (state.listStockCollection.length > 15
+                ? 15
+                : state.listStockCollection.length);
+        i++) {
+      if (maxVol < state.listStockCollection[i].lASTVOL! / 1000)
+        maxVol = state.listStockCollection[i].lASTVOL! / 1000;
+      list.add(ChartData(
+          (state.listStockCollection[i].lASTVOL! / 1000).toString(),
+          state.listStockCollection[i].lASTPRICE!,
+          state.listStockCollection[i].cOLOR!));
+    }
+    return list;
   }
 }
