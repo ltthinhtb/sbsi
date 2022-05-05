@@ -61,7 +61,28 @@ class PortfolioStatus {
   String? relized;
   String? plg;
 
-  Color get glColor =>  gl == "g" ? AppColors.increase : AppColors.decrease;
+
+  Color get glColor => gl == "g" ? AppColors.increase : AppColors.decrease;
+
+  String get avgPrice1 {
+    if (avgPrice == null) {
+      return "";
+    }
+    try {
+      return double.parse(avgPrice!).toStringAsFixed(2);
+    } catch (e) {
+      return avgPrice ?? "";
+    }
+  }
+
+  int get marketPriceValue {
+    if (marketValue == null) return 0;
+    try {
+      return int.parse(marketValue!);
+    } catch (e) {
+      return 0;
+    }
+  }
 
   PortfolioStatus(
       {this.symbol,

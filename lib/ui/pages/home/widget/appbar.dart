@@ -36,7 +36,9 @@ class AppBarHome extends StatelessWidget {
                   const SizedBox(width: 17),
                   GestureDetector(
                       behavior: HitTestBehavior.opaque,
-                      onTap: () {},
+                      onTap: () {
+                        Get.find<HomeLogic>().state.key.currentState?.openDrawer();
+                      },
                       child: SvgPicture.asset(AppImages.user)),
                   const SizedBox(width: 12),
                   Expanded(child: Obx(() {

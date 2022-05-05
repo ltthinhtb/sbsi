@@ -36,6 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_category": MessageLookupByLibrary.simpleMessage("Add category"),
         "add_stock": MessageLookupByLibrary.simpleMessage("Add stock"),
+        "advance_action":
+            MessageLookupByLibrary.simpleMessage("Advance action"),
+        "advance_money": MessageLookupByLibrary.simpleMessage("Advance Money"),
         "agree": MessageLookupByLibrary.simpleMessage("Agree"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
@@ -49,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "aver_match_price":
             MessageLookupByLibrary.simpleMessage("Average match price"),
         "aver_short": MessageLookupByLibrary.simpleMessage("AVG"),
+        "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Bank account"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
         "bond": MessageLookupByLibrary.simpleMessage("Bond"),
@@ -136,6 +140,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "increase": MessageLookupByLibrary.simpleMessage("Increase"),
         "input_invest_money":
             MessageLookupByLibrary.simpleMessage("Input money"),
+        "instructions_payment":
+            MessageLookupByLibrary.simpleMessage("Instructions Payment"),
         "instructions_transfers":
             MessageLookupByLibrary.simpleMessage("Instructions transfers"),
         "interest": MessageLookupByLibrary.simpleMessage("Interest"),
@@ -181,6 +187,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Maximum Available Buy Sell"),
         "menu": MessageLookupByLibrary.simpleMessage("Menu"),
         "min_VOLUME": MessageLookupByLibrary.simpleMessage("Min volume"),
+        "money": MessageLookupByLibrary.simpleMessage("Money"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Money exchange"),
         "month": MessageLookupByLibrary.simpleMessage("Months"),
@@ -294,12 +301,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "With only 3 minutes to open an account"),
         "start_day": MessageLookupByLibrary.simpleMessage("Start day"),
         "statement": MessageLookupByLibrary.simpleMessage("Statement"),
+        "statement_list":
+            MessageLookupByLibrary.simpleMessage("Statement list"),
         "status": MessageLookupByLibrary.simpleMessage("Status"),
         "status_short": MessageLookupByLibrary.simpleMessage("Stt"),
         "step_price": MessageLookupByLibrary.simpleMessage("Step Price"),
+        "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "stockMarket": MessageLookupByLibrary.simpleMessage("Stock market"),
         "stock_code": MessageLookupByLibrary.simpleMessage("Stock code"),
         "stock_detail": MessageLookupByLibrary.simpleMessage("Stock Detail"),
+        "stock_exchange":
+            MessageLookupByLibrary.simpleMessage("Stock exchange"),
         "stock_market": MessageLookupByLibrary.simpleMessage("Stock market"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "success_title1": MessageLookupByLibrary.simpleMessage(
@@ -327,11 +339,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Transfer information"),
         "transfer_payment":
             MessageLookupByLibrary.simpleMessage("Transfer Payment"),
+        "transfer_stock":
+            MessageLookupByLibrary.simpleMessage("Transfer Stock"),
         "up_to": MessageLookupByLibrary.simpleMessage("Up to"),
         "use_photo": MessageLookupByLibrary.simpleMessage("Use photo"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_guide": MessageLookupByLibrary.simpleMessage("User guide"),
         "user_name": MessageLookupByLibrary.simpleMessage("Username"),
+        "utilities": MessageLookupByLibrary.simpleMessage("Utilities"),
         "variable": MessageLookupByLibrary.simpleMessage("Variable"),
         "vol_is_not_integer":
             MessageLookupByLibrary.simpleMessage("Volumn must be an integer"),

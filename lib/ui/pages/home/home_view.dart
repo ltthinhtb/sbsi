@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/home/widget/appbar.dart';
+import 'package:sbsi/ui/pages/utilities/utilities_view.dart';
 import 'home_logic.dart';
 import 'widget/banner.dart';
 import 'widget/card_icon.dart';
@@ -25,11 +26,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      body:Column(
+      key: state.key,
+      drawer: const UtilitiesPage(),
+      body: Column(
         children: [
-          const AppBarHome(),
+          const AppBarHome(
+          ),
           const SizedBox(height: 16),
           Expanded(
             child: SingleChildScrollView(

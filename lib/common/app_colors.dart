@@ -25,10 +25,12 @@ class AppColors {
   static const Color grayFA = Color(0xffE6E6E6);
   static const Color disable = Color(0xffE7E7E7);
   static const Color gray7E = Color(0xff7E7E7E);
+  static const Color whiteF7 = Color(0xffF7F7F7);
   static const Color line = Color(0xffE2E2E2);
   static const Color increase = Color(0xff4DAD4B);
   static const Color decrease = Color(0xffF3363C);
   static const Color yellow = Color(0xffFDB500);
+  static const Color yellowStatus = Color(0xffFFDC00);
   static const Color flow = Color(0xff19BDDE);
   static const Color mainMenu2 = Color(0xffEEE8FF);
   static const Color green2 = Color(0xffB7F0DC);
@@ -38,6 +40,7 @@ class AppColors {
   static const Color ceil = Color(0xFFEE82EE);
   static const Color floor = Color(0xFF146FB4);
   static const Color table1 = Color(0xFFFFF8EB);
+  static const Color table2 = Color(0xFFDDDDDD);
 
   static const Color cardPortfolio = Color.fromRGBO(61, 38, 118, 0.6);
 
@@ -65,6 +68,7 @@ class AppColors {
   static const Color dashLine = Color(0xFFECECEC);
 
   static const Color Pastel = Color(0xFFFFECEC);
+  static const Color PastelCard = Color(0xFFFFF6DE);
   static const Color Pastel2 = Color(0xFFE6FFE6);
   static const Color PastelSecond2 = Color(0xFFFFF3DC);
 

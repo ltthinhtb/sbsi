@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/model/entities/category_stock.dart';
 import 'package:sbsi/model/response/index_detail.dart';
@@ -7,6 +7,9 @@ import 'package:sbsi/model/stock_data/stock_data.dart';
 
 class HomeState {
   static const CATEGORY_DEFAULT = "HSX30";
+
+  final GlobalKey<ScaffoldState> key = GlobalKey();
+
 
   final listIndexDetail = <IndexDetail>[].obs;
   final categoryController = TextEditingController();

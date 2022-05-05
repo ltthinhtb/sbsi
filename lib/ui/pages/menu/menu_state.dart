@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
+import '../../../model/response/list_account_response.dart';
+
 class MenuState {
-  var loading = true.obs;
-  var name = "".obs;
-  var acc = "".obs;
+
+  final account = Account().obs;
 }

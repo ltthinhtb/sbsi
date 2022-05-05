@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
-import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/ui/pages/menu/menu_logic.dart';
-import 'package:sbsi/ui/pages/menu/panel/cust_info/cust_info_view.dart';
-import 'package:sbsi/ui/pages/menu/panel/setting/setting.dart';
+
+import '../../../services/auth_service.dart';
+import '../../commons/appbar.dart';
 
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
@@ -19,6 +18,7 @@ class _MenuState extends State<Menu> {
   final logic = Get.put(MenuLogic());
   final state = Get.find<MenuLogic>().state;
 
+
   @override
   void dispose() {
     Get.delete<MenuLogic>();
@@ -28,127 +28,54 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Container(
-          child: Text(
-            "Menu",
-            style: AppTextStyle.H3,
-          ),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [buildInfoRow(), buildListButton()],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildInfoRow() {
-    return Obx(
-      () => GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            GetPageRoute(
-              page: () => const CustomInfo(),
-            ),
-          );
-        },
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          decoration: const BoxDecoration(
-            color: AppColors.grayF2,
-            borderRadius: BorderRadius.all(
-              Radius.circular(15),
+      appBar: AppBarCustom(
+        title: S.of(context).wallet,
+        isCenter: true,
+        action: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            margin: const EdgeInsets.symmetric(vertical: 11),
+            decoration: BoxDecoration(
+                color: AppColors.tabIn,
+                borderRadius: BorderRadius.circular(16)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Obx(() {
+                  var auth = Get.find<AuthService>().token.value;
+                  return Text('${auth?.data?.user ?? ""}');
+                }),
+                const SizedBox(width: 2),
+                Container(
+                  width: 24,
+                  height: 24,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                      color: AppColors.white, shape: BoxShape.circle),
+                  child: Obx(() {
+                    return Text(
+                      state.account.value.lastCharacter,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2
+                          ?.copyWith(fontWeight: FontWeight.w700),
+                    );
+                  }),
+                )
+              ],
             ),
           ),
-          child: Row(
-            children: [
-              const CircleAvatar(
-                maxRadius: 27,
-                backgroundColor: AppColors.primary,
-              ),
-              Container(
-                width: 15,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    state.name.value,
-                    style:
-                        AppTextStyle.H5Bold.copyWith(color: AppColors.primary),
-                  ),
-                  Text(
-                    state.acc.value,
-                    style:
-                        AppTextStyle.H5Bold.copyWith(color: AppColors.primary),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildListButton() {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        children: [
-          buildButton("Smart OTP"),
-          buildButton(S.of(context).stockMarket),
-          buildButton(S.of(context).money_exchange),
-          buildButton(S.of(context).warning),
-          buildButton(S.of(context).margin_product),
-          buildButton(S.of(context).order_confirm),
-          buildButton(S.of(context).user_guide),
-          buildButton(S.of(context).statement),
-          buildButton(
-            S.of(context).settings_title,
-            onPush: () => Get.to(const Setting()),
-          ),
-          buildButton(
-            S.of(context).logout,
-            onPush: () => Get.offNamed(RouteConfig.login),
-          ),
+          const SizedBox(width: 14),
         ],
       ),
-    );
-  }
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        child: SingleChildScrollView(
 
-  Widget buildButton(String label, {Function()? onPush}) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: MaterialButton(
-        onPressed: onPush ?? () {},
-        color: AppColors.grayF2,
-        elevation: 0,
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              child: Text(
-                label,
-                style: AppTextStyle.H5Bold,
-              ),
-            ),
-            const Icon(
-              Icons.east_outlined,
-            ),
-          ],
         ),
       ),
     );
   }
+
+
 }

@@ -105,7 +105,7 @@
   "sell_t1": "Chở về T1",
   "sell_t2": "Chở về T2",
   "sell_t_back": "Quyền trở về",
-  "total_transfer": "Tổng giá trị CK",
+  "total_transfer": "Tổng giá trị chứng khoán",
   "gain_loss_temporary": "Lãi lỗ tạm thời",
   "policy_use": "Điều khoản sử dụng",
   "contact_support": "Liên hệ hỗ trợ",
@@ -241,6 +241,7 @@
   "bond" : "Trái phiếu",
   "payment" : "Nộp tiền",
   "Statement" : "Sao kê",
+  "statement_list" : "Danh sách sao kê",
   "variable" : "Biến động",
   "stock_detail": "Chi tiết chứng khoán",
   "long_short" : "Thấp / cao",
@@ -249,5 +250,14 @@
   "analytics" : "Phân tích",
   "finance" : "Tài chính",
   "step_price" : "Bước giá",
-  "more" : "Xem thêm"
+  "more" : "Xem thêm",
+  "utilities" : "Tiện ích",
+  "advance_money" : "Ứng trước tiền bán",
+  "instructions_payment": "Hướng dẫn nộp tiền",
+  "stock_exchange" : "Giao dịch chứng khoán",
+  "transfer_stock" : "Chuyển chứng khoán",
+  "advance_action" : "Thực hiện quyền",
+  "money" : "Tiền",
+  "stock" : "Chứng khoán",
+  "avg_price_short" : "Giá TB"
 }

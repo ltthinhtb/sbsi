@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/router/route_config.dart';
+import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/home/home_view.dart';
-import 'package:sbsi/ui/pages/menu/menu_view.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_view.dart';
 import 'package:sbsi/ui/pages/order_list/page/order_detail.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_view.dart';
@@ -25,7 +25,11 @@ class MainState {
     //PageView page
     pageList = [
       const HomePage(),
-      const WalletPage(),
+      const Scaffold(
+        appBar: AppBarCustom(
+          title: "Thị trường",
+        ),
+      ),
       stockOrderPage,
       // OrderListPage(),
       Navigator(
@@ -50,7 +54,7 @@ class MainState {
           }
         },
       ),
-      const Menu(),
+      const WalletPage(),
     ];
     //Page controller
     pageController = PageController();

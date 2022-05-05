@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sbsi/common/app_dimens.dart';
-import 'package:sbsi/configs/app_configs.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/model/response/list_account_response.dart';
-import 'package:sbsi/ui/widgets/dropdown/app_drop_down.dart';
-import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/money_utils.dart';
-
-import '../../../../services/auth_service.dart';
 import '../wallet_logic.dart';
 
 class ProfitTabBar extends StatefulWidget {
@@ -35,46 +28,8 @@ class _ProfitTabBarState extends State<ProfitTabBar>
     return RefreshIndicator(
       onRefresh: () async => walletLogic.onReady(),
       child: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: AppDimens.marginNormal),
+        padding: EdgeInsets.zero,
         children: [
-          Row(
-            children: [
-              Expanded(
-                  child: AppTextFieldWidget(
-                label: S.of(context).start_day,
-                hintText: AppConfigs.dateAPIFormat,
-              )),
-              const SizedBox(width: 15),
-              Expanded(
-                  child: AppTextFieldWidget(
-                label: S.of(context).end_day,
-                hintText: AppConfigs.dateAPIFormat,
-              )),
-            ],
-          ),
-          const SizedBox(height: 20),
-          AppDropDownWidget<Account>(
-              label: S.of(context).account,
-              value: Get.find<AuthService>().listAccount.firstWhere(
-                  (element) => element.accCode == walletLogic.defAcc,
-                  orElse: () {
-                return Account(accCode: walletLogic.defAcc);
-              }),
-              onChanged: (value) {
-                walletLogic.getPortfolio(account: value!.accCode);
-              },
-              items: Get.find<AuthService>().listAccount
-                  .map((e) => DropdownMenuItem<Account>(
-                        value: e,
-                        onTap: () {},
-                        child: Text(e.accCode ?? ""),
-                      ))
-                  .toList()),
-          const SizedBox(height: 20),
-          AppTextFieldWidget(
-            label: S.of(context).profit_total,
-            inputController: walletState.profitController,
-          ),
           const SizedBox(height: 29),
           Obx(() {
             return ListView.separated(

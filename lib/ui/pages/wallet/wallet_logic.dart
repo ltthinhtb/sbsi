@@ -28,6 +28,15 @@ class WalletLogic extends GetxController {
     }
   }
 
+  void loadAccount() {
+    var _tokenEntity = authService.token.value;
+    var index = authService.listAccount.indexWhere(
+            (element) => _tokenEntity?.data?.defaultAcc == element.accCode);
+    if (index >= 0) {
+      state.account.value = authService.listAccount[index];
+    }
+  }
+
   Future<void> getAccountStatus({String? account}) async {
     ParamsObject _object = ParamsObject();
     _object.type = "string";
@@ -52,7 +61,6 @@ class WalletLogic extends GetxController {
       var response = await apiService.getPortfolio(_requestParams);
       if (response!.data!.isNotEmpty) {
         state.portfolioTotal.value = response.data!.first;
-        state.profitController.text = state.portfolioTotal.value.gainLossValue!;
         if (response.data!.length > 1) {
           state.portfolioList.value = response.data!;
           state.portfolioList.remove(state.portfolioList.first);
@@ -66,6 +74,7 @@ class WalletLogic extends GetxController {
   @override
   void onReady() {
     getTokenUser();
+    loadAccount();
     super.onReady();
   }
 }

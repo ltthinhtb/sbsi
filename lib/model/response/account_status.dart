@@ -60,6 +60,15 @@ class AccountAssets {
   String? cashTempDayOut;
   String? vsd;
 
+  int get assetsValue {
+    if (assets == null) return 0;
+    try {
+      return int.parse(assets!);
+    } catch (e) {
+      return 0;
+    }
+  }
+
   AccountAssets(
       {this.cashBalance,
       this.debt,

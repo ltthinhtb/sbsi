@@ -2470,6 +2470,16 @@ class S {
     );
   }
 
+  /// `Statement list`
+  String get statement_list {
+    return Intl.message(
+      'Statement list',
+      name: 'statement_list',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Variable`
   String get variable {
     return Intl.message(
@@ -2555,6 +2565,96 @@ class S {
     return Intl.message(
       'More',
       name: 'more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Utilities`
+  String get utilities {
+    return Intl.message(
+      'Utilities',
+      name: 'utilities',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advance Money`
+  String get advance_money {
+    return Intl.message(
+      'Advance Money',
+      name: 'advance_money',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Instructions Payment`
+  String get instructions_payment {
+    return Intl.message(
+      'Instructions Payment',
+      name: 'instructions_payment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock exchange`
+  String get stock_exchange {
+    return Intl.message(
+      'Stock exchange',
+      name: 'stock_exchange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer Stock`
+  String get transfer_stock {
+    return Intl.message(
+      'Transfer Stock',
+      name: 'transfer_stock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advance action`
+  String get advance_action {
+    return Intl.message(
+      'Advance action',
+      name: 'advance_action',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money`
+  String get money {
+    return Intl.message(
+      'Money',
+      name: 'money',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock`
+  String get stock {
+    return Intl.message(
+      'Stock',
+      name: 'stock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Giá TB`
+  String get avg_price_short {
+    return Intl.message(
+      'Giá TB',
+      name: 'avg_price_short',
       desc: '',
       args: [],
     );

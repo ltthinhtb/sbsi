@@ -7,8 +7,19 @@ class MenuLogic extends GetxController {
   final ApiService apiService = Get.find();
   final AuthService authService = Get.find();
 
+
+  void loadAccount() {
+    var _tokenEntity = authService.token.value;
+    var index = authService.listAccount.indexWhere(
+            (element) => _tokenEntity?.data?.defaultAcc == element.accCode);
+    if (index >= 0) {
+      state.account.value = authService.listAccount[index];
+    }
+  }
+
   @override
   void onInit() {
+    loadAccount();
     super.onInit();
   }
 }

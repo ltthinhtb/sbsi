@@ -51,7 +51,22 @@ class AppImages {
   static String minusSmall = 'assets/icon_svg/minus-small.svg';
   static String plusSmall = 'assets/icon_svg/plus-small.svg';
 
+  static String vector = 'assets/icon_svg/Vector.svg';
+
   static String newsPlace = 'assets/image/news_place.png';
+
+  // utilities
+  static String cash_wallet = 'assets/icon_svg/cash-wallet.svg';
+  static String cash_wallet_green = 'assets/icon_svg/cash-wallet_green.svg';
+  static String communicate = 'assets/icon_svg/communicate.svg';
+  static String internet = 'assets/icon_svg/internet.svg';
+  static String lock = 'assets/icon_svg/lock.svg';
+  static String logout = 'assets/icon_svg/logout.svg';
+  static String not_book = 'assets/icon_svg/note-book.svg';
+  static String setting = 'assets/icon_svg/setting.svg';
+  static String trade_increase = 'assets/icon_svg/trade_increase.svg';
+  static String user_circle = 'assets/icon_svg/user-circle.svg';
+  static String assets_amount = 'assets/icon_svg/amount.svg';
 
 
   // icon image
