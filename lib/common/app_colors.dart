@@ -66,6 +66,7 @@ class AppColors {
   ///Divider
   static const Color divider = Color(0xFF606060);
   static const Color dashLine = Color(0xFFECECEC);
+  static const Color dot = Color(0xFFE9E8E8);
 
   static const Color Pastel = Color(0xFFFFECEC);
   static const Color PastelCard = Color(0xFFFFF6DE);

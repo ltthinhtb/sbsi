@@ -91,9 +91,9 @@ class StockDataShort {
 
   Color get colorStock {
     if (this.color == 'green') {
-      return AppColors.increase;
+      return AppColors.active;
     } else if (this.color == 'red') {
-      return AppColors.decrease;
+      return AppColors.deActive;
     } else if (this.color == 'blue') {
       return AppColors.floor;
     } else if (this.color == 'violet') {

@@ -22,13 +22,20 @@ class AppBarHome extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+                bottomRight: Radius.circular(16),
+                bottomLeft: Radius.circular(16)),
+            child: SvgPicture.asset(
+              AppImages.appbar,
+              alignment: Alignment.center,
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width,
+              height: 164 / 812 * MediaQuery.of(context).size.height,
+            ),
+          ),
           Container(
             height: 164 / 812 * MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: const BorderRadius.only(
-                    bottomRight: Radius.circular(16),
-                    bottomLeft: Radius.circular(16))),
             child: Padding(
               padding: EdgeInsets.zero,
               child: Row(
@@ -77,11 +84,11 @@ class AppBarHome extends StatelessWidget {
                   color: AppColors.white,
                   boxShadow: [
                     const BoxShadow(
-                        blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.10)),
+                        blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.08)),
                     const BoxShadow(
-                        blurRadius: 4, color: Color.fromRGBO(0, 0, 0, 0.10)),
+                        blurRadius: 4, color: Color.fromRGBO(0, 0, 0, 0.08)),
                     const BoxShadow(
-                        blurRadius: 20, color: Color.fromRGBO(0, 0, 0, 0.10))
+                        blurRadius: 10, color: Color.fromRGBO(0, 0, 0, 0.08))
                   ],
                   borderRadius: BorderRadius.circular(10)),
               child: Row(

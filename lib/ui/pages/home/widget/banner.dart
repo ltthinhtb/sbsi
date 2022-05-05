@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 
 class BannerHome extends StatefulWidget {
@@ -48,7 +49,7 @@ class _BannerHomeState extends State<BannerHome> {
                             i,
                             fit: BoxFit.fill,
                             width: MediaQuery.of(context).size.width,
-                            height: 100 / 812 * MediaQuery.of(context).size.height,
+                            height: (100 / 812) * MediaQuery.of(context).size.height,
                           ),
                         ),
                       ),
@@ -79,7 +80,7 @@ class _BannerHomeState extends State<BannerHome> {
       decoration: BoxDecoration(
           color: _current == index
               ? Theme.of(context).primaryColor
-              : Theme.of(context).dividerColor,
+              : AppColors.dot,
           borderRadius: BorderRadius.circular(5)),
     );
   }

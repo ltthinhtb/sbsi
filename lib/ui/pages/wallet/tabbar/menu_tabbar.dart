@@ -6,7 +6,6 @@ import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/utils/money_utils.dart';
-import '../../../../utils/logger.dart';
 import '../wallet_logic.dart';
 import '../widget/portfolio_widget.dart';
 
@@ -33,10 +32,7 @@ class _MenuTabBarState extends State<MenuTabBar>
         .bodyText2!
         .copyWith(color: AppColors.textSecond);
     final body1 = Theme.of(context).textTheme.bodyText1;
-    final headline7 = Theme.of(context)
-        .textTheme
-        .headline6!
-        .copyWith(fontSize: 12, fontWeight: FontWeight.w400);
+
     final caption = Theme.of(context).textTheme.caption!;
     super.build(context);
     return RefreshIndicator(

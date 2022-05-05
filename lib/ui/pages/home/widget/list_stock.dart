@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -20,16 +21,15 @@ class ListStockView extends StatelessWidget {
     final state = Get.find<HomeLogic>().state;
     final homeLogic = Get.find<HomeLogic>();
     final caption = Theme.of(context).textTheme.caption?.copyWith(fontSize: 13);
-    final headline3 = Theme.of(context).textTheme.headline3;
     final headline4 = Theme.of(context).textTheme.headline4;
     final bodyText1 = Theme.of(context).textTheme.bodyText1;
+    final bodyText2 = Theme.of(context).textTheme.bodyText2;
     return Container(
       decoration: const BoxDecoration(
         color: AppColors.white,
         boxShadow: [
-          BoxShadow(blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.10)),
-          BoxShadow(blurRadius: 4, color: Color.fromRGBO(0, 0, 0, 0.10)),
-          BoxShadow(blurRadius: 20, color: Color.fromRGBO(0, 0, 0, 0.10))
+          BoxShadow(blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.08)),
+          BoxShadow(blurRadius: 8, color: Color.fromRGBO(0, 0, 0, 0.08))
         ],
       ),
       child: DefaultTabController(
@@ -57,6 +57,7 @@ class ListStockView extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TabBar(
+                  padding: EdgeInsets.zero,
                   onTap: (value) {
                     homeLogic.getTopStockData(value);
                   },
@@ -84,127 +85,107 @@ class ListStockView extends StatelessWidget {
                           Get.toNamed(RouteConfig.stockDetail,
                               arguments: state.listShortStock[index].stockCode);
                         },
-                        child: Container(
-                          color: index % 2 == 1
-                              ? const Color.fromRGBO(
-                                  215, 209, 209, 0.10588235294117647)
-                              : null,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                    flex: 74,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          state.listShortStock[index]
-                                                  .stockCode ??
-                                              "",
-                                          style: caption!.copyWith(
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        const SizedBox(height: 5),
-                                        Text(
-                                          state.listShortStock[index]
-                                                  .stockName ??
-                                              "",
-                                          style: headline3!.copyWith(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 13,
-                                              overflow: TextOverflow.ellipsis,
-                                              color: AppColors.textGrey3),
-                                        )
-                                      ],
-                                    )),
-                                const SizedBox(width: 36),
-                                Expanded(
-                                    flex: 76,
-                                    child: Align(
-                                        alignment: Alignment.centerRight,
-                                        child: SizedBox(
-                                          height: 27,
-                                          child: CustomLineChart(
-                                              drawPoint:
-                                                  (sumChart / lengthChart),
-                                              chartColor: state
-                                                  .listShortStock[index]
-                                                  .stockPrice,
-                                              data: state.listShortStock[index]
-                                                  .listChart
-                                                  .cast<double>()),
-                                        ))),
-                                const SizedBox(width: 11),
-                                Expanded(
-                                  flex: 72,
-                                  child: Container(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        RichText(
-                                          text: TextSpan(
-                                            text:
-                                                '${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].change}',
-                                            style: caption.copyWith(
-                                                fontWeight: FontWeight.w700,
-                                                color: state
-                                                    .listShortStock[index]
-                                                    .colorStock
-                                                    .withOpacity(1)),
-                                            children: <TextSpan>[
-                                              TextSpan(
-                                                  text:
-                                                      '(${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].percentChange}%)',
-                                                  style: caption.copyWith(
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      fontSize: 10,
-                                                      color: state
-                                                          .listShortStock[index]
-                                                          .colorStock
-                                                          .withOpacity(1))),
-                                            ],
-                                          ),
-                                        ),
-                                        const Spacer(),
-                                        Text(
-                                            MoneyFormat.formatMoneyRound(
-                                                '${state.listShortStock[index].klgd}'),
-                                            style: caption.copyWith(
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 12,
-                                                color: AppColors.textGrey3)),
-                                      ],
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                flex: 36,
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      "https://info.sbsi.vn/logo/${state.listShortStock[index].stockCode}",
+                                  imageBuilder: (context, imageProvider) =>
+                                      Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.fitWidth),
                                     ),
                                   ),
+                                  placeholder: (context, url) => Container(
+                                    decoration: const BoxDecoration(
+                                      color: AppColors.grayF2,
+                                      shape: BoxShape.circle
+                                    ),
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      const Center(child: Icon(Icons.error)),
                                 ),
-                                const SizedBox(width: 10),
-                                Expanded(
-                                    flex: 56,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: state.listShortStock[index]
-                                              .colorStock),
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          '${state.listShortStock[index].price?.toStringAsFixed(1)}',
-                                          style: caption.copyWith(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(width: 18),
+                              Expanded(
+                                  flex: 29,
+                                  child: Text(
+                                    state.listShortStock[index].stockCode ?? "",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .button
+                                        ?.copyWith(fontWeight: FontWeight.w700),
+                                  )),
+                              const SizedBox(width: 18),
+                              Expanded(
+                                  flex: 70,
+                                  child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: SizedBox(
+                                        height: 27,
+                                        child: CustomLineChart(
+                                            drawPoint: (sumChart / lengthChart),
+                                            chartColor: state
+                                                .listShortStock[index]
+                                                .stockPrice,
+                                            data: state
+                                                .listShortStock[index].listChart
+                                                .cast<double>()),
+                                      ))),
+                              Expanded(
+                                flex: 50,
+                                child: Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                          text:
+                                              '${state.listShortStock[index].price?.toStringAsFixed(1)}',
+                                          style: bodyText2?.copyWith(
+                                              fontWeight: FontWeight.w700,
+                                              color: state.listShortStock[index]
+                                                  .colorStock),
                                         ),
                                       ),
-                                    )),
-                              ],
-                            ),
+                                      Text(
+                                          MoneyFormat.formatMoneyRound(
+                                              '${state.listShortStock[index].klgd}'),
+                                          style: caption?.copyWith(
+                                              fontSize: 12,
+                                              height: 20 / 12,
+                                              color: AppColors.textGrey3)),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 18),
+                              Expanded(
+                                  flex: 50,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: state
+                                            .listShortStock[index].colorStock),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        '${state.listShortStock[index].percentChange! > 0 ? '+' : ''}${state.listShortStock[index].change}%',
+                                        style: caption?.copyWith(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
+                                  )),
+                            ],
                           ),
                         ),
                       ),
@@ -246,6 +227,7 @@ class ListStockView extends StatelessWidget {
                 );
               }
             }),
+            const SizedBox(height: 16),
           ],
         ),
       ),

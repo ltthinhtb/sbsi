@@ -39,10 +39,10 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   const BannerHome(),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 16),
                   const CardIcon(),
                   const SizedBox(height: 16),
-                  const ListStockView()
+                  const ListStockView(),
                 ],
               ),
             ),
