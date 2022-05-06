@@ -18,6 +18,7 @@ class _NewsTabState extends State<NewsTab> with AutomaticKeepAliveClientMixin {
   Widget build(BuildContext context) {
     super.build(context);
     return Container(
+      margin: const EdgeInsets.only(top: 16),
       padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
         boxShadow: AppShadow.boxShadow,

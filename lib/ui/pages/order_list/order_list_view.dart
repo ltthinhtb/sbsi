@@ -7,6 +7,7 @@ import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
+import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/page/order_detail.dart';
 import 'package:sbsi/ui/widgets/animation_widget/expanded_widget.dart';
@@ -71,29 +72,10 @@ class _OrderListPageState extends State<OrderListPage>
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: Container(
-            child: Text(
-              S.of(context).order_note,
-              style: AppTextStyle.H3,
-            ),
-          ),
-          actions: [
-            GestureDetector(
-              onTap: () {
-                state.selectedMode.value = !state.selectedMode.value;
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                alignment: Alignment.center,
-                child: Text(state.selectedMode.value
-                    ? S.of(context).cancel_short
-                    : S.of(context).select),
-              ),
-            ),
-          ],
-        ),
+        appBar: AppBarCustom(
+            title: S.of(context).order_note,
+            isCenter: true,
+            automaticallyImplyLeading: false),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: RefreshIndicator(

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/services/index.dart';
 import 'package:sbsi/ui/pages/sign_in/sign_in_view.dart';
 import 'package:sbsi/utils/logger.dart';
@@ -39,7 +40,7 @@ class ApiInterceptors extends InterceptorsWrapper {
     if (response.statusCode == 401) {
       final authService = Get.find<AuthService>();
       authService.signOut();
-      Get.offAll(const SignInPage());
+      Get.offAllNamed(RouteConfig.login);
     }
     super.onResponse(response, handler);
   }

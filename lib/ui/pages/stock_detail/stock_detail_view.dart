@@ -90,7 +90,6 @@ class _StockDetailPageState extends State<StockDetailPage> {
                           .toList()),
                 ],
               ),
-              const SizedBox(height: 16),
               const Expanded(
                 child: TabBarView(
                     physics: NeverScrollableScrollPhysics(),

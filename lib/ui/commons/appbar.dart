@@ -6,9 +6,14 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool isCenter;
   final List<Widget>? action;
+  final bool automaticallyImplyLeading;
 
   const AppBarCustom(
-      {Key? key, required this.title, this.isCenter = false, this.action})
+      {Key? key,
+      required this.title,
+      this.isCenter = false,
+      this.action,
+      this.automaticallyImplyLeading = true})
       : super(key: key);
 
   @override
@@ -19,6 +24,7 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
         AppImages.appbar,
         fit: BoxFit.cover,
       ),
+      automaticallyImplyLeading: automaticallyImplyLeading,
       title: Text(title),
       centerTitle: isCenter,
       actions: action,
