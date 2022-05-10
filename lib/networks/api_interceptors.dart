@@ -2,10 +2,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/services/index.dart';
-import 'package:sbsi/ui/pages/sign_in/sign_in_view.dart';
 import 'package:sbsi/utils/logger.dart';
 import 'package:get/get.dart' hide Response;
-
 
 class ApiInterceptors extends InterceptorsWrapper {
   @override
@@ -14,19 +12,23 @@ class ApiInterceptors extends InterceptorsWrapper {
     final method = options.method;
     final uri = options.uri;
     final data = options.data;
-    logger.log(
-        "\n\n--------------------------------------------------------------------------------------------------------");
-    if (method == 'GET') {
-      logger
-          .d("✈️ REQUEST[$method] => PATH: $uri \n Token: ${options.headers}");
-    } else {
-      try {
+
+    if (!options.path.contains("getchartindexdata")) {
+      logger.log(
+          "\n\n--------------------------------------------------------------------------------------------------------");
+      if (method == 'GET') {
         logger.d(
-            "✈️ REQUEST[$method] => PATH: $uri \n DATA: ${jsonEncode(data)}");
-      } catch (e) {
-        logger.i("✈️ REQUEST[$method] => PATH: $uri \n DATA: $data");
+            "✈️ REQUEST[$method] => PATH: $uri \n Token: ${options.headers}");
+      } else {
+        try {
+          logger.d(
+              "✈️ REQUEST[$method] => PATH: $uri \n DATA: ${jsonEncode(data)}");
+        } catch (e) {
+          logger.i("✈️ REQUEST[$method] => PATH: $uri \n DATA: $data");
+        }
       }
     }
+
     super.onRequest(options, handler);
   }
 
@@ -35,7 +37,10 @@ class ApiInterceptors extends InterceptorsWrapper {
     final statusCode = response.statusCode;
     final uri = response.requestOptions.uri;
     final data = (response.data);
-    logger.d("✅ RESPONSE[$statusCode] => PATH: $uri\n DATA: $data");
+    if (!uri.toString().contains("getchartindexdata")) {
+      logger.d("✅ RESPONSE[$statusCode] => PATH: $uri\n DATA: $data");
+    }
+
     //Handle section expired
     if (response.statusCode == 401) {
       final authService = Get.find<AuthService>();

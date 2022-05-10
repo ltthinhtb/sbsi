@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bond_code": MessageLookupByLibrary.simpleMessage("Mã trái phiếu"),
         "bond_history":
             MessageLookupByLibrary.simpleMessage("Các giao dịch gần đây"),
+        "branch": MessageLookupByLibrary.simpleMessage("Chi nhánh"),
         "buy": MessageLookupByLibrary.simpleMessage("Mua"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy bỏ"),
         "cancel_all_orders":
@@ -111,6 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
         "decrease": MessageLookupByLibrary.simpleMessage("Giảm giá"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Tổng phí"),
+        "domestic": MessageLookupByLibrary.simpleMessage("Trong nước"),
         "edit": MessageLookupByLibrary.simpleMessage("Sửa"),
         "edit_category":
             MessageLookupByLibrary.simpleMessage("Thay đổi danh mục"),
@@ -181,6 +183,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "long_short": MessageLookupByLibrary.simpleMessage("Thấp / cao"),
         "margin_product":
             MessageLookupByLibrary.simpleMessage("Sản phẩm Margin/Hợp tác"),
+        "market_depth":
+            MessageLookupByLibrary.simpleMessage("Độ sâu thị trường"),
         "match": MessageLookupByLibrary.simpleMessage("Khớp"),
         "match_price": MessageLookupByLibrary.simpleMessage("Giá khớp"),
         "match_time": MessageLookupByLibrary.simpleMessage("Thời gian khớp"),
@@ -208,6 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nhập vào ô tìm kiếm để thêm mã\nđầu tiên vào danh mục"),
         "not_account":
             MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản? "),
+        "not_found": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "notice": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "notification": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
@@ -336,6 +341,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Điều khoản và điều kiện"),
         "terms_and_condition_valid": MessageLookupByLibrary.simpleMessage(
             "Vui lòng đồng ý điều khoản và điều kiện"),
+        "the_world": MessageLookupByLibrary.simpleMessage("Ngoài nước"),
         "tks": MessageLookupByLibrary.simpleMessage("Cảm ơn bạn"),
         "today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
         "total": MessageLookupByLibrary.simpleMessage("Tổng"),
@@ -369,6 +375,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "wallet": MessageLookupByLibrary.simpleMessage("Tài sản"),
         "warning": MessageLookupByLibrary.simpleMessage("Cảnh báo"),
         "wating_match": MessageLookupByLibrary.simpleMessage("Chờ khớp"),
+        "world": MessageLookupByLibrary.simpleMessage("Thế giới"),
         "year": MessageLookupByLibrary.simpleMessage("năm")
       };
 }

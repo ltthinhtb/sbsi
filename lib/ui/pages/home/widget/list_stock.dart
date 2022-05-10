@@ -133,9 +133,8 @@ class ListStockView extends StatelessWidget {
                                         height: 27,
                                         child: CustomLineChart(
                                             drawPoint: (sumChart / lengthChart),
-                                            chartColor: state
-                                                .listShortStock[index]
-                                                .stockPrice,
+                                            color: state
+                                                .listShortStock[index].colorStock,
                                             data: state
                                                 .listShortStock[index].listChart
                                                 .cast<double>()),

@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/model/order_data/change_order_data.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/services/index.dart';
+import 'package:sbsi/ui/pages/order_list/enums/order_enums.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_state.dart';
 import 'package:sbsi/utils/extension.dart';
 
@@ -30,8 +32,9 @@ class OrderListLogic extends GetxController {
           cmd: "Web.Order.IndayOrder2",
           p1: "1",
           p2: "30",
-          p3: _tokenEntity?.data?.defaultAcc,
-          p4: "${state.symbol},${state.orderStatus},${state.orderType}"),
+          p3: state.account.value.accCode,
+          p4: state.singingCharacter
+              .value(stockCode: state.stockCodeController.text.trim())),
     );
     try {
       state.listOrder.value = await apiService.getIndayOrder(_requestParams);
@@ -40,43 +43,10 @@ class OrderListLogic extends GetxController {
     }
   }
 
-  Future<List<IndayOrder>?> checkList() async {
-    var _tokenEntity = authService.token.value;
-    final RequestParams _requestParams = RequestParams(
-      group: "Q",
-      session: _tokenEntity?.data?.sid,
-      user: _tokenEntity?.data?.user,
-      data: ParamsObject(
-          type: "string",
-          cmd: "Web.Order.IndayOrder2",
-          p1: "1",
-          p2: "30",
-          p3: _tokenEntity?.data?.defaultAcc,
-          p4: "${state.symbol},${state.orderStatus},${state.orderType}"),
-    );
-    try {
-      var listOrders = await apiService.getIndayOrder(_requestParams);
-      if (listOrders.isNotEmpty) {
-        if (listOrders.length == state.listOrder.length) {
-          for (var i = 0; i < listOrders.length; i++) {
-            if (listOrders[i].orderNo != state.listOrder[i].orderNo) {
-              return listOrders;
-            }
-            if (listOrders[i].status != state.listOrder[i].status) {
-              return listOrders;
-            }
-            return null;
-          }
-        } else {
-          return listOrders;
-        }
-      } else {
-        return null;
-      }
-    } catch (e) {
-      print(e);
-    }
-    return null;
+  // filter theo trạng thái lệnh
+  void changeOrderListStatus(SingingCharacter character) {
+    state.singingCharacter = character;
+    getOrderList();
   }
 
   Future<void> selectAll() async {
@@ -88,6 +58,7 @@ class OrderListLogic extends GetxController {
     }
   }
 
+  // hủy lệnh
   Future<void> cancelOrder() async {
     var _tokenEntity = authService.token.value;
     if (state.selectedListOrder.isNotEmpty) {
@@ -116,6 +87,17 @@ class OrderListLogic extends GetxController {
     getOrderList();
   }
 
+  // load tài khoản mặc định
+  void loadAccount() {
+    var _tokenEntity = authService.token.value;
+    var index = authService.listAccount.indexWhere(
+        (element) => _tokenEntity?.data?.defaultAcc == element.accCode);
+    if (index >= 0) {
+      state.account.value = authService.listAccount[index];
+    }
+  }
+
+  // sửa lệnh
   Future<void> changeOrder(IndayOrder data, ChangeOrderData changeData) async {
     var _tokenEntity = authService.token.value;
     RequestParams _requestParams = RequestParams(
@@ -148,26 +130,10 @@ class OrderListLogic extends GetxController {
     }
   }
 
-
-  Future<List<IndayOrder>> filterOrder() async {
-    List<IndayOrder> filtedList = state.listOrder;
-    switch (state.orderType.value) {
-      case "Tất cả":
-        break;
-      case "Mua":
-        filtedList.removeWhere((element) => element.side == "S");
-        break;
-      case "Bán":
-        filtedList.removeWhere((element) => element.side == "B");
-        break;
-      default:
-    }
-    return filtedList;
-  }
-
   @override
   void onInit() async {
     super.onInit();
+    loadAccount();
     getOrderList();
   }
 
@@ -179,5 +145,23 @@ class OrderListLogic extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  List<IndayOrder> searchStock(String stockCode) {
+    if (stockCode != '') {
+      List<IndayOrder> searchResult = state.listOrder
+          .where(
+            (element) => element.symbol!.toLowerCase().startsWith(
+                  stockCode.toLowerCase(),
+                ),
+          )
+          .toList();
+      if (searchResult.length > 10) {
+        searchResult = searchResult.sublist(0, 10);
+      }
+      return searchResult;
+    } else {
+      return [];
+    }
   }
 }

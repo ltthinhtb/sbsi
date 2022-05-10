@@ -2,22 +2,27 @@ import 'dart:math';
 
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
-import 'package:sbsi/common/app_colors.dart';
-import 'package:sbsi/utils/stock_color.dart';
+
+import '../../../common/app_colors.dart';
+import '../../../utils/stock_color.dart';
 
 class CustomLineChart extends StatefulWidget {
   CustomLineChart({
     Key? key,
     required this.data,
-    this.animate = true,
-    this.chartColor = StockPrice.increase,
+    this.animate = false,
+    required this.color,
+    this.dashPattern,
+    this.enableArea,
     required this.drawPoint,
   }) : super(key: key);
   final List<double> data;
 
   /// list data
   final bool animate;
-  final StockPrice chartColor;
+  final Color color;
+  final bool? enableArea;
+  final List<int>? dashPattern;
 
   /// màu của chart
   final double drawPoint;
@@ -46,15 +51,15 @@ class _CustomLineChartState extends State<CustomLineChart> {
       distance = highestValue - lowestValue;
       seriesList = generateSeriesList(widget.data);
       areaSeriesList = generateAreaSeriesList(widget.data);
-      lineColor = LineColor.fromStockColor(widget.chartColor);
-      chartColor = AreaColor.fromStockColor(widget.chartColor);
+      lineColor = widget.color;
+      chartColor = MaterialColor(widget.color.value, getSwatch(widget.color));
     });
   }
 
   @override
   void didUpdateWidget(covariant CustomLineChart oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.chartColor != widget.chartColor ||
+    if ((oldWidget.color != widget.color) ||
         oldWidget.data.length != seriesList.length) {
       setState(() {
         highestValue = [widget.data.reduce(max), widget.drawPoint].reduce(max);
@@ -62,8 +67,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
         distance = highestValue - lowestValue;
         seriesList = generateSeriesList(widget.data);
         areaSeriesList = generateAreaSeriesList(widget.data);
-        lineColor = LineColor.fromStockColor(widget.chartColor);
-        chartColor = AreaColor.fromStockColor(widget.chartColor);
+        lineColor = widget.color;
+        chartColor = MaterialColor(widget.color.value, getSwatch(widget.color));
       });
     }
   }
@@ -74,83 +79,78 @@ class _CustomLineChartState extends State<CustomLineChart> {
       absorbing: true, // disable selection
       child: Stack(
         children: [
-          Container(
-            // color: Colors.white,
-            child: ShaderMask(
-              shaderCallback: (Rect bounds) {
-                return LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    Colors.transparent,
-                    areaColor.shade200,
-                    areaColor.shade300,
-                    areaColor.shade400,
-                    areaColor.shade500,
-                    areaColor.shade600,
-                    areaColor.shade700,
-                    areaColor.shade800,
-                  ],
-                  stops: [
-                    0.1,
-                    0.2,
-                    0.3,
-                    0.4,
-                    0.5,
-                    0.6,
-                    0.8,
-                    0.9,
-                  ],
-                  tileMode: TileMode.clamp,
-                ).createShader(bounds);
-              },
-              blendMode: BlendMode.srcATop,
-              child: charts.LineChart(
-                areaSeriesList,
-                animate: false,
-                layoutConfig: charts.LayoutConfig(
-                  leftMarginSpec: charts.MarginSpec.fixedPixel(0),
-                  topMarginSpec: charts.MarginSpec.fixedPixel(0),
-                  rightMarginSpec: charts.MarginSpec.fixedPixel(0),
-                  bottomMarginSpec: charts.MarginSpec.fixedPixel(0),
-                ),
-                primaryMeasureAxis: charts.NumericAxisSpec(
-                  showAxisLine: false,
-                  viewport: charts.NumericExtents(lowestValue, highestValue),
-                  renderSpec: const charts.NoneRenderSpec(),
-                  tickProviderSpec: const charts.BasicNumericTickProviderSpec(
-                    zeroBound: false,
-                  ),
-                ),
-                domainAxis: const charts.NumericAxisSpec(
-                  showAxisLine: false,
-                  renderSpec: charts.NoneRenderSpec(),
-                  tickProviderSpec: charts.BasicNumericTickProviderSpec(
-                    zeroBound: false,
-                  ),
-                ),
-                defaultRenderer: charts.LineRendererConfig(
-                  includeArea: true,
-                  areaOpacity: 0.3,
-                ),
-                behaviors: [
-                  charts.RangeAnnotation([
-                    charts.LineAnnotationSegment(
-                      widget.drawPoint,
-                      charts.RangeAnnotationAxisType.measure,
-                      color: charts.ColorUtil.fromDartColor(
-                        AppColors.grayFA
+          // area chart
+          Visibility(
+              visible: widget.enableArea != false,
+              child: Container(
+                // color: Colors.white,
+                child: ShaderMask(
+                  shaderCallback: (Rect bounds) {
+                    return LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        chartColor.shade200,
+                        chartColor.shade200,
+                        chartColor.shade300,
+                        chartColor.shade400,
+                        chartColor.shade500,
+                        chartColor.shade600,
+                        chartColor.shade700,
+                        chartColor.shade800,
+                      ],
+                      stops: stops,
+                      tileMode: TileMode.clamp,
+                    ).createShader(bounds);
+                  },
+                  blendMode: BlendMode.srcATop,
+                  child: charts.LineChart(
+                    areaSeriesList,
+                    animate: false,
+                    layoutConfig: charts.LayoutConfig(
+                      leftMarginSpec: charts.MarginSpec.fixedPixel(0),
+                      topMarginSpec: charts.MarginSpec.fixedPixel(0),
+                      rightMarginSpec: charts.MarginSpec.fixedPixel(0),
+                      bottomMarginSpec: charts.MarginSpec.fixedPixel(0),
+                    ),
+                    primaryMeasureAxis: charts.NumericAxisSpec(
+                      showAxisLine: false,
+                      viewport:
+                      charts.NumericExtents(lowestValue, highestValue),
+                      renderSpec: const charts.NoneRenderSpec(),
+                      tickProviderSpec: const charts.BasicNumericTickProviderSpec(
+                        zeroBound: false,
                       ),
-                      dashPattern: [5, 5],
-                      strokeWidthPx: 0.3,
-                    )
-                  ])
-                ],
-              ),
-            ),
-          ),
+                    ),
+                    domainAxis: const charts.NumericAxisSpec(
+                      showAxisLine: false,
+                      renderSpec: charts.NoneRenderSpec(),
+                      tickProviderSpec: charts.BasicNumericTickProviderSpec(
+                        zeroBound: false,
+                      ),
+                    ),
+                    defaultRenderer: charts.LineRendererConfig(
+                      includeArea: true,
+                      areaOpacity: 0.3,
+                    ),
+                    behaviors: [
+                      charts.RangeAnnotation([
+                        charts.LineAnnotationSegment(
+                          widget.drawPoint,
+                          charts.RangeAnnotationAxisType.measure,
+                          color:
+                          charts.ColorUtil.fromDartColor(const Color(0xff93969A)),
+                          // dòng cắt ngang
+                          dashPattern: widget.dashPattern ?? [5, 5],
+                          strokeWidthPx: 1,
+                        )
+                      ])
+                    ],
+                  ),
+                ),
+              )),
 
-          //chart line
+          //Đổ màu
           Container(
             // color: greenColor.shade400,
             child: charts.LineChart(
@@ -185,11 +185,9 @@ class _CustomLineChartState extends State<CustomLineChart> {
                   charts.LineAnnotationSegment(
                     widget.drawPoint,
                     charts.RangeAnnotationAxisType.measure,
-                    color: charts.ColorUtil.fromDartColor(Colors.black12
-                        //HexColor(ConstColor.grey_color1),
-                        ),
-                    dashPattern: [5, 5],
-                    strokeWidthPx: 0.3,
+                    color: charts.ColorUtil.fromDartColor(const Color(0xff93969A)),
+                    dashPattern: widget.dashPattern ?? [5, 5],
+                    strokeWidthPx: 1,
                   )
                 ])
               ],
@@ -206,7 +204,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
         id: 'Line',
         strokeWidthPxFn: (_, __) => 1,
         radiusPxFn: (_, __) => 1,
-        colorFn: (_, __) => charts.ColorUtil.fromDartColor(lineColor),
+        colorFn: (_, __) =>
+            charts.ColorUtil.fromDartColor(widget.color),
         domainFn: (_, index) => index ?? 0,
         measureFn: (value, _) => value,
         data: data,
@@ -214,13 +213,14 @@ class _CustomLineChartState extends State<CustomLineChart> {
     ];
   }
 
+  // vùng hiển thị
   List<charts.Series<double, int>> generateAreaSeriesList(List<double> data) {
     return [
       charts.Series<double, int>(
         id: 'Area',
         strokeWidthPxFn: (_, __) => 1,
         radiusPxFn: (_, __) => 1,
-        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Colors.black45),
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Colors.black54),
         domainFn: (_, index) => index ?? 0,
         measureFn: (value, _) => value,
         data: data,
@@ -229,27 +229,15 @@ class _CustomLineChartState extends State<CustomLineChart> {
   }
 
   List<double> get stops => [
-        0.4,
-        0.5,
-        0.6,
-        0.7,
-        0.8,
-        0.9,
-        1.0,
-      ];
-
-  MaterialColor get areaColor => (widget.chartColor == StockPrice.increase)
-      ? MaterialColor(AppColors.increase.value, getSwatch(AppColors.increase))
-      : (widget.chartColor == StockPrice.decrease)
-          ? MaterialColor(
-              AppColors.decrease.value, getSwatch(AppColors.decrease))
-          : (widget.chartColor == StockPrice.c)
-              ? MaterialColor(AppColors.ceil.value, getSwatch(AppColors.ceil))
-              : (widget.chartColor == StockPrice.f)
-                  ? MaterialColor(
-                      AppColors.floor.value, getSwatch(AppColors.floor))
-                  : MaterialColor(
-                      AppColors.yellow.value, getSwatch(AppColors.yellow));
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.8,
+    0.9,
+  ];
 }
 
 class LineColor {

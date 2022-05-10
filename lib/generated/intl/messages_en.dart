@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bond_assets": MessageLookupByLibrary.simpleMessage("Bond assets"),
         "bond_code": MessageLookupByLibrary.simpleMessage("Bond code"),
         "bond_history": MessageLookupByLibrary.simpleMessage("Bond history"),
+        "branch": MessageLookupByLibrary.simpleMessage("Branch"),
         "buy": MessageLookupByLibrary.simpleMessage("Buy"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancel_all_orders":
@@ -105,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "day": MessageLookupByLibrary.simpleMessage("Day"),
         "decrease": MessageLookupByLibrary.simpleMessage("Decrease"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Deposit fee"),
+        "domestic": MessageLookupByLibrary.simpleMessage("Trong nước"),
         "edit": MessageLookupByLibrary.simpleMessage("edit"),
         "edit_category": MessageLookupByLibrary.simpleMessage("Edit category"),
         "ee": MessageLookupByLibrary.simpleMessage("EE"),
@@ -174,6 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "long_short": MessageLookupByLibrary.simpleMessage("Short/Long"),
         "margin_product":
             MessageLookupByLibrary.simpleMessage("Margin product"),
+        "market_depth": MessageLookupByLibrary.simpleMessage("Market depth"),
         "match": MessageLookupByLibrary.simpleMessage("Matched"),
         "match_price": MessageLookupByLibrary.simpleMessage("Matched price"),
         "match_time": MessageLookupByLibrary.simpleMessage("Match time"),
@@ -200,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nhập vào ô tìm kiếm để thêm mã\nđầu tiên vào danh mục"),
         "not_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have account? "),
+        "not_found": MessageLookupByLibrary.simpleMessage("Not found"),
         "notice": MessageLookupByLibrary.simpleMessage("Notice"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
@@ -327,6 +331,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Terms & condition"),
         "terms_and_condition_valid": MessageLookupByLibrary.simpleMessage(
             "Please agree terms & condition"),
+        "the_world": MessageLookupByLibrary.simpleMessage("Ngoài nước"),
         "tks": MessageLookupByLibrary.simpleMessage("Thanks"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
@@ -361,6 +366,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
         "warning": MessageLookupByLibrary.simpleMessage("Warning"),
         "wating_match": MessageLookupByLibrary.simpleMessage("Waiting match"),
+        "world": MessageLookupByLibrary.simpleMessage("World"),
         "year": MessageLookupByLibrary.simpleMessage("year")
       };
 }

@@ -32,6 +32,25 @@ class IndexDetail {
           ? AppColors.decrease
           : AppColors.yellow;
 
+
+  double get _countUp => double.parse(ot!.split('|')[3]);
+
+  double get _countDown => double.parse(ot!.split('|')[4]);
+
+  double get _countCeiling => double.parse(ot!.split('|')[5]);
+
+  double get pCountUp => (_countCeiling + _countDown + _countUp) != 0
+      ? _countUp / (_countCeiling + _countDown + _countUp)
+      : 0;
+
+  double get pCountDown => (_countCeiling + _countDown + _countUp) != 0
+      ? _countDown / (_countCeiling + _countDown + _countUp)
+      : 0;
+
+  double get pCountCeiling => (_countCeiling + _countDown + _countUp) != 0
+      ? _countCeiling / (_countCeiling + _countDown + _countUp)
+      : 0;
+
   IndexDetail(
       {this.oIndex,
       this.vol,

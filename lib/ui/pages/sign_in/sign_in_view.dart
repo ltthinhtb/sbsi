@@ -32,7 +32,6 @@ class _SignInPageState extends State<SignInPage> with Validator {
         Theme.of(context).textTheme.bodyText1?.copyWith(color: AppColors.white);
 
     final width = MediaQuery.of(context).size.width;
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SizedBox.expand(

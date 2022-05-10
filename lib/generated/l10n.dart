@@ -2659,6 +2659,66 @@ class S {
       args: [],
     );
   }
+
+  /// `World`
+  String get world {
+    return Intl.message(
+      'World',
+      name: 'world',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Branch`
+  String get branch {
+    return Intl.message(
+      'Branch',
+      name: 'branch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not found`
+  String get not_found {
+    return Intl.message(
+      'Not found',
+      name: 'not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Market depth`
+  String get market_depth {
+    return Intl.message(
+      'Market depth',
+      name: 'market_depth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trong nước`
+  String get domestic {
+    return Intl.message(
+      'Trong nước',
+      name: 'domestic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ngoài nước`
+  String get the_world {
+    return Intl.message(
+      'Ngoài nước',
+      name: 'the_world',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import '../../../common/app_text_styles.dart';
+import '../../../model/order_data/inday_order.dart';
 import '../../../model/stock_company_data/stock_company_data.dart';
 
 class AppTextTypeHead<T> extends StatefulWidget {
@@ -39,6 +40,16 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
                 Text('${itemData.stockCode}'),
                 const SizedBox(width: 5),
                 Flexible(child: Text('${itemData.nameVn}')),
+              ],
+            ),
+          );
+        }
+        if (itemData is IndayOrder) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text('${itemData.symbol}'),
               ],
             ),
           );

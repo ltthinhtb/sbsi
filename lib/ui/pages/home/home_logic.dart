@@ -7,6 +7,8 @@ import 'package:sbsi/services/socket/socket.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/enum/vnIndex.dart';
 
+import '../../../model/response/index_chart.dart';
+import '../../../utils/logger.dart';
 import 'home_state.dart';
 
 class HomeLogic extends GetxController {
@@ -43,6 +45,9 @@ class HomeLogic extends GetxController {
     }
     try {
       state.listIndexDetail.value = await apiService.getListIndexDetail(list);
+      for (var element in state.listIndexDetail) {
+        await getChartIndex(element.mc!, element.stockCode!);
+      }
     } catch (e) {
       AppSnackBar.showError(message: e.toString());
     }
@@ -72,6 +77,9 @@ class HomeLogic extends GetxController {
             if (index >= 0) {
               state.listIndexDetail.removeAt(index);
               state.listIndexDetail.insert(index, stock);
+              // if (stock.mc != null) {
+              //   getChartIndex(stock.mc!, stock.stockCode);
+              // }
             }
           } else if (data['data']['id'] == 3220) {
             SocketStock stock = SocketStock.fromJson(data['data']);
@@ -130,6 +138,17 @@ class HomeLogic extends GetxController {
       _socket.addStockSocket(element);
     }
     Get.back(); // đóng bottom sheet
+  }
+
+  Future<IndexChartResponse> getChartIndex(String code, Index index) async {
+    try {
+      var response = await apiService.getChartIndex(code);
+      return response;
+    } catch (e) {
+      logger.e(e);
+      AppSnackBar.showError(message: e.toString());
+      rethrow;
+    }
   }
 
   @override

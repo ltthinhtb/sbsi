@@ -259,5 +259,11 @@
   "advance_action" : "Advance action",
   "money" : "Money",
   "stock" : "Stock",
-  "avg_price_short" : "Giá TB"
+  "avg_price_short" : "Giá TB",
+  "world" : "World",
+  "branch" : "Branch",
+  "not_found": "Not found",
+  "market_depth": "Market depth",
+  "domestic": "Trong nước",
+  "the_world": "Ngoài nước"
 }

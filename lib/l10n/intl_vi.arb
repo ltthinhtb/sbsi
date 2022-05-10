@@ -259,5 +259,12 @@
   "advance_action" : "Thực hiện quyền",
   "money" : "Tiền",
   "stock" : "Chứng khoán",
-  "avg_price_short" : "Giá TB"
+  "avg_price_short" : "Giá TB",
+  "world" : "Thế giới",
+  "branch" : "Chi nhánh",
+  "not_found": "Không có dữ liệu",
+  "market_depth": "Độ sâu thị trường",
+  "domestic": "Trong nước",
+  "the_world": "Ngoài nước",
+  "hello": "sad"
 }

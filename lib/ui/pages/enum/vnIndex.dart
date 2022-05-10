@@ -1,7 +1,7 @@
 enum Index { vn, vn30, hnx, upCom }
 
 extension StockCodeExt on Index {
-  String get name => _mapName[this] ?? "";
+  String? get value => _mapName[this] ?? "";
 
   String get code => _mapCode[this] ?? "";
 

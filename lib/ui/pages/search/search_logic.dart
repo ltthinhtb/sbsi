@@ -28,6 +28,24 @@ class SearchLogic extends GetxController {
     }
   }
 
+  List<StockCompanyData> searchStockCompany(String stockCode) {
+    if (stockCode != '') {
+      List<StockCompanyData> searchResult = state.allStockCompanyData
+          .where(
+            (element) => element.stockCode!.toLowerCase().startsWith(
+          stockCode.toLowerCase(),
+        ),
+      )
+          .toList();
+      if (searchResult.length > 10) {
+        searchResult = searchResult.sublist(0, 10);
+      }
+      return searchResult;
+    } else {
+      return [];
+    }
+  }
+
   void getAllStockCompanyData() {
     state.allStockCompanyData = parentState.allStockCompanyData;
     state.foundStock.value = state.allStockCompanyData;

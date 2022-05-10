@@ -25,6 +25,10 @@ import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/utils/error_message.dart';
 import 'package:sbsi/utils/logger.dart';
 
+import '../model/response/branch_response.dart';
+import '../model/response/index_chart.dart';
+import '../model/response/market_depth_response.dart';
+import '../model/response/stock_follow_branch_response.dart';
 import 'error_exception.dart';
 
 abstract class ApiClient {
@@ -79,6 +83,15 @@ abstract class ApiClient {
   Future<List<NewsStock>> getListStockNews(String stock);
 
   Future<NewsDetail> getNewsDetail(int ID);
+
+  Future<BranchResponse> getStockBranch();
+
+  Future<List<StockBranch>> getDetailStockBranch();
+
+  Future<List<MarketDepth>> getMarketDepth();
+
+  Future<IndexChartResponse> getChartIndex(String indexCode);
+
 }
 
 class _ApiClient implements ApiClient {
@@ -514,5 +527,38 @@ class _ApiClient implements ApiClient {
         queryParameters: {"id": ID}));
     var data = NewsDetail.fromJson(_result.data);
     return data;
+  }
+
+  @override
+  Future<BranchResponse> getStockBranch() async {
+    Response _result =
+        await _getApi(_dio.get(AppConfigs.INFO_SBSI + "listIndustry"));
+    return BranchResponse.fromJson(_result.data);
+  }
+
+  @override
+  Future<List<StockBranch>> getDetailStockBranch() async {
+    Response _result = await _getApi(
+        _dio.get(AppConfigs.INFO_SBSI + "listIndustryHeatMap?top=10"));
+    if (_result.data is String)
+      return StockBranchResponse.fromJson(json.decode(_result.data)).stockData;
+    else
+      return StockBranchResponse.fromJson(_result.data).stockData;
+  }
+
+  @override
+  Future<List<MarketDepth>> getMarketDepth() async {
+    String path = AppConfigs.INFO_SBSI + 'marketDepth';
+    Response _result = await _getApi(_dio.get(path));
+    List<MarketDepth> value =
+        _result.data.map<MarketDepth>((e) => MarketDepth.fromJson(e)).toList();
+    return value;
+  }
+
+  @override
+  Future<IndexChartResponse> getChartIndex(String indexCode) async {
+    Response _result = await _getApi(
+        _dio.get(AppConfigs.URL_DATA_FEED + 'getchartindexdata/' + indexCode));
+    return IndexChartResponse.fromJson(_result.data);
   }
 }
