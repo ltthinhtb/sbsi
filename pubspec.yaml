@@ -78,6 +78,7 @@ dependencies:
   #url_launcher:
   url_launcher: ^6.0.20
   webview_flutter: ^3.0.2
+  flutter_widget_from_html: ^0.8.5
 
   #pinput:
   pinput: ^2.2.7

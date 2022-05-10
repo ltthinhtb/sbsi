@@ -1,5 +1,5 @@
 class NewsDetail {
-  int? articleID;
+  num? articleID;
   String? title;
   String? head;
   String? headImageUrl;
@@ -9,7 +9,7 @@ class NewsDetail {
   String? thumbImageUrl;
   String? uRL;
   String? source;
-  int? wordCount;
+  num? wordCount;
   String? tag;
   List<Stock>? stock;
 
@@ -72,13 +72,13 @@ class NewsDetail {
 
 class Stock {
   String? stockCode;
-  int? closePrice;
-  int? change;
+  num? closePrice;
+  num? change;
   double? perChange;
-  int? totalVol;
+  num? totalVol;
   String? financeURL;
-  int? colorId;
-  int? catID;
+  num? colorId;
+  num? catID;
 
   Stock(
       {this.stockCode,

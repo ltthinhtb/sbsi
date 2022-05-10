@@ -12,8 +12,8 @@ class ApiInterceptors extends InterceptorsWrapper {
     final method = options.method;
     final uri = options.uri;
     final data = options.data;
-
-    if (!options.path.contains("getchartindexdata")) {
+    if (!options.path.contains("getchartindexdata") &&
+        !options.path.contains("newsDetail")) {
       logger.log(
           "\n\n--------------------------------------------------------------------------------------------------------");
       if (method == 'GET') {
@@ -37,7 +37,8 @@ class ApiInterceptors extends InterceptorsWrapper {
     final statusCode = response.statusCode;
     final uri = response.requestOptions.uri;
     final data = (response.data);
-    if (!uri.toString().contains("getchartindexdata")) {
+    if (!uri.toString().contains("getchartindexdata") &&
+        !uri.toString().contains("newsDetail")) {
       logger.d("✅ RESPONSE[$statusCode] => PATH: $uri\n DATA: $data");
     }
 
