@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "902184476570",
+    "project_id": "sbsi-348e8",
+    "storage_bucket": "sbsi-348e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902184476570:android:05a3d70ce20a3ac77fa423",
+        "android_client_info": {
+          "package_name": "com.sbsi.tradetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902184476570-jgcjhoh098jsp3cjj88il752robv7mal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd5v5z4kePmRjxTEcsmOs8jX81qoX5LU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902184476570-jgcjhoh098jsp3cjj88il752robv7mal.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "902184476570-2urj39drre6pis860f68v7akarfhesh7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sbsi.test"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

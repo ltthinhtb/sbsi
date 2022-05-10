@@ -41,7 +41,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBd5v5z4kePmRjxTEcsmOs8jX81qoX5LU8',
-    appId: '1:902184476570:android:a59e45570cd4bfa77fa423',
+    appId: '1:902184476570:android:05a3d70ce20a3ac77fa423',
     messagingSenderId: '902184476570',
     projectId: 'sbsi-348e8',
     storageBucket: 'sbsi-348e8.appspot.com',
@@ -49,11 +49,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDLFm5F_FI2HOO1ZDb02wosbFR25ec9UQQ',
-    appId: '1:902184476570:ios:8f80891871baa1497fa423',
+    appId: '1:902184476570:ios:13e8f246d69a99c97fa423',
     messagingSenderId: '902184476570',
     projectId: 'sbsi-348e8',
     storageBucket: 'sbsi-348e8.appspot.com',
-    iosClientId: '902184476570-d0b5mdm052sdioq4dapv8er66nvs9ppj.apps.googleusercontent.com',
-    iosBundleId: 'com.example.sbsi',
+    iosClientId: '902184476570-ga02kv9i8i2c2pnb0sb819rgr58mapt7.apps.googleusercontent.com',
+    iosBundleId: 'com.sbsi.tradetest',
   );
 }
