@@ -111,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "coupon": MessageLookupByLibrary.simpleMessage("Lợi suất đầu tư"),
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
         "decrease": MessageLookupByLibrary.simpleMessage("Giảm giá"),
+        "delete": MessageLookupByLibrary.simpleMessage("Xóa"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Tổng phí"),
         "domestic": MessageLookupByLibrary.simpleMessage("Trong nước"),
         "edit": MessageLookupByLibrary.simpleMessage("Sửa"),
@@ -344,6 +345,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "the_world": MessageLookupByLibrary.simpleMessage("Ngoài nước"),
         "tks": MessageLookupByLibrary.simpleMessage("Cảm ơn bạn"),
         "today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
+        "top_foreign":
+            MessageLookupByLibrary.simpleMessage("Top nước ngoài mua bán"),
         "total": MessageLookupByLibrary.simpleMessage("Tổng"),
         "total_amount": MessageLookupByLibrary.simpleMessage("Tổng KL"),
         "total_assets": MessageLookupByLibrary.simpleMessage("Tổng tài sản"),

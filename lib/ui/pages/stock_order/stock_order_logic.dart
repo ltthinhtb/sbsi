@@ -248,7 +248,7 @@ class StockOrderLogic extends GetxController {
   void onInit() async {
     super.onInit();
     /// tạo cổng socket
-    socketListen();
+    //socketListen();
 
     loadAccount();
     getAllStockCompanyData();

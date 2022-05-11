@@ -97,11 +97,12 @@ class ListStockView extends StatelessWidget {
                                       "https://info.sbsi.vn/logo/${state.listShortStock[index].stockCode}",
                                   imageBuilder: (context, imageProvider) =>
                                       Container(
+
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: imageProvider,
-                                          fit: BoxFit.fitWidth),
+                                          fit: BoxFit.scaleDown),
                                     ),
                                   ),
                                   placeholder: (context, url) => Container(

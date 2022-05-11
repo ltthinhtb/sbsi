@@ -2719,6 +2719,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Top foreign`
+  String get top_foreign {
+    return Intl.message(
+      'Top foreign',
+      name: 'top_foreign',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

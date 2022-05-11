@@ -266,5 +266,6 @@
   "market_depth": "Độ sâu thị trường",
   "domestic": "Trong nước",
   "the_world": "Ngoài nước",
-  "hello": "sad"
+  "top_foreign": "Top nước ngoài mua bán",
+  "delete" : "Xóa"
 }
