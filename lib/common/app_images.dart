@@ -68,6 +68,12 @@ class AppImages {
   static String user_circle = 'assets/icon_svg/user-circle.svg';
   static String assets_amount = 'assets/icon_svg/amount.svg';
 
+  // transfer
+  static String bank_icon = 'assets/icon_svg/bank_icon.svg';
+  static String credit_card_icon = 'assets/icon_svg/credit_card_icon.svg';
+  static String ic_history = 'assets/icon_svg/ic_history.svg';
+
+
 
   // icon image
   static String present = 'assets/icon_svg/present.svg';

@@ -268,6 +268,9 @@
   "the_world": "Ngoài nước",
   "top_foreign": "Top foreign",
   "delete": "Delete",
-  "settings" : "Settings"
+  "settings" : "Settings",
+  "bank_transfer" : "Bank transfer",
+  "internal_transfer" : "Internal transfer",
+  "history_transfer" : "History transfer"
 
 }

@@ -2749,6 +2749,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Bank transfer`
+  String get bank_transfer {
+    return Intl.message(
+      'Bank transfer',
+      name: 'bank_transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal transfer`
+  String get internal_transfer {
+    return Intl.message(
+      'Internal transfer',
+      name: 'internal_transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History transfer`
+  String get history_transfer {
+    return Intl.message(
+      'History transfer',
+      name: 'history_transfer',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -268,5 +268,10 @@
   "the_world": "Ngoài nước",
   "top_foreign": "Top nước ngoài mua bán",
   "delete" : "Xóa",
-  "settings" : "Cài đặt"
+  "settings" : "Cài đặt",
+  "bank_transfer" : "Chuyển tiền ra ngân hàng",
+  "internal_transfer" : "Chuyển tiền nội bộ",
+  "history_transfer" : "Chuyển tiền nội bộ"
+
+
 }

@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "aver_short": MessageLookupByLibrary.simpleMessage("AVG"),
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Bank account"),
+        "bank_transfer": MessageLookupByLibrary.simpleMessage("Bank transfer"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
         "bond": MessageLookupByLibrary.simpleMessage("Bond"),
         "bond_assets": MessageLookupByLibrary.simpleMessage("Bond assets"),
@@ -138,6 +139,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "have_account": MessageLookupByLibrary.simpleMessage("Have account"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
+        "history_transfer":
+            MessageLookupByLibrary.simpleMessage("History transfer"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "identity_card": MessageLookupByLibrary.simpleMessage("Identity card"),
         "increase": MessageLookupByLibrary.simpleMessage("Increase"),
@@ -155,6 +158,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "interest_now": MessageLookupByLibrary.simpleMessage("Interest now"),
         "interest_st": MessageLookupByLibrary.simpleMessage("Interst ST"),
         "interest_tt": MessageLookupByLibrary.simpleMessage("Interst TT"),
+        "internal_transfer":
+            MessageLookupByLibrary.simpleMessage("Internal transfer"),
         "invalid_price": MessageLookupByLibrary.simpleMessage("Invalid price"),
         "invalid_volumn":
             MessageLookupByLibrary.simpleMessage("Invalid volumn"),

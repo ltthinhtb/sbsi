@@ -56,7 +56,8 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                      },
                       title: S.of(context).advance_money,
                       button: AppImages.cash_wallet),
                   const Padding(
@@ -67,7 +68,10 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(RouteConfig.money_transfer);
+
+                      },
                       title: S.of(context).transfer,
                       button: AppImages.cash_wallet_green),
                   const Padding(

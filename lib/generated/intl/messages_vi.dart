@@ -56,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aver_short": MessageLookupByLibrary.simpleMessage("TB"),
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
+        "bank_transfer":
+            MessageLookupByLibrary.simpleMessage("Chuyển tiền ra ngân hàng"),
         "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh"),
         "bond": MessageLookupByLibrary.simpleMessage("Trái phiếu"),
         "bond_assets":
@@ -144,6 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gender": MessageLookupByLibrary.simpleMessage("Giới tính"),
         "have_account": MessageLookupByLibrary.simpleMessage("Đã có tài khoản"),
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử giao dịch"),
+        "history_transfer":
+            MessageLookupByLibrary.simpleMessage("Chuyển tiền nội bộ"),
         "home": MessageLookupByLibrary.simpleMessage("Bảng giá"),
         "identity_card":
             MessageLookupByLibrary.simpleMessage("Chứng minh nhân dân"),
@@ -160,6 +164,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "interest_now": MessageLookupByLibrary.simpleMessage("Đầu tư ngay"),
         "interest_st": MessageLookupByLibrary.simpleMessage("Lãi ST"),
         "interest_tt": MessageLookupByLibrary.simpleMessage("Lãi TT"),
+        "internal_transfer":
+            MessageLookupByLibrary.simpleMessage("Chuyển tiền nội bộ"),
         "invalid_price":
             MessageLookupByLibrary.simpleMessage("Giá không hợp lệ"),
         "invalid_volumn":
