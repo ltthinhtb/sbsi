@@ -19,6 +19,7 @@ import 'package:sbsi/networks/api_client.dart';
 import 'package:sbsi/networks/api_util.dart';
 import 'package:get/get.dart';
 
+import '../../model/entities/cash_account.dart';
 import '../../model/response/branch_response.dart';
 import '../../model/response/index_chart.dart';
 import '../../model/response/market_depth_response.dart';

@@ -33,6 +33,7 @@ extension StockOrderService on ApiService {
     return await _apiClient.getCashBalance(requestParams);
   }
 
+
   Future<ShareBalance> getShareBalance(RequestParams requestParams) async {
     return await _apiClient.getShareBalance(requestParams);
   }

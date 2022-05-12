@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart' as get_x;
 import 'package:sbsi/configs/app_configs.dart';
 import 'package:sbsi/generated/l10n.dart';
+import 'package:sbsi/model/entities/cash_account.dart';
 import 'package:sbsi/model/entities/index.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/index.dart';
@@ -92,6 +93,9 @@ abstract class ApiClient {
 
   Future<IndexChartResponse> getChartIndex(String indexCode);
 
+  Future<CashAccount> getCashAccount(RequestParams requestParams);
+
+  Future getLisBank(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -113,7 +117,7 @@ class _ApiClient implements ApiClient {
       var _rs = _mapData['rs'] ?? "FOException.InvalidSessionException";
 
       /// kiểm tra điều kiện thành công
-      if (_rc == 1) {
+      if (_rc == 1 || _rc == "1") {
         return response;
       }
 
@@ -560,5 +564,27 @@ class _ApiClient implements ApiClient {
     Response _result = await _getApi(
         _dio.get(AppConfigs.URL_DATA_FEED + 'getchartindexdata/' + indexCode));
     return IndexChartResponse.fromJson(_result.data);
+  }
+
+  @override
+  Future<CashAccount> getCashAccount(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    return CashAccount.fromJson(_mapData.first);
+  }
+
+  @override
+  Future getLisBank(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
   }
 }

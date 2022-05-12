@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "about_choose": MessageLookupByLibrary.simpleMessage("About choose"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "account_info": MessageLookupByLibrary.simpleMessage("Account info"),
+        "account_receiver":
+            MessageLookupByLibrary.simpleMessage("Account receiver"),
         "account_short": MessageLookupByLibrary.simpleMessage("Acc"),
         "account_user": MessageLookupByLibrary.simpleMessage("User"),
         "activated_account":
@@ -72,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_time": MessageLookupByLibrary.simpleMessage("Cancel time"),
         "cancel_volumn": MessageLookupByLibrary.simpleMessage("Cancel volumn"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
+        "cash_availability":
+            MessageLookupByLibrary.simpleMessage("Cash Availability"),
         "cash_balance": MessageLookupByLibrary.simpleMessage("Cash balance"),
         "category": MessageLookupByLibrary.simpleMessage("Menu"),
         "ceil": MessageLookupByLibrary.simpleMessage("Ceil"),

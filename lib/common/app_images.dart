@@ -72,6 +72,7 @@ class AppImages {
   static String bank_icon = 'assets/icon_svg/bank_icon.svg';
   static String credit_card_icon = 'assets/icon_svg/credit_card_icon.svg';
   static String ic_history = 'assets/icon_svg/ic_history.svg';
+  static String ic_money = 'assets/icon_svg/money_2.svg';
 
 
 

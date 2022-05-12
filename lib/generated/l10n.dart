@@ -2779,6 +2779,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Cash Availability`
+  String get cash_availability {
+    return Intl.message(
+      'Cash Availability',
+      name: 'cash_availability',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account receiver`
+  String get account_receiver {
+    return Intl.message(
+      'Account receiver',
+      name: 'account_receiver',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -271,6 +271,7 @@
   "settings" : "Settings",
   "bank_transfer" : "Bank transfer",
   "internal_transfer" : "Internal transfer",
-  "history_transfer" : "History transfer"
-
+  "history_transfer" : "History transfer",
+  "cash_availability" : "Cash Availability",
+  "account_receiver" : "Account receiver"
 }

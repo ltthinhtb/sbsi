@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "account_info":
             MessageLookupByLibrary.simpleMessage("Thông tin tài khoản"),
+        "account_receiver":
+            MessageLookupByLibrary.simpleMessage("Tài khoản nhận"),
         "account_short": MessageLookupByLibrary.simpleMessage("TK"),
         "account_user": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
         "activated_account":
@@ -77,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_time": MessageLookupByLibrary.simpleMessage("Thời gian huỷ"),
         "cancel_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng huỷ"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Đã huỷ"),
+        "cash_availability":
+            MessageLookupByLibrary.simpleMessage("Số dư khả dụng"),
         "cash_balance": MessageLookupByLibrary.simpleMessage("Tài sản ròng"),
         "category": MessageLookupByLibrary.simpleMessage("Khác"),
         "ceil": MessageLookupByLibrary.simpleMessage("Trần"),

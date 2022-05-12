@@ -13,4 +13,12 @@ extension WaletService on ApiService {
   Future<Portfolio?> getPortfolio(RequestParams requestParams) async {
     return await _apiClient.getPortfolio(requestParams);
   }
+
+  Future<CashAccount> getCashAccount(RequestParams requestParams) async {
+    return await _apiClient.getCashAccount(requestParams);
+  }
+
+  Future getListBank(RequestParams requestParams) async {
+    return await _apiClient.getLisBank(requestParams);
+  }
 }
