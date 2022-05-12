@@ -18,18 +18,21 @@ class CategoryStockAdapter extends TypeAdapter<CategoryStock> {
     };
     return CategoryStock(
       title: fields[1] as String,
-      stocks: (fields[2] as List).cast<String>(),
+      uuid: fields[2] as String,
+      fromUserID: fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, CategoryStock obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(1)
       ..write(obj.title)
       ..writeByte(2)
-      ..write(obj.stocks);
+      ..write(obj.uuid)
+      ..writeByte(3)
+      ..write(obj.fromUserID);
   }
 
   @override

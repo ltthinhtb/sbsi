@@ -1,4 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:uuid/uuid.dart';
+
 part 'stock_company_data.g.dart';
 
 @HiveType(typeId: 3)
@@ -13,9 +15,22 @@ class StockCompanyData {
   String? postTo;
   @HiveField(5)
   String? nameShort;
+  @HiveField(6)
+  String? uuid;
+  @HiveField(7)
+  String? fromCategoryID;
 
   StockCompanyData(
-      {this.stockCode, this.nameVn, this.nameEn, this.postTo, this.nameShort});
+      {this.stockCode,
+      this.nameVn,
+      this.nameEn,
+      this.postTo,
+      this.nameShort,
+      this.uuid,
+      this.fromCategoryID}) {
+    // tạo key
+    if (this.uuid != null) uuid = const Uuid().v1();
+  }
 
   StockCompanyData.fromJson(Map<String, dynamic> json) {
     stockCode = json['stock_code'];
@@ -32,6 +47,7 @@ class StockCompanyData {
     data['name_en'] = nameEn;
     data['post_to'] = postTo;
     data['name_short'] = nameShort;
+    data['uuid'] = uuid;
     return data;
   }
 }

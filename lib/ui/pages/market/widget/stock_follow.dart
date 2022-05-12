@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/ui/pages/home/home_logic.dart';
+import 'package:sbsi/ui/pages/market/market_logic.dart';
 import 'package:sbsi/utils/money_utils.dart';
 
 
@@ -13,7 +13,8 @@ class StockFollowView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = Get.find<HomeLogic>().state;
+    final state = Get.find<MarketLogic>().state;
+    final logic = Get.find<MarketLogic>();
     final caption = Theme.of(context).textTheme.caption;
     return Obx(() {
       if (state.listStock.isNotEmpty) {
@@ -31,8 +32,8 @@ class StockFollowView extends StatelessWidget {
                     SlidableAction(
                       onPressed: (context) {
                         if (state.listStock[index].sym != null) {
-                          // logic.removeStockDB(
-                          //     state.listStock[index].sym!);
+                          logic.removeStockDB(
+                              state.listStock[index].sym!);
                         }
                       },
                       backgroundColor: AppColors.red,

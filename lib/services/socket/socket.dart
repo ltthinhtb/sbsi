@@ -24,6 +24,10 @@ class Socket {
     socket.onDisconnect((_) => logger.w('disconnect'));
   }
 
+  void disconnectSocket(){
+    socket.disconnect();
+  }
+
   void addStockSocket(String stock) {
     var map = {"action": "join", "data": "$stock"};
     var msg = json.encode(map);

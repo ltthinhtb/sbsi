@@ -20,6 +20,7 @@ class AuthService extends GetxService {
     return this;
   }
 
+  // lấy thông tin tk gồm tài khoản thường và tài khoản margin
   Future<void> getListAccount() async {
     ParamsObject _object = ParamsObject();
     _object.type = "cursor";

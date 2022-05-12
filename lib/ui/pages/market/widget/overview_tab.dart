@@ -20,8 +20,6 @@ class OverviewView extends StatefulWidget {
 class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClientMixin {
   final state = Get.find<MarketLogic>().state;
 
-  final logic = Get.find<MarketLogic>();
-
   @override
   Widget build(BuildContext context) {
     super.build(context);

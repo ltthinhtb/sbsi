@@ -97,9 +97,11 @@ class AppThemes {
   static final InputDecorationTheme _inputDecorationLightTheme =
       InputDecorationTheme(
           isDense: true,
-          labelStyle: AppTextStyle.caption.copyWith(color: AppColors.textGreen),
-          hintStyle: AppTextStyle.subTitle2.copyWith(color: AppColors.textGrey),
-          errorStyle: AppTextStyle.H6.copyWith(color: AppColors.red),
+          labelStyle: AppTextStyle.caption
+              .copyWith(color: AppColors.textGreen, height: 1),
+          hintStyle: AppTextStyle.subTitle2
+              .copyWith(color: AppColors.textGrey, height: 1),
+          errorStyle: AppTextStyle.H6.copyWith(color: AppColors.red, height: 1),
           fillColor: AppColors.white,
           focusColor: AppColors.textGreen,
           border: _defaultBorder(),
@@ -156,8 +158,7 @@ class AppThemes {
       indicatorSize: TabBarIndicatorSize.tab,
       labelPadding: const EdgeInsets.symmetric(vertical: 8),
       indicator: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: AppColors.tabIn)
-  );
+          borderRadius: BorderRadius.circular(8), color: AppColors.tabIn));
 
   static const ColorScheme _lightColorScheme = ColorScheme(
     primary: AppColors.primary,
@@ -213,8 +214,7 @@ class AppThemes {
     dividerColor: AppColors.grayF2,
     appBarTheme: AppBarTheme(
         iconTheme: const IconThemeData(color: _darkIconColor),
-        titleTextStyle:
-            AppTextStyle.H5Bold.copyWith(color: AppColors.white)),
+        titleTextStyle: AppTextStyle.H5Bold.copyWith(color: AppColors.white)),
     iconTheme: const IconThemeData(
       color: _lightIconColor,
     ),

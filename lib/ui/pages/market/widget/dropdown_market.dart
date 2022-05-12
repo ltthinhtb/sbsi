@@ -6,33 +6,37 @@ import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
-import 'package:sbsi/ui/commons/app_bottom_sheet.dart';
+import 'package:sbsi/services/index.dart';
 import 'package:sbsi/ui/commons/app_dialog.dart';
-import 'package:sbsi/ui/commons/app_loading.dart';
-import 'package:sbsi/ui/pages/home/home_logic.dart';
 import 'package:sbsi/ui/pages/market/widget/stock_follow.dart';
 import 'package:sbsi/ui/pages/search/search_logic.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
+import 'package:sbsi/ui/widgets/dropdown/app_drop_down.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/validator.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../model/entities/category_stock.dart';
 import '../../../widgets/textfields/app_text_typehead.dart';
+import '../market_logic.dart';
 
 class MarketOption extends StatelessWidget with Validator {
   MarketOption({Key? key}) : super(key: key);
 
-  final logic = Get.find<HomeLogic>();
-  final state = Get.find<HomeLogic>().state;
+  final logic = Get.find<MarketLogic>();
+  final state = Get.find<MarketLogic>().state;
   final searchLogic = Get.put(SearchLogic());
   final searchState = Get.find<SearchLogic>().state;
   final _searchController = TextEditingController();
 
+  final store = Get.find<StoreService>();
+
   @override
   Widget build(BuildContext context) {
     final headline6 = Theme.of(context).textTheme.headline6;
+
     return SingleChildScrollView(
       padding: EdgeInsets.zero,
       child: Column(children: [
@@ -40,45 +44,65 @@ class MarketOption extends StatelessWidget with Validator {
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Obx(() {
-                      return AppTextFieldWidget(
-                        hintTextStyle:
-                            AppTextStyle.H6.copyWith(color: AppColors.grayB5),
-                        readOnly: true,
-                        onTap: () => showBottomSheetDialogEdit(context),
-                        hintText: state.category.value.label.value,
-                      );
-                    }),
-                  ),
-                  const SizedBox(width: 10),
-                  GestureDetector(
-                    onTap: () async {
-                      showDialogAddCategory(context);
-                    },
-                    child: Container(
-                      height: 48,
-                      decoration: BoxDecoration(
-                          color: AppColors.yellow.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(5)),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 16),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SvgPicture.asset(AppImages.add_square),
-                          const SizedBox(width: 5),
-                          Text(
-                            S.of(context).add,
-                            style: headline6!.copyWith(color: AppColors.yellow),
-                          )
-                        ],
-                      ),
+              const SizedBox(
+                height: 16,
+              ),
+              IntrinsicHeight(
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 199,
+                      child: Obx(() {
+                        var categoryDefalut = state.category_default;
+                        return AppDropDownWidget<CategoryStock>(
+                          value: state.category.value,
+                          onChanged: (categoryEntity) {
+                            logic.selectCategory(categoryEntity!);
+                          },
+                          items: [
+                            DropdownMenuItem<CategoryStock>(
+                                child: Text(categoryDefalut.title),
+                                value: categoryDefalut),
+                            ...store.listCategoryUser
+                                .map((e) => DropdownMenuItem<CategoryStock>(
+                                    child: Text(e.title), value: e))
+                                .toList()
+                          ],
+                        );
+                      }),
                     ),
-                  )
-                ],
+                    const SizedBox(width: 16),
+                    Expanded(
+                      flex: 128,
+                      child: GestureDetector(
+                        onTap: () async {
+                          showDialogAddCategory(context);
+                        },
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: AppColors.PastelSecond2,
+                              borderRadius: BorderRadius.circular(8)),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 16),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SvgPicture.asset(AppImages.add_square),
+                              const SizedBox(width: 6),
+                              Text(
+                                S.of(context).add,
+                                style: headline6?.copyWith(
+                                    color:
+                                        const Color.fromRGBO(251, 122, 4, 1)),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
               const SizedBox(height: 16),
               buildSearchStock(context),
@@ -99,6 +123,7 @@ class MarketOption extends StatelessWidget with Validator {
         suggestionsCallback: (String pattern) {
           return searchLogic.searchStockCompany(pattern);
         },
+        hintText: "Thêm mã CK",
         onSuggestionSelected: (suggestion) {
           FocusScope.of(context).unfocus();
           if (suggestion.stockCode != null) {
@@ -149,7 +174,6 @@ class MarketOption extends StatelessWidget with Validator {
   }
 
   void showDialogAddCategory(BuildContext context) {
-    var editController = TextEditingController();
     AppDiaLog.showDialog(
       title: S.of(context).add_category,
       content: SizedBox(
@@ -161,7 +185,7 @@ class MarketOption extends StatelessWidget with Validator {
               AppTextFieldWidget(
                 hintText: S.of(context).add_category,
                 hintTextStyle: const TextStyle(color: AppColors.grayB5),
-                inputController: editController,
+                inputController: state.categoryController,
               ),
               const SizedBox(height: 20),
               Row(
@@ -169,14 +193,16 @@ class MarketOption extends StatelessWidget with Validator {
                   Expanded(
                       child: ButtonFill(
                     title: S.of(context).close,
-                    voidCallback: () {},
+                    voidCallback: () {
+                      Get.back();
+                    },
                   )),
                   const SizedBox(width: 20),
                   Expanded(
                       child: ButtonFill(
                     title: S.of(context).add,
                     voidCallback: () async {
-                      AppLoading.showLoading();
+                      logic.addCategory();
                     },
                   ))
                 ],
@@ -184,94 +210,6 @@ class MarketOption extends StatelessWidget with Validator {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  void showBottomSheetDialogEdit(BuildContext context) {
-    AppBottomSheet.show(
-      Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            S.of(context).menu,
-            style: AppTextStyle.H5Bold.copyWith(color: AppColors.white),
-          ),
-          const SizedBox(
-            height: 26,
-          ),
-          Flexible(
-            child: Obx(() {
-              return ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: (context, int index) {
-                    return Obx(() {
-                      return rowData(
-                          context, state.listCategory[index].label.value,
-                          deleteCategory: () {
-                        logic.deleteCategory(state.listCategory[index].title);
-                      }, choose: () async {
-                        AppLoading.showLoading();
-                        await logic.selectCategory(state.listCategory[index]);
-                        AppLoading.disMissLoading();
-                        Get.back();
-                      }, editCategory: () {
-                        final editController = TextEditingController(
-                            text: state.listCategory[index].title);
-                        AppDiaLog.showDialog(
-                          title: S.of(context).edit_category,
-                          content: SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 32),
-                              child: Column(
-                                children: [
-                                  AppTextFieldWidget(
-                                    hintText: S.of(context).edit_category,
-                                    hintTextStyle: const TextStyle(
-                                        color: AppColors.grayB5),
-                                    inputController: editController,
-                                  ),
-                                  const SizedBox(height: 20),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                          child: ButtonFill(
-                                        title: S.of(context).close,
-                                        voidCallback: () {
-                                          Get.back();
-                                        },
-                                      )),
-                                      const SizedBox(width: 20),
-                                      Expanded(
-                                          child: ButtonFill(
-                                        title: S.of(context).edit,
-                                        voidCallback: () {
-                                          logic.editCategory(
-                                              state.listCategory[index].title,
-                                              editController.text);
-                                          editController.clear();
-                                          Navigator.pop(context);
-                                        },
-                                      ))
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      });
-                    });
-                  },
-                  itemCount: state.listCategory.length);
-            }),
-          )
-        ],
       ),
     );
   }

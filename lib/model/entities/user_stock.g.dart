@@ -19,20 +19,17 @@ class UserStockAdapter extends TypeAdapter<UserStock> {
     return UserStock(
       name: fields[1] as String,
       userID: fields[2] as String,
-      category: (fields[3] as List).cast<CategoryStock>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, UserStock obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(2)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.userID)
-      ..writeByte(3)
-      ..write(obj.category);
+      ..write(obj.userID);
   }
 
   @override

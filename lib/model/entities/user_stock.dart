@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:sbsi/model/entities/category_stock.dart';
 
 part 'user_stock.g.dart';
 
@@ -9,13 +8,11 @@ class UserStock {
   String name;
   @HiveField(2)
   String userID;
-  @HiveField(3)
-  List<CategoryStock> category;
 
-  UserStock({required this.name, required this.userID, required this.category});
+  UserStock({required this.name, required this.userID});
 
   @override
   String toString() {
-    return 'UserStock{name: $name, userID: $userID, category: $category}';
+    return 'UserStock{name: $name, userID: $userID}';
   }
 }

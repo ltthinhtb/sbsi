@@ -47,7 +47,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
             ),
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.subtitle2,
             icon: SvgPicture.asset(AppImages.chevron_down),
             items: items,
           ),

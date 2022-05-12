@@ -4,7 +4,7 @@ import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/model/response/index_chart.dart';
 import 'package:sbsi/model/response/index_detail.dart';
-import 'package:sbsi/ui/pages/home/home_logic.dart';
+import 'package:sbsi/ui/pages/market/market_logic.dart';
 import 'package:sbsi/ui/widgets/chart/custom_chart.dart';
 
 import '../../enum/vnIndex.dart';
@@ -14,7 +14,7 @@ class StockExchangesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = Get.find<HomeLogic>().state;
+    final state = Get.find<MarketLogic>().state;
     final body2 = Theme.of(context).textTheme.bodyText2;
 
     return SizedBox(
@@ -141,10 +141,9 @@ class ChartIndexPoint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<IndexChartResponse>(
-        future:
-            Get.find<HomeLogic>().getChartIndex(index.mc!, index.stockCode!),
+        future: Get.find<MarketLogic>().getChartIndex(index.mc!),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.hasData && (snapshot.data?.data?.isNotEmpty ?? false)) {
             var chart = snapshot.data ?? IndexChartResponse();
             // print('chart ${index.stockCode?.value} độ dài ${chart.dataChart.length}');
             return CustomLineChart(

@@ -60,10 +60,8 @@ class SignInLogic extends GetxController with Validator {
               }
             });
           }
-          await storeService.addUser(UserStock(
-              name: result.data!.name!,
-              userID: result.data!.user!,
-              category: []));
+          await storeService.addUser(
+              UserStock(name: result.data!.name!, userID: result.data!.user!));
           await authService.getListAccount();
           await Get.offAllNamed(RouteConfig.main);
         } else {

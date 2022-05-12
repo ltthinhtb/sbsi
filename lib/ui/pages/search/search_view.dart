@@ -5,7 +5,7 @@ import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/services/setting_service.dart';
-import 'package:sbsi/ui/pages/home/home_logic.dart';
+import 'package:sbsi/ui/pages/market/market_logic.dart';
 import 'package:sbsi/ui/pages/search/search_logic.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 
@@ -21,6 +21,7 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final logic = Get.put(SearchLogic());
   final state = Get.find<SearchLogic>().state;
+
   // bỏ setting service đi
   final settingService = Get.find<SettingService>();
 
@@ -106,7 +107,7 @@ class _SearchPageState extends State<SearchPage> {
                 child: MaterialButton(
                   onPressed: () {
                     _isLike = !_isLike;
-                    Get.find<HomeLogic>().addStockDB(data.stockCode!);
+                    Get.find<MarketLogic>().addStockDB(data.stockCode!);
                   },
                   animationDuration: const Duration(microseconds: 100),
                   elevation: 0,

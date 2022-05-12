@@ -22,13 +22,15 @@ class StockCompanyDataAdapter extends TypeAdapter<StockCompanyData> {
       nameEn: fields[3] as String?,
       postTo: fields[4] as String?,
       nameShort: fields[5] as String?,
+      uuid: fields[6] as String?,
+      fromCategoryID: fields[7] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, StockCompanyData obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(7)
       ..writeByte(1)
       ..write(obj.stockCode)
       ..writeByte(2)
@@ -38,7 +40,11 @@ class StockCompanyDataAdapter extends TypeAdapter<StockCompanyData> {
       ..writeByte(4)
       ..write(obj.postTo)
       ..writeByte(5)
-      ..write(obj.nameShort);
+      ..write(obj.nameShort)
+      ..writeByte(6)
+      ..write(obj.uuid)
+      ..writeByte(7)
+      ..write(obj.fromCategoryID);
   }
 
   @override

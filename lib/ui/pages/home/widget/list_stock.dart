@@ -58,8 +58,8 @@ class ListStockView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TabBar(
                   padding: EdgeInsets.zero,
-                  onTap: (value) {
-                    homeLogic.getTopStockData(value);
+                  onTap: (index) {
+                    homeLogic.getTopStockData(index);
                   },
                   tabs: StockEnum.values
                       .map((e) => Center(child: Text(e.title(context))))
