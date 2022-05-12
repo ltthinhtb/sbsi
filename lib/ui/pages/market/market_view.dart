@@ -8,6 +8,7 @@ import 'package:sbsi/ui/pages/market/widget/overview_tab.dart';
 import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
 import '../../../generated/l10n.dart';
 import 'enum/fork_enums.dart';
+import 'widget/dropdown_market.dart';
 
 class MarketPage extends StatefulWidget {
   const MarketPage({Key? key}) : super(key: key);
@@ -16,11 +17,11 @@ class MarketPage extends StatefulWidget {
   State<MarketPage> createState() => _MarketPageState();
 }
 
-class _MarketPageState extends State<MarketPage> with SingleTickerProviderStateMixin{
+class _MarketPageState extends State<MarketPage>
+    with SingleTickerProviderStateMixin {
   final logic = Get.put(MarketLogic());
   final w = Get.put(WalletLogic());
   final state = Get.find<MarketLogic>().state;
-  late final Timer timer;
 
   TabController? _tabController;
 
@@ -28,15 +29,11 @@ class _MarketPageState extends State<MarketPage> with SingleTickerProviderStateM
   void initState() {
     super.initState();
     _tabController = TabController(length: ForkEnum.values.length, vsync: this);
-    // timer = Timer.periodic(const Duration(seconds: 10), (Timer t) {
-    //   logic.getMarketDepth();
-    //   logic.getDetailStockBranch();
-    // });
+
   }
 
   @override
   void dispose() {
-    timer.cancel();
     _tabController?.dispose();
     super.dispose();
   }
@@ -78,13 +75,10 @@ class _MarketPageState extends State<MarketPage> with SingleTickerProviderStateM
                       .map((e) => Center(child: Text(e.title(context))))
                       .toList()),
               Expanded(
-                child: TabBarView(
-                  controller: _tabController,
-                    children: [
+                child: TabBarView(controller: _tabController, children: [
                   OverviewView(),
+                  MarketOption(),
                   OverviewView(),
-                  OverviewView(),
-                  OverviewView()
                 ]),
               )
             ],

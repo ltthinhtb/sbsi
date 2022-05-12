@@ -33,7 +33,8 @@ class MarketOption extends StatelessWidget with Validator {
   @override
   Widget build(BuildContext context) {
     final headline6 = Theme.of(context).textTheme.headline6;
-    return Container(
+    return SingleChildScrollView(
+      padding: EdgeInsets.zero,
       child: Column(children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -125,8 +126,7 @@ class MarketOption extends StatelessWidget with Validator {
               onTap: choose,
               child: Text(
                 title,
-                style:
-                    AppTextStyle.H6.copyWith(color: AppColors.white),
+                style: AppTextStyle.H6.copyWith(color: AppColors.white),
               ),
             ),
           ),
@@ -168,7 +168,8 @@ class MarketOption extends StatelessWidget with Validator {
                 children: [
                   Expanded(
                       child: ButtonFill(
-                    title: S.of(context).close, voidCallback: () {  },
+                    title: S.of(context).close,
+                    voidCallback: () {},
                   )),
                   const SizedBox(width: 20),
                   Expanded(
@@ -231,8 +232,8 @@ class MarketOption extends StatelessWidget with Validator {
                                 children: [
                                   AppTextFieldWidget(
                                     hintText: S.of(context).edit_category,
-                                    hintTextStyle:
-                                        const TextStyle(color: AppColors.grayB5),
+                                    hintTextStyle: const TextStyle(
+                                        color: AppColors.grayB5),
                                     inputController: editController,
                                   ),
                                   const SizedBox(height: 20),

@@ -19,7 +19,7 @@ class OrderListPage extends StatefulWidget {
 
 class _OrderListPageState extends State<OrderListPage>
     with SingleTickerProviderStateMixin {
-  final logic = Get.put(OrderListLogic());
+  final logic = Get.find<OrderListLogic>();
   final state = Get.find<OrderListLogic>().state;
 
   @override

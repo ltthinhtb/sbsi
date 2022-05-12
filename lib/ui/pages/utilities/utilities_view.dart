@@ -7,6 +7,7 @@ import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../router/route_config.dart';
 import 'utilities_logic.dart';
 
 class UtilitiesPage extends StatefulWidget {
@@ -185,7 +186,22 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(RouteConfig.settings);
+                      },
+                      title: S.of(context).settings,
+                      button: AppImages.setting),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Divider(
+                      thickness: 1,
+                      height: 32,
+                    ),
+                  ),
+                  rowButton(
+                      onTap: () {
+                        Get.offAllNamed(RouteConfig.login);
+                      },
                       title: S.of(context).logout,
                       button: AppImages.logout),
                   const SizedBox(height: 16),
@@ -202,22 +218,25 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
       {required String button,
       required String title,
       required VoidCallback onTap}) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 20),
-      child: Row(
-        children: [
-          SvgPicture.asset(button),
-          const SizedBox(width: 16),
-          Expanded(
-              child: Text(
-            title,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle1
-                ?.copyWith(fontWeight: FontWeight.w700),
-          )),
-          SvgPicture.asset(AppImages.vector)
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 20),
+        child: Row(
+          children: [
+            SvgPicture.asset(button),
+            const SizedBox(width: 16),
+            Expanded(
+                child: Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1
+                  ?.copyWith(fontWeight: FontWeight.w700),
+            )),
+            SvgPicture.asset(AppImages.vector)
+          ],
+        ),
       ),
     );
   }

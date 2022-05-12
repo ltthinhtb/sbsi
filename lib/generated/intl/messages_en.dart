@@ -279,6 +279,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sell_t1": MessageLookupByLibrary.simpleMessage("Sell T1"),
         "sell_t2": MessageLookupByLibrary.simpleMessage("Sell T2"),
         "sell_t_back": MessageLookupByLibrary.simpleMessage("Sell back"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "settings_language": MessageLookupByLibrary.simpleMessage("Language"),
         "settings_languageEnglish":
             MessageLookupByLibrary.simpleMessage("English"),

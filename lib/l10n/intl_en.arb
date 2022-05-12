@@ -267,5 +267,7 @@
   "domestic": "Trong nước",
   "the_world": "Ngoài nước",
   "top_foreign": "Top foreign",
-  "delete": "Delete"
+  "delete": "Delete",
+  "settings" : "Settings"
+
 }

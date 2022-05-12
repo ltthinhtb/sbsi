@@ -290,6 +290,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sell_t1": MessageLookupByLibrary.simpleMessage("Chở về T1"),
         "sell_t2": MessageLookupByLibrary.simpleMessage("Chở về T2"),
         "sell_t_back": MessageLookupByLibrary.simpleMessage("Quyền trở về"),
+        "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "settings_language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "settings_languageEnglish":
             MessageLookupByLibrary.simpleMessage("English"),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
 
-enum ForkEnum { overview, menu, world, branch }
+enum ForkEnum { overview, menu, world }
 
 extension ForkExt on ForkEnum {
   String title(BuildContext context) {
@@ -13,8 +13,7 @@ extension ForkExt on ForkEnum {
         return S.of(context).menu;
       case ForkEnum.world:
         return S.of(context).world;
-      case ForkEnum.branch:
-        return S.of(context).branch;
+
     }
   }
 }

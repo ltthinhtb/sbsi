@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sbsi/common/app_dimens.dart';
-import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/services/index.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/ui/commons/appbar.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -18,16 +18,7 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        title: Container(
-          child: Text(
-            S.of(context).settings_language,
-            style: AppTextStyle.H3,
-          ),
-        ),
-      ),
+      appBar: AppBarCustom(title: S.of(context).settings,),
       body: Container(
         padding: const EdgeInsets.all(AppDimens.paddingNormal),
         child: Column(
