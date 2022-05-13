@@ -273,5 +273,7 @@
   "internal_transfer" : "Internal transfer",
   "history_transfer" : "History transfer",
   "cash_availability" : "Cash Availability",
-  "account_receiver" : "Account receiver"
+  "account_receiver" : "Account receiver",
+  "bank" : "Bank"
+
 }

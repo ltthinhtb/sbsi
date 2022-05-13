@@ -18,7 +18,11 @@ extension WaletService on ApiService {
     return await _apiClient.getCashAccount(requestParams);
   }
 
-  Future getListBank(RequestParams requestParams) async {
+  Future<List<Bank>> getListBank(RequestParams requestParams) async {
     return await _apiClient.getLisBank(requestParams);
+  }
+
+  Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(RequestParams requestParams) async {
+    return await _apiClient.getListBeneficiaryAccount(requestParams);
   }
 }

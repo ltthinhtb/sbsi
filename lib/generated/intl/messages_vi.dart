@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Giá khớp trung bình"),
         "aver_short": MessageLookupByLibrary.simpleMessage("TB"),
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
+        "bank": MessageLookupByLibrary.simpleMessage("Chọn ngân hàng nhận"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
         "bank_transfer":
             MessageLookupByLibrary.simpleMessage("Chuyển tiền ra ngân hàng"),

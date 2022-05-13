@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/model/entities/beneficiary_account.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/money_transfer/money_transfer_logic.dart';
 import 'package:sbsi/ui/widgets/dropdown/app_drop_down.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../model/response/list_account_response.dart';
-import '../../../../services/auth_service.dart';
+import '../../../../model/entities/bank.dart';
 import '../widget/account_dropdown.dart';
 import '../widget/money_availability.dart';
 
@@ -20,6 +20,8 @@ class BankTransfer extends StatefulWidget {
 
 class _BankTransferState extends State<BankTransfer> {
   final state = Get.find<MoneyTransferLogic>().state;
+  final logic = Get.find<MoneyTransferLogic>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,26 +63,36 @@ class _BankTransferState extends State<BankTransfer> {
                 ),
                 const SizedBox(height: 16),
                 Obx(() {
-                  var listAccount = Get.find<AuthService>().listAccount;
-                  return AppDropDownWidget<Account>(
-                    items: listAccount
-                        .map((e) => DropdownMenuItem<Account>(
-                            child: Text(e.accCode ?? ""), value: e))
+                  var listBeneficiary = state.listBeneficiary;
+                  int BeneficiaryIndex = listBeneficiary.indexWhere((element) =>
+                  element.cBANKACCOUNTCODE == state.beneficiary.value.cBANKACCOUNTCODE);
+                  bool checkBeneficiary = BeneficiaryIndex >= 0;
+                  return AppDropDownWidget<BeneficiaryAccount>(
+                    items: listBeneficiary
+                        .map((e) => DropdownMenuItem<BeneficiaryAccount>(
+                            child: Text('${e.cBANKCODE ?? ""} ${e.cBANKACCOUNTCODE ?? ""}'), value: e))
                         .toList(),
-                    value: state.accountReceiver.value,
-                    onChanged: (account) {},
+                    value: checkBeneficiary ? state.beneficiary.value : null,
+                    onChanged: (account) {
+                      logic.changeBeneficiary(account!);
+                    },
                   );
                 }),
                 const SizedBox(height: 16),
                 Obx(() {
-                  var listAccount = Get.find<AuthService>().listAccount;
-                  return AppDropDownWidget<Account>(
-                    items: listAccount
-                        .map((e) => DropdownMenuItem<Account>(
-                        child: Text(e.accCode ?? ""), value: e))
+                  var listBank = state.listBank;
+                  int bankIndex = listBank.indexWhere((element) =>
+                      element.cBANKCODE == state.bank.value.cBANKCODE);
+                  bool checkBank = bankIndex >= 0;
+                  return AppDropDownWidget<Bank>(
+                    isExpanded: true,
+                    items: listBank
+                        .map((e) => DropdownMenuItem<Bank>(
+                            child: Text(e.cBANKNAME ?? ""), value: e))
                         .toList(),
-                    value: state.accountReceiver.value,
-                    onChanged: (account) {},
+                    value: checkBank ? state.bank.value : null,
+                    hintText: S.of(context).bank,
+                    onChanged: null,
                   );
                 })
               ],

@@ -26,6 +26,8 @@ import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/utils/error_message.dart';
 import 'package:sbsi/utils/logger.dart';
 
+import '../model/entities/bank.dart';
+import '../model/entities/beneficiary_account.dart';
 import '../model/response/branch_response.dart';
 import '../model/response/index_chart.dart';
 import '../model/response/market_depth_response.dart';
@@ -95,7 +97,10 @@ abstract class ApiClient {
 
   Future<CashAccount> getCashAccount(RequestParams requestParams);
 
-  Future getLisBank(RequestParams requestParams);
+  Future<List<Bank>> getLisBank(RequestParams requestParams);
+
+  Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(RequestParams requestParams);
+
 }
 
 class _ApiClient implements ApiClient {
@@ -579,12 +584,34 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future getLisBank(RequestParams requestParams) async {
+  Future<List<Bank>> getLisBank(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
         AppConfigs.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<Bank> listBank = [];
+    for (var element in _mapData) {
+      listBank.add(Bank.fromJson(element));
+    }
+    return listBank;
+  }
+
+  @override
+  Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<BeneficiaryAccount> listBeneficiary = [];
+    for (var element in _mapData) {
+      listBeneficiary.add(BeneficiaryAccount.fromJson(element));
+    }
+    return listBeneficiary;
   }
 }

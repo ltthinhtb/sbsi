@@ -273,5 +273,6 @@
   "internal_transfer": "Chuyển tiền nội bộ",
   "history_transfer": "Chuyển tiền nội bộ",
   "cash_availability" : "Số dư khả dụng",
-  "account_receiver" : "Tài khoản nhận"
+  "account_receiver" : "Tài khoản nhận",
+  "bank" : "Chọn ngân hàng nhận"
 }

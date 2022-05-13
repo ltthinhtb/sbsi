@@ -55,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Average match price"),
         "aver_short": MessageLookupByLibrary.simpleMessage("AVG"),
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
+        "bank": MessageLookupByLibrary.simpleMessage("Bank"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Bank account"),
         "bank_transfer": MessageLookupByLibrary.simpleMessage("Bank transfer"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
