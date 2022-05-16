@@ -26,6 +26,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "about_choose": MessageLookupByLibrary.simpleMessage("About choose"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "account_info": MessageLookupByLibrary.simpleMessage("Account info"),
+        "account_name": MessageLookupByLibrary.simpleMessage("Account name"),
+        "account_receiver":
+            MessageLookupByLibrary.simpleMessage("Account receiver"),
         "account_short": MessageLookupByLibrary.simpleMessage("Acc"),
         "account_user": MessageLookupByLibrary.simpleMessage("User"),
         "activated_account":
@@ -53,7 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Average match price"),
         "aver_short": MessageLookupByLibrary.simpleMessage("AVG"),
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
+        "bank": MessageLookupByLibrary.simpleMessage("Bank"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Bank account"),
+        "bank_transfer": MessageLookupByLibrary.simpleMessage("Bank transfer"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
         "bond": MessageLookupByLibrary.simpleMessage("Bond"),
         "bond_assets": MessageLookupByLibrary.simpleMessage("Bond assets"),
@@ -71,6 +76,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_time": MessageLookupByLibrary.simpleMessage("Cancel time"),
         "cancel_volumn": MessageLookupByLibrary.simpleMessage("Cancel volumn"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
+        "cash_availability":
+            MessageLookupByLibrary.simpleMessage("Cash Availability"),
         "cash_balance": MessageLookupByLibrary.simpleMessage("Cash balance"),
         "category": MessageLookupByLibrary.simpleMessage("Menu"),
         "ceil": MessageLookupByLibrary.simpleMessage("Ceil"),
@@ -99,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Confirm OTP"),
+        "confirm_payment":
+            MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
         "content_transfer": MessageLookupByLibrary.simpleMessage("Content"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Continue"),
@@ -138,11 +147,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "have_account": MessageLookupByLibrary.simpleMessage("Have account"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
+        "history_transfer":
+            MessageLookupByLibrary.simpleMessage("History transfer"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "identity_card": MessageLookupByLibrary.simpleMessage("Identity card"),
         "increase": MessageLookupByLibrary.simpleMessage("Increase"),
         "input_invest_money":
             MessageLookupByLibrary.simpleMessage("Input money"),
+        "input_pin": MessageLookupByLibrary.simpleMessage("Input Pin"),
         "instructions_payment":
             MessageLookupByLibrary.simpleMessage("Instructions Payment"),
         "instructions_transfers":
@@ -155,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "interest_now": MessageLookupByLibrary.simpleMessage("Interest now"),
         "interest_st": MessageLookupByLibrary.simpleMessage("Interst ST"),
         "interest_tt": MessageLookupByLibrary.simpleMessage("Interst TT"),
+        "internal_transfer":
+            MessageLookupByLibrary.simpleMessage("Internal transfer"),
         "invalid_price": MessageLookupByLibrary.simpleMessage("Invalid price"),
         "invalid_volumn":
             MessageLookupByLibrary.simpleMessage("Invalid volumn"),
@@ -194,6 +208,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "money": MessageLookupByLibrary.simpleMessage("Money"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Money exchange"),
+        "money_payment": MessageLookupByLibrary.simpleMessage("Money payment"),
+        "money_transfer":
+            MessageLookupByLibrary.simpleMessage("Money transfer"),
+        "money_valid": MessageLookupByLibrary.simpleMessage("Money valid"),
         "month": MessageLookupByLibrary.simpleMessage("Months"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "mr": MessageLookupByLibrary.simpleMessage("Margin rate"),
@@ -233,16 +251,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phone_not_valid":
             MessageLookupByLibrary.simpleMessage("Phone not valid"),
+        "pin_valid":
+            MessageLookupByLibrary.simpleMessage("Mã pin không hợp lệ"),
         "please_input_OTP":
             MessageLookupByLibrary.simpleMessage("Please input OTP"),
+        "please_input_content":
+            MessageLookupByLibrary.simpleMessage("Please Input Content"),
         "please_input_email":
             MessageLookupByLibrary.simpleMessage("Please input email"),
         "please_input_full_name":
             MessageLookupByLibrary.simpleMessage("Please input full name"),
+        "please_input_money":
+            MessageLookupByLibrary.simpleMessage("Please input money"),
         "please_input_password":
             MessageLookupByLibrary.simpleMessage("Input password"),
         "please_input_phone_number":
             MessageLookupByLibrary.simpleMessage("Please input phone number"),
+        "please_input_pin":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập pin"),
+        "please_input_pin_verify":
+            MessageLookupByLibrary.simpleMessage("Please Input Pin Verify"),
         "please_input_user":
             MessageLookupByLibrary.simpleMessage("Input username"),
         "policy_use": MessageLookupByLibrary.simpleMessage("Policy"),
@@ -343,6 +371,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),
         "transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
+        "transfer_cFee": MessageLookupByLibrary.simpleMessage("Transfer CFee"),
+        "transfer_content":
+            MessageLookupByLibrary.simpleMessage("Transfer content"),
         "transfer_information":
             MessageLookupByLibrary.simpleMessage("Transfer information"),
         "transfer_payment":

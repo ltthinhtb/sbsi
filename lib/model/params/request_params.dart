@@ -6,6 +6,7 @@ class RequestParams {
   String? session;
   String? channel;
   String? checksum;
+  String? otp;
   ParamsObject? data;
 
   RequestParams({
@@ -15,6 +16,7 @@ class RequestParams {
     this.channel,
     this.data,
     this.checksum,
+    this.otp
   });
 
   Map<String, dynamic> toJson() {
@@ -22,6 +24,9 @@ class RequestParams {
     data['group'] = group;
     if (user != null) {
       data['user'] = user;
+    }
+    if (otp != null) {
+      data['otp'] = otp;
     }
     if (session != null) {
       data['session'] = session;

@@ -2749,6 +2749,196 @@ class S {
       args: [],
     );
   }
+
+  /// `Bank transfer`
+  String get bank_transfer {
+    return Intl.message(
+      'Bank transfer',
+      name: 'bank_transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal transfer`
+  String get internal_transfer {
+    return Intl.message(
+      'Internal transfer',
+      name: 'internal_transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History transfer`
+  String get history_transfer {
+    return Intl.message(
+      'History transfer',
+      name: 'history_transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash Availability`
+  String get cash_availability {
+    return Intl.message(
+      'Cash Availability',
+      name: 'cash_availability',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account receiver`
+  String get account_receiver {
+    return Intl.message(
+      'Account receiver',
+      name: 'account_receiver',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bank`
+  String get bank {
+    return Intl.message(
+      'Bank',
+      name: 'bank',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account name`
+  String get account_name {
+    return Intl.message(
+      'Account name',
+      name: 'account_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money transfer`
+  String get money_transfer {
+    return Intl.message(
+      'Money transfer',
+      name: 'money_transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money payment`
+  String get money_payment {
+    return Intl.message(
+      'Money payment',
+      name: 'money_payment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer content`
+  String get transfer_content {
+    return Intl.message(
+      'Transfer content',
+      name: 'transfer_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please input money`
+  String get please_input_money {
+    return Intl.message(
+      'Please input money',
+      name: 'please_input_money',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money valid`
+  String get money_valid {
+    return Intl.message(
+      'Money valid',
+      name: 'money_valid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Input Content`
+  String get please_input_content {
+    return Intl.message(
+      'Please Input Content',
+      name: 'please_input_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer CFee`
+  String get transfer_cFee {
+    return Intl.message(
+      'Transfer CFee',
+      name: 'transfer_cFee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input Pin`
+  String get input_pin {
+    return Intl.message(
+      'Input Pin',
+      name: 'input_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Input Pin Verify`
+  String get please_input_pin_verify {
+    return Intl.message(
+      'Please Input Pin Verify',
+      name: 'please_input_pin_verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vui lòng nhập pin`
+  String get please_input_pin {
+    return Intl.message(
+      'Vui lòng nhập pin',
+      name: 'please_input_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mã pin không hợp lệ`
+  String get pin_valid {
+    return Intl.message(
+      'Mã pin không hợp lệ',
+      name: 'pin_valid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Xác thực giao dịch`
+  String get confirm_payment {
+    return Intl.message(
+      'Xác thực giao dịch',
+      name: 'confirm_payment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

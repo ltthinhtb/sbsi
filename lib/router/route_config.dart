@@ -2,6 +2,7 @@ import 'package:sbsi/ui/pages/home/home_logic.dart';
 import 'package:sbsi/ui/pages/main/main_logic.dart';
 import 'package:sbsi/ui/pages/main/main_view.dart';
 import 'package:sbsi/ui/pages/menu/panel/setting/setting_page/setting_page.dart';
+import 'package:sbsi/ui/pages/money_transfer/money_transfer_view.dart';
 import 'package:sbsi/ui/pages/notification/notification_view.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_view.dart';
@@ -24,6 +25,7 @@ class RouteConfig {
   static const String notification = "/notification";
   static const String stockDetail = "/stockDetail";
   static const String settings = '/settings';
+  static const String money_transfer = '/money_transfer';
 
   ///Alias ​​mapping page
   static final List<GetPage> getPages = [
@@ -36,6 +38,7 @@ class RouteConfig {
     GetPage(name: notification, page: () => NotificationPage()),
     GetPage(name: stockDetail, page: () => const StockDetailPage()),
     GetPage(name: settings, page: () => const SettingPage()),
+    GetPage(name: money_transfer, page: () => const MoneyTransferPage()),
 
   ];
 }

@@ -19,8 +19,10 @@ class AppTextFieldWidget extends StatefulWidget {
   final bool autoFocus;
   final SvgPicture? prefixIcon;
   final int? maxLength;
+  final int? maxLines;
   final bool readOnly;
   final VoidCallback? onTap;
+  final bool? enableBorder;
 
   const AppTextFieldWidget({
     this.inputController,
@@ -38,6 +40,8 @@ class AppTextFieldWidget extends StatefulWidget {
     this.maxLength,
     this.readOnly = false,
     this.onTap,
+    this.maxLines,
+    this.enableBorder,
   });
 
   @override
@@ -63,20 +67,21 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Visibility(
-        //     visible: widget.label != null,
-        //     child: Padding(
-        //       padding: const EdgeInsets.only(bottom: 5),
-        //       child: Text(
-        //         widget.label ?? "",
-        //         style: Theme.of(context)
-        //             .textTheme
-        //             .headline6!
-        //             .copyWith(fontWeight: FontWeight.w700),
-        //       ),
-        //     )),
+        Visibility(
+            visible: widget.label != null,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: Text(
+                widget.label ?? "",
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6!
+                    .copyWith(fontWeight: FontWeight.w700),
+              ),
+            )),
         TextFormField(
           readOnly: widget.readOnly,
           autofocus: widget.autoFocus,
@@ -85,9 +90,9 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
           obscureText: _obscureText,
           onFieldSubmitted: widget.onFieldSubmitted,
           onTap: widget.onTap,
-          style: AppTextStyle.bodyText2.copyWith(
-            color: AppColors.textBlack
-          ),
+          maxLines: widget.maxLines ?? 1,
+          maxLength: widget.maxLength,
+          style: AppTextStyle.bodyText2.copyWith(color: AppColors.textBlack),
           inputFormatters: [
             LengthLimitingTextInputFormatter(widget.maxLength),
           ],
@@ -102,7 +107,18 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: widget.prefixIcon,
             ),
+            counterText: "",
             suffixIconConstraints: const BoxConstraints(maxHeight: 24),
+            enabledBorder: widget.enableBorder == null
+                ? null
+                : (!widget.enableBorder!
+                    ? Theme.of(context).inputDecorationTheme.enabledBorder
+                    : Theme.of(context)
+                        .inputDecorationTheme
+                        .enabledBorder
+                        ?.copyWith(
+                            borderSide: BorderSide(
+                                color: AppColors.textBlack.withOpacity(0.5)))),
             suffixIcon: widget.obscureText
                 ? GestureDetector(
                     behavior: HitTestBehavior.opaque,
@@ -128,5 +144,3 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
     );
   }
 }
-
-

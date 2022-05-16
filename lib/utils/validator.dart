@@ -51,4 +51,32 @@ class Validator {
       return null;
     }
   }
+
+  String? checkMoney(String? money) {
+    if(money == null || money.isEmpty) return S.current.please_input_money;
+    var value = double.parse(money);
+    if(value <= 0)  return S.current.money_valid;
+    return null;
+  }
+
+
+  String? checkContent(String value) {
+    if (value.isEmpty) {
+      return S.current.please_input_content;
+    } else {
+      return null;
+    }
+  }
+
+  String? checkPin(String pin) {
+    if (pin.isEmpty) {
+      return S.current.please_input_pin;
+    }
+    else if(pin.length>6){
+      return S.current.pin_valid;
+    }
+    else {
+      return null;
+    }
+  }
 }

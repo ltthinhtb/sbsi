@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "account_info":
             MessageLookupByLibrary.simpleMessage("Thông tin tài khoản"),
+        "account_name": MessageLookupByLibrary.simpleMessage("Tên người nhận"),
+        "account_receiver":
+            MessageLookupByLibrary.simpleMessage("Tài khoản nhận"),
         "account_short": MessageLookupByLibrary.simpleMessage("TK"),
         "account_user": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
         "activated_account":
@@ -55,7 +58,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Giá khớp trung bình"),
         "aver_short": MessageLookupByLibrary.simpleMessage("TB"),
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
+        "bank": MessageLookupByLibrary.simpleMessage("Chọn ngân hàng nhận"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
+        "bank_transfer":
+            MessageLookupByLibrary.simpleMessage("Chuyển tiền ra ngân hàng"),
         "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh"),
         "bond": MessageLookupByLibrary.simpleMessage("Trái phiếu"),
         "bond_assets":
@@ -75,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_time": MessageLookupByLibrary.simpleMessage("Thời gian huỷ"),
         "cancel_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng huỷ"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Đã huỷ"),
+        "cash_availability":
+            MessageLookupByLibrary.simpleMessage("Số dư khả dụng"),
         "cash_balance": MessageLookupByLibrary.simpleMessage("Tài sản ròng"),
         "category": MessageLookupByLibrary.simpleMessage("Khác"),
         "ceil": MessageLookupByLibrary.simpleMessage("Trần"),
@@ -103,6 +111,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Xác nhận OTP"),
+        "confirm_payment":
+            MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "contact_support":
             MessageLookupByLibrary.simpleMessage("Liên hệ hỗ trợ"),
         "content_transfer":
@@ -144,12 +154,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "gender": MessageLookupByLibrary.simpleMessage("Giới tính"),
         "have_account": MessageLookupByLibrary.simpleMessage("Đã có tài khoản"),
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử giao dịch"),
+        "history_transfer":
+            MessageLookupByLibrary.simpleMessage("Chuyển tiền nội bộ"),
         "home": MessageLookupByLibrary.simpleMessage("Bảng giá"),
         "identity_card":
             MessageLookupByLibrary.simpleMessage("Chứng minh nhân dân"),
         "increase": MessageLookupByLibrary.simpleMessage("Tăng giá"),
         "input_invest_money":
             MessageLookupByLibrary.simpleMessage("Nhập số tiền đầu tư"),
+        "input_pin": MessageLookupByLibrary.simpleMessage("Nhập mã pin"),
         "instructions_payment":
             MessageLookupByLibrary.simpleMessage("Hướng dẫn nộp tiền"),
         "instructions_transfers":
@@ -160,6 +173,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "interest_now": MessageLookupByLibrary.simpleMessage("Đầu tư ngay"),
         "interest_st": MessageLookupByLibrary.simpleMessage("Lãi ST"),
         "interest_tt": MessageLookupByLibrary.simpleMessage("Lãi TT"),
+        "internal_transfer":
+            MessageLookupByLibrary.simpleMessage("Chuyển tiền nội bộ"),
         "invalid_price":
             MessageLookupByLibrary.simpleMessage("Giá không hợp lệ"),
         "invalid_volumn":
@@ -203,6 +218,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "money": MessageLookupByLibrary.simpleMessage("Tiền"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Giao dịch tiền"),
+        "money_payment":
+            MessageLookupByLibrary.simpleMessage("Số tiền giao dịch"),
+        "money_transfer":
+            MessageLookupByLibrary.simpleMessage("Số tiền chuyển"),
+        "money_valid":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập số tiền"),
         "month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "more": MessageLookupByLibrary.simpleMessage("Xem thêm"),
         "mr": MessageLookupByLibrary.simpleMessage("Tỷ lệ ký quỹ"),
@@ -241,16 +262,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_not_valid":
             MessageLookupByLibrary.simpleMessage("Số điện thoại không hợp lệ"),
+        "pin_valid":
+            MessageLookupByLibrary.simpleMessage("Mã pin không hợp lệ"),
         "please_input_OTP":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã OTP đến số"),
+        "please_input_content":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập nội dung"),
         "please_input_email":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập email"),
         "please_input_full_name":
             MessageLookupByLibrary.simpleMessage("Vui lòng điền họ tên"),
+        "please_input_money":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập số tiền"),
         "please_input_password":
             MessageLookupByLibrary.simpleMessage("Nhập password"),
         "please_input_phone_number":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập số điện thoại"),
+        "please_input_pin":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập pin"),
+        "please_input_pin_verify": MessageLookupByLibrary.simpleMessage(
+            "Vui lòng nhập mã pin để xác nhận"),
         "please_input_user":
             MessageLookupByLibrary.simpleMessage("Nhập username"),
         "policy_use":
@@ -354,6 +385,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị chứng khoán"),
         "transfer": MessageLookupByLibrary.simpleMessage("Chuyển tiền"),
+        "transfer_cFee": MessageLookupByLibrary.simpleMessage("Phí giao dịch"),
+        "transfer_content":
+            MessageLookupByLibrary.simpleMessage("Nội dung chuyển"),
         "transfer_information":
             MessageLookupByLibrary.simpleMessage("Thông tin giao dịch"),
         "transfer_payment":

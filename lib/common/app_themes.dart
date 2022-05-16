@@ -101,7 +101,7 @@ class AppThemes {
               .copyWith(color: AppColors.textGreen, height: 1),
           hintStyle: AppTextStyle.subTitle2
               .copyWith(color: AppColors.textGrey, height: 1),
-          errorStyle: AppTextStyle.H6.copyWith(color: AppColors.red, height: 1),
+          errorStyle: AppTextStyle.caption.copyWith(color: AppColors.red, height: 1),
           fillColor: AppColors.white,
           focusColor: AppColors.textGreen,
           border: _defaultBorder(),

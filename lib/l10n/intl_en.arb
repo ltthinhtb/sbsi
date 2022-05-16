@@ -268,6 +268,25 @@
   "the_world": "Ngoài nước",
   "top_foreign": "Top foreign",
   "delete": "Delete",
-  "settings" : "Settings"
+  "settings": "Settings",
+  "bank_transfer": "Bank transfer",
+  "internal_transfer": "Internal transfer",
+  "history_transfer": "History transfer",
+  "cash_availability": "Cash Availability",
+  "account_receiver": "Account receiver",
+  "bank": "Bank",
+  "account_name": "Account name",
+  "money_transfer": "Money transfer",
+  "money_payment": "Money payment",
+  "transfer_content": "Transfer content",
+  "please_input_money": "Please input money",
+  "money_valid": "Money valid",
+  "please_input_content": "Please Input Content",
+  "transfer_cFee": "Transfer CFee",
+  "input_pin": "Input Pin",
+  "please_input_pin_verify": "Please Input Pin Verify",
+  "please_input_pin": "Vui lòng nhập pin",
+  "pin_valid": "Mã pin không hợp lệ",
+  "confirm_payment" : "Xác thực giao dịch"
 
 }

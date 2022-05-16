@@ -41,6 +41,7 @@ class AppColors {
   static const Color floor = Color(0xFF146FB4);
   static const Color table1 = Color(0xFFFFF8EB);
   static const Color table2 = Color(0xFFDDDDDD);
+  static const Color whiteEEE = Color(0xFFEEEEEE);
 
   static const Color cardPortfolio = Color.fromRGBO(61, 38, 118, 0.6);
 

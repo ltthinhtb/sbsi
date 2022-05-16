@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 
 class AppDropDownWidget<T> extends StatelessWidget {
@@ -8,6 +9,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
   final String? hintText;
   final ValueChanged<T?>? onChanged;
   final String? label;
+  final bool isExpanded;
 
   const AppDropDownWidget(
       {Key? key,
@@ -15,7 +17,8 @@ class AppDropDownWidget<T> extends StatelessWidget {
       this.value,
       this.hintText,
       this.onChanged,
-      this.label})
+      this.label,
+      this.isExpanded = false})
       : super(key: key);
 
   @override
@@ -41,14 +44,18 @@ class AppDropDownWidget<T> extends StatelessWidget {
             isDense: true,
             value: value,
             onChanged: onChanged,
+            isExpanded: isExpanded,
             decoration: InputDecoration(
               isDense: true,
               hintText: hintText,
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             ),
             style: Theme.of(context).textTheme.subtitle2,
-            icon: SvgPicture.asset(AppImages.chevron_down),
+            icon: SvgPicture.asset(AppImages.chevron_down,
+                color: onChanged != null
+                    ? AppColors.black
+                    : const Color.fromRGBO(177, 177, 177, 1)),
             items: items,
           ),
         ),
