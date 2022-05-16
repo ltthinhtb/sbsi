@@ -277,5 +277,16 @@
   "bank" : "Chọn ngân hàng nhận",
   "account_name" : "Tên người nhận",
   "money_transfer" : "Số tiền chuyển",
-  "transfer_content" : "Nội dung chuyển"
+  "money_payment" : "Số tiền giao dịch",
+  "transfer_content" : "Nội dung chuyển",
+  "please_input_money" : "Vui lòng nhập số tiền",
+  "money_valid" : "Vui lòng nhập số tiền",
+  "please_input_content" : "Vui lòng nhập nội dung",
+  "transfer_cFee" : "Phí giao dịch",
+  "input_pin" : "Nhập mã pin",
+  "please_input_pin_verify" : "Vui lòng nhập mã pin để xác nhận",
+  "please_input_pin" : "Vui lòng nhập pin",
+  "pin_valid" : "Mã pin không hợp lệ",
+  "confirm_payment" : "Xác thực giao dịch"
+
 }

@@ -2830,11 +2830,111 @@ class S {
     );
   }
 
+  /// `Money payment`
+  String get money_payment {
+    return Intl.message(
+      'Money payment',
+      name: 'money_payment',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Transfer content`
   String get transfer_content {
     return Intl.message(
       'Transfer content',
       name: 'transfer_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please input money`
+  String get please_input_money {
+    return Intl.message(
+      'Please input money',
+      name: 'please_input_money',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money valid`
+  String get money_valid {
+    return Intl.message(
+      'Money valid',
+      name: 'money_valid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Input Content`
+  String get please_input_content {
+    return Intl.message(
+      'Please Input Content',
+      name: 'please_input_content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer CFee`
+  String get transfer_cFee {
+    return Intl.message(
+      'Transfer CFee',
+      name: 'transfer_cFee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input Pin`
+  String get input_pin {
+    return Intl.message(
+      'Input Pin',
+      name: 'input_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Input Pin Verify`
+  String get please_input_pin_verify {
+    return Intl.message(
+      'Please Input Pin Verify',
+      name: 'please_input_pin_verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vui lòng nhập pin`
+  String get please_input_pin {
+    return Intl.message(
+      'Vui lòng nhập pin',
+      name: 'please_input_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mã pin không hợp lệ`
+  String get pin_valid {
+    return Intl.message(
+      'Mã pin không hợp lệ',
+      name: 'pin_valid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Xác thực giao dịch`
+  String get confirm_payment {
+    return Intl.message(
+      'Xác thực giao dịch',
+      name: 'confirm_payment',
       desc: '',
       args: [],
     );

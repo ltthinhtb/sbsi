@@ -9,7 +9,6 @@ class AppImages {
 
   static String appbar = 'assets/icon_svg/appbar.svg';
 
-
   //sign_up
   static String sign_up_card_id_1 = 'assets/icon_svg/sign_up_card_id.svg';
   static String sign_up_card_id_2 = 'assets/icon_svg/sign_up_id-card 2.svg';
@@ -73,8 +72,8 @@ class AppImages {
   static String credit_card_icon = 'assets/icon_svg/credit_card_icon.svg';
   static String ic_history = 'assets/icon_svg/ic_history.svg';
   static String ic_money = 'assets/icon_svg/money_2.svg';
-
-
+  static String tick_success = 'assets/icon_svg/tick_success.svg';
+  static String tick_failed = 'assets/icon_svg/tick_failed.svg';
 
   // icon image
   static String present = 'assets/icon_svg/present.svg';
@@ -85,8 +84,6 @@ class AppImages {
   static String moleculeActive = 'assets/icon_svg/molecule-active.svg';
   static String noteActive = 'assets/icon_svg/note-active.svg';
   static String walletActive = 'assets/icon_svg/wallet-active.svg';
-
-
 
   static String home = 'assets/icon_svg/home.svg';
   static String market = 'assets/icon_svg/market.svg';

@@ -4,6 +4,7 @@ import 'package:sbsi/model/entities/beneficiary_account.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/money_transfer/enums/transfer_type.dart';
 import 'package:sbsi/ui/pages/money_transfer/money_transfer_logic.dart';
+import 'package:sbsi/ui/pages/money_transfer/pages/confirm_payment.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/dropdown/app_drop_down.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
@@ -31,6 +32,7 @@ class _BankTransferState extends State<BankTransfer> {
     // clear money
     state.moneyController.clear();
     state.type = TransfersType.bank;
+    state.transferContentController.text = logic.contentDefault;
     super.initState();
   }
 
@@ -182,7 +184,7 @@ class _BankTransferState extends State<BankTransfer> {
                     Expanded(
                         child: ButtonFill(
                             voidCallback: () {
-                              logic.updateCashTransferOnline();
+                              Get.to(ConfirmPayment(title: state.type.name,));
 
                             }, title: S.of(context).confirm))
                   ],

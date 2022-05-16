@@ -9,7 +9,6 @@ import '../../commons/money_text_controller.dart';
 import 'enums/transfer_type.dart';
 
 class MoneyTransferState {
-
   TransfersType type = TransfersType.bank;
 
   final account = Account().obs;
@@ -51,4 +50,5 @@ class MoneyTransferState {
 
   final otpController = TextEditingController();
   final pinController = TextEditingController();
+  final pinKey = GlobalKey<FormState>();
 }

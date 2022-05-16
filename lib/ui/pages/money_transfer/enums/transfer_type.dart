@@ -7,9 +7,9 @@ extension TransfersExt on TransfersType {
   get name {
     switch (this) {
       case TransfersType.bank:
-        return "Ngân hàng";
+        return "Chuyển tiền ra ngân hàng";
       case TransfersType.internal:
-        return "Nội bộ";
+        return "Chuyển tiền nội bộ";
     }
   }
 

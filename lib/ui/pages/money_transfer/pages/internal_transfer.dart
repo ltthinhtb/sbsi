@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/model/response/list_account_response.dart';
 import 'package:sbsi/services/auth_service.dart';
+import 'package:sbsi/utils/validator.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
@@ -13,6 +14,7 @@ import '../enums/transfer_type.dart';
 import '../money_transfer_logic.dart';
 import '../widget/account_dropdown.dart';
 import '../widget/money_availability.dart';
+import 'confirm_payment.dart';
 
 class InternalTransfer extends StatefulWidget {
   const InternalTransfer({Key? key}) : super(key: key);
@@ -21,7 +23,7 @@ class InternalTransfer extends StatefulWidget {
   State<InternalTransfer> createState() => _InternalTransferState();
 }
 
-class _InternalTransferState extends State<InternalTransfer> {
+class _InternalTransferState extends State<InternalTransfer> with Validator {
   final state = Get.find<MoneyTransferLogic>().state;
   final logic = Get.find<MoneyTransferLogic>();
 
@@ -30,6 +32,7 @@ class _InternalTransferState extends State<InternalTransfer> {
     // clear money
     state.moneyController.clear();
     state.type = TransfersType.internal;
+    state.transferContentController.text = logic.contentDefault;
     super.initState();
   }
 
@@ -97,6 +100,13 @@ class _InternalTransferState extends State<InternalTransfer> {
                         inputController: state.moneyController,
                         focusNode: state.userMoneyFocus,
                         enableBorder: true,
+                        onChanged: (money) {
+                          state.userMoneyKey.currentState?.validate();
+                        },
+                        validator: (money) {
+                          return checkMoney(state.moneyController.numberValue
+                              .toStringAsFixed(0));
+                        },
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -109,6 +119,9 @@ class _InternalTransferState extends State<InternalTransfer> {
                         inputController: state.transferContentController,
                         focusNode: state.transferContentFocus,
                         enableBorder: true,
+                        validator: (content) {
+                          return checkContent(content!);
+                        },
                       ),
                     )
                   ],
@@ -136,7 +149,13 @@ class _InternalTransferState extends State<InternalTransfer> {
                     Expanded(
                         child: ButtonFill(
                             voidCallback: () {
-                              logic.updateCashTransferInternal();
+                              if (!state.userMoneyKey.currentState!.validate())
+                                return;
+                              if (!state.transferContentKey.currentState!.validate())
+                                return;
+                              Get.to(ConfirmPayment(
+                                title: state.type.name,
+                              ));
                             },
                             title: S.of(context).confirm))
                   ],

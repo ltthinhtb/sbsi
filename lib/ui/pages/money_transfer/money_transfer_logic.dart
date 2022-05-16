@@ -6,12 +6,14 @@ import 'package:sbsi/services/api/api_service.dart';
 import 'package:sbsi/services/auth_service.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/money_transfer/enums/transfer_type.dart';
+import 'package:sbsi/utils/utils.dart';
 
 import '../../../model/entities/bank.dart';
 import '../../../model/params/data_params.dart';
 import '../../../model/params/request_params.dart';
 import '../../../model/response/list_account_response.dart';
 import 'money_transfer_state.dart';
+import 'pages/transfer_success.dart';
 
 class MoneyTransferLogic extends GetxController {
   final MoneyTransferState state = MoneyTransferState();
@@ -21,6 +23,9 @@ class MoneyTransferLogic extends GetxController {
   final authService = Get.find<AuthService>();
 
   TokenEntity? get tokenEntity => authService.token.value;
+
+  String get contentDefault =>
+      Utils.convertVNtoText('${tokenEntity?.data?.name ?? ""} chuyển tiền');
 
   // lấy thông tin tài khoản mặc định
   void loadAccount() {
@@ -182,6 +187,8 @@ class MoneyTransferLogic extends GetxController {
     );
     try {
       await apiService.updateCashTransferOnline(_requestParams);
+      Get.back(); // pop dialog
+      Get.to(const TransferSuccess());
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     }

@@ -106,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Confirm OTP"),
+        "confirm_payment":
+            MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
         "content_transfer": MessageLookupByLibrary.simpleMessage("Content"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Continue"),
@@ -152,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "increase": MessageLookupByLibrary.simpleMessage("Increase"),
         "input_invest_money":
             MessageLookupByLibrary.simpleMessage("Input money"),
+        "input_pin": MessageLookupByLibrary.simpleMessage("Input Pin"),
         "instructions_payment":
             MessageLookupByLibrary.simpleMessage("Instructions Payment"),
         "instructions_transfers":
@@ -205,8 +208,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "money": MessageLookupByLibrary.simpleMessage("Money"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Money exchange"),
+        "money_payment": MessageLookupByLibrary.simpleMessage("Money payment"),
         "money_transfer":
             MessageLookupByLibrary.simpleMessage("Money transfer"),
+        "money_valid": MessageLookupByLibrary.simpleMessage("Money valid"),
         "month": MessageLookupByLibrary.simpleMessage("Months"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "mr": MessageLookupByLibrary.simpleMessage("Margin rate"),
@@ -246,16 +251,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phone_not_valid":
             MessageLookupByLibrary.simpleMessage("Phone not valid"),
+        "pin_valid":
+            MessageLookupByLibrary.simpleMessage("Mã pin không hợp lệ"),
         "please_input_OTP":
             MessageLookupByLibrary.simpleMessage("Please input OTP"),
+        "please_input_content":
+            MessageLookupByLibrary.simpleMessage("Please Input Content"),
         "please_input_email":
             MessageLookupByLibrary.simpleMessage("Please input email"),
         "please_input_full_name":
             MessageLookupByLibrary.simpleMessage("Please input full name"),
+        "please_input_money":
+            MessageLookupByLibrary.simpleMessage("Please input money"),
         "please_input_password":
             MessageLookupByLibrary.simpleMessage("Input password"),
         "please_input_phone_number":
             MessageLookupByLibrary.simpleMessage("Please input phone number"),
+        "please_input_pin":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập pin"),
+        "please_input_pin_verify":
+            MessageLookupByLibrary.simpleMessage("Please Input Pin Verify"),
         "please_input_user":
             MessageLookupByLibrary.simpleMessage("Input username"),
         "policy_use": MessageLookupByLibrary.simpleMessage("Policy"),
@@ -356,6 +371,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),
         "transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
+        "transfer_cFee": MessageLookupByLibrary.simpleMessage("Transfer CFee"),
         "transfer_content":
             MessageLookupByLibrary.simpleMessage("Transfer content"),
         "transfer_information":
