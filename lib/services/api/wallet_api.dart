@@ -25,4 +25,8 @@ extension WaletService on ApiService {
   Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(RequestParams requestParams) async {
     return await _apiClient.getListBeneficiaryAccount(requestParams);
   }
+
+  Future updateCashTransferOnline(RequestParams requestParams) async {
+    return await _apiClient.updateCashTransferOnline(requestParams);
+  }
 }

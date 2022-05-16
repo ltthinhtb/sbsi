@@ -274,6 +274,9 @@
   "history_transfer" : "History transfer",
   "cash_availability" : "Cash Availability",
   "account_receiver" : "Account receiver",
-  "bank" : "Bank"
+  "bank" : "Bank",
+  "account_name" : "Account name",
+  "money_transfer" : "Money transfer",
+  "transfer_content" : "Transfer content"
 
 }

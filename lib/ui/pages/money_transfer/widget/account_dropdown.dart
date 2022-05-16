@@ -15,23 +15,19 @@ class AccountDropDown extends StatelessWidget {
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.bodyText1;
     final state = Get.find<MoneyTransferLogic>().state;
+    final logic = Get.find<MoneyTransferLogic>();
 
     return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0,-0.5),
+      decoration: const BoxDecoration(color: AppColors.white, boxShadow: [
+        BoxShadow(
+            offset: Offset(0, -0.5),
             blurRadius: 8,
-            color: Color.fromRGBO(0, 0, 0, 0.03)
-          ),
-          BoxShadow(
-              offset: Offset(0,-1),
-              blurRadius: 10,
-              color: Color.fromRGBO(0, 0, 0, 0.04)
-          )
-        ]
-      ),
+            color: Color.fromRGBO(0, 0, 0, 0.03)),
+        BoxShadow(
+            offset: Offset(0, -1),
+            blurRadius: 10,
+            color: Color.fromRGBO(0, 0, 0, 0.04))
+      ]),
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +45,9 @@ class AccountDropDown extends StatelessWidget {
                       child: Text(e.accCode ?? ""), value: e))
                   .toList(),
               value: state.account.value,
-              onChanged: (account) {},
+              onChanged: (account) {
+                logic.changeAccount(account!);
+              },
             );
           })
         ],

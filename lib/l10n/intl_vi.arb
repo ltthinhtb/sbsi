@@ -274,5 +274,8 @@
   "history_transfer": "Chuyển tiền nội bộ",
   "cash_availability" : "Số dư khả dụng",
   "account_receiver" : "Tài khoản nhận",
-  "bank" : "Chọn ngân hàng nhận"
+  "bank" : "Chọn ngân hàng nhận",
+  "account_name" : "Tên người nhận",
+  "money_transfer" : "Số tiền chuyển",
+  "transfer_content" : "Nội dung chuyển"
 }

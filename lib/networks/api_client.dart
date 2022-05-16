@@ -99,8 +99,10 @@ abstract class ApiClient {
 
   Future<List<Bank>> getLisBank(RequestParams requestParams);
 
-  Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(RequestParams requestParams);
+  Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(
+      RequestParams requestParams);
 
+  Future updateCashTransferOnline(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -600,7 +602,8 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(RequestParams requestParams) async {
+  Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(
+      RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
         AppConfigs.ENDPOINT_CORE,
@@ -613,5 +616,15 @@ class _ApiClient implements ApiClient {
       listBeneficiary.add(BeneficiaryAccount.fromJson(element));
     }
     return listBeneficiary;
+  }
+
+  @override
+  Future updateCashTransferOnline(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
   }
 }

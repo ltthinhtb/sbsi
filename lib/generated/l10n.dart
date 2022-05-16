@@ -2809,6 +2809,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Account name`
+  String get account_name {
+    return Intl.message(
+      'Account name',
+      name: 'account_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money transfer`
+  String get money_transfer {
+    return Intl.message(
+      'Money transfer',
+      name: 'money_transfer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer content`
+  String get transfer_content {
+    return Intl.message(
+      'Transfer content',
+      name: 'transfer_content',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

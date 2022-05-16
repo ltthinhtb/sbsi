@@ -1,36 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sbsi/model/entities/beneficiary_account.dart';
-import 'package:sbsi/ui/commons/appbar.dart';
-import 'package:sbsi/ui/pages/money_transfer/enums/transfer_type.dart';
-import 'package:sbsi/ui/pages/money_transfer/money_transfer_logic.dart';
-import 'package:sbsi/ui/widgets/button/button_filled.dart';
-import 'package:sbsi/ui/widgets/dropdown/app_drop_down.dart';
-import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
+import 'package:sbsi/model/response/list_account_response.dart';
+import 'package:sbsi/services/auth_service.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../model/entities/bank.dart';
+import '../../../commons/appbar.dart';
+import '../../../widgets/button/button_filled.dart';
+import '../../../widgets/dropdown/app_drop_down.dart';
+import '../../../widgets/textfields/app_text_field.dart';
+import '../enums/transfer_type.dart';
+import '../money_transfer_logic.dart';
 import '../widget/account_dropdown.dart';
 import '../widget/money_availability.dart';
 
-class BankTransfer extends StatefulWidget {
-  const BankTransfer({Key? key}) : super(key: key);
+class InternalTransfer extends StatefulWidget {
+  const InternalTransfer({Key? key}) : super(key: key);
 
   @override
-  State<BankTransfer> createState() => _BankTransferState();
+  State<InternalTransfer> createState() => _InternalTransferState();
 }
 
-class _BankTransferState extends State<BankTransfer> {
+class _InternalTransferState extends State<InternalTransfer> {
   final state = Get.find<MoneyTransferLogic>().state;
   final logic = Get.find<MoneyTransferLogic>();
-
 
   @override
   void initState() {
     // clear money
     state.moneyController.clear();
-    state.type = TransfersType.bank;
+    state.type = TransfersType.internal;
     super.initState();
   }
 
@@ -40,7 +39,7 @@ class _BankTransferState extends State<BankTransfer> {
 
     return Scaffold(
       appBar: AppBarCustom(
-        title: S.of(context).bank_transfer,
+        title: S.of(context).internal_transfer,
       ),
       backgroundColor: AppColors.whiteBack,
       body: SafeArea(
@@ -78,63 +77,18 @@ class _BankTransferState extends State<BankTransfer> {
                     ),
                     const SizedBox(height: 16),
                     Obx(() {
-                      var listBeneficiary = state.listBeneficiary;
-                      int BeneficiaryIndex = listBeneficiary.indexWhere(
-                          (element) =>
-                              element.cBANKACCOUNTCODE ==
-                              state.beneficiary.value.cBANKACCOUNTCODE);
-                      bool checkBeneficiary = BeneficiaryIndex >= 0;
-                      return AppDropDownWidget<BeneficiaryAccount>(
-                        items: listBeneficiary
-                            .map((e) => DropdownMenuItem<BeneficiaryAccount>(
-                                child: Text(
-                                    '${e.cBANKCODE ?? ""} ${e.cBANKACCOUNTCODE ?? ""}'),
-                                value: e))
-                            .toList(),
-                        value:
-                            checkBeneficiary ? state.beneficiary.value : null,
-                        onChanged: (account) {
-                          logic.changeBeneficiary(account!);
-                        },
-                      );
-                    }),
-                    const SizedBox(height: 16),
-                    Obx(() {
-                      var listBank = state.listBank;
-                      int bankIndex = listBank.indexWhere((element) =>
-                          element.cBANKCODE == state.bank.value.cBANKCODE);
-                      bool checkBank = bankIndex >= 0;
-                      return AppDropDownWidget<Bank>(
+                      var listAccount = Get.find<AuthService>().listAccount;
+                      return AppDropDownWidget<Account>(
                         isExpanded: true,
-                        items: listBank
-                            .map((e) => DropdownMenuItem<Bank>(
-                                child: Text(e.cBANKNAME ?? ""), value: e))
+                        items: listAccount
+                            .map((e) => DropdownMenuItem<Account>(
+                                child: Text(e.accCode ?? ""), value: e))
                             .toList(),
-                        value: checkBank ? state.bank.value : null,
+                        value: state.accountReceiver.value,
                         hintText: S.of(context).bank,
                         onChanged: null,
                       );
                     }),
-                    const SizedBox(height: 16),
-                    Form(
-                      key: state.userAccountKey,
-                      child: AppTextFieldWidget(
-                        hintText: S.of(context).user_name,
-                        inputController: state.userAccountController,
-                        focusNode: state.userAccountFocus,
-                        readOnly: true,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Form(
-                      key: state.userNameKey,
-                      child: AppTextFieldWidget(
-                        hintText: S.of(context).account_name,
-                        inputController: state.userNameController,
-                        focusNode: state.userNameFocus,
-                        readOnly: true,
-                      ),
-                    ),
                     const SizedBox(height: 16),
                     Form(
                       key: state.userMoneyKey,
@@ -182,9 +136,9 @@ class _BankTransferState extends State<BankTransfer> {
                     Expanded(
                         child: ButtonFill(
                             voidCallback: () {
-                              logic.updateCashTransferOnline();
-
-                            }, title: S.of(context).confirm))
+                              logic.updateCashTransferInternal();
+                            },
+                            title: S.of(context).confirm))
                   ],
                 ),
               ),

@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "about_choose": MessageLookupByLibrary.simpleMessage("About choose"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "account_info": MessageLookupByLibrary.simpleMessage("Account info"),
+        "account_name": MessageLookupByLibrary.simpleMessage("Account name"),
         "account_receiver":
             MessageLookupByLibrary.simpleMessage("Account receiver"),
         "account_short": MessageLookupByLibrary.simpleMessage("Acc"),
@@ -204,6 +205,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "money": MessageLookupByLibrary.simpleMessage("Money"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Money exchange"),
+        "money_transfer":
+            MessageLookupByLibrary.simpleMessage("Money transfer"),
         "month": MessageLookupByLibrary.simpleMessage("Months"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "mr": MessageLookupByLibrary.simpleMessage("Margin rate"),
@@ -353,6 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),
         "transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
+        "transfer_content":
+            MessageLookupByLibrary.simpleMessage("Transfer content"),
         "transfer_information":
             MessageLookupByLibrary.simpleMessage("Transfer information"),
         "transfer_payment":

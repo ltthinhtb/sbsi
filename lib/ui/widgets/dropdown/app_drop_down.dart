@@ -49,7 +49,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
               isDense: true,
               hintText: hintText,
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             ),
             style: Theme.of(context).textTheme.subtitle2,
             icon: SvgPicture.asset(AppImages.chevron_down,

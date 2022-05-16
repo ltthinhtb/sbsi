@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "account_info":
             MessageLookupByLibrary.simpleMessage("Thông tin tài khoản"),
+        "account_name": MessageLookupByLibrary.simpleMessage("Tên người nhận"),
         "account_receiver":
             MessageLookupByLibrary.simpleMessage("Tài khoản nhận"),
         "account_short": MessageLookupByLibrary.simpleMessage("TK"),
@@ -214,6 +215,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "money": MessageLookupByLibrary.simpleMessage("Tiền"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Giao dịch tiền"),
+        "money_transfer":
+            MessageLookupByLibrary.simpleMessage("Số tiền chuyển"),
         "month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "more": MessageLookupByLibrary.simpleMessage("Xem thêm"),
         "mr": MessageLookupByLibrary.simpleMessage("Tỷ lệ ký quỹ"),
@@ -365,6 +368,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị chứng khoán"),
         "transfer": MessageLookupByLibrary.simpleMessage("Chuyển tiền"),
+        "transfer_content":
+            MessageLookupByLibrary.simpleMessage("Nội dung chuyển"),
         "transfer_information":
             MessageLookupByLibrary.simpleMessage("Thông tin giao dịch"),
         "transfer_payment":
