@@ -6,6 +6,7 @@ import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/services/index.dart';
 import 'package:sbsi/services/notification_service.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
+import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 
 import 'main_state.dart';
 
@@ -18,6 +19,9 @@ class MainLogic extends GetxController {
 
   void switchTap(int index) {
     state.selectedIndex.value = index;
+    if(index == 3) {
+      Get.find<OrderListLogic>().getOrderList();
+    }
   }
 
   void pushToOrderPage(StockCompanyData data, bool isBuy) {

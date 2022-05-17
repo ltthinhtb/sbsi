@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import '../../../common/app_text_styles.dart';
 import '../../../model/order_data/inday_order.dart';
@@ -66,10 +67,12 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
             isDense: true,
             labelText: widget.label,
             hintText: widget.hintText,
-
-            suffixIcon: const Padding(
-              padding: EdgeInsets.only(right: 12),
-              child: Icon(Icons.search,size: 20),
+            suffixIcon: Padding(
+              padding: const EdgeInsets.only(right: 12),
+              child: SvgPicture.asset(
+                AppImages.search_normal,
+                color: AppColors.gray7E,
+              ),
             ),
             suffixIconConstraints: const BoxConstraints(maxHeight: 24),
           )),

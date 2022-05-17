@@ -213,8 +213,10 @@ class _StockCashBalanceState extends State<StockCashBalance> {
   }
 
   bool validate(StockOrderState state, bool isBuy) {
-    var checkPrice = OrderUtils.checkPrice(state.selectedStockInfo.value,
-        price: state.priceController.text);
+    var checkPrice = true;
+    if (state.tradingOrder.value == "LO")
+      checkPrice = OrderUtils.checkPrice(state.selectedStockInfo.value,
+          price: state.priceController.text);
     var checkVol = OrderUtils.checkVol(state.selectedStockInfo.value,
         vol: state.volController.numberValue,
         isBuy: isBuy,
