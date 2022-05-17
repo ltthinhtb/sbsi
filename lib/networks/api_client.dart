@@ -4,6 +4,7 @@ import 'package:get/get.dart' as get_x;
 import 'package:sbsi/configs/app_configs.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
+import 'package:sbsi/model/entities/economy.dart';
 import 'package:sbsi/model/entities/index.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/index.dart';
@@ -107,7 +108,10 @@ abstract class ApiClient {
 
   Future checkPin(RequestParams requestParams);
 
-  Future<List<HistoryTransfer>> getTransfersHistory(RequestParams requestParams);
+  Future<List<HistoryTransfer>> getTransfersHistory(
+      RequestParams requestParams);
+
+  Future<List<EconomyRow>> getListEconomyRow(String stock, String timeLine);
 }
 
 class _ApiClient implements ApiClient {
@@ -644,7 +648,8 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<List<HistoryTransfer>> getTransfersHistory(RequestParams requestParams) async {
+  Future<List<HistoryTransfer>> getTransfersHistory(
+      RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
         AppConfigs.ENDPOINT_CORE,
@@ -657,5 +662,19 @@ class _ApiClient implements ApiClient {
       listHistory.add(HistoryTransfer.fromJson(element));
     }
     return listHistory;
+  }
+
+  @override
+  Future<List<EconomyRow>> getListEconomyRow(
+      String stock, String timeLine) async {
+    String path = AppConfigs.INFO_SBSI + 'ptkt';
+    Response _result = await _getApi(_dio.get(path,
+        queryParameters: {"symbol": stock, "period": "1${timeLine}"}));
+    List _mapData = json.decode(_result.data);
+    List<EconomyRow> listEconomy = [];
+    for (var element in _mapData) {
+      listEconomy.add(EconomyRow.fromJson(element));
+    }
+    return listEconomy;
   }
 }

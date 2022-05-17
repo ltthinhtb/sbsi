@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sbsi/networks/error_exception.dart';
+import 'package:sbsi/ui/pages/stock_detail/enums/stock_detail_tab.dart';
 import '../../../model/params/data_params.dart';
 import '../../../model/params/request_params.dart';
 import '../../../services/api/api_service.dart';
@@ -21,6 +22,7 @@ class StockDetailLogic extends GetxController {
     getListStockTrade();
     getListStockCollection();
     getListStockNews();
+    getListEconomyRow();
     super.onReady();
   }
 
@@ -98,8 +100,7 @@ class StockDetailLogic extends GetxController {
 
   Future<void> getListStockNews() async {
     try {
-      var response = await apiService.getListStockNews(
-          state.stockCode);
+      var response = await apiService.getListStockNews(state.stockCode);
       state.listStockNews.value = response;
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
@@ -108,6 +109,19 @@ class StockDetailLogic extends GetxController {
     }
   }
 
+  Future<void> getListEconomyRow() async {
+    try {
+      state.listEconomyRowH.value = await apiService.getListEconomyRow(
+          state.stockCode, StockTimeline.hour.time);
+
+      state.listEconomyRowD.value = await apiService.getListEconomyRow(
+          state.stockCode, StockTimeline.day.time);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (error) {
+      AppSnackBar.showError(message: error.toString());
+    }
+  }
 
   /// convert dữ liệu sang dạng chart
   num maxVol = 0;

@@ -13,7 +13,8 @@ extension StockOrderService on ApiService {
     return await _apiClient.getStockData(stockCode);
   }
 
-  Future<ListStockTrade> getListStockTrade(String stockCode,String type) async {
+  Future<ListStockTrade> getListStockTrade(
+      String stockCode, String type) async {
     return await _apiClient.getListStockTrade(stockCode, type);
   }
 
@@ -32,7 +33,6 @@ extension StockOrderService on ApiService {
   Future<CashBalance> getCashBalance(RequestParams requestParams) async {
     return await _apiClient.getCashBalance(requestParams);
   }
-
 
   Future<ShareBalance> getShareBalance(RequestParams requestParams) async {
     return await _apiClient.getShareBalance(requestParams);
@@ -54,5 +54,7 @@ extension StockOrderService on ApiService {
     return await _apiClient.getIndayOrder(requestParams);
   }
 
-
+  Future<List<EconomyRow>> getListEconomyRow(String stock, String timeLine) async {
+    return await _apiClient.getListEconomyRow(stock, timeLine);
+  }
 }

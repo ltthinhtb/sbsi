@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:sbsi/common/app_images.dart';
 import '../../../common/app_text_styles.dart';
 import '../../../model/order_data/inday_order.dart';
 import '../../../model/stock_company_data/stock_company_data.dart';
@@ -61,7 +63,16 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
           controller: widget.inputController,
           focusNode: widget.focusNode,
           decoration: InputDecoration(
-              labelText: widget.label, hintText: widget.hintText)),
+            isDense: true,
+            labelText: widget.label,
+            hintText: widget.hintText,
+
+            suffixIcon: const Padding(
+              padding: EdgeInsets.only(right: 12),
+              child: Icon(Icons.search,size: 20),
+            ),
+            suffixIconConstraints: const BoxConstraints(maxHeight: 24),
+          )),
       noItemsFoundBuilder: (context) {
         return Padding(
           padding: const EdgeInsets.all(8),

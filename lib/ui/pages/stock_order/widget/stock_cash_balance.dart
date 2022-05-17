@@ -7,12 +7,20 @@ import 'package:sbsi/ui/pages/stock_order/stock_order_state.dart';
 import 'package:sbsi/utils/money_utils.dart';
 import 'package:sbsi/utils/order_utils.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../utils/debouncer.dart';
 import '../../../widgets/button/button_filled.dart';
 import '../../../widgets/textfields/appTextFieldNumber.dart';
 import '../../../widgets/textfields/app_text_typehead.dart';
 
-class StockCashBalance extends StatelessWidget {
+class StockCashBalance extends StatefulWidget {
   const StockCashBalance({Key? key}) : super(key: key);
+
+  @override
+  State<StockCashBalance> createState() => _StockCashBalanceState();
+}
+
+class _StockCashBalanceState extends State<StockCashBalance> {
+  final _debouncer = Debouncer(milliseconds: 500);
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +42,7 @@ class StockCashBalance extends StatelessWidget {
               padding: const EdgeInsets.only(left: 12, right: 20),
               child: AppTextTypeHead<StockCompanyData>(
                 key: state.searchCKKey,
+                hintText: S.of(context).stock_code,
                 inputController: state.stockController,
                 focusNode: state.stockNode,
                 suggestionsCallback: (String pattern) {
@@ -120,6 +129,11 @@ class StockCashBalance extends StatelessWidget {
                     focusNode: state.priceNode,
                     inputController: state.priceController,
                     hintText: S.of(context).price,
+                    onChanged: (value) {
+                      _debouncer.run(() {
+                        logic.getCashBalance();
+                      });
+                    },
                     minus: () {
                       /// bước nhảy step giá
                       checkNullPrice();
@@ -127,6 +141,7 @@ class StockCashBalance extends StatelessWidget {
                       var value = state.priceController.numberValue;
                       if (value > step) {
                         state.priceController.updateValue(value - step);
+                        logic.getCashBalance();
                       }
                     },
                     plus: () {
@@ -135,6 +150,7 @@ class StockCashBalance extends StatelessWidget {
                       var step = state.selectedStockInfo.value.stepPrice!;
                       var value = state.priceController.numberValue;
                       state.priceController.updateValue(value + step);
+                      logic.getCashBalance();
                     },
                   )),
                   const SizedBox(width: 16),

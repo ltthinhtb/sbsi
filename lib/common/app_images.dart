@@ -95,4 +95,5 @@ class AppImages {
   static String like_big_size = 'assets/icon_svg/like-big-size.svg';
 
   static String calendar = 'assets/icon_svg/calendar.svg';
+  static String moreCircle = 'assets/icon_svg/more-circle.svg';
 }

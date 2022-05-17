@@ -41,6 +41,7 @@ class _AppTextFieldNumberState extends State<AppTextFieldNumber> {
         keyboardType: const TextInputType.numberWithOptions(decimal: true),
         focusNode: widget.focusNode,
         textAlign: TextAlign.center,
+        onChanged: widget.onChanged,
         decoration: InputDecoration(
             labelText: widget.label,
             hintText: widget.hintText,

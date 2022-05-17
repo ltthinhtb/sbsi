@@ -23,6 +23,7 @@ import 'package:get/get.dart';
 import '../../model/entities/bank.dart';
 import '../../model/entities/beneficiary_account.dart';
 import '../../model/entities/cash_account.dart';
+import '../../model/entities/economy.dart';
 import '../../model/response/branch_response.dart';
 import '../../model/response/index_chart.dart';
 import '../../model/response/market_depth_response.dart';
