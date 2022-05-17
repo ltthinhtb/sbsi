@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "account_receiver":
             MessageLookupByLibrary.simpleMessage("Account receiver"),
         "account_short": MessageLookupByLibrary.simpleMessage("Acc"),
+        "account_transfer":
+            MessageLookupByLibrary.simpleMessage("Account transfer"),
         "account_user": MessageLookupByLibrary.simpleMessage("User"),
         "activated_account":
             MessageLookupByLibrary.simpleMessage("Activated account"),

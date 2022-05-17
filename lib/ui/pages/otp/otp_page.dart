@@ -91,7 +91,7 @@ class _OtpPageState extends State<OtpPage> {
               voidCallback: () {
                 //load otp
               },
-              duration: const Duration(seconds: 60),
+              duration: const Duration(seconds: 30),
               textStyle: body2!.copyWith(color: AppColors.primary),
             ),
           ),

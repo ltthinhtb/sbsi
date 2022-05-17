@@ -79,19 +79,16 @@ class _InternalTransferState extends State<InternalTransfer> with Validator {
                       style: body1?.copyWith(fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(height: 16),
-                    Obx(() {
-                      var listAccount = Get.find<AuthService>().listAccount;
-                      return AppDropDownWidget<Account>(
-                        isExpanded: true,
-                        items: listAccount
-                            .map((e) => DropdownMenuItem<Account>(
-                                child: Text(e.accCode ?? ""), value: e))
-                            .toList(),
-                        value: state.accountReceiver.value,
-                        hintText: S.of(context).bank,
-                        onChanged: null,
-                      );
-                    }),
+                    Form(
+                      key: state.userReceiverKey,
+                      child: AppTextFieldWidget(
+                        hintText: S.of(context).money_transfer,
+                        inputController: state.userReceiverController,
+                        focusNode: state.userReceiverFocus,
+                        enableBorder: true,
+                        readOnly: true,
+                      ),
+                    ),
                     const SizedBox(height: 16),
                     Form(
                       key: state.userMoneyKey,
@@ -134,8 +131,10 @@ class _InternalTransferState extends State<InternalTransfer> with Validator {
                   children: [
                     Expanded(
                         child: ButtonFill(
-                      voidCallback: () {},
-                      title: S.of(context).cancel,
+                      voidCallback: () {
+                        Get.back();
+                      },
+                      title: S.of(context).cancel_short,
                       style: ElevatedButton.styleFrom(
                           onPrimary: AppColors.primary,
                           primary: const Color.fromRGBO(255, 238, 238, 1)),
@@ -151,8 +150,8 @@ class _InternalTransferState extends State<InternalTransfer> with Validator {
                             voidCallback: () {
                               if (!state.userMoneyKey.currentState!.validate())
                                 return;
-                              if (!state.transferContentKey.currentState!.validate())
-                                return;
+                              if (!state.transferContentKey.currentState!
+                                  .validate()) return;
                               Get.to(ConfirmPayment(
                                 title: state.type.name,
                               ));

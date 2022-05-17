@@ -271,7 +271,7 @@
   "settings": "Cài đặt",
   "bank_transfer": "Chuyển tiền ra ngân hàng",
   "internal_transfer": "Chuyển tiền nội bộ",
-  "history_transfer": "Chuyển tiền nội bộ",
+  "history_transfer": "Lịch sử chuyển tiền",
   "cash_availability" : "Số dư khả dụng",
   "account_receiver" : "Tài khoản nhận",
   "bank" : "Chọn ngân hàng nhận",
@@ -287,6 +287,7 @@
   "please_input_pin_verify" : "Vui lòng nhập mã pin để xác nhận",
   "please_input_pin" : "Vui lòng nhập pin",
   "pin_valid" : "Mã pin không hợp lệ",
-  "confirm_payment" : "Xác thực giao dịch"
+  "confirm_payment" : "Xác thực giao dịch",
+  "account_transfer" : "Tài khoản chuyển"
 
 }

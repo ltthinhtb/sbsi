@@ -33,7 +33,7 @@ class AccountDropDown extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            S.of(context).select_account,
+            S.of(context).account_transfer,
             style: body1?.copyWith(fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: 16),

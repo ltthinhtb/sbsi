@@ -36,6 +36,9 @@ class MoneyTransferLogic extends GetxController {
     state.accountReceiver.value = authService.listAccount.firstWhere(
         (element) => element.accCode != (state.account.value.accCode ?? ""),
         orElse: () => Account());
+
+    state.userReceiverController.text =
+        state.accountReceiver.value.accCode ?? "";
   }
 
   void changeAccount(Account account) {
@@ -44,6 +47,9 @@ class MoneyTransferLogic extends GetxController {
     state.accountReceiver.value = authService.listAccount.firstWhere(
         (element) => element.accCode != (state.account.value.accCode ?? ""),
         orElse: () => Account());
+
+    state.userReceiverController.text =
+        state.accountReceiver.value.accCode ?? "";
   }
 
   Future<void> getCashAccountInfo() async {

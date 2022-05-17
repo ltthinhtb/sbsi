@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "account_receiver":
             MessageLookupByLibrary.simpleMessage("Tài khoản nhận"),
         "account_short": MessageLookupByLibrary.simpleMessage("TK"),
+        "account_transfer":
+            MessageLookupByLibrary.simpleMessage("Tài khoản chuyển"),
         "account_user": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
         "activated_account":
             MessageLookupByLibrary.simpleMessage("Kích hoạt tài khoản"),
@@ -155,7 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "have_account": MessageLookupByLibrary.simpleMessage("Đã có tài khoản"),
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử giao dịch"),
         "history_transfer":
-            MessageLookupByLibrary.simpleMessage("Chuyển tiền nội bộ"),
+            MessageLookupByLibrary.simpleMessage("Lịch sử chuyển tiền"),
         "home": MessageLookupByLibrary.simpleMessage("Bảng giá"),
         "identity_card":
             MessageLookupByLibrary.simpleMessage("Chứng minh nhân dân"),

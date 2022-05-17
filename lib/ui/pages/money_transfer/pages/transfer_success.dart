@@ -3,8 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/money_transfer/money_transfer_logic.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
+import 'package:sbsi/utils/date_utils.dart';
 
 import '../../../../common/app_images.dart';
+import '../../../../generated/l10n.dart';
 import '../enums/transfer_type.dart';
 
 class TransferSuccess extends StatefulWidget {
@@ -24,6 +26,9 @@ class _TransferSuccessState extends State<TransferSuccess> {
   String get account => state.type == TransfersType.bank
       ? state.userAccountController.text
       : (state.accountReceiver.value.accCode ?? "");
+
+
+  var date = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +75,26 @@ class _TransferSuccessState extends State<TransferSuccess> {
                   account,
                   style: body2?.copyWith(fontWeight: FontWeight.w400),
                 ),
+                const Divider(
+                  height: 32,
+                ),
+                Text(
+                  'Thời gian thực hiện',
+                  style: body2?.copyWith(
+                      color: const Color.fromRGBO(225, 137, 150, 1)),
+                ),
+                const SizedBox(height: 12),
+                Text(DateTimeUtils.toDateString(date,format: "HH:mm:ss dd/MM/yyyy"),style: body2?.copyWith(fontWeight: FontWeight.w700),),
+                const Divider(
+                  height: 32,
+                ),
+                Text(
+                  S.of(context).transfer_content,
+                  style: body2?.copyWith(
+                      color: const Color.fromRGBO(225, 137, 150, 1)),
+                ),
+                const SizedBox(height: 12),
+                Text(state.transferContentController.text,style: body2?.copyWith(),),
                 const Spacer(),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,

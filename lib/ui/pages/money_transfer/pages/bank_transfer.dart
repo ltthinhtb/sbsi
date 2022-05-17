@@ -169,8 +169,10 @@ class _BankTransferState extends State<BankTransfer> {
                   children: [
                     Expanded(
                         child: ButtonFill(
-                      voidCallback: () {},
-                      title: S.of(context).cancel,
+                      voidCallback: () {
+                        Get.back();
+                      },
+                      title: S.of(context).cancel_short,
                       style: ElevatedButton.styleFrom(
                           onPrimary: AppColors.primary,
                           primary: const Color.fromRGBO(255, 238, 238, 1)),

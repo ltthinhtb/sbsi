@@ -2939,6 +2939,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Account transfer`
+  String get account_transfer {
+    return Intl.message(
+      'Account transfer',
+      name: 'account_transfer',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

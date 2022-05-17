@@ -45,7 +45,7 @@ class AvailabilityMoney extends StatelessWidget {
                 final cashAccount =
                     Get.find<MoneyTransferLogic>().state.cashAccount.value;
                 return Text(
-                  MoneyFormat.formatMoneyRound("${cashAccount.cCASHBALANCE}"),
+                  MoneyFormat.formatMoneyRound("${cashAccount.cCASHBALANCE}") + " đ",
                   style: headline6?.copyWith(
                       color: AppColors.active, fontWeight: FontWeight.w700),
                 );

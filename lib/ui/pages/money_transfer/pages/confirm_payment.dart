@@ -41,6 +41,8 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
   @override
   Widget build(BuildContext context) {
     final headline6 = Theme.of(context).textTheme.headline6;
+    final headline5 = Theme.of(context).textTheme.headline5;
+
     return Scaffold(
       appBar: AppBarCustom(
         title: widget.title,
@@ -60,6 +62,15 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                 ),
               ),
               const SizedBox(height: 16),
+              Center(
+                child: Text(
+                  state.moneyController.text + "VNĐ",
+                  style: headline5?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 26),
+                ),
+              ),
+              const SizedBox(height: 16),
               ColumnText(S.of(context).transfer_cFee, "10,000 VNĐ"),
               const SizedBox(height: 16),
               ColumnText(S.of(context).account_receiver, receiver),
@@ -72,15 +83,17 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                     ?.copyWith(height: 20 / 14),
               ),
               const SizedBox(height: 16),
-              ColumnText(S.of(context).content_transfer,
+              ColumnText(S.of(context).transfer_content,
                   state.transferContentController.text),
               const Spacer(),
               Row(
                 children: [
                   Expanded(
                       child: ButtonFill(
-                    voidCallback: () {},
-                    title: S.of(context).cancel,
+                    voidCallback: () {
+                      Get.back();
+                    },
+                    title: S.of(context).cancel_short,
                     style: ElevatedButton.styleFrom(
                         onPrimary: AppColors.primary,
                         primary: const Color.fromRGBO(255, 238, 238, 1)),
@@ -139,7 +152,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                             voidCallback: () {
                                               Get.back();
                                             },
-                                            title: S.of(context).cancel,
+                                            title: S.of(context).cancel_short,
                                             style: ElevatedButton.styleFrom(
                                                 onPrimary: AppColors.primary,
                                                 primary: const Color.fromRGBO(
@@ -152,6 +165,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                               child: ButtonFill(
                                                   voidCallback: () {
                                                     state.otpController.clear();
+                                                    if(!state.pinKey.currentState!.validate()) return;
                                                     try {
                                                       // check pin ok then
                                                       logic.checkPin();
@@ -166,8 +180,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                                               .otpController,
                                                           phone: "0349949866",
                                                         ));
-                                                      }
-                                                      else {
+                                                      } else {
                                                         // type transfer = internal
                                                         onSubmit();
                                                       }

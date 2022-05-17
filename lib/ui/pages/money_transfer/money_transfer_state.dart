@@ -31,6 +31,10 @@ class MoneyTransferState {
   final userAccountKey = GlobalKey<FormState>();
   final userAccountFocus = FocusNode();
 
+  final userReceiverController = TextEditingController();
+  final userReceiverKey = GlobalKey<FormState>();
+  final userReceiverFocus = FocusNode();
+
   final userNameController = TextEditingController();
   final userNameKey = GlobalKey<FormState>();
   final userNameFocus = FocusNode();
