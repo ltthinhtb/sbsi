@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sbsi/model/response/list_account_response.dart';
-import 'package:sbsi/services/auth_service.dart';
 import 'package:sbsi/utils/validator.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../commons/appbar.dart';
 import '../../../widgets/button/button_filled.dart';
-import '../../../widgets/dropdown/app_drop_down.dart';
 import '../../../widgets/textfields/app_text_field.dart';
 import '../enums/transfer_type.dart';
 import '../money_transfer_logic.dart';

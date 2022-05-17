@@ -186,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "issue_date_cmt": MessageLookupByLibrary.simpleMessage("Issue date"),
         "issue_loc": MessageLookupByLibrary.simpleMessage("Issue location"),
         "later": MessageLookupByLibrary.simpleMessage("Later"),
+        "list_history": MessageLookupByLibrary.simpleMessage("List history"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_face_id":
             MessageLookupByLibrary.simpleMessage("Login by FaceID"),
@@ -208,6 +209,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "menu": MessageLookupByLibrary.simpleMessage("Menu"),
         "min_VOLUME": MessageLookupByLibrary.simpleMessage("Min volume"),
         "money": MessageLookupByLibrary.simpleMessage("Money"),
+        "money_1": MessageLookupByLibrary.simpleMessage("Money"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Money exchange"),
         "money_payment": MessageLookupByLibrary.simpleMessage("Money payment"),
@@ -364,6 +366,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "terms_and_condition_valid": MessageLookupByLibrary.simpleMessage(
             "Please agree terms & condition"),
         "the_world": MessageLookupByLibrary.simpleMessage("Ngoài nước"),
+        "time": MessageLookupByLibrary.simpleMessage("Time"),
         "tks": MessageLookupByLibrary.simpleMessage("Thanks"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "top_foreign": MessageLookupByLibrary.simpleMessage("Top foreign"),
@@ -382,6 +385,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Transfer Payment"),
         "transfer_stock":
             MessageLookupByLibrary.simpleMessage("Transfer Stock"),
+        "transfer_type": MessageLookupByLibrary.simpleMessage("Transfer type"),
         "up_to": MessageLookupByLibrary.simpleMessage("Up to"),
         "use_photo": MessageLookupByLibrary.simpleMessage("Use photo"),
         "user": MessageLookupByLibrary.simpleMessage("User"),

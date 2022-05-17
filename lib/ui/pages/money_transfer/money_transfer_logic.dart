@@ -37,8 +37,7 @@ class MoneyTransferLogic extends GetxController {
         (element) => element.accCode != (state.account.value.accCode ?? ""),
         orElse: () => Account());
 
-    state.userReceiverController.text =
-        state.accountReceiver.value.accCode ?? "";
+    state.userReceiverController.text = state.accountReceiver.value.accCode ?? "";
   }
 
   void changeAccount(Account account) {
@@ -48,8 +47,8 @@ class MoneyTransferLogic extends GetxController {
         (element) => element.accCode != (state.account.value.accCode ?? ""),
         orElse: () => Account());
 
-    state.userReceiverController.text =
-        state.accountReceiver.value.accCode ?? "";
+    state.userReceiverController.text = state.accountReceiver.value.accCode ?? "";
+
   }
 
   Future<void> getCashAccountInfo() async {
@@ -199,6 +198,28 @@ class MoneyTransferLogic extends GetxController {
       AppSnackBar.showError(message: e.message);
     }
   }
+
+  Future<void> getTransfersHistory() async {
+    final RequestParams _requestParams = RequestParams(
+        group: "B",
+        user: tokenEntity?.data?.user ?? "",
+        session: tokenEntity?.data?.sid ?? "",
+        data: ParamsObject(
+            type: 'cursor',
+            cmd: "ListCashTransfer",
+            p1: state.account.value.accCode ?? "",
+            p2: state.startDateController.text,
+            p3: state.endDateController.text,
+            p6: "1",
+            p7: "20"));
+    try {
+      state.listHistory.value = await apiService.getTransfersHistory(_requestParams);
+      // load bank then load list beneficiary
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    }
+  }
+
 
   // check pin
   Future<void> checkPin() async {

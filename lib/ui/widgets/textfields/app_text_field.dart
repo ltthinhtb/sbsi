@@ -23,26 +23,27 @@ class AppTextFieldWidget extends StatefulWidget {
   final bool readOnly;
   final VoidCallback? onTap;
   final bool? enableBorder;
+  final Widget? suffixIcon;
 
-  const AppTextFieldWidget({
-    this.inputController,
-    this.onChanged,
-    this.textInputType,
-    this.label,
-    this.hintTextStyle,
-    this.hintText,
-    this.validator,
-    this.obscureText = false,
-    this.onFieldSubmitted,
-    this.focusNode,
-    this.autoFocus = false,
-    this.prefixIcon,
-    this.maxLength,
-    this.readOnly = false,
-    this.onTap,
-    this.maxLines,
-    this.enableBorder,
-  });
+  const AppTextFieldWidget(
+      {this.inputController,
+      this.onChanged,
+      this.textInputType,
+      this.label,
+      this.hintTextStyle,
+      this.hintText,
+      this.validator,
+      this.obscureText = false,
+      this.onFieldSubmitted,
+      this.focusNode,
+      this.autoFocus = false,
+      this.prefixIcon,
+      this.maxLength,
+      this.readOnly = false,
+      this.onTap,
+      this.maxLines,
+      this.enableBorder,
+      this.suffixIcon});
 
   @override
   State<AppTextFieldWidget> createState() => _AppTextFieldWidgetState();
@@ -119,22 +120,24 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
                         ?.copyWith(
                             borderSide: BorderSide(
                                 color: AppColors.textBlack.withOpacity(0.5)))),
-            suffixIcon: widget.obscureText
-                ? GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                        _focusNode.unfocus();
-                      });
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: SvgPicture.asset(
-                          _obscureText ? AppImages.eye_lock : AppImages.eye),
-                    ),
-                  )
-                : null,
+            suffixIcon: widget.suffixIcon ??
+                (widget.obscureText
+                    ? GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                            _focusNode.unfocus();
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: SvgPicture.asset(_obscureText
+                              ? AppImages.eye_lock
+                              : AppImages.eye),
+                        ),
+                      )
+                    : null),
           ),
           keyboardType: widget.textInputType,
           onChanged: widget.onChanged,

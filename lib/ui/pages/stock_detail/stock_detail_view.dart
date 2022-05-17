@@ -8,6 +8,7 @@ import '../../../common/app_images.dart';
 import '../../../generated/l10n.dart';
 import 'enums/stock_detail_tab.dart';
 import 'stock_detail_logic.dart';
+import 'widget/analytic_tab.dart';
 import 'widget/card_data_detail.dart';
 import 'widget/over_view_tab.dart';
 
@@ -96,7 +97,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                     children: [
                       OverViewTab(),
                       NewsTab(),
-                      OverViewTab(),
+                      AnalyticTab(),
                       OverViewTab()
                     ]),
               )

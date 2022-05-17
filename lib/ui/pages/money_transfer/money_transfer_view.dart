@@ -8,6 +8,7 @@ import '../../../generated/l10n.dart';
 import 'money_transfer_logic.dart';
 import 'pages/bank_transfer.dart';
 import 'pages/internal_transfer.dart';
+import 'pages/transfer_history.dart';
 
 class MoneyTransferPage extends StatefulWidget {
   const MoneyTransferPage({Key? key}) : super(key: key);
@@ -61,7 +62,9 @@ class _MoneyTransferPageState extends State<MoneyTransferPage> {
                   ),
                 ),
                 rowButton(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(const TransferHistory());
+                    },
                     title: S.of(context).history_transfer,
                     button: AppImages.ic_history),
               ],

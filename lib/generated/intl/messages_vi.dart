@@ -194,6 +194,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "issue_date_cmt": MessageLookupByLibrary.simpleMessage("Ngày cấp"),
         "issue_loc": MessageLookupByLibrary.simpleMessage("Nơi cấp"),
         "later": MessageLookupByLibrary.simpleMessage("Để sau"),
+        "list_history":
+            MessageLookupByLibrary.simpleMessage("Danh sách lịch sử"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_face_id":
             MessageLookupByLibrary.simpleMessage("Đăng nhập bằng FaceID"),
@@ -218,6 +220,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "min_VOLUME":
             MessageLookupByLibrary.simpleMessage("Số tiền đầu tư tối thiểu"),
         "money": MessageLookupByLibrary.simpleMessage("Tiền"),
+        "money_1": MessageLookupByLibrary.simpleMessage("Số tiền"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Giao dịch tiền"),
         "money_payment":
@@ -377,6 +380,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "terms_and_condition_valid": MessageLookupByLibrary.simpleMessage(
             "Vui lòng đồng ý điều khoản và điều kiện"),
         "the_world": MessageLookupByLibrary.simpleMessage("Ngoài nước"),
+        "time": MessageLookupByLibrary.simpleMessage("Thời gian"),
         "tks": MessageLookupByLibrary.simpleMessage("Cảm ơn bạn"),
         "today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
         "top_foreign":
@@ -396,6 +400,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thanh toán chuyển khoản"),
         "transfer_stock":
             MessageLookupByLibrary.simpleMessage("Chuyển chứng khoán"),
+        "transfer_type": MessageLookupByLibrary.simpleMessage("Loại chuyển"),
         "up_to": MessageLookupByLibrary.simpleMessage("Lên đến"),
         "use_photo": MessageLookupByLibrary.simpleMessage("Dùng ảnh này"),
         "user": MessageLookupByLibrary.simpleMessage("Tài khoản"),

@@ -33,4 +33,8 @@ extension WaletService on ApiService {
   Future checkPin(RequestParams requestParams) async {
     return await _apiClient.checkPin(requestParams);
   }
+
+  Future<List<HistoryTransfer>> getTransfersHistory(RequestParams requestParams) async {
+    return await _apiClient.getTransfersHistory(requestParams);
+  }
 }

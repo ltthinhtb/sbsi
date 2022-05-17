@@ -288,6 +288,10 @@
   "please_input_pin" : "Vui lòng nhập pin",
   "pin_valid" : "Mã pin không hợp lệ",
   "confirm_payment" : "Xác thực giao dịch",
-  "account_transfer" : "Tài khoản chuyển"
+  "account_transfer" : "Tài khoản chuyển",
+  "list_history" : "Danh sách lịch sử",
+  "time" : "Thời gian",
+  "transfer_type" : "Loại chuyển",
+  "money_1" : "Số tiền"
 
 }

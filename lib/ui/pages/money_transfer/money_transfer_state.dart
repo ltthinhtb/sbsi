@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/model/entities/beneficiary_account.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
+import 'package:sbsi/model/entities/transfer_history.dart';
 import 'package:sbsi/model/response/list_account_response.dart';
 
 import '../../../model/entities/bank.dart';
@@ -20,6 +21,8 @@ class MoneyTransferState {
   var listBank = <Bank>[];
 
   final bank = Bank().obs;
+
+  final listHistory = <HistoryTransfer>[].obs;
 
   MoneyTransferState() {}
 
@@ -55,4 +58,7 @@ class MoneyTransferState {
   final otpController = TextEditingController();
   final pinController = TextEditingController();
   final pinKey = GlobalKey<FormState>();
+
+  final startDateController = TextEditingController();
+  final endDateController = TextEditingController();
 }

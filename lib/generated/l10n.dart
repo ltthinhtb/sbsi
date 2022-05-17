@@ -2949,6 +2949,46 @@ class S {
       args: [],
     );
   }
+
+  /// `List history`
+  String get list_history {
+    return Intl.message(
+      'List history',
+      name: 'list_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get time {
+    return Intl.message(
+      'Time',
+      name: 'time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer type`
+  String get transfer_type {
+    return Intl.message(
+      'Transfer type',
+      name: 'transfer_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money`
+  String get money_1 {
+    return Intl.message(
+      'Money',
+      name: 'money_1',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -28,6 +28,7 @@ import 'package:sbsi/utils/logger.dart';
 
 import '../model/entities/bank.dart';
 import '../model/entities/beneficiary_account.dart';
+import '../model/entities/transfer_history.dart';
 import '../model/response/branch_response.dart';
 import '../model/response/index_chart.dart';
 import '../model/response/market_depth_response.dart';
@@ -105,6 +106,8 @@ abstract class ApiClient {
   Future updateCashTransferOnline(RequestParams requestParams);
 
   Future checkPin(RequestParams requestParams);
+
+  Future<List<HistoryTransfer>> getTransfersHistory(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -638,5 +641,21 @@ class _ApiClient implements ApiClient {
         data: requestParams.toJson(),
       ),
     );
+  }
+
+  @override
+  Future<List<HistoryTransfer>> getTransfersHistory(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<HistoryTransfer> listHistory = [];
+    for (var element in _mapData) {
+      listHistory.add(HistoryTransfer.fromJson(element));
+    }
+    return listHistory;
   }
 }
