@@ -153,7 +153,9 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                                   voidCallback: () {
                                                     state.otpController.clear();
                                                     try {
+                                                      // check pin ok then
                                                       logic.checkPin();
+                                                      // type transfer = bank
                                                       if (state.type ==
                                                           TransfersType.bank) {
                                                         Get.to(OtpPage(
@@ -166,6 +168,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                                         ));
                                                       }
                                                       else {
+                                                        // type transfer = internal
                                                         onSubmit();
                                                       }
                                                     } on ErrorException catch (e) {

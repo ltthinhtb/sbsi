@@ -194,7 +194,7 @@ class MoneyTransferLogic extends GetxController {
     }
   }
 
-  // transferInternal
+  // check pin
   Future<void> checkPin() async {
     final RequestParams _requestParams = RequestParams(
       group: "B",
