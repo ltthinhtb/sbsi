@@ -44,7 +44,11 @@ class AppBarHome extends StatelessWidget {
                   GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: () {
-                        Get.find<HomeLogic>().state.key.currentState?.openDrawer();
+                        Get.find<HomeLogic>()
+                            .state
+                            .key
+                            .currentState
+                            ?.openDrawer();
                       },
                       child: SvgPicture.asset(AppImages.user)),
                   const SizedBox(width: 12),
@@ -110,7 +114,7 @@ class AppBarHome extends StatelessWidget {
                             Get.find<WalletLogic>().state.assets.value;
                         return Text(
                           MoneyFormat.formatMoneyRound(
-                              '${accountStatus.assets}'),
+                              '${accountStatus.assets}') + " đ",
                           style:
                               headline6?.copyWith(fontWeight: FontWeight.bold),
                         );

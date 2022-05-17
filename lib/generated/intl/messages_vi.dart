@@ -158,7 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử giao dịch"),
         "history_transfer":
             MessageLookupByLibrary.simpleMessage("Lịch sử chuyển tiền"),
-        "home": MessageLookupByLibrary.simpleMessage("Bảng giá"),
+        "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
         "identity_card":
             MessageLookupByLibrary.simpleMessage("Chứng minh nhân dân"),
         "increase": MessageLookupByLibrary.simpleMessage("Tăng giá"),

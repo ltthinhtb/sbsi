@@ -51,6 +51,9 @@ class StockOrderState {
   var sumBSVol = 0.0.obs;
 
   StockOrderState() {}
+
+  // tổng giá trị tính tạm thời
+  ValueNotifier<num> total = ValueNotifier<num>(0);
 }
 
 enum StockExchange { HSX, HNX, UPCOM }

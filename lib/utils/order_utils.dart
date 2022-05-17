@@ -7,7 +7,6 @@ import 'package:sbsi/model/stock_data/stock_info.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 
 import '../model/stock_data/cash_balance.dart';
-import 'logger.dart';
 
 class OrderUtils {
   static String getRandom() {

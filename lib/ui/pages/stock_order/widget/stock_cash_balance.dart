@@ -22,6 +22,8 @@ class StockCashBalance extends StatefulWidget {
 class _StockCashBalanceState extends State<StockCashBalance> {
   final _debouncer = Debouncer(milliseconds: 500);
 
+  final state = Get.find<StockOrderLogic>().state;
+
   @override
   Widget build(BuildContext context) {
     var state = Get.find<StockOrderLogic>().state;
@@ -119,6 +121,28 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                 ],
               ),
             ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Tổng giá trị",
+                    style: bodyText2,
+                  ),
+                  ValueListenableBuilder<num>(
+                      valueListenable: state.total,
+                      builder: (context, value, child) {
+                        return Text(
+                          MoneyFormat.formatMoneyRound('${value}'),
+                          style:
+                              bodyText2?.copyWith(fontWeight: FontWeight.w700),
+                        );
+                      }),
+                ],
+              ),
+            ),
             const SizedBox(height: 23),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -132,6 +156,7 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                     onChanged: (value) {
                       _debouncer.run(() {
                         logic.getCashBalance();
+                        logic.changeTotal();
                       });
                     },
                     minus: () {
@@ -140,17 +165,25 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                       var step = state.selectedStockInfo.value.stepPrice!;
                       var value = state.priceController.numberValue;
                       if (value > step) {
+                        // đổi thành phiên LO
+                        state.tradingOrder.value = "LO";
                         state.priceController.updateValue(value - step);
                         logic.getCashBalance();
+                        logic.changeTotal();
+
+
                       }
                     },
                     plus: () {
                       /// bước nhảy step giá
                       checkNullPrice();
+                      // đổi thành phiên LO
+                      state.tradingOrder.value = "LO";
                       var step = state.selectedStockInfo.value.stepPrice!;
                       var value = state.priceController.numberValue;
                       state.priceController.updateValue(value + step);
                       logic.getCashBalance();
+                      logic.changeTotal();
                     },
                   )),
                   const SizedBox(width: 16),
@@ -158,12 +191,16 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                       child: AppTextFieldNumber(
                     inputController: state.volController,
                     hintText: S.of(context).volume_short,
+                    onChanged: (value) {
+                      logic.changeTotal();
+                    },
                     minus: () {
                       /// bước nhảy step Khối lượng
                       var step = 100;
                       var value = state.volController.numberValue;
                       if (value > step) {
                         state.volController.updateValue(value - step);
+                        logic.changeTotal();
                       }
                     },
                     plus: () {
@@ -171,6 +208,7 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                       var step = 100;
                       var value = state.volController.numberValue;
                       state.volController.updateValue(value + step);
+                      logic.changeTotal();
                     },
                   )),
                 ],
@@ -211,6 +249,7 @@ class _StockCashBalanceState extends State<StockCashBalance> {
       );
     });
   }
+
 
   bool validate(StockOrderState state, bool isBuy) {
     var checkPrice = true;

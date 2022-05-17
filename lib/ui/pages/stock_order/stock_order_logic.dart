@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
@@ -9,6 +8,7 @@ import 'package:sbsi/services/socket/socket.dart';
 import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_state.dart';
+import 'package:sbsi/ui/pages/stock_order/widget/stock_cash_balance.dart';
 import 'package:sbsi/utils/extension.dart';
 import 'package:sbsi/utils/logger.dart';
 import 'package:sbsi/utils/order_utils.dart';
@@ -38,6 +38,26 @@ class StockOrderLogic extends GetxController {
     } else {
       return [];
     }
+  }
+
+  // switch tài khoản 1-6
+  void changeAccount() {
+    var index = authService.listAccount.indexWhere(
+        (element) => state.account.value.accCode != element.accCode);
+    if (index >= 0) {
+      state.account.value = authService.listAccount[index];
+      getCashBalance();
+    }
+  }
+
+  void changeTotal() {
+    num price = 0;
+    price = state.priceController.numberValue;
+    if (state.tradingOrder.value != "LO") {
+      price = state.selectedStockInfo.value.c ?? 0;
+    }
+    state.total.value = price * state.volController.numberValue * 1000;
+    print(state.tradingOrder.value);
   }
 
   /// lấy thông tin list mã chứng khoán đã lưu vào db, danh sách mã chứng khoán thường cố định
@@ -73,7 +93,6 @@ class StockOrderLogic extends GetxController {
   }
 
   Future<void> getStockInfo() async {
-
     var _tokenEntity = authService.token.value;
     try {
       state.loading.value = true;
@@ -94,8 +113,8 @@ class StockOrderLogic extends GetxController {
         ..sumBuyVol.value = getSumBuyVol()
         ..sumSellVol.value = getSumSellVol()
         ..sumBSVol.value = getSumBSVol();
-      // state.priceController.text =
-      //     state.selectedStockInfo.value.lastPrice!.toString();
+      state.priceController.clear();
+      state.volController.clear();
       await getAccountStatus(_tokenEntity?.data?.defaultAcc);
       await getCashBalance();
       state.loading.value = false;
@@ -121,7 +140,6 @@ class StockOrderLogic extends GetxController {
       }
     });
   }
-
 
   Future<void> refreshPage() async {
     try {
@@ -247,12 +265,12 @@ class StockOrderLogic extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+
     /// tạo cổng socket
     //socketListen();
 
     loadAccount();
     getAllStockCompanyData();
-
   }
 
   void loadAccount() {
