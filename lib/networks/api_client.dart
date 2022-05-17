@@ -103,6 +103,8 @@ abstract class ApiClient {
       RequestParams requestParams);
 
   Future updateCashTransferOnline(RequestParams requestParams);
+
+  Future checkPin(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -620,7 +622,17 @@ class _ApiClient implements ApiClient {
 
   @override
   Future updateCashTransferOnline(RequestParams requestParams) async {
-    Response _result = await _requestApi(
+    await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+  }
+
+  @override
+  Future checkPin(RequestParams requestParams) async {
+    await _requestApi(
       _dio.post(
         AppConfigs.ENDPOINT_CORE,
         data: requestParams.toJson(),

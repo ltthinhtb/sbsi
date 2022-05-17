@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/money_transfer/enums/transfer_type.dart';
 import 'package:sbsi/ui/pages/otp/otp_page.dart';
@@ -9,6 +10,7 @@ import 'package:sbsi/utils/validator.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../commons/app_snackbar.dart';
 import '../money_transfer_logic.dart';
 
 class ConfirmPayment extends StatefulWidget {
@@ -150,12 +152,26 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                               child: ButtonFill(
                                                   voidCallback: () {
                                                     state.otpController.clear();
-                                                    Get.to(OtpPage(
-                                                        onRequest: () {
-                                                          onSubmit();
-                                                        },
-                                                        pinPutController: state
-                                                            .otpController, phone: "0349949866",));
+                                                    try {
+                                                      logic.checkPin();
+                                                      if (state.type ==
+                                                          TransfersType.bank) {
+                                                        Get.to(OtpPage(
+                                                          onRequest: () {
+                                                            onSubmit();
+                                                          },
+                                                          pinPutController: state
+                                                              .otpController,
+                                                          phone: "0349949866",
+                                                        ));
+                                                      }
+                                                      else {
+                                                        onSubmit();
+                                                      }
+                                                    } on ErrorException catch (e) {
+                                                      AppSnackBar.showError(
+                                                          message: e.message);
+                                                    }
                                                   },
                                                   title: S.of(context).confirm))
                                         ],

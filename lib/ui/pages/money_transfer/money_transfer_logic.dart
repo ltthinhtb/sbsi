@@ -194,6 +194,26 @@ class MoneyTransferLogic extends GetxController {
     }
   }
 
+  // transferInternal
+  Future<void> checkPin() async {
+    final RequestParams _requestParams = RequestParams(
+      group: "B",
+      user: tokenEntity?.data?.user ?? "",
+      session: tokenEntity?.data?.sid ?? "",
+      data: ParamsObject(
+        type: 'string',
+        cmd: "CheckPin",
+        p1: "",
+        p2: state.pinController.text,
+      ),
+    );
+    try {
+      await apiService.checkPin(_requestParams);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   @override
   void onReady() {
     loadAccount();

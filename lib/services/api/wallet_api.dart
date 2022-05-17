@@ -29,4 +29,8 @@ extension WaletService on ApiService {
   Future updateCashTransferOnline(RequestParams requestParams) async {
     return await _apiClient.updateCashTransferOnline(requestParams);
   }
+
+  Future checkPin(RequestParams requestParams) async {
+    return await _apiClient.checkPin(requestParams);
+  }
 }
