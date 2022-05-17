@@ -79,28 +79,30 @@ class _BankTransferState extends State<BankTransfer> {
                       style: body1?.copyWith(fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(height: 16),
-                    Obx(() {
+                    state.listBeneficiary.isNotEmpty ? Obx(() {
                       var listBeneficiary = state.listBeneficiary;
                       int BeneficiaryIndex = listBeneficiary.indexWhere(
                           (element) =>
                               element.cBANKACCOUNTCODE ==
                               state.beneficiary.value.cBANKACCOUNTCODE);
                       bool checkBeneficiary = BeneficiaryIndex >= 0;
-                      return AppDropDownWidget<BeneficiaryAccount>(
-                        items: listBeneficiary
-                            .map((e) => DropdownMenuItem<BeneficiaryAccount>(
-                                child: Text(
-                                    '${e.cBANKCODE ?? ""} ${e.cBANKACCOUNTCODE ?? ""}'),
-                                value: e))
-                            .toList(),
-                        value:
-                            checkBeneficiary ? state.beneficiary.value : null,
-                        onChanged: (account) {
-                          logic.changeBeneficiary(account!);
-                        },
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: AppDropDownWidget<BeneficiaryAccount>(
+                          items: listBeneficiary
+                              .map((e) => DropdownMenuItem<BeneficiaryAccount>(
+                                  child: Text(
+                                      '${e.cBANKCODE ?? ""} ${e.cBANKACCOUNTCODE ?? ""}'),
+                                  value: e))
+                              .toList(),
+                          value:
+                              checkBeneficiary ? state.beneficiary.value : null,
+                          onChanged: (account) {
+                            logic.changeBeneficiary(account!);
+                          },
+                        ),
                       );
-                    }),
-                    const SizedBox(height: 16),
+                    }) : const SizedBox(),
                     Obx(() {
                       var listBank = state.listBank;
                       int bankIndex = listBank.indexWhere((element) =>

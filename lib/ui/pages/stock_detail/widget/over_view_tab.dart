@@ -34,7 +34,6 @@ class _OverViewTabState extends State<OverViewTab>
         child: Column(
           children: [
             const SizedBox(height: 16),
-
             Container(
               decoration: BoxDecoration(
                   color: AppColors.white, boxShadow: AppShadow.boxShadow),
