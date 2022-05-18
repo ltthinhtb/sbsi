@@ -132,6 +132,7 @@ class StockDetailLogic extends GetxController {
           state.stockCode, state.tern.value.value);
       state.contentList.value = response.content ?? [];
       state.headList.value = response.head ?? [];
+      state.listIncomeState.clear();
       state.contentList.forEach((e) {
         if (e.reportNormID == 45) {
           state.listIncomeState.add(ReportState("ROE", e.reportNormID!));

@@ -23,7 +23,9 @@ class _StockReportTabsState extends State<StockReportTabs>
 
   bool checkValueIndicators(int index) => _indexIndicators == index;
 
-  final state = Get.find<StockDetailLogic>().state;
+  final state = Get
+      .find<StockDetailLogic>()
+      .state;
   final logic = Get.find<StockDetailLogic>();
 
   @override
@@ -34,8 +36,14 @@ class _StockReportTabsState extends State<StockReportTabs>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final caption = Theme.of(context).textTheme.caption;
-    final body1 = Theme.of(context).textTheme.bodyText1;
+    final caption = Theme
+        .of(context)
+        .textTheme
+        .caption;
+    final body1 = Theme
+        .of(context)
+        .textTheme
+        .bodyText1;
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -43,7 +51,8 @@ class _StockReportTabsState extends State<StockReportTabs>
             const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(color: AppColors.white, boxShadow: [
+              decoration: const BoxDecoration(
+                  color: AppColors.white, boxShadow: [
                 BoxShadow(
                     offset: Offset(0, -0.5),
                     blurRadius: 8,
@@ -60,10 +69,11 @@ class _StockReportTabsState extends State<StockReportTabs>
                     return AppDropDownWidget<Tern>(
                       value: state.tern.value,
                       items: Tern.values
-                          .map((e) => DropdownMenuItem(
-                                child: Text(e.name),
-                                value: e,
-                              ))
+                          .map((e) =>
+                          DropdownMenuItem(
+                            child: Text(e.name),
+                            value: e,
+                          ))
                           .toList(),
                       onChanged: (value) {
                         state.tern.value = value!;
@@ -73,7 +83,9 @@ class _StockReportTabsState extends State<StockReportTabs>
                   }),
                   const SizedBox(height: 16),
                   Text(
-                    S.of(context).Financial_details,
+                    S
+                        .of(context)
+                        .Financial_details,
                     style: body1?.copyWith(fontWeight: FontWeight.w700),
                   ),
                   const Divider(
@@ -117,7 +129,8 @@ class _StockReportTabsState extends State<StockReportTabs>
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(4),
                                         color: _indexIndicators == index
-                                            ? const Color.fromRGBO(249, 179, 0, 1)
+                                            ? const Color.fromRGBO(
+                                            249, 179, 0, 1)
                                             : null),
                                   ),
                                 ),
@@ -132,16 +145,17 @@ class _StockReportTabsState extends State<StockReportTabs>
                             child: Obx(() {
                               return SimpleBarChart(
                                 List<StockData>.generate(state.headList.length,
-                                    (int index) {
-                                  List<double> value = state.contentList
-                                      .firstWhere((element) =>
-                                          element.reportNormID ==
+                                        (int index) {
+                                      List<double> value = state.contentList
+                                          .firstWhere((element) =>
+                                      element.reportNormID ==
                                           keyIndicators
                                               .values[_indexIndicators].value)
-                                      .value;
-                                  return StockData(state.headList[index].termYear,
-                                      value[index]);
-                                }),
+                                          .value;
+                                      return StockData(
+                                          state.headList[index].termYear,
+                                          value[index]);
+                                    }),
                               );
                             }),
                           ),
@@ -156,7 +170,8 @@ class _StockReportTabsState extends State<StockReportTabs>
             const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.all(16),
-              decoration: const BoxDecoration(color: AppColors.white, boxShadow: [
+              decoration: const BoxDecoration(
+                  color: AppColors.white, boxShadow: [
                 BoxShadow(
                     offset: Offset(0, -0.5),
                     blurRadius: 8,
@@ -170,7 +185,9 @@ class _StockReportTabsState extends State<StockReportTabs>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    S.of(context).Profitability,
+                    S
+                        .of(context)
+                        .Profitability,
                     style: body1?.copyWith(fontWeight: FontWeight.w700),
                   ),
                   const Divider(
@@ -190,37 +207,41 @@ class _StockReportTabsState extends State<StockReportTabs>
                         Container(
                           height: 24,
                           padding: const EdgeInsets.symmetric(horizontal: 3),
-                          child: Row(
-                            children: List<Widget>.generate(
-                                state.listIncomeState.length, (int index) {
-                              return Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      _indexIncomeState = index;
-                                    });
-                                  },
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        left: index == 0 ? 0 : 10),
-                                    child: Text(
-                                      state.listIncomeState[index].name,
-                                      style: caption?.copyWith(
+                          child: Obx(() {
+                            return Row(
+                              children: List<Widget>.generate(
+                                  state.listIncomeState.length, (int index) {
+                                return Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _indexIncomeState = index;
+                                      });
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          left: index == 0 ? 0 : 10),
+                                      child: Text(
+                                        state.listIncomeState[index].name,
+                                        style: caption?.copyWith(
+                                            color: _indexIncomeState == index
+                                                ? AppColors.white
+                                                : AppColors.textBlack),
+                                      ),
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                              4),
                                           color: _indexIncomeState == index
-                                              ? AppColors.white
-                                              : AppColors.textBlack),
+                                              ? const Color.fromRGBO(
+                                              249, 179, 0, 1)
+                                              : null),
                                     ),
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(4),
-                                        color: _indexIncomeState == index
-                                            ? const Color.fromRGBO(249, 179, 0, 1)
-                                            : null),
                                   ),
-                                ),
-                              );
-                            }),
-                          ),
+                                );
+                              }),
+                            );
+                          }),
                         ),
                         const SizedBox(height: 10),
                         Expanded(
@@ -230,12 +251,15 @@ class _StockReportTabsState extends State<StockReportTabs>
                               return SimpleBarChart(
                                 List<StockData>.generate(state.headList.length,
                                         (int index) {
-                                          List<double> value = state.contentList
-                                              .firstWhere((element) =>
-                                          element.reportNormID ==
-                                              state.listIncomeState[_indexIncomeState].value)
-                                              .value;
-                                      return StockData(state.headList[index].termYear,
+                                      List<double> value = state.contentList
+                                          .firstWhere((element) =>
+                                      element.reportNormID ==
+                                          state
+                                              .listIncomeState[_indexIncomeState]
+                                              .value)
+                                          .value;
+                                      return StockData(
+                                          state.headList[index].termYear,
                                           value[index]);
                                     }),
                               );
