@@ -29,6 +29,18 @@ class _AnalyticTabState extends State<AnalyticTab>
 
   EconomyRow get techEco => listEco.firstWhere((element) => element.rowid == 3);
 
+  List<EconomyRow> get listTechnique {
+    List<EconomyRow> list = [];
+    for (int i = 0; i < listEco.length; i++) {
+      if (listEco[i].rowid != null) {
+        if (listEco[i].rowid! >= 25 &&
+            listEco[i].rowid! <= 30 &&
+            listEco[i].data!.length > 1) list.add(listEco[i]);
+      }
+    }
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.bodyText1;
@@ -73,16 +85,92 @@ class _AnalyticTabState extends State<AnalyticTab>
                           flex: 114,
                           child: Text(
                             "Kỳ",
-                            style: caption?.copyWith(fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 145,
-                          child: Text("Đơn giản",style: caption?.copyWith(fontWeight: FontWeight.w700),)),
+                          child: Text(
+                            "Đơn giản",
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
+                          )),
                       Expanded(
                           flex: 98,
-                          child: Text("Lũy thừa",style: caption?.copyWith(fontWeight: FontWeight.w700),)),
+                          child: Text(
+                            "Lũy thừa",
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
+                          )),
                     ],
                   ),
+                ),
+                const SizedBox(height: 16),
+                ListView.builder(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    var key1 =
+                        listTechnique[index].data?[1].split(" ").first ?? "";
+                    var value1 =
+                        listTechnique[index].data?[1].split(" ").last ?? "";
+
+                    var key2 =
+                        listTechnique[index].data?[2].split(" ").first ?? "";
+                    var value2 =
+                        listTechnique[index].data?[2].split(" ").last ?? "";
+
+                    return Container(
+                      padding: const EdgeInsets.fromLTRB(18, 12, 0, 12),
+                      child: Row(
+                        children: [
+                          Expanded(
+                              flex: 114,
+                              child: Text(
+                                listTechnique[index].data?[0] ?? "",
+                                style: caption?.copyWith(
+                                    fontWeight: FontWeight.w700),
+                              )),
+                          Expanded(
+                              flex: 145,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    key1,
+                                    style: caption,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    "(${value1})",
+                                    style: caption?.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        color: getColor(value1)),
+                                  ),
+                                ],
+                              )),
+                          Expanded(
+                              flex: 98,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    key2,
+                                    style: caption,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    "(${value2})",
+                                    style: caption?.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        color: getColor(value2)),
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: listTechnique.length,
                 )
               ],
             ),
@@ -90,6 +178,14 @@ class _AnalyticTabState extends State<AnalyticTab>
         ],
       ),
     );
+  }
+
+  Color getColor(String text) {
+    if (text.isEmpty) return AppColors.textBlack;
+    if (text.contains("Bán")) {
+      return AppColors.deActive;
+    }
+    return AppColors.active;
   }
 
   Widget topHeader() {
