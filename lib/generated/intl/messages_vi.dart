@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Financial_details":
+            MessageLookupByLibrary.simpleMessage("Chi tiết tài chính"),
+        "Profitability":
+            MessageLookupByLibrary.simpleMessage("Khả năng sinh lời"),
         "Statement": MessageLookupByLibrary.simpleMessage("Sao kê"),
         "about_choose": MessageLookupByLibrary.simpleMessage("Đã lựa chọn"),
         "account": MessageLookupByLibrary.simpleMessage("Tài khoản"),

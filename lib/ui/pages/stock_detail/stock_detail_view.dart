@@ -11,6 +11,7 @@ import 'stock_detail_logic.dart';
 import 'widget/analytic_tab.dart';
 import 'widget/card_data_detail.dart';
 import 'widget/over_view_tab.dart';
+import 'widget/stock_report_tab.dart';
 
 class StockDetailPage extends StatefulWidget {
   const StockDetailPage({Key? key}) : super(key: key);
@@ -36,6 +37,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
           const SizedBox(width: 20),
         ],
       ),
+      backgroundColor: AppColors.whiteBack,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
@@ -98,7 +100,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                       OverViewTab(),
                       NewsTab(),
                       AnalyticTab(),
-                      OverViewTab()
+                      StockReportTabs()
                     ]),
               )
             ],

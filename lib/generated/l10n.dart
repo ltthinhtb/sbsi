@@ -2980,11 +2980,31 @@ class S {
     );
   }
 
-  /// `Money`
+  /// `Money0`
   String get money_1 {
     return Intl.message(
-      'Money',
+      'Money0',
       name: 'money_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Financial details`
+  String get Financial_details {
+    return Intl.message(
+      'Financial details',
+      name: 'Financial_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profitability`
+  String get Profitability {
+    return Intl.message(
+      'Profitability',
+      name: 'Profitability',
       desc: '',
       args: [],
     );

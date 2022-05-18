@@ -292,6 +292,8 @@
   "list_history" : "Danh sách lịch sử",
   "time" : "Thời gian",
   "transfer_type" : "Loại chuyển",
-  "money_1" : "Số tiền"
+  "money_1" : "Số tiền",
+  "Financial_details" : "Chi tiết tài chính",
+  "Profitability" : "Khả năng sinh lời"
 
 }

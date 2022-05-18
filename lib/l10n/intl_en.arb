@@ -292,7 +292,10 @@
   "list_history": "List history",
   "time": "Time",
   "transfer_type" : "Transfer type",
-  "money_1" : "Money"
+  "money_1" : "Money0",
+  "Financial_details" : "Financial details",
+  "Profitability" : "Profitability"
+
 
 
 }

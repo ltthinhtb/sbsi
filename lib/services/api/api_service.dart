@@ -28,6 +28,7 @@ import '../../model/response/branch_response.dart';
 import '../../model/response/index_chart.dart';
 import '../../model/response/market_depth_response.dart';
 import '../../model/response/stock_follow_branch_response.dart';
+import '../../model/response/stock_report.dart';
 
 part 'auth_api.dart';
 

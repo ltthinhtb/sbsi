@@ -57,4 +57,8 @@ extension StockOrderService on ApiService {
   Future<List<EconomyRow>> getListEconomyRow(String stock, String timeLine) async {
     return await _apiClient.getListEconomyRow(stock, timeLine);
   }
+
+  Future<ReportStockResponse> getStockReport(String stock, String ternType) async {
+    return await _apiClient.getStockReport(stock, ternType);
+  }
 }

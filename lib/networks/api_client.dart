@@ -34,6 +34,7 @@ import '../model/response/branch_response.dart';
 import '../model/response/index_chart.dart';
 import '../model/response/market_depth_response.dart';
 import '../model/response/stock_follow_branch_response.dart';
+import '../model/response/stock_report.dart';
 import 'error_exception.dart';
 
 abstract class ApiClient {
@@ -112,6 +113,8 @@ abstract class ApiClient {
       RequestParams requestParams);
 
   Future<List<EconomyRow>> getListEconomyRow(String stock, String timeLine);
+
+  Future<ReportStockResponse> getStockReport(String stock, String ternType);
 }
 
 class _ApiClient implements ApiClient {
@@ -676,5 +679,19 @@ class _ApiClient implements ApiClient {
       listEconomy.add(EconomyRow.fromJson(element));
     }
     return listEconomy;
+  }
+
+  @override
+  Future<ReportStockResponse> getStockReport(String stock, String ternType) async {
+    String path = AppConfigs.INFO_SBSI + 'stockReport.pt';
+    Response _result = await _getApi(_dio.get(path, queryParameters: {
+      "symbol": stock,
+      "termtype": "${ternType}",
+      "type": "CSTC",
+      "from": "1",
+      "to": "6",
+    }));
+    var data = (_result.data);
+    return ReportStockResponse.fromJson(data);
   }
 }

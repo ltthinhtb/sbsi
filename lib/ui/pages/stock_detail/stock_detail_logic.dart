@@ -23,6 +23,7 @@ class StockDetailLogic extends GetxController {
     getListStockCollection();
     getListStockNews();
     getListEconomyRow();
+    getStockReport();
     super.onReady();
   }
 
@@ -109,6 +110,7 @@ class StockDetailLogic extends GetxController {
     }
   }
 
+  /// phân tích
   Future<void> getListEconomyRow() async {
     try {
       state.listEconomyRowH.value = await apiService.getListEconomyRow(
@@ -116,6 +118,31 @@ class StockDetailLogic extends GetxController {
 
       state.listEconomyRowD.value = await apiService.getListEconomyRow(
           state.stockCode, StockTimeline.day.time);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (error) {
+      AppSnackBar.showError(message: error.toString());
+    }
+  }
+
+  /// tài chính
+  Future<void> getStockReport() async {
+    try {
+      var response = await apiService.getStockReport(
+          state.stockCode, state.tern.value.value);
+      state.contentList.value = response.content ?? [];
+      state.headList.value = response.head ?? [];
+      state.contentList.forEach((e) {
+        if (e.reportNormID == 45) {
+          state.listIncomeState.add(ReportState("ROE", e.reportNormID!));
+        } else if (e.reportNormID == 47) {
+          state.listIncomeState.add(ReportState("ROA", e.reportNormID!));
+        } else if (e.reportNormID == 31) {
+          state.listIncomeState.add(ReportState("GP", e.reportNormID!));
+        } else if (e.reportNormID == 41) {
+          state.listIncomeState.add(ReportState("GPM", e.reportNormID!));
+        }
+      });
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     } catch (error) {
