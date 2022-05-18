@@ -294,6 +294,7 @@
   "transfer_type" : "Loại chuyển",
   "money_1" : "Số tiền",
   "Financial_details" : "Chi tiết tài chính",
-  "Profitability" : "Khả năng sinh lời"
+  "Profitability" : "Khả năng sinh lời",
+  "order_list_day" : "Danh sách số lệnh trong ngày"
 
 }

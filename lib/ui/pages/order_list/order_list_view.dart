@@ -36,142 +36,132 @@ class _OrderListPageState extends State<OrderListPage>
   @override
   Widget build(BuildContext context) {
     final body1 = Theme.of(context).textTheme.bodyText1;
-    return Obx(
-      () => Scaffold(
-        appBar: AppBarCustom(
-            title: S.of(context).order_note,
-            isCenter: true,
-            automaticallyImplyLeading: false),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: RefreshIndicator(
-            onRefresh: () async {
-              logic.getOrderList();
-            },
-            child: DefaultTabController(
-              length: OderType.values.length,
-              child: Column(
-                children: [
-                  Stack(
-                    fit: StackFit.passthrough,
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 16),
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom:
-                                BorderSide(color: AppColors.grayF2, width: 2.0),
-                          ),
+    return Scaffold(
+      appBar: AppBarCustom(
+          title: S.of(context).order_note,
+          isCenter: true,
+          automaticallyImplyLeading: false),
+      backgroundColor: AppColors.whiteBack,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: RefreshIndicator(
+          onRefresh: () async {
+            logic.getOrderList();
+          },
+          child: DefaultTabController(
+            length: OderType.values.length,
+            child: Column(
+              children: [
+                Stack(
+                  fit: StackFit.passthrough,
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16),
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom:
+                              BorderSide(color: AppColors.grayF2, width: 2.0),
                         ),
                       ),
-                      TabBar(
-                          indicator: UnderlineTabIndicator(
-                              borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 3)),
-                          labelStyle:
-                              body1?.copyWith(fontWeight: FontWeight.w700),
-                          labelColor: Theme.of(context).primaryColor,
-                          unselectedLabelStyle: body1,
-                          indicatorPadding: EdgeInsets.zero,
-                          indicatorSize: TabBarIndicatorSize.label,
-                          indicatorColor: Theme.of(context).primaryColor,
-                          unselectedLabelColor: AppColors.textGrey,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          labelPadding: const EdgeInsets.only(bottom: 8),
-                          indicatorWeight: 0,
-                          onTap: (value) {},
-                          tabs: OderType.values
-                              .map((e) => Center(child: Text(e.name)))
-                              .toList()),
-                    ],
-                  ),
-                  Expanded(
-                    child: TabBarView(
-                        children: [const InDayTab(), Container(), Container()]),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        floatingActionButton: AnimatedScale(
-          scale: state.selectedMode.value ? 1.0 : 0.0,
-          duration: const Duration(milliseconds: 300),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: ButtonFill(
-                      voidCallback: () async {
-                        bool? _r = await CustomDialog.showConfirmDialog(
-                          context,
-                          S.of(context).confirm_cancel_order,
-                          [
-                            S.of(context).are_you_sure_cancel_all_order,
-                          ],
-                          buttonColors: [AppColors.primary2, AppColors.primary],
-                          textButtonColors: [
-                            AppColors.primary,
-                            AppColors.white
-                          ],
-                        );
-                        if (_r ?? false) {
-                          state.selectedMode.value = false;
-                          try {
-                            await logic.selectAll();
-                            await logic.cancelOrder();
-                          } catch (e) {
-                            AppSnackBar.showError(message: e.toString());
-                          }
-                        }
-                      },
-                      title: S.of(context).cancel_all_orders,
                     ),
-                  ),
+                    TabBar(
+                        indicator: UnderlineTabIndicator(
+                            borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 3)),
+                        labelStyle:
+                            body1?.copyWith(fontWeight: FontWeight.w700),
+                        labelColor: Theme.of(context).primaryColor,
+                        unselectedLabelStyle: body1,
+                        indicatorPadding: EdgeInsets.zero,
+                        indicatorSize: TabBarIndicatorSize.label,
+                        indicatorColor: Theme.of(context).primaryColor,
+                        unselectedLabelColor: AppColors.textGrey,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        labelPadding: const EdgeInsets.only(bottom: 8),
+                        indicatorWeight: 0,
+                        onTap: (value) {},
+                        tabs: OderType.values
+                            .map((e) => Center(child: Text(e.name)))
+                            .toList()),
+                  ],
                 ),
                 Expanded(
-                  flex: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: ButtonFill(
-                      voidCallback: () async {
-                        bool? _r = await CustomDialog.showConfirmDialog(
-                          context,
-                          S.of(context).confirm_cancel_order,
-                          [
-                            S.of(context).are_you_sure_cancel_this_order,
-                          ],
-                          buttonColors: [AppColors.primary2, AppColors.primary],
-                          textButtonColors: [
-                            AppColors.primary,
-                            AppColors.white
-                          ],
-                        );
-                        if (_r ?? false) {
-                          state.selectedMode.value = false;
-                          try {
-                            await logic.cancelOrder();
-                          } catch (e) {
-                            AppSnackBar.showError(message: e.toString());
-                          }
-                        }
-                      },
-                      title: S.of(context).cancel_chose_orders,
-                    ),
-                  ),
+                  child: TabBarView(
+                      children: [const InDayTab(), Container(), Container()]),
                 )
               ],
             ),
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
+      floatingActionButton: AnimatedScale(
+        scale: 1,
+        duration: const Duration(milliseconds: 300),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: ButtonFill(
+                    voidCallback: () async {
+                      bool? _r = await CustomDialog.showConfirmDialog(
+                        context,
+                        S.of(context).confirm_cancel_order,
+                        [
+                          S.of(context).are_you_sure_cancel_all_order,
+                        ],
+                        buttonColors: [AppColors.primary2, AppColors.primary],
+                        textButtonColors: [AppColors.primary, AppColors.white],
+                      );
+                      if (_r ?? false) {
+                        try {
+                          await logic.cancelOrder();
+                        } catch (e) {
+                          AppSnackBar.showError(message: e.toString());
+                        }
+                      }
+                    },
+                    title: S.of(context).cancel_all_orders,
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: ButtonFill(
+                    voidCallback: () async {
+                      bool? _r = await CustomDialog.showConfirmDialog(
+                        context,
+                        S.of(context).confirm_cancel_order,
+                        [
+                          S.of(context).are_you_sure_cancel_this_order,
+                        ],
+                        buttonColors: [AppColors.primary2, AppColors.primary],
+                        textButtonColors: [AppColors.primary, AppColors.white],
+                      );
+                      if (_r ?? false) {
+                        try {
+                          await logic.cancelOrder();
+                        } catch (e) {
+                          AppSnackBar.showError(message: e.toString());
+                        }
+                      }
+                    },
+                    title: S.of(context).cancel_chose_orders,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 
 class MessageOrder {
@@ -136,5 +138,91 @@ class MessageOrder {
       return "Chờ khớp"; // "MATCH_PENDING";
     }
     return pStatus;
+  }
+
+  static String statusHuySua(IndayOrder idata) {
+    var pStatus = idata.status!;
+    var pMatchVolume = idata.matchVolume!;
+    var pVolume = idata.volume!;
+    var pQuote = idata.quote!;
+
+    if ((pStatus == "PMC" || pStatus == "PCM") &&
+        int.parse(pMatchVolume) < int.parse(pVolume)) {
+      return "MATCH_PARTIAL";
+    }
+    if ((pStatus == "PMC" || pStatus == "PCM") &&
+        int.parse(pMatchVolume) == int.parse(pVolume)) {
+      return "MATCH_FULL";
+    }
+
+    if ((pStatus == "PMX" || pStatus == "PMWX") &&
+        int.parse(pMatchVolume) > 0) {
+      return "MATCH_PARTIAL_CANCELED";
+    }
+    if (pStatus == "PM" && int.parse(pMatchVolume) < int.parse(pVolume)) {
+      return "MATCH_PARTIAL";
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "M") {
+      return "MATCH_FULL";
+    }
+    if (pStatus == "PM") {
+      return "MATCH_FULL";
+    }
+    if (pStatus == "PW" || pStatus == "PMW") {
+      return "MATCH_PENDING";
+    }
+    if (pStatus == "PC") {
+      if (pQuote == "Y") {
+        return "MATCH_PENDING";
+      } else {
+        return "EDIT_PENDING";
+      }
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "X") {
+      return "CANCELED";
+    }
+    if (pStatus == "P") {
+      return "MATCH_PENDING";
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "C") {
+      return "MATCH_PENDING";
+    }
+    return pStatus;
+  }
+
+  static bool canEdit(IndayOrder data) {
+    var ordrStatTp = data.status!;
+    var ordrQty = data.volume!;
+    var matchedQty = data.matchVolume!;
+    if (ordrStatTp == 'P') return true;
+    if (ordrStatTp.endsWith('M') &&
+        double.parse(matchedQty) < double.parse(ordrQty)) return true;
+    if (ordrStatTp == 'PC' && data.quote == "C") return false;
+    if ((ordrStatTp == 'P' || ordrStatTp.endsWith('C'))) return true;
+    return false;
+  }
+
+  static Color getColorStatus(String status) {
+    if (status == "MATCH_FULL" ||
+        status == "MATCH_PARTIAL" ||
+        status == "MATCH_PARTIAL_CANCELED") {
+      return AppColors.active;
+    }
+
+    if (status == "MATCH_PENDING" || status == "EDIT_PENDING") {
+      return const Color.fromRGBO(251, 122, 4, 1);
+    }
+    if (status == "CANCELED") {
+      return AppColors.grey_cancel_order;
+    }
+
+    if (status == "EXPIRED") {
+      return AppColors.grey_cancel_order;
+    }
+
+    if (status == "REJECTED") {
+      return AppColors.deActive;
+    }
+    return AppColors.active;
   }
 }

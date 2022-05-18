@@ -252,6 +252,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "orderType": MessageLookupByLibrary.simpleMessage("Loại lệnh"),
         "order_confirm": MessageLookupByLibrary.simpleMessage("Xác Nhận Lệnh"),
         "order_detail": MessageLookupByLibrary.simpleMessage("Chi tiết lệnh"),
+        "order_list_day": MessageLookupByLibrary.simpleMessage(
+            "Danh sách số lệnh trong ngày"),
         "order_note": MessageLookupByLibrary.simpleMessage("Sổ lệnh"),
         "order_number": MessageLookupByLibrary.simpleMessage("Số hiệu lệnh"),
         "order_number_short": MessageLookupByLibrary.simpleMessage("SHL"),

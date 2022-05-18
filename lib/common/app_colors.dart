@@ -42,6 +42,8 @@ class AppColors {
   static const Color table1 = Color(0xFFFFF8EB);
   static const Color table2 = Color(0xFFDDDDDD);
   static const Color whiteEEE = Color(0xFFEEEEEE);
+  static const Color accent_blue = Color(0xFF49D8DF);
+  static const Color grey_cancel_order = Color(0xFF58586C);
 
   static const Color cardPortfolio = Color.fromRGBO(61, 38, 118, 0.6);
 

@@ -7,19 +7,14 @@ import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/services/index.dart';
 import 'package:sbsi/ui/pages/order_list/enums/order_enums.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_state.dart';
-import 'package:sbsi/utils/extension.dart';
+import 'package:sbsi/utils/error_message.dart';
 
 class OrderListLogic extends GetxController {
   final OrderListState state = OrderListState();
   final ApiService apiService = Get.find();
   final AuthService authService = Get.find();
 
-  void getNewData() {
-    state.newDataArrived.value = false;
-    state.listOrder = state.listOrderStorage;
-    return;
-  }
-
+  // load list order
   void getOrderList() async {
     var _tokenEntity = authService.token.value;
     final RequestParams _requestParams = RequestParams(
@@ -46,15 +41,6 @@ class OrderListLogic extends GetxController {
   void changeOrderListStatus(SingingCharacter character) {
     state.singingCharacter = character;
     getOrderList();
-  }
-
-  Future<void> selectAll() async {
-    state.selectedListOrder.clear();
-    for (var item in state.listOrder) {
-      if (item.canFix) {
-        state.selectedListOrder.add(item);
-      }
-    }
   }
 
   // hủy lệnh
@@ -84,6 +70,30 @@ class OrderListLogic extends GetxController {
       }
     }
     getOrderList();
+  }
+
+  // select all or Clear
+  void selectAll() {
+    state.isSelectAll.value = !state.isSelectAll.value;
+    state.selectedListOrder.clear();
+    if (state.isSelectAll.value) {
+      // check order canedit to add list
+      state.listOrder.forEach((element) {
+        if (MessageOrder.canEdit(element)) {
+          state.selectedListOrder.add(element);
+        }
+      });
+    }
+  }
+
+  // add order to list select
+  void addSelectOrder(IndayOrder order) {
+    state.selectedListOrder.add(order);
+  }
+
+  // remove order to list select
+  void removeSelectOrder(IndayOrder order) {
+    state.selectedListOrder.remove(order);
   }
 
   // load tài khoản mặc định
@@ -118,14 +128,6 @@ class OrderListLogic extends GetxController {
       await apiService.changeOrder(_requestParams);
     } catch (e) {
       rethrow;
-    }
-  }
-
-  bool itemIsChecked(String no) {
-    if (state.selectedListOrder.any((element) => element.orderNo == no)) {
-      return true;
-    } else {
-      return false;
     }
   }
 

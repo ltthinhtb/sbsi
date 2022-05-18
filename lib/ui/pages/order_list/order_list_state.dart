@@ -8,22 +8,15 @@ import 'enums/order_enums.dart';
 class OrderListState {
   late TextEditingController stockCodeController;
 
-  // List<StockCompanyData> allStockCompanyData = <StockCompanyData>[];
-
-  var loading = false.obs;
-  var selectedMode = false.obs;
-
   var selectedListOrder = <IndayOrder>[].obs;
 
-  var listOrderStorage = <IndayOrder>[].obs;
   var listOrder = <IndayOrder>[].obs;
 
   SingingCharacter singingCharacter = SingingCharacter.all;
 
   final account = Account().obs;
 
-
-  var newDataArrived = false.obs;
+  final isSelectAll = false.obs;
 
   OrderListState() {
     stockCodeController = TextEditingController();

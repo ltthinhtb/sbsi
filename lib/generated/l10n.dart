@@ -3009,6 +3009,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Order list day`
+  String get order_list_day {
+    return Intl.message(
+      'Order list day',
+      name: 'order_list_day',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

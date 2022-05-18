@@ -117,6 +117,7 @@ class StockOrderLogic extends GetxController {
       state.volController.clear();
       await getAccountStatus(_tokenEntity?.data?.defaultAcc);
       await getCashBalance();
+      state.total.value = 0;
       state.loading.value = false;
     } catch (error) {
       state.loading.value = false;

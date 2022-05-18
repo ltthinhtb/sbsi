@@ -238,6 +238,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "orderType": MessageLookupByLibrary.simpleMessage("Order type"),
         "order_confirm": MessageLookupByLibrary.simpleMessage("Order confirm"),
         "order_detail": MessageLookupByLibrary.simpleMessage("Order detail"),
+        "order_list_day":
+            MessageLookupByLibrary.simpleMessage("Order list day"),
         "order_note": MessageLookupByLibrary.simpleMessage("Order note"),
         "order_number": MessageLookupByLibrary.simpleMessage("Order Number"),
         "order_number_short": MessageLookupByLibrary.simpleMessage("OrdN"),

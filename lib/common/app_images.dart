@@ -96,4 +96,7 @@ class AppImages {
 
   static String calendar = 'assets/icon_svg/calendar.svg';
   static String moreCircle = 'assets/icon_svg/more-circle.svg';
+  static String tick = 'assets/icon_svg/tick-square.svg';
+  static String tickActive = 'assets/icon_svg/tick-square-yellow.svg';
+
 }

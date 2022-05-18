@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+import 'package:sbsi/common/app_colors.dart';
+
+
 class IndayOrder {
   String? orderNo;
   String? pkOrderNo;
@@ -21,6 +25,16 @@ class IndayOrder {
   String? isAmend;
   String? autoType;
   String? product;
+
+  String sideString(BuildContext context) {
+    if (side == "B") return "M";
+    return "B";
+  }
+
+  Color get colorBack {
+    if (side == "B") return AppColors.active;
+    return AppColors.deActive;
+  }
 
   IndayOrder(
       {this.orderNo,

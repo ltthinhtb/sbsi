@@ -5,6 +5,7 @@ import '../../../model/response/index_chart.dart';
 import '../../../model/response/index_detail.dart';
 import '../../../model/response/market_depth_response.dart';
 import '../../../model/stock_data/stock_socket.dart';
+import '../../../networks/error_exception.dart';
 import '../../../services/api/api_service.dart';
 import '../../../services/socket/socket.dart';
 import '../../../services/store/store_service.dart';
@@ -39,6 +40,8 @@ class MarketLogic extends GetxController {
       for (var element in state.listIndexDetail) {
         await getChartIndex(element.mc!);
       }
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
     } catch (e) {
       AppSnackBar.showError(message: e.toString());
     }
@@ -171,7 +174,9 @@ class MarketLogic extends GetxController {
     if (category == state.category_default) {
       list = state.defaultListStock.join(",");
     } else {
-      list = storeService.listStockFromCategory(state.category.value.uuid).join(",");
+      list = storeService
+          .listStockFromCategory(state.category.value.uuid)
+          .join(",");
     }
 
     state.listStock.value = await apiService.getStockData(list);
@@ -197,7 +202,9 @@ class MarketLogic extends GetxController {
               state.listIndexDetail.removeAt(index);
               state.listIndexDetail.insert(index, stock);
               if (stock.mc != null) {
-                getChartIndex(stock.mc!);
+                try {
+                  getChartIndex(stock.mc!);
+                } catch (e) {}
               }
             }
           }
