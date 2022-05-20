@@ -37,10 +37,42 @@ class OrderListLogic extends GetxController {
     }
   }
 
+  // load lịch sử lệnh
+  void getOrderListHistory() async {
+    var _tokenEntity = authService.token.value;
+    final RequestParams _requestParams = RequestParams(
+      group: "B",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+          type: "cursor",
+          cmd: "ListOrder",
+          p7: "1",
+          p8: "30",
+          p1: state.account.value.accCode,
+          p3: state.startDateController.text,
+          p4: state.endDateController.text,
+          p5: state.singingCharacterHistory.value,
+          p2: ""),
+    );
+    try {
+      state.listOrderHistory.value =
+          await apiService.getListOrder(_requestParams);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   // filter theo trạng thái lệnh
   void changeOrderListStatus(SingingCharacter character) {
     state.singingCharacter = character;
     getOrderList();
+  }
+
+  // filter history lịch sử lệnh
+  void changeOrderHistoryListStatus(inOrderHisTabs character) {
+    state.singingCharacterHistory = character;
+    getOrderListHistory();
   }
 
   // hủy lệnh
@@ -136,6 +168,7 @@ class OrderListLogic extends GetxController {
     super.onInit();
     loadAccount();
     getOrderList();
+    getOrderListHistory();
   }
 
   @override

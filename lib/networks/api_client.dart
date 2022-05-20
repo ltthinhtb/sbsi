@@ -29,6 +29,7 @@ import 'package:sbsi/utils/logger.dart';
 
 import '../model/entities/bank.dart';
 import '../model/entities/beneficiary_account.dart';
+import '../model/entities/order_history.dart';
 import '../model/entities/transfer_history.dart';
 import '../model/response/branch_response.dart';
 import '../model/response/index_chart.dart';
@@ -115,6 +116,9 @@ abstract class ApiClient {
   Future<List<EconomyRow>> getListEconomyRow(String stock, String timeLine);
 
   Future<ReportStockResponse> getStockReport(String stock, String ternType);
+
+  Future<List<OrderHistory>> getListOrder(RequestParams requestParams);
+
 }
 
 class _ApiClient implements ApiClient {
@@ -693,5 +697,21 @@ class _ApiClient implements ApiClient {
     }));
     var data = (_result.data);
     return ReportStockResponse.fromJson(data);
+  }
+
+  @override
+  Future<List<OrderHistory>> getListOrder(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<OrderHistory> listHistory = [];
+    for (var element in _mapData) {
+      listHistory.add(OrderHistory.fromJson(element));
+    }
+    return listHistory;
   }
 }

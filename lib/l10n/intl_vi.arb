@@ -295,6 +295,10 @@
   "money_1" : "Số tiền",
   "Financial_details" : "Chi tiết tài chính",
   "Profitability" : "Khả năng sinh lời",
-  "order_list_day" : "Danh sách số lệnh trong ngày"
+  "order_list_day" : "Danh sách số lệnh trong ngày",
+  "old_pin" : "Mã pin cũ",
+  "new_pin" : "Mã pin mới",
+  "confirm_pin" : "Xác nhận mã pin",
+  "order_list_day_history" : "Danh sách lịch sử lệnh"
 
 }

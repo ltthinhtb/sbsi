@@ -35,17 +35,20 @@ class ChangePasswordLogic extends GetxController {
   Future<void> changePasswordFirst() async {
     var _tokenEntity = authService.token.value;
     final RequestParams _requestParams = RequestParams(
-      group: "L",
+      group: "B",
       session: _tokenEntity?.data?.sid,
+      channel: "W",
       user: _tokenEntity?.data?.user,
       data: ParamsObject(
-        type: "object",
-        cmd: "ChangePassFirstLogin",
-        p1: state.old_controller.text,
-        p2: state.new_controller.text,
-        // p: ChangePasswordModel(state.old_controller.text,
-        //     state.new_controller.text, state.confirm_controller.text),
-      ),
+          type: "string",
+          cmd: "ChangePassFirstLogin",
+          p1: state.old_controller.text,
+          p2: state.new_controller.text,
+          p3: state.oldPinController.text,
+          p4: state.newPinController.text
+          // p: ChangePasswordModel(state.old_controller.text,
+          //     state.new_controller.text, state.confirm_controller.text),
+          ),
     );
     try {
       await apiService.changePassword(_requestParams);

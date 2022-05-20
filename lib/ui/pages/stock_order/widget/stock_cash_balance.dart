@@ -223,7 +223,7 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                     child: ButtonFill(
                       title: S.of(context).buy,
                       voidCallback: () {
-                        if (validate(state, true))
+                       // if (validate(state, true))
                           logic.requestNewOrder(isBuy: true);
                       },
                       style: ElevatedButton.styleFrom().copyWith(
@@ -236,7 +236,7 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                     child: ButtonFill(
                       title: S.of(context).sell,
                       voidCallback: () {
-                        if (validate(state, false))
+                       // if (validate(state, false))
                           logic.requestNewOrder(isBuy: false);
                       },
                     ),

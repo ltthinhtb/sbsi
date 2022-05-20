@@ -119,6 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Xác nhận OTP"),
         "confirm_payment":
             MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
+        "confirm_pin": MessageLookupByLibrary.simpleMessage("Xác nhận mã pin"),
         "contact_support":
             MessageLookupByLibrary.simpleMessage("Liên hệ hỗ trợ"),
         "content_transfer":
@@ -238,6 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mr": MessageLookupByLibrary.simpleMessage("Tỷ lệ ký quỹ"),
         "network_error": MessageLookupByLibrary.simpleMessage("Lỗi kết nối"),
         "new_password": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
+        "new_pin": MessageLookupByLibrary.simpleMessage("Mã pin mới"),
         "news": MessageLookupByLibrary.simpleMessage("Tin tức"),
         "no_stock_hint_text": MessageLookupByLibrary.simpleMessage(
             "Nhập vào ô tìm kiếm để thêm mã\nđầu tiên vào danh mục"),
@@ -247,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notice": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "notification": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
+        "old_pin": MessageLookupByLibrary.simpleMessage("Mã pin cũ"),
         "open_on": MessageLookupByLibrary.simpleMessage("Mở tại"),
         "order": MessageLookupByLibrary.simpleMessage("Đặt lệnh"),
         "orderType": MessageLookupByLibrary.simpleMessage("Loại lệnh"),
@@ -254,6 +257,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_detail": MessageLookupByLibrary.simpleMessage("Chi tiết lệnh"),
         "order_list_day": MessageLookupByLibrary.simpleMessage(
             "Danh sách số lệnh trong ngày"),
+        "order_list_day_history":
+            MessageLookupByLibrary.simpleMessage("Danh sách lịch sử lệnh"),
         "order_note": MessageLookupByLibrary.simpleMessage("Sổ lệnh"),
         "order_number": MessageLookupByLibrary.simpleMessage("Số hiệu lệnh"),
         "order_number_short": MessageLookupByLibrary.simpleMessage("SHL"),

@@ -37,4 +37,8 @@ extension WaletService on ApiService {
   Future<List<HistoryTransfer>> getTransfersHistory(RequestParams requestParams) async {
     return await _apiClient.getTransfersHistory(requestParams);
   }
+
+  Future<List<OrderHistory>> getListOrder(RequestParams requestParams) async {
+    return await _apiClient.getListOrder(requestParams);
+  }
 }

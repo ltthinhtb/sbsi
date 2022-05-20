@@ -128,27 +128,62 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             obscureText: true,
             inputController: state.old_controller,
             label: S.of(context).old_password,
-            hintText: S.of(context).old_password,
           ),
         ),
+        const SizedBox(height: 16),
         Form(
           // key: state.formKeyUser,
           child: AppTextFieldWidget(
             obscureText: true,
             inputController: state.new_controller,
-            label: S.of(context).new_password,
             hintText: S.of(context).new_password,
           ),
         ),
+        const SizedBox(height: 16),
+
         Form(
           // key: state.formKeyUser,
           child: AppTextFieldWidget(
             obscureText: true,
             inputController: state.confirm_controller,
-            label: S.of(context).confirm_new_password,
             hintText: S.of(context).confirm_new_password,
           ),
         ),
+        const SizedBox(height: 16),
+
+        Visibility(
+          visible: widget.isFirst,
+          child: Column(
+            children: [
+              Form(
+                // key: state.formKeyUser,
+                child: AppTextFieldWidget(
+                  obscureText: true,
+                  inputController: state.oldPinController,
+                  hintText: S.of(context).old_pin,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Form(
+                // key: state.formKeyUser,
+                child: AppTextFieldWidget(
+                  obscureText: true,
+                  inputController: state.newPinController,
+                  hintText: S.of(context).new_pin,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Form(
+                // key: state.formKeyUser,
+                child: AppTextFieldWidget(
+                  obscureText: true,
+                  inputController: state.confirmPinController,
+                  hintText: S.of(context).confirm_pin,
+                ),
+              ),
+            ],
+          ),
+        )
       ],
     );
   }

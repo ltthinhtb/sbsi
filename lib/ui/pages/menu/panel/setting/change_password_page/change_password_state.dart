@@ -5,6 +5,10 @@ class ChangePasswordState {
   final TextEditingController new_controller = TextEditingController();
   final TextEditingController confirm_controller = TextEditingController();
 
+  final TextEditingController oldPinController = TextEditingController();
+  final TextEditingController newPinController = TextEditingController();
+  final TextEditingController confirmPinController = TextEditingController();
+
   ChangePasswordState();
 }
 

@@ -22,19 +22,39 @@ extension SingingExt on SingingCharacter {
       };
 }
 
+enum inOrderHisTabs { all, waiting, matched, fixed, cancel }
 
-enum OderType {
-  inDay,advanceOder,history
+extension inOrderHisTabsExt on inOrderHisTabs {
+  get name => _mapName[this];
+
+  get value {
+    return _mapValue[this];
+  }
+
+  Map<inOrderHisTabs, String> get _mapName => {
+        inOrderHisTabs.waiting: "Chờ khớp",
+        inOrderHisTabs.matched: 'Đã khớp',
+        inOrderHisTabs.all: 'Tất cả',
+        inOrderHisTabs.cancel: 'Hủy',
+        inOrderHisTabs.fixed: 'Đã sửa',
+      };
+
+  Map<inOrderHisTabs, String> get _mapValue => {
+        inOrderHisTabs.waiting: "P",
+        inOrderHisTabs.matched: 'M',
+        inOrderHisTabs.all: '',
+        inOrderHisTabs.cancel: 'X',
+        inOrderHisTabs.fixed: 'C',
+      };
 }
 
-extension OderTypeExt on OderType {
+enum OderType { inDay, history }
 
+extension OderTypeExt on OderType {
   String get name {
-    switch(this){
+    switch (this) {
       case OderType.inDay:
         return 'Sổ lệnh trong ngày';
-      case OderType.advanceOder:
-        return 'Sổ lệnh trước ngày';
       case OderType.history:
         return 'Lịch sử lệnh';
     }

@@ -295,5 +295,10 @@
   "money_1": "Money0",
   "Financial_details": "Financial details",
   "Profitability": "Profitability",
-  "order_list_day": "Order list day"
+  "order_list_day": "Order list day",
+  "old_pin": "Old pin",
+  "new_pin": "New pin",
+  "confirm_pin": "Confirm pin",
+  "order_list_day_history" : "Order list day history"
+
 }

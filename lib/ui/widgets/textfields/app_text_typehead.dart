@@ -67,6 +67,8 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
             isDense: true,
             labelText: widget.label,
             hintText: widget.hintText,
+            contentPadding:
+            const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
             suffixIcon: Padding(
               padding: const EdgeInsets.only(right: 12),
               child: SvgPicture.asset(

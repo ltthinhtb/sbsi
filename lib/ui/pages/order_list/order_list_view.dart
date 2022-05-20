@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/tabs/inday_tabs.dart';
-import 'package:sbsi/ui/widgets/dialog/custom_dialog.dart';
-import '../../widgets/button/button_filled.dart';
 import 'enums/order_enums.dart';
+import 'tabs/in_onder_history.dart';
 
 class OrderListPage extends StatefulWidget {
   const OrderListPage({Key? key}) : super(key: key);
@@ -87,81 +85,15 @@ class _OrderListPageState extends State<OrderListPage>
                             .toList()),
                   ],
                 ),
-                Expanded(
+                const Expanded(
                   child: TabBarView(
-                      children: [const InDayTab(), Container(), Container()]),
+                      children: [InDayTab(), InOrderHistory()]),
                 )
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton: AnimatedScale(
-        scale: 1,
-        duration: const Duration(milliseconds: 300),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: ButtonFill(
-                    voidCallback: () async {
-                      bool? _r = await CustomDialog.showConfirmDialog(
-                        context,
-                        S.of(context).confirm_cancel_order,
-                        [
-                          S.of(context).are_you_sure_cancel_all_order,
-                        ],
-                        buttonColors: [AppColors.primary2, AppColors.primary],
-                        textButtonColors: [AppColors.primary, AppColors.white],
-                      );
-                      if (_r ?? false) {
-                        try {
-                          await logic.cancelOrder();
-                        } catch (e) {
-                          AppSnackBar.showError(message: e.toString());
-                        }
-                      }
-                    },
-                    title: S.of(context).cancel_all_orders,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: ButtonFill(
-                    voidCallback: () async {
-                      bool? _r = await CustomDialog.showConfirmDialog(
-                        context,
-                        S.of(context).confirm_cancel_order,
-                        [
-                          S.of(context).are_you_sure_cancel_this_order,
-                        ],
-                        buttonColors: [AppColors.primary2, AppColors.primary],
-                        textButtonColors: [AppColors.primary, AppColors.white],
-                      );
-                      if (_r ?? false) {
-                        try {
-                          await logic.cancelOrder();
-                        } catch (e) {
-                          AppSnackBar.showError(message: e.toString());
-                        }
-                      }
-                    },
-                    title: S.of(context).cancel_chose_orders,
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

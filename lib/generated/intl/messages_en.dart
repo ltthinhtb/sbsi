@@ -113,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Confirm OTP"),
         "confirm_payment":
             MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
+        "confirm_pin": MessageLookupByLibrary.simpleMessage("Confirm pin"),
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
         "content_transfer": MessageLookupByLibrary.simpleMessage("Content"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Continue"),
@@ -224,6 +225,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mr": MessageLookupByLibrary.simpleMessage("Margin rate"),
         "network_error": MessageLookupByLibrary.simpleMessage("Network Error"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
+        "new_pin": MessageLookupByLibrary.simpleMessage("New pin"),
         "news": MessageLookupByLibrary.simpleMessage("News"),
         "no_stock_hint_text": MessageLookupByLibrary.simpleMessage(
             "Nhập vào ô tìm kiếm để thêm mã\nđầu tiên vào danh mục"),
@@ -233,6 +235,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notice": MessageLookupByLibrary.simpleMessage("Notice"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
+        "old_pin": MessageLookupByLibrary.simpleMessage("Old pin"),
         "open_on": MessageLookupByLibrary.simpleMessage("Open on"),
         "order": MessageLookupByLibrary.simpleMessage("Order"),
         "orderType": MessageLookupByLibrary.simpleMessage("Order type"),
@@ -240,6 +243,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_detail": MessageLookupByLibrary.simpleMessage("Order detail"),
         "order_list_day":
             MessageLookupByLibrary.simpleMessage("Order list day"),
+        "order_list_day_history":
+            MessageLookupByLibrary.simpleMessage("Order list day history"),
         "order_note": MessageLookupByLibrary.simpleMessage("Order note"),
         "order_number": MessageLookupByLibrary.simpleMessage("Order Number"),
         "order_number_short": MessageLookupByLibrary.simpleMessage("OrdN"),

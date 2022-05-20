@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sbsi/common/app_colors.dart';
+import 'package:sbsi/model/entities/order_history.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 
 class MessageOrder {
@@ -140,6 +141,55 @@ class MessageOrder {
     return pStatus;
   }
 
+  static String getStatusOrder1(OrderHistory idata) {
+    var pStatus = idata.cORDERSTATUS!;
+    var pMatchVolume = idata.cMATCHVOL.toString();
+    var pVolume = idata.cORDERVOLUME.toString();
+
+    if ((pStatus == "PMC" || pStatus == "PCM") &&
+        num.parse(pMatchVolume) < num.parse(pVolume)) {
+      return "Khớp 1 phần"; // "MATCH_PARTIAL";
+    }
+    if ((pStatus == "PMC" || pStatus == "PCM") &&
+        num.parse(pMatchVolume) == num.parse(pVolume)) {
+      return "Đã khớp"; // "MATCH_FULL";
+    }
+
+    if ((pStatus == "PMX" || pStatus == "PMWX") &&
+        num.parse(pMatchVolume) > 0) {
+      return "Khớp 1 phần đã hủy"; // "MATCH_PARTIAL_CANCELED";
+    }
+    if (pStatus == "PM" && num.parse(pMatchVolume) < num.parse(pVolume)) {
+      return "Khớp 1 phần"; // "MATCH_PARTIAL";
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "M") {
+      //return "MATCH_FULL"
+      return "Đã khớp"; // "MATCH_FULL";
+    }
+    if (pStatus == "PM") {
+      // return "MATCH_FULL"
+      return "Đã khớp"; // "MATCH_FULL";
+    }
+    if (pStatus == "PW" || pStatus == "PMW") {
+      // return  "MATCH_PENDING"
+      return "Chờ hủy"; // "MATCH_PENDING";
+    }
+    if (pStatus == "PC" || (pStatus == "PMC")) {
+      return "Chờ sửa"; // "
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "X") {
+      return "Đã hủy"; // "CANCELED";
+    }
+    if (pStatus == "P") {
+      return "Chờ khớp"; // "MATCH_PENDING";
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "C") {
+      return "Chờ khớp"; // "MATCH_PENDING";
+    }
+    return pStatus;
+  }
+
+
   static String statusHuySua(IndayOrder idata) {
     var pStatus = idata.status!;
     var pMatchVolume = idata.matchVolume!;
@@ -177,6 +227,51 @@ class MessageOrder {
       } else {
         return "EDIT_PENDING";
       }
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "X") {
+      return "CANCELED";
+    }
+    if (pStatus == "P") {
+      return "MATCH_PENDING";
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "C") {
+      return "MATCH_PENDING";
+    }
+    return pStatus;
+  }
+
+  static String statusHuySua1(OrderHistory idata) {
+    var pStatus = idata.cORDERSTATUS!;
+    var pMatchVolume = idata.cMATCHVOL.toString();
+    var pVolume = idata.cORDERVOLUME.toString();
+
+    if ((pStatus == "PMC" || pStatus == "PCM") &&
+        num.parse(pMatchVolume) < num.parse(pVolume)) {
+      return "MATCH_PARTIAL";
+    }
+    if ((pStatus == "PMC" || pStatus == "PCM") &&
+        num.parse(pMatchVolume) == num.parse(pVolume)) {
+      return "MATCH_FULL";
+    }
+
+    if ((pStatus == "PMX" || pStatus == "PMWX") &&
+        num.parse(pMatchVolume) > 0) {
+      return "MATCH_PARTIAL_CANCELED";
+    }
+    if (pStatus == "PM" && num.parse(pMatchVolume) < num.parse(pVolume)) {
+      return "MATCH_PARTIAL";
+    }
+    if (pStatus.substring(pStatus.length - 1, pStatus.length) == "M") {
+      return "MATCH_FULL";
+    }
+    if (pStatus == "PM") {
+      return "MATCH_FULL";
+    }
+    if (pStatus == "PW" || pStatus == "PMW") {
+      return "MATCH_PENDING";
+    }
+    if (pStatus == "PC") {
+      return "EDIT_PENDING";
     }
     if (pStatus.substring(pStatus.length - 1, pStatus.length) == "X") {
       return "CANCELED";

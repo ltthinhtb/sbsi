@@ -3019,6 +3019,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Old pin`
+  String get old_pin {
+    return Intl.message(
+      'Old pin',
+      name: 'old_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New pin`
+  String get new_pin {
+    return Intl.message(
+      'New pin',
+      name: 'new_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm pin`
+  String get confirm_pin {
+    return Intl.message(
+      'Confirm pin',
+      name: 'confirm_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order list day history`
+  String get order_list_day_history {
+    return Intl.message(
+      'Order list day history',
+      name: 'order_list_day_history',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
