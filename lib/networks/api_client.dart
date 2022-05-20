@@ -30,6 +30,7 @@ import 'package:sbsi/utils/logger.dart';
 import '../model/entities/bank.dart';
 import '../model/entities/beneficiary_account.dart';
 import '../model/entities/order_history.dart';
+import '../model/entities/share_transaction.dart';
 import '../model/entities/transfer_history.dart';
 import '../model/response/branch_response.dart';
 import '../model/response/index_chart.dart';
@@ -121,6 +122,9 @@ abstract class ApiClient {
   Future<List<OrderHistory>> getListOrder(RequestParams requestParams);
 
   Future<TransactionNew> getListTransactionNew(RequestParams requestParams);
+
+  Future<List<ShareTransaction>> getListShareTransaction(
+      RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -729,5 +733,23 @@ class _ApiClient implements ApiClient {
     );
     List _mapData = jsonDecode(_result.data)['data'];
     return TransactionNew.fromJson(_mapData.first);
+  }
+
+  @override
+  Future<List<ShareTransaction>> getListShareTransaction(
+      RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List data2 = _mapData.first['data2'];
+    List<ShareTransaction> listShare = [];
+    for (var element in data2) {
+      listShare.add(ShareTransaction.fromJson(element));
+    }
+    return listShare;
   }
 }

@@ -8,6 +8,7 @@ import '../../commons/appbar.dart';
 import 'cash_transaction_logic.dart';
 import 'enum/transaction.dart';
 import 'tabs/transaction_money.dart';
+import 'tabs/transaction_stock.dart';
 
 class CashTransactionPage extends StatefulWidget {
   const CashTransactionPage({Key? key}) : super(key: key);
@@ -119,8 +120,8 @@ class _CashTransactionPageState extends State<CashTransactionPage> {
                             .toList()),
                   ],
                 ),
-                Expanded(
-                  child: TabBarView(children: [const TransactionMoney(), Container()]),
+                const Expanded(
+                  child: TabBarView(children: [TransactionMoney(), TransactionStock()]),
                 )
               ],
             ),

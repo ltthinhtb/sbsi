@@ -35,8 +35,6 @@ class CashTransactionLogic extends GetxController {
           p1: "0",
           p2: state.account.value.accCode,
           p3: state.startDateController.text,
-          //p3: "12/01/2021",
-          //p4: "28/02/2021",
           p4: state.endDateController.text,
           p5: "1",
           p6: "30"),
@@ -50,6 +48,31 @@ class CashTransactionLogic extends GetxController {
     }
   }
 
+  // load list transaction stock
+  void getListShareTransaction() async {
+    var _tokenEntity = authService.token.value;
+    final RequestParams _requestParams = RequestParams(
+      group: "B",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+          type: "2cursor",
+          cmd: "ShareTransaction",
+          p1: state.account.value.accCode,
+          p3: state.startDateController1.text,
+          p4: state.endDateController1.text,
+          p5: "0",
+          p6: "1",
+          p7: "30"),
+    );
+    try {
+      state.listShare.value =
+          await apiService.getListShareTransaction(_requestParams);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   // switch tài khoản 1-6
   void changeAccount() {
     var index = authService.listAccount.indexWhere(
@@ -57,6 +80,7 @@ class CashTransactionLogic extends GetxController {
     if (index >= 0) {
       state.account.value = authService.listAccount[index];
       getOrderList();
+      getListShareTransaction();
     }
   }
 
@@ -64,6 +88,7 @@ class CashTransactionLogic extends GetxController {
   void onReady() {
     loadAccount();
     getOrderList();
+    getListShareTransaction();
     super.onReady();
   }
 

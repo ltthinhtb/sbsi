@@ -62,7 +62,7 @@ class _TransactionMoneyState extends State<TransactionMoney> {
                         initialEntryMode: DatePickerEntryMode.calendarOnly,
                         locale: Get.locale,
                         firstDate:
-                            DateTime.now().add(const Duration(days: -90)),
+                            DateTime.now().add(const Duration(days: -1000)),
                         lastDate: DateTime.now().add(const Duration(days: 30)),
                         initialDate: statDate);
                     if (date != null) {
@@ -88,7 +88,7 @@ class _TransactionMoneyState extends State<TransactionMoney> {
                         context: context,
                         initialEntryMode: DatePickerEntryMode.calendarOnly,
                         locale: Get.locale,
-                        firstDate: statDate.add(const Duration(days: -90)),
+                        firstDate: statDate.add(const Duration(days: -1000)),
                         lastDate: DateTime.now().add(const Duration(days: 30)),
                         initialDate: endDate);
                     if (date != null) {
@@ -193,7 +193,7 @@ class _TransactionMoneyState extends State<TransactionMoney> {
 
   void checkTime() {
     if (statDate.difference(endDate).inDays <= 0) {
-      // logic.getOrderListHistory();
+      logic.getOrderList();
     }
   }
 }

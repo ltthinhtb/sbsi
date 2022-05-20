@@ -45,4 +45,9 @@ extension WaletService on ApiService {
   Future<TransactionNew> getListTransactionNew(RequestParams requestParams) async {
     return await _apiClient.getListTransactionNew(requestParams);
   }
+
+  Future<List<ShareTransaction>> getListShareTransaction(RequestParams requestParams) async {
+    return await _apiClient.getListShareTransaction(requestParams);
+  }
+
 }
