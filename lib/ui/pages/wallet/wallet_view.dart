@@ -28,37 +28,48 @@ class _WalletPageState extends State<WalletPage> {
         title: S.of(context).wallet,
         isCenter: true,
         action: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            margin: const EdgeInsets.symmetric(vertical: 11),
-            decoration: BoxDecoration(
-                color: AppColors.tabIn,
-                borderRadius: BorderRadius.circular(16)),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Obx(() {
-                  var auth = Get.find<AuthService>().token.value;
-                  return Text('${auth?.data?.user ?? ""}');
-                }),
-                const SizedBox(width: 2),
-                Container(
-                  width: 24,
-                  height: 24,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                      color: AppColors.white, shape: BoxShape.circle),
-                  child: Obx(() {
+          GestureDetector(
+            onTap: () {
+              logic.changeAccount();
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              margin: const EdgeInsets.symmetric(vertical: 11),
+              decoration: BoxDecoration(
+                  color: AppColors.tabIn,
+                  borderRadius: BorderRadius.circular(16)),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Obx(() {
+                    var auth = Get.find<AuthService>().token.value;
                     return Text(
-                      state.account.value.lastCharacter,
+                      '${auth?.data?.user ?? ""}',
                       style: Theme.of(context)
                           .textTheme
                           .subtitle2
-                          ?.copyWith(fontWeight: FontWeight.w700),
+                          ?.copyWith(color: AppColors.buttonOrange),
                     );
                   }),
-                )
-              ],
+                  const SizedBox(width: 2),
+                  Container(
+                    width: 24,
+                    height: 24,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                        color: AppColors.white, shape: BoxShape.circle),
+                    child: Obx(() {
+                      return Text(
+                        state.account.value.lastCharacter,
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle2
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      );
+                    }),
+                  )
+                ],
+              ),
             ),
           ),
           const SizedBox(width: 14),

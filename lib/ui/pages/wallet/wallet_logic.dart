@@ -9,39 +9,40 @@ import 'wallet_state.dart';
 
 class WalletLogic extends GetxController {
   final WalletState state = WalletState();
-  final ApiService apiService = Get.find();
-  final AuthService authService = Get.find();
-
-  late TokenEntity _tokenEntity;
-
-  String get defAcc => _tokenEntity.data!.defaultAcc ?? "";
+  final ApiService apiService = Get.find<ApiService>();
+  final AuthService authService = Get.find<AuthService>();
 
   final RequestParams _requestParams = RequestParams(group: "Q");
 
-  void getTokenUser() {
-    if (authService.token.value != null) {
-      _tokenEntity = (authService.token.value)!;
-      _requestParams.user = _tokenEntity.data?.user;
-      _requestParams.session = _tokenEntity.data?.sid;
+  // load tài khoản mặc định
+  void loadAccount() {
+    var _tokenEntity = authService.token.value;
+    var index = authService.listAccount.indexWhere(
+        (element) => _tokenEntity?.data?.defaultAcc == element.accCode);
+    if (index >= 0) {
+      state.account.value = authService.listAccount[index];
+    }
+    _requestParams.session = _tokenEntity?.data?.sid ?? "";
+    _requestParams.user = _tokenEntity?.data?.user ?? "";
+  }
+
+  // switch tài khoản 1-6
+  void changeAccount() {
+    var index = authService.listAccount.indexWhere(
+        (element) => state.account.value.accCode != element.accCode);
+    if (index >= 0) {
+      state.account.value = authService.listAccount[index];
       getAccountStatus();
       getPortfolio();
     }
   }
 
-  void loadAccount() {
-    var _tokenEntity = authService.token.value;
-    var index = authService.listAccount.indexWhere(
-            (element) => _tokenEntity?.data?.defaultAcc == element.accCode);
-    if (index >= 0) {
-      state.account.value = authService.listAccount[index];
-    }
-  }
-
-  Future<void> getAccountStatus({String? account}) async {
+  Future<void> getAccountStatus() async {
     ParamsObject _object = ParamsObject();
     _object.type = "string";
     _object.cmd = "Web.Portfolio.AccountStatus";
-    _object.p1 = account ?? defAcc;
+    _object.p1 = state.account.value.accCode ?? "";
+
     _requestParams.data = _object;
     try {
       var response = await apiService.getAccountStatus(_requestParams);
@@ -51,11 +52,11 @@ class WalletLogic extends GetxController {
     }
   }
 
-  Future<void> getPortfolio({String? account}) async {
+  Future<void> getPortfolio() async {
     ParamsObject _object = ParamsObject();
     _object.type = "string";
     _object.cmd = "Web.Portfolio.PortfolioStatus";
-    _object.p1 = account ?? defAcc;
+    _object.p1 = state.account.value.accCode ?? "";
     _requestParams.data = _object;
     try {
       var response = await apiService.getPortfolio(_requestParams);
@@ -73,8 +74,9 @@ class WalletLogic extends GetxController {
 
   @override
   void onReady() {
-    getTokenUser();
     loadAccount();
+    getAccountStatus();
+    getPortfolio();
     super.onReady();
   }
 }
