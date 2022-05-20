@@ -299,6 +299,9 @@
   "old_pin": "Old pin",
   "new_pin": "New pin",
   "confirm_pin": "Confirm pin",
-  "order_list_day_history" : "Order list day history"
+  "order_list_day_history" : "Order list day history",
+  "cash_transaction" : "Cash transaction",
+  "transaction_money" : "Transaction money",
+  "transaction_stock": "Transaction stock"
 
 }

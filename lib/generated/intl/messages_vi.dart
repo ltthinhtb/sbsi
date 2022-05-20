@@ -90,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cash_availability":
             MessageLookupByLibrary.simpleMessage("Số dư khả dụng"),
         "cash_balance": MessageLookupByLibrary.simpleMessage("Tài sản ròng"),
+        "cash_transaction": MessageLookupByLibrary.simpleMessage("Sao kê"),
         "category": MessageLookupByLibrary.simpleMessage("Khác"),
         "ceil": MessageLookupByLibrary.simpleMessage("Trần"),
         "change_order": MessageLookupByLibrary.simpleMessage("Sửa lệnh"),
@@ -401,6 +402,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_assets": MessageLookupByLibrary.simpleMessage("Tổng tài sản"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị chứng khoán"),
+        "transaction_money":
+            MessageLookupByLibrary.simpleMessage("Sao kê tiền"),
+        "transaction_stock":
+            MessageLookupByLibrary.simpleMessage("Sao kê chứng khoán"),
         "transfer": MessageLookupByLibrary.simpleMessage("Chuyển tiền"),
         "transfer_cFee": MessageLookupByLibrary.simpleMessage("Phí giao dịch"),
         "transfer_content":

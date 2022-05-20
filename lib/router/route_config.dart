@@ -1,3 +1,4 @@
+import 'package:sbsi/ui/pages/cash_transaction/cash_transaction_view.dart';
 import 'package:sbsi/ui/pages/home/home_logic.dart';
 import 'package:sbsi/ui/pages/main/main_logic.dart';
 import 'package:sbsi/ui/pages/main/main_view.dart';
@@ -26,6 +27,7 @@ class RouteConfig {
   static const String stockDetail = "/stockDetail";
   static const String settings = '/settings';
   static const String money_transfer = '/money_transfer';
+  static const String cash_transaction = '/cash_transaction';
 
   ///Alias ​​mapping page
   static final List<GetPage> getPages = [
@@ -39,6 +41,7 @@ class RouteConfig {
     GetPage(name: stockDetail, page: () => const StockDetailPage()),
     GetPage(name: settings, page: () => const SettingPage()),
     GetPage(name: money_transfer, page: () => const MoneyTransferPage()),
+    GetPage(name: cash_transaction, page: () => const CashTransactionPage()),
 
   ];
 }

@@ -3059,6 +3059,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Cash transaction`
+  String get cash_transaction {
+    return Intl.message(
+      'Cash transaction',
+      name: 'cash_transaction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transaction money`
+  String get transaction_money {
+    return Intl.message(
+      'Transaction money',
+      name: 'transaction_money',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transaction stock`
+  String get transaction_stock {
+    return Intl.message(
+      'Transaction stock',
+      name: 'transaction_stock',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

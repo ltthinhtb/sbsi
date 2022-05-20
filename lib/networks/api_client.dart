@@ -36,6 +36,7 @@ import '../model/response/index_chart.dart';
 import '../model/response/market_depth_response.dart';
 import '../model/response/stock_follow_branch_response.dart';
 import '../model/response/stock_report.dart';
+import '../model/response/transaction_new.dart';
 import 'error_exception.dart';
 
 abstract class ApiClient {
@@ -119,6 +120,7 @@ abstract class ApiClient {
 
   Future<List<OrderHistory>> getListOrder(RequestParams requestParams);
 
+  Future<TransactionNew> getListTransactionNew(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -686,7 +688,8 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<ReportStockResponse> getStockReport(String stock, String ternType) async {
+  Future<ReportStockResponse> getStockReport(
+      String stock, String ternType) async {
     String path = AppConfigs.INFO_SBSI + 'stockReport.pt';
     Response _result = await _getApi(_dio.get(path, queryParameters: {
       "symbol": stock,
@@ -713,5 +716,18 @@ class _ApiClient implements ApiClient {
       listHistory.add(OrderHistory.fromJson(element));
     }
     return listHistory;
+  }
+
+  @override
+  Future<TransactionNew> getListTransactionNew(
+      RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    return TransactionNew.fromJson(_mapData.first);
   }
 }

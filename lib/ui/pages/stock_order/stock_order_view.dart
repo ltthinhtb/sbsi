@@ -172,7 +172,13 @@ class _StockOrderPageState extends State<StockOrderPage> {
                 children: [
                   Obx(() {
                     var auth = Get.find<AuthService>().token.value;
-                    return Text('${auth?.data?.user ?? ""}');
+                    return Text(
+                      '${auth?.data?.user ?? ""}',
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle2
+                          ?.copyWith(color: AppColors.buttonOrange),
+                    );
                   }),
                   const SizedBox(width: 2),
                   Container(

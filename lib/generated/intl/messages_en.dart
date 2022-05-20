@@ -84,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cash_availability":
             MessageLookupByLibrary.simpleMessage("Cash Availability"),
         "cash_balance": MessageLookupByLibrary.simpleMessage("Cash balance"),
+        "cash_transaction":
+            MessageLookupByLibrary.simpleMessage("Cash transaction"),
         "category": MessageLookupByLibrary.simpleMessage("Menu"),
         "ceil": MessageLookupByLibrary.simpleMessage("Ceil"),
         "change_order": MessageLookupByLibrary.simpleMessage("Change order"),
@@ -385,6 +387,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_assets": MessageLookupByLibrary.simpleMessage("Total assets"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),
+        "transaction_money":
+            MessageLookupByLibrary.simpleMessage("Transaction money"),
+        "transaction_stock":
+            MessageLookupByLibrary.simpleMessage("Transaction stock"),
         "transfer": MessageLookupByLibrary.simpleMessage("Transfer"),
         "transfer_cFee": MessageLookupByLibrary.simpleMessage("Transfer CFee"),
         "transfer_content":

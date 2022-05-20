@@ -136,7 +136,9 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(RouteConfig.cash_transaction);
+                      },
                       title: S.of(context).statement,
                       button: AppImages.not_book),
                   const SizedBox(height: 16),

@@ -236,7 +236,7 @@ class StockOrderLogic extends GetxController {
         symbol: state.selectedStock.value.stockCode!,
         volume:
             int.tryParse(state.volController.numberValue.toStringAsFixed(0)),
-        price: state.priceController.text,
+        price: state.priceController.text.replaceAll(",", "."),
         advance: "",
         refId: refId,
         orderType: "1",
