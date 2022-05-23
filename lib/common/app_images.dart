@@ -14,6 +14,14 @@ class AppImages {
   static String sign_up_card_id_2 = 'assets/icon_svg/sign_up_id-card 2.svg';
   static String sign_up_card_id_3 = 'assets/icon_svg/sign_ip_id-card 3.svg';
 
+  static String idCard1 = 'assets/icon_svg/id-card 1.svg';
+  static String idCard2 = 'assets/icon_svg/id_card 2.svg';
+
+  static String user_image1 = 'assets/icon_svg/user-images 1.svg';
+  static String user_big = 'assets/icon_svg/user_big.svg';
+  static String camera1 = 'assets/icon_svg/camera 1.svg';
+  static String tick_circle = 'assets/icon_svg/tick-circle.svg';
+
   static String cmnd_blur = 'assets/icon_svg/cmnd_blur.svg';
   static String cmnd_dark = 'assets/icon_svg/cmnd_dark.svg';
   static String cmnd_cut = 'assets/icon_svg/cmnd_cut.svg';
@@ -98,5 +106,4 @@ class AppImages {
   static String moreCircle = 'assets/icon_svg/more-circle.svg';
   static String tick = 'assets/icon_svg/tick-square.svg';
   static String tickActive = 'assets/icon_svg/tick-square-yellow.svg';
-
 }

@@ -299,9 +299,15 @@
   "old_pin": "Old pin",
   "new_pin": "New pin",
   "confirm_pin": "Confirm pin",
-  "order_list_day_history" : "Order list day history",
-  "cash_transaction" : "Cash transaction",
-  "transaction_money" : "Transaction money",
-  "transaction_stock": "Transaction stock"
+  "order_list_day_history": "Order list day history",
+  "cash_transaction": "Cash transaction",
+  "transaction_money": "Transaction money",
+  "transaction_stock": "Transaction stock",
+  "enter_referral_code": "Referral Code",
+  "create_account": "Create account",
+  "confirm_pass" : "Confirm password",
+  "pass_not_match" : "Password not match",
+  "verify_account" : "Verify account",
+  "guide_take" : "Guide take photo"
 
 }

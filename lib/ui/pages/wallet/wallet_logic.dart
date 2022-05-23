@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:sbsi/model/entities/index.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/networks/error_exception.dart';

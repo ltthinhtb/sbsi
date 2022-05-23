@@ -302,5 +302,11 @@
   "order_list_day_history": "Danh sách lịch sử lệnh",
   "cash_transaction": "Sao kê",
   "transaction_money": "Sao kê tiền",
-  "transaction_stock": "Sao kê chứng khoán"
+  "transaction_stock": "Sao kê chứng khoán",
+  "enter_referral_code" : "Nhập mã giới thiệu",
+  "create_account" : "Tạo tài khoản",
+  "confirm_pass" : "Xác nhận mật khẩu",
+  "pass_not_match" : "Mật khẩu không trùng khớp",
+  "verify_account" : "Xác thực tài khoản",
+  "guide_take" : "Hướng dẫn chụp hình"
 }

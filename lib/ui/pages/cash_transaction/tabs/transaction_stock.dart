@@ -11,7 +11,6 @@ import '../cash_transaction_logic.dart';
 import 'package:intl/intl.dart' as la;
 
 import '../widget/transactin_stock_widget.dart';
-import '../widget/transaction_widget.dart';
 
 class TransactionStock extends StatefulWidget {
   const TransactionStock({Key? key}) : super(key: key);

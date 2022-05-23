@@ -10,6 +10,7 @@ import 'package:sbsi/ui/pages/order_list/order_list_view.dart';
 import 'package:sbsi/ui/pages/search/search_view.dart';
 import 'package:sbsi/ui/pages/sign_in/sign_in_view.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/ui/pages/sign_up/sign_up_view.dart';
 import 'package:sbsi/ui/pages/stock_detail/stock_detail_view.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
 import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
@@ -18,6 +19,7 @@ class RouteConfig {
   ///main page
   static const String main = "/main";
   static const String login = "/login";
+  static const String sign_up = "/sign_up";
   static const String invest = "/invest";
   static const String invest_confirm = '/invest_confirm';
   static const String search = "/search";
@@ -33,6 +35,7 @@ class RouteConfig {
   static final List<GetPage> getPages = [
     GetPage(name: main, page: () => MainPage(), binding: MainBinding()),
     GetPage(name: login, page: () => const SignInPage()),
+    GetPage(name: sign_up, page: () => const SignUpPage()),
     GetPage(name: invest, page: () => MainPage()),
     GetPage(name: invest_confirm, page: () => MainPage()),
     GetPage(name: search, page: () => const SearchPage()),

@@ -113,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Confirm OTP"),
+        "confirm_pass":
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
         "confirm_payment":
             MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Confirm pin"),
@@ -120,6 +122,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "content_transfer": MessageLookupByLibrary.simpleMessage("Content"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Continue"),
         "coupon": MessageLookupByLibrary.simpleMessage("Coupon"),
+        "create_account":
+            MessageLookupByLibrary.simpleMessage("Create account"),
         "day": MessageLookupByLibrary.simpleMessage("Day"),
         "decrease": MessageLookupByLibrary.simpleMessage("Decrease"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -138,6 +142,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "empty_stockcode":
             MessageLookupByLibrary.simpleMessage("Stock code is empty"),
         "end_day": MessageLookupByLibrary.simpleMessage("End day"),
+        "enter_referral_code":
+            MessageLookupByLibrary.simpleMessage("Referral Code"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "failed": MessageLookupByLibrary.simpleMessage("Failed"),
         "fee": MessageLookupByLibrary.simpleMessage("Fee"),
@@ -153,6 +159,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "gain_loss_value":
             MessageLookupByLibrary.simpleMessage("Gain loss value"),
         "gender": MessageLookupByLibrary.simpleMessage("Gender"),
+        "guide_take": MessageLookupByLibrary.simpleMessage("Guide take photo"),
         "have_account": MessageLookupByLibrary.simpleMessage("Have account"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "history_transfer":
@@ -257,6 +264,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "over_view": MessageLookupByLibrary.simpleMessage("Over view"),
         "partial_matched":
             MessageLookupByLibrary.simpleMessage("Partial matched"),
+        "pass_not_match":
+            MessageLookupByLibrary.simpleMessage("Password not match"),
         "passport": MessageLookupByLibrary.simpleMessage("Passport"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),
@@ -409,6 +418,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "user_name": MessageLookupByLibrary.simpleMessage("Username"),
         "utilities": MessageLookupByLibrary.simpleMessage("Utilities"),
         "variable": MessageLookupByLibrary.simpleMessage("Variable"),
+        "verify_account":
+            MessageLookupByLibrary.simpleMessage("Verify account"),
         "vol_is_not_integer":
             MessageLookupByLibrary.simpleMessage("Volumn must be an integer"),
         "vol_is_not_positive":

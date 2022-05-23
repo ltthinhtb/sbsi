@@ -24,6 +24,16 @@ class Validator {
     }
   }
 
+  String? checkConfirmPass(String rePass, String pass) {
+    if (rePass.isEmpty) {
+      return S.current.please_input_password;
+    } else if (rePass != pass) {
+      return S.current.pass_not_match;
+    } else {
+      return null;
+    }
+  }
+
   String? checkFullName(String value) {
     if (value.isEmpty) {
       return S.current.please_input_full_name;
@@ -53,12 +63,11 @@ class Validator {
   }
 
   String? checkMoney(String? money) {
-    if(money == null || money.isEmpty) return S.current.please_input_money;
+    if (money == null || money.isEmpty) return S.current.please_input_money;
     var value = double.parse(money);
-    if(value <= 0)  return S.current.money_valid;
+    if (value <= 0) return S.current.money_valid;
     return null;
   }
-
 
   String? checkContent(String value) {
     if (value.isEmpty) {
@@ -71,11 +80,9 @@ class Validator {
   String? checkPin(String pin) {
     if (pin.isEmpty) {
       return S.current.please_input_pin;
-    }
-    else if(pin.length>6){
+    } else if (pin.length > 6) {
       return S.current.pin_valid;
-    }
-    else {
+    } else {
       return null;
     }
   }

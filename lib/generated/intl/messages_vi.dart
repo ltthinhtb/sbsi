@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Xác nhận OTP"),
+        "confirm_pass":
+            MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
         "confirm_payment":
             MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Xác nhận mã pin"),
@@ -127,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nội dung chuyển khoản"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
         "coupon": MessageLookupByLibrary.simpleMessage("Lợi suất đầu tư"),
+        "create_account": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
         "decrease": MessageLookupByLibrary.simpleMessage("Giảm giá"),
         "delete": MessageLookupByLibrary.simpleMessage("Xóa"),
@@ -146,6 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "empty_stockcode":
             MessageLookupByLibrary.simpleMessage("Mã chứng khoán rỗng"),
         "end_day": MessageLookupByLibrary.simpleMessage("Đến ngày"),
+        "enter_referral_code":
+            MessageLookupByLibrary.simpleMessage("Nhập mã giới thiệu"),
         "error": MessageLookupByLibrary.simpleMessage("Lỗi"),
         "failed": MessageLookupByLibrary.simpleMessage("Thất bại"),
         "fee": MessageLookupByLibrary.simpleMessage("Phí đầu tư"),
@@ -160,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gain_loss_value":
             MessageLookupByLibrary.simpleMessage("Lãi lỗ (số tiền)"),
         "gender": MessageLookupByLibrary.simpleMessage("Giới tính"),
+        "guide_take":
+            MessageLookupByLibrary.simpleMessage("Hướng dẫn chụp hình"),
         "have_account": MessageLookupByLibrary.simpleMessage("Đã có tài khoản"),
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử giao dịch"),
         "history_transfer":
@@ -269,6 +276,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng đặt"),
         "over_view": MessageLookupByLibrary.simpleMessage("Tổng quan"),
         "partial_matched": MessageLookupByLibrary.simpleMessage("Khớp 1 phần"),
+        "pass_not_match":
+            MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp"),
         "passport": MessageLookupByLibrary.simpleMessage("Hộ chiếu Việt Nam"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "pay": MessageLookupByLibrary.simpleMessage("Thanh toán"),
@@ -424,6 +433,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "user_name": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
         "utilities": MessageLookupByLibrary.simpleMessage("Tiện ích"),
         "variable": MessageLookupByLibrary.simpleMessage("Biến động"),
+        "verify_account":
+            MessageLookupByLibrary.simpleMessage("Xác thực tài khoản"),
         "vol_is_not_integer": MessageLookupByLibrary.simpleMessage(
             "Khối lượng phải là số nguyên"),
         "vol_is_not_positive":
