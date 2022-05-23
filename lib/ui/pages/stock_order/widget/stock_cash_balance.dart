@@ -4,8 +4,10 @@ import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_state.dart';
+import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/money_utils.dart';
 import 'package:sbsi/utils/order_utils.dart';
+import 'package:sbsi/utils/validator.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/debouncer.dart';
 import '../../../widgets/button/button_filled.dart';
@@ -19,15 +21,15 @@ class StockCashBalance extends StatefulWidget {
   State<StockCashBalance> createState() => _StockCashBalanceState();
 }
 
-class _StockCashBalanceState extends State<StockCashBalance> {
+class _StockCashBalanceState extends State<StockCashBalance> with Validator {
   final _debouncer = Debouncer(milliseconds: 500);
 
-  final state = Get.find<StockOrderLogic>().state;
+  var state = Get.find<StockOrderLogic>().state;
+  var logic = Get.find<StockOrderLogic>();
+
 
   @override
   Widget build(BuildContext context) {
-    var state = Get.find<StockOrderLogic>().state;
-    var logic = Get.find<StockOrderLogic>();
     final bodyText2 = Theme.of(context).textTheme.bodyText1;
     return Obx(() {
       var cashBalance = state.selectedCashBalance.value;
@@ -170,8 +172,6 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                         state.priceController.updateValue(value - step);
                         logic.getCashBalance();
                         logic.changeTotal();
-
-
                       }
                     },
                     plus: () {
@@ -223,8 +223,10 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                     child: ButtonFill(
                       title: S.of(context).buy,
                       voidCallback: () {
-                       // if (validate(state, true))
-                          logic.requestNewOrder(isBuy: true);
+                        // if (validate(state, true))
+                        // logic.requestNewOrder(isBuy: true);
+                        state.pinController.clear();
+                        orderNew(isBuy: true);
                       },
                       style: ElevatedButton.styleFrom().copyWith(
                           backgroundColor:
@@ -236,8 +238,10 @@ class _StockCashBalanceState extends State<StockCashBalance> {
                     child: ButtonFill(
                       title: S.of(context).sell,
                       voidCallback: () {
-                       // if (validate(state, false))
-                          logic.requestNewOrder(isBuy: false);
+                        // if (validate(state, false))
+                        //logic.requestNewOrder(isBuy: false);
+                        state.pinController.clear();
+                        orderNew(isBuy: false);
                       },
                     ),
                   )
@@ -250,6 +254,122 @@ class _StockCashBalanceState extends State<StockCashBalance> {
     });
   }
 
+  void orderNew({required bool isBuy}) {
+    Get.dialog(Dialog(
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Builder(builder: (context) {
+        final body2 = Theme.of(context).textTheme.bodyText2;
+        final body1 = Theme.of(context).textTheme.bodyText1;
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+              color: AppColors.white, borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 16),
+              Text(
+                S.of(context).order,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).stock_code,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    state.selectedStockInfo.value.sym ?? "",
+                    style: body1?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).orderType,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    isBuy ? S.of(context).buy : S.of(context).sell,
+                    style: body1?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: isBuy ? AppColors.active : AppColors.deActive),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).price,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    state.priceController.text,
+                    style: body1?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).volumn,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    state.volController.text,
+                    style: body1?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              AppTextFieldWidget(
+                validator: (pin) => checkPin(pin!),
+                hintText: S.of(context).input_pin,
+                inputController: state.pinController,
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                      child: ButtonFill(
+                    voidCallback: () {
+                      Get.back();
+                    },
+                    title: S.of(context).cancel_short,
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: AppColors.primary,
+                        primary: const Color.fromRGBO(255, 238, 238, 1)),
+                  )),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                      child: ButtonFill(
+                          voidCallback: () {
+                            logic.requestNewOrder(isBuy: isBuy);
+                          },
+                          title: S.of(context).confirm))
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        );
+      }),
+    ));
+  }
 
   bool validate(StockOrderState state, bool isBuy) {
     var checkPrice = true;
@@ -276,7 +396,7 @@ class _StockCashBalanceState extends State<StockCashBalance> {
   bool get parsePrice {
     try {
       var state = Get.find<StockOrderLogic>().state;
-      double.parse(state.priceController.text);
+      double.parse(state.priceController.text.replaceAll(",", "."));
       return true;
     } catch (e) {
       return false;

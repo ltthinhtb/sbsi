@@ -43,7 +43,7 @@ class StockOrderState {
   var isBuy = true.obs;
   var priceType = "LO".obs;
   var vol = 0.obs;
-  var pin = "123456".obs;
+  var pinController = TextEditingController();
 
   /// tổng kl 3 phiên gần nhất
   var sumBuyVol = 0.0.obs;
