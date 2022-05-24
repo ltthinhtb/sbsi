@@ -8,6 +8,7 @@ import 'package:sbsi/ui/commons/appbar.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../router/route_config.dart';
+import '../menu/panel/setting/change_password_page/change_password_view.dart';
 import 'utilities_logic.dart';
 
 class UtilitiesPage extends StatefulWidget {
@@ -56,8 +57,7 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {
-                      },
+                      onTap: () {},
                       title: S.of(context).advance_money,
                       button: AppImages.cash_wallet),
                   const Padding(
@@ -70,7 +70,6 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                   rowButton(
                       onTap: () {
                         Get.toNamed(RouteConfig.money_transfer);
-
                       },
                       title: S.of(context).transfer,
                       button: AppImages.cash_wallet_green),
@@ -181,7 +180,9 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(const ChangePasswordPage());
+                      },
                       title: S.of(context).change_password,
                       button: AppImages.lock),
                   const Padding(

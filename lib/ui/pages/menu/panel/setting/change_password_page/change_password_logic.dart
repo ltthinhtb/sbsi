@@ -18,11 +18,12 @@ class ChangePasswordLogic extends GetxController {
       group: "B",
       session: _tokenEntity?.data?.sid,
       user: _tokenEntity?.data?.user,
+       otp: "",
       data: ParamsObject(
-        type: "object",
-        cmd: "APP.CHANGE_PASSWORD",
-        p: ChangePasswordModel(state.old_controller.text,
-            state.new_controller.text, state.confirm_controller.text),
+        type: "string",
+        cmd: "ChangePass",
+        p1: state.old_controller.text,
+        p2: state.new_controller.text
       ),
     );
     try {
