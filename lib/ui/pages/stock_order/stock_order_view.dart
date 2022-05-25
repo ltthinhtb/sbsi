@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:sbsi/common/app_colors.dart';
@@ -7,9 +8,12 @@ import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/services/auth_service.dart';
 import 'package:sbsi/services/setting_service.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
+import 'package:sbsi/ui/pages/stock_order/enums.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
+import 'package:sbsi/utils/error_message.dart';
 
 import 'widget/card_data.dart';
+import 'widget/radio_button.dart';
 import 'widget/stock_3_price.dart';
 import 'widget/stock_cash_balance.dart';
 
@@ -151,6 +155,8 @@ class _StockOrderPageState extends State<StockOrderPage> {
 
   @override
   Widget build(BuildContext context) {
+    final body1 = Theme.of(context).textTheme.bodyText1;
+    final caption = Theme.of(context).textTheme.caption;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
@@ -223,10 +229,181 @@ class _StockOrderPageState extends State<StockOrderPage> {
               const Stock3Price(),
               const SizedBox(height: 16),
               const StockCashBalance(),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    Text(
+                      S.of(context).order_note,
+                      style: body1?.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                    const Spacer(),
+                    const RadioButton(stockFast: StockFast.waiting),
+                    const SizedBox(
+                      width: 24,
+                    ),
+                    const RadioButton(stockFast: StockFast.matching),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration:
+                    const BoxDecoration(color: AppColors.white, boxShadow: [
+                  BoxShadow(
+                      offset: Offset(0, -1),
+                      blurRadius: 10,
+                      color: Color.fromRGBO(0, 0, 0, 0.03)),
+                  BoxShadow(
+                      offset: Offset(0, -0.5),
+                      blurRadius: 8,
+                      color: Color.fromRGBO(0, 0, 0, 0.04))
+                ]),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      S.of(context).list_order,
+                      style: body1?.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                    const Divider(
+                      thickness: 1,
+                      height: 16,
+                      color: Color.fromRGBO(242, 242, 242, 1),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 73,
+                          child: Text(S.of(context).command,
+                              style: caption?.copyWith(
+                                  fontWeight: FontWeight.w700)),
+                        ),
+                        Expanded(
+                          flex: 80,
+                          child: Text(S.of(context).stock_code,
+                              style: caption?.copyWith(
+                                  fontWeight: FontWeight.w700)),
+                        ),
+                        Expanded(
+                          flex: 61,
+                          child: Text(S.of(context).price,
+                              style: caption?.copyWith(
+                                  fontWeight: FontWeight.w700)),
+                        ),
+                        Expanded(
+                          flex: 61,
+                          child: Text(S.of(context).volume_short,
+                              style: caption?.copyWith(
+                                  fontWeight: FontWeight.w700)),
+                        ),
+                        Expanded(
+                          flex: 57,
+                          child: Text(S.of(context).status,
+                              style: caption?.copyWith(
+                                  fontWeight: FontWeight.w700)),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Obx(() {
+                      return ListView.builder(
+
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          final note = state.listOrder[index];
+                          return Slidable(
+                            enabled: MessageOrder.canEdit(note),
+                            endActionPane: ActionPane(
+                              motion: const ScrollMotion(),
+                              children: [
+                                SlidableAction(
+                                  // An action can be bigger than the others.
+                                  onPressed: edit,
+                                  backgroundColor:
+                                      const Color.fromRGBO(251, 122, 4, 1),
+                                  foregroundColor: Colors.white,
+                                  icon: null,
+                                  label: 'Sửa lệnh',
+                                ),
+                                SlidableAction(
+                                  onPressed: cancel,
+                                  backgroundColor: AppColors.primary,
+                                  foregroundColor: Colors.white,
+                                  icon: null,
+                                  label: 'Hủy lệnh',
+                                ),
+                              ],
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              decoration: BoxDecoration(
+                                  color: index % 2 == 0
+                                      ? AppColors.table1
+                                      : AppColors.white),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 73,
+                                    child: Text(
+                                        note.side == "B"
+                                            ? S.of(context).buy
+                                            : S.of(context).sell,
+                                        style: caption?.copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            color: note.colorBack)),
+                                  ),
+                                  Expanded(
+                                    flex: 80,
+                                    child:
+                                        Text(note.symbol ?? "", style: caption),
+                                  ),
+                                  Expanded(
+                                    flex: 61,
+                                    child: Text(note.showPrice ?? "",
+                                        style: caption?.copyWith(
+                                            fontWeight: FontWeight.w700)),
+                                  ),
+                                  Expanded(
+                                    flex: 61,
+                                    child: Text(note.volume ?? "",
+                                        style: caption?.copyWith(
+                                            fontWeight: FontWeight.w400)),
+                                  ),
+                                  Expanded(
+                                    flex: 57,
+                                    child: Text(
+                                        MessageOrder.getStatusOrder(note),
+                                        style: caption?.copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            color: MessageOrder.getColorStatus(
+                                                MessageOrder.statusHuySua(
+                                                    note)))),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                        itemCount: state.listOrder.length,
+                      );
+                    })
+                  ],
+                ),
+              )
             ],
           ),
         ),
       ),
     );
   }
+
+  void cancel(BuildContext context) {}
+
+  void edit(BuildContext context) {}
+
 }

@@ -108,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tài sản hợp tác"),
         "collaborative_assets_total":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị CK hợp tác"),
+        "command": MessageLookupByLibrary.simpleMessage("Lệnh"),
         "complete":
             MessageLookupByLibrary.simpleMessage("Bạn đã hoàn tất yêu cầu"),
         "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
@@ -171,6 +172,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "history": MessageLookupByLibrary.simpleMessage("Lịch sử giao dịch"),
         "history_transfer":
             MessageLookupByLibrary.simpleMessage("Lịch sử chuyển tiền"),
+        "history_transfer_stock":
+            MessageLookupByLibrary.simpleMessage("Lịch sử chuyển"),
         "home": MessageLookupByLibrary.simpleMessage("Trang chủ"),
         "identity_card":
             MessageLookupByLibrary.simpleMessage("Chứng minh nhân dân"),
@@ -209,6 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "later": MessageLookupByLibrary.simpleMessage("Để sau"),
         "list_history":
             MessageLookupByLibrary.simpleMessage("Danh sách lịch sử"),
+        "list_order": MessageLookupByLibrary.simpleMessage("Danh sách lệnh"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_face_id":
             MessageLookupByLibrary.simpleMessage("Đăng nhập bằng FaceID"),

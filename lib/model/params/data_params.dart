@@ -76,7 +76,9 @@ class ParamsObject {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['type'] = type;
+    if (type != null) {
+      data['type'] = type;
+    }
     data['cmd'] = cmd;
     if (p != null) {
       data['p1'] = p;

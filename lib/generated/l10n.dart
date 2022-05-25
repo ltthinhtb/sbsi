@@ -3149,6 +3149,36 @@ class S {
       args: [],
     );
   }
+
+  /// `History`
+  String get history_transfer_stock {
+    return Intl.message(
+      'History',
+      name: 'history_transfer_stock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `List order`
+  String get list_order {
+    return Intl.message(
+      'List order',
+      name: 'list_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Command`
+  String get command {
+    return Intl.message(
+      'Command',
+      name: 'command',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

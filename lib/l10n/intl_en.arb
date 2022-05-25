@@ -305,9 +305,11 @@
   "transaction_stock": "Transaction stock",
   "enter_referral_code": "Referral Code",
   "create_account": "Create account",
-  "confirm_pass" : "Confirm password",
-  "pass_not_match" : "Password not match",
-  "verify_account" : "Verify account",
-  "guide_take" : "Guide take photo"
-
+  "confirm_pass": "Confirm password",
+  "pass_not_match": "Password not match",
+  "verify_account": "Verify account",
+  "guide_take": "Guide take photo",
+  "history_transfer_stock": "History",
+  "list_order" : "List order",
+  "command" : "Command"
 }

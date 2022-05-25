@@ -113,7 +113,10 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(RouteConfig.stock_transfer);
+
+                      },
                       title: S.of(context).transfer_stock,
                       button: AppImages.trade_increase),
                   const Padding(

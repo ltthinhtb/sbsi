@@ -104,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Collaborative Assets"),
         "collaborative_assets_total":
             MessageLookupByLibrary.simpleMessage("Collaborative assets total"),
+        "command": MessageLookupByLibrary.simpleMessage("Command"),
         "complete": MessageLookupByLibrary.simpleMessage("Complete request"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirm_cancel_order":
@@ -164,6 +165,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "history_transfer":
             MessageLookupByLibrary.simpleMessage("History transfer"),
+        "history_transfer_stock":
+            MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "identity_card": MessageLookupByLibrary.simpleMessage("Identity card"),
         "increase": MessageLookupByLibrary.simpleMessage("Increase"),
@@ -200,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "issue_loc": MessageLookupByLibrary.simpleMessage("Issue location"),
         "later": MessageLookupByLibrary.simpleMessage("Later"),
         "list_history": MessageLookupByLibrary.simpleMessage("List history"),
+        "list_order": MessageLookupByLibrary.simpleMessage("List order"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_face_id":
             MessageLookupByLibrary.simpleMessage("Login by FaceID"),

@@ -7,6 +7,7 @@ import 'package:sbsi/services/index.dart';
 import 'package:sbsi/services/socket/socket.dart';
 import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
+import 'package:sbsi/ui/pages/stock_order/enums.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_state.dart';
 import 'package:sbsi/ui/pages/stock_order/widget/stock_cash_balance.dart';
 import 'package:sbsi/utils/extension.dart';
@@ -190,6 +191,7 @@ class StockOrderLogic extends GetxController {
   }
 
   Future<void> getCashBalance() async {
+    if (state.priceController.text == "0") return;
     try {
       var _tokenEntity = authService.token.value;
       final RequestParams _requestParams = RequestParams(
@@ -280,6 +282,8 @@ class StockOrderLogic extends GetxController {
         (element) => _tokenEntity?.data?.defaultAcc == element.accCode);
     if (index >= 0) {
       state.account.value = authService.listAccount[index];
+      // load sổ lệnh nhanh
+      getOrderList();
     }
   }
 
@@ -349,6 +353,28 @@ class StockOrderLogic extends GetxController {
         state.selectedStockInfo.value.g5!.volumn! +
         state.selectedStockInfo.value.g6!.volumn!;
     return _sum.toDouble();
+  }
+
+  // load list order
+  void getOrderList() async {
+    var _tokenEntity = authService.token.value;
+    final RequestParams _requestParams = RequestParams(
+      group: "Q",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+          type: "string",
+          cmd: "Web.Order.IndayOrder2",
+          p1: "1",
+          p2: "30",
+          p3: state.account.value.accCode,
+          p4: state.stockFast.value.value),
+    );
+    try {
+      state.listOrder.value = await apiService.getIndayOrder(_requestParams);
+    } catch (e) {
+      print(e);
+    }
   }
 }
 

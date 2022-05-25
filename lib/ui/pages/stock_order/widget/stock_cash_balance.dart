@@ -27,7 +27,6 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
   var state = Get.find<StockOrderLogic>().state;
   var logic = Get.find<StockOrderLogic>();
 
-
   @override
   Widget build(BuildContext context) {
     final bodyText2 = Theme.of(context).textTheme.bodyText1;
@@ -91,38 +90,38 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      S.of(context).maxVolumeSellBuy,
-                      style: bodyText2,
-                    ),
-                  ),
-                  Text(
-                    MoneyFormat.formatMoneyRound(
-                        cashBalance.volumeAvaiable ?? ""),
-                    style: bodyText2?.copyWith(
-                        fontWeight: FontWeight.w700, color: AppColors.active),
-                  ),
-                  const SizedBox(
-                    child: VerticalDivider(
-                      color: AppColors.divider,
-                      thickness: 1,
-                    ),
-                    height: 13,
-                  ),
-                  Text(
-                    MoneyFormat.formatMoneyRound(cashBalance.balance ?? ""),
-                    style: bodyText2?.copyWith(
-                        fontWeight: FontWeight.w700, color: AppColors.deActive),
-                  ),
-                ],
-              ),
-            ),
+            // const SizedBox(height: 16),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 15, right: 20),
+            //   child: Row(
+            //     children: [
+            //       Expanded(
+            //         child: Text(
+            //           S.of(context).maxVolumeSellBuy,
+            //           style: bodyText2,
+            //         ),
+            //       ),
+            //       Text(
+            //         MoneyFormat.formatMoneyRound(
+            //             cashBalance.volumeAvaiable ?? ""),
+            //         style: bodyText2?.copyWith(
+            //             fontWeight: FontWeight.w700, color: AppColors.active),
+            //       ),
+            //       const SizedBox(
+            //         child: VerticalDivider(
+            //           color: AppColors.divider,
+            //           thickness: 1,
+            //         ),
+            //         height: 13,
+            //       ),
+            //       Text(
+            //         MoneyFormat.formatMoneyRound(cashBalance.balance ?? ""),
+            //         style: bodyText2?.copyWith(
+            //             fontWeight: FontWeight.w700, color: AppColors.deActive),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 20),
@@ -220,29 +219,53 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
               child: Row(
                 children: [
                   Expanded(
-                    child: ButtonFill(
-                      title: S.of(context).buy,
-                      voidCallback: () {
-                        // if (validate(state, true))
-                        // logic.requestNewOrder(isBuy: true);
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 2),
+                          primary: AppColors.active),
+                      onPressed: () {
                         state.pinController.clear();
-                        orderNew(isBuy: true);
+                        if (validate(state, true)) {
+                          orderNew(isBuy: true);
+                        }
                       },
-                      style: ElevatedButton.styleFrom().copyWith(
-                          backgroundColor:
-                              MaterialStateProperty.all(AppColors.active)),
+                      child: Column(
+                        children: [
+                          Text(S.of(context).buy),
+                          Text(
+                            '(${MoneyFormat.formatMoneyRound(cashBalance.volumeAvaiable ?? "")})',
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption
+                                ?.copyWith(color: AppColors.white),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(width: 16),
                   Expanded(
-                    child: ButtonFill(
-                      title: S.of(context).sell,
-                      voidCallback: () {
-                        // if (validate(state, false))
-                        //logic.requestNewOrder(isBuy: false);
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 2)),
+                      onPressed: () {
                         state.pinController.clear();
-                        orderNew(isBuy: false);
+                        if (validate(state, false)) {
+                          orderNew(isBuy: false);
+                        }
                       },
+                      child: Column(
+                        children: [
+                          Text(S.of(context).sell),
+                          Text(
+                            '(${MoneyFormat.formatMoneyRound(cashBalance.balance ?? "")})',
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption
+                                ?.copyWith(color: AppColors.white),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
@@ -358,7 +381,7 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                   Expanded(
                       child: ButtonFill(
                           voidCallback: () {
-                            logic.requestNewOrder(isBuy: isBuy);
+                            logic.requestNewOrder(isBuy: false);
                           },
                           title: S.of(context).confirm))
                 ],

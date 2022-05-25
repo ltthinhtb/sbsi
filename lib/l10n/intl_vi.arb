@@ -308,5 +308,8 @@
   "confirm_pass" : "Xác nhận mật khẩu",
   "pass_not_match" : "Mật khẩu không trùng khớp",
   "verify_account" : "Xác thực tài khoản",
-  "guide_take" : "Hướng dẫn chụp hình"
+  "guide_take" : "Hướng dẫn chụp hình",
+  "history_transfer_stock": "Lịch sử chuyển",
+  "list_order" : "Danh sách lệnh",
+  "command" : "Lệnh"
 }

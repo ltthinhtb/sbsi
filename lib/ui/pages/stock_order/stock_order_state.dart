@@ -5,8 +5,10 @@ import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/model/stock_data/cash_balance.dart';
 import 'package:sbsi/model/stock_data/stock_info.dart';
 
+import '../../../model/order_data/inday_order.dart';
 import '../../../model/response/list_account_response.dart';
 import '../../commons/money_text_controller.dart';
+import 'enums.dart';
 
 class StockOrderState {
   var priceController = TextEditingController();
@@ -14,10 +16,12 @@ class StockOrderState {
   final FocusNode priceNode = FocusNode();
 
   /// lệnh giao dịch theo từng sàn
-  final tradingOrderList = ["LO"].obs;
+  final tradingOrderList = ['ATO', 'ATC', 'MP', "LO"].obs;
 
   /// lệnh giao dịch theo từng sàn
   final tradingOrder = "".obs;
+
+  var stockFast = StockFast.waiting.obs;
 
   var volController = MoneyMaskedTextController(
     thousandSeparator: ',',
@@ -25,6 +29,9 @@ class StockOrderState {
     decimalSeparator: "",
     precision: 0,
   );
+
+  // sổ lệnh nhanh
+  var listOrder = <IndayOrder>[].obs;
 
   final TextEditingController stockController = TextEditingController();
   final FocusNode stockNode = FocusNode();

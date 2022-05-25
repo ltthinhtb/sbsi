@@ -125,6 +125,8 @@ abstract class ApiClient {
 
   Future<List<ShareTransaction>> getListShareTransaction(
       RequestParams requestParams);
+
+  Future getTotalAssets(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -751,5 +753,15 @@ class _ApiClient implements ApiClient {
       listShare.add(ShareTransaction.fromJson(element));
     }
     return listShare;
+  }
+
+  @override
+  Future getTotalAssets(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
   }
 }

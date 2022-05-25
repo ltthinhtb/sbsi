@@ -36,6 +36,21 @@ class WalletLogic extends GetxController {
     }
   }
 
+  Future<void> getTotalAssets() async {
+    var _tokenEntity = authService.token.value;
+
+    final RequestParams _requestParams = RequestParams(
+        group: "SU",
+        user: _tokenEntity?.data?.user ?? "",
+        session: _tokenEntity?.data?.sid ?? "",
+        data: ParamsObject(cmd: "TotalAsset"));
+    try {
+      await apiService.getTotalAssets(_requestParams);
+    } on ErrorException catch (error) {
+      AppSnackBar.showError(message: error.message);
+    }
+  }
+
   Future<void> getAccountStatus() async {
     ParamsObject _object = ParamsObject();
     _object.type = "string";
@@ -74,6 +89,7 @@ class WalletLogic extends GetxController {
   @override
   void onReady() {
     loadAccount();
+    getTotalAssets();
     getAccountStatus();
     getPortfolio();
     super.onReady();
