@@ -25,7 +25,6 @@ import 'package:sbsi/model/stock_data/stock_trade_list.dart';
 import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/utils/error_message.dart';
-import 'package:sbsi/utils/logger.dart';
 
 import '../model/entities/bank.dart';
 import '../model/entities/beneficiary_account.dart';
@@ -38,6 +37,7 @@ import '../model/response/market_depth_response.dart';
 import '../model/response/stock_follow_branch_response.dart';
 import '../model/response/stock_report.dart';
 import '../model/response/transaction_new.dart';
+import '../ui/pages/sign_up/enum/enums.dart';
 import 'error_exception.dart';
 
 abstract class ApiClient {
@@ -105,6 +105,8 @@ abstract class ApiClient {
 
   Future<List<Bank>> getLisBank(RequestParams requestParams);
 
+  Future<List<Bank>> getLisBankSignUp(RequestParams requestParams);
+
   Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(
       RequestParams requestParams);
 
@@ -127,6 +129,12 @@ abstract class ApiClient {
       RequestParams requestParams);
 
   Future getTotalAssets(RequestParams requestParams);
+
+  Future<String> getSaleID(RequestParams requestParams);
+
+  Future checkAccount(RequestParams requestParams);
+
+  Future uploadMultipleFile(List<EKYCImage> data);
 }
 
 class _ApiClient implements ApiClient {
@@ -157,27 +165,30 @@ class _ApiClient implements ApiClient {
         await get_x.Get.offAllNamed(RouteConfig.login);
         throw ErrorException(response.statusCode!, _mapData['rs']);
       } else {
-        throw ErrorException(response.statusCode!, _mapData['rs']);
+        throw ErrorException(
+            response.statusCode!, _mapData['rs'] ?? _mapData['sRs']);
       }
     } catch (error) {
       throw _handleError(error);
     }
   }
 
-  Future<Response> requestVFApi(Future<Response> request) async {
+  Future<Response> _requestSignApi(Future<Response> request) async {
     try {
       var response = await request;
-      var _mapData = response.data!;
+
+      var _mapData = _decodeMap(response.data!);
+
       var _rc = _mapData['iRs'] ?? -999;
 
       /// kiểm tra điều kiện thành công
-      if (_rc == 1) {
+      if (_rc == 1 || _rc == "1") {
         return response;
       } else {
-        throw ErrorException(response.statusCode!, _mapData['sRs']);
+        throw ErrorException(
+            response.statusCode!, _mapData['rs'] ?? _mapData['sRs']);
       }
     } catch (error) {
-      logger.e(error.toString());
       throw _handleError(error);
     }
   }
@@ -516,16 +527,13 @@ class _ApiClient implements ApiClient {
       var path = "";
       if (type == 0)
         path =
-            "${AppConfigs.URL_DATA_sbsi}topStockInterested?count=10&type=&catId=";
+            "${AppConfigs.INFO_SBSI}topStockInterested?count=10&type=&catId=";
       else if (type == 1)
-        path =
-            "${AppConfigs.URL_DATA_sbsi}topStockChange?count=10&type=i&catId=";
+        path = "${AppConfigs.INFO_SBSI}topStockChange?count=10&type=i&catId=";
       else if (type == 2)
-        path =
-            "${AppConfigs.URL_DATA_sbsi}topStockChange?count=10&type=d&catId=";
+        path = "${AppConfigs.INFO_SBSI}topStockChange?count=10&type=d&catId=";
       else
-        path =
-            "${AppConfigs.URL_DATA_sbsi}topStockTrade?count=10&type=i&catId=";
+        path = "${AppConfigs.INFO_SBSI}topStockTrade?count=10&type=i&catId=";
       Response _result = await _getApi(_dio.get(path));
       final value = StockResponse.fromJson(_result.data);
       return value.data ?? [];
@@ -763,5 +771,59 @@ class _ApiClient implements ApiClient {
         data: requestParams.toJson(),
       ),
     );
+  }
+
+  @override
+  Future<List<Bank>> getLisBankSignUp(RequestParams requestParams) async {
+    Response _result = await _requestSignApi(
+      _dio.post(
+        AppConfigs.SIGN_UP_URL + "core",
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<Bank> listBank = [];
+    for (var element in _mapData) {
+      listBank.add(Bank.fromJson(element));
+    }
+    return listBank;
+  }
+
+  @override
+  Future<String> getSaleID(RequestParams requestParams) async {
+    Response _result = await _requestSignApi(
+      _dio.post(
+        AppConfigs.SIGN_UP_URL + "core",
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = (_result.data)['data'];
+    return _mapData.first['SALE_NAME'];
+  }
+
+  @override
+  Future checkAccount(RequestParams requestParams) async {
+    await _requestSignApi(
+      _dio.post(
+        AppConfigs.SIGN_UP_URL + "core",
+        data: requestParams.toJson(),
+      ),
+    );
+  }
+
+  @override
+  Future uploadMultipleFile(List<EKYCImage> data) async {
+    var formData = FormData();
+    for (var file in data) {
+      formData.files.addAll([
+        MapEntry(
+            file.ekycImage.value,
+            MultipartFile.fromBytes(file.bytes,
+                filename: file.ekycImage.value)),
+      ]);
+    }
+    Response _result =
+        await _dio.post(AppConfigs.SIGN_UP_URL + '/uploadFile', data: formData);
+    return _result.data['data'];
   }
 }

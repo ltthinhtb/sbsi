@@ -3179,6 +3179,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit info`
+  String get add_info {
+    return Intl.message(
+      'Edit info',
+      name: 'add_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register service`
+  String get service_register {
+    return Intl.message(
+      'Register service',
+      name: 'service_register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bank account`
+  String get bank_name {
+    return Intl.message(
+      'Bank account',
+      name: 'bank_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bank`
+  String get bank_choose {
+    return Intl.message(
+      'Bank',
+      name: 'bank_choose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Policy`
+  String get policy {
+    return Intl.message(
+      'Policy',
+      name: 'policy',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

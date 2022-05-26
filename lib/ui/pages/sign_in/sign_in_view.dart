@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/generated/l10n.dart';
@@ -10,7 +8,6 @@ import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/validator.dart';
-import '../../../utils/logger.dart';
 import '../../widgets/button/button_text.dart';
 import 'sign_in_logic.dart';
 
@@ -178,28 +175,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
     );
   }
 
-  Future<void> nativeCode() async {
-    const platform = MethodChannel('sbsi-vnpt/ekyc');
-    try {
-      String result = await platform.invokeMethod('frontEKYC');
-      Logger().d(result);
 
-      // Map data = jsonDecode(result);
-      // Logger().d(data);
-
-      String result1 = await platform.invokeMethod('rearEKYC');
-
-      Logger().d(result1);
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //         builder: (context) => Scaffold(
-      //               body: Image.file(File(result)),
-      //          )));
-    } on PlatformException catch (e) {
-      logger.e(e.toString());
-    }
-  }
 
   @override
   void dispose() {

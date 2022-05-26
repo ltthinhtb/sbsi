@@ -6,6 +6,7 @@ import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../utils/debouncer.dart';
 import '../sign_up_logic.dart';
 import 'create_account.dart';
 
@@ -19,6 +20,8 @@ class ReferralPage extends StatefulWidget {
 class _ReferralPageState extends State<ReferralPage> {
   final logic = Get.put(SignUpLogic());
   final state = Get.find<SignUpLogic>().state;
+
+  final _debouncer = Debouncer(milliseconds: 500);
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +57,18 @@ class _ReferralPageState extends State<ReferralPage> {
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: AppTextFieldWidget(
-                inputController: state.referralController,
-                hintText: S.of(context).referral_code,
-              ),
+              child: Obx(() {
+                return AppTextFieldWidget(
+                  inputController: state.referralController,
+                  hintText: S.of(context).referral_code,
+                  errorText: state.errorText.value,
+                  onChanged: (value) {
+                    _debouncer.run(() {
+                      logic.getSaleID();
+                    });
+                  },
+                );
+              }),
             ),
             const SizedBox(height: 16),
             Padding(
@@ -65,6 +76,7 @@ class _ReferralPageState extends State<ReferralPage> {
               child: AppTextFieldWidget(
                 inputController: state.referralNameController,
                 hintText: 'Tên người giới thiệu/nhân viên môi giới',
+                readOnly: true,
               ),
             ),
             const Spacer(),
@@ -74,6 +86,9 @@ class _ReferralPageState extends State<ReferralPage> {
                   width: MediaQuery.of(context).size.width,
                   child: ButtonFill(
                       voidCallback: () {
+                        // nếu mã giới thiệu k đúng
+                        if (state.errorText.value != null) return;
+
                         Get.to(const CreateAccount());
                       },
                       title: S.of(context).continue_step)),

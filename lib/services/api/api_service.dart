@@ -32,6 +32,7 @@ import '../../model/response/index_chart.dart';
 import '../../model/response/market_depth_response.dart';
 import '../../model/response/stock_follow_branch_response.dart';
 import '../../model/response/stock_report.dart';
+import '../../ui/pages/sign_up/enum/enums.dart';
 
 part 'auth_api.dart';
 
@@ -42,6 +43,8 @@ part 'user_api.dart';
 part 'stock_order_api.dart';
 
 part 'index_api.dart';
+
+part 'sign_up_api.dart';
 
 class ApiService extends GetxService {
   late ApiClient _apiClient;

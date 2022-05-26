@@ -17,6 +17,8 @@ class AppImages {
   static String idCard1 = 'assets/icon_svg/id-card 1.svg';
   static String idCard2 = 'assets/icon_svg/id_card 2.svg';
 
+  static String refresh = 'assets/icon_svg/refresh-2.svg';
+
   static String user_image1 = 'assets/icon_svg/user-images 1.svg';
   static String user_big = 'assets/icon_svg/user_big.svg';
   static String camera1 = 'assets/icon_svg/camera 1.svg';
@@ -106,4 +108,5 @@ class AppImages {
   static String moreCircle = 'assets/icon_svg/more-circle.svg';
   static String tick = 'assets/icon_svg/tick-square.svg';
   static String tickActive = 'assets/icon_svg/tick-square-yellow.svg';
+
 }

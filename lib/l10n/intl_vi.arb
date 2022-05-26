@@ -311,5 +311,11 @@
   "guide_take" : "Hướng dẫn chụp hình",
   "history_transfer_stock": "Lịch sử chuyển",
   "list_order" : "Danh sách lệnh",
-  "command" : "Lệnh"
+  "command" : "Lệnh",
+  "add_info" : "Bổ sung thông tin",
+  "service_register" : "Đăng ký dịch vụ",
+  "bank_name" : "Tài khoản ngân hàng",
+  "bank_choose" : "Chọn ngân hàng",
+  "policy" : "Điều khoản sử dụng"
+
 }

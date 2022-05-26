@@ -2,7 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:flutter_local_notifications/src/platform_specifics/android/enums.dart'
-    as enums;
+as enums;
 import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/ui/commons/app_dialog.dart';
 import 'package:sbsi/utils/logger.dart';
@@ -12,7 +12,7 @@ class NotificationService extends GetxService {
 
   //Singleton pattern
   static final NotificationService _notificationService =
-      NotificationService._internal();
+  NotificationService._internal();
 
   factory NotificationService() {
     return _notificationService;
@@ -22,17 +22,17 @@ class NotificationService extends GetxService {
 
   //instance of FlutterLocalNotificationsPlugin
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin();
 
   void _requestIOSPermission() {
     flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
-            IOSFlutterLocalNotificationsPlugin>()
+        IOSFlutterLocalNotificationsPlugin>()
         ?.requestPermissions(alert: true, badge: true, sound: true);
   }
 
-  void onDidReceiveLocalNotification(
-      int id, String? title, String? body, String? payload) async {
+  void onDidReceiveLocalNotification(int id, String? title, String? body,
+      String? payload) async {
     // display a dialog with the notification details, tap ok to go to another page
     await AppDiaLog.showNoticeDialog(
         middleText: "Ok",
@@ -44,21 +44,21 @@ class NotificationService extends GetxService {
   Future<NotificationService> init() async {
     //Initialization Settings for Android
     const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('ic_launcher');
+    AndroidInitializationSettings('ic_launcher');
 
     //Initialization Settings for iOS
     final IOSInitializationSettings initializationSettingsIOS =
-        IOSInitializationSettings(
-            requestSoundPermission: false,
-            requestBadgePermission: false,
-            requestAlertPermission: false,
-            onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+    IOSInitializationSettings(
+        requestSoundPermission: false,
+        requestBadgePermission: false,
+        requestAlertPermission: false,
+        onDidReceiveLocalNotification: onDidReceiveLocalNotification);
 
     //InitializationSettings for initializing settings for both platforms (Android & iOS)
     final InitializationSettings initializationSettings =
-        InitializationSettings(
-            android: initializationSettingsAndroid,
-            iOS: initializationSettingsIOS);
+    InitializationSettings(
+        android: initializationSettingsAndroid,
+        iOS: initializationSettingsIOS);
 
     await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
@@ -88,7 +88,7 @@ class NotificationService extends GetxService {
 
   Future<void> setupInteractedMessage() async {
     RemoteMessage? initialMessage =
-        await FirebaseMessaging.instance.getInitialMessage();
+    await FirebaseMessaging.instance.getInitialMessage();
     if (initialMessage != null) {
       await Get.toNamed(RouteConfig.notification);
     }
@@ -104,10 +104,15 @@ class NotificationService extends GetxService {
 
   Future<void> _configFirebaseNotification() async {
     FirebaseMessaging messaging = FirebaseMessaging.instance;
-    await messaging.getToken().then((value) {
-      logger.i("token ==========> $value");
-      token = value;
-    });
+    try {
+      await messaging.getToken().then((value) {
+        logger.i("token ==========> $value");
+        token = value;
+      });
+    }
+    catch (e) {
+      logger.e(e.toString());
+    }
     await messaging.requestPermission(
       alert: true,
       announcement: false,
@@ -131,12 +136,12 @@ class NotificationService extends GetxService {
   }
 
   final AndroidNotificationDetails _androidNotificationDetails =
-      const AndroidNotificationDetails('channelId', "channelName",
-          channelDescription: "channelDescription",
-          playSound: true,
-          priority: enums.Priority.high,
-          importance: Importance.high);
+  const AndroidNotificationDetails('channelId', "channelName",
+      channelDescription: "channelDescription",
+      playSound: true,
+      priority: enums.Priority.high,
+      importance: Importance.high);
 
   final IOSNotificationDetails _iosNotificationDetails =
-      const IOSNotificationDetails(threadIdentifier: 'thread_id');
+  const IOSNotificationDetails(threadIdentifier: 'thread_id');
 }

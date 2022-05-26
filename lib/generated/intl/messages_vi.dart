@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kích hoạt tài khoản"),
         "add": MessageLookupByLibrary.simpleMessage("Thêm"),
         "add_category": MessageLookupByLibrary.simpleMessage("Thêm danh mục"),
+        "add_info": MessageLookupByLibrary.simpleMessage("Bổ sung thông tin"),
         "add_stock": MessageLookupByLibrary.simpleMessage("Thêm mã theo dõi"),
         "advance_action":
             MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),
@@ -66,6 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
         "bank": MessageLookupByLibrary.simpleMessage("Chọn ngân hàng nhận"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
+        "bank_choose": MessageLookupByLibrary.simpleMessage("Chọn ngân hàng"),
+        "bank_name":
+            MessageLookupByLibrary.simpleMessage("Tài khoản ngân hàng"),
         "bank_transfer":
             MessageLookupByLibrary.simpleMessage("Chuyển tiền ra ngân hàng"),
         "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh"),
@@ -314,6 +318,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Vui lòng nhập mã pin để xác nhận"),
         "please_input_user":
             MessageLookupByLibrary.simpleMessage("Nhập username"),
+        "policy": MessageLookupByLibrary.simpleMessage("Điều khoản sử dụng"),
         "policy_use":
             MessageLookupByLibrary.simpleMessage("Điều khoản sử dụng"),
         "popular": MessageLookupByLibrary.simpleMessage("Phổ biến"),
@@ -351,6 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sell_t1": MessageLookupByLibrary.simpleMessage("Chở về T1"),
         "sell_t2": MessageLookupByLibrary.simpleMessage("Chở về T2"),
         "sell_t_back": MessageLookupByLibrary.simpleMessage("Quyền trở về"),
+        "service_register":
+            MessageLookupByLibrary.simpleMessage("Đăng ký dịch vụ"),
         "settings": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "settings_language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "settings_languageEnglish":

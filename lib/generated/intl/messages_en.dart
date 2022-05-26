@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Active account"),
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_category": MessageLookupByLibrary.simpleMessage("Add category"),
+        "add_info": MessageLookupByLibrary.simpleMessage("Edit info"),
         "add_stock": MessageLookupByLibrary.simpleMessage("Add stock"),
         "advance_action":
             MessageLookupByLibrary.simpleMessage("Advance action"),
@@ -63,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
         "bank": MessageLookupByLibrary.simpleMessage("Bank"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Bank account"),
+        "bank_choose": MessageLookupByLibrary.simpleMessage("Bank"),
+        "bank_name": MessageLookupByLibrary.simpleMessage("Bank account"),
         "bank_transfer": MessageLookupByLibrary.simpleMessage("Bank transfer"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
         "bond": MessageLookupByLibrary.simpleMessage("Bond"),
@@ -302,6 +305,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please Input Pin Verify"),
         "please_input_user":
             MessageLookupByLibrary.simpleMessage("Input username"),
+        "policy": MessageLookupByLibrary.simpleMessage("Policy"),
         "policy_use": MessageLookupByLibrary.simpleMessage("Policy"),
         "popular": MessageLookupByLibrary.simpleMessage("Popular"),
         "pp": MessageLookupByLibrary.simpleMessage("PP"),
@@ -336,6 +340,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sell_t1": MessageLookupByLibrary.simpleMessage("Sell T1"),
         "sell_t2": MessageLookupByLibrary.simpleMessage("Sell T2"),
         "sell_t_back": MessageLookupByLibrary.simpleMessage("Sell back"),
+        "service_register":
+            MessageLookupByLibrary.simpleMessage("Register service"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "settings_language": MessageLookupByLibrary.simpleMessage("Language"),
         "settings_languageEnglish":

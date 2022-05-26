@@ -310,6 +310,11 @@
   "verify_account": "Verify account",
   "guide_take": "Guide take photo",
   "history_transfer_stock": "History",
-  "list_order" : "List order",
-  "command" : "Command"
+  "list_order": "List order",
+  "command": "Command",
+  "add_info": "Edit info",
+  "service_register": "Register service",
+  "bank_name": "Bank account",
+  "bank_choose": "Bank",
+  "policy": "Policy"
 }

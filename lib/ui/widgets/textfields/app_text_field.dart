@@ -24,6 +24,8 @@ class AppTextFieldWidget extends StatefulWidget {
   final VoidCallback? onTap;
   final bool? enableBorder;
   final Widget? suffixIcon;
+  final bool? isShowLabel;
+  final String? errorText;
 
   const AppTextFieldWidget(
       {this.inputController,
@@ -43,7 +45,8 @@ class AppTextFieldWidget extends StatefulWidget {
       this.onTap,
       this.maxLines,
       this.enableBorder,
-      this.suffixIcon});
+      this.suffixIcon,
+      this.isShowLabel = true, this.errorText});
 
   @override
   State<AppTextFieldWidget> createState() => _AppTextFieldWidgetState();
@@ -72,7 +75,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Visibility(
-            visible: widget.label != null,
+            visible: widget.label != null && (widget.isShowLabel ?? true),
             child: Padding(
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
@@ -98,6 +101,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
             LengthLimitingTextInputFormatter(widget.maxLength),
           ],
           decoration: InputDecoration(
+            errorText: widget.errorText,
             labelText: widget.label,
             hintText: widget.hintText,
             hintStyle: widget.hintTextStyle,

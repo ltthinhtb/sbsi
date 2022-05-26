@@ -8,7 +8,6 @@ import '../../../commons/appbar.dart';
 import '../../../widgets/button/button_filled.dart';
 import '../../../widgets/textfields/app_text_field.dart';
 import '../sign_up_logic.dart';
-import 'otp_page.dart';
 
 class CreateAccount extends StatefulWidget {
   const CreateAccount({Key? key}) : super(key: key);
@@ -163,7 +162,7 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                         if (!state.formKeyRePass.currentState!.validate()) {
                           return;
                         }
-                        Get.to(const OtpValidate());
+                        logic.checkPhone();
                       },
                       title: S.of(context).continue_step)),
             ),
