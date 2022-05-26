@@ -317,8 +317,7 @@
   "bank_name": "Bank account",
   "bank_choose": "Bank",
   "policy": "Policy",
-  "add_category_title" : "Add category",
-  "total_amount_1": "Total amount"
-
-
+  "add_category_title": "Add category",
+  "total_amount_1": "Total amount",
+  "payment_guide": "Payment"
 }

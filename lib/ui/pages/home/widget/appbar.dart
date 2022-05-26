@@ -9,6 +9,7 @@ import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../router/route_config.dart';
+import '../../main/main_logic.dart';
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({Key? key}) : super(key: key);
@@ -83,48 +84,53 @@ class AppBarHome extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 86 / 812 * MediaQuery.of(context).size.height,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                  color: AppColors.white,
-                  boxShadow: [
-                    const BoxShadow(
-                        blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.08)),
-                    const BoxShadow(
-                        blurRadius: 4, color: Color.fromRGBO(0, 0, 0, 0.08)),
-                    const BoxShadow(
-                        blurRadius: 10, color: Color.fromRGBO(0, 0, 0, 0.08))
-                  ],
-                  borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                children: [
-                  SvgPicture.asset(AppImages.amount),
-                  const SizedBox(width: 15),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        S.of(context).total_assets,
-                        style: body2?.copyWith(
-                          color: AppColors.textSecond,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Obx(() {
-                        var accountStatus =
-                            Get.find<WalletLogic>().state.assets.value;
-                        return Text(
-                          MoneyFormat.formatMoneyRound(
-                              '${accountStatus.assets}') + " đ",
-                          style:
-                              headline6?.copyWith(fontWeight: FontWeight.bold),
-                        );
-                      })
+            child: GestureDetector(
+              onTap: (){
+                Get.find<MainLogic>().switchTap(4);
+              },
+              child: Container(
+                height: 86 / 812 * MediaQuery.of(context).size.height,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: AppColors.white,
+                    boxShadow: [
+                      const BoxShadow(
+                          blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.08)),
+                      const BoxShadow(
+                          blurRadius: 4, color: Color.fromRGBO(0, 0, 0, 0.08)),
+                      const BoxShadow(
+                          blurRadius: 10, color: Color.fromRGBO(0, 0, 0, 0.08))
                     ],
-                  )
-                ],
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(AppImages.amount),
+                    const SizedBox(width: 15),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          S.of(context).total_assets,
+                          style: body2?.copyWith(
+                            color: AppColors.textSecond,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Obx(() {
+                          var accountStatus =
+                              Get.find<WalletLogic>().state.totalAssets.value;
+                          return Text(
+                            MoneyFormat.formatMoneyRound(
+                                '${accountStatus.totalNav}') + " đ",
+                            style:
+                                headline6?.copyWith(fontWeight: FontWeight.bold),
+                          );
+                        })
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           )

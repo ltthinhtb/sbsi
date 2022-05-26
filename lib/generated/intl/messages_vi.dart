@@ -294,6 +294,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pay_type":
             MessageLookupByLibrary.simpleMessage("Phương thức thanh toán"),
         "payment": MessageLookupByLibrary.simpleMessage("Nộp tiền"),
+        "payment_guide":
+            MessageLookupByLibrary.simpleMessage("Hướng dẫn nộp tiền"),
         "permission_to_buy": MessageLookupByLibrary.simpleMessage("Quyền mua"),
         "phone": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_not_valid":

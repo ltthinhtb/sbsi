@@ -36,6 +36,7 @@ import '../model/response/index_chart.dart';
 import '../model/response/market_depth_response.dart';
 import '../model/response/stock_follow_branch_response.dart';
 import '../model/response/stock_report.dart';
+import '../model/response/totalAssets.dart';
 import '../model/response/transaction_new.dart';
 import '../ui/pages/sign_up/enum/enums.dart';
 import 'error_exception.dart';
@@ -128,7 +129,7 @@ abstract class ApiClient {
   Future<List<ShareTransaction>> getListShareTransaction(
       RequestParams requestParams);
 
-  Future getTotalAssets(RequestParams requestParams);
+  Future<TotalAssets> getTotalAssets(RequestParams requestParams);
 
   Future<String> getSaleID(RequestParams requestParams);
 
@@ -161,7 +162,7 @@ class _ApiClient implements ApiClient {
       }
 
       ///kiểm tra điều kiện logOut
-      else if (_rc == -1 && _rs == "FOException.InvalidSessionException") {
+      else if (_rc == -1 && _rs.toString().contains("FOException")) {
         await get_x.Get.offAllNamed(RouteConfig.login);
         throw ErrorException(response.statusCode!, _mapData['rs']);
       } else {
@@ -764,13 +765,14 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future getTotalAssets(RequestParams requestParams) async {
+  Future<TotalAssets> getTotalAssets(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
         AppConfigs.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
+    return TotalAssets.fromJson((_result.data)['data']);
   }
 
   @override

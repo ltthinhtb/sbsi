@@ -5,7 +5,7 @@ extension WaletService on ApiService {
     return await _apiClient.getAccountInfo(requestParams);
   }
 
-  Future getTotalAssets(RequestParams requestParams) async {
+  Future<TotalAssets> getTotalAssets(RequestParams requestParams) async {
     return await _apiClient.getTotalAssets(requestParams);
   }
 

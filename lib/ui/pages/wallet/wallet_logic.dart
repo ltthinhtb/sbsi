@@ -45,7 +45,7 @@ class WalletLogic extends GetxController {
         session: _tokenEntity?.data?.sid ?? "",
         data: ParamsObject(cmd: "TotalAsset"));
     try {
-      await apiService.getTotalAssets(_requestParams);
+      state.totalAssets.value = await apiService.getTotalAssets(_requestParams);
     } on ErrorException catch (error) {
       AppSnackBar.showError(message: error.message);
     }

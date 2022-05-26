@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/stock_detail/widget/news_tabs.dart';
-import '../../../common/app_images.dart';
 import '../../../generated/l10n.dart';
 import '../../widgets/button/button_filled.dart';
 import 'enums/stock_detail_tab.dart';

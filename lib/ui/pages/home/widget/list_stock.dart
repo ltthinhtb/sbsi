@@ -46,10 +46,6 @@ class ListStockView extends StatelessWidget {
                     S.of(context).variable,
                     style: headline4?.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    S.of(context).all,
-                    style: bodyText1?.copyWith(color: AppColors.textSecond),
-                  )
                 ],
               ),
             ),

@@ -7,10 +7,8 @@ import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/services/setting_service.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/search/search_logic.dart';
-import 'package:sbsi/ui/pages/stock_detail/stock_detail_view.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 
-import '../../../generated/l10n.dart';
 import '../../../router/route_config.dart';
 
 class SearchPage extends StatefulWidget {

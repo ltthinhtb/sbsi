@@ -280,6 +280,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),
         "pay_type": MessageLookupByLibrary.simpleMessage("Payment type"),
         "payment": MessageLookupByLibrary.simpleMessage("Payment"),
+        "payment_guide": MessageLookupByLibrary.simpleMessage("Payment"),
         "permission_to_buy":
             MessageLookupByLibrary.simpleMessage("Permission buy"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),

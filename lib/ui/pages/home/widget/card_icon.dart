@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:sbsi/common/app_images.dart';
+import 'package:sbsi/router/route_config.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../guide_payment/guide_payment_view.dart';
 
 class CardIcon extends StatelessWidget {
   const CardIcon({Key? key}) : super(key: key);
@@ -18,8 +21,7 @@ class CardIcon extends StatelessWidget {
             const BoxShadow(
                 blurRadius: 0, color: Color.fromRGBO(0, 0, 0, 0.08)),
             const BoxShadow(
-                blurRadius: 4,
-                color: Color.fromRGBO(0, 0, 0, 0.08)),
+                blurRadius: 4, color: Color.fromRGBO(0, 0, 0, 0.08)),
             const BoxShadow(
                 blurRadius: 10, color: Color.fromRGBO(0, 0, 0, 0.08))
           ],
@@ -29,9 +31,9 @@ class CardIcon extends StatelessWidget {
         children: [
           iconButton(context,
               title: S.of(context).transfer,
-              image: AppImages.transfer,
-              onTap: () {},
-              backColor: const Color(0xffE9F2FF)),
+              image: AppImages.transfer, onTap: () {
+            Get.toNamed(RouteConfig.money_transfer);
+          }, backColor: const Color(0xffE9F2FF)),
           iconButton(context,
               title: S.of(context).bond,
               image: AppImages.bond,
@@ -39,14 +41,14 @@ class CardIcon extends StatelessWidget {
               backColor: const Color(0xffFFECEC)),
           iconButton(context,
               title: S.of(context).payment,
-              image: AppImages.payment,
-              onTap: () {},
-              backColor: const Color(0xffFFF8E7)),
+              image: AppImages.payment, onTap: () {
+            Get.to(const GuidePaymentPage());
+          }, backColor: const Color(0xffFFF8E7)),
           iconButton(context,
               title: S.of(context).statement,
-              image: AppImages.history,
-              onTap: () {},
-              backColor: const Color(0xffE6FFE5))
+              image: AppImages.history, onTap: () {
+            Get.toNamed(RouteConfig.cash_transaction);
+          }, backColor: const Color(0xffE6FFE5))
         ],
       ),
     );
