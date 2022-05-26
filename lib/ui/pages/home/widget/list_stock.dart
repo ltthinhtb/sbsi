@@ -97,8 +97,9 @@ class ListStockView extends StatelessWidget {
                                       "https://info.sbsi.vn/logo/${state.listShortStock[index].stockCode}",
                                   imageBuilder: (context, imageProvider) =>
                                       Container(
-
                                     decoration: BoxDecoration(
+                                      border:
+                                          Border.all(color: AppColors.grayF2),
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: imageProvider,
@@ -107,9 +108,8 @@ class ListStockView extends StatelessWidget {
                                   ),
                                   placeholder: (context, url) => Container(
                                     decoration: const BoxDecoration(
-                                      color: AppColors.grayF2,
-                                      shape: BoxShape.circle
-                                    ),
+                                        color: AppColors.grayF2,
+                                        shape: BoxShape.circle),
                                   ),
                                   errorWidget: (context, url, error) =>
                                       const Center(child: Icon(Icons.error)),
@@ -134,8 +134,8 @@ class ListStockView extends StatelessWidget {
                                         height: 27,
                                         child: CustomLineChart(
                                             drawPoint: (sumChart / lengthChart),
-                                            color: state
-                                                .listShortStock[index].colorStock,
+                                            color: state.listShortStock[index]
+                                                .colorStock,
                                             data: state
                                                 .listShortStock[index].listChart
                                                 .cast<double>()),

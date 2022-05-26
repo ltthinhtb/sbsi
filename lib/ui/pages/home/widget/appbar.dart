@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/home/home_logic.dart';
+import 'package:sbsi/ui/pages/search/search_view.dart';
 import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
 import 'package:sbsi/utils/money_utils.dart';
 import '../../../../common/app_colors.dart';
@@ -65,7 +66,9 @@ class AppBarHome extends StatelessWidget {
                     );
                   })),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(const SearchPage());
+                      },
                       child: SvgPicture.asset(AppImages.search_normal)),
                   const SizedBox(width: 20),
                   GestureDetector(

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:uuid/uuid.dart';
 import '../../../model/entities/category_stock.dart';
 import '../../../model/response/index_chart.dart';
@@ -41,9 +42,9 @@ class MarketLogic extends GetxController {
         await getChartIndex(element.mc!);
       }
     } on ErrorException catch (e) {
-      AppSnackBar.showError(message: e.message);
+      logger.e(e.toString()); //AppSnackBar.showError(message: e.message);
     } catch (e) {
-      AppSnackBar.showError(message: e.toString());
+      //AppSnackBar.showError(message: e.toString());
     }
   }
 
@@ -141,20 +142,25 @@ class MarketLogic extends GetxController {
     }
   }
 
+  Future<void> deleteCategory(String title) async {
+    await storeService.deleteCategory(title);
+  }
+
   Future<void> addStockDB(String stock) async {
+    AppLoading.showLoading();
     await storeService.addStock(state.category.value, stock);
     await selectCategory(state.category.value);
+    AppLoading.disMissLoading();
+
     // print(storeService.listStockFromCategory(state.category.value.uuid!).length);
   }
 
   Future<void> removeStockDB(String stock) async {
+    AppLoading.showLoading();
+
     await storeService.removeStock(state.category.value, stock);
     await selectCategory(state.category.value);
-    // print(storeService.listStockFromCategory(state.category.value.uuid!).length);
-  }
-
-  Future<void> deleteCategory(String title) async {
-    await storeService.deleteCategory(title);
+    AppLoading.disMissLoading();
   }
 
   Future<void> editCategory(String title, String newTitle) async {

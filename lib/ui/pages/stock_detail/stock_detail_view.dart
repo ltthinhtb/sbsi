@@ -6,6 +6,7 @@ import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/stock_detail/widget/news_tabs.dart';
 import '../../../common/app_images.dart';
 import '../../../generated/l10n.dart';
+import '../../widgets/button/button_filled.dart';
 import 'enums/stock_detail_tab.dart';
 import 'stock_detail_logic.dart';
 import 'widget/analytic_tab.dart';
@@ -31,11 +32,6 @@ class _StockDetailPageState extends State<StockDetailPage> {
       appBar: AppBarCustom(
         title: S.of(context).stock_detail,
         isCenter: true,
-        action: [
-          GestureDetector(
-              onTap: () {}, child: SvgPicture.asset(AppImages.search_normal)),
-          const SizedBox(width: 20),
-        ],
       ),
       backgroundColor: AppColors.whiteBack,
       body: NestedScrollView(
@@ -102,7 +98,56 @@ class _StockDetailPageState extends State<StockDetailPage> {
                       AnalyticTab(),
                       StockReportTabs()
                     ]),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: ButtonFill(
+                            voidCallback: () {},
+                            title: S.of(context).buy,
+                            style: Theme.of(context)
+                                .elevatedButtonTheme
+                                .style
+                                ?.copyWith(
+                                backgroundColor: MaterialStateProperty.all(
+                                    AppColors.active),
+                                padding: ButtonStyleButton.allOrNull<
+                                    EdgeInsetsGeometry>(
+                                    const EdgeInsets.symmetric(
+                                        horizontal: 24, vertical: 10)),
+                                shape: ButtonStyleButton.allOrNull<
+                                    OutlinedBorder>(
+                                    const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                    ))))),
+                    const SizedBox(width: 16),
+                    Expanded(
+                        child: ButtonFill(
+                            voidCallback: () {},
+                            title: S.of(context).sell,
+                            style: Theme.of(context)
+                                .elevatedButtonTheme
+                                .style
+                                ?.copyWith(
+                                padding: ButtonStyleButton.allOrNull<
+                                    EdgeInsetsGeometry>(
+                                    const EdgeInsets.symmetric(
+                                        horizontal: 24, vertical: 10)),
+                                shape: ButtonStyleButton.allOrNull<
+                                    OutlinedBorder>(
+                                    const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(8),
+                                      ),
+                                    ))))),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
             ],
           ),
         ),

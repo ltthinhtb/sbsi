@@ -33,9 +33,11 @@ class MarketOption extends StatelessWidget with Validator {
 
   final store = Get.find<StoreService>();
 
+  final dropdownKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
-    final headline6 = Theme.of(context).textTheme.headline6;
+    final caption = Theme.of(context).textTheme.caption;
 
     return SingleChildScrollView(
       padding: EdgeInsets.zero,
@@ -55,9 +57,18 @@ class MarketOption extends StatelessWidget with Validator {
                       child: Obx(() {
                         var categoryDefalut = state.category_default;
                         return AppDropDownWidget<CategoryStock>(
+                          key: dropdownKey,
                           value: state.category.value,
                           onChanged: (categoryEntity) {
                             logic.selectCategory(categoryEntity!);
+                          },
+                          selectedItemBuilder: (_) {
+                            return [
+                              Text(categoryDefalut.title),
+                              ...store.listCategoryUser
+                                  .map((e) => Text(e.title))
+                                  .toList(),
+                            ];
                           },
                           items: [
                             DropdownMenuItem<CategoryStock>(
@@ -65,7 +76,22 @@ class MarketOption extends StatelessWidget with Validator {
                                 value: categoryDefalut),
                             ...store.listCategoryUser
                                 .map((e) => DropdownMenuItem<CategoryStock>(
-                                    child: Text(e.title), value: e))
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(e.title),
+                                        GestureDetector(
+                                            onTap: () {
+                                              logic.deleteCategory(e.title);
+                                              Navigator.pop(
+                                                  dropdownKey.currentContext!);
+                                            },
+                                            child: SvgPicture.asset(
+                                                AppImages.close))
+                                      ],
+                                    ),
+                                    value: e))
                                 .toList()
                           ],
                         );
@@ -79,20 +105,19 @@ class MarketOption extends StatelessWidget with Validator {
                           showDialogAddCategory(context);
                         },
                         child: Container(
-                          height: 50,
+                          height: 40,
                           decoration: BoxDecoration(
                               color: AppColors.PastelSecond2,
                               borderRadius: BorderRadius.circular(8)),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 16),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               SvgPicture.asset(AppImages.add_square),
                               const SizedBox(width: 6),
                               Text(
-                                S.of(context).add,
-                                style: headline6?.copyWith(
+                                S.of(context).add_category,
+                                style: caption?.copyWith(
                                     color:
                                         const Color.fromRGBO(251, 122, 4, 1)),
                               )
@@ -104,14 +129,64 @@ class MarketOption extends StatelessWidget with Validator {
                   ],
                 ),
               ),
-              const SizedBox(height: 16),
-              buildSearchStock(context),
+
             ],
           ),
         ),
-        // Cần điều chỉnh laị giá trị
         const SizedBox(height: 16),
-        StockFollowView(),
+        // Cần điều chỉnh laị giá trị
+        Container(
+          decoration: const BoxDecoration(color: AppColors.white),
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: buildSearchStock(context),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    Expanded(
+                        flex: 93,
+                        child: Text(S.of(context).stock_code,
+                            style: caption?.copyWith(
+                                fontWeight: FontWeight.w700))),
+                    Expanded(
+                        flex: 93,
+                        child: Center(
+                          child: Text(
+                            S.of(context).price,
+                            style: caption?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        )),
+                    Expanded(
+                        flex: 93,
+                        child: Center(
+                          child: Text(
+                            '+/-',
+                            style: caption?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        )),
+                    Expanded(
+                        flex: 100,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            S.of(context).total_amount_1,
+                            style: caption?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        )),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 13),
+              StockFollowView(),
+            ],
+          ),
+        )
       ]),
     );
   }
@@ -183,7 +258,7 @@ class MarketOption extends StatelessWidget with Validator {
           child: Column(
             children: [
               AppTextFieldWidget(
-                hintText: S.of(context).add_category,
+                hintText: S.of(context).add_category_title,
                 hintTextStyle: const TextStyle(color: AppColors.grayB5),
                 inputController: state.categoryController,
               ),
@@ -192,7 +267,10 @@ class MarketOption extends StatelessWidget with Validator {
                 children: [
                   Expanded(
                       child: ButtonFill(
-                    title: S.of(context).close,
+                    title: S.of(context).cancel_short,
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: AppColors.primary,
+                        primary: const Color.fromRGBO(255, 238, 238, 1)),
                     voidCallback: () {
                       Get.back();
                     },

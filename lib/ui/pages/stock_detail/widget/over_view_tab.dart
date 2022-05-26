@@ -4,7 +4,6 @@ import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/model/stock_data/stock_info.dart';
 import 'package:sbsi/ui/pages/stock_detail/stock_detail_logic.dart';
-import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/money_utils.dart';
 import '../../../commons/hoziontal_chart.dart';
@@ -63,6 +62,21 @@ class _OverViewTabState extends State<OverViewTab>
                       const SizedBox(width: 11),
                       stockGraph(false, stock)
                     ],
+                  ),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        rowBuySell('Dư mua', '0',
+                            alignment: Alignment.centerLeft),
+                        rowBuySell('Dư bán', '0'),
+                        rowBuySell('NN mua', '${stock.fBVol}'),
+                        rowBuySell('NN bán', '${stock.fSVolume}',
+                            alignment: Alignment.centerRight)
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 16),
                 ],
@@ -162,55 +176,6 @@ class _OverViewTabState extends State<OverViewTab>
                           ))
                     ],
                   )
-                ],
-              ),
-            ),
-            const SizedBox(height: 32),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: ButtonFill(
-                          voidCallback: () {},
-                          title: S.of(context).buy,
-                          style: Theme.of(context)
-                              .elevatedButtonTheme
-                              .style
-                              ?.copyWith(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      AppColors.active),
-                                  padding: ButtonStyleButton.allOrNull<
-                                          EdgeInsetsGeometry>(
-                                      const EdgeInsets.symmetric(
-                                          horizontal: 24, vertical: 10)),
-                                  shape: ButtonStyleButton.allOrNull<
-                                          OutlinedBorder>(
-                                      const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(8),
-                                    ),
-                                  ))))),
-                  const SizedBox(width: 16),
-                  Expanded(
-                      child: ButtonFill(
-                          voidCallback: () {},
-                          title: S.of(context).sell,
-                          style: Theme.of(context)
-                              .elevatedButtonTheme
-                              .style
-                              ?.copyWith(
-                                  padding: ButtonStyleButton.allOrNull<
-                                          EdgeInsetsGeometry>(
-                                      const EdgeInsets.symmetric(
-                                          horizontal: 24, vertical: 10)),
-                                  shape: ButtonStyleButton.allOrNull<
-                                          OutlinedBorder>(
-                                      const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(8),
-                                    ),
-                                  ))))),
                 ],
               ),
             ),
@@ -344,6 +309,35 @@ class _OverViewTabState extends State<OverViewTab>
           ],
         ),
       ],
+    );
+  }
+
+  Widget rowBuySell(String title, String value, {Alignment? alignment}) {
+    return Expanded(
+      child: Align(
+        alignment: alignment ?? Alignment.center,
+        child: Column(
+          children: [
+            Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .caption
+                  ?.copyWith(color: const Color.fromRGBO(126, 126, 126, 1)),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Text(
+              value,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyText2
+                  ?.copyWith(fontWeight: FontWeight.w700),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

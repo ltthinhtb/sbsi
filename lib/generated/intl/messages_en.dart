@@ -43,6 +43,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Active account"),
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_category": MessageLookupByLibrary.simpleMessage("Add category"),
+        "add_category_title":
+            MessageLookupByLibrary.simpleMessage("Add category"),
         "add_info": MessageLookupByLibrary.simpleMessage("Edit info"),
         "add_stock": MessageLookupByLibrary.simpleMessage("Add stock"),
         "advance_action":
@@ -403,6 +405,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "top_foreign": MessageLookupByLibrary.simpleMessage("Top foreign"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "total_amount": MessageLookupByLibrary.simpleMessage("Total volumn"),
+        "total_amount_1": MessageLookupByLibrary.simpleMessage("Total amount"),
         "total_assets": MessageLookupByLibrary.simpleMessage("Total assets"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),

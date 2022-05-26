@@ -316,5 +316,9 @@
   "service_register": "Register service",
   "bank_name": "Bank account",
   "bank_choose": "Bank",
-  "policy": "Policy"
+  "policy": "Policy",
+  "add_category_title" : "Add category",
+  "total_amount_1": "Total amount"
+
+
 }

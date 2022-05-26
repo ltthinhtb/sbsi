@@ -3229,6 +3229,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Add category`
+  String get add_category_title {
+    return Intl.message(
+      'Add category',
+      name: 'add_category_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total amount`
+  String get total_amount_1 {
+    return Intl.message(
+      'Total amount',
+      name: 'total_amount_1',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

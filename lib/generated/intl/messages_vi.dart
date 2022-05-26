@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kích hoạt tài khoản"),
         "add": MessageLookupByLibrary.simpleMessage("Thêm"),
         "add_category": MessageLookupByLibrary.simpleMessage("Thêm danh mục"),
+        "add_category_title":
+            MessageLookupByLibrary.simpleMessage("Nhập tên danh mục"),
         "add_info": MessageLookupByLibrary.simpleMessage("Bổ sung thông tin"),
         "add_stock": MessageLookupByLibrary.simpleMessage("Thêm mã theo dõi"),
         "advance_action":
@@ -419,6 +421,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Top nước ngoài mua bán"),
         "total": MessageLookupByLibrary.simpleMessage("Tổng"),
         "total_amount": MessageLookupByLibrary.simpleMessage("Tổng KL"),
+        "total_amount_1":
+            MessageLookupByLibrary.simpleMessage("Tổng khối lượng"),
         "total_assets": MessageLookupByLibrary.simpleMessage("Tổng tài sản"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị chứng khoán"),

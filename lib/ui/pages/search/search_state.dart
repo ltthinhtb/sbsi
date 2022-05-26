@@ -6,6 +6,7 @@ class SearchState {
   late TextEditingController stockCodeController;
   List<StockCompanyData> allStockCompanyData = <StockCompanyData>[];
   var foundStock = <StockCompanyData>[].obs;
+
   SearchState({String? stockCode}) {
     stockCodeController = TextEditingController(text: stockCode ?? 'APS');
   }

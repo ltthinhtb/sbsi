@@ -109,4 +109,6 @@ class AppImages {
   static String tick = 'assets/icon_svg/tick-square.svg';
   static String tickActive = 'assets/icon_svg/tick-square-yellow.svg';
 
+  static String close = 'assets/icon_svg/close.svg';
+
 }

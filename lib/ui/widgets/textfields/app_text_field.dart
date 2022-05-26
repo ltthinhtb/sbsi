@@ -26,6 +26,10 @@ class AppTextFieldWidget extends StatefulWidget {
   final Widget? suffixIcon;
   final bool? isShowLabel;
   final String? errorText;
+  final bool? filled;
+  final Color? fillColor;
+  final InputBorder? border;
+  final InputBorder? focusBorder;
 
   const AppTextFieldWidget(
       {this.inputController,
@@ -46,7 +50,12 @@ class AppTextFieldWidget extends StatefulWidget {
       this.maxLines,
       this.enableBorder,
       this.suffixIcon,
-      this.isShowLabel = true, this.errorText});
+      this.isShowLabel = true,
+      this.errorText,
+      this.filled,
+      this.fillColor,
+      this.border,
+      this.focusBorder});
 
   @override
   State<AppTextFieldWidget> createState() => _AppTextFieldWidgetState();
@@ -101,10 +110,14 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
             LengthLimitingTextInputFormatter(widget.maxLength),
           ],
           decoration: InputDecoration(
+            filled: widget.filled,
+            fillColor: widget.fillColor,
             errorText: widget.errorText,
             labelText: widget.label,
             hintText: widget.hintText,
             hintStyle: widget.hintTextStyle,
+            border: widget.border,
+            focusedBorder: widget.focusBorder,
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
             prefixIconConstraints: const BoxConstraints(maxHeight: 24),

@@ -3,6 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 
+
+typedef DropdownButtonBuilder = List<Widget> Function(BuildContext context);
+
 class AppDropDownWidget<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final T? value;
@@ -10,6 +13,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
   final ValueChanged<T?>? onChanged;
   final String? label;
   final bool isExpanded;
+  final DropdownButtonBuilder? selectedItemBuilder;
 
   const AppDropDownWidget(
       {Key? key,
@@ -18,7 +22,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
       this.hintText,
       this.onChanged,
       this.label,
-      this.isExpanded = false})
+      this.isExpanded = false, this.selectedItemBuilder})
       : super(key: key);
 
   @override
@@ -45,6 +49,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
             value: value,
             onChanged: onChanged,
             isExpanded: isExpanded,
+            selectedItemBuilder: selectedItemBuilder,
             decoration: InputDecoration(
               isDense: true,
               hintText: hintText,

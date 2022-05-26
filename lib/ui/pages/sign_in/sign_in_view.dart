@@ -113,6 +113,8 @@ class _SignInPageState extends State<SignInPage> with Validator {
                               const SizedBox(width: 23.17),
                               SvgPicture.asset(
                                 "assets/icon_svg/face_id.svg",
+                                height: 33,
+                                width: 31,
                                 color: Theme.of(context).primaryColor,
                               ),
                             ],

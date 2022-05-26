@@ -316,6 +316,7 @@
   "service_register" : "Đăng ký dịch vụ",
   "bank_name" : "Tài khoản ngân hàng",
   "bank_choose" : "Chọn ngân hàng",
-  "policy" : "Điều khoản sử dụng"
-
+  "policy" : "Điều khoản sử dụng",
+  "add_category_title" : "Nhập tên danh mục",
+  "total_amount_1": "Tổng khối lượng"
 }
