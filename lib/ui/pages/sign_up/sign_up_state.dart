@@ -32,6 +32,8 @@ class SignUpState {
   String faceUrl = "";
   String signatureUrl = "";
 
+  String accountCode = "";
+
 
   OrcResponse? orcResponse;
 

@@ -57,7 +57,7 @@ class _SuccessPageState extends State<SuccessPage> {
             style: body1?.copyWith(fontWeight: FontWeight.w700),
           ),
           Text(
-            "001232132",
+            state.accountCode,
             style: body1?.copyWith(
                 fontWeight: FontWeight.w700, color: AppColors.primary),
           ),
@@ -72,7 +72,8 @@ class _SuccessPageState extends State<SuccessPage> {
                           onPrimary: AppColors.primary,
                           primary: const Color.fromRGBO(255, 238, 238, 1)),
                       voidCallback: () {
-                        Navigator.popUntil(context, (Route<dynamic> route) => route.isFirst);
+                        Navigator.popUntil(
+                            context, (Route<dynamic> route) => route.isFirst);
                       },
                       title: "Hoàn tất"),
                 ),
@@ -80,7 +81,8 @@ class _SuccessPageState extends State<SuccessPage> {
                 Expanded(
                   child: ButtonFill(
                       voidCallback: () {
-                        Navigator.popUntil(context, (Route<dynamic> route) => route.isFirst);
+                        Navigator.popUntil(
+                            context, (Route<dynamic> route) => route.isFirst);
                       },
                       title: S.of(context).sign_in),
                 ),

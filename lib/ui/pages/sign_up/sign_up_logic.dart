@@ -131,7 +131,7 @@ class SignUpLogic extends GetxController {
         user: "back",
         cmd: "OPEN_INDI_ACCOUNT",
         param: OpenAccountRequest(
-          cCARDID: "0349949869",
+          cCARDID: state.orcResponse?.id ?? "",
           // cmt
           cFULLNAME: state.orcResponse?.name ?? "",
           cCUSTBIRTHDAY: state.orcResponse?.birthDay ?? "",
@@ -158,7 +158,8 @@ class SignUpLogic extends GetxController {
           cRECEIVEBANKACCOUNT: "",
         ).toJson());
     try {
-      await apiService.checkAccount(_requestParams);
+     var response = await apiService.checkAccount(_requestParams);
+     state.accountCode = response['SOTK'];
       Get.to(const SuccessPage());
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);

@@ -805,12 +805,14 @@ class _ApiClient implements ApiClient {
 
   @override
   Future checkAccount(RequestParams requestParams) async {
-    await _requestSignApi(
+    Response _result = await _requestSignApi(
       _dio.post(
         AppConfigs.SIGN_UP_URL + "core",
         data: requestParams.toJson(),
       ),
     );
+    List _mapData = (_result.data)['data'];
+    return _mapData.first;
   }
 
   @override

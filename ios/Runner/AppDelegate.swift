@@ -65,9 +65,9 @@ import FinalSDK
             
             let milesToPoint = [
                 "jsonInfo" :SaveData.shared().jsonInfo,
-                "imageFront" : fontData!.base64EncodedString(options: .endLineWithLineFeed),
-                "imageBack" : backData!.base64EncodedString(options: .endLineWithLineFeed),
-                "imageFace" : faceData!.base64EncodedString(options: .endLineWithLineFeed),
+                "imageFront" : fontData?.base64EncodedString(options: .endLineWithLineFeed) ?? "",
+                "imageBack" : backData?.base64EncodedString(options: .endLineWithLineFeed) ?? "",
+                "imageFace" : faceData?.base64EncodedString(options: .endLineWithLineFeed) ?? "",
                 "netWorkProblem" : SaveData.shared().networkProblem,
                 "jsonCompareFace" : SaveData.shared().jsonCompareFace,
                 "jsonLivenessFace" : SaveData.shared().jsonLivenessFace,
