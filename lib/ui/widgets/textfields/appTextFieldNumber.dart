@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sbsi/common/app_images.dart';
 import '../../../common/app_colors.dart';
@@ -39,6 +40,9 @@ class _AppTextFieldNumberState extends State<AppTextFieldNumber> {
       child: TextFormField(
         controller: widget.inputController,
         keyboardType: const TextInputType.numberWithOptions(decimal: true),
+        inputFormatters: [
+          CommaTextInputFormatter()
+        ],
         focusNode: widget.focusNode,
         textAlign: TextAlign.center,
         onChanged: widget.onChanged,
@@ -92,6 +96,23 @@ class _AppTextFieldNumberState extends State<AppTextFieldNumber> {
               ),
             )),
       ),
+    );
+  }
+}
+
+class CommaTextInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    String truncated = newValue.text;
+    TextSelection newSelection = newValue.selection;
+
+    if (newValue.text.contains(",")) {
+      truncated = newValue.text.replaceFirst(RegExp(','), '.');
+    }
+    return TextEditingValue(
+      text: truncated,
+      selection: newSelection,
     );
   }
 }

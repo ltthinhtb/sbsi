@@ -203,7 +203,7 @@ class StockOrderLogic extends GetxController {
             cmd: "Web.sCashBalance",
             p1: state.account.value.accCode ?? _tokenEntity?.data?.defaultAcc,
             p2: state.selectedStock.value.stockCode,
-            p3: state.priceController.text.replaceAll(",", "."),
+            p3: state.priceController.text,
             p4: state.isBuy.value ? "B" : "S"),
       );
       state.selectedCashBalance.value =
@@ -238,7 +238,7 @@ class StockOrderLogic extends GetxController {
         symbol: state.selectedStock.value.stockCode!,
         volume:
             int.tryParse(state.volController.numberValue.toStringAsFixed(0)),
-        price: state.priceController.text.replaceAll(",", "."),
+        price: state.priceController.text,
         advance: "",
         refId: refId,
         orderType: "1",

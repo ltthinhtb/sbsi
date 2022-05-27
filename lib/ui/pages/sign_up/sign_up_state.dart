@@ -19,6 +19,7 @@ class SignUpState {
   final formKeyEmail = GlobalKey<FormState>();
   final formKeyPass = GlobalKey<FormState>();
   final formKeyRePass = GlobalKey<FormState>();
+  final pinController = TextEditingController();
 
   final FocusNode focusNodePhone = FocusNode();
   final FocusNode focusNodeEmail = FocusNode();
@@ -33,7 +34,6 @@ class SignUpState {
   String signatureUrl = "";
 
   String accountCode = "";
-
 
   OrcResponse? orcResponse;
 

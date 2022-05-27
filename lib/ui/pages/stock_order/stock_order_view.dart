@@ -311,7 +311,6 @@ class _StockOrderPageState extends State<StockOrderPage> {
                     const SizedBox(height: 16),
                     Obx(() {
                       return ListView.builder(
-
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
@@ -405,5 +404,4 @@ class _StockOrderPageState extends State<StockOrderPage> {
   void cancel(BuildContext context) {}
 
   void edit(BuildContext context) {}
-
 }

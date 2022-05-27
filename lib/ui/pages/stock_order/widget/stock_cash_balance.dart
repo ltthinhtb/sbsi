@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
@@ -419,7 +420,7 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
   bool get parsePrice {
     try {
       var state = Get.find<StockOrderLogic>().state;
-      double.parse(state.priceController.text.replaceAll(",", "."));
+      double.parse(state.priceController.text);
       return true;
     } catch (e) {
       return false;
@@ -444,3 +445,5 @@ extension TextControllerExt on TextEditingController {
     }
   }
 }
+
+
