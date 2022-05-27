@@ -52,6 +52,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "advance_money": MessageLookupByLibrary.simpleMessage("Advance Money"),
         "agree": MessageLookupByLibrary.simpleMessage("Agree"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "amount_max_valid":
+            MessageLookupByLibrary.simpleMessage("Amount not valid max"),
+        "amount_not_valid":
+            MessageLookupByLibrary.simpleMessage("Amount not valid"),
         "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
         "are_you_sure_cancel_all_order": MessageLookupByLibrary.simpleMessage(
             "Are you sure to cancel all order?"),
@@ -60,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "assets": MessageLookupByLibrary.simpleMessage("Assets"),
         "authentication_by_face_id":
             MessageLookupByLibrary.simpleMessage("Authentication by Face ID"),
+        "availability_amount":
+            MessageLookupByLibrary.simpleMessage("Availability amount"),
         "aver_match_price":
             MessageLookupByLibrary.simpleMessage("Average match price"),
         "aver_short": MessageLookupByLibrary.simpleMessage("AVG"),
@@ -175,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "identity_card": MessageLookupByLibrary.simpleMessage("Identity card"),
         "increase": MessageLookupByLibrary.simpleMessage("Increase"),
+        "input_amount": MessageLookupByLibrary.simpleMessage("Input amount"),
         "input_invest_money":
             MessageLookupByLibrary.simpleMessage("Input money"),
         "input_pin": MessageLookupByLibrary.simpleMessage("Input Pin"),

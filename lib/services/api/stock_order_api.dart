@@ -61,4 +61,12 @@ extension StockOrderService on ApiService {
   Future<ReportStockResponse> getStockReport(String stock, String ternType) async {
     return await _apiClient.getStockReport(stock, ternType);
   }
+
+  Future<ShareTransfer> getShareTransfer(RequestParams requestParams) async {
+    return await _apiClient.getShareTransfer(requestParams);
+  }
+
+  Future updateShareTransferIn(RequestParams requestParams) async {
+    return await _apiClient.updateShareTransferIn(requestParams);
+  }
 }

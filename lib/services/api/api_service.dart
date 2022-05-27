@@ -27,6 +27,7 @@ import '../../model/entities/cash_account.dart';
 import '../../model/entities/economy.dart';
 import '../../model/entities/order_history.dart';
 import '../../model/entities/share_transaction.dart';
+import '../../model/entities/share_transfer.dart';
 import '../../model/response/branch_response.dart';
 import '../../model/response/index_chart.dart';
 import '../../model/response/market_depth_response.dart';

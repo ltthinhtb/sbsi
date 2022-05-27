@@ -320,5 +320,9 @@
   "add_category_title": "Add category",
   "total_amount_1": "Total amount",
   "payment_guide": "Payment",
-  "sign_in": "Sign in"
+  "sign_in": "Sign in",
+  "availability_amount": "Availability amount",
+  "input_amount": "Input amount",
+  "amount_not_valid": "Amount not valid",
+  "amount_max_valid": "Amount not valid max"
 }

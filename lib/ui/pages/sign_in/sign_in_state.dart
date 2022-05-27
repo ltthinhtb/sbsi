@@ -10,6 +10,6 @@ class SignInState {
 
   SignInState() {
     usernameTextController = TextEditingController(text: '022356');
-    passwordTextController = TextEditingController(text: "123456");
+    passwordTextController = TextEditingController(text: "1234567");
   }
 }

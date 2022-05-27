@@ -55,6 +55,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ứng trước tiền bán"),
         "agree": MessageLookupByLibrary.simpleMessage("Đồng ý"),
         "all": MessageLookupByLibrary.simpleMessage("Tất cả"),
+        "amount_max_valid": MessageLookupByLibrary.simpleMessage(
+            "Khối lượng lớn hơn khối lượng tối đa"),
+        "amount_not_valid":
+            MessageLookupByLibrary.simpleMessage("Khối lượng không hợp lệ"),
         "analytics": MessageLookupByLibrary.simpleMessage("Phân tích"),
         "are_you_sure_cancel_all_order": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn hủy tất cả lệnh?"),
@@ -63,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "assets": MessageLookupByLibrary.simpleMessage("Tài sản"),
         "authentication_by_face_id":
             MessageLookupByLibrary.simpleMessage("Xác thực bằng Face ID"),
+        "availability_amount":
+            MessageLookupByLibrary.simpleMessage("KL khả dụng"),
         "aver_match_price":
             MessageLookupByLibrary.simpleMessage("Giá khớp trung bình"),
         "aver_short": MessageLookupByLibrary.simpleMessage("TB"),
@@ -184,6 +190,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "identity_card":
             MessageLookupByLibrary.simpleMessage("Chứng minh nhân dân"),
         "increase": MessageLookupByLibrary.simpleMessage("Tăng giá"),
+        "input_amount": MessageLookupByLibrary.simpleMessage("Nhập khối lượng"),
         "input_invest_money":
             MessageLookupByLibrary.simpleMessage("Nhập số tiền đầu tư"),
         "input_pin": MessageLookupByLibrary.simpleMessage("Nhập mã pin"),

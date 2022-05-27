@@ -320,5 +320,9 @@
   "add_category_title" : "Nhập tên danh mục",
   "total_amount_1": "Tổng khối lượng",
   "payment_guide" : "Hướng dẫn nộp tiền",
-  "sign_in" : "Đăng nhập"
+  "sign_in" : "Đăng nhập",
+  "availability_amount" : "KL khả dụng",
+  "input_amount" : "Nhập khối lượng",
+  "amount_not_valid": "Khối lượng không hợp lệ",
+  "amount_max_valid" : "Khối lượng lớn hơn khối lượng tối đa"
 }

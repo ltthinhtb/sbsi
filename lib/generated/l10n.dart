@@ -3269,6 +3269,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Availability amount`
+  String get availability_amount {
+    return Intl.message(
+      'Availability amount',
+      name: 'availability_amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Input amount`
+  String get input_amount {
+    return Intl.message(
+      'Input amount',
+      name: 'input_amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount not valid`
+  String get amount_not_valid {
+    return Intl.message(
+      'Amount not valid',
+      name: 'amount_not_valid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount not valid max`
+  String get amount_max_valid {
+    return Intl.message(
+      'Amount not valid max',
+      name: 'amount_max_valid',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

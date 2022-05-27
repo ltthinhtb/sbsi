@@ -6,6 +6,7 @@ import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
 import 'package:sbsi/model/entities/economy.dart';
 import 'package:sbsi/model/entities/index.dart';
+import 'package:sbsi/model/entities/share_transfer.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/model/response/account_info.dart';
@@ -39,6 +40,7 @@ import '../model/response/stock_report.dart';
 import '../model/response/totalAssets.dart';
 import '../model/response/transaction_new.dart';
 import '../ui/pages/sign_up/enum/enums.dart';
+import '../utils/logger.dart';
 import 'error_exception.dart';
 
 abstract class ApiClient {
@@ -136,6 +138,10 @@ abstract class ApiClient {
   Future checkAccount(RequestParams requestParams);
 
   Future uploadMultipleFile(List<EKYCImage> data);
+
+  Future<ShareTransfer> getShareTransfer(RequestParams requestParams);
+
+  Future updateShareTransferIn(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -829,5 +835,27 @@ class _ApiClient implements ApiClient {
     Response _result =
         await _dio.post(AppConfigs.SIGN_UP_URL + '/uploadFile', data: formData);
     return _result.data['data'];
+  }
+
+  @override
+  Future<ShareTransfer> getShareTransfer(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    var map = jsonDecode(_result.data);
+    return ShareTransfer.fromJson(map['data']);
+  }
+
+  @override
+  Future updateShareTransferIn(RequestParams requestParams) async {
+    var response =  await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
   }
 }
