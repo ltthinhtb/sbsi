@@ -14,6 +14,7 @@ import 'package:sbsi/utils/image_utils.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../commons/app_loading.dart';
 import '../../../commons/appbar.dart';
 import '../../../widgets/button/button_filled.dart';
 import '../sign_up_logic.dart';
@@ -384,6 +385,7 @@ class _VerifyAccountState extends State<VerifyAccount> {
       // clear image cache
       imageCache?.clear();
       String result = await platform.invokeMethod('startEKYC');
+      AppLoading.showLoading();
       var mapData = jsonDecode(result);
       frontImage.value = Platform.isAndroid
           ? File(mapData['imageFront']).readAsBytesSync()
@@ -403,6 +405,9 @@ class _VerifyAccountState extends State<VerifyAccount> {
       Get.back();
     } on PlatformException catch (e) {
       Logger().e(e.toString());
+    }
+    finally{
+      AppLoading.disMissLoading();
     }
   }
 }

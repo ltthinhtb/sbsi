@@ -250,10 +250,14 @@ class StockOrderLogic extends GetxController {
       var response = await apiService.newOrderRequest(_requestParams);
       logger.d(response);
       AppLoading.disMissLoading();
-      AppSnackBar.showSuccess(message: "Đặt lệnh thành công!");
-
       /// load lại sức mua
       await getCashBalance();
+      // load lại sổ lệnh
+      getOrderList();
+      Get.back();
+      AppSnackBar.showSuccess(message: "Đặt lệnh thành công!");
+      // sau khi đặt lệnh thành công tắt thông báo
+
     } on ErrorException catch (error) {
       AppLoading.disMissLoading();
       AppSnackBar.showError(message: error.message);

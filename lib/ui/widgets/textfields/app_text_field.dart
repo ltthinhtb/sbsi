@@ -30,32 +30,32 @@ class AppTextFieldWidget extends StatefulWidget {
   final Color? fillColor;
   final InputBorder? border;
   final InputBorder? focusBorder;
+  final bool? enable;
 
-  const AppTextFieldWidget(
-      {this.inputController,
-      this.onChanged,
-      this.textInputType,
-      this.label,
-      this.hintTextStyle,
-      this.hintText,
-      this.validator,
-      this.obscureText = false,
-      this.onFieldSubmitted,
-      this.focusNode,
-      this.autoFocus = false,
-      this.prefixIcon,
-      this.maxLength,
-      this.readOnly = false,
-      this.onTap,
-      this.maxLines,
-      this.enableBorder,
-      this.suffixIcon,
-      this.isShowLabel = true,
-      this.errorText,
-      this.filled,
-      this.fillColor,
-      this.border,
-      this.focusBorder});
+  const AppTextFieldWidget({this.inputController,
+    this.onChanged,
+    this.textInputType,
+    this.label,
+    this.hintTextStyle,
+    this.hintText,
+    this.validator,
+    this.obscureText = false,
+    this.onFieldSubmitted,
+    this.focusNode,
+    this.autoFocus = false,
+    this.prefixIcon,
+    this.maxLength,
+    this.readOnly = false,
+    this.onTap,
+    this.maxLines,
+    this.enableBorder,
+    this.suffixIcon,
+    this.isShowLabel = true,
+    this.errorText,
+    this.filled,
+    this.fillColor,
+    this.border,
+    this.focusBorder, this.enable = true});
 
   @override
   State<AppTextFieldWidget> createState() => _AppTextFieldWidgetState();
@@ -89,13 +89,15 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
                 widget.label ?? "",
-                style: Theme.of(context)
+                style: Theme
+                    .of(context)
                     .textTheme
                     .headline6!
                     .copyWith(fontWeight: FontWeight.w700),
               ),
             )),
         TextFormField(
+          enabled: widget.enable,
           readOnly: widget.readOnly,
           autofocus: widget.autoFocus,
           focusNode: _focusNode,
@@ -119,7 +121,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
             border: widget.border,
             focusedBorder: widget.focusBorder,
             contentPadding:
-                const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
+            const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
             prefixIconConstraints: const BoxConstraints(maxHeight: 24),
             prefixIcon: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -130,30 +132,34 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
             enabledBorder: widget.enableBorder == null
                 ? null
                 : (!widget.enableBorder!
-                    ? Theme.of(context).inputDecorationTheme.enabledBorder
-                    : Theme.of(context)
-                        .inputDecorationTheme
-                        .enabledBorder
-                        ?.copyWith(
-                            borderSide: BorderSide(
-                                color: AppColors.textBlack.withOpacity(0.5)))),
+                ? Theme
+                .of(context)
+                .inputDecorationTheme
+                .enabledBorder
+                : Theme
+                .of(context)
+                .inputDecorationTheme
+                .enabledBorder
+                ?.copyWith(
+                borderSide: BorderSide(
+                    color: AppColors.textBlack.withOpacity(0.5)))),
             suffixIcon: widget.suffixIcon ??
                 (widget.obscureText
                     ? GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
-                          setState(() {
-                            _obscureText = !_obscureText;
-                            _focusNode.unfocus();
-                          });
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: SvgPicture.asset(_obscureText
-                              ? AppImages.eye_lock
-                              : AppImages.eye),
-                        ),
-                      )
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                      _focusNode.unfocus();
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: SvgPicture.asset(_obscureText
+                        ? AppImages.eye_lock
+                        : AppImages.eye),
+                  ),
+                )
                     : null),
           ),
           keyboardType: widget.textInputType,

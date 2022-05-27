@@ -87,8 +87,6 @@ class SignUpLogic extends GetxController {
       required List<int> backIDByte,
       required List<int> faceByte}) async {
     try {
-      AppLoading.showLoading();
-
       /// upload ảnh mặt trước và ảnh mặt sau
       var listResponse = await apiService.uploadMultipleFile([
         EKYCImage(EKYC_image.frontCard, frontIDByte),

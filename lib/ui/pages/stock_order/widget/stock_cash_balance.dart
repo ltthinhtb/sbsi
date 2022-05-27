@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
@@ -382,7 +381,7 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                   Expanded(
                       child: ButtonFill(
                           voidCallback: () {
-                            logic.requestNewOrder(isBuy: false);
+                            logic.requestNewOrder(isBuy: isBuy);
                           },
                           title: S.of(context).confirm))
                 ],
@@ -445,5 +444,3 @@ extension TextControllerExt on TextEditingController {
     }
   }
 }
-
-

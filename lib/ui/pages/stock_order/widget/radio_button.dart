@@ -18,6 +18,8 @@ class _RadioButtonState extends State<RadioButton> {
   bool get _isSelect =>
       widget.stockFast == Get.find<StockOrderLogic>().state.stockFast.value;
   final state = Get.find<StockOrderLogic>().state;
+  final logic = Get.find<StockOrderLogic>();
+
 
   @override
   void initState() {
@@ -31,6 +33,7 @@ class _RadioButtonState extends State<RadioButton> {
         behavior: HitTestBehavior.opaque,
         onTap: () {
           state.stockFast.value = widget.stockFast;
+          logic.getOrderList();
         },
         child: Row(
           children: [

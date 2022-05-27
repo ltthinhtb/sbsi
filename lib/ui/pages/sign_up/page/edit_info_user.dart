@@ -37,13 +37,15 @@ class _EditInfoState extends State<EditInfo> {
     genderController.text = state.orcResponse?.gender ?? "";
     iDCardController.text = state.orcResponse?.id ?? "";
     issueDateController.text = state.orcResponse?.issueDate ?? "";
-    issuePlaceController.text = state.orcResponse?.issuePlace ?? "";
+    issuePlaceController.text =
+        state.orcResponse?.issuePlace?.replaceAll("\n", ", ") ?? "";
 
     cityController.text = state.orcResponse?.postCode?.first.city?[1] ?? "";
     districtController.text =
         state.orcResponse?.postCode?.first.district?[1] ?? "";
     wardController.text = state.orcResponse?.postCode?.first.ward?[1] ?? "";
-    address.text = state.orcResponse?.recentLocation ?? "";
+    address.text =
+        state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "";
 
     super.initState();
   }
@@ -54,25 +56,24 @@ class _EditInfoState extends State<EditInfo> {
     final body1 = Theme.of(context).textTheme.bodyText1;
     return Scaffold(
       backgroundColor: AppColors.whiteBack,
-      resizeToAvoidBottomInset: false,
       appBar: AppBarCustom(
         title: S.of(context).add_info,
         isCenter: true,
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LinearPercentIndicator(
-              width: MediaQuery.of(context).size.width,
-              progressColor: AppColors.yellowStatus,
-              backgroundColor: Colors.grey[300],
-              lineHeight: 5,
-              percent: 0.6,
-              padding: EdgeInsets.zero,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LinearPercentIndicator(
+                width: MediaQuery.of(context).size.width,
+                progressColor: AppColors.yellowStatus,
+                backgroundColor: Colors.grey[300],
+                lineHeight: 5,
+                percent: 0.6,
+                padding: EdgeInsets.zero,
+              ),
+              SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -115,6 +116,7 @@ class _EditInfoState extends State<EditInfo> {
                             label: S.of(context).full_name,
                             isShowLabel: false,
                             readOnly: true,
+                            enable: false,
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
@@ -122,6 +124,7 @@ class _EditInfoState extends State<EditInfo> {
                             label: S.of(context).gender,
                             isShowLabel: false,
                             readOnly: true,
+                            enable: false,
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
@@ -129,6 +132,7 @@ class _EditInfoState extends State<EditInfo> {
                             label: 'Số CMND/CCCD',
                             isShowLabel: false,
                             readOnly: true,
+                            enable: false,
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
@@ -136,6 +140,8 @@ class _EditInfoState extends State<EditInfo> {
                             label: S.of(context).issue_loc,
                             isShowLabel: false,
                             readOnly: true,
+                            maxLines: 2,
+                            enable: false,
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
@@ -143,6 +149,7 @@ class _EditInfoState extends State<EditInfo> {
                             label: S.of(context).issue_date_cmt,
                             isShowLabel: false,
                             readOnly: true,
+                            enable: false,
                           ),
                         ],
                       ),
@@ -193,6 +200,7 @@ class _EditInfoState extends State<EditInfo> {
                             inputController: address,
                             label: "Địa chỉ",
                             isShowLabel: false,
+                            maxLines: 2,
                           ),
                         ],
                       ),
@@ -211,9 +219,9 @@ class _EditInfoState extends State<EditInfo> {
                     const SizedBox(height: 32),
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
