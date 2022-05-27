@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,15 +14,18 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		D8AE76C7283F88E800250A56 /* FinalSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8AE76C4283F873B00250A56 /* FinalSDK.xcframework */; };
+		D8AE76C8283F88E800250A56 /* FinalSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8AE76C4283F873B00250A56 /* FinalSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
+		D8AE76C9283F88E800250A56 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D8AE76C8283F88E800250A56 /* FinalSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,8 +50,8 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8CD58562837925900F64973 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
-		D8CD58572837925900F64973 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D8AE76C3283F86ED00250A56 /* iOS_eKYC_v2.0.7_xcFramework.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = iOS_eKYC_v2.0.7_xcFramework.zip; path = ../../Downloads/iOS_eKYC_v2.0.7_xcFramework.zip; sourceTree = "<group>"; };
+		D8AE76C4283F873B00250A56 /* FinalSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FinalSDK.xcframework; path = ../../Downloads/EkycFull_25032022_xcode13.3_version2.0.7_xcFramework_ObjectiveC/FinalSDK.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D6E99DEE53A8BFDC1EC9B81 /* Pods_Runner.framework in Frameworks */,
+				D8AE76C7283F88E800250A56 /* FinalSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +70,8 @@
 		13BEAF6126FED284B2D70EBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8AE76C4283F873B00250A56 /* FinalSDK.xcframework */,
+				D8AE76C3283F86ED00250A56 /* iOS_eKYC_v2.0.7_xcFramework.zip */,
 				20747FB40EAC75EE7C26383E /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -138,9 +144,9 @@
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
-				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				3C321546774B0EBB0976CCDF /* [CP] Embed Pods Frameworks */,
+				D8AE76C9283F88E800250A56 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,7 +292,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				97C146FB1CF9000F007C117D /* Base */,
-				D8CD58562837925900F64973 /* vi */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -295,7 +300,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				97C147001CF9000F007C117D /* Base */,
-				D8CD58572837925900F64973 /* vi */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

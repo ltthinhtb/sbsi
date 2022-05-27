@@ -8,7 +8,6 @@ extension SignUpApiService on ApiService {
   Future<String> getSaleID(RequestParams requestParams) async {
     return await _apiClient.getSaleID(requestParams);
   }
-
   // kiểm tra số điện thoại, phone, email
   Future checkAccount(RequestParams requestParams) async {
     return await _apiClient.checkAccount(requestParams);

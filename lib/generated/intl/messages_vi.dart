@@ -374,6 +374,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_themeModeSystem":
             MessageLookupByLibrary.simpleMessage("Hệ thống"),
         "settings_title": MessageLookupByLibrary.simpleMessage("Cài đặt"),
+        "sign_in": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "splash_sub1": MessageLookupByLibrary.simpleMessage(
             "Giao dịch tiết kiệm với mức phí rẻ nhất thị trường"),

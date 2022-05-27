@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/validator.dart';
+import '../../../router/route_config.dart';
 import '../../widgets/button/button_text.dart';
 import 'sign_in_logic.dart';
 

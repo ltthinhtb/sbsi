@@ -22,7 +22,6 @@ class ListStockView extends StatelessWidget {
     final homeLogic = Get.find<HomeLogic>();
     final caption = Theme.of(context).textTheme.caption?.copyWith(fontSize: 13);
     final headline4 = Theme.of(context).textTheme.headline4;
-    final bodyText1 = Theme.of(context).textTheme.bodyText1;
     final bodyText2 = Theme.of(context).textTheme.bodyText2;
     return Container(
       decoration: const BoxDecoration(

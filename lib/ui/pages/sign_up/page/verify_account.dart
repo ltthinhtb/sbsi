@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,7 @@ import 'package:logger/logger.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/model/entities/orc_model.dart';
+import 'package:sbsi/utils/image_utils.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
@@ -28,9 +30,12 @@ class _VerifyAccountState extends State<VerifyAccount> {
   final logic = Get.put(SignUpLogic());
   final state = Get.find<SignUpLogic>().state;
 
-  ValueNotifier<File> frontImage = ValueNotifier<File>(File(""));
-  ValueNotifier<File> backImage = ValueNotifier<File>(File(""));
-  ValueNotifier<File> faceImage = ValueNotifier<File>(File(""));
+  ValueNotifier<Uint8List> frontImage =
+      ValueNotifier<Uint8List>(Uint8List.fromList([]));
+  ValueNotifier<Uint8List> backImage =
+      ValueNotifier<Uint8List>(Uint8List.fromList([]));
+  ValueNotifier<Uint8List> faceImage =
+      ValueNotifier<Uint8List>(Uint8List.fromList([]));
 
   @override
   void initState() {
@@ -112,11 +117,16 @@ class _VerifyAccountState extends State<VerifyAccount> {
                       children: [
                         ClipRRect(
                             borderRadius: BorderRadius.circular(5),
-                            child: ValueListenableBuilder<File>(
+                            child: ValueListenableBuilder<Uint8List>(
                               builder:
                                   (BuildContext context, file, Widget? child) {
-                                if (file.path.isEmpty) return child!;
-                                return Image.file(file);
+                                if (file.isEmpty) return child!;
+                                return Image.memory(
+                                  file,
+                                  height: 120,
+                                  width: 164,
+                                  fit: BoxFit.fitWidth,
+                                );
                               },
                               valueListenable: frontImage,
                               child: SvgPicture.asset(
@@ -146,11 +156,16 @@ class _VerifyAccountState extends State<VerifyAccount> {
                       children: [
                         ClipRRect(
                             borderRadius: BorderRadius.circular(5),
-                            child: ValueListenableBuilder<File>(
+                            child: ValueListenableBuilder<Uint8List>(
                               builder:
                                   (BuildContext context, file, Widget? child) {
-                                if (file.path.isEmpty) return child!;
-                                return Image.file(file);
+                                if (file.isEmpty) return child!;
+                                return Image.memory(
+                                  file,
+                                  height: 120,
+                                  width: 164,
+                                  fit: BoxFit.fitWidth,
+                                );
                               },
                               valueListenable: backImage,
                               child: SvgPicture.asset(
@@ -195,9 +210,9 @@ class _VerifyAccountState extends State<VerifyAccount> {
               ),
               const SizedBox(height: 16),
               Center(
-                child: ValueListenableBuilder<File>(
+                child: ValueListenableBuilder<Uint8List>(
                     builder: (BuildContext context, file, Widget? child) {
-                      if (file.path.isEmpty) return child!;
+                      if (file.isEmpty) return child!;
                       return Container(
                         width: 180,
                         height: 180,
@@ -206,7 +221,7 @@ class _VerifyAccountState extends State<VerifyAccount> {
                                 Border.all(color: AppColors.textGrey, width: 5),
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: FileImage(file), fit: BoxFit.cover)),
+                                image: MemoryImage(file), fit: BoxFit.cover)),
                       );
                     },
                     valueListenable: faceImage,
@@ -370,15 +385,21 @@ class _VerifyAccountState extends State<VerifyAccount> {
       imageCache?.clear();
       String result = await platform.invokeMethod('startEKYC');
       var mapData = jsonDecode(result);
-      frontImage.value = File(mapData['imageFront']);
-      backImage.value = File(mapData['imageBack']);
-      faceImage.value = File(mapData['imageFace']);
+      frontImage.value = Platform.isAndroid
+          ? File(mapData['imageFront']).readAsBytesSync()
+          : ImageUtils.cropImageUint8List(base64Decode(mapData['imageFront'].split(',').last));
+      backImage.value = Platform.isAndroid
+          ? File(mapData['imageBack']).readAsBytesSync()
+          : ImageUtils.cropImageUint8List(base64Decode(mapData['imageBack'].split(',').last));
+      faceImage.value = Platform.isAndroid
+          ? File(mapData['imageFace']).readAsBytesSync()
+          : base64Decode(mapData['imageFace'].split(',').last);
       state.orcResponse =
           OrcResponse.fromJson(jsonDecode(mapData['jsonInfo'])['object']);
       await logic.uploadUrlImage(
-          frontIDByte: frontImage.value.readAsBytesSync().toList(),
-          backIDByte: backImage.value.readAsBytesSync().toList(),
-          faceByte: faceImage.value.readAsBytesSync().toList());
+          frontIDByte: frontImage.value.toList(),
+          backIDByte: backImage.value.toList(),
+          faceByte: faceImage.value.toList());
       Get.back();
     } on PlatformException catch (e) {
       Logger().e(e.toString());

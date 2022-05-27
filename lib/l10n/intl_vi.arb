@@ -319,5 +319,6 @@
   "policy" : "Điều khoản sử dụng",
   "add_category_title" : "Nhập tên danh mục",
   "total_amount_1": "Tổng khối lượng",
-  "payment_guide" : "Hướng dẫn nộp tiền"
+  "payment_guide" : "Hướng dẫn nộp tiền",
+  "sign_in" : "Đăng nhập"
 }

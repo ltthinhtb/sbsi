@@ -358,6 +358,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_themeModeSystem":
             MessageLookupByLibrary.simpleMessage("System"),
         "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
+        "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
         "splash_sub1": MessageLookupByLibrary.simpleMessage(
             "Saving transaction with the cheapest fee in the market"),

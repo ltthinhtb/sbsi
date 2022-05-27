@@ -319,5 +319,6 @@
   "policy": "Policy",
   "add_category_title": "Add category",
   "total_amount_1": "Total amount",
-  "payment_guide": "Payment"
+  "payment_guide": "Payment",
+  "sign_in": "Sign in"
 }

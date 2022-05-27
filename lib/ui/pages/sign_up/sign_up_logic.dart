@@ -8,6 +8,7 @@ import '../../commons/app_loading.dart';
 import '../../commons/app_snackbar.dart';
 import 'enum/enums.dart';
 import 'page/otp_page.dart';
+import 'page/success_page.dart';
 import 'sign_up_state.dart';
 
 class SignUpLogic extends GetxController {
@@ -129,23 +130,25 @@ class SignUpLogic extends GetxController {
     final RequestParams _requestParams = RequestParams(
         user: "back",
         cmd: "OPEN_INDI_ACCOUNT",
-
         param: OpenAccountRequest(
-          cCARDID: state.orcResponse?.id ?? "", // cmt
+          cCARDID: "0349949869",
+          // cmt
           cFULLNAME: state.orcResponse?.name ?? "",
           cCUSTBIRTHDAY: state.orcResponse?.birthDay ?? "",
           cISSUEDATE: state.orcResponse?.issueDate ?? "",
           cISSUEEXPIRE: state.orcResponse?.validDate ?? "",
-          cADDRESS: state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
-          cANHCHANDUNG: state.faceUrl ,
-          cANHCHUKY:state.signatureUrl,
+          cADDRESS:
+              state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
+          cANHCHANDUNG: state.faceUrl,
+          cANHCHUKY: state.signatureUrl,
           cANHMATSAU: state.cardBackUrl,
           cANHMATTRUOC: state.cardFrontUrl,
           cBANKCODE: "",
-          cCONTACTADDRESS: state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
+          cCONTACTADDRESS:
+              state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
           cEMAIL: state.emailController.text,
           cGENDER: state.orcResponse?.gender ?? "",
-          cISSUEPLACE: state.orcResponse?.issuePlace??"",
+          cISSUEPLACE: state.orcResponse?.issuePlace ?? "",
           cMOBILE: state.phoneController.text,
           cMOBILETRADINGPASSWORD: "123456",
           cOPENMARGIN: "1",
@@ -156,8 +159,7 @@ class SignUpLogic extends GetxController {
         ).toJson());
     try {
       await apiService.checkAccount(_requestParams);
-      // check thành công sẽ đến mà otp
-      Get.to(const OtpValidate());
+      Get.to(const SuccessPage());
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     }

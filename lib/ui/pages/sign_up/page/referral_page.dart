@@ -31,6 +31,7 @@ class _ReferralPageState extends State<ReferralPage> {
         title: S.of(context).enter_referral_code,
         isCenter: true,
       ),
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
