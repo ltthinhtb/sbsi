@@ -1,9 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:sbsi/router/route_config.dart';
-import 'package:sbsi/services/index.dart';
 import 'package:sbsi/utils/logger.dart';
-import 'package:get/get.dart' hide Response;
 
 class ApiInterceptors extends InterceptorsWrapper {
   @override
@@ -40,13 +37,6 @@ class ApiInterceptors extends InterceptorsWrapper {
     if (!uri.toString().contains("getchartindexdata") &&
         !uri.toString().contains("newsDetail")) {
       logger.d("✅ RESPONSE[$statusCode] => PATH: $uri\n DATA: $data");
-    }
-
-    //Handle section expired
-    if (response.statusCode == 401) {
-      final authService = Get.find<AuthService>();
-      authService.signOut();
-      Get.offAllNamed(RouteConfig.login);
     }
     super.onResponse(response, handler);
   }

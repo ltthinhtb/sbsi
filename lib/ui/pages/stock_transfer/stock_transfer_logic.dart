@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sbsi/model/entities/share_transfer.dart';
 import 'package:sbsi/model/response/portfolio.dart';
-import 'package:sbsi/ui/commons/app_dialog.dart';
 
 import '../../../model/entities/token_entity.dart';
 import '../../../model/params/data_params.dart';

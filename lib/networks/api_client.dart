@@ -24,6 +24,7 @@ import 'package:sbsi/model/stock_data/stock_data.dart';
 import 'package:sbsi/model/stock_data/stock_info.dart';
 import 'package:sbsi/model/stock_data/stock_trade_list.dart';
 import 'package:sbsi/router/route_config.dart';
+import 'package:sbsi/ui/commons/app_dialog.dart';
 import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/utils/error_message.dart';
 
@@ -41,7 +42,6 @@ import '../model/response/stock_report.dart';
 import '../model/response/totalAssets.dart';
 import '../model/response/transaction_new.dart';
 import '../ui/pages/sign_up/enum/enums.dart';
-import '../utils/logger.dart';
 import 'error_exception.dart';
 
 abstract class ApiClient {
@@ -142,7 +142,8 @@ abstract class ApiClient {
 
   Future<ShareTransfer> getShareTransfer(RequestParams requestParams);
 
-  Future<List<ShareTransferHistory>> getListShareTransfer(RequestParams requestParams);
+  Future<List<ShareTransferHistory>> getListShareTransfer(
+      RequestParams requestParams);
 
   Future updateShareTransferIn(RequestParams requestParams);
 }
@@ -172,7 +173,10 @@ class _ApiClient implements ApiClient {
 
       ///kiểm tra điều kiện logOut
       else if (_rc == -1 && _rs.toString().contains("FOException")) {
-        await get_x.Get.offAllNamed(RouteConfig.login);
+        await AppDiaLog.showNoticeDialog(middleText: "Phiên làm việc đã hết hạn").then((value) async {
+          await get_x.Get.offAllNamed(RouteConfig.login);
+        });
+
         throw ErrorException(response.statusCode!, _mapData['rs']);
       } else {
         throw ErrorException(
@@ -219,7 +223,9 @@ class _ApiClient implements ApiClient {
       ///kiểm tra điều kiện logOut
       else if (_rc == -1 && _rs == "FOException.InvalidSessionException") {
         AppLoading.disMissLoading();
-        await get_x.Get.offAllNamed(RouteConfig.login);
+        await AppDiaLog.showNoticeDialog(middleText: "Phiên làm việc đã hết hạn").then((value) async {
+          await get_x.Get.offAllNamed(RouteConfig.login);
+        });
         throw ErrorException(response.statusCode!, _mapData['rs']);
       } else {
         throw _handleOrderError(_rc);
@@ -854,7 +860,7 @@ class _ApiClient implements ApiClient {
 
   @override
   Future updateShareTransferIn(RequestParams requestParams) async {
-    var response =  await _requestApi(
+     await _requestApi(
       _dio.post(
         AppConfigs.ENDPOINT_CORE,
         data: requestParams.toJson(),
@@ -863,7 +869,8 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<List<ShareTransferHistory>> getListShareTransfer(RequestParams requestParams) async {
+  Future<List<ShareTransferHistory>> getListShareTransfer(
+      RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
         AppConfigs.ENDPOINT_CORE,
@@ -877,5 +884,4 @@ class _ApiClient implements ApiClient {
     }
     return listShareHistory;
   }
-
 }

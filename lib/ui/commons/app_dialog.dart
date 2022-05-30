@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/ui/widgets/button/button_text.dart';
+import 'package:sbsi/ui/widgets/button/button_filled.dart';
 
 import 'app_loading.dart';
 
@@ -29,8 +29,9 @@ class AppDiaLog {
         titleStyle: AppTextStyle.H3.copyWith(fontSize: 18),
         middleTextStyle: AppTextStyle.bodyText1,
         barrierDismissible: false,
-        confirm: ButtonText(
+        confirm: ButtonFill(
           title: "OK",
+          style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 5)),
           voidCallback: onConfirm ??
               () {
                 Get.back();
