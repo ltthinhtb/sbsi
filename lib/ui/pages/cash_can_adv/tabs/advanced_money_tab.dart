@@ -15,17 +15,13 @@ class AdvancedMoneyTab extends StatefulWidget {
 
 class _AdvancedMoneyTabState extends State<AdvancedMoneyTab>
     with AutomaticKeepAliveClientMixin {
-  final state = Get
-      .find<CashCanAdvLogic>()
-      .state;
+  final state = Get.find<CashCanAdvLogic>().state;
+  final logic = Get.find<CashCanAdvLogic>();
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final caption = Theme
-        .of(context)
-        .textTheme
-        .caption;
+    final caption = Theme.of(context).textTheme.caption;
     return Column(
       children: [
         const SizedBox(height: 11),
@@ -42,44 +38,39 @@ class _AdvancedMoneyTabState extends State<AdvancedMoneyTab>
                       Expanded(
                           flex: 117,
                           child: Text(
-                            S
-                                .of(context)
-                                .sell_day,
+                            S.of(context).sell_day,
                             style:
-                            caption?.copyWith(fontWeight: FontWeight.w700),
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 170,
                           child: Text(
                             "Số tiền có thể ứng",
                             style:
-                            caption?.copyWith(fontWeight: FontWeight.w700),
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 80,
                           child: Text(
-                            S
-                                .of(context)
-                                .action,
+                            S.of(context).action,
                             style:
-                            caption?.copyWith(fontWeight: FontWeight.w700),
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                     ],
                   ),
                 ),
                 const SizedBox(height: 16),
-                Expanded(
-                    child: Obx(() {
-                      return ListView.builder(
-                        itemBuilder: (context, index) {
-                          return CashCanWidget(
-                            index: index,
-                            cash: state.listCashCan[index],
-                          );
-                        },
-                        itemCount: state.listCashCan.length,
+                Expanded(child: Obx(() {
+                  return ListView.builder(
+                    itemBuilder: (context, index) {
+                      return CashCanWidget(
+                        index: index,
+                        cash: state.listCashCan[index],
                       );
-                    }))
+                    },
+                    itemCount: state.listCashCan.length,
+                  );
+                }))
               ],
             ),
           ),

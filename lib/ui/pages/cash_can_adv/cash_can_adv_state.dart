@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/model/entities/advance_withdraw.dart';
 import 'package:sbsi/model/entities/cash_can_adv.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
 
@@ -14,7 +15,13 @@ class CashCanAdvState {
 
   final feeWithDraw = FeeAdvanceWithdraw().obs;
 
+  final listAdvance = <AdvanceWithdraw>[].obs;
+
+
   final formPin = GlobalKey<FormState>();
+
+  final startDateController = TextEditingController();
+  final endDateController = TextEditingController();
 
   CashCanAdvState() {
     ///Initialize variables

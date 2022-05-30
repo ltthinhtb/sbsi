@@ -26,7 +26,9 @@ class CashCanAdvLogic extends GetxController {
     if (index >= 0) {
       state.account.value = authService.listAccount[index];
       // load danh sách quyền
-      getListRight();
+      getListCash();
+      // lịch sử ứng
+      getListCashHistory();
     }
   }
 
@@ -37,12 +39,14 @@ class CashCanAdvLogic extends GetxController {
     if (index >= 0) {
       state.account.value = authService.listAccount[index];
       // load danh sách quyền
-      getListRight();
+      getListCash();
+      // lịch sử ứng
+      getListCashHistory();
     }
   }
 
   // danh sách quyền
-  Future<void> getListRight() async {
+  Future<void> getListCash() async {
     var _tokenEntity = authService.token.value;
     final RequestParams _requestParams = RequestParams(group: "B");
     _requestParams.session = _tokenEntity?.data?.sid ?? "";
@@ -85,6 +89,30 @@ class CashCanAdvLogic extends GetxController {
     }
   }
 
+  // lịch sử ứng
+  Future<void> getListCashHistory() async {
+    var _tokenEntity = authService.token.value;
+    final RequestParams _requestParams = RequestParams(group: "B");
+    _requestParams.session = _tokenEntity?.data?.sid ?? "";
+    _requestParams.user = _tokenEntity?.data?.user ?? "";
+    ParamsObject _object = ParamsObject();
+    _object.type = "cursor";
+    _object.cmd = "ListAdvanceWithdraw";
+    _object.p1 = state.account.value.accCode ?? "";
+    _object.p2 = state.startDateController.text;
+    _object.p3 = state.endDateController.text;
+    _object.p4 = "";
+    _object.p5 = "1";
+    _object.p6 = "30";
+    _requestParams.data = _object;
+    try {
+      var response = await apiService.getListAdvanceWithdraw(_requestParams);
+      state.listAdvance.value = response;
+    } on ErrorException catch (error) {
+      AppSnackBar.showError(message: error.message);
+    }
+  }
+
   // ứng tiền
   Future<void> updateShareTransferIn(
       {required String sellDtate,
@@ -106,7 +134,7 @@ class CashCanAdvLogic extends GetxController {
     try {
       await apiService.updateShareTransferIn(_requestParams);
       // load danh sách quyền
-      await getListRight();
+      await getListCash();
       Get.back();
       await showDialog();
     } on ErrorException catch (error) {

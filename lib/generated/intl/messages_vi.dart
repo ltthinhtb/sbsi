@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_stock": MessageLookupByLibrary.simpleMessage("Thêm mã theo dõi"),
         "advance_action":
             MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),
+        "advance_amount": MessageLookupByLibrary.simpleMessage("Số tiền ứng"),
         "advance_money":
             MessageLookupByLibrary.simpleMessage("Ứng trước tiền bán"),
         "advance_money_history":

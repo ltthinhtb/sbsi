@@ -1,3 +1,4 @@
+import 'package:sbsi/model/entities/advance_withdraw.dart';
 import 'package:sbsi/model/entities/cash_can_adv.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
 import 'package:sbsi/model/entities/index.dart';

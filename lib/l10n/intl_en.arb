@@ -334,5 +334,7 @@
   "right_date" : "Right date",
   "advance_money_history" : "Cash history",
   "sell_day" : "Sell day",
-  "action" : "Action"
+  "action" : "Action",
+  "advance_amount" : "Advance amount"
+
 }

@@ -82,6 +82,11 @@ extension StockOrderService on ApiService {
     return await _apiClient.getListCashCanAdv(requestParams);
   }
 
+  Future<List<AdvanceWithdraw>> getListAdvanceWithdraw(
+      RequestParams requestParams) async {
+    return await _apiClient.getListAdvanceWithdraw(requestParams);
+  }
+
   Future<FeeAdvanceWithdraw> getFeeAdvanceWithdraw(
       RequestParams requestParams) async {
     return await _apiClient.getFeeAdvanceWithdraw(requestParams);

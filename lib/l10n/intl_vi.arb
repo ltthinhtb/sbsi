@@ -334,6 +334,7 @@
   "right_date" : "Ngày chốt quyền",
   "advance_money_history" : "Lịch sử ứng",
   "sell_day" : "Ngày bán",
-  "action" : "Thực hiện"
+  "action" : "Thực hiện",
+  "advance_amount" : "Số tiền ứng"
 
 }

@@ -3409,6 +3409,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Advance amount`
+  String get advance_amount {
+    return Intl.message(
+      'Advance amount',
+      name: 'advance_amount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

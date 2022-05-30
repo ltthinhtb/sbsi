@@ -50,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_stock": MessageLookupByLibrary.simpleMessage("Add stock"),
         "advance_action":
             MessageLookupByLibrary.simpleMessage("Advance action"),
+        "advance_amount":
+            MessageLookupByLibrary.simpleMessage("Advance amount"),
         "advance_money": MessageLookupByLibrary.simpleMessage("Advance Money"),
         "advance_money_history":
             MessageLookupByLibrary.simpleMessage("Cash history"),

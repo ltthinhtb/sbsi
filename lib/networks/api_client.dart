@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart' as get_x;
 import 'package:sbsi/configs/app_configs.dart';
 import 'package:sbsi/generated/l10n.dart';
+import 'package:sbsi/model/entities/advance_withdraw.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
 import 'package:sbsi/model/entities/economy.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
@@ -155,6 +156,9 @@ abstract class ApiClient {
   Future<List<CashCanAdv>> getListCashCanAdv(RequestParams requestParams);
 
   Future<FeeAdvanceWithdraw> getFeeAdvanceWithdraw(RequestParams requestParams);
+
+  Future<List<AdvanceWithdraw>> getListAdvanceWithdraw(
+      RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -946,5 +950,22 @@ class _ApiClient implements ApiClient {
       listCashCan.add(FeeAdvanceWithdraw.fromJson(element));
     }
     return listCashCan.first;
+  }
+
+  @override
+  Future<List<AdvanceWithdraw>> getListAdvanceWithdraw(
+      RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<AdvanceWithdraw> listAdvance = [];
+    for (var element in _mapData) {
+      listAdvance.add(AdvanceWithdraw.fromJson(element));
+    }
+    return listAdvance;
   }
 }
