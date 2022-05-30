@@ -51,6 +51,7 @@ class _StockExchangeTabState extends State<StockExchangeTab> with Validator {
                   value: (state.account.value.accCode?.isEmpty ?? true)
                       ? null
                       : state.account.value,
+                  label: S.of(context).account_transfer,
                   onChanged: (account) {
                     logic.changeAccount(account!);
                   },
@@ -60,7 +61,9 @@ class _StockExchangeTabState extends State<StockExchangeTab> with Validator {
               Form(
                 key: state.userReceiverKey,
                 child: AppTextFieldWidget(
-                  hintText: S.of(context).money_transfer,
+                  label: S.of(context).account_receiver,
+                  isShowLabelText: false,
+                  hintText: S.of(context).account_receiver,
                   inputController: state.userReceiverController,
                   focusNode: state.userReceiverFocus,
                   enableBorder: true,
@@ -79,6 +82,7 @@ class _StockExchangeTabState extends State<StockExchangeTab> with Validator {
                   value: (state.portfolio.value.symbol?.isEmpty ?? true)
                       ? null
                       : state.portfolio.value,
+                  label: S.of(context).stock_code,
                   onChanged: (portfolio) {
                     logic.changePortfolio(portfolio!);
                   },

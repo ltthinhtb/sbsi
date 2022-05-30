@@ -102,6 +102,7 @@ class StockTransferLogic extends GetxController {
     } catch (e) {}
   }
 
+  // chuyển chứng khoán
   Future<void> updateShareTransferIn() async {
     final RequestParams _requestParams = RequestParams(group: "B");
     _requestParams.session = tokenEntity?.data?.sid ?? "";
@@ -129,9 +130,36 @@ class StockTransferLogic extends GetxController {
     }
   }
 
+  // lịch sử chuyển chứng khoán
+  Future<void> getListShareTransfer() async {
+    final RequestParams _requestParams = RequestParams(group: "B");
+    _requestParams.session = tokenEntity?.data?.sid ?? "";
+    _requestParams.user = tokenEntity?.data?.user ?? "";
+    ParamsObject _object = ParamsObject();
+    _object.type = "cursor";
+    _object.cmd = "ListShareTransfer";
+    _object.p1 = state.account.value.accCode ?? "";
+    _object.p2 = state.startDateController.text;
+    _object.p3 = state.endDateController.text;
+    _object.p4 = "";
+    _object.p5 = "";
+    _object.p6 = "1";
+    _object.p7 = "20";
+    _requestParams.data = _object;
+    try {
+      state.listShareHistory.value =
+          await apiService.getListShareTransfer(_requestParams);
+    } on ErrorException catch (error) {
+      AppSnackBar.showError(message: error.message);
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
   @override
   void onReady() {
     loadAccount();
+    getListShareTransfer();
     super.onReady();
   }
 

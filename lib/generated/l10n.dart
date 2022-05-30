@@ -3309,6 +3309,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Volume`
+  String get volume {
+    return Intl.message(
+      'Volume',
+      name: 'volume',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal`
+  String get internal {
+    return Intl.message(
+      'Internal',
+      name: 'internal',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

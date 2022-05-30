@@ -324,5 +324,7 @@
   "availability_amount" : "KL khả dụng",
   "input_amount" : "Nhập khối lượng",
   "amount_not_valid": "Khối lượng không hợp lệ",
-  "amount_max_valid" : "Khối lượng lớn hơn khối lượng tối đa"
+  "amount_max_valid" : "Khối lượng lớn hơn khối lượng tối đa",
+  "volume" : "Khối lượng",
+  "internal" : "Nội bộ"
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/model/entities/share_transfer.dart';
+import 'package:sbsi/model/entities/share_transfer_history.dart';
 
 import '../../../model/response/list_account_response.dart';
 import '../../../model/response/portfolio.dart';
@@ -23,6 +24,11 @@ class StockTransferState {
   final otpController = TextEditingController(text: "123456");
 
   final formKey = GlobalKey<FormState>();
+
+  final startDateController = TextEditingController();
+  final endDateController = TextEditingController();
+
+  final listShareHistory = <ShareTransferHistory>[].obs;
 
   StockTransferState() {
     ///Initialize variables

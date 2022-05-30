@@ -31,6 +31,7 @@ import '../model/entities/bank.dart';
 import '../model/entities/beneficiary_account.dart';
 import '../model/entities/order_history.dart';
 import '../model/entities/share_transaction.dart';
+import '../model/entities/share_transfer_history.dart';
 import '../model/entities/transfer_history.dart';
 import '../model/response/branch_response.dart';
 import '../model/response/index_chart.dart';
@@ -140,6 +141,8 @@ abstract class ApiClient {
   Future uploadMultipleFile(List<EKYCImage> data);
 
   Future<ShareTransfer> getShareTransfer(RequestParams requestParams);
+
+  Future<List<ShareTransferHistory>> getListShareTransfer(RequestParams requestParams);
 
   Future updateShareTransferIn(RequestParams requestParams);
 }
@@ -858,4 +861,21 @@ class _ApiClient implements ApiClient {
       ),
     );
   }
+
+  @override
+  Future<List<ShareTransferHistory>> getListShareTransfer(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<ShareTransferHistory> listShareHistory = [];
+    for (var element in _mapData) {
+      listShareHistory.add(ShareTransferHistory.fromJson(element));
+    }
+    return listShareHistory;
+  }
+
 }

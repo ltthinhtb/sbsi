@@ -197,6 +197,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "interest_now": MessageLookupByLibrary.simpleMessage("Interest now"),
         "interest_st": MessageLookupByLibrary.simpleMessage("Interst ST"),
         "interest_tt": MessageLookupByLibrary.simpleMessage("Interst TT"),
+        "internal": MessageLookupByLibrary.simpleMessage("Internal"),
         "internal_transfer":
             MessageLookupByLibrary.simpleMessage("Internal transfer"),
         "invalid_price": MessageLookupByLibrary.simpleMessage("Invalid price"),
@@ -446,6 +447,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Volumn must be an integer"),
         "vol_is_not_positive":
             MessageLookupByLibrary.simpleMessage("Volumn must be positive"),
+        "volume": MessageLookupByLibrary.simpleMessage("Volume"),
         "volume_short": MessageLookupByLibrary.simpleMessage("Volume"),
         "volumn": MessageLookupByLibrary.simpleMessage("Volumn"),
         "waiting_cancelled":

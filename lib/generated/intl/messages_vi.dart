@@ -204,6 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "interest_now": MessageLookupByLibrary.simpleMessage("Đầu tư ngay"),
         "interest_st": MessageLookupByLibrary.simpleMessage("Lãi ST"),
         "interest_tt": MessageLookupByLibrary.simpleMessage("Lãi TT"),
+        "internal": MessageLookupByLibrary.simpleMessage("Nội bộ"),
         "internal_transfer":
             MessageLookupByLibrary.simpleMessage("Chuyển tiền nội bộ"),
         "invalid_price":
@@ -464,6 +465,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Khối lượng phải là số nguyên"),
         "vol_is_not_positive":
             MessageLookupByLibrary.simpleMessage("Khối lượng phải lớn hơn 0"),
+        "volume": MessageLookupByLibrary.simpleMessage("Khối lượng"),
         "volume_short": MessageLookupByLibrary.simpleMessage("KL"),
         "volumn": MessageLookupByLibrary.simpleMessage("Khối lượng"),
         "waiting_cancelled": MessageLookupByLibrary.simpleMessage("Chờ huỷ"),

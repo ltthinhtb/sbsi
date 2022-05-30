@@ -6,6 +6,7 @@ import '../../../generated/l10n.dart';
 import '../../commons/appbar.dart';
 import 'enums/stock_transfer.dart';
 import 'stock_transfer_logic.dart';
+import 'tabs/stock_exchange_history_tabs.dart';
 import 'tabs/stock_exchange_tabs.dart';
 
 class StockTransferPage extends StatefulWidget {
@@ -66,8 +67,8 @@ class _StockTransferPageState extends State<StockTransferPage> {
                           .toList()),
                 ],
               ),
-              Expanded(
-                child: TabBarView(children: [const StockExchangeTab(), Container()]),
+              const Expanded(
+                child: TabBarView(children: [StockExchangeTab(), StockExchangeHistory()]),
               )
             ],
           ),

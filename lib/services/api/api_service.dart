@@ -1,4 +1,5 @@
 import 'package:sbsi/model/entities/index.dart';
+import 'package:sbsi/model/entities/share_transfer_history.dart';
 import 'package:sbsi/model/entities/transfer_history.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/index.dart';
