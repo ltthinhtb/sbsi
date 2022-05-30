@@ -71,6 +71,10 @@ extension StockOrderService on ApiService {
     return await _apiClient.getListShareTransfer(requestParams);
   }
 
+  Future<List<RightExc>> getListRightExc(RequestParams requestParams) async {
+    return await _apiClient.getListRightExc(requestParams);
+  }
+
   Future updateShareTransferIn(RequestParams requestParams) async {
     return await _apiClient.updateShareTransferIn(requestParams);
   }

@@ -326,6 +326,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "profile_info": MessageLookupByLibrary.simpleMessage("Profile info"),
         "profit": MessageLookupByLibrary.simpleMessage("Profit"),
         "profit_total": MessageLookupByLibrary.simpleMessage("Profit total"),
+        "rate": MessageLookupByLibrary.simpleMessage("Rate"),
         "receive_money": MessageLookupByLibrary.simpleMessage("Receive money"),
         "redo": MessageLookupByLibrary.simpleMessage("Redo"),
         "reference": MessageLookupByLibrary.simpleMessage("Reference"),
@@ -339,6 +340,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "remember_account":
             MessageLookupByLibrary.simpleMessage("Remember account"),
         "resent": MessageLookupByLibrary.simpleMessage("Resent OTP"),
+        "right_date": MessageLookupByLibrary.simpleMessage("Right date"),
+        "right_history": MessageLookupByLibrary.simpleMessage("Right history"),
+        "right_list": MessageLookupByLibrary.simpleMessage("Right list"),
+        "right_un_exec":
+            MessageLookupByLibrary.simpleMessage("exercise the right"),
         "save_password": MessageLookupByLibrary.simpleMessage("Save password"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "select": MessageLookupByLibrary.simpleMessage("Select"),

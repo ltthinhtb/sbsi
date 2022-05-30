@@ -3329,6 +3329,56 @@ class S {
       args: [],
     );
   }
+
+  /// `exercise the right`
+  String get right_un_exec {
+    return Intl.message(
+      'exercise the right',
+      name: 'right_un_exec',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Right list`
+  String get right_list {
+    return Intl.message(
+      'Right list',
+      name: 'right_list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Right history`
+  String get right_history {
+    return Intl.message(
+      'Right history',
+      name: 'right_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate`
+  String get rate {
+    return Intl.message(
+      'Rate',
+      name: 'rate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Right date`
+  String get right_date {
+    return Intl.message(
+      'Right date',
+      name: 'right_date',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

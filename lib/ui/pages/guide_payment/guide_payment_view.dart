@@ -45,9 +45,7 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
-                  SvgPicture.asset(
-                    AppImages.right_button,
-                  )
+                  SvgPicture.asset(AppImages.vector)
                 ],
               ),
             ),
@@ -69,9 +67,7 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
-                  SvgPicture.asset(
-                    AppImages.right_button,
-                  )
+                  SvgPicture.asset(AppImages.vector)
                 ],
               ),
             ),

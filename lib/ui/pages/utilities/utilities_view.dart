@@ -8,6 +8,7 @@ import 'package:sbsi/ui/commons/appbar.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../router/route_config.dart';
+import '../guide_payment/guide_payment_view.dart';
 import '../menu/panel/setting/change_password_page/change_password_view.dart';
 import 'utilities_logic.dart';
 
@@ -81,7 +82,9 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(const GuidePaymentPage());
+                      },
                       title: S.of(context).instructions_payment,
                       button: AppImages.internet),
                   const SizedBox(height: 16),
@@ -126,7 +129,9 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(RouteConfig.right_un_exec);
+                      },
                       title: S.of(context).advance_action,
                       button: AppImages.communicate),
                   const Padding(

@@ -342,6 +342,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thông tin cá nhân"),
         "profit": MessageLookupByLibrary.simpleMessage("Lãi lỗ"),
         "profit_total": MessageLookupByLibrary.simpleMessage("Tổng lãi lỗ"),
+        "rate": MessageLookupByLibrary.simpleMessage("Tỷ lệ"),
         "receive_money":
             MessageLookupByLibrary.simpleMessage("Tổng nhận thực tế"),
         "redo": MessageLookupByLibrary.simpleMessage("Làm lại"),
@@ -357,6 +358,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "remember_account":
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
         "resent": MessageLookupByLibrary.simpleMessage("Gửi lại mã"),
+        "right_date": MessageLookupByLibrary.simpleMessage("Ngày chốt quyền"),
+        "right_history": MessageLookupByLibrary.simpleMessage("Lịch sử quyền"),
+        "right_list": MessageLookupByLibrary.simpleMessage("Danh sách quyền"),
+        "right_un_exec":
+            MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),
         "save_password": MessageLookupByLibrary.simpleMessage("Lưu mật khẩu"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),

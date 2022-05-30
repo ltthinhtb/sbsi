@@ -326,5 +326,11 @@
   "amount_not_valid": "Khối lượng không hợp lệ",
   "amount_max_valid" : "Khối lượng lớn hơn khối lượng tối đa",
   "volume" : "Khối lượng",
-  "internal" : "Nội bộ"
+  "internal" : "Nội bộ",
+  "right_un_exec" : "Thực hiện quyền",
+  "right_list" : "Danh sách quyền",
+  "right_history" : "Lịch sử quyền",
+  "rate" : "Tỷ lệ",
+  "right_date" : "Ngày chốt quyền"
+
 }

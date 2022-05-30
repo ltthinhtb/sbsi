@@ -7,6 +7,7 @@ import 'package:sbsi/ui/pages/money_transfer/money_transfer_view.dart';
 import 'package:sbsi/ui/pages/notification/notification_view.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_view.dart';
+import 'package:sbsi/ui/pages/right_un_exec/right_un_exec_view.dart';
 import 'package:sbsi/ui/pages/search/search_view.dart';
 import 'package:sbsi/ui/pages/sign_in/sign_in_view.dart';
 import 'package:get/get.dart';
@@ -32,6 +33,7 @@ class RouteConfig {
   static const String money_transfer = '/money_transfer';
   static const String cash_transaction = '/cash_transaction';
   static const String stock_transfer = '/stock_transfer';
+  static const String right_un_exec = '/right_un_exec';
 
   ///Alias ​​mapping page
   static final List<GetPage> getPages = [
@@ -48,8 +50,7 @@ class RouteConfig {
     GetPage(name: money_transfer, page: () => const MoneyTransferPage()),
     GetPage(name: cash_transaction, page: () => const CashTransactionPage()),
     GetPage(name: stock_transfer, page: () => const StockTransferPage()),
-
-
+    GetPage(name: right_un_exec, page: () => const RightUnExecPage()),
   ];
 }
 

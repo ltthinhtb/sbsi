@@ -326,5 +326,11 @@
   "amount_not_valid": "Amount not valid",
   "amount_max_valid": "Amount not valid max",
   "volume": "Volume",
-  "internal": "Internal"
+  "internal": "Internal",
+  "right_un_exec" : "exercise the right",
+  "right_list" : "Right list",
+  "right_history" : "Right history",
+  "rate" : "Rate",
+  "right_date" : "Right date"
+
 }

@@ -32,6 +32,7 @@ class AppTextFieldWidget extends StatefulWidget {
   final InputBorder? focusBorder;
   final bool? enable;
   final bool? isShowLabelText;
+  final EdgeInsets? contentPadding;
 
   const AppTextFieldWidget(
       {this.inputController,
@@ -59,7 +60,8 @@ class AppTextFieldWidget extends StatefulWidget {
       this.border,
       this.focusBorder,
       this.enable = true,
-      this.isShowLabelText = true});
+      this.isShowLabelText = true,
+      this.contentPadding});
 
   @override
   State<AppTextFieldWidget> createState() => _AppTextFieldWidgetState();
@@ -123,7 +125,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
             hintStyle: widget.hintTextStyle,
             border: widget.border,
             focusedBorder: widget.focusBorder,
-            contentPadding:
+            contentPadding: widget.contentPadding ??
                 const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
             prefixIconConstraints: const BoxConstraints(maxHeight: 24),
             prefixIcon: Padding(

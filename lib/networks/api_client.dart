@@ -6,6 +6,7 @@ import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
 import 'package:sbsi/model/entities/economy.dart';
 import 'package:sbsi/model/entities/index.dart';
+import 'package:sbsi/model/entities/right_exc.dart';
 import 'package:sbsi/model/entities/share_transfer.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/index.dart';
@@ -146,6 +147,10 @@ abstract class ApiClient {
       RequestParams requestParams);
 
   Future updateShareTransferIn(RequestParams requestParams);
+
+  Future<List<RightExc>> getListRightExc(
+      RequestParams requestParams);
+
 }
 
 class _ApiClient implements ApiClient {
@@ -883,5 +888,21 @@ class _ApiClient implements ApiClient {
       listShareHistory.add(ShareTransferHistory.fromJson(element));
     }
     return listShareHistory;
+  }
+
+  @override
+  Future<List<RightExc>> getListRightExc(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<RightExc> listRight = [];
+    for (var element in _mapData) {
+      listRight.add(RightExc.fromJson(element));
+    }
+    return listRight;
   }
 }
