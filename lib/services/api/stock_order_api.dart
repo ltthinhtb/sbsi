@@ -54,11 +54,13 @@ extension StockOrderService on ApiService {
     return await _apiClient.getIndayOrder(requestParams);
   }
 
-  Future<List<EconomyRow>> getListEconomyRow(String stock, String timeLine) async {
+  Future<List<EconomyRow>> getListEconomyRow(
+      String stock, String timeLine) async {
     return await _apiClient.getListEconomyRow(stock, timeLine);
   }
 
-  Future<ReportStockResponse> getStockReport(String stock, String ternType) async {
+  Future<ReportStockResponse> getStockReport(
+      String stock, String ternType) async {
     return await _apiClient.getStockReport(stock, ternType);
   }
 
@@ -66,13 +68,23 @@ extension StockOrderService on ApiService {
     return await _apiClient.getShareTransfer(requestParams);
   }
 
-
-  Future<List<ShareTransferHistory>> getListShareTransfer(RequestParams requestParams) async {
+  Future<List<ShareTransferHistory>> getListShareTransfer(
+      RequestParams requestParams) async {
     return await _apiClient.getListShareTransfer(requestParams);
   }
 
   Future<List<RightExc>> getListRightExc(RequestParams requestParams) async {
     return await _apiClient.getListRightExc(requestParams);
+  }
+
+  Future<List<CashCanAdv>> getListCashCanAdv(
+      RequestParams requestParams) async {
+    return await _apiClient.getListCashCanAdv(requestParams);
+  }
+
+  Future<FeeAdvanceWithdraw> getFeeAdvanceWithdraw(
+      RequestParams requestParams) async {
+    return await _apiClient.getFeeAdvanceWithdraw(requestParams);
   }
 
   Future updateShareTransferIn(RequestParams requestParams) async {

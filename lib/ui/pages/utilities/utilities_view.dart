@@ -58,7 +58,9 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(RouteConfig.cash_can);
+                      },
                       title: S.of(context).advance_money,
                       button: AppImages.cash_wallet),
                   const Padding(

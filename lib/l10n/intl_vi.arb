@@ -280,7 +280,7 @@
   "money_payment": "Số tiền giao dịch",
   "transfer_content": "Nội dung chuyển",
   "please_input_money": "Vui lòng nhập số tiền",
-  "money_valid": "Vui lòng nhập số tiền",
+  "money_valid": "Số tiền không hợp lệ",
   "please_input_content": "Vui lòng nhập nội dung",
   "transfer_cFee": "Phí giao dịch",
   "input_pin": "Nhập mã pin",
@@ -331,6 +331,9 @@
   "right_list" : "Danh sách quyền",
   "right_history" : "Lịch sử quyền",
   "rate" : "Tỷ lệ",
-  "right_date" : "Ngày chốt quyền"
+  "right_date" : "Ngày chốt quyền",
+  "advance_money_history" : "Lịch sử ứng",
+  "sell_day" : "Ngày bán",
+  "action" : "Thực hiện"
 
 }

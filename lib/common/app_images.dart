@@ -111,4 +111,5 @@ class AppImages {
 
   static String close = 'assets/icon_svg/close.svg';
 
+  static String check1 = 'assets/icon_svg/checked 1.svg';
 }

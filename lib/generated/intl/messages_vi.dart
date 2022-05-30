@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "account_transfer":
             MessageLookupByLibrary.simpleMessage("Tài khoản chuyển"),
         "account_user": MessageLookupByLibrary.simpleMessage("Tên tài khoản"),
+        "action": MessageLookupByLibrary.simpleMessage("Thực hiện"),
         "activated_account":
             MessageLookupByLibrary.simpleMessage("Kích hoạt tài khoản"),
         "activated_now": MessageLookupByLibrary.simpleMessage("Kích hoạt ngay"),
@@ -53,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),
         "advance_money":
             MessageLookupByLibrary.simpleMessage("Ứng trước tiền bán"),
+        "advance_money_history":
+            MessageLookupByLibrary.simpleMessage("Lịch sử ứng"),
         "agree": MessageLookupByLibrary.simpleMessage("Đồng ý"),
         "all": MessageLookupByLibrary.simpleMessage("Tất cả"),
         "amount_max_valid": MessageLookupByLibrary.simpleMessage(
@@ -259,7 +262,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "money_transfer":
             MessageLookupByLibrary.simpleMessage("Số tiền chuyển"),
         "money_valid":
-            MessageLookupByLibrary.simpleMessage("Vui lòng nhập số tiền"),
+            MessageLookupByLibrary.simpleMessage("Số tiền không hợp lệ"),
         "month": MessageLookupByLibrary.simpleMessage("Tháng"),
         "more": MessageLookupByLibrary.simpleMessage("Xem thêm"),
         "mr": MessageLookupByLibrary.simpleMessage("Tỷ lệ ký quỹ"),
@@ -370,6 +373,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chọn số tài khoản"),
         "select_product": MessageLookupByLibrary.simpleMessage("Chọn sản phẩm"),
         "sell": MessageLookupByLibrary.simpleMessage("Bán"),
+        "sell_day": MessageLookupByLibrary.simpleMessage("Ngày bán"),
         "sell_t0": MessageLookupByLibrary.simpleMessage("Chở về T0"),
         "sell_t1": MessageLookupByLibrary.simpleMessage("Chở về T1"),
         "sell_t2": MessageLookupByLibrary.simpleMessage("Chở về T2"),

@@ -3379,6 +3379,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Cash history`
+  String get advance_money_history {
+    return Intl.message(
+      'Cash history',
+      name: 'advance_money_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sell day`
+  String get sell_day {
+    return Intl.message(
+      'Sell day',
+      name: 'sell_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Action`
+  String get action {
+    return Intl.message(
+      'Action',
+      name: 'action',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

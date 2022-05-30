@@ -1,3 +1,5 @@
+import 'package:sbsi/model/entities/cash_can_adv.dart';
+import 'package:sbsi/model/entities/fee_withdraw.dart';
 import 'package:sbsi/model/entities/index.dart';
 import 'package:sbsi/model/entities/right_exc.dart';
 import 'package:sbsi/model/entities/share_transfer_history.dart';

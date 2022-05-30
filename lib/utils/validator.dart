@@ -42,13 +42,21 @@ class Validator {
     }
   }
 
-  String? checkAmount(num amount,num maxAmount) {
+  String? checkAmount(num amount, num maxAmount) {
     if (amount <= 0) {
       return S.current.amount_not_valid;
-    }else if(
-    amount>maxAmount
-    ){
+    } else if (amount > maxAmount) {
       return S.current.amount_max_valid;
+    } else {
+      return null;
+    }
+  }
+
+  String? checkMoney1(int amount, int maxAmount) {
+    if (amount <= 0) {
+      return S.current.please_input_money;
+    } else if (amount > maxAmount) {
+      return S.current.money_valid;
     } else {
       return null;
     }

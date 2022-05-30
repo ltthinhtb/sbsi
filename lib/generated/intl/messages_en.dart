@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "account_transfer":
             MessageLookupByLibrary.simpleMessage("Account transfer"),
         "account_user": MessageLookupByLibrary.simpleMessage("User"),
+        "action": MessageLookupByLibrary.simpleMessage("Action"),
         "activated_account":
             MessageLookupByLibrary.simpleMessage("Activated account"),
         "activated_now": MessageLookupByLibrary.simpleMessage("Activated now"),
@@ -50,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "advance_action":
             MessageLookupByLibrary.simpleMessage("Advance action"),
         "advance_money": MessageLookupByLibrary.simpleMessage("Advance Money"),
+        "advance_money_history":
+            MessageLookupByLibrary.simpleMessage("Cash history"),
         "agree": MessageLookupByLibrary.simpleMessage("Agree"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "amount_max_valid":
@@ -353,6 +356,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "select_product":
             MessageLookupByLibrary.simpleMessage("Select Product"),
         "sell": MessageLookupByLibrary.simpleMessage("Sell"),
+        "sell_day": MessageLookupByLibrary.simpleMessage("Sell day"),
         "sell_t0": MessageLookupByLibrary.simpleMessage("Sell T0"),
         "sell_t1": MessageLookupByLibrary.simpleMessage("Sell T1"),
         "sell_t2": MessageLookupByLibrary.simpleMessage("Sell T2"),
