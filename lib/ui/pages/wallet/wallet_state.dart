@@ -6,7 +6,8 @@ import 'package:sbsi/model/response/totalAssets.dart';
 import '../../../model/response/list_account_response.dart';
 
 class WalletState {
-  final assets = AccountAssets().obs;
+  final assets = AccountMStatus().obs;
+
   final portfolioTotal = PortfolioStatus().obs;
   final portfolioList = <PortfolioStatus>[].obs;
 

@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "amount_not_valid":
             MessageLookupByLibrary.simpleMessage("Khối lượng không hợp lệ"),
         "analytics": MessageLookupByLibrary.simpleMessage("Phân tích"),
+        "apT0": MessageLookupByLibrary.simpleMessage("Tiền trở về"),
         "are_you_sure_cancel_all_order": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn hủy tất cả lệnh?"),
         "are_you_sure_cancel_this_order": MessageLookupByLibrary.simpleMessage(
@@ -103,6 +104,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_time": MessageLookupByLibrary.simpleMessage("Thời gian huỷ"),
         "cancel_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng huỷ"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Đã huỷ"),
+        "cash": MessageLookupByLibrary.simpleMessage("Tiền mặt"),
+        "cash_advance_avai":
+            MessageLookupByLibrary.simpleMessage("Tiền có thể ứng"),
         "cash_availability":
             MessageLookupByLibrary.simpleMessage("Số dư khả dụng"),
         "cash_balance": MessageLookupByLibrary.simpleMessage("Tài sản ròng"),
@@ -148,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "coupon": MessageLookupByLibrary.simpleMessage("Lợi suất đầu tư"),
         "create_account": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
+        "debt": MessageLookupByLibrary.simpleMessage("Nợ"),
         "decrease": MessageLookupByLibrary.simpleMessage("Giảm giá"),
         "delete": MessageLookupByLibrary.simpleMessage("Xóa"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Tổng phí"),
@@ -490,6 +495,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "wallet": MessageLookupByLibrary.simpleMessage("Tài sản"),
         "warning": MessageLookupByLibrary.simpleMessage("Cảnh báo"),
         "wating_match": MessageLookupByLibrary.simpleMessage("Chờ khớp"),
+        "withdraw_money": MessageLookupByLibrary.simpleMessage("Tiền được rút"),
         "world": MessageLookupByLibrary.simpleMessage("Thế giới"),
         "year": MessageLookupByLibrary.simpleMessage("năm")
       };

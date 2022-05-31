@@ -62,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "amount_not_valid":
             MessageLookupByLibrary.simpleMessage("Amount not valid"),
         "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
+        "apT0": MessageLookupByLibrary.simpleMessage("ApT0"),
         "are_you_sure_cancel_all_order": MessageLookupByLibrary.simpleMessage(
             "Are you sure to cancel all order?"),
         "are_you_sure_cancel_this_order": MessageLookupByLibrary.simpleMessage(
@@ -97,6 +98,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_time": MessageLookupByLibrary.simpleMessage("Cancel time"),
         "cancel_volumn": MessageLookupByLibrary.simpleMessage("Cancel volumn"),
         "cancelled": MessageLookupByLibrary.simpleMessage("Cancelled"),
+        "cash": MessageLookupByLibrary.simpleMessage("Cash"),
+        "cash_advance_avai":
+            MessageLookupByLibrary.simpleMessage("Cash advance available"),
         "cash_availability":
             MessageLookupByLibrary.simpleMessage("Cash Availability"),
         "cash_balance": MessageLookupByLibrary.simpleMessage("Cash balance"),
@@ -142,6 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create account"),
         "day": MessageLookupByLibrary.simpleMessage("Day"),
+        "debt": MessageLookupByLibrary.simpleMessage("Debt"),
         "decrease": MessageLookupByLibrary.simpleMessage("Decrease"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Deposit fee"),
@@ -473,6 +478,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
         "warning": MessageLookupByLibrary.simpleMessage("Warning"),
         "wating_match": MessageLookupByLibrary.simpleMessage("Waiting match"),
+        "withdraw_money":
+            MessageLookupByLibrary.simpleMessage("Withdraw money"),
         "world": MessageLookupByLibrary.simpleMessage("World"),
         "year": MessageLookupByLibrary.simpleMessage("year")
       };

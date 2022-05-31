@@ -337,5 +337,10 @@
   "action" : "Thực hiện",
   "advance_amount" : "Số tiền ứng",
   "pass_short_valid" : "Mật khẩu phải lớn hơn 6 ký tự",
-  "please_input_account" : "Vui lòng nhập số tài khoản"
+  "please_input_account" : "Vui lòng nhập số tài khoản",
+  "cash" : "Tiền mặt",
+  "withdraw_money" : "Tiền được rút",
+  "apT0" : "Tiền trở về",
+  "cash_advance_avai" : "Tiền có thể ứng",
+  "debt" : "Nợ"
 }

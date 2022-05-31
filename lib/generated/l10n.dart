@@ -3439,6 +3439,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Cash`
+  String get cash {
+    return Intl.message(
+      'Cash',
+      name: 'cash',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Withdraw money`
+  String get withdraw_money {
+    return Intl.message(
+      'Withdraw money',
+      name: 'withdraw_money',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ApT0`
+  String get apT0 {
+    return Intl.message(
+      'ApT0',
+      name: 'apT0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash advance available`
+  String get cash_advance_avai {
+    return Intl.message(
+      'Cash advance available',
+      name: 'cash_advance_avai',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Debt`
+  String get debt {
+    return Intl.message(
+      'Debt',
+      name: 'debt',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

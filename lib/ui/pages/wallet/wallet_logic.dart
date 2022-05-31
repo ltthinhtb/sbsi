@@ -59,12 +59,13 @@ class WalletLogic extends GetxController {
 
     _requestParams.data = _object;
     try {
-      var response = await apiService.getAccountStatus(_requestParams);
-      state.assets.value = response!.data!;
+      var response = await apiService.getAccountMStatus(_requestParams);
+      state.assets.value = response;
     } on ErrorException catch (error) {
       AppSnackBar.showError(message: error.message);
     }
   }
+
 
   Future<void> getPortfolio() async {
     ParamsObject _object = ParamsObject();

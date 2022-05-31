@@ -228,6 +228,15 @@ class AccountMStatus {
   String? payment;
   String? maxLoan;
 
+  int get assetsValue {
+    if (assets == null) return 0;
+    try {
+      return int.parse(assets!);
+    } catch (e) {
+      return 0;
+    }
+  }
+
   AccountMStatus(
       {this.assets,
       this.imKH,
