@@ -64,8 +64,8 @@ class MainActivity : FlutterActivity() {
             SDKEnum.DocumentTypeEnum.IDENTITY_CARD.value
         )
         intent.putExtra(KeyIntentConstants.SELECT_DOCUMENT, false)
-        intent.putExtra(KeyIntentConstants.VERSION_SDK, SDKEnum.VersionSDKEnum.STANDARD.value)
-        intent.putExtra(KeyIntentConstants.SHOW_RESULT, true)
+        intent.putExtra(KeyIntentConstants.VERSION_SDK, SDKEnum.VersionSDKEnum.ADVANCED.value)
+        intent.putExtra(KeyIntentConstants.SHOW_RESULT, false)
         intent.putExtra(KeyIntentConstants.SHOW_DIALOG_SUPPORT, false)
         intent.putExtra(KeyIntentConstants.CAMERA_FOR_PORTRAIT, SDKEnum.CameraTypeEnum.FRONT.value)
         intent.putExtra(KeyIntentConstants.CHECK_LIVENESS_CARD, false)
@@ -86,11 +86,16 @@ class MainActivity : FlutterActivity() {
             SDKEnum.DocumentTypeEnum.IDENTITY_CARD.value
         )
         intent.putExtra(KeyIntentConstants.SELECT_DOCUMENT, false)
-        intent.putExtra(KeyIntentConstants.VERSION_SDK, SDKEnum.VersionSDKEnum.STANDARD.value)
-        intent.putExtra(KeyIntentConstants.SHOW_RESULT, true)
-        intent.putExtra(KeyIntentConstants.SHOW_DIALOG_SUPPORT, false)
+        intent.putExtra(KeyIntentConstants.VERSION_SDK, SDKEnum.VersionSDKEnum.ADVANCED.value)
+        intent.putExtra(KeyIntentConstants.SHOW_RESULT, false)
+        intent.putExtra(KeyIntentConstants.SHOW_DIALOG_SUPPORT, true)
         intent.putExtra(KeyIntentConstants.CAMERA_FOR_PORTRAIT, SDKEnum.CameraTypeEnum.FRONT.value)
-        intent.putExtra(KeyIntentConstants.CHECK_LIVENESS_CARD, false)
+        intent.putExtra(KeyIntentConstants.CHECK_LIVENESS_CARD, true)
+        intent.putExtra(KeyIntentConstants.ENABLE_GOT_IT, true)
+        intent.putExtra(KeyIntentConstants.LIVENESS_ADVANCED, true)
+        intent.putExtra(KeyIntentConstants.LIVENESS_FACE, true)
+        intent.putExtra(KeyIntentConstants.CHECK_MASKED_FACE, true)
+
         intent.putExtra(KeyIntentConstants.CHANGE_THEME, true)
         //intent.putExtra(KeyIntentConstants.LOGO, "logo.jpg")
         intent.putExtra(KeyIntentConstants.VALIDATE_POSTCODE, true)
@@ -110,7 +115,7 @@ class MainActivity : FlutterActivity() {
         )
         intent.putExtra(KeyIntentConstants.SELECT_DOCUMENT, false)
         intent.putExtra(KeyIntentConstants.VERSION_SDK, SDKEnum.VersionSDKEnum.STANDARD.value)
-        intent.putExtra(KeyIntentConstants.SHOW_RESULT, true)
+        intent.putExtra(KeyIntentConstants.SHOW_RESULT, false)
         intent.putExtra(KeyIntentConstants.SHOW_DIALOG_SUPPORT, false)
         intent.putExtra(KeyIntentConstants.CAMERA_FOR_PORTRAIT, SDKEnum.CameraTypeEnum.FRONT.value)
         intent.putExtra(KeyIntentConstants.CHECK_LIVENESS_CARD, true)
@@ -136,7 +141,7 @@ class MainActivity : FlutterActivity() {
                 val strDataInfo = data.getStringExtra(INFO_RESULT)
                 val imageFront = data.getStringExtra(FRONT_IMAGE)
                 val imageRear = data.getStringExtra(REAR_IMAGE)
-                val imagePortrait = data.getStringExtra(PORTRAIT_IMAGE)
+                val imagePortrait = data.getStringExtra(PORTRAIT_FAR_IMAGE)
                 val netWorkProblem = data.getStringExtra(NETWORK_PROBLEM)
                 val jsonCompareFace = data.getStringExtra(COMPARE_RESULT)
                 val jsonLivenessFace = data.getStringExtra(LIVENESS_RESULT)
@@ -144,7 +149,7 @@ class MainActivity : FlutterActivity() {
                 val verifyFace = data.getStringExtra(ENCODE_RESULT)
                 val jsonLivenessFontCard = data.getStringExtra(LIVENESS_CARD_FRONT_RESULT)
                 val jsonLivenessRearCard = data.getStringExtra(LIVENESS_CARD_REAR_RESULT)
-
+                println("link ảnh mặt $imagePortrait")
                 val hashMap: HashMap<String, Any?> = hashMapOf()
                 hashMap["jsonInfo"] = strDataInfo
                 hashMap["imageFront"] = imageFront

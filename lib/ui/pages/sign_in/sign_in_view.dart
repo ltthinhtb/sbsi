@@ -177,8 +177,6 @@ class _SignInPageState extends State<SignInPage> with Validator {
     );
   }
 
-
-
   @override
   void dispose() {
     Get.delete<SignInLogic>();

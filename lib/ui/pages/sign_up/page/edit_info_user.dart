@@ -31,6 +31,12 @@ class _EditInfoState extends State<EditInfo> {
   final wardController = TextEditingController();
   final address = TextEditingController();
 
+  bool get isEmptyGender {
+    if (state.orcResponse?.gender == null) return true;
+    if (state.orcResponse?.gender == "-") return true;
+    return state.orcResponse!.gender!.isEmpty;
+  }
+
   @override
   void initState() {
     nameController.text = state.orcResponse?.name ?? "";
@@ -117,14 +123,18 @@ class _EditInfoState extends State<EditInfo> {
                             isShowLabel: false,
                             readOnly: true,
                             enable: false,
+                            fillColor: AppColors.disable,
+                            filled: true,
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
                             inputController: genderController,
                             label: S.of(context).gender,
                             isShowLabel: false,
-                            readOnly: true,
-                            enable: false,
+                            readOnly: isEmptyGender ? false : true,
+                            enable: isEmptyGender ? true : false,
+                            fillColor: AppColors.disable,
+                            filled: isEmptyGender ? false : true,
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
@@ -133,6 +143,8 @@ class _EditInfoState extends State<EditInfo> {
                             isShowLabel: false,
                             readOnly: true,
                             enable: false,
+                            fillColor: AppColors.disable,
+                            filled: true,
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
@@ -142,6 +154,8 @@ class _EditInfoState extends State<EditInfo> {
                             readOnly: true,
                             maxLines: 2,
                             enable: false,
+                            fillColor: AppColors.disable,
+                            filled: true,
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
@@ -150,6 +164,8 @@ class _EditInfoState extends State<EditInfo> {
                             isShowLabel: false,
                             readOnly: true,
                             enable: false,
+                            fillColor: AppColors.disable,
+                            filled: true,
                           ),
                         ],
                       ),

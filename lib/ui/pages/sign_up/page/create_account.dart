@@ -79,6 +79,9 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                   hintText: S.of(context).phone,
                   focusNode: state.focusNodePhone,
                   validator: (phone) => checkPhoneNumber(phone!),
+                  onChanged: (phone) {
+                    state.formKeyPhone.currentState?.validate();
+                  },
                   onFieldSubmitted: (phone) {
                     if (state.formKeyPhone.currentState!.validate()) {
                       FocusScope.of(context).requestFocus(state.focusNodeEmail);
@@ -97,6 +100,9 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                   hintText: S.of(context).email,
                   focusNode: state.focusNodeEmail,
                   validator: (email) => checkEmail(email!),
+                  onChanged: (email) {
+                    state.formKeyEmail.currentState?.validate();
+                  },
                   onFieldSubmitted: (email) {
                     if (state.formKeyEmail.currentState!.validate()) {
                       FocusScope.of(context).requestFocus(state.focusNodePass);
@@ -116,6 +122,9 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                   obscureText: true,
                   focusNode: state.focusNodePass,
                   validator: (pass) => checkPass(pass!),
+                  onChanged: (pass) {
+                    state.formKeyPass.currentState?.validate();
+                  },
                   onFieldSubmitted: (pass) {
                     if (state.formKeyEmail.currentState!.validate()) {
                       FocusScope.of(context)
@@ -135,6 +144,9 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                   hintText: S.of(context).confirm_new_password,
                   obscureText: true,
                   focusNode: state.focusNodeRePass,
+                  onChanged: (rePass) {
+                    state.formKeyRePass.currentState?.validate();
+                  },
                   validator: (rePass) =>
                       checkConfirmPass(rePass!, state.passController.text),
                   onFieldSubmitted: (rePass) {

@@ -131,7 +131,7 @@
   "phone_not_valid": "Số điện thoại không hợp lệ",
   "please_input_email": "Vui lòng nhập email",
   "email_not_valid": "Email không hợp lệ",
-  "referral_code": "Mã giới thiệu",
+  "referral_code": "Mã giới thiệu/brokerID",
   "agree": "Đồng ý",
   "terms_and_condition": "Điều khoản và điều kiện",
   "terms_and_condition_valid": "Vui lòng đồng ý điều khoản và điều kiện",
@@ -335,6 +335,7 @@
   "advance_money_history" : "Lịch sử ứng",
   "sell_day" : "Ngày bán",
   "action" : "Thực hiện",
-  "advance_amount" : "Số tiền ứng"
-
+  "advance_amount" : "Số tiền ứng",
+  "pass_short_valid" : "Mật khẩu phải lớn hơn 6 ký tự",
+  "please_input_account" : "Vui lòng nhập số tài khoản"
 }

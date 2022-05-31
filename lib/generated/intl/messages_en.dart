@@ -288,6 +288,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Partial matched"),
         "pass_not_match":
             MessageLookupByLibrary.simpleMessage("Password not match"),
+        "pass_short_valid":
+            MessageLookupByLibrary.simpleMessage("Password short"),
         "passport": MessageLookupByLibrary.simpleMessage("Passport"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),
@@ -303,6 +305,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mã pin không hợp lệ"),
         "please_input_OTP":
             MessageLookupByLibrary.simpleMessage("Please input OTP"),
+        "please_input_account":
+            MessageLookupByLibrary.simpleMessage("Please input account"),
         "please_input_content":
             MessageLookupByLibrary.simpleMessage("Please Input Content"),
         "please_input_email":

@@ -28,6 +28,15 @@ class SignUpState {
 
   final signature = SignatureController();
 
+  final passPinController = TextEditingController();
+  final formKeyPassPin = GlobalKey<FormState>();
+
+  final bankController = TextEditingController();
+  final bankAccountController = TextEditingController();
+  final formKeyBankAccount = GlobalKey<FormState>();
+  final FocusNode bankNode = FocusNode();
+  Rxn<String> errorBank = Rxn<String>();
+
   String cardFrontUrl = "";
   String cardBackUrl = "";
   String faceUrl = "";
@@ -36,6 +45,8 @@ class SignUpState {
   String accountCode = "";
 
   OrcResponse? orcResponse;
+
+  bool isOpenMargin = false;
 
   var listBank = <Bank>[];
 

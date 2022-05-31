@@ -335,6 +335,8 @@
   "advance_money_history" : "Cash history",
   "sell_day" : "Sell day",
   "action" : "Action",
-  "advance_amount" : "Advance amount"
+  "advance_amount" : "Advance amount",
+  "pass_short_valid" : "Password short",
+  "please_input_account" : "Please input account"
 
 }

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,8 +9,8 @@ import 'package:logger/logger.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/model/entities/orc_model.dart';
+import 'package:sbsi/ui/commons/app_dialog.dart';
 import 'package:sbsi/utils/image_utils.dart';
-
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../commons/app_loading.dart';
@@ -135,17 +134,27 @@ class _VerifyAccountState extends State<VerifyAccount> {
                               ),
                             )),
                         const SizedBox(height: 6.5),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SvgPicture.asset(AppImages.camera1),
-                            const SizedBox(width: 6.5),
-                            Text(
-                              'Chụp ảnh',
-                              style: body1?.copyWith(
-                                  color: AppColors.buttonOrange),
-                            )
-                          ],
+                        Center(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 7),
+                            decoration: BoxDecoration(
+                              color: AppColors.PastelSecond2,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SvgPicture.asset(AppImages.camera1),
+                                const SizedBox(width: 6.5),
+                                Text(
+                                  'Chụp ảnh',
+                                  style: body1?.copyWith(
+                                      color: AppColors.buttonOrange),
+                                )
+                              ],
+                            ),
+                          ),
                         )
                       ],
                     )),
@@ -174,17 +183,27 @@ class _VerifyAccountState extends State<VerifyAccount> {
                               ),
                             )),
                         const SizedBox(height: 6.5),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SvgPicture.asset(AppImages.camera1),
-                            const SizedBox(width: 6.5),
-                            Text(
-                              'Chụp ảnh',
-                              style: body1?.copyWith(
-                                  color: AppColors.buttonOrange),
-                            )
-                          ],
+                        Center(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 7),
+                            decoration: BoxDecoration(
+                              color: AppColors.PastelSecond2,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SvgPicture.asset(AppImages.camera1),
+                                const SizedBox(width: 6.5),
+                                Text(
+                                  'Chụp ảnh',
+                                  style: body1?.copyWith(
+                                      color: AppColors.buttonOrange),
+                                )
+                              ],
+                            ),
+                          ),
                         )
                       ],
                     ))
@@ -256,114 +275,10 @@ class _VerifyAccountState extends State<VerifyAccount> {
                 child: SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: ButtonFill(
-                        voidCallback: () {
+                        voidCallback: () async {
                           // nếu chưa làm ekyc hoặc ekyc thất bại
                           if (state.orcResponse == null) {
-                            Get.bottomSheet(
-                              Builder(builder: (context) {
-                                return Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  decoration: BoxDecoration(
-                                      color: AppColors.white,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const SizedBox(height: 24),
-                                        Center(
-                                          child: Text(
-                                            S.of(context).guide_take,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline6
-                                                ?.copyWith(
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 24),
-                                        Text(
-                                          "Quý khách vui lòng đảm bảo hình chụp:",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyText1
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.w700),
-                                        ),
-                                        const SizedBox(height: 15),
-                                        Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                                AppImages.tick_circle),
-                                            const SizedBox(width: 10),
-                                            Text(
-                                              "Không bị mờ, tối hay chói sáng",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText2,
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 12),
-                                        Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                                AppImages.tick_circle),
-                                            const SizedBox(width: 10),
-                                            Text(
-                                              "Không bị mất góc, bấm lỗ",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText2,
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 12),
-                                        Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                                AppImages.tick_circle),
-                                            const SizedBox(width: 10),
-                                            Text(
-                                              "Là bản gốc, còn hạn sử dụng",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText2,
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 24),
-                                        SvgPicture.asset(
-                                            'assets/icon_svg/cmnd_bad.svg',
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            fit: BoxFit.fitWidth),
-                                        const SizedBox(height: 32),
-                                        SizedBox(
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: ButtonFill(
-                                                voidCallback: () {
-                                                  nativeCode();
-                                                },
-                                                title: S
-                                                    .of(context)
-                                                    .continue_step)),
-                                        const SizedBox(height: 29),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              }),
-                              isScrollControlled: true,
-                              ignoreSafeArea: false, // add this
-                            );
+                            await nativeCode();
                             return;
                           }
                           // thành công ekyc
@@ -379,6 +294,93 @@ class _VerifyAccountState extends State<VerifyAccount> {
     );
   }
 
+  void showBottom() {
+    Get.bottomSheet(
+      Builder(builder: (context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+              color: AppColors.white, borderRadius: BorderRadius.circular(20)),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 24),
+                Center(
+                  child: Text(
+                    S.of(context).guide_take,
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ),
+                const SizedBox(height: 24),
+                Text(
+                  "Quý khách vui lòng đảm bảo hình chụp:",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      ?.copyWith(fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    SvgPicture.asset(AppImages.tick_circle),
+                    const SizedBox(width: 10),
+                    Text(
+                      "Không bị mờ, tối hay chói sáng",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    SvgPicture.asset(AppImages.tick_circle),
+                    const SizedBox(width: 10),
+                    Text(
+                      "Không bị mất góc, bấm lỗ",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    SvgPicture.asset(AppImages.tick_circle),
+                    const SizedBox(width: 10),
+                    Text(
+                      "Là bản gốc, còn hạn sử dụng",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                SvgPicture.asset('assets/icon_svg/cmnd_bad.svg',
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.fitWidth),
+                const SizedBox(height: 32),
+                SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: ButtonFill(
+                        voidCallback: () {
+                          //logger.d(state.orcResponse?.toJson());
+                          nativeCode();
+                        },
+                        title: S.of(context).continue_step)),
+                const SizedBox(height: 29),
+              ],
+            ),
+          ),
+        );
+      }),
+      isScrollControlled: true,
+      ignoreSafeArea: false, // add this
+    );
+  }
+
   Future<void> nativeCode() async {
     const platform = MethodChannel('com.vnpt.ekyc/sdk');
     try {
@@ -389,24 +391,30 @@ class _VerifyAccountState extends State<VerifyAccount> {
       var mapData = jsonDecode(result);
       frontImage.value = Platform.isAndroid
           ? File(mapData['imageFront']).readAsBytesSync()
-          : ImageUtils.cropImageUint8List(base64Decode(mapData['imageFront'].split(',').last));
+          : ImageUtils.cropImageUint8List(
+              base64Decode(mapData['imageFront'].split(',').last));
       backImage.value = Platform.isAndroid
           ? File(mapData['imageBack']).readAsBytesSync()
-          : ImageUtils.cropImageUint8List(base64Decode(mapData['imageBack'].split(',').last));
-      faceImage.value = Platform.isAndroid
-          ? File(mapData['imageFace']).readAsBytesSync()
-          : base64Decode(mapData['imageFace'].split(',').last);
+          : ImageUtils.cropImageUint8List(
+              base64Decode(mapData['imageBack'].split(',').last));
+      var faceLink = mapData['imageFace'];
+      if (faceLink != null) {
+        faceImage.value = Platform.isAndroid
+            ? File(mapData['imageFace']).readAsBytesSync()
+            : base64Decode(mapData['imageFace'].split(',').last);
+      }
       state.orcResponse =
           OrcResponse.fromJson(jsonDecode(mapData['jsonInfo'])['object']);
       await logic.uploadUrlImage(
           frontIDByte: frontImage.value.toList(),
           backIDByte: backImage.value.toList(),
           faceByte: faceImage.value.toList());
-      Get.back();
     } on PlatformException catch (e) {
       Logger().e(e.toString());
-    }
-    finally{
+    } catch (e) {
+      AppDiaLog.showNoticeDialog(
+          middleText: "Lỗi xác thực khuôn mặt", buttonText: "Thử lại");
+    } finally {
       AppLoading.disMissLoading();
     }
   }

@@ -4,6 +4,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import '../../../common/app_text_styles.dart';
+import '../../../model/entities/bank.dart';
 import '../../../model/order_data/inday_order.dart';
 import '../../../model/stock_company_data/stock_company_data.dart';
 
@@ -14,6 +15,7 @@ class AppTextTypeHead<T> extends StatefulWidget {
   final FocusNode? focusNode;
   final SuggestionsCallback<T> suggestionsCallback;
   final SuggestionSelectionCallback<T> onSuggestionSelected;
+  final String? errorText;
 
   const AppTextTypeHead(
       {Key? key,
@@ -22,7 +24,7 @@ class AppTextTypeHead<T> extends StatefulWidget {
       this.hintText,
       required this.suggestionsCallback,
       required this.onSuggestionSelected,
-      this.focusNode})
+      this.focusNode, this.errorText})
       : super(key: key);
 
   @override
@@ -57,6 +59,35 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
             ),
           );
         }
+        if (itemData is Bank) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                FadeInImage(
+                  image: AssetImage(itemData.logo ?? ""),
+                  placeholder: AssetImage(itemData.logo ?? ""),
+                  width: 30,
+                  height: 30,
+                  imageErrorBuilder: (_, __, ___) {
+                    return SvgPicture.asset(
+                      AppImages.bank_icon,
+                      height: 30,
+                      width: 30,
+                    );
+                  },
+                ),
+                const SizedBox(width: 20),
+                Flexible(
+                  child: Text(
+                    '${itemData.cBANKCODE} - ${itemData.cBANKNAME}',
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
         return Container();
       },
       onSuggestionSelected: widget.onSuggestionSelected,
@@ -67,8 +98,9 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
             isDense: true,
             labelText: widget.label,
             hintText: widget.hintText,
+            errorText: widget.errorText,
             contentPadding:
-            const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
+                const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
             suffixIcon: Padding(
               padding: const EdgeInsets.only(right: 12),
               child: SvgPicture.asset(

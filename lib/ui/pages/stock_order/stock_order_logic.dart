@@ -250,6 +250,7 @@ class StockOrderLogic extends GetxController {
       var response = await apiService.newOrderRequest(_requestParams);
       logger.d(response);
       AppLoading.disMissLoading();
+
       /// load lại sức mua
       await getCashBalance();
       // load lại sổ lệnh

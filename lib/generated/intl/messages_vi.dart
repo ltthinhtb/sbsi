@@ -300,6 +300,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "partial_matched": MessageLookupByLibrary.simpleMessage("Khớp 1 phần"),
         "pass_not_match":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp"),
+        "pass_short_valid": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu phải lớn hơn 6 ký tự"),
         "passport": MessageLookupByLibrary.simpleMessage("Hộ chiếu Việt Nam"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "pay": MessageLookupByLibrary.simpleMessage("Thanh toán"),
@@ -316,6 +318,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mã pin không hợp lệ"),
         "please_input_OTP":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập mã OTP đến số"),
+        "please_input_account":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập số tài khoản"),
         "please_input_content":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập nội dung"),
         "please_input_email":
@@ -352,7 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "redo": MessageLookupByLibrary.simpleMessage("Làm lại"),
         "reference": MessageLookupByLibrary.simpleMessage("Tham chiếu"),
         "reference_short": MessageLookupByLibrary.simpleMessage("TC"),
-        "referral_code": MessageLookupByLibrary.simpleMessage("Mã giới thiệu"),
+        "referral_code":
+            MessageLookupByLibrary.simpleMessage("Mã giới thiệu/brokerID"),
         "register": MessageLookupByLibrary.simpleMessage("Mở tài khoản"),
         "register_form":
             MessageLookupByLibrary.simpleMessage("Đăng ký tài khoản"),

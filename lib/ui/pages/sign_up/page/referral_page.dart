@@ -78,6 +78,7 @@ class _ReferralPageState extends State<ReferralPage> {
                 inputController: state.referralNameController,
                 hintText: 'Tên người giới thiệu/nhân viên môi giới',
                 readOnly: true,
+                enable: false,
               ),
             ),
             const Spacer(),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../../model/entities/bank.dart';
 import '../../../model/params/open_account_request.dart';
 import '../../../model/params/request_params.dart';
 import '../../../networks/error_exception.dart';
@@ -30,11 +31,29 @@ class SignUpLogic extends GetxController {
 
   Future<void> getListBank() async {
     final RequestParams _requestParams =
-        RequestParams(user: "back", cmd: "LIST_BANK", session: "");
+        RequestParams(user: "back", cmd: "LIST_BANK", session: "", param: {});
     try {
       state.listBank = await apiService.getListBankSignUp(_requestParams);
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
+    }
+  }
+
+  List<Bank> searchBank(String stockCode) {
+    if (stockCode != '') {
+      List<Bank> searchResult = state.listBank
+          .where(
+            (element) => element.cBANKCODE!.toLowerCase().startsWith(
+                  stockCode.toLowerCase(),
+                ),
+          )
+          .toList();
+      if (searchResult.length > 10) {
+        searchResult = searchResult.sublist(0, 10);
+      }
+      return searchResult;
+    } else {
+      return [];
     }
   }
 
@@ -141,23 +160,23 @@ class SignUpLogic extends GetxController {
           cANHCHUKY: state.signatureUrl,
           cANHMATSAU: state.cardBackUrl,
           cANHMATTRUOC: state.cardFrontUrl,
-          cBANKCODE: "",
+          cBANKCODE: state.bankController.text,
           cCONTACTADDRESS:
               state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
           cEMAIL: state.emailController.text,
           cGENDER: state.orcResponse?.gender ?? "",
           cISSUEPLACE: state.orcResponse?.issuePlace ?? "",
           cMOBILE: state.phoneController.text,
-          cMOBILETRADINGPASSWORD: "123456",
-          cOPENMARGIN: "1",
+          cMOBILETRADINGPASSWORD: state.passPinController.text,
+          cOPENMARGIN: state.isOpenMargin ? "1" : "0",
           cPASSWORD: state.passController.text,
           cPROVINCE: state.orcResponse?.postCode?.first.city?[1] ?? "",
           cSALEID: state.referralController.text,
-          cRECEIVEBANKACCOUNT: "",
+          cRECEIVEBANKACCOUNT: state.bankAccountController.text,
         ).toJson());
     try {
-     var response = await apiService.checkAccount(_requestParams);
-     state.accountCode = response['SOTK'];
+      var response = await apiService.checkAccount(_requestParams);
+      state.accountCode = response['SOTK'];
       Get.to(const SuccessPage());
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);

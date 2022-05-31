@@ -21,7 +21,7 @@ class AppDiaLog {
   }
 
   static Future<void> showNoticeDialog(
-      {String? title, String? middleText, VoidCallback? onConfirm}) async {
+      {String? title, String? middleText, VoidCallback? onConfirm,String? buttonText}) async {
     AppLoading.disMissLoading();
     await Get.defaultDialog(
         title: title ?? "Thông báo",
@@ -30,7 +30,7 @@ class AppDiaLog {
         middleTextStyle: AppTextStyle.bodyText1,
         barrierDismissible: false,
         confirm: ButtonFill(
-          title: "OK",
+          title: buttonText ?? "OK",
           style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 5)),
           voidCallback: onConfirm ??
               () {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart' as get_x;
 import 'package:sbsi/configs/app_configs.dart';
 import 'package:sbsi/generated/l10n.dart';
@@ -215,7 +216,7 @@ class _ApiClient implements ApiClient {
         return response;
       } else {
         throw ErrorException(
-            response.statusCode!, _mapData['rs'] ?? _mapData['sRs']);
+            response.statusCode!, _mapData['iRs'] ?? _mapData['sRs']);
       }
     } catch (error) {
       throw _handleError(error);
@@ -815,11 +816,22 @@ class _ApiClient implements ApiClient {
         data: requestParams.toJson(),
       ),
     );
-    List _mapData = jsonDecode(_result.data)['data'];
+    List _mapData = (_result.data)['data'];
+    final String responseLocal =
+        await rootBundle.loadString('assets/json/bank.json');
+    final dataLocal = await json.decode(responseLocal);
     List<Bank> listBank = [];
-    for (var element in _mapData) {
-      listBank.add(Bank.fromJson(element));
-    }
+    _mapData.forEach((element) {
+      var bank = Bank.fromJson(element);
+      if (dataLocal != null) {
+        dataLocal['data'].forEach((v) {
+          if (v['bin'].toString() == bank.cBANKKEY) {
+            bank = bank.copyWith(cBANKNAME: v['name']);
+          }
+        });
+      }
+      listBank.add(bank);
+    });
     return listBank;
   }
 

@@ -3419,6 +3419,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Password short`
+  String get pass_short_valid {
+    return Intl.message(
+      'Password short',
+      name: 'pass_short_valid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please input account`
+  String get please_input_account {
+    return Intl.message(
+      'Please input account',
+      name: 'please_input_account',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

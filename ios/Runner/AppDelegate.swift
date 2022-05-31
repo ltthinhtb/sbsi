@@ -34,13 +34,13 @@ import FinalSDK
             
         let objCamera = ICEkycCameraRouter.createModule() as! ICEkycCameraViewController
             
-            objCamera.isVersion = Normal
+            objCamera.isVersion = Pro
+        objCamera.isVersionProOval = true
             objCamera.flowType = full
             objCamera.isType = cmt
             objCamera.cameraDelegate = self
             objCamera.stepNow = stepFront
-            
-            objCamera.isShowResult = true
+            objCamera.isShowResult = false
             objCamera.isShowHelp = true
             objCamera.isShowTrademark = true
             objCamera.isCheckLivenessCard = true
@@ -49,7 +49,7 @@ import FinalSDK
             objCamera.isCheckLivenessFace = true
             objCamera.languageApplication = "vi"
             objCamera.isValidatePostcode = true
-            
+            objCamera.isSkipVoiceVideo = true
             objCamera.modalPresentationStyle = .fullScreen
             objCamera.modalTransitionStyle = .coverVertical
             controller.present(objCamera, animated: true, completion: nil)

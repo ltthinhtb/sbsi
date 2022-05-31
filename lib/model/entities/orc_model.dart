@@ -2,8 +2,8 @@ class OrcResponse {
   String? originLocation;
   String? msg;
   num? nameProb;
-  int? coverProbFront;
-  int? backTypeId;
+  num? coverProbFront;
+  num? backTypeId;
   bool? addressFakeWarning;
   CheckingResultBack? checkingResultBack;
   String? nationPolicy;
@@ -31,15 +31,15 @@ class OrcResponse {
   String? cornerWarning;
   String? validDate;
   String? issueDate;
-  int? idFakeProb;
-  int? citizenIdProb;
+  num? idFakeProb;
+  num? citizenIdProb;
   String? idProbs;
   num? dobFakeWarningProb;
   num? featuresProb;
   String? issuePlace;
   bool? dobFakeWarning;
   String? nameFakeWarning;
-  int? typeId;
+  num? typeId;
   QualityBack? qualityFront;
   String? cardType;
   String? birthDay;
@@ -226,8 +226,8 @@ class OrcResponse {
 
 class CheckingResultBack {
   String? cornerCutResult;
-  int? editedProb;
-  int? checkPhotocopiedProb;
+  num? editedProb;
+  num? checkPhotocopiedProb;
   String? recapturedResult;
   String? checkPhotocopiedResult;
   String? editedResult;
@@ -270,7 +270,7 @@ class QualityBack {
   BrightSpotParam? brightSpotParam;
   num? luminanceScore;
   FinalResult? finalResult;
-  int? brightSpotScore;
+  num? brightSpotScore;
 
   QualityBack(
       {this.blurScore,
@@ -308,8 +308,8 @@ class QualityBack {
 
 class BrightSpotParam {
   num? averageIntensity;
-  int? brightSpotThreshold;
-  int? totalBrightSpotArea;
+  num? brightSpotThreshold;
+  num? totalBrightSpotArea;
 
   BrightSpotParam(
       {this.averageIntensity,
@@ -363,7 +363,7 @@ class FinalResult {
 class CheckingResultFront {
   String? cornerCutResult;
   num? editedProb;
-  int? checkPhotocopiedProb;
+  num? checkPhotocopiedProb;
   String? recapturedResult;
   String? checkPhotocopiedResult;
   String? editedResult;

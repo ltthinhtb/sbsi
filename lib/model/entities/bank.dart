@@ -6,15 +6,17 @@ class Bank {
   String? cENGLISHBANKNAME;
   String? cONLINEVPB;
   String? cBANKKEY;
+  String? logo;
 
   Bank(
       {this.pKBANK,
-        this.cBANKCODE,
-        this.cBANKNAME,
-        this.cSHORTNAME,
-        this.cENGLISHBANKNAME,
-        this.cONLINEVPB,
-        this.cBANKKEY});
+      this.cBANKCODE,
+      this.cBANKNAME,
+      this.cSHORTNAME,
+      this.cENGLISHBANKNAME,
+      this.cONLINEVPB,
+      this.cBANKKEY,
+      this.logo});
 
   Bank.fromJson(Map<String, dynamic> json) {
     pKBANK = json['PK_BANK'];
@@ -24,6 +26,7 @@ class Bank {
     cENGLISHBANKNAME = json['C_ENGLISH_BANK_NAME'];
     cONLINEVPB = json['C_ONLINE_VPB'];
     cBANKKEY = json['C_BANK_KEY'];
+    logo = 'assets/bank/${cBANKCODE?.toUpperCase()}.png';
   }
 
   Map<String, dynamic> toJson() {
@@ -36,5 +39,27 @@ class Bank {
     data['C_ONLINE_VPB'] = this.cONLINEVPB;
     data['C_BANK_KEY'] = this.cBANKKEY;
     return data;
+  }
+
+  Bank copyWith({
+    String? pKBANK,
+    String? cBANKCODE,
+    String? cBANKNAME,
+    String? cSHORTNAME,
+    String? cENGLISHBANKNAME,
+    String? cONLINEVPB,
+    String? cBANKKEY,
+    String? logo,
+  }) {
+    return Bank(
+      pKBANK: pKBANK ?? this.pKBANK,
+      cBANKCODE: cBANKCODE ?? this.cBANKCODE,
+      cBANKNAME: cBANKNAME ?? this.cBANKNAME,
+      cSHORTNAME: cSHORTNAME ?? this.cSHORTNAME,
+      cENGLISHBANKNAME: cENGLISHBANKNAME ?? this.cENGLISHBANKNAME,
+      cONLINEVPB: cONLINEVPB ?? this.cONLINEVPB,
+      cBANKKEY: cBANKKEY ?? this.cBANKKEY,
+      logo: logo ?? this.logo,
+    );
   }
 }

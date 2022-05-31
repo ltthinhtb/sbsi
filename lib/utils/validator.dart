@@ -19,7 +19,9 @@ class Validator {
   String? checkPass(String value) {
     if (value.isEmpty) {
       return S.current.please_input_password;
-    } else {
+    } else if(value.length < 6){
+      return S.current.pass_short_valid;
+    }else {
       return null;
     }
   }
@@ -37,6 +39,14 @@ class Validator {
   String? checkFullName(String value) {
     if (value.isEmpty) {
       return S.current.please_input_full_name;
+    } else {
+      return null;
+    }
+  }
+
+  String? checkAccount(String account) {
+    if (account.isEmpty) {
+      return S.current.please_input_account;
     } else {
       return null;
     }
