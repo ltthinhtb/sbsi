@@ -33,6 +33,8 @@ class SignUpState {
 
   final bankController = TextEditingController();
   final bankAccountController = TextEditingController();
+  final bankBranhController = TextEditingController();
+
   final formKeyBankAccount = GlobalKey<FormState>();
   final FocusNode bankNode = FocusNode();
   Rxn<String> errorBank = Rxn<String>();

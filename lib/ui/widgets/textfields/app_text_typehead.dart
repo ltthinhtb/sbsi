@@ -111,10 +111,13 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
             suffixIconConstraints: const BoxConstraints(maxHeight: 24),
           )),
       noItemsFoundBuilder: (context) {
+        var errorText = "Chúng khoán không hợp lệ";
+        if(T is Bank)
+          errorText = "Ngân hàng không hợp lệ";
         return Padding(
           padding: const EdgeInsets.all(8),
           child: Text(
-            'Chúng khoán không hợp lệ',
+            errorText,
             textAlign: TextAlign.center,
             style: AppTextStyle.caption,
           ),

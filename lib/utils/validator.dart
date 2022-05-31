@@ -17,9 +17,9 @@ class Validator {
   }
 
   String? checkPass(String value) {
-    if (value.isEmpty) {
+    if (value.trim().isEmpty) {
       return S.current.please_input_password;
-    } else if(value.length < 6){
+    } else if(value.trim().length < 6){
       return S.current.pass_short_valid;
     }else {
       return null;

@@ -51,6 +51,8 @@ class _ServicePageState extends State<ServicePage> with Validator {
         state.bankController.text.toLowerCase());
     if (index >= 0) {
       state.bankController.text = state.listBank[index].cBANKCODE ?? "";
+      state.bankAccountController.clear();
+      state.bankBranhController.clear();
       state.errorBank.value = null;
     } else {
       state.errorBank.value = "Ngân hàng không hợp lệ";
@@ -299,6 +301,8 @@ class _ServicePageState extends State<ServicePage> with Validator {
                               // chọn ngân hàng
                               state.bankController.text =
                                   suggestion.cBANKCODE ?? "";
+                              state.bankAccountController.clear();
+                              state.bankBranhController.clear();
                               state.errorBank.value = null;
                               FocusScope.of(context).unfocus();
                             },
@@ -321,6 +325,7 @@ class _ServicePageState extends State<ServicePage> with Validator {
                         ),
                         const SizedBox(height: 16),
                         AppTextFieldWidget(
+                          inputController: state.bankBranhController,
                           hintText: S.of(context).branch,
                         ),
                       ],

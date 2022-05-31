@@ -58,7 +58,7 @@ import FinalSDK
         func getInformationCard() -> String {
             let frontImage = SaveData.shared().imageFront as UIImage
             let backImage = SaveData.shared().imageBack as UIImage
-            let faceFront = SaveData.shared().imageFace as UIImage
+            let faceFront = SaveData.shared().imageFaceFar as UIImage
             let fontData = frontImage.jpegData(compressionQuality: 1)
             let backData = backImage.jpegData(compressionQuality: 1)
             let faceData = faceFront.jpegData(compressionQuality: 1)

@@ -40,21 +40,14 @@ class SignUpLogic extends GetxController {
   }
 
   List<Bank> searchBank(String stockCode) {
-    if (stockCode != '') {
-      List<Bank> searchResult = state.listBank
-          .where(
-            (element) => element.cBANKCODE!.toLowerCase().startsWith(
-                  stockCode.toLowerCase(),
-                ),
-          )
-          .toList();
-      if (searchResult.length > 10) {
-        searchResult = searchResult.sublist(0, 10);
-      }
-      return searchResult;
-    } else {
-      return [];
-    }
+    List<Bank> searchResult = state.listBank
+        .where(
+          (element) => element.cBANKCODE!.toLowerCase().startsWith(
+                stockCode.toLowerCase(),
+              ),
+        )
+        .toList();
+    return searchResult;
   }
 
   Future<void> getSaleID() async {
