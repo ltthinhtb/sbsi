@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
@@ -121,6 +122,8 @@ class StockOrderLogic extends GetxController {
       await getCashBalance();
       state.total.value = 0;
       state.loading.value = false;
+
+      state.scrollController.jumpTo(0);
     } catch (error) {
       state.loading.value = false;
       AppSnackBar.showError(message: error.toString());

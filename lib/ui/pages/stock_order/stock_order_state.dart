@@ -61,6 +61,8 @@ class StockOrderState {
 
   // tổng giá trị tính tạm thời
   ValueNotifier<num> total = ValueNotifier<num>(0);
+
+  ScrollController scrollController = ScrollController();
 }
 
 enum StockExchange { HSX, HNX, UPCOM }

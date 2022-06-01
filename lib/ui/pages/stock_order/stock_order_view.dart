@@ -216,6 +216,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
         child: KeyboardActions(
           config: buildConfig(),
           child: ListView(
+            controller: state.scrollController,
             children: [
               const SizedBox(height: 16),
               Obx(() {
