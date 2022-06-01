@@ -9,6 +9,7 @@ import 'package:sbsi/ui/pages/sign_in/sign_in_logic.dart';
 import 'package:sbsi/utils/logger.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
 import 'package:shared_preferences/shared_preferences.dart';
+import '../generated/l10n.dart';
 import '../model/params/data_params.dart';
 import '../model/params/request_params.dart';
 import '../networks/error_exception.dart';
@@ -49,16 +50,19 @@ class AuthService extends GetxService {
       // chưa đăng ký vân tay
       if (!canAuthenticate) {
         return AppSnackBar.showError(
-            message: "Bạn chưa đăng ký vân tay/khuôn mặt");
+            message: S.current.you_not_register);
       }
       if (!isBiometricsSave) {
         return AppSnackBar.showError(
-            message: "Tài khoản bạn chưa đăng ký vân tay/ khuôn mặt");
+            message: S.current.your_account_not_register);
       }
-      await auth.authenticate(
+      bool didAuthenticate = await auth.authenticate(
           localizedReason: 'Please authenticate to show account balance',
           options: const AuthenticationOptions(
               useErrorDialogs: true, stickyAuth: true, biometricOnly: true));
+      // đăng nhập khuôn mặt vân tay thất bại
+      if (!didAuthenticate) throw ErrorException(400, S.current.faceID_login_fail);
+      // đăng nhập khuôn mặt vân tay thành công
       Get.find<SignInLogic>().signIn(isBiometrics: true);
     } on PlatformException catch (e) {
       if (e.code == auth_error.notEnrolled) {
@@ -69,6 +73,8 @@ class AuthService extends GetxService {
       } else {
         logger.e(e.toString());
       }
+    } on ErrorException catch (error) {
+      AppSnackBar.showError(message: error.message);
     } catch (e) {
       logger.e(e.toString());
     }

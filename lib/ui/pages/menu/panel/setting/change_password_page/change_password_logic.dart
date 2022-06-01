@@ -28,9 +28,16 @@ class ChangePasswordLogic extends GetxController {
     );
     try {
       await apiService.changePassword(_requestParams);
+      updatePass();
     } catch (e) {
       rethrow;
     }
+  }
+
+  void updatePass(){
+    var token = Get.find<AuthService>().token.value;
+    token?.data?.pass = state.new_controller.text;
+    Get.find<AuthService>().saveToken(token!);
   }
 
   Future<void> changePasswordFirst() async {

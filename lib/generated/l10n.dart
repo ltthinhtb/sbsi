@@ -3549,6 +3549,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Fingerprint/face login failed`
+  String get faceID_login_fail {
+    return Intl.message(
+      'Fingerprint/face login failed',
+      name: 'faceID_login_fail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your account has not registered fingerprint/face`
+  String get your_account_not_register {
+    return Intl.message(
+      'Your account has not registered fingerprint/face',
+      name: 'your_account_not_register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have not registered facial fingerprints`
+  String get you_not_register {
+    return Intl.message(
+      'You have not registered facial fingerprints',
+      name: 'you_not_register',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

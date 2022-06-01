@@ -181,6 +181,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_referral_code":
             MessageLookupByLibrary.simpleMessage("Nhập mã giới thiệu"),
         "error": MessageLookupByLibrary.simpleMessage("Lỗi"),
+        "faceID_login_fail": MessageLookupByLibrary.simpleMessage(
+            "Đăng nhập vân tay/ khuôn mặt thất bại"),
         "failed": MessageLookupByLibrary.simpleMessage("Thất bại"),
         "fee": MessageLookupByLibrary.simpleMessage("Phí đầu tư"),
         "finance": MessageLookupByLibrary.simpleMessage("Tài chính"),
@@ -507,6 +509,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "wating_match": MessageLookupByLibrary.simpleMessage("Chờ khớp"),
         "withdraw_money": MessageLookupByLibrary.simpleMessage("Tiền được rút"),
         "world": MessageLookupByLibrary.simpleMessage("Thế giới"),
-        "year": MessageLookupByLibrary.simpleMessage("năm")
+        "year": MessageLookupByLibrary.simpleMessage("năm"),
+        "you_not_register": MessageLookupByLibrary.simpleMessage(
+            "Bạn chưa đăng ký vân tay khuôn mặt"),
+        "your_account_not_register": MessageLookupByLibrary.simpleMessage(
+            "Tài khoản bạn chưa đăng ký vân tay/ khuôn mặt")
       };
 }

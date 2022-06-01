@@ -348,5 +348,9 @@
   "address" : "Địa chỉ",
   "telephone" : "Di động",
   "c_authen_sign" : "Phương thức xác thực",
-  "registration" : "Đăng ký vân tay / khuôn mặt"
+  "registration" : "Đăng ký vân tay / khuôn mặt",
+  "faceID_login_fail" : "Đăng nhập vân tay/ khuôn mặt thất bại",
+  "your_account_not_register" : "Tài khoản bạn chưa đăng ký vân tay/ khuôn mặt",
+  "you_not_register" : "Bạn chưa đăng ký vân tay khuôn mặt"
+
 }

@@ -173,6 +173,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_referral_code":
             MessageLookupByLibrary.simpleMessage("Referral Code"),
         "error": MessageLookupByLibrary.simpleMessage("Error"),
+        "faceID_login_fail": MessageLookupByLibrary.simpleMessage(
+            "Fingerprint/face login failed"),
         "failed": MessageLookupByLibrary.simpleMessage("Failed"),
         "fee": MessageLookupByLibrary.simpleMessage("Fee"),
         "finance": MessageLookupByLibrary.simpleMessage("Finance"),
@@ -490,6 +492,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "withdraw_money":
             MessageLookupByLibrary.simpleMessage("Withdraw money"),
         "world": MessageLookupByLibrary.simpleMessage("World"),
-        "year": MessageLookupByLibrary.simpleMessage("year")
+        "year": MessageLookupByLibrary.simpleMessage("year"),
+        "you_not_register": MessageLookupByLibrary.simpleMessage(
+            "You have not registered facial fingerprints"),
+        "your_account_not_register": MessageLookupByLibrary.simpleMessage(
+            "Your account has not registered fingerprint/face")
       };
 }

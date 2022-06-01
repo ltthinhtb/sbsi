@@ -63,6 +63,14 @@ class SignInLogic extends GetxController with Validator {
         if (result != null) {
           result.data?.defaultAcc = '${result.data?.defaultAcc}';
           result.data?.pass = password;
+          // nếu trường hợp đăng nhập bt mà tk đăng nhập khác tk đã lưu thì xóa vân tay đi
+          if (!isBiometrics) {
+            if (state.usernameTextController.text !=
+                (authService.token.value?.data?.user ?? "")) {
+              // xóa vân tay khuôn mặt cũ
+              Get.find<AuthService>().changeIsBiometricsSave(false);
+            }
+          }
           authService.saveToken(result);
           AppLoading.disMissLoading();
 
@@ -77,7 +85,7 @@ class SignInLogic extends GetxController with Validator {
                 Get.find<AuthService>().changeIsBiometricsSave(false);
 
                 /// đăng nhập lại
-                signIn();
+                signIn(isBiometrics: isBiometrics);
               }
             });
           }
@@ -86,12 +94,12 @@ class SignInLogic extends GetxController with Validator {
           await authService.getListAccount();
           await Get.offAllNamed(RouteConfig.main);
         } else {
-          signIn();
+          signIn(isBiometrics: isBiometrics);
         }
       } on ErrorException catch (error) {
         AppSnackBar.showError(message: error.message);
       } on Exception {
-        signIn();
+        signIn(isBiometrics: isBiometrics);
       }
     }
     AppLoading.disMissLoading();

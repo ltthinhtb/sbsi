@@ -347,7 +347,10 @@
   "contact_info": "Contact info",
   "address": "Address",
   "telephone": "Telephone",
-  "c_authen_sign" : "Authentication sign",
-  "registration" : "Fingerprint / face registration"
+  "c_authen_sign": "Authentication sign",
+  "registration": "Fingerprint / face registration",
+  "faceID_login_fail": "Fingerprint/face login failed",
+  "your_account_not_register" : "Your account has not registered fingerprint/face",
+  "you_not_register" : "You have not registered facial fingerprints"
 
 }
