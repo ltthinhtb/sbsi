@@ -119,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "category": MessageLookupByLibrary.simpleMessage("Khác"),
         "ceil": MessageLookupByLibrary.simpleMessage("Trần"),
         "change_order": MessageLookupByLibrary.simpleMessage("Sửa lệnh"),
+        "change_order_success": MessageLookupByLibrary.simpleMessage(
+            "Gửi yêu cầu sửa lệnh thành công"),
         "change_order_successfully":
             MessageLookupByLibrary.simpleMessage("Sửa lệnh thành công"),
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
@@ -172,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit": MessageLookupByLibrary.simpleMessage("Sửa"),
         "edit_category":
             MessageLookupByLibrary.simpleMessage("Thay đổi danh mục"),
+        "edit_note": MessageLookupByLibrary.simpleMessage("Sửa lệnh"),
         "ee": MessageLookupByLibrary.simpleMessage("Sức mua tài khoản"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_not_valid":

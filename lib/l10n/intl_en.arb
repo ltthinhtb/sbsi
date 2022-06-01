@@ -350,11 +350,12 @@
   "c_authen_sign": "Authentication sign",
   "registration": "Fingerprint / face registration",
   "faceID_login_fail": "Fingerprint/face login failed",
-  "your_account_not_register" : "Your account has not registered fingerprint/face",
-  "you_not_register" : "You have not registered facial fingerprints",
-  "change_pin" : "Change pin",
-  "change_pin_success" : "Change pin success",
-  "confirm_new_pin" : "Confirm new pin",
-  "save_pin" : "Save pin"
-
+  "your_account_not_register": "Your account has not registered fingerprint/face",
+  "you_not_register": "You have not registered facial fingerprints",
+  "change_pin": "Change pin",
+  "change_pin_success": "Change pin success",
+  "confirm_new_pin": "Confirm new pin",
+  "save_pin": "Save pin",
+  "change_order_success": "Change order success",
+  "edit_note": "Edit note"
 }

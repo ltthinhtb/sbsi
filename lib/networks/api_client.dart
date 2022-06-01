@@ -248,7 +248,8 @@ class _ApiClient implements ApiClient {
         });
         throw ErrorException(response.statusCode!, _mapData['rs']);
       } else {
-        throw ErrorException(response.statusCode!, _handleOrderError(_rc));
+        throw ErrorException(response.statusCode!, _mapData['rs']);
+        // throw ErrorException(response.statusCode!, _handleOrderError(_rc));
       }
     } catch (error) {
       rethrow;

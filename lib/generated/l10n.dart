@@ -3619,6 +3619,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Change order success`
+  String get change_order_success {
+    return Intl.message(
+      'Change order success',
+      name: 'change_order_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit note`
+  String get edit_note {
+    return Intl.message(
+      'Edit note',
+      name: 'edit_note',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

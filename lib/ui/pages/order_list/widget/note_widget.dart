@@ -8,11 +8,10 @@ import 'package:sbsi/utils/validator.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../model/order_data/change_order_data.dart';
 import '../../../../model/order_data/inday_order.dart';
 import '../../../../utils/error_message.dart';
 import '../../../widgets/button/button_filled.dart';
-import '../../../widgets/dialog/custom_dialog.dart';
+import '../../../widgets/textfields/appTextFieldNumber.dart';
 import '../../../widgets/textfields/app_text_field.dart';
 
 class NoteWidget extends StatefulWidget {
@@ -26,13 +25,15 @@ class NoteWidget extends StatefulWidget {
   State<NoteWidget> createState() => _NoteWidgetState();
 }
 
-class _NoteWidgetState extends State<NoteWidget> with Validator{
+class _NoteWidgetState extends State<NoteWidget> with Validator {
   final state = Get.find<OrderListLogic>().state;
   final logic = Get.find<OrderListLogic>();
 
   bool _isSelect = false;
 
   final _pinController = TextEditingController();
+  final priceController = TextEditingController();
+  final volumeController = TextEditingController();
 
   @override
   void initState() {
@@ -50,23 +51,6 @@ class _NoteWidgetState extends State<NoteWidget> with Validator{
     return buildItem(widget.listOrder);
   }
 
-  Future<void> edit(BuildContext context) async {
-    ChangeOrderData? _r = await CustomDialog.showChangeOrderDialog(
-      context,
-      S.of(context).confirm_change_order,
-      [
-        S.of(context).change_order,
-      ],
-      buttonColors: [AppColors.primary2, AppColors.primary],
-      textButtonColors: [AppColors.primary, AppColors.white],
-    );
-    if (_r != null && _r.price.isNotEmpty && _r.vol.isNotEmpty) {
-      // await changeOrder(_r);
-    }
-  }
-
-
-
   Widget buildItem(IndayOrder data) {
     String _status = MessageOrder.getStatusOrder(data);
     final caption = Theme.of(context).textTheme.caption;
@@ -77,11 +61,16 @@ class _NoteWidgetState extends State<NoteWidget> with Validator{
         children: [
           SlidableAction(
             // An action can be bigger than the others.
-            onPressed: edit,
+            onPressed: (context) {
+              _pinController.clear();
+              priceController.text = data.showPrice ?? "";
+              volumeController.text = data.volume ?? "";
+              editOrder(data);
+            },
             backgroundColor: const Color.fromRGBO(251, 122, 4, 1),
             foregroundColor: Colors.white,
             icon: null,
-            label: 'Sửa lệnh',
+            label: S.of(context).change_order,
           ),
           SlidableAction(
             onPressed: (BuildContext context) {
@@ -209,7 +198,6 @@ class _NoteWidgetState extends State<NoteWidget> with Validator{
     );
   }
 
-
   void cancelOrder(IndayOrder order) {
     Get.dialog(Dialog(
       insetPadding: const EdgeInsets.symmetric(horizontal: 16),
@@ -257,7 +245,9 @@ class _NoteWidgetState extends State<NoteWidget> with Validator{
                     order.side == "B" ? S.of(context).buy : S.of(context).sell,
                     style: body1?.copyWith(
                         fontWeight: FontWeight.w700,
-                        color: order.side == "B" ? AppColors.active : AppColors.deActive),
+                        color: order.side == "B"
+                            ? AppColors.active
+                            : AppColors.deActive),
                   ),
                 ],
               ),
@@ -301,21 +291,21 @@ class _NoteWidgetState extends State<NoteWidget> with Validator{
                 children: [
                   Expanded(
                       child: ButtonFill(
-                        voidCallback: () {
-                          Get.back();
-                        },
-                        title: S.of(context).cancel_short,
-                        style: ElevatedButton.styleFrom(
-                            onPrimary: AppColors.primary,
-                            primary: const Color.fromRGBO(255, 238, 238, 1)),
-                      )),
+                    voidCallback: () {
+                      Get.back();
+                    },
+                    title: S.of(context).cancel_short,
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: AppColors.primary,
+                        primary: const Color.fromRGBO(255, 238, 238, 1)),
+                  )),
                   const SizedBox(
                     width: 16,
                   ),
                   Expanded(
                       child: ButtonFill(
                           voidCallback: () {
-                            logic.cancelOrder(order,_pinController.text);
+                            logic.cancelOrder(order, _pinController.text);
                           },
                           title: S.of(context).confirm))
                 ],
@@ -326,5 +316,201 @@ class _NoteWidgetState extends State<NoteWidget> with Validator{
         );
       }),
     ));
+  }
+
+  void editOrder(IndayOrder order) {
+    Get.dialog(Dialog(
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Builder(builder: (context) {
+        final body2 = Theme.of(context).textTheme.bodyText2;
+        final body1 = Theme.of(context).textTheme.bodyText1;
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+              color: AppColors.white, borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 16),
+              Text(
+                S.of(context).edit_note,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).stock_code,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    order.symbol ?? "",
+                    style: body1?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).orderType,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    order.side == "B" ? S.of(context).buy : S.of(context).sell,
+                    style: body1?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: order.side == "B"
+                            ? AppColors.active
+                            : AppColors.deActive),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      S.of(context).price,
+                      style: body2?.copyWith(color: AppColors.textSecond),
+                    ),
+                  ),
+                  Expanded(
+                      child: AppTextFieldNumber(
+                    inputController: priceController,
+                    hintText: S.of(context).price,
+                    backColor: AppColors.PastelSecond2,
+                    minus: () {
+                      checkNullPrice(order);
+                      var value = priceController.numberValue;
+                      value = value - 0.05;
+                      priceController.updateValue(value);
+                    },
+                    plus: () {
+                      checkNullPrice(order);
+                      var value = priceController.numberValue;
+                      value = value + 0.05;
+                      priceController.updateValue(value);
+                    },
+                  ))
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      S.of(context).volumn,
+                      style: body2?.copyWith(color: AppColors.textSecond),
+                    ),
+                  ),
+                  Expanded(
+                      child: AppTextFieldNumber(
+                    inputController: volumeController,
+                    hintText: S.of(context).volume,
+                    backColor: AppColors.PastelSecond2,
+                    minus: () {
+                      checkNullVol();
+                      var value = volumeController.numberValue;
+                      value = value - 100;
+                      volumeController.updateVol(value);
+                    },
+                    plus: () {
+                      checkNullVol();
+                      var value = volumeController.numberValue;
+                      value = value + 100;
+                      volumeController.updateVol(value);
+                    },
+                  ))
+                ],
+              ),
+              const SizedBox(height: 20),
+              AppTextFieldWidget(
+                validator: (pin) => checkPin(pin!),
+                hintText: S.of(context).input_pin,
+                inputController: _pinController,
+                obscureText: true,
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                      child: ButtonFill(
+                    voidCallback: () {
+                      Get.back();
+                    },
+                    title: S.of(context).cancel_short,
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: AppColors.primary,
+                        primary: const Color.fromRGBO(255, 238, 238, 1)),
+                  )),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                      child: ButtonFill(
+                          voidCallback: () {
+                            logic.changeOrder(
+                                vol: volumeController.numberValue.toInt(),
+                                data: order,
+                                pinController: _pinController.text,
+                                price: priceController.text);
+                          },
+                          title: S.of(context).confirm))
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        );
+      }),
+    ));
+  }
+
+  void checkNullPrice(IndayOrder indayOrder) {
+    /// nếu giá không có thì sẽ lấy giá tham lastPrice
+    if (priceController.text.isEmpty) {
+      priceController.text = indayOrder.showPrice ?? "";
+    }
+  }
+
+  void checkNullVol() {
+    /// nếu khối lượng không có thì sẽ lấy giá 100
+    if (volumeController.text.isEmpty) {
+      volumeController.text = "100";
+    }
+  }
+}
+
+extension TextControllerExt on TextEditingController {
+  double get numberValue {
+    try {
+      return double.parse(text);
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  void updateValue(double value) {
+    try {
+      text = value.toStringAsFixed(2);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  void updateVol(double value) {
+    try {
+      text = value.toStringAsFixed(0);
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }

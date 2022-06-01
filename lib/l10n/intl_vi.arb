@@ -355,5 +355,7 @@
   "change_pin" : "Thay đổi mã pin",
   "change_pin_success" : "Thay đổi mã Pin thành công",
   "confirm_new_pin" : "Xác nhận mã pin mới",
-  "save_pin" : "Lưu mã pin"
+  "save_pin" : "Lưu mã pin",
+  "change_order_success" : "Gửi yêu cầu sửa lệnh thành công",
+  "edit_note" : "Sửa lệnh"
 }

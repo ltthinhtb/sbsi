@@ -12,6 +12,7 @@ class AppTextFieldNumber extends StatefulWidget {
   final String? hintText;
   final VoidCallback? minus;
   final VoidCallback? plus;
+  final Color? backColor;
 
   const AppTextFieldNumber(
       {Key? key,
@@ -21,7 +22,8 @@ class AppTextFieldNumber extends StatefulWidget {
       this.label,
       this.hintText,
       this.minus,
-      this.plus})
+      this.plus,
+      this.backColor})
       : super(key: key);
 
   @override
@@ -33,16 +35,18 @@ class _AppTextFieldNumberState extends State<AppTextFieldNumber> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      decoration: const BoxDecoration(boxShadow: [
-        BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.05), blurRadius: 4),
-        BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.05), blurRadius: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+          color: widget.backColor, boxShadow: [
+        const BoxShadow(
+            color: const Color.fromRGBO(0, 0, 0, 0.05),
+            blurRadius: 20,
+            offset: const Offset(0, 4)),
       ]),
       child: TextFormField(
         controller: widget.inputController,
         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-        inputFormatters: [
-          CommaTextInputFormatter()
-        ],
+        inputFormatters: [CommaTextInputFormatter()],
         focusNode: widget.focusNode,
         textAlign: TextAlign.center,
         onChanged: widget.onChanged,
@@ -61,7 +65,7 @@ class _AppTextFieldNumberState extends State<AppTextFieldNumber> {
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(5),
             ),
-            fillColor: AppColors.white,
+            fillColor: widget.backColor ?? AppColors.white,
             filled: true,
             prefixIconConstraints:
                 const BoxConstraints(maxHeight: 33, maxWidth: 41),

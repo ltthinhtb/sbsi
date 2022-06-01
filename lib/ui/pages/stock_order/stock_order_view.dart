@@ -312,6 +312,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           final note = state.listOrder[index];
                           return NoteWidgetOrder(

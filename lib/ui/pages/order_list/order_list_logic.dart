@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:sbsi/model/order_data/change_order_data.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
@@ -147,7 +146,11 @@ class OrderListLogic extends GetxController {
   }
 
   // sửa lệnh
-  Future<void> changeOrder(IndayOrder data, ChangeOrderData changeData) async {
+  Future<void> changeOrder(
+      {required IndayOrder data,
+      required int vol,
+      required String price,
+      required String pinController}) async {
     var _tokenEntity = authService.token.value;
     RequestParams _requestParams = RequestParams(
       group: "O",
@@ -157,17 +160,23 @@ class OrderListLogic extends GetxController {
         type: "string",
         cmd: "Web.changeOrder",
         orderNo: data.orderNo,
-        nvol: int.tryParse(changeData.vol) ?? 0,
-        nprice: changeData.price,
+        nvol: vol,
+        nprice: price,
         fisID: "",
         orderType: "1",
-        pin: "",
+        pin: pinController,
       ),
     );
     try {
       await apiService.changeOrder(_requestParams);
-    } catch (e) {
-      rethrow;
+      getOrderList();
+      Get.back(); // back dialog
+      AppSnackBar.showSuccess(message: S.current.change_order_success);
+    }on ErrorException catch(error){
+      AppSnackBar.showError(message: error.message);
+    }
+    catch (e) {
+      logger.e(e.toString());
     }
   }
 

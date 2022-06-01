@@ -114,6 +114,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "category": MessageLookupByLibrary.simpleMessage("Menu"),
         "ceil": MessageLookupByLibrary.simpleMessage("Ceil"),
         "change_order": MessageLookupByLibrary.simpleMessage("Change order"),
+        "change_order_success":
+            MessageLookupByLibrary.simpleMessage("Change order success"),
         "change_order_successfully":
             MessageLookupByLibrary.simpleMessage("Change order successfully"),
         "change_password":
@@ -164,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "domestic": MessageLookupByLibrary.simpleMessage("Trong nước"),
         "edit": MessageLookupByLibrary.simpleMessage("edit"),
         "edit_category": MessageLookupByLibrary.simpleMessage("Edit category"),
+        "edit_note": MessageLookupByLibrary.simpleMessage("Edit note"),
         "ee": MessageLookupByLibrary.simpleMessage("EE"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_not_valid":
