@@ -375,6 +375,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đăng ký tài khoản"),
         "register_online":
             MessageLookupByLibrary.simpleMessage("Mở tài khoản online"),
+        "registration":
+            MessageLookupByLibrary.simpleMessage("Đăng ký vân tay / khuôn mặt"),
         "rejected": MessageLookupByLibrary.simpleMessage("Từ chối"),
         "remember_account":
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),

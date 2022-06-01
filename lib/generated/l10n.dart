@@ -3539,6 +3539,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Fingerprint / face registration`
+  String get registration {
+    return Intl.message(
+      'Fingerprint / face registration',
+      name: 'registration',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

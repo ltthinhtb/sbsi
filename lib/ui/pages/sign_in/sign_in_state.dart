@@ -9,7 +9,7 @@ class SignInState {
   final FocusNode focusNodePassword = FocusNode();
 
   SignInState() {
-    usernameTextController = TextEditingController(text: '022356');
-    passwordTextController = TextEditingController(text: "123456");
+    usernameTextController = TextEditingController();
+    passwordTextController = TextEditingController();
   }
 }

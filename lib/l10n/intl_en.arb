@@ -347,6 +347,7 @@
   "contact_info": "Contact info",
   "address": "Address",
   "telephone": "Telephone",
-  "c_authen_sign" : "Authentication sign"
+  "c_authen_sign" : "Authentication sign",
+  "registration" : "Fingerprint / face registration"
 
 }

@@ -50,7 +50,6 @@ Future initServices() async {
   await Get.putAsync(() => CacheService().init());
   await Get.putAsync(() => SettingService().init());
   await Get.putAsync(() => NotificationService().init());
-  Get.find<AuthService>().removeToken();
   FlutterNativeSplash.remove();
 }
 

@@ -1,14 +1,9 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>sbsi truy cập camera</string>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>en</string>
-	</array>
+    <key>NSFaceIDUsageDescription</key>
+    <string>Why is my app authenticating using face id?</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -19,6 +14,10 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>sbsi</string>
 	<key>CFBundlePackageType</key>
@@ -31,6 +30,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>sbsi truy cập camera</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>SBSI xử dụng microphone</string>
 	<key>UIBackgroundModes</key>

@@ -24,10 +24,23 @@ class SignInLogic extends GetxController with Validator {
     channel: "channel",
   );
 
-  void signIn() async {
+  @override
+  void onInit() async {
+    super.onInit();
+    state.usernameTextController.text =
+        authService.token.value?.data?.user ?? "";
+  }
+
+  // đăng nhập bằng vân tay hoặc mật khẩu
+  void signIn({bool isBiometrics = false}) async {
     AppLoading.showLoading();
-    final username = state.usernameTextController.text;
-    final password = state.passwordTextController.text;
+    String username = state.usernameTextController.text;
+    String password = state.passwordTextController.text;
+    // đăng nhập bằng vân tay
+    if (isBiometrics) {
+      username = authService.token.value?.data?.user ?? "";
+      password = authService.token.value?.data?.pass ?? "";
+    }
     bool validateUser = state.formKeyUser.currentState!.validate();
     bool validatePass = state.formKeyPass.currentState!.validate();
     bool validate = validateUser && validatePass;
@@ -44,6 +57,7 @@ class SignInLogic extends GetxController with Validator {
         final result = await apiService.signIn(_requestParams);
         if (result != null) {
           result.data?.defaultAcc = '${result.data?.defaultAcc}';
+          result.data?.pass = password;
           authService.saveToken(result);
           AppLoading.disMissLoading();
 
@@ -54,6 +68,8 @@ class SignInLogic extends GetxController with Validator {
               /// lấy lại mật khẩu mới
               if (value is String) {
                 state.passwordTextController.text = value;
+                // xóa vân tay khuôn mặt cũ
+                Get.find<AuthService>().changeIsBiometricsSave(false);
 
                 /// đăng nhập lại
                 signIn();

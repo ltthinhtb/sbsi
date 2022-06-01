@@ -356,6 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register_form": MessageLookupByLibrary.simpleMessage("Register form"),
         "register_online":
             MessageLookupByLibrary.simpleMessage("Register Online"),
+        "registration": MessageLookupByLibrary.simpleMessage(
+            "Fingerprint / face registration"),
         "rejected": MessageLookupByLibrary.simpleMessage("Rejected"),
         "remember_account":
             MessageLookupByLibrary.simpleMessage("Remember account"),

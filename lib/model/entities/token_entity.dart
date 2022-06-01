@@ -38,17 +38,19 @@ class Data {
   int? countLoginFail;
   String? authenType;
   String? iP;
+  String? pass;
 
   Data(
       {this.user,
-        this.name,
-        this.sid,
-        this.address,
-        this.defaultAcc,
-        this.iFlag,
-        this.countLoginFail,
-        this.authenType,
-        this.iP});
+      this.name,
+      this.sid,
+      this.address,
+      this.defaultAcc,
+      this.iFlag,
+      this.countLoginFail,
+      this.authenType,
+      this.iP,
+      this.pass});
 
   Data.fromJson(Map<String, dynamic> json) {
     user = json['user'];
@@ -60,6 +62,7 @@ class Data {
     countLoginFail = json['CountLoginFail'];
     authenType = json['AuthenType'];
     iP = json['IP'];
+    pass = json['pass'];
   }
 
   Map<String, dynamic> toJson() {
@@ -73,6 +76,7 @@ class Data {
     data['CountLoginFail'] = countLoginFail;
     data['AuthenType'] = authenType;
     data['IP'] = iP;
+    data['pass'] = pass;
     return data;
   }
 }

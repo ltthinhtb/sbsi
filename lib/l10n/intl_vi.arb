@@ -347,5 +347,6 @@
   "contact_info" : "Thông tin liên hệ",
   "address" : "Địa chỉ",
   "telephone" : "Di động",
-  "c_authen_sign" : "Phương thức xác thực"
+  "c_authen_sign" : "Phương thức xác thực",
+  "registration" : "Đăng ký vân tay / khuôn mặt"
 }

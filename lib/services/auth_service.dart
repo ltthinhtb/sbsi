@@ -1,23 +1,78 @@
+import 'package:flutter/services.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:sbsi/database/secure_storage_helper.dart';
 import 'package:sbsi/model/entities/index.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/model/response/list_account_response.dart';
 import 'package:sbsi/services/api/api_service.dart';
+import 'package:sbsi/ui/pages/sign_in/sign_in_logic.dart';
 import 'package:sbsi/utils/logger.dart';
-
+import 'package:local_auth/error_codes.dart' as auth_error;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../model/params/data_params.dart';
 import '../model/params/request_params.dart';
 import '../networks/error_exception.dart';
 import '../ui/commons/app_snackbar.dart';
 
 class AuthService extends GetxService {
+  static const String IS_BIOMETRICS_SAVE = 'isBiometricsSave';
   Rxn<TokenEntity> token = Rxn<TokenEntity>();
 
   var listAccount = <Account>[];
 
+  bool isBiometricsSave = false;
+
+  final LocalAuthentication auth = LocalAuthentication();
+  late bool canAuthenticateWithBiometrics;
+  late bool canAuthenticate;
+  late SharedPreferences prefs;
+
   Future<AuthService> init() async {
     await getToken();
+    canAuthenticateWithBiometrics = await auth.canCheckBiometrics;
+    canAuthenticate =
+        canAuthenticateWithBiometrics || await auth.isDeviceSupported();
+    logger.i("có thể đăng nhập bằng face/vân tay: ${canAuthenticate}");
+    prefs = await SharedPreferences.getInstance();
+
+    isBiometricsSave = prefs.getBool(IS_BIOMETRICS_SAVE) ?? false;
     return this;
+  }
+
+  // thay đổi trạng thái lưu vân tay khuôn mặt
+  Future<void> changeIsBiometricsSave(bool _isBiometricsSave) async {
+    isBiometricsSave = _isBiometricsSave;
+    await prefs.setBool(IS_BIOMETRICS_SAVE, _isBiometricsSave);
+  }
+
+  Future<void> authenticate() async {
+    try {
+      // chưa đăng ký vân tay
+      if (!canAuthenticate) {
+        return AppSnackBar.showError(
+            message: "Bạn chưa đăng ký vân tay/khuôn mặt");
+      }
+      if (!isBiometricsSave) {
+        return AppSnackBar.showError(
+            message: "Tài khoản bạn chưa đăng ký vân tay/ khuôn mặt");
+      }
+      await auth.authenticate(
+          localizedReason: 'Please authenticate to show account balance',
+          options: const AuthenticationOptions(
+              useErrorDialogs: true, stickyAuth: true, biometricOnly: true));
+      Get.find<SignInLogic>().signIn();
+    } on PlatformException catch (e) {
+      if (e.code == auth_error.notEnrolled) {
+        // Add handling of no hardware here.
+      } else if (e.code == auth_error.lockedOut ||
+          e.code == auth_error.permanentlyLockedOut) {
+        AppSnackBar.showError(message: e.message);
+      } else {
+        logger.e(e.toString());
+      }
+    } catch (e) {
+      logger.e(e.toString());
+    }
   }
 
   // lấy thông tin tk gồm tài khoản thường và tài khoản margin
@@ -31,7 +86,8 @@ class AuthService extends GetxService {
     _requestParams.session = _tokenEntity.data?.sid;
     _requestParams.data = _object;
     try {
-      var response = await Get.find<ApiService>().getListAccount(_requestParams);
+      var response =
+          await Get.find<ApiService>().getListAccount(_requestParams);
       if (response!.isNotEmpty) {
         listAccount = response;
       }

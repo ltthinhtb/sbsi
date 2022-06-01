@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/generated/l10n.dart';
+import 'package:sbsi/services/auth_service.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/validator.dart';
@@ -111,11 +112,16 @@ class _SignInPageState extends State<SignInPage> with Validator {
                                 ),
                               ),
                               const SizedBox(width: 23.17),
-                              SvgPicture.asset(
-                                "assets/icon_svg/face_id.svg",
-                                height: 33,
-                                width: 31,
-                                color: Theme.of(context).primaryColor,
+                              GestureDetector(
+                                onTap: (){
+                                  Get.find<AuthService>().authenticate();
+                                },
+                                child: SvgPicture.asset(
+                                  "assets/icon_svg/face_id.svg",
+                                  height: 33,
+                                  width: 31,
+                                  color: Theme.of(context).primaryColor,
+                                ),
                               ),
                             ],
                           ),
