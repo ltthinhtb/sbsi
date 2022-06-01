@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:sbsi/common/app_colors.dart';
@@ -10,9 +9,9 @@ import 'package:sbsi/services/setting_service.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/stock_order/enums.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
-import 'package:sbsi/utils/error_message.dart';
 
 import 'widget/card_data.dart';
+import 'widget/note.dart';
 import 'widget/radio_button.dart';
 import 'widget/stock_3_price.dart';
 import 'widget/stock_cash_balance.dart';
@@ -314,77 +313,9 @@ class _StockOrderPageState extends State<StockOrderPage> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           final note = state.listOrder[index];
-                          return Slidable(
-                            enabled: MessageOrder.canEdit(note),
-                            endActionPane: ActionPane(
-                              motion: const ScrollMotion(),
-                              children: [
-                                SlidableAction(
-                                  // An action can be bigger than the others.
-                                  onPressed: edit,
-                                  backgroundColor:
-                                      const Color.fromRGBO(251, 122, 4, 1),
-                                  foregroundColor: Colors.white,
-                                  icon: null,
-                                  label: 'Sửa lệnh',
-                                ),
-                                SlidableAction(
-                                  onPressed: cancel,
-                                  backgroundColor: AppColors.primary,
-                                  foregroundColor: Colors.white,
-                                  icon: null,
-                                  label: 'Hủy lệnh',
-                                ),
-                              ],
-                            ),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 16),
-                              decoration: BoxDecoration(
-                                  color: index % 2 == 0
-                                      ? AppColors.table1
-                                      : AppColors.white),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    flex: 73,
-                                    child: Text(
-                                        note.side == "B"
-                                            ? S.of(context).buy
-                                            : S.of(context).sell,
-                                        style: caption?.copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            color: note.colorBack)),
-                                  ),
-                                  Expanded(
-                                    flex: 80,
-                                    child:
-                                        Text(note.symbol ?? "", style: caption),
-                                  ),
-                                  Expanded(
-                                    flex: 61,
-                                    child: Text(note.showPrice ?? "",
-                                        style: caption?.copyWith(
-                                            fontWeight: FontWeight.w700)),
-                                  ),
-                                  Expanded(
-                                    flex: 61,
-                                    child: Text(note.volume ?? "",
-                                        style: caption?.copyWith(
-                                            fontWeight: FontWeight.w400)),
-                                  ),
-                                  Expanded(
-                                    flex: 57,
-                                    child: Text(
-                                        MessageOrder.getStatusOrder(note),
-                                        style: caption?.copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            color: MessageOrder.getColorStatus(
-                                                MessageOrder.statusHuySua(
-                                                    note)))),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          return NoteWidgetOrder(
+                            index: index,
+                            note: note,
                           );
                         },
                         itemCount: state.listOrder.length,
@@ -399,8 +330,4 @@ class _StockOrderPageState extends State<StockOrderPage> {
       ),
     );
   }
-
-  void cancel(BuildContext context) {}
-
-  void edit(BuildContext context) {}
 }

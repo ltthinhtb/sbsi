@@ -361,6 +361,7 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                 validator: (pin) => checkPin(pin!),
                 hintText: S.of(context).input_pin,
                 inputController: state.pinController,
+                obscureText: true,
               ),
               const SizedBox(height: 20),
               Row(

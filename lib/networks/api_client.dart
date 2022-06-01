@@ -215,8 +215,7 @@ class _ApiClient implements ApiClient {
       if (_rc == 1 || _rc == "1") {
         return response;
       } else {
-        throw ErrorException(
-            response.statusCode!, _mapData['sRs']);
+        throw ErrorException(response.statusCode!, _mapData['sRs']);
       }
     } catch (error) {
       throw _handleError(error);
@@ -246,7 +245,7 @@ class _ApiClient implements ApiClient {
         });
         throw ErrorException(response.statusCode!, _mapData['rs']);
       } else {
-        throw _handleOrderError(_rc);
+        throw ErrorException(response.statusCode!, _handleOrderError(_rc));
       }
     } catch (error) {
       rethrow;

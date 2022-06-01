@@ -82,7 +82,7 @@ class OrderListLogic extends GetxController {
   }
 
   // hủy lệnh
-  Future<void> cancelOrder(IndayOrder order,String pin) async {
+  Future<void> cancelOrder(IndayOrder order, String pin) async {
     var _tokenEntity = authService.token.value;
     String refId =
         '${_tokenEntity?.data?.user}' + ".M." + OrderUtils.getRandom();
@@ -102,10 +102,9 @@ class OrderListLogic extends GetxController {
     );
     try {
       await apiService.cancleOrder(_requestParams);
-       getOrderList();
-       Get.back(); // back dialog
+      getOrderList();
+      Get.back(); // back dialog
       AppSnackBar.showSuccess(message: S.current.cancel_order_success);
-
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     } catch (e) {

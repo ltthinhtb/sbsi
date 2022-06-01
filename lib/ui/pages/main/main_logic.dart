@@ -7,6 +7,7 @@ import 'package:sbsi/services/index.dart';
 import 'package:sbsi/services/notification_service.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
+import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
 
 import 'main_state.dart';
 
@@ -19,8 +20,13 @@ class MainLogic extends GetxController {
 
   void switchTap(int index) {
     state.selectedIndex.value = index;
+    // load sổ lệnh màn sổ lệnh
     if(index == 3) {
       Get.find<OrderListLogic>().getOrderList();
+    }
+    // load sổ lệnh màn đặt lệnh
+    if(index == 2) {
+      Get.find<StockOrderLogic>().getOrderList();
     }
   }
 

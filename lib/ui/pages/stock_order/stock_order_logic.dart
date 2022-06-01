@@ -13,7 +13,8 @@ import 'package:sbsi/ui/pages/stock_order/widget/stock_cash_balance.dart';
 import 'package:sbsi/utils/extension.dart';
 import 'package:sbsi/utils/logger.dart';
 import 'package:sbsi/utils/order_utils.dart';
-
+import '../../../generated/l10n.dart';
+import '../../../model/order_data/inday_order.dart';
 import '../../../model/stock_data/stock_socket.dart';
 
 class StockOrderLogic extends GetxController {
@@ -165,6 +166,7 @@ class StockOrderLogic extends GetxController {
         ..sumBSVol.value = getSumBSVol();
       await getAccountStatus(_tokenEntity?.data?.defaultAcc ?? "");
       await getCashBalance();
+      await getOrderList();
     } catch (error) {
       AppSnackBar.showError(message: error.toString());
     }
@@ -254,7 +256,7 @@ class StockOrderLogic extends GetxController {
       /// load lại sức mua
       await getCashBalance();
       // load lại sổ lệnh
-      getOrderList();
+      await getOrderList();
       Get.back();
       AppSnackBar.showSuccess(message: "Đặt lệnh thành công!");
       // sau khi đặt lệnh thành công tắt thông báo
@@ -265,6 +267,38 @@ class StockOrderLogic extends GetxController {
     } catch (error) {
       AppLoading.disMissLoading();
       AppSnackBar.showError(message: error.toString());
+    }
+  }
+
+  // hủy lệnh
+  Future<void> cancelOrder(IndayOrder order, String pin) async {
+    var _tokenEntity = authService.token.value;
+    String refId =
+        '${_tokenEntity?.data?.user}' + ".M." + OrderUtils.getRandom();
+    RequestParams _requestParams = RequestParams(
+      group: "O",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+        type: "string",
+        cmd: "Web.cancelOrder",
+        orderNo: order.orderNo ?? "",
+        fisID: "",
+        refId: refId,
+        orderType: "1",
+        pin: pin,
+      ),
+    );
+    try {
+      await apiService.cancleOrder(_requestParams);
+      await getOrderList();
+      await getCashBalance();
+      Get.back(); // back dialog
+      AppSnackBar.showSuccess(message: S.current.cancel_order_success);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {
+      logger.e(e.toString());
     }
   }
 
@@ -361,8 +395,9 @@ class StockOrderLogic extends GetxController {
   }
 
   // load list order
-  void getOrderList() async {
+  Future<void> getOrderList() async {
     var _tokenEntity = authService.token.value;
+    logger.w(state.stockFast.value.value);
     final RequestParams _requestParams = RequestParams(
       group: "Q",
       session: _tokenEntity?.data?.sid,
