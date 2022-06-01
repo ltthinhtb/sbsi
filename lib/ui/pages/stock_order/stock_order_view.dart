@@ -194,7 +194,6 @@ class _StockOrderPageState extends State<StockOrderPage> {
                     decoration: const BoxDecoration(
                         color: AppColors.white, shape: BoxShape.circle),
                     child: Obx(() {
-                      print(state.account.value.toJson());
                       return Text(
                         state.account.value.lastCharacter,
                         style: Theme.of(context)

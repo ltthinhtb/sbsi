@@ -4,10 +4,15 @@ import 'package:sbsi/model/order_data/change_order_data.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
+import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/services/index.dart';
+import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/order_list/enums/order_enums.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_state.dart';
 import 'package:sbsi/utils/error_message.dart';
+
+import '../../../utils/logger.dart';
+import '../../../utils/order_utils.dart';
 
 class OrderListLogic extends GetxController {
   final OrderListState state = OrderListState();
@@ -76,32 +81,32 @@ class OrderListLogic extends GetxController {
   }
 
   // hủy lệnh
-  Future<void> cancelOrder() async {
+  Future<void> cancelOrder(IndayOrder order) async {
     var _tokenEntity = authService.token.value;
-    if (state.selectedListOrder.isNotEmpty) {
-      RequestParams _requestParams = RequestParams(
-        group: "O",
-        session: _tokenEntity?.data?.sid,
-        user: _tokenEntity?.data?.user,
-        data: ParamsObject(
-          type: "string",
-          cmd: "Web.cancelOrder",
-          orderNo: "",
-          fisID: "",
-          orderType: "1",
-          pin: "123456",
-        ),
-      );
-      try {
-        for (var item in state.selectedListOrder) {
-          _requestParams.data!.orderNo = item.orderNo;
-          await apiService.cancleOrder(_requestParams);
-        }
-      } catch (e) {
-        rethrow;
-      }
+    String refId =
+        '${_tokenEntity?.data?.user}' + ".M." + OrderUtils.getRandom();
+    RequestParams _requestParams = RequestParams(
+      group: "O",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+        type: "string",
+        cmd: "Web.cancelOrder",
+        orderNo: order.orderNo ?? "",
+        fisID: "",
+        refId: refId,
+        orderType: "1",
+        pin: "123456",
+      ),
+    );
+    try {
+      await apiService.cancleOrder(_requestParams);
+       getOrderList();
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {
+      logger.e(e.toString());
     }
-    getOrderList();
   }
 
   // select all or Clear

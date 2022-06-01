@@ -4,13 +4,9 @@ import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/model/order_data/change_order_data.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
-import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
-import 'package:sbsi/ui/widgets/button/button_filled.dart';
-import 'package:sbsi/ui/widgets/dialog/custom_dialog.dart';
 import 'package:sbsi/utils/error_message.dart';
 import 'package:sbsi/utils/stock_utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -84,77 +80,6 @@ class _OrderDetailState extends State<OrderDetail> {
           ],
         ),
       ),
-      floatingActionButton: canFix
-          ? Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: ButtonFill(
-                        voidCallback: () async {
-                          bool? _r = await CustomDialog.showConfirmDialog(
-                            context,
-                            S.of(context).confirm_cancel_order,
-                            [
-                              S.of(context).are_you_sure_cancel_this_order,
-                            ],
-                            buttonColors: [
-                              AppColors.primary2,
-                              AppColors.primary
-                            ],
-                            textButtonColors: [
-                              AppColors.primary,
-                              AppColors.white
-                            ],
-                          );
-                          if (_r ?? false) {
-                            await cancelOrder();
-                          }
-                        },
-                        title: S.of(context).cancel_order,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: ButtonFill(
-                        voidCallback: () async {
-                          ChangeOrderData? _r =
-                              await CustomDialog.showChangeOrderDialog(
-                                context,
-                            S.of(context).confirm_change_order,
-                            [
-                              S.of(context).change_order,
-                            ],
-                            buttonColors: [
-                              AppColors.primary2,
-                              AppColors.primary
-                            ],
-                            textButtonColors: [
-                              AppColors.primary,
-                              AppColors.white
-                            ],
-                          );
-                          if (_r != null &&
-                              _r.price.isNotEmpty &&
-                              _r.vol.isNotEmpty) {
-                            await changeOrder(_r);
-                          }
-                        },
-                        title: S.of(context).change_order,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            )
-          : Container(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
@@ -183,25 +108,4 @@ class _OrderDetailState extends State<OrderDetail> {
     );
   }
 
-  Future<void> cancelOrder() async {
-    state.selectedListOrder
-      ..clear()
-      ..add(widget.data);
-    try {
-      await logic.cancelOrder();
-    } catch (e) {
-      AppSnackBar.showError(message: e.toString());
-    }
-    Navigator.pop(context);
-  }
-
-  Future<void> changeOrder(ChangeOrderData data) async {
-    try {
-      await logic.changeOrder(widget.data, data);
-      Navigator.pop(context);
-      AppSnackBar.showSuccess(message: S.of(context).change_order_successfully);
-    } catch (e) {
-      AppSnackBar.showError(message: e.toString());
-    }
-  }
 }

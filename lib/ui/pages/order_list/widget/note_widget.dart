@@ -60,9 +60,7 @@ class _NoteWidgetState extends State<NoteWidget> {
     }
   }
 
-  void cancel(BuildContext context) {
-    logic.cancelOrder();
-  }
+
 
   Widget buildItem(IndayOrder data) {
     String _status = MessageOrder.getStatusOrder(data);
@@ -81,7 +79,9 @@ class _NoteWidgetState extends State<NoteWidget> {
             label: 'Sửa lệnh',
           ),
           SlidableAction(
-            onPressed: cancel,
+            onPressed: (BuildContext context) {
+              logic.cancelOrder(data);
+            },
             backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
             icon: null,
