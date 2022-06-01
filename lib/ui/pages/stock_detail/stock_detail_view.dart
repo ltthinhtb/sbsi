@@ -5,6 +5,7 @@ import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/stock_detail/widget/news_tabs.dart';
 import '../../../generated/l10n.dart';
 import '../../widgets/button/button_filled.dart';
+import '../stock_order/stock_order_view.dart';
 import 'enums/stock_detail_tab.dart';
 import 'stock_detail_logic.dart';
 import 'widget/analytic_tab.dart';
@@ -103,7 +104,9 @@ class _StockDetailPageState extends State<StockDetailPage> {
                   children: [
                     Expanded(
                         child: ButtonFill(
-                            voidCallback: () {},
+                            voidCallback: () {
+                              Get.to(const StockOrderPage());
+                            },
                             title: S.of(context).buy,
                             style: Theme.of(context)
                                 .elevatedButtonTheme

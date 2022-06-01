@@ -9,14 +9,16 @@ import 'package:sbsi/ui/pages/notification/notification_view.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_view.dart';
 import 'package:sbsi/ui/pages/right_un_exec/right_un_exec_view.dart';
+import 'package:sbsi/ui/pages/search/search_logic.dart';
 import 'package:sbsi/ui/pages/search/search_view.dart';
 import 'package:sbsi/ui/pages/sign_in/sign_in_view.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/sign_up/sign_up_view.dart';
 import 'package:sbsi/ui/pages/stock_detail/stock_detail_view.dart';
-import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
 import 'package:sbsi/ui/pages/stock_transfer/stock_transfer_view.dart';
 import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
+
+import '../ui/pages/market/market_logic.dart';
 
 class RouteConfig {
   ///main page
@@ -37,7 +39,6 @@ class RouteConfig {
   static const String right_un_exec = '/right_un_exec';
   static const String cash_can = '/cash_can';
 
-
   ///Alias ​​mapping page
   static final List<GetPage> getPages = [
     GetPage(name: main, page: () => MainPage(), binding: MainBinding()),
@@ -55,7 +56,6 @@ class RouteConfig {
     GetPage(name: stock_transfer, page: () => const StockTransferPage()),
     GetPage(name: right_un_exec, page: () => const RightUnExecPage()),
     GetPage(name: cash_can, page: () => const CashCanAdvPage()),
-
   ];
 }
 
@@ -64,8 +64,9 @@ class MainBinding extends Bindings {
   void dependencies() {
     // TODO: implement dependencies
     Get.lazyPut(() => MainLogic());
+    Get.lazyPut(() => SearchLogic());
+    Get.lazyPut(() => MarketLogic());
     Get.lazyPut(() => WalletLogic());
-    Get.lazyPut(() => StockOrderLogic());
     Get.lazyPut(() => HomeLogic());
     Get.lazyPut(() => OrderListLogic());
   }

@@ -5,7 +5,6 @@ import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/market/market_logic.dart';
 import 'package:sbsi/ui/pages/market/widget/overview_tab.dart';
-import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
 import '../../../generated/l10n.dart';
 import 'enum/fork_enums.dart';
 import 'widget/dropdown_market.dart';
@@ -19,8 +18,7 @@ class MarketPage extends StatefulWidget {
 
 class _MarketPageState extends State<MarketPage>
     with SingleTickerProviderStateMixin {
-  final logic = Get.put(MarketLogic());
-  final w = Get.put(WalletLogic());
+  final logic = Get.find<MarketLogic>();
   final state = Get.find<MarketLogic>().state;
 
   TabController? _tabController;

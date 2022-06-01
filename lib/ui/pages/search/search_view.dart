@@ -21,17 +21,11 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  final logic = Get.put(SearchLogic());
+  final logic = Get.find<SearchLogic>();
   final state = Get.find<SearchLogic>().state;
 
   // bỏ setting service đi
   final settingService = Get.find<SettingService>();
-
-  @override
-  void dispose() {
-    Get.delete<SearchLogic>();
-    super.dispose();
-  }
 
   ValueNotifier<bool> isShowClose = ValueNotifier<bool>(false);
 

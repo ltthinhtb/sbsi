@@ -27,7 +27,7 @@ class MarketOption extends StatelessWidget with Validator {
 
   final logic = Get.find<MarketLogic>();
   final state = Get.find<MarketLogic>().state;
-  final searchLogic = Get.put(SearchLogic());
+  final searchLogic = Get.find<SearchLogic>();
   final searchState = Get.find<SearchLogic>().state;
   final _searchController = TextEditingController();
 

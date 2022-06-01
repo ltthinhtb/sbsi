@@ -18,14 +18,14 @@ import 'widget/stock_cash_balance.dart';
 
 // ignore: must_be_immutable
 class StockOrderPage extends StatefulWidget {
-  StockOrderPage({Key? key}) : super(key: key);
+  const StockOrderPage({Key? key}) : super(key: key);
 
   @override
   _StockOrderPageState createState() => _StockOrderPageState();
 }
 
 class _StockOrderPageState extends State<StockOrderPage> {
-  final logic = Get.find<StockOrderLogic>();
+  final logic = Get.put(StockOrderLogic());
   final state = Get.find<StockOrderLogic>().state;
 
   //Bỏ settingService đi
