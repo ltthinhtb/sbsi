@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add category"),
         "add_info": MessageLookupByLibrary.simpleMessage("Edit info"),
         "add_stock": MessageLookupByLibrary.simpleMessage("Add stock"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "advance_action":
             MessageLookupByLibrary.simpleMessage("Advance action"),
         "advance_amount":
@@ -88,6 +89,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "bond_history": MessageLookupByLibrary.simpleMessage("Bond history"),
         "branch": MessageLookupByLibrary.simpleMessage("Branch"),
         "buy": MessageLookupByLibrary.simpleMessage("Buy"),
+        "c_authen_sign":
+            MessageLookupByLibrary.simpleMessage("Authentication sign"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancel_all_orders":
             MessageLookupByLibrary.simpleMessage("Cancel all orders"),
@@ -141,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_payment":
             MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Confirm pin"),
+        "contact_info": MessageLookupByLibrary.simpleMessage("Contact info"),
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
         "content_transfer": MessageLookupByLibrary.simpleMessage("Content"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Continue"),
@@ -427,6 +431,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "take_photo_confirm":
             MessageLookupByLibrary.simpleMessage("Take photo confirm"),
         "tax": MessageLookupByLibrary.simpleMessage("Tax"),
+        "telephone": MessageLookupByLibrary.simpleMessage("Telephone"),
         "terms_and_condition":
             MessageLookupByLibrary.simpleMessage("Terms & condition"),
         "terms_and_condition_valid": MessageLookupByLibrary.simpleMessage(

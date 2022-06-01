@@ -343,5 +343,9 @@
   "apT0" : "Tiền trở về",
   "cash_advance_avai" : "Tiền có thể ứng",
   "debt" : "Nợ",
-  "cancel_order_success" : "Yêu cầu hủy lệnh thành công"
+  "cancel_order_success" : "Yêu cầu hủy lệnh thành công",
+  "contact_info" : "Thông tin liên hệ",
+  "address" : "Địa chỉ",
+  "telephone" : "Di động",
+  "c_authen_sign" : "Phương thức xác thực"
 }

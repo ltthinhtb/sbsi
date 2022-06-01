@@ -3499,6 +3499,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Contact info`
+  String get contact_info {
+    return Intl.message(
+      'Contact info',
+      name: 'contact_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Telephone`
+  String get telephone {
+    return Intl.message(
+      'Telephone',
+      name: 'telephone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authentication sign`
+  String get c_authen_sign {
+    return Intl.message(
+      'Authentication sign',
+      name: 'c_authen_sign',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

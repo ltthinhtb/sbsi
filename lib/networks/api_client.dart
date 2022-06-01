@@ -8,6 +8,7 @@ import 'package:sbsi/model/entities/advance_withdraw.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
 import 'package:sbsi/model/entities/economy.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
+import 'package:sbsi/model/entities/get_account_info.dart';
 import 'package:sbsi/model/entities/index.dart';
 import 'package:sbsi/model/entities/right_exc.dart';
 import 'package:sbsi/model/entities/share_transfer.dart';
@@ -160,6 +161,8 @@ abstract class ApiClient {
 
   Future<List<AdvanceWithdraw>> getListAdvanceWithdraw(
       RequestParams requestParams);
+
+  Future<GetAccountInfo> loadAccountInfo(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -978,5 +981,21 @@ class _ApiClient implements ApiClient {
       listAdvance.add(AdvanceWithdraw.fromJson(element));
     }
     return listAdvance;
+  }
+
+  @override
+  Future<GetAccountInfo> loadAccountInfo(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<GetAccountInfo> listAccount = [];
+    for (var element in _mapData) {
+      listAccount.add(GetAccountInfo.fromJson(element));
+    }
+    return listAccount.first;
   }
 }

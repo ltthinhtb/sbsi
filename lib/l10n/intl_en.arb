@@ -339,10 +339,14 @@
   "pass_short_valid": "Password short",
   "please_input_account": "Please input account",
   "cash": "Cash",
-  "withdraw_money" : "Withdraw money",
-  "apT0" : "ApT0",
-  "cash_advance_avai" : "Cash advance available",
-  "debt" : "Debt",
-  "cancel_order_success" : "Cancel order success"
+  "withdraw_money": "Withdraw money",
+  "apT0": "ApT0",
+  "cash_advance_avai": "Cash advance available",
+  "debt": "Debt",
+  "cancel_order_success": "Cancel order success",
+  "contact_info": "Contact info",
+  "address": "Address",
+  "telephone": "Telephone",
+  "c_authen_sign" : "Authentication sign"
 
 }

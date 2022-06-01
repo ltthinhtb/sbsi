@@ -178,7 +178,9 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                     ),
                   ),
                   rowButton(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(RouteConfig.get_account_info);
+                      },
                       title: S.of(context).account_info,
                       button: AppImages.user_circle),
                   const Padding(

@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nhập tên danh mục"),
         "add_info": MessageLookupByLibrary.simpleMessage("Bổ sung thông tin"),
         "add_stock": MessageLookupByLibrary.simpleMessage("Thêm mã theo dõi"),
+        "address": MessageLookupByLibrary.simpleMessage("Địa chỉ"),
         "advance_action":
             MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),
         "advance_amount": MessageLookupByLibrary.simpleMessage("Số tiền ứng"),
@@ -94,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Các giao dịch gần đây"),
         "branch": MessageLookupByLibrary.simpleMessage("Chi nhánh"),
         "buy": MessageLookupByLibrary.simpleMessage("Mua"),
+        "c_authen_sign":
+            MessageLookupByLibrary.simpleMessage("Phương thức xác thực"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy bỏ"),
         "cancel_all_orders":
             MessageLookupByLibrary.simpleMessage("Huỷ tất cả lệnh"),
@@ -146,6 +149,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_payment":
             MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Xác nhận mã pin"),
+        "contact_info":
+            MessageLookupByLibrary.simpleMessage("Thông tin liên hệ"),
         "contact_support":
             MessageLookupByLibrary.simpleMessage("Liên hệ hỗ trợ"),
         "content_transfer":
@@ -443,6 +448,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "take_photo_confirm":
             MessageLookupByLibrary.simpleMessage("Chụp ảnh xác thực"),
         "tax": MessageLookupByLibrary.simpleMessage("Thuế đầu tư"),
+        "telephone": MessageLookupByLibrary.simpleMessage("Di động"),
         "terms_and_condition":
             MessageLookupByLibrary.simpleMessage("Điều khoản và điều kiện"),
         "terms_and_condition_valid": MessageLookupByLibrary.simpleMessage(
