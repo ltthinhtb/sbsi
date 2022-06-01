@@ -351,6 +351,9 @@
   "registration" : "Đăng ký vân tay / khuôn mặt",
   "faceID_login_fail" : "Đăng nhập vân tay/ khuôn mặt thất bại",
   "your_account_not_register" : "Tài khoản bạn chưa đăng ký vân tay/ khuôn mặt",
-  "you_not_register" : "Bạn chưa đăng ký vân tay khuôn mặt"
-
+  "you_not_register" : "Bạn chưa đăng ký vân tay khuôn mặt",
+  "change_pin" : "Thay đổi mã pin",
+  "change_pin_success" : "Thay đổi mã Pin thành công",
+  "confirm_new_pin" : "Xác nhận mã pin mới",
+  "save_pin" : "Lưu mã pin"
 }

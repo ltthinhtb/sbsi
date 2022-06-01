@@ -3579,6 +3579,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Change pin`
+  String get change_pin {
+    return Intl.message(
+      'Change pin',
+      name: 'change_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change pin success`
+  String get change_pin_success {
+    return Intl.message(
+      'Change pin success',
+      name: 'change_pin_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm new pin`
+  String get confirm_new_pin {
+    return Intl.message(
+      'Confirm new pin',
+      name: 'confirm_new_pin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save pin`
+  String get save_pin {
+    return Intl.message(
+      'Save pin',
+      name: 'save_pin',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

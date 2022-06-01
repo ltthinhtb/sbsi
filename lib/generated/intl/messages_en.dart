@@ -120,6 +120,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change password"),
         "change_password_success": MessageLookupByLibrary.simpleMessage(
             "Change password successfully"),
+        "change_pin": MessageLookupByLibrary.simpleMessage("Change pin"),
+        "change_pin_success":
+            MessageLookupByLibrary.simpleMessage("Change pin success"),
         "choose": MessageLookupByLibrary.simpleMessage("Choose"),
         "choose_identity": MessageLookupByLibrary.simpleMessage(
             "Choose your identity document"),
@@ -138,6 +141,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change order confirmation"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
+        "confirm_new_pin":
+            MessageLookupByLibrary.simpleMessage("Confirm new pin"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Confirm OTP"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
@@ -370,6 +375,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "right_un_exec":
             MessageLookupByLibrary.simpleMessage("exercise the right"),
         "save_password": MessageLookupByLibrary.simpleMessage("Save password"),
+        "save_pin": MessageLookupByLibrary.simpleMessage("Save pin"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "select": MessageLookupByLibrary.simpleMessage("Select"),
         "select_account":

@@ -124,6 +124,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_success":
             MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thành công"),
+        "change_pin": MessageLookupByLibrary.simpleMessage("Thay đổi mã pin"),
+        "change_pin_success":
+            MessageLookupByLibrary.simpleMessage("Thay đổi mã Pin thành công"),
         "choose": MessageLookupByLibrary.simpleMessage("Chọn"),
         "choose_identity":
             MessageLookupByLibrary.simpleMessage("Chọn giấy tờ tùy thân"),
@@ -143,6 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận sửa lệnh"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
+        "confirm_new_pin":
+            MessageLookupByLibrary.simpleMessage("Xác nhận mã pin mới"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Xác nhận OTP"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
@@ -389,6 +394,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "right_un_exec":
             MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),
         "save_password": MessageLookupByLibrary.simpleMessage("Lưu mật khẩu"),
+        "save_pin": MessageLookupByLibrary.simpleMessage("Lưu mã pin"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
         "select": MessageLookupByLibrary.simpleMessage("Chọn"),
         "select_account":

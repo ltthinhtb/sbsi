@@ -5,6 +5,7 @@ import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
+import 'package:sbsi/ui/pages/menu/panel/setting/change_pin_page/change_pin_view.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../router/route_config.dart';
@@ -192,7 +193,7 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                   ),
                   rowButton(
                       onTap: () {
-                        Get.to(const ChangePasswordPage());
+                        changeBiometrics();
                       },
                       title: S.of(context).change_password,
                       button: AppImages.lock),
@@ -231,6 +232,55 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
       ),
     );
   }
+
+  void changeBiometrics() {
+    Get.dialog(Dialog(
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Builder(builder: (context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+              color: AppColors.white, borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 16),
+              Text(
+                "Đổi mật khẩu/ mã pin",
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 20),
+              rowButton(
+                  onTap: () {
+                    Get.to(const ChangePasswordPage());
+                  },
+                  title: S.of(context).change_password,
+                  button: AppImages.lock),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Divider(
+                  thickness: 1,
+                  height: 32,
+                ),
+              ),
+              rowButton(
+                  onTap: () {
+                    Get.to(const ChangePinPage());
+                  },
+                  title: S.of(context).change_pin,
+                  button: AppImages.lock),
+              const SizedBox(height: 20),
+
+            ],
+          ),
+        );
+      }),
+    ));
+  }
+
 
   Widget rowButton(
       {required String button,
