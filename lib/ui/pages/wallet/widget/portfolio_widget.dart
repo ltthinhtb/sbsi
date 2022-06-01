@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sbsi/model/response/portfolio.dart';
+import 'package:sbsi/ui/pages/main/main_logic.dart';
+import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
 import 'package:sbsi/ui/widgets/animation_widget/expanded_widget.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../services/index.dart';
 import '../../../../utils/money_utils.dart';
 import '../../../widgets/button/button_filled.dart';
 
@@ -37,7 +41,9 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-                color: _expanded ? AppColors.table2 :(widget.index % 2 == 0 ? null : AppColors.whiteF7)),
+                color: _expanded
+                    ? AppColors.table2
+                    : (widget.index % 2 == 0 ? null : AppColors.whiteF7)),
             child: Row(
               children: [
                 Expanded(
@@ -91,26 +97,30 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                             '${widget.portfolio.actualVol ?? ""}'),
                         leftValue: widget.portfolio.sellT0 ?? "",
                         leftColor: widget.portfolio.glColor,
-                        rightTitle: 'Tổng KL', leftTitle: 'Bán T0'),
+                        rightTitle: 'Tổng KL',
+                        leftTitle: 'Bán T0'),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue: MoneyFormat.formatMoneyRound(
                             '${widget.portfolio.avaiableVol ?? ""}'),
                         leftValue: widget.portfolio.buyT0 ?? "",
-                        rightTitle: 'KL khả dụng', leftTitle: 'Mua T0'),
+                        rightTitle: 'KL khả dụng',
+                        leftTitle: 'Mua T0'),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue: MoneyFormat.formatMoneyRound(
                             '${widget.portfolio.marketValue ?? ""}'),
                         leftValue: widget.portfolio.buyT1 ?? "",
-                        rightTitle: 'Giá trị TT', leftTitle: 'Mua T1'),
+                        rightTitle: 'Giá trị TT',
+                        leftTitle: 'Mua T1'),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue: MoneyFormat.formatMoneyRound(
                             '${widget.portfolio.gainLossValue ?? ""}'),
                         rightColor: widget.portfolio.glColor,
                         leftValue: widget.portfolio.buyT2 ?? "",
-                        rightTitle: 'Lãi/lỗ', leftTitle: 'Mua T2'),
+                        rightTitle: 'Lãi/lỗ',
+                        leftTitle: 'Mua T2'),
                     const SizedBox(height: 16),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -118,21 +128,36 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                         children: [
                           Expanded(
                               child: ButtonFill(
-                                  voidCallback: () {},
+                                  voidCallback: () {
+                                    // di chuyển đến tap đặt lệnh
+                                    Get.find<MainLogic>().switchTap(2);
+                                    // lấy listStock từ db
+                                    final allStock = Get.find<StoreService>()
+                                        .listStockCompany;
+                                    final stock = allStock.firstWhere(
+                                        (element) =>
+                                            element.stockCode ==
+                                            widget.portfolio.symbol);
+                                    // chọn mã chứng khoán
+                                    Get.find<StockOrderLogic>()
+                                        .selectStock(stock);
+                                  },
                                   title: S.of(context).buy,
                                   style: Theme.of(context)
                                       .elevatedButtonTheme
                                       .style
                                       ?.copyWith(
-                                      backgroundColor: MaterialStateProperty.all(
-                                          AppColors.active),
-                                      padding: ButtonStyleButton.allOrNull<
-                                          EdgeInsetsGeometry>(
-                                          const EdgeInsets.symmetric(
-                                              horizontal: 24, vertical: 10)),
-                                      shape: ButtonStyleButton.allOrNull<
-                                          OutlinedBorder>(
-                                          const RoundedRectangleBorder(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  AppColors.active),
+                                          padding: ButtonStyleButton.allOrNull<
+                                                  EdgeInsetsGeometry>(
+                                              const EdgeInsets.symmetric(
+                                                  horizontal: 24,
+                                                  vertical: 10)),
+                                          shape: ButtonStyleButton.allOrNull<
+                                                  OutlinedBorder>(
+                                              const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(8),
                                             ),
@@ -140,19 +165,33 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                           const SizedBox(width: 16),
                           Expanded(
                               child: ButtonFill(
-                                  voidCallback: () {},
+                                  voidCallback: () {
+                                    // di chuyển đến tap đặt lệnh
+                                    Get.find<MainLogic>().switchTap(2);
+                                    // lấy listStock từ db
+                                    final allStock = Get.find<StoreService>()
+                                        .listStockCompany;
+                                    final stock = allStock.firstWhere(
+                                        (element) =>
+                                            element.stockCode ==
+                                            widget.portfolio.symbol);
+                                    // chọn mã chứng khoán
+                                    Get.find<StockOrderLogic>()
+                                        .selectStock(stock);
+                                  },
                                   title: S.of(context).sell,
                                   style: Theme.of(context)
                                       .elevatedButtonTheme
                                       .style
                                       ?.copyWith(
-                                      padding: ButtonStyleButton.allOrNull<
-                                          EdgeInsetsGeometry>(
-                                          const EdgeInsets.symmetric(
-                                              horizontal: 24, vertical: 10)),
-                                      shape: ButtonStyleButton.allOrNull<
-                                          OutlinedBorder>(
-                                          const RoundedRectangleBorder(
+                                          padding: ButtonStyleButton.allOrNull<
+                                                  EdgeInsetsGeometry>(
+                                              const EdgeInsets.symmetric(
+                                                  horizontal: 24,
+                                                  vertical: 10)),
+                                          shape: ButtonStyleButton.allOrNull<
+                                                  OutlinedBorder>(
+                                              const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(8),
                                             ),
@@ -160,7 +199,6 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ))
