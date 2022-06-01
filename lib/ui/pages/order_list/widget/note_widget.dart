@@ -4,13 +4,16 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/utils/money_utils.dart';
+import 'package:sbsi/utils/validator.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../model/order_data/change_order_data.dart';
 import '../../../../model/order_data/inday_order.dart';
 import '../../../../utils/error_message.dart';
+import '../../../widgets/button/button_filled.dart';
 import '../../../widgets/dialog/custom_dialog.dart';
+import '../../../widgets/textfields/app_text_field.dart';
 
 class NoteWidget extends StatefulWidget {
   const NoteWidget({Key? key, required this.listOrder, required this.index})
@@ -23,11 +26,13 @@ class NoteWidget extends StatefulWidget {
   State<NoteWidget> createState() => _NoteWidgetState();
 }
 
-class _NoteWidgetState extends State<NoteWidget> {
+class _NoteWidgetState extends State<NoteWidget> with Validator{
   final state = Get.find<OrderListLogic>().state;
   final logic = Get.find<OrderListLogic>();
 
   bool _isSelect = false;
+
+  final _pinController = TextEditingController();
 
   @override
   void initState() {
@@ -80,7 +85,8 @@ class _NoteWidgetState extends State<NoteWidget> {
           ),
           SlidableAction(
             onPressed: (BuildContext context) {
-              logic.cancelOrder(data);
+              _pinController.clear();
+              cancelOrder(data);
             },
             backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
@@ -201,5 +207,124 @@ class _NoteWidgetState extends State<NoteWidget> {
         ),
       ),
     );
+  }
+
+
+  void cancelOrder(IndayOrder order) {
+    Get.dialog(Dialog(
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Builder(builder: (context) {
+        final body2 = Theme.of(context).textTheme.bodyText2;
+        final body1 = Theme.of(context).textTheme.bodyText1;
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+              color: AppColors.white, borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 16),
+              Text(
+                S.of(context).order,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).stock_code,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    order.symbol ?? "",
+                    style: body1?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).orderType,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    order.side == "B" ? S.of(context).buy : S.of(context).sell,
+                    style: body1?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: order.side == "B" ? AppColors.active : AppColors.deActive),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).price,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    order.showPrice ?? "",
+                    style: body1?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).volumn,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    order.volume ?? "",
+                    style: body1?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              AppTextFieldWidget(
+                validator: (pin) => checkPin(pin!),
+                hintText: S.of(context).input_pin,
+                inputController: _pinController,
+                obscureText: true,
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                      child: ButtonFill(
+                        voidCallback: () {
+                          Get.back();
+                        },
+                        title: S.of(context).cancel_short,
+                        style: ElevatedButton.styleFrom(
+                            onPrimary: AppColors.primary,
+                            primary: const Color.fromRGBO(255, 238, 238, 1)),
+                      )),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                      child: ButtonFill(
+                          voidCallback: () {
+                            logic.cancelOrder(order,_pinController.text);
+                          },
+                          title: S.of(context).confirm))
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        );
+      }),
+    ));
   }
 }

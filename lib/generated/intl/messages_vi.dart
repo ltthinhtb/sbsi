@@ -100,6 +100,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_chose_orders":
             MessageLookupByLibrary.simpleMessage("Huỷ lệnh đã chọn"),
         "cancel_order": MessageLookupByLibrary.simpleMessage("Huỷ lệnh"),
+        "cancel_order_success":
+            MessageLookupByLibrary.simpleMessage("Yêu cầu hủy lệnh thành công"),
         "cancel_short": MessageLookupByLibrary.simpleMessage("Hủy"),
         "cancel_time": MessageLookupByLibrary.simpleMessage("Thời gian huỷ"),
         "cancel_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng huỷ"),

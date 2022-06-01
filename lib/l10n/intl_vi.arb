@@ -342,5 +342,6 @@
   "withdraw_money" : "Tiền được rút",
   "apT0" : "Tiền trở về",
   "cash_advance_avai" : "Tiền có thể ứng",
-  "debt" : "Nợ"
+  "debt" : "Nợ",
+  "cancel_order_success" : "Yêu cầu hủy lệnh thành công"
 }

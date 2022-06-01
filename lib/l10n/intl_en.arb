@@ -342,5 +342,7 @@
   "withdraw_money" : "Withdraw money",
   "apT0" : "ApT0",
   "cash_advance_avai" : "Cash advance available",
-  "debt" : "Debt"
+  "debt" : "Debt",
+  "cancel_order_success" : "Cancel order success"
+
 }

@@ -94,6 +94,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel_chose_orders":
             MessageLookupByLibrary.simpleMessage("Cancel chose orders"),
         "cancel_order": MessageLookupByLibrary.simpleMessage("Cancel order"),
+        "cancel_order_success":
+            MessageLookupByLibrary.simpleMessage("Cancel order success"),
         "cancel_short": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancel_time": MessageLookupByLibrary.simpleMessage("Cancel time"),
         "cancel_volumn": MessageLookupByLibrary.simpleMessage("Cancel volumn"),
