@@ -7,9 +7,9 @@ import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 import 'package:sbsi/services/auth_service.dart';
 import 'package:sbsi/services/setting_service.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
-import 'package:sbsi/ui/pages/stock_order/enums.dart';
-import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
 
+import 'enums.dart';
+import 'stock_order_detail_logic.dart';
 import 'widget/card_data.dart';
 import 'widget/note.dart';
 import 'widget/radio_button.dart';
@@ -17,16 +17,16 @@ import 'widget/stock_3_price.dart';
 import 'widget/stock_cash_balance.dart';
 
 // ignore: must_be_immutable
-class StockOrderPage extends StatefulWidget {
-  const StockOrderPage({Key? key}) : super(key: key);
+class StockOrderPagePage extends StatefulWidget {
+  const StockOrderPagePage({Key? key}) : super(key: key);
 
   @override
-  _StockOrderPageState createState() => _StockOrderPageState();
+  _StockOrderPagePageState createState() => _StockOrderPagePageState();
 }
 
-class _StockOrderPageState extends State<StockOrderPage> {
-  final logic = Get.find<StockOrderLogic>();
-  final state = Get.find<StockOrderLogic>().state;
+class _StockOrderPagePageState extends State<StockOrderPagePage> {
+  final logic = Get.put(StockOrderPageLogic());
+  final state = Get.find<StockOrderPageLogic>().state;
 
   //Bỏ settingService đi
   final settingService = Get.find<SettingService>();
@@ -137,7 +137,7 @@ class _StockOrderPageState extends State<StockOrderPage> {
 
   @override
   void dispose() {
-    Get.delete<StockOrderLogic>();
+    Get.delete<StockOrderPageLogic>();
     super.dispose();
   }
 

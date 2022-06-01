@@ -6,20 +6,19 @@ import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/utils/stock_utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../stock_order_detail_logic.dart';
 
-import '../stock_order_logic.dart';
-
-class StockOrderConfirm extends StatefulWidget {
-  const StockOrderConfirm({
+class StockOrderPageConfirm extends StatefulWidget {
+  const StockOrderPageConfirm({
     Key? key,
   }) : super(key: key);
 
   @override
-  _StockOrderConfirmState createState() => _StockOrderConfirmState();
+  _StockOrderPageConfirmState createState() => _StockOrderPageConfirmState();
 }
 
-class _StockOrderConfirmState extends State<StockOrderConfirm> {
-  final state = Get.find<StockOrderLogic>().state;
+class _StockOrderPageConfirmState extends State<StockOrderPageConfirm> {
+  final state = Get.find<StockOrderPageLogic>().state;
 
   @override
   void initState() {

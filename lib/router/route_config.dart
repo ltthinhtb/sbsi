@@ -15,6 +15,7 @@ import 'package:sbsi/ui/pages/sign_in/sign_in_view.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/sign_up/sign_up_view.dart';
 import 'package:sbsi/ui/pages/stock_detail/stock_detail_view.dart';
+import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
 import 'package:sbsi/ui/pages/stock_transfer/stock_transfer_view.dart';
 import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
 
@@ -69,5 +70,6 @@ class MainBinding extends Bindings {
     Get.lazyPut(() => WalletLogic());
     Get.lazyPut(() => HomeLogic());
     Get.lazyPut(() => OrderListLogic());
+    Get.lazyPut(() => StockOrderLogic());
   }
 }

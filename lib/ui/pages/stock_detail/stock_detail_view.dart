@@ -5,7 +5,7 @@ import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/stock_detail/widget/news_tabs.dart';
 import '../../../generated/l10n.dart';
 import '../../widgets/button/button_filled.dart';
-import '../stock_order/stock_order_view.dart';
+import '../stock_order_detail/stock_order_detail_view.dart';
 import 'enums/stock_detail_tab.dart';
 import 'stock_detail_logic.dart';
 import 'widget/analytic_tab.dart';
@@ -105,22 +105,23 @@ class _StockDetailPageState extends State<StockDetailPage> {
                     Expanded(
                         child: ButtonFill(
                             voidCallback: () {
-                              Get.to(const StockOrderPage());
+                              Get.to(const StockOrderPagePage(),
+                                  arguments: state.stockCode);
                             },
                             title: S.of(context).buy,
                             style: Theme.of(context)
                                 .elevatedButtonTheme
                                 .style
                                 ?.copyWith(
-                                backgroundColor: MaterialStateProperty.all(
-                                    AppColors.active),
-                                padding: ButtonStyleButton.allOrNull<
-                                    EdgeInsetsGeometry>(
-                                    const EdgeInsets.symmetric(
-                                        horizontal: 24, vertical: 10)),
-                                shape: ButtonStyleButton.allOrNull<
-                                    OutlinedBorder>(
-                                    const RoundedRectangleBorder(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        AppColors.active),
+                                    padding: ButtonStyleButton.allOrNull<
+                                            EdgeInsetsGeometry>(
+                                        const EdgeInsets.symmetric(
+                                            horizontal: 24, vertical: 10)),
+                                    shape: ButtonStyleButton.allOrNull<
+                                            OutlinedBorder>(
+                                        const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(8),
                                       ),
@@ -128,19 +129,22 @@ class _StockDetailPageState extends State<StockDetailPage> {
                     const SizedBox(width: 16),
                     Expanded(
                         child: ButtonFill(
-                            voidCallback: () {},
+                            voidCallback: () {
+                              Get.to(const StockOrderPagePage(),
+                                  arguments: state.stockCode);
+                            },
                             title: S.of(context).sell,
                             style: Theme.of(context)
                                 .elevatedButtonTheme
                                 .style
                                 ?.copyWith(
-                                padding: ButtonStyleButton.allOrNull<
-                                    EdgeInsetsGeometry>(
-                                    const EdgeInsets.symmetric(
-                                        horizontal: 24, vertical: 10)),
-                                shape: ButtonStyleButton.allOrNull<
-                                    OutlinedBorder>(
-                                    const RoundedRectangleBorder(
+                                    padding: ButtonStyleButton.allOrNull<
+                                            EdgeInsetsGeometry>(
+                                        const EdgeInsets.symmetric(
+                                            horizontal: 24, vertical: 10)),
+                                    shape: ButtonStyleButton.allOrNull<
+                                            OutlinedBorder>(
+                                        const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(8),
                                       ),

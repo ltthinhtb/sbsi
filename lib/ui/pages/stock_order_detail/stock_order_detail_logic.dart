@@ -7,18 +7,18 @@ import 'package:sbsi/services/index.dart';
 import 'package:sbsi/services/socket/socket.dart';
 import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
-import 'package:sbsi/ui/pages/stock_order/enums.dart';
-import 'package:sbsi/ui/pages/stock_order/stock_order_state.dart';
-import 'package:sbsi/ui/pages/stock_order/widget/stock_cash_balance.dart';
+import 'package:sbsi/ui/pages/right_un_exec/widget/right_widget.dart';
+import 'package:sbsi/ui/pages/stock_order_detail/enums.dart';
 import 'package:sbsi/utils/extension.dart';
 import 'package:sbsi/utils/logger.dart';
 import 'package:sbsi/utils/order_utils.dart';
 import '../../../generated/l10n.dart';
 import '../../../model/order_data/inday_order.dart';
 import '../../../model/stock_data/stock_socket.dart';
+import 'stock_order_detail_state.dart';
 
-class StockOrderLogic extends GetxController {
-  final StockOrderState state = StockOrderState();
+class StockOrderPageLogic extends GetxController {
+  final StockOrderPageState state = StockOrderPageState();
   final ApiService apiService = Get.find();
   final AuthService authService = Get.find();
 
@@ -321,6 +321,7 @@ class StockOrderLogic extends GetxController {
     super.onClose();
   }
 
+
   void loadAccount() {
     var _tokenEntity = authService.token.value;
     var index = authService.listAccount.indexWhere(
@@ -333,9 +334,10 @@ class StockOrderLogic extends GetxController {
   }
 
   Future initData() async {
+    final String stockCode = Get.arguments as String;
     if (state.selectedStock.value.stockCode == null) {
       state.selectedStock.value = state.allStockCompanyData
-          .firstWhere((element) => element.stockCode == "BID");
+          .firstWhere((element) => element.stockCode == stockCode);
       state.stockController.text = state.selectedStock.value.stockCode ?? "";
       await getStockInfo();
     }

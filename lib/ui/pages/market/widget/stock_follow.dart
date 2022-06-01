@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
+import 'package:sbsi/router/route_config.dart';
 import 'package:sbsi/ui/pages/market/market_logic.dart';
 import 'package:sbsi/utils/money_utils.dart';
 
@@ -97,7 +98,10 @@ class StockFollowView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    onTap: () {}),
+                    onTap: () {
+                      Get.toNamed(RouteConfig.stockDetail,
+                          arguments: state.listStock[index].sym);
+                    }),
               );
             },
             itemCount: state.listStock.length);

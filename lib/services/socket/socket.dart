@@ -28,6 +28,10 @@ class Socket {
     socket.disconnect();
   }
 
+  void dispose(){
+    socket.dispose();
+  }
+
   void addStockSocket(String stock) {
     var map = {"action": "join", "data": "$stock"};
     var msg = json.encode(map);

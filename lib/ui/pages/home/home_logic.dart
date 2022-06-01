@@ -68,6 +68,7 @@ class HomeLogic extends GetxController {
   @override
   void onClose() {
     disConnectSocket();
+    _socket.dispose();
     super.onClose();
   }
 }

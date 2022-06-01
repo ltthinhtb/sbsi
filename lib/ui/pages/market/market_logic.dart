@@ -240,4 +240,10 @@ class MarketLogic extends GetxController {
     getMarketDepth();
     getDetailStockBranch();
   }
+
+  @override
+  void onClose() {
+    _socket.dispose();
+    super.onClose();
+  }
 }
