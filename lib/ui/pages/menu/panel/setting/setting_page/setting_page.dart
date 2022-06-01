@@ -42,7 +42,10 @@ class _SettingPageState extends State<SettingPage> with Validator {
             rowButton(
                 button: AppImages.faceID_setting,
                 title: S.of(context).registration,
-                onTap: () {})
+                onTap: () {}),
+
+            const SizedBox(height: 16),
+            _buildLanguageSection()
           ],
         ),
       ),
@@ -82,7 +85,8 @@ class _SettingPageState extends State<SettingPage> with Validator {
                     });
               },
               valueListenable: isBiometrics,
-            )
+            ),
+
           ],
         ),
       ),
@@ -206,40 +210,40 @@ class _SettingPageState extends State<SettingPage> with Validator {
 //   });
 // }
 
-// Widget _buildLanguageSection() {
-//   final theme = Theme.of(context);
-//   // print("Language: ===> ${settingService.currentLocate.value}");
-//   return Obx(() {
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.start,
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Text(
-//           S.of(context).settings_language,
-//           style: theme.textTheme.headline6,
-//         ),
-//         RadioListTile(
-//           title: Text(S.of(context).settings_languageEnglish),
-//           value: const Locale.fromSubtags(languageCode: 'en'),
-//           groupValue: settingService.currentLocate.value,
-//           onChanged: (Locale? value) {
-//             if (value != null) {
-//               settingService.updateLocale(value);
-//             }
-//           },
-//         ),
-//         RadioListTile(
-//           title: Text(S.of(context).settings_languageVietnamese),
-//           value: const Locale.fromSubtags(languageCode: 'vi'),
-//           groupValue: settingService.currentLocate.value,
-//           onChanged: (Locale? value) {
-//             if (value != null) {
-//               settingService.updateLocale(value);
-//             }
-//           },
-//         ),
-//       ],
-//     );
-//   });
-// }
+Widget _buildLanguageSection() {
+  final theme = Theme.of(context);
+  // print("Language: ===> ${settingService.currentLocate.value}");
+  return Obx(() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).settings_language,
+          style: theme.textTheme.headline6,
+        ),
+        RadioListTile(
+          title: Text(S.of(context).settings_languageEnglish),
+          value: const Locale.fromSubtags(languageCode: 'en'),
+          groupValue: settingService.currentLocate.value,
+          onChanged: (Locale? value) {
+            if (value != null) {
+              settingService.updateLocale(value);
+            }
+          },
+        ),
+        RadioListTile(
+          title: Text(S.of(context).settings_languageVietnamese),
+          value: const Locale.fromSubtags(languageCode: 'vi'),
+          groupValue: settingService.currentLocate.value,
+          onChanged: (Locale? value) {
+            if (value != null) {
+              settingService.updateLocale(value);
+            }
+          },
+        ),
+      ],
+    );
+  });
+}
 }

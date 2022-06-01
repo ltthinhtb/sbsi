@@ -42,7 +42,12 @@ class SignInLogic extends GetxController with Validator {
       password = authService.token.value?.data?.pass ?? "";
     }
     bool validateUser = state.formKeyUser.currentState!.validate();
-    bool validatePass = state.formKeyPass.currentState!.validate();
+    bool validatePass;
+    if (isBiometrics)
+      validatePass = true;
+    else {
+      validatePass = state.formKeyPass.currentState!.validate();
+    }
     bool validate = validateUser && validatePass;
     if (validate) {
       var dataParam = ParamsObject(

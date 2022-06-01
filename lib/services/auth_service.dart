@@ -34,7 +34,6 @@ class AuthService extends GetxService {
         canAuthenticateWithBiometrics || await auth.isDeviceSupported();
     logger.i("có thể đăng nhập bằng face/vân tay: ${canAuthenticate}");
     prefs = await SharedPreferences.getInstance();
-
     isBiometricsSave = prefs.getBool(IS_BIOMETRICS_SAVE) ?? false;
     return this;
   }
@@ -60,7 +59,7 @@ class AuthService extends GetxService {
           localizedReason: 'Please authenticate to show account balance',
           options: const AuthenticationOptions(
               useErrorDialogs: true, stickyAuth: true, biometricOnly: true));
-      Get.find<SignInLogic>().signIn();
+      Get.find<SignInLogic>().signIn(isBiometrics: true);
     } on PlatformException catch (e) {
       if (e.code == auth_error.notEnrolled) {
         // Add handling of no hardware here.
