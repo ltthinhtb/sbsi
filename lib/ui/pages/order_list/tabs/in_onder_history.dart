@@ -69,7 +69,6 @@ class _InOrderHistoryState extends State<InOrderHistory>
                 onTap: () async {
                   var date = await showDatePicker(
                       context: context,
-                      initialEntryMode: DatePickerEntryMode.calendarOnly,
                       locale: Get.locale,
                       firstDate: DateTime.now().add(const Duration(days: -90)),
                       lastDate: DateTime.now().add(const Duration(days: 30)),
@@ -95,7 +94,6 @@ class _InOrderHistoryState extends State<InOrderHistory>
                 onTap: () async {
                   var date = await showDatePicker(
                       context: context,
-                      initialEntryMode: DatePickerEntryMode.calendarOnly,
                       locale: Get.locale,
                       firstDate: statDate.add(const Duration(days: -90)),
                       lastDate: DateTime.now().add(const Duration(days: 30)),

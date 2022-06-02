@@ -160,18 +160,10 @@ class AppThemes {
       indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(8), color: AppColors.tabIn));
 
-  static const ColorScheme _lightColorScheme = ColorScheme(
-    primary: AppColors.primary,
-    secondary: AppColors.secondary,
-    background: Color(0xFFE6EBEB),
-    surface: Color(0xFFFAFBFB),
-    onBackground: Colors.white,
-    error: _lightFillColor,
-    onError: _lightFillColor,
-    onPrimary: _lightFillColor,
-    onSecondary: Color(0xFF322942),
-    onSurface: Color(0xFF241E30),
-    brightness: Brightness.light,
+  static const ColorScheme _lightColorScheme = ColorScheme.light(
+    primary: AppColors.primary, // header background color
+    onPrimary: Colors.white, // header text color
+    onSurface: Colors.black, // body text color
   );
 
   static const ColorScheme _darkColorScheme = ColorScheme(

@@ -553,7 +553,7 @@ class _ApiClient implements ApiClient {
   @override
   Future sendToken(Map<String, dynamic> json) async {
     Response _result = await _getApi(_dio
-        .post(AppConfigs.NOTIFICATION + 'monitor/deviceManage', data: json));
+        .post(AppConfigs.SIGN_UP_URL + 'monitor/deviceManage', data: json));
     var _mapData = _result.data;
     return _mapData;
   }

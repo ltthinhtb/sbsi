@@ -59,7 +59,6 @@ class _HistoryCashTabState extends State<HistoryCashTab>
                   onTap: () async {
                     var date = await showDatePicker(
                         context: context,
-                        initialEntryMode: DatePickerEntryMode.calendarOnly,
                         locale: Get.locale,
                         firstDate:
                             DateTime.now().add(const Duration(days: -1000)),
@@ -86,7 +85,6 @@ class _HistoryCashTabState extends State<HistoryCashTab>
                   onTap: () async {
                     var date = await showDatePicker(
                         context: context,
-                        initialEntryMode: DatePickerEntryMode.calendarOnly,
                         locale: Get.locale,
                         firstDate: statDate.add(const Duration(days: -1000)),
                         lastDate: DateTime.now().add(const Duration(days: 30)),

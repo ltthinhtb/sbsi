@@ -95,7 +95,6 @@ class _TransferHistoryState extends State<TransferHistory> {
                     onTap: () async {
                       var date = await showDatePicker(
                           context: context,
-                          initialEntryMode: DatePickerEntryMode.calendarOnly,
                           locale: Get.locale,
                           firstDate:
                               DateTime.now().add(const Duration(days: -90)),
@@ -124,7 +123,6 @@ class _TransferHistoryState extends State<TransferHistory> {
                     onTap: () async {
                       var date = await showDatePicker(
                           context: context,
-                          initialEntryMode: DatePickerEntryMode.calendarOnly,
                           locale: Get.locale,
                           firstDate: statDate.add(const Duration(days: -90)),
                           lastDate:

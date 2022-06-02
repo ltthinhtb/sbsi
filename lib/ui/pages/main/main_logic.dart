@@ -42,7 +42,6 @@ class MainLogic extends GetxController {
         "token": Get.find<NotificationService>().token,
         "device": Platform.isAndroid ? "AND" : "IOS"
       });
-      print(response['rs']);
     } on ErrorException catch (error) {
       AppSnackBar.showError(message: error.message);
     }
@@ -51,7 +50,9 @@ class MainLogic extends GetxController {
   @override
   void onReady() {
     notificationService.fcmSubscribe("all");
-    // sendToken();
+    notificationService.fcmSubscribe("test");
+
+    sendToken();
     super.onReady();
   }
 }
