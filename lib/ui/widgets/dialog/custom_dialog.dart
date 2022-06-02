@@ -176,6 +176,10 @@ class CustomDialog {
             mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: 16),
+              Center(
+                child: SvgPicture.asset(AppImages.check1),
+              ),
+              const SizedBox(height: 24),
               Text(
                 tittle,
                 style: Theme.of(context)
@@ -183,16 +187,15 @@ class CustomDialog {
                     .headline6
                     ?.copyWith(fontWeight: FontWeight.w700),
               ),
-              const SizedBox(height: 24),
-              Center(
-                child: SvgPicture.asset(AppImages.check1),
-              ),
               const SizedBox(height: 32),
-              ButtonFill(
-                  voidCallback: () {
-                    Get.back();
-                  },
-                  title: S.current.confirm),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: ButtonFill(
+                    voidCallback: () {
+                      Get.back();
+                    },
+                    title: S.current.confirm),
+              ),
               const SizedBox(height: 24),
             ],
           ),
@@ -200,6 +203,7 @@ class CustomDialog {
       }),
     )).then((value) {
       Get.back();
+      return null;
     });
   }
 }

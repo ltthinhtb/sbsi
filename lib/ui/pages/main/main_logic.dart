@@ -36,7 +36,7 @@ class MainLogic extends GetxController {
 
   Future<void> sendToken() async {
     try {
-      var response = await apiService.sendToken({
+     await apiService.sendToken({
         "cmd": "add",
         "account": Get.find<AuthService>().token.value!.data!.user,
         "token": Get.find<NotificationService>().token,

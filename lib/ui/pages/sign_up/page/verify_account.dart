@@ -15,7 +15,6 @@ import 'package:sbsi/utils/image_utils.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../model/entities/compare_result.dart';
-import '../../../../utils/logger.dart';
 import '../../../commons/app_loading.dart';
 import '../../../commons/appbar.dart';
 import '../../../widgets/button/button_filled.dart';

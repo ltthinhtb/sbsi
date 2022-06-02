@@ -76,8 +76,6 @@ class _ChangePinPageState extends State<ChangePinPage> {
           onPressed: () async {
             try {
               await logic.changePin();
-              AppSnackBar.showSuccess(
-                  message: S.of(context).change_pin_success);
             } on ErrorException catch (e) {
               AppSnackBar.showError(message: e.message);
             } catch (e) {

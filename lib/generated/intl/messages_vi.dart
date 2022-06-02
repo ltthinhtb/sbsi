@@ -126,7 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "change_password": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "change_password_success":
             MessageLookupByLibrary.simpleMessage("Đổi mật khẩu thành công"),
-        "change_pin": MessageLookupByLibrary.simpleMessage("Thay đổi mã pin"),
+        "change_pin": MessageLookupByLibrary.simpleMessage("Đổi mã PIN"),
         "change_pin_success":
             MessageLookupByLibrary.simpleMessage("Thay đổi mã Pin thành công"),
         "choose": MessageLookupByLibrary.simpleMessage("Chọn"),
@@ -249,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tổng giá trị đầu tư"),
         "issue_date_cmt": MessageLookupByLibrary.simpleMessage("Ngày cấp"),
         "issue_loc": MessageLookupByLibrary.simpleMessage("Nơi cấp"),
+        "language": MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
         "later": MessageLookupByLibrary.simpleMessage("Để sau"),
         "list_history":
             MessageLookupByLibrary.simpleMessage("Danh sách lịch sử"),

@@ -118,7 +118,7 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
                     )),
             const SizedBox(width: 20),
             Expanded(
-              flex: 126,
+              flex: 110,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -149,16 +149,16 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
                   Row(
                     children: [
                       Text(
-                        "${data.orderTime ?? ""} |",
+                        "${data.orderTime ?? ""}",
                         style: caption,
                       ),
-                      const SizedBox(width: 1),
-                      Text(
-                        _status,
-                        style: caption?.copyWith(
-                            color: MessageOrder.getColorStatus(
-                                MessageOrder.statusHuySua(data))),
-                      ),
+                      // const SizedBox(width: 1),
+                      // Text(
+                      //   _status,
+                      //   style: caption?.copyWith(
+                      //       color: MessageOrder.getColorStatus(
+                      //           MessageOrder.statusHuySua(data))),
+                      // ),
                     ],
                   ),
                 ],
@@ -167,7 +167,7 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
             Expanded(
               flex: 96,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     MoneyFormat.formatMoneyRound('${data.volume}'),
@@ -185,7 +185,7 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
             Expanded(
               flex: 95,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     MoneyFormat.formatMoneyRound('${data.matchVolume}'),
@@ -196,6 +196,25 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
                     '${data.matchPrice}',
                     style: caption?.copyWith(
                         fontWeight: FontWeight.w400, color: data.colorBack),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 95,
+              child: Column(
+                children: [
+                  Text(
+                    '${data.reVolume}',
+                    style: caption?.copyWith(fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    _status,
+                    textAlign: TextAlign.center,
+                    style: caption?.copyWith(
+                        color: MessageOrder.getColorStatus(
+                            MessageOrder.statusHuySua(data))),
                   ),
                 ],
               ),
@@ -221,7 +240,7 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
             children: [
               const SizedBox(height: 16),
               Text(
-                S.of(context).order,
+                S.of(context).cancel_order,
                 style: Theme.of(context)
                     .textTheme
                     .headline6

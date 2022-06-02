@@ -358,8 +358,7 @@
   "save_pin": "Save pin",
   "change_order_success": "Change order success",
   "edit_note": "Edit note",
-  "pin_pass" : "Pin & password",
-  "update" : "Update"
-
-
+  "pin_pass": "Pin & password",
+  "update": "Update",
+  "language": "Language"
 }

@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/menu/panel/setting/change_password_page/change_password_view.dart';
 
-import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
-import '../../../../common/app_shadows.dart';
 import '../../../../generated/l10n.dart';
 import 'setting/change_pin_page/change_pin_view.dart';
 

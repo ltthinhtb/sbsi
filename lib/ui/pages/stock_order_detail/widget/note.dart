@@ -41,7 +41,7 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
             backgroundColor: const Color.fromRGBO(251, 122, 4, 1),
             foregroundColor: Colors.white,
             icon: null,
-            label: 'Sửa lệnh',
+            label: S.of(context).edit_note,
           ),
           SlidableAction(
             onPressed: (BuildContext context) {
@@ -50,7 +50,7 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
             backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
             icon: null,
-            label: 'Hủy lệnh',
+            label: S.of(context).cancel_order,
           ),
         ],
       ),
@@ -113,7 +113,7 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
             children: [
               const SizedBox(height: 16),
               Text(
-                S.of(context).order,
+                S.of(context).cancel_order,
                 style: Theme.of(context)
                     .textTheme
                     .headline6

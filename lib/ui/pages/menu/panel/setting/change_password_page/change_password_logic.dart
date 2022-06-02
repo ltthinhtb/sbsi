@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/services/index.dart';
-import 'package:sbsi/ui/commons/app_dialog.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../widgets/dialog/custom_dialog.dart';
 import 'change_password_state.dart';

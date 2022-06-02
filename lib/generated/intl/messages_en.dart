@@ -240,6 +240,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invest_total": MessageLookupByLibrary.simpleMessage("Total invest"),
         "issue_date_cmt": MessageLookupByLibrary.simpleMessage("Issue date"),
         "issue_loc": MessageLookupByLibrary.simpleMessage("Issue location"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "later": MessageLookupByLibrary.simpleMessage("Later"),
         "list_history": MessageLookupByLibrary.simpleMessage("List history"),
         "list_order": MessageLookupByLibrary.simpleMessage("List order"),

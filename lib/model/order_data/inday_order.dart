@@ -26,6 +26,16 @@ class IndayOrder {
   String? autoType;
   String? product;
 
+  String get reVolume {
+    if(volume == null) {
+      return "0";
+    }
+    if(matchVolume == null){
+      return volume!;
+    }
+    return (num.parse(volume!) -num.parse(matchVolume!)).toString();
+  }
+
   String sideString(BuildContext context) {
     if (side == "B") return "M";
     return "B";

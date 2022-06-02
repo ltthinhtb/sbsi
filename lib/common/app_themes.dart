@@ -30,7 +30,6 @@ class AppThemes {
   static const Color _darkIconColor = AppColors.white;
 
   //Fill
-  static const _lightFillColor = AppColors.black;
   static const _darkFillColor = AppColors.white;
 
   //Text themes

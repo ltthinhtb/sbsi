@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/ui/pages/order_list/widget/note_widget.dart';
-import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../model/order_data/inday_order.dart';
@@ -26,7 +25,6 @@ class _InDayTabState extends State<InDayTab>
 
   @override
   Widget build(BuildContext context) {
-    final body1 = Theme.of(context).textTheme.bodyText1;
     super.build(context);
     return Column(
       children: [
@@ -43,18 +41,6 @@ class _InDayTabState extends State<InDayTab>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    S.of(context).order_list_day,
-                    style: body1?.copyWith(fontWeight: FontWeight.w700),
-                  ),
-                ),
-                const Divider(
-                  thickness: 1,
-                  height: 16,
-                ),
-                const SizedBox(height: 10),
                 buildHeader(),
                 const SizedBox(height: 16),
                 Expanded(
@@ -132,7 +118,7 @@ class _InDayTabState extends State<InDayTab>
           ),
           const SizedBox(width: 20),
           Expanded(
-            flex: 126,
+            flex: 110,
             child: Text(
               S.of(context).code,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
@@ -141,14 +127,24 @@ class _InDayTabState extends State<InDayTab>
           Expanded(
             flex: 96,
             child: Text(
-              'Đặt (KL/Giá)',
+              'Đặt\n(KL/Giá)',
+              textAlign: TextAlign.center,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
             ),
           ),
           Expanded(
             flex: 95,
             child: Text(
-              'Khớp (KL/Giá)',
+              'Khớp\n(KL/Giá)',
+              textAlign: TextAlign.center,
+              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            ),
+          ),
+          Expanded(
+            flex: 95,
+            child: Text(
+              'KL còn lại\nTrạng thái',
+              textAlign: TextAlign.center,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
             ),
           ),

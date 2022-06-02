@@ -5,13 +5,11 @@ import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
-import 'package:sbsi/ui/pages/menu/panel/setting/change_pin_page/change_pin_view.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../router/route_config.dart';
 import '../guide_payment/guide_payment_view.dart';
 import '../menu/panel/pin_pass_page.dart';
-import '../menu/panel/setting/change_password_page/change_password_view.dart';
 import 'utilities_logic.dart';
 
 class UtilitiesPage extends StatefulWidget {
