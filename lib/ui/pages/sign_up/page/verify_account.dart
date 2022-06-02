@@ -9,10 +9,13 @@ import 'package:logger/logger.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/model/entities/orc_model.dart';
+import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/ui/commons/app_dialog.dart';
 import 'package:sbsi/utils/image_utils.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../model/entities/compare_result.dart';
+import '../../../../utils/logger.dart';
 import '../../../commons/app_loading.dart';
 import '../../../commons/appbar.dart';
 import '../../../widgets/button/button_filled.dart';
@@ -405,12 +408,26 @@ class _VerifyAccountState extends State<VerifyAccount> {
       }
       state.orcResponse =
           OrcResponse.fromJson(jsonDecode(mapData['jsonInfo'])['object']);
+
+      COMPARE_RESULT compare_result =
+          COMPARE_RESULT.fromJson(jsonDecode(mapData['jsonCompareFace']));
+
+      /// lỗi khuôn mặt k đúng
+      if (compare_result.object?.msg == "NOMATCH" ||
+          compare_result.object?.msg == "NOTHING" ||
+          compare_result.statusCode == 400) {
+        state.orcResponse = null;
+        throw ErrorException(400, compare_result.object?.result ?? "");
+      }
       await logic.uploadUrlImage(
           frontIDByte: frontImage.value.toList(),
           backIDByte: backImage.value.toList(),
           faceByte: faceImage.value.toList());
     } on PlatformException catch (e) {
       Logger().e(e.toString());
+    } on ErrorException catch (error) {
+      AppDiaLog.showNoticeDialog(
+          middleText: error.message, buttonText: "Thử lại");
     } catch (e) {
       AppDiaLog.showNoticeDialog(
           middleText: "Lỗi xác thực khuôn mặt", buttonText: "Thử lại");

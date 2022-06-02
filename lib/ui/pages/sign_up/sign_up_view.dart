@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/ui/pages/sign_up/page/verify_account.dart';
 
 import 'page/referral_page.dart';
 import 'sign_up_logic.dart';
@@ -17,7 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const ReferralPage();
+    return const VerifyAccount();
   }
 
   @override

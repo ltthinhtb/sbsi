@@ -127,6 +127,7 @@ class MainActivity : FlutterFragmentActivity() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK && data != null) {
@@ -150,7 +151,7 @@ class MainActivity : FlutterFragmentActivity() {
                 val verifyFace = data.getStringExtra(ENCODE_RESULT)
                 val jsonLivenessFontCard = data.getStringExtra(LIVENESS_CARD_FRONT_RESULT)
                 val jsonLivenessRearCard = data.getStringExtra(LIVENESS_CARD_REAR_RESULT)
-                println("link ảnh mặt $imagePortrait")
+                println("link ảnh mặt $jsonCompareFace")
                 val hashMap: HashMap<String, Any?> = hashMapOf()
                 hashMap["jsonInfo"] = strDataInfo
                 hashMap["imageFront"] = imageFront
