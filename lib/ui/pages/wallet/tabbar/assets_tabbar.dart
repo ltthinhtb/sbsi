@@ -35,9 +35,10 @@ class _AssetsTabBarState extends State<AssetsTabBar>
       var money = state.assets.value.assetsValue;
 
       double percent = (market_value / (money + market_value));
-
+      double percentMoney = 100 - percent * 100;
+      final body2 = Theme.of(context).textTheme.bodyText2;
       return RefreshIndicator(
-        onRefresh: () async => logic.onReady(),
+        onRefresh: () async => logic.refresh(),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -59,7 +60,7 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                     percent: percent,
                     startAngle: 0,
                     center: Text(
-                      "${(percent * 100).toStringAsFixed(2)}%",
+                      "100%",
                       style: Theme.of(context)
                           .textTheme
                           .headline6
@@ -88,6 +89,13 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                                 .textTheme
                                 .bodyText2
                                 ?.copyWith(),
+                          ),
+                          const SizedBox(
+                            width: 2.28,
+                          ),
+                          Text(
+                            '${percentMoney.toStringAsFixed(0)}%',
+                            style: body2?.copyWith(fontWeight: FontWeight.w700),
                           )
                         ],
                       ),
@@ -108,6 +116,13 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                                 .textTheme
                                 .bodyText2
                                 ?.copyWith(),
+                          ),
+                          const SizedBox(
+                            width: 2.28,
+                          ),
+                          Text(
+                            '${(percent * 100).toStringAsFixed(0)}%',
+                            style: body2?.copyWith(fontWeight: FontWeight.w700),
                           )
                         ],
                       ),
@@ -124,27 +139,27 @@ class _AssetsTabBarState extends State<AssetsTabBar>
               child: Column(
                 children: [
                   rowData(S.of(context).cash_balance,
-                      '${MoneyFormat.formatMoneyRound(assets.assets ?? "")}đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.assets ?? "")} đ'),
                   const SizedBox(height: 16),
                   Visibility(
                     visible: state.account.value.lastCharacter == "6",
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 16),
                       child: rowData(S.of(context).pp_1,
-                          '${MoneyFormat.formatMoneyRound(assets.ee ?? "")}đ'),
+                          '${MoneyFormat.formatMoneyRound(assets.ee ?? "")} đ'),
                     ),
                   ),
                   Obx(() {
                     var portfolioTotal = state.portfolioTotal.value;
                     return rowData(S.of(context).total_transfer,
-                        '${MoneyFormat.formatMoneyRound(portfolioTotal.marketValue ?? "")}đ');
+                        '${MoneyFormat.formatMoneyRound(portfolioTotal.marketValue ?? "")} đ');
                   }),
                   Visibility(
                     visible: state.account.value.lastCharacter == "6",
                     child: Padding(
                       padding: const EdgeInsets.only(top: 16),
                       child: rowData(S.of(context).debt,
-                          '${MoneyFormat.formatMoneyRound(assets.debt ?? "")}đ'),
+                          '${MoneyFormat.formatMoneyRound(assets.debt ?? "")} đ'),
                     ),
                   ),
                 ],
@@ -174,16 +189,16 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                   ),
                   const SizedBox(height: 8),
                   rowData(S.of(context).cash,
-                      '${MoneyFormat.formatMoneyRound(assets.cashBalance ?? "")}đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.cashBalance ?? "")} đ'),
                   const SizedBox(height: 16),
                   rowData(S.of(context).withdraw_money,
-                      '${MoneyFormat.formatMoneyRound(assets.cashAvai ?? "")}đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.cashAvai ?? "")} đ'),
                   const SizedBox(height: 16),
                   rowData(S.of(context).apT0,
-                      '${MoneyFormat.formatMoneyRound(assets.apT0 ?? "")}đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.apT0 ?? "")} đ'),
                   const SizedBox(height: 16),
                   rowData(S.of(context).cash_advance_avai,
-                      '${MoneyFormat.formatMoneyRound(assets.cashAdvanceAvai ?? "")}đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.cashAdvanceAvai ?? "")} đ'),
                   const SizedBox(height: 16),
                   rowData("Cổ tức tiền", '-'),
                 ],

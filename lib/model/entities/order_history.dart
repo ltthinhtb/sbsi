@@ -41,6 +41,11 @@ class OrderHistory {
     return AppColors.deActive;
   }
 
+  String get matchPrice {
+    if(cMATCHPRICE == null) return "0";
+    return (cMATCHPRICE!/1000).toStringAsFixed(2);
+  }
+
   OrderHistory(
       {this.rOWNUM,
         this.pKORDER,

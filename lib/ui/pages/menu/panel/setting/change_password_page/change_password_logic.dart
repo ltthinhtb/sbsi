@@ -2,6 +2,9 @@ import 'package:get/get.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/services/index.dart';
+import 'package:sbsi/ui/commons/app_dialog.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../../widgets/dialog/custom_dialog.dart';
 import 'change_password_state.dart';
 
 class ChangePasswordLogic extends GetxController {
@@ -10,31 +13,31 @@ class ChangePasswordLogic extends GetxController {
   final AuthService authService = Get.find();
 
   Future<void> changePassword() async {
-    print(ChangePasswordModel(state.old_controller.text,
-            state.new_controller.text, state.confirm_controller.text)
-        .toJson());
     var _tokenEntity = authService.token.value;
     final RequestParams _requestParams = RequestParams(
       group: "B",
       session: _tokenEntity?.data?.sid,
       user: _tokenEntity?.data?.user,
-       otp: "",
+      otp: "",
       data: ParamsObject(
-        type: "string",
-        cmd: "ChangePass",
-        p1: state.old_controller.text,
-        p2: state.new_controller.text
-      ),
+          type: "string",
+          cmd: "ChangePass",
+          p1: state.old_controller.text,
+          p2: state.new_controller.text),
     );
     try {
       await apiService.changePassword(_requestParams);
       updatePass();
+      CustomDialog.showDialogSuccess(S.current.change_password_success)
+          .then((value) {
+        Get.back();
+      });
     } catch (e) {
       rethrow;
     }
   }
 
-  void updatePass(){
+  void updatePass() {
     var token = Get.find<AuthService>().token.value;
     token?.data?.pass = state.new_controller.text;
     Get.find<AuthService>().saveToken(token!);

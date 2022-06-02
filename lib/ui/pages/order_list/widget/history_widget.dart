@@ -5,6 +5,7 @@ import 'package:sbsi/utils/money_utils.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../model/entities/order_history.dart';
 import '../../../../utils/error_message.dart';
+import '../../../../utils/logger.dart';
 
 class HistoryWidget extends StatefulWidget {
   const HistoryWidget({Key? key, required this.history, required this.index})
@@ -36,6 +37,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
   Widget buildItem(OrderHistory data) {
     String _status = MessageOrder.getStatusOrder1(data);
     final caption = Theme.of(context).textTheme.caption;
+    logger.d(data.toJson());
     return Container(
       padding: const EdgeInsets.fromLTRB(18, 10, 0, 3),
       decoration: BoxDecoration(
@@ -110,7 +112,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  '${data.cMATCHEDVALUE}',
+                  '${data.matchPrice}',
                   style: caption?.copyWith(
                       fontWeight: FontWeight.w400, color: data.colorBack),
                 ),

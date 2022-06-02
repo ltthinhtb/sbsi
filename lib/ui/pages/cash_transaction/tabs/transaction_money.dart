@@ -190,7 +190,9 @@ class _TransactionMoneyState extends State<TransactionMoney> {
   }
 
   void checkTime() {
-    if (statDate.difference(endDate).inDays <= 0) {
+    if (state.startDateController.text.isNotEmpty &&
+        state.endDateController.text.isNotEmpty &&
+        statDate.difference(endDate).inDays <= 0) {
       logic.getOrderList();
     }
   }

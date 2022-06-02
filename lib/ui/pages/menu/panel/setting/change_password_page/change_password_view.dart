@@ -100,8 +100,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               } else {
                 await logic.changePassword();
               }
-              AppSnackBar.showSuccess(
-                  message: S.of(context).change_password_success);
+              if (widget.isFirst) {
+                // chỉ hiện snackbar khi đổi mật khẩu lần đầu
+                AppSnackBar.showSuccess(
+                    message: S.of(context).change_password_success);
+              }
             } on ErrorException catch (e) {
               AppSnackBar.showError(message: e.message);
             } catch (e) {
@@ -109,7 +112,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             }
           },
           child: Text(
-            S.of(context).save_password,
+            S.of(context).update,
             style: AppTextStyle.H5Bold.copyWith(color: Colors.white),
           ),
         ),
@@ -127,7 +130,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           child: AppTextFieldWidget(
             obscureText: true,
             inputController: state.old_controller,
-            label: S.of(context).old_password,
+            hintText: S.of(context).old_password,
           ),
         ),
         const SizedBox(height: 16),
@@ -140,7 +143,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           ),
         ),
         const SizedBox(height: 16),
-
         Form(
           // key: state.formKeyUser,
           child: AppTextFieldWidget(
@@ -150,7 +152,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
           ),
         ),
         const SizedBox(height: 16),
-
         Visibility(
           visible: widget.isFirst,
           child: Column(

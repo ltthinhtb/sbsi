@@ -322,6 +322,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phone_not_valid":
             MessageLookupByLibrary.simpleMessage("Phone not valid"),
+        "pin_pass": MessageLookupByLibrary.simpleMessage("Pin & password"),
         "pin_valid":
             MessageLookupByLibrary.simpleMessage("Mã pin không hợp lệ"),
         "please_input_OTP":
@@ -476,6 +477,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Transfer Stock"),
         "transfer_type": MessageLookupByLibrary.simpleMessage("Transfer type"),
         "up_to": MessageLookupByLibrary.simpleMessage("Up to"),
+        "update": MessageLookupByLibrary.simpleMessage("Update"),
         "use_photo": MessageLookupByLibrary.simpleMessage("Use photo"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_guide": MessageLookupByLibrary.simpleMessage("User guide"),

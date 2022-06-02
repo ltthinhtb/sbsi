@@ -340,7 +340,7 @@
   "please_input_account" : "Vui lòng nhập số tài khoản",
   "cash" : "Tiền mặt",
   "withdraw_money" : "Tiền được rút",
-  "apT0" : "Tiền trở về",
+  "apT0" : "Tiền chờ về",
   "cash_advance_avai" : "Tiền có thể ứng",
   "debt" : "Nợ",
   "cancel_order_success" : "Yêu cầu hủy lệnh thành công",
@@ -357,5 +357,7 @@
   "confirm_new_pin" : "Xác nhận mã pin mới",
   "save_pin" : "Lưu mã pin",
   "change_order_success" : "Gửi yêu cầu sửa lệnh thành công",
-  "edit_note" : "Sửa lệnh"
+  "edit_note" : "Sửa lệnh",
+  "pin_pass" : "Mật khẩu và bảo mật",
+  "update" : "Cập nhật"
 }

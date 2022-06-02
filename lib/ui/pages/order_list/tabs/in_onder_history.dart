@@ -77,7 +77,6 @@ class _InOrderHistoryState extends State<InOrderHistory>
                     state.startDateController.text =
                         DateTimeUtils.toDateString(date, format: "dd/MM/yyyy");
                     checkTime();
-
                   }
                 },
                 inputController: state.startDateController,
@@ -179,7 +178,7 @@ class _InOrderHistoryState extends State<InOrderHistory>
                 }).toList(),
                 value: state.singingCharacterHistory,
                 onChanged: (inOrderHisTabs? _value) {
-                   logic.changeOrderHistoryListStatus(_value!);
+                  logic.changeOrderHistoryListStatus(_value!);
                 },
               ),
             ),
@@ -249,9 +248,11 @@ class _InOrderHistoryState extends State<InOrderHistory>
   }
 
   void checkTime() {
-    if(statDate.difference(endDate).inDays <= 0) {
+    if (state.startDateController.text.isNotEmpty &&
+        state.endDateController.text.isNotEmpty &&
+        statDate.difference(endDate).inDays <= 0) {
       logic.getOrderListHistory();
-    };
+    }
   }
 
   @override

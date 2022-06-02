@@ -65,7 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "amount_not_valid":
             MessageLookupByLibrary.simpleMessage("Khối lượng không hợp lệ"),
         "analytics": MessageLookupByLibrary.simpleMessage("Phân tích"),
-        "apT0": MessageLookupByLibrary.simpleMessage("Tiền trở về"),
+        "apT0": MessageLookupByLibrary.simpleMessage("Tiền chờ về"),
         "are_you_sure_cancel_all_order": MessageLookupByLibrary.simpleMessage(
             "Bạn có chắc chắn muốn hủy tất cả lệnh?"),
         "are_you_sure_cancel_this_order": MessageLookupByLibrary.simpleMessage(
@@ -336,6 +336,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_not_valid":
             MessageLookupByLibrary.simpleMessage("Số điện thoại không hợp lệ"),
+        "pin_pass": MessageLookupByLibrary.simpleMessage("Mật khẩu và bảo mật"),
         "pin_valid":
             MessageLookupByLibrary.simpleMessage("Mã pin không hợp lệ"),
         "please_input_OTP":
@@ -495,6 +496,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chuyển chứng khoán"),
         "transfer_type": MessageLookupByLibrary.simpleMessage("Loại chuyển"),
         "up_to": MessageLookupByLibrary.simpleMessage("Lên đến"),
+        "update": MessageLookupByLibrary.simpleMessage("Cập nhật"),
         "use_photo": MessageLookupByLibrary.simpleMessage("Dùng ảnh này"),
         "user": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "user_guide": MessageLookupByLibrary.simpleMessage("Hướng dẫn sử dụng"),

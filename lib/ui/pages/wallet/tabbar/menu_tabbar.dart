@@ -36,7 +36,7 @@ class _MenuTabBarState extends State<MenuTabBar>
     final caption = Theme.of(context).textTheme.caption!;
     super.build(context);
     return RefreshIndicator(
-      onRefresh: () async => walletLogic.onReady(),
+      onRefresh: () async => walletLogic.refresh(),
       child: ListView(
         children: [
           const SizedBox(height: 16),

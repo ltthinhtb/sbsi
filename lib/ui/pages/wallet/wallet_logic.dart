@@ -87,6 +87,12 @@ class WalletLogic extends GetxController {
     }
   }
 
+  void refresh(){
+    getTotalAssets();
+    getAccountStatus();
+    getPortfolio();
+  }
+
   @override
   void onReady() {
     loadAccount();

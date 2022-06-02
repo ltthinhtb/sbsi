@@ -55,11 +55,11 @@ class StockOrderLogic extends GetxController {
   void changeTotal() {
     num price = 0;
     price = state.priceController.numberValue;
-    if (state.tradingOrder.value != "LO") {
+    if (state.tradingOrder.value != "LO" &&
+        state.tradingOrder.value.isNotEmpty) {
       price = state.selectedStockInfo.value.c ?? 0;
     }
     state.total.value = price * state.volController.numberValue * 1000;
-    print(state.tradingOrder.value);
   }
 
   /// lấy thông tin list mã chứng khoán đã lưu vào db, danh sách mã chứng khoán thường cố định

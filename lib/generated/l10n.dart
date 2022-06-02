@@ -3639,6 +3639,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Pin & password`
+  String get pin_pass {
+    return Intl.message(
+      'Pin & password',
+      name: 'pin_pass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

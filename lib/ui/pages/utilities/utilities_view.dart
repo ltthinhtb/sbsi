@@ -10,6 +10,7 @@ import 'package:sbsi/ui/pages/menu/panel/setting/change_pin_page/change_pin_view
 import '../../../generated/l10n.dart';
 import '../../../router/route_config.dart';
 import '../guide_payment/guide_payment_view.dart';
+import '../menu/panel/pin_pass_page.dart';
 import '../menu/panel/setting/change_password_page/change_password_view.dart';
 import 'utilities_logic.dart';
 
@@ -193,9 +194,9 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                   ),
                   rowButton(
                       onTap: () {
-                        changeBiometrics();
+                        Get.to(const PinPassPage());
                       },
-                      title: S.of(context).change_password,
+                      title: S.of(context).pin_pass,
                       button: AppImages.lock),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
@@ -231,54 +232,6 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
         ),
       ),
     );
-  }
-
-  void changeBiometrics() {
-    Get.dialog(Dialog(
-      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Builder(builder: (context) {
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          decoration: BoxDecoration(
-              color: AppColors.white, borderRadius: BorderRadius.circular(12)),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 16),
-              Text(
-                "Đổi mật khẩu/ mã pin",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6
-                    ?.copyWith(fontWeight: FontWeight.w700),
-              ),
-              const SizedBox(height: 20),
-              rowButton(
-                  onTap: () {
-                    Get.to(const ChangePasswordPage());
-                  },
-                  title: S.of(context).change_password,
-                  button: AppImages.lock),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Divider(
-                  thickness: 1,
-                  height: 32,
-                ),
-              ),
-              rowButton(
-                  onTap: () {
-                    Get.to(const ChangePinPage());
-                  },
-                  title: S.of(context).change_pin,
-                  button: AppImages.lock),
-              const SizedBox(height: 20),
-
-            ],
-          ),
-        );
-      }),
-    ));
   }
 
 

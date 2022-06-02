@@ -85,7 +85,7 @@ class _ChangePinPageState extends State<ChangePinPage> {
             }
           },
           child: Text(
-            S.of(context).save_pin,
+            S.of(context).update,
             style: AppTextStyle.H5Bold.copyWith(color: Colors.white),
           ),
         ),
@@ -103,7 +103,7 @@ class _ChangePinPageState extends State<ChangePinPage> {
           child: AppTextFieldWidget(
             obscureText: true,
             inputController: state.old_controller,
-            label: S.of(context).old_pin,
+            hintText: S.of(context).old_pin,
           ),
         ),
         const SizedBox(height: 16),

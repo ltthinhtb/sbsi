@@ -357,5 +357,9 @@
   "confirm_new_pin": "Confirm new pin",
   "save_pin": "Save pin",
   "change_order_success": "Change order success",
-  "edit_note": "Edit note"
+  "edit_note": "Edit note",
+  "pin_pass" : "Pin & password",
+  "update" : "Update"
+
+
 }

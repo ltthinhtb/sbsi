@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
+
+import '../../../common/app_colors.dart';
+import '../../../common/app_images.dart';
+import '../button/button_filled.dart';
 
 class CustomDialog {
   static Future<bool?> showConfirmDialog(
@@ -156,5 +162,44 @@ class CustomDialog {
         );
       },
     );
+  }
+
+  static Future<bool?> showDialogSuccess(String tittle) async {
+    return await Get.dialog(Dialog(
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Builder(builder: (context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+              color: AppColors.white, borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 16),
+              Text(
+                tittle,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 24),
+              Center(
+                child: SvgPicture.asset(AppImages.check1),
+              ),
+              const SizedBox(height: 32),
+              ButtonFill(
+                  voidCallback: () {
+                    Get.back();
+                  },
+                  title: S.current.confirm),
+              const SizedBox(height: 24),
+            ],
+          ),
+        );
+      }),
+    )).then((value) {
+      Get.back();
+    });
   }
 }
