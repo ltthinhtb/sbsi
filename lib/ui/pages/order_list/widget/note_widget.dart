@@ -29,7 +29,7 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
   final state = Get.find<OrderListLogic>().state;
   final logic = Get.find<OrderListLogic>();
 
-  bool _isSelect = false;
+  ValueNotifier<bool> _isSelect = ValueNotifier<bool>(false);
 
   final _pinController = TextEditingController();
   final priceController = TextEditingController();
@@ -39,11 +39,15 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
   void initState() {
     // listen select all note
     state.isSelectAll.listen((p0) {
-      setState(() {
-        _isSelect = p0;
-      });
+      _isSelect.value = p0;
     });
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
   @override
@@ -95,18 +99,22 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
                 ? const SizedBox(width: 24)
                 : GestureDetector(
                     onTap: () {
-                      setState(() {
-                        _isSelect = !_isSelect;
-                        if (_isSelect) {
-                          logic.addSelectOrder(data);
-                        } else {
-                          logic.removeSelectOrder(data);
-                        }
-                      });
+                      _isSelect.value = !_isSelect.value;
+                      if (_isSelect.value) {
+                        logic.addSelectOrder(data);
+                      } else {
+                        logic.removeSelectOrder(data);
+                      }
                     },
-                    child: SvgPicture.asset(
-                      _isSelect ? AppImages.tickActive : AppImages.tick,
-                      width: 24,
+                    child: ValueListenableBuilder<bool>(
+                      valueListenable: _isSelect,
+                      builder:
+                          (BuildContext context, bool value, Widget? child) {
+                        return SvgPicture.asset(
+                          value ? AppImages.tickActive : AppImages.tick,
+                          width: 24,
+                        );
+                      },
                     )),
             const SizedBox(width: 20),
             Expanded(

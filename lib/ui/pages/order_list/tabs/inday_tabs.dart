@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/ui/pages/order_list/widget/note_widget.dart';
+import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../model/order_data/inday_order.dart';
@@ -62,7 +63,7 @@ class _InDayTabState extends State<InDayTab>
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }

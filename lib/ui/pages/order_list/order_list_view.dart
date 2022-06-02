@@ -36,9 +36,24 @@ class _OrderListPageState extends State<OrderListPage>
     final body1 = Theme.of(context).textTheme.bodyText1;
     return Scaffold(
       appBar: AppBarCustom(
-          title: S.of(context).order_note,
-          isCenter: true,
-          automaticallyImplyLeading: false),
+        title: S.of(context).order_note,
+        isCenter: true,
+        automaticallyImplyLeading: false,
+        action: [
+          Obx(() {
+            return Visibility(
+              visible: state.isSelectAll.value,
+              child: Center(
+                child: Text(
+                  S.of(context).cancel_all_orders,
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                      fontWeight: FontWeight.w700, color: AppColors.white),
+                ),
+              ),
+            );
+          })
+        ],
+      ),
       backgroundColor: AppColors.whiteBack,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
@@ -86,8 +101,7 @@ class _OrderListPageState extends State<OrderListPage>
                   ],
                 ),
                 const Expanded(
-                  child: TabBarView(
-                      children: [InDayTab(), InOrderHistory()]),
+                  child: TabBarView(children: [InDayTab(), InOrderHistory()]),
                 )
               ],
             ),
