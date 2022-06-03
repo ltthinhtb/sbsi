@@ -8,6 +8,7 @@ import 'package:sbsi/model/entities/advance_withdraw.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
 import 'package:sbsi/model/entities/economy.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
+import 'package:sbsi/model/entities/foreign.dart';
 import 'package:sbsi/model/entities/get_account_info.dart';
 import 'package:sbsi/model/entities/index.dart';
 import 'package:sbsi/model/entities/right_exc.dart';
@@ -98,6 +99,8 @@ abstract class ApiClient {
   Future<List<StockDataShort>> getTopStock(int type);
 
   Future<ListStockTrade> getListStockTrade(String stock, String type);
+
+  Future<List<ForeignTrade>> getTopForeignTrade(String count, String type);
 
   Future<List<NewsStock>> getListStockNews(String stock);
 
@@ -552,8 +555,8 @@ class _ApiClient implements ApiClient {
 
   @override
   Future sendToken(Map<String, dynamic> json) async {
-    Response _result = await _getApi(_dio
-        .post(AppConfigs.SIGN_UP_URL + 'monitor/deviceManage', data: json));
+    Response _result = await _getApi(
+        _dio.post(AppConfigs.SIGN_UP_URL + 'monitor/deviceManage', data: json));
     var _mapData = _result.data;
     return _mapData;
   }
@@ -998,5 +1001,20 @@ class _ApiClient implements ApiClient {
       listAccount.add(GetAccountInfo.fromJson(element));
     }
     return listAccount.first;
+  }
+
+  @override
+  Future<List<ForeignTrade>> getTopForeignTrade(
+      String count, String type) async {
+    String path = AppConfigs.INFO_SBSI + 'topForeignTrade';
+    Response _result = await _getApi(
+        _dio.get(path, queryParameters: {"count": count, "type": type}));
+    var _mapData = (_result.data);
+    var listMap = _mapData['data'];
+    List<ForeignTrade> listTopForeign = [];
+    for (var element in listMap) {
+      listTopForeign.add(ForeignTrade.fromJson(element));
+    }
+    return listTopForeign;
   }
 }

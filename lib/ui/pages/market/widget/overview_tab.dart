@@ -9,6 +9,7 @@ import 'package:sbsi/ui/pages/market/widget/market_depth_chart.dart';
 
 import 'stock_exchanges .dart';
 import 'stock_follow.dart';
+import 'top_foreign_trade.dart';
 
 class OverviewView extends StatefulWidget {
   OverviewView({Key? key}) : super(key: key);
@@ -160,7 +161,7 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                           Expanded(
                             flex: 116,
                             child: Text(
-                              'Giá trị (triệu)',
+                              'KL giao dịch',
                               style: caption?.copyWith(fontWeight: FontWeight.w700),
                             ),
                           ),
@@ -181,7 +182,8 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                         ],
                       ),
                     ),
-                    StockFollowView()
+                    const SizedBox(height: 16),
+                    const TopForeignTrade()
                   ],
                 ),
               )

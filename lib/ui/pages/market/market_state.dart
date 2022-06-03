@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/model/entities/foreign.dart';
 import 'package:uuid/uuid.dart';
 import '../../../model/entities/category_stock.dart';
 import '../../../model/response/index_detail.dart';
@@ -39,4 +40,7 @@ class MarketState {
 
   Rx<CategoryStock> category =
       CategoryStock(title: CATEGORY_DEFAULT, uuid: const Uuid().v1()).obs;
+
+
+  final topForeignTrade = <ForeignTrade>[].obs;
 }

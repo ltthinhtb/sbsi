@@ -231,6 +231,18 @@ class MarketLogic extends GetxController {
     });
   }
 
+  // lấy top mua bán thế giới
+  Future<void> getTopForeignTrade() async {
+    try {
+      var response = await apiService.getTopForeignTrade("10", "S");
+      state.topForeignTrade.value = response;
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {
+      AppSnackBar.showError(message: e.toString());
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -239,6 +251,7 @@ class MarketLogic extends GetxController {
     getListStockCodeDefault();
     getMarketDepth();
     getDetailStockBranch();
+    getTopForeignTrade();
   }
 
   @override
