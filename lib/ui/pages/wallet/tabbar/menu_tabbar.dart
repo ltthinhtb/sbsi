@@ -108,28 +108,44 @@ class _MenuTabBarState extends State<MenuTabBar>
                               fontWeight: FontWeight.w700, height: 16 / 12),
                         )),
                         Expanded(
-                            child: Text(
-                              S.of(context).volume_short,
-                              style: caption.copyWith(
-                                  fontWeight: FontWeight.w700, height: 16 / 12),
+                          flex: 2,
+                            child: Center(
+                              child: Text(
+                                S.of(context).volume_short,
+                                style: caption.copyWith(
+                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                              ),
                             )),
                         Expanded(
-                            child: Text(
-                              S.of(context).avg_price_short,
-                              style: caption.copyWith(
-                                  fontWeight: FontWeight.w700, height: 16 / 12),
+                            flex: 2,
+
+                            child: Center(
+                              child: Text(
+                                S.of(context).avg_price_short,
+                                style: caption.copyWith(
+                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                              ),
                             )),
                         Expanded(
-                            child: Text(
-                              "%Lãi/lỗ",
-                              style: caption.copyWith(
-                                  fontWeight: FontWeight.w700, height: 16 / 12),
+                            flex: 2,
+
+                            child: Center(
+                              child: Text(
+                                "%Lãi/lỗ",
+                                style: caption.copyWith(
+                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                              ),
                             )),
                         Expanded(
-                            child: Text(
-                              "Lãi/lỗ",
-                              style: caption.copyWith(
-                                  fontWeight: FontWeight.w700, height: 16 / 12),
+                            flex: 2,
+
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                "Lãi/lỗ",
+                                style: caption.copyWith(
+                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                              ),
                             )),
                       ],
                     ),

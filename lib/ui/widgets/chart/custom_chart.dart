@@ -84,69 +84,48 @@ class _CustomLineChartState extends State<CustomLineChart> {
               visible: widget.enableArea != false,
               child: Container(
                 // color: Colors.white,
-                child: ShaderMask(
-                  shaderCallback: (Rect bounds) {
-                    return LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                        chartColor.shade200,
-                        chartColor.shade200,
-                        chartColor.shade300,
-                        chartColor.shade400,
-                        chartColor.shade500,
-                        chartColor.shade600,
-                        chartColor.shade700,
-                        chartColor.shade800,
-                      ],
-                      stops: stops,
-                      tileMode: TileMode.clamp,
-                    ).createShader(bounds);
-                  },
-                  blendMode: BlendMode.srcATop,
-                  child: charts.LineChart(
-                    areaSeriesList,
-                    animate: false,
-                    layoutConfig: charts.LayoutConfig(
-                      leftMarginSpec: charts.MarginSpec.fixedPixel(0),
-                      topMarginSpec: charts.MarginSpec.fixedPixel(0),
-                      rightMarginSpec: charts.MarginSpec.fixedPixel(0),
-                      bottomMarginSpec: charts.MarginSpec.fixedPixel(0),
-                    ),
-                    primaryMeasureAxis: charts.NumericAxisSpec(
-                      showAxisLine: false,
-                      viewport:
-                      charts.NumericExtents(lowestValue, highestValue),
-                      renderSpec: const charts.NoneRenderSpec(),
-                      tickProviderSpec: const charts.BasicNumericTickProviderSpec(
-                        zeroBound: false,
-                      ),
-                    ),
-                    domainAxis: const charts.NumericAxisSpec(
-                      showAxisLine: false,
-                      renderSpec: charts.NoneRenderSpec(),
-                      tickProviderSpec: charts.BasicNumericTickProviderSpec(
-                        zeroBound: false,
-                      ),
-                    ),
-                    defaultRenderer: charts.LineRendererConfig(
-                      includeArea: true,
-                      areaOpacity: 0.3,
-                    ),
-                    behaviors: [
-                      charts.RangeAnnotation([
-                        charts.LineAnnotationSegment(
-                          widget.drawPoint,
-                          charts.RangeAnnotationAxisType.measure,
-                          color:
-                          charts.ColorUtil.fromDartColor(const Color(0xff93969A)),
-                          // dòng cắt ngang
-                          dashPattern: widget.dashPattern ?? [5, 5],
-                          strokeWidthPx: 1,
-                        )
-                      ])
-                    ],
+                child: charts.LineChart(
+                  areaSeriesList,
+                  animate: false,
+                  layoutConfig: charts.LayoutConfig(
+                    leftMarginSpec: charts.MarginSpec.fixedPixel(0),
+                    topMarginSpec: charts.MarginSpec.fixedPixel(0),
+                    rightMarginSpec: charts.MarginSpec.fixedPixel(0),
+                    bottomMarginSpec: charts.MarginSpec.fixedPixel(0),
                   ),
+                  primaryMeasureAxis: charts.NumericAxisSpec(
+                    showAxisLine: false,
+                    viewport:
+                    charts.NumericExtents(lowestValue, highestValue),
+                    renderSpec: const charts.NoneRenderSpec(),
+                    tickProviderSpec: const charts.BasicNumericTickProviderSpec(
+                      zeroBound: false,
+                    ),
+                  ),
+                  domainAxis: const charts.NumericAxisSpec(
+                    showAxisLine: false,
+                    renderSpec: charts.NoneRenderSpec(),
+                    tickProviderSpec: charts.BasicNumericTickProviderSpec(
+                      zeroBound: false,
+                    ),
+                  ),
+                  defaultRenderer: charts.LineRendererConfig(
+                    includeArea: true,
+                    areaOpacity: 0.3,
+                  ),
+                  behaviors: [
+                    charts.RangeAnnotation([
+                      charts.LineAnnotationSegment(
+                        widget.drawPoint,
+                        charts.RangeAnnotationAxisType.measure,
+                        color:
+                        charts.ColorUtil.fromDartColor(const Color(0xff93969A)),
+                        // dòng cắt ngang
+                        dashPattern: widget.dashPattern ?? [5, 5],
+                        strokeWidthPx: 1,
+                      )
+                    ])
+                  ],
                 ),
               )),
 
@@ -220,7 +199,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
         id: 'Area',
         strokeWidthPxFn: (_, __) => 1,
         radiusPxFn: (_, __) => 1,
-        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Colors.black54),
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(widget.color.withOpacity(0.3)),
         domainFn: (_, index) => index ?? 0,
         measureFn: (value, _) => value,
         data: data,
