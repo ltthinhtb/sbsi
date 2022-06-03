@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/utils/money_utils.dart';
+import '../../../../common/app_colors.dart';
+import '../../../../common/app_shadows.dart';
 import '../wallet_logic.dart';
+import '../widget/debt_widget.dart';
 
 class ProfitTabBar extends StatefulWidget {
   const ProfitTabBar({Key? key}) : super(key: key);
@@ -18,120 +20,81 @@ class _ProfitTabBarState extends State<ProfitTabBar>
 
   @override
   Widget build(BuildContext context) {
-    final headline8 =
-        Theme.of(context).textTheme.headline6!.copyWith(fontSize: 10);
-    final headline7 = Theme.of(context)
-        .textTheme
-        .headline6!
-        .copyWith(fontSize: 12, fontWeight: FontWeight.w700);
+    final caption = Theme.of(context).textTheme.caption!;
     super.build(context);
     return RefreshIndicator(
-      onRefresh: () async => walletLogic.onReady(),
+      onRefresh: () async => walletLogic.refresh(),
       child: ListView(
-        padding: EdgeInsets.zero,
         children: [
-          const SizedBox(height: 29),
-          Obx(() {
-            return ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withOpacity(0.08),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            decoration: BoxDecoration(
+                color: AppColors.white, boxShadow: AppShadow.boxShadow),
+            child: Obx(() {
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        Expanded(
+                            child: Text(
+                          "STT",
+                          style: caption.copyWith(
+                              fontWeight: FontWeight.w700, height: 16 / 12),
+                        )),
+                        Expanded(
+                            flex: 2,
+                            child: Center(
                               child: Text(
-                            S.of(context).stock_code,
-                            style: headline8,
-                          )),
-                          Expanded(
-                              child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              S.of(context).volume_short,
-                              style: headline8,
-                            ),
-                          )),
-                          Expanded(
-                              child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              S.of(context).gain_loss_percent,
-                              style: headline8,
-                            ),
-                          )),
-                          Expanded(
-                              flex: 2,
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  S.of(context).gain_loss_value,
-                                  style: headline8,
-                                ),
-                              )),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 7,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
+                                S.of(context).interest,
+                                style: caption.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    height: 16 / 12),
+                              ),
+                            )),
+                        Expanded(
+                            flex: 2,
+                            child: Center(
                               child: Text(
-                            walletState.portfolioList[index].symbol ?? "",
-                            style: headline7,
-                          )),
-                          Expanded(
-                              child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              walletState.portfolioList[index].avaiableVol ??
-                                  "",
-                              style: headline7,
-                            ),
-                          )),
-                          Expanded(
-                              child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              walletState.portfolioList[index].gainLossPer ??
-                                  "",
-                              style: headline7.copyWith(
-                                  color:
-                                      walletState.portfolioList[index].glColor),
-                            ),
-                          )),
-                          Expanded(
-                              flex: 2,
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  '${MoneyFormat.formatMoneyRound(walletState.portfolioList[index].gainLossValue ?? "")} đ',
-                                  style: headline7.copyWith(
-                                      color: walletState
-                                          .portfolioList[index].glColor),
-                                ),
-                              )),
-                        ],
-                      ),
-                    ],
+                                "Tổng nợ phải trả",
+                                style: caption.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    height: 16 / 12),
+                              ),
+                            )),
+                        Expanded(
+                            flex: 2,
+                            child: Center(
+                              child: Text(
+                                "Ngày hết hạn",
+                                style: caption.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    height: 16 / 12),
+                              ),
+                            )),
+                      ],
+                    ),
                   ),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 10);
-              },
-              itemCount: walletState.portfolioList.length,
-            );
-          }),
-          const SizedBox(height: 20),
+                  const SizedBox(height: 16),
+                  ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (BuildContext context, int index) {
+                      var portfolio = walletState.debtList[index];
+                      return DebtWidget(
+                          debt: portfolio, index: index);
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(height: 0);
+                    },
+                    itemCount: walletState.debtList.length,
+                  ),
+                ],
+              );
+            }),
+          ),
         ],
       ),
     );

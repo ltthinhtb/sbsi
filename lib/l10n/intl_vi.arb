@@ -360,5 +360,8 @@
   "edit_note" : "Sửa lệnh",
   "pin_pass" : "Mật khẩu và bảo mật",
   "update" : "Cập nhật",
-  "language" : "Ngôn ngữ"
+  "language" : "Ngôn ngữ",
+  "debt_margin" : "Công nợ",
+  "risk_management" : "Quản trị rủi do",
+  "total_debt" : "Tổng nợ"
 }

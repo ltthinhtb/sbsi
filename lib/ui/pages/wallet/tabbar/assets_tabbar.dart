@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_shadows.dart';
@@ -37,6 +38,7 @@ class _AssetsTabBarState extends State<AssetsTabBar>
       double percent = (market_value / (money + market_value));
       double percentMoney = 100 - percent * 100;
       final body2 = Theme.of(context).textTheme.bodyText2;
+      Logger().d(assets.toJson());
       return RefreshIndicator(
         onRefresh: () async => logic.refresh(),
         child: ListView(
@@ -202,6 +204,47 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                   const SizedBox(height: 16),
                   rowData("Cổ tức tiền", '-'),
                 ],
+              ),
+            ),
+
+            Visibility(
+              visible: state.account.value.lastCharacter == "6",
+              child: Container(
+                margin: const EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    boxShadow: AppShadow.boxShadow, color: AppColors.white),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        S.of(context).risk_management,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            ?.copyWith(fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                    const Divider(
+                      thickness: 1,
+                      height: 16,
+                    ),
+                    const SizedBox(height: 8),
+                    rowData(S.of(context).total_debt,
+                        '${MoneyFormat.formatMoneyRound(assets.debt ?? "")} đ'),
+                    const SizedBox(height: 16),
+                    rowData("Lãi tạm tính",
+                        '${MoneyFormat.formatMoneyRound("0")} đ'),
+                    const SizedBox(height: 16),
+                    rowData("Phí lưu ký",
+                        '${MoneyFormat.formatMoneyRound(assets.depositFee ?? "")} đ'),
+                    const SizedBox(height: 16),
+                    rowData("Tỷ lệ an toàn",assets.marginRatio ?? ""),
+
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 32),

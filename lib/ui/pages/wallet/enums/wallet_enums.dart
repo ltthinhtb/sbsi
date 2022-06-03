@@ -11,7 +11,7 @@ extension WalletExt on WalletEnum {
       case WalletEnum.menu:
         return S.of(context).menu;
       case WalletEnum.profit:
-        return S.of(context).profit;
+        return S.of(context).debt_margin;
     }
   }
 }

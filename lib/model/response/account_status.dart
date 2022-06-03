@@ -237,6 +237,16 @@ class AccountMStatus {
     }
   }
 
+  int get marginRatioInt {
+    try{
+       return int.parse(marginRatio!) * 100;
+    }
+  catch(e){
+      return 0;
+    }
+  }
+
+
   AccountMStatus(
       {this.assets,
       this.imKH,

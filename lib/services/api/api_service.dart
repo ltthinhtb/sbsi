@@ -1,5 +1,7 @@
 import 'package:sbsi/model/entities/advance_withdraw.dart';
+import 'package:sbsi/model/entities/app_notification.dart';
 import 'package:sbsi/model/entities/cash_can_adv.dart';
+import 'package:sbsi/model/entities/debt_acc.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
 import 'package:sbsi/model/entities/foreign.dart';
 import 'package:sbsi/model/entities/get_account_info.dart';

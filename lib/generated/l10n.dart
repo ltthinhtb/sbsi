@@ -3669,6 +3669,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Debt margin`
+  String get debt_margin {
+    return Intl.message(
+      'Debt margin',
+      name: 'debt_margin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Risk management`
+  String get risk_management {
+    return Intl.message(
+      'Risk management',
+      name: 'risk_management',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total debt`
+  String get total_debt {
+    return Intl.message(
+      'Total debt',
+      name: 'total_debt',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

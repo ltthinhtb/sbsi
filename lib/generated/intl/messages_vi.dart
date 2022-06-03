@@ -167,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "create_account": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
         "debt": MessageLookupByLibrary.simpleMessage("Nợ"),
+        "debt_margin": MessageLookupByLibrary.simpleMessage("Công nợ"),
         "decrease": MessageLookupByLibrary.simpleMessage("Giảm giá"),
         "delete": MessageLookupByLibrary.simpleMessage("Xóa"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Tổng phí"),
@@ -398,6 +399,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "right_list": MessageLookupByLibrary.simpleMessage("Danh sách quyền"),
         "right_un_exec":
             MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),
+        "risk_management":
+            MessageLookupByLibrary.simpleMessage("Quản trị rủi do"),
         "save_password": MessageLookupByLibrary.simpleMessage("Lưu mật khẩu"),
         "save_pin": MessageLookupByLibrary.simpleMessage("Lưu mã pin"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),
@@ -479,6 +482,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_amount_1":
             MessageLookupByLibrary.simpleMessage("Tổng khối lượng"),
         "total_assets": MessageLookupByLibrary.simpleMessage("Tổng tài sản"),
+        "total_debt": MessageLookupByLibrary.simpleMessage("Tổng nợ"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị chứng khoán"),
         "transaction_money":

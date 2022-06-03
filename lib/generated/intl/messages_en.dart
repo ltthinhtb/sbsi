@@ -160,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create account"),
         "day": MessageLookupByLibrary.simpleMessage("Day"),
         "debt": MessageLookupByLibrary.simpleMessage("Debt"),
+        "debt_margin": MessageLookupByLibrary.simpleMessage("Debt margin"),
         "decrease": MessageLookupByLibrary.simpleMessage("Decrease"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Deposit fee"),
@@ -379,6 +380,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "right_list": MessageLookupByLibrary.simpleMessage("Right list"),
         "right_un_exec":
             MessageLookupByLibrary.simpleMessage("exercise the right"),
+        "risk_management":
+            MessageLookupByLibrary.simpleMessage("Risk management"),
         "save_password": MessageLookupByLibrary.simpleMessage("Save password"),
         "save_pin": MessageLookupByLibrary.simpleMessage("Save pin"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
@@ -460,6 +463,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_amount": MessageLookupByLibrary.simpleMessage("Total volumn"),
         "total_amount_1": MessageLookupByLibrary.simpleMessage("Total amount"),
         "total_assets": MessageLookupByLibrary.simpleMessage("Total assets"),
+        "total_debt": MessageLookupByLibrary.simpleMessage("Total debt"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),
         "transaction_money":

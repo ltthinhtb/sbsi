@@ -8,7 +8,6 @@ import 'package:sbsi/ui/pages/market/market_logic.dart';
 import 'package:sbsi/ui/pages/market/widget/market_depth_chart.dart';
 
 import 'stock_exchanges .dart';
-import 'stock_follow.dart';
 import 'top_foreign_trade.dart';
 
 class OverviewView extends StatefulWidget {

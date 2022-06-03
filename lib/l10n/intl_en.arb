@@ -360,5 +360,9 @@
   "edit_note": "Edit note",
   "pin_pass": "Pin & password",
   "update": "Update",
-  "language": "Language"
+  "language": "Language",
+  "debt_margin": "Debt margin",
+  "risk_management": "Risk management",
+  "total_debt" : "Total debt"
+
 }

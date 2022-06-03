@@ -16,4 +16,8 @@ extension UserApiService on ApiService {
   Future<List<AppBanner>> getBanner() async {
     return await _apiClient.loadBanner();
   }
+
+  Future<List<AppNotification>> loadListNotificationAll() async {
+    return await _apiClient.loadListNotificationAll();
+  }
 }

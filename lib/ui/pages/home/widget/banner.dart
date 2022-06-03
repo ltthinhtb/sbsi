@@ -3,7 +3,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
-import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/ui/pages/home/home_logic.dart';
 
 class BannerHome extends StatefulWidget {

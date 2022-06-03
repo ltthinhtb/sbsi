@@ -11,7 +11,7 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  final logic = Get.put(NotificationLogic());
+  final logic = Get.find<NotificationLogic>();
   final state = Get.find<NotificationLogic>().state;
 
   List<String> listTabs(BuildContext context) =>
@@ -30,12 +30,13 @@ class _NotificationPageState extends State<NotificationPage> {
             const SizedBox(height: 20),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
-              decoration:  BoxDecoration(
-                color: AppColors.grayF2,
-                borderRadius: BorderRadius.circular(9)
-              ),
+              decoration: BoxDecoration(
+                  color: AppColors.grayF2,
+                  borderRadius: BorderRadius.circular(9)),
               child: TabBar(
-                tabs: listTabs(context).map((tab) => Center(child: Text(tab))).toList(),
+                tabs: listTabs(context)
+                    .map((tab) => Center(child: Text(tab)))
+                    .toList(),
               ),
             )
           ],

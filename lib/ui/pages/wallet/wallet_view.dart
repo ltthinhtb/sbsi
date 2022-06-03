@@ -7,6 +7,7 @@ import 'package:sbsi/ui/pages/wallet/enums/wallet_enums.dart';
 import '../../../services/auth_service.dart';
 import 'tabbar/assets_tabbar.dart';
 import 'tabbar/menu_tabbar.dart';
+import 'tabbar/profit_tabbar.dart';
 import 'wallet_logic.dart';
 
 class WalletPage extends StatefulWidget {
@@ -112,13 +113,13 @@ class _WalletPageState extends State<WalletPage> {
                         .toList()),
               ],
             ),
-            Expanded(
+            const Expanded(
               child: TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
+                  physics: NeverScrollableScrollPhysics(),
                   children: [
-                    const AssetsTabBar(),
-                    const MenuTabBar(),
-                    Container(),
+                    AssetsTabBar(),
+                    MenuTabBar(),
+                    ProfitTabBar(),
                   ]),
             )
           ],

@@ -6,6 +6,7 @@ import 'package:sbsi/ui/pages/main/main_logic.dart';
 import 'package:sbsi/ui/pages/main/main_view.dart';
 import 'package:sbsi/ui/pages/menu/panel/setting/setting_page/setting_page.dart';
 import 'package:sbsi/ui/pages/money_transfer/money_transfer_view.dart';
+import 'package:sbsi/ui/pages/notification/notification_logic.dart';
 import 'package:sbsi/ui/pages/notification/notification_view.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_view.dart';
@@ -42,7 +43,6 @@ class RouteConfig {
   static const String cash_can = '/cash_can';
   static const String get_account_info = '/get_account_info';
 
-
   ///Alias ​​mapping page
   static final List<GetPage> getPages = [
     GetPage(name: main, page: () => MainPage(), binding: MainBinding()),
@@ -61,7 +61,6 @@ class RouteConfig {
     GetPage(name: right_un_exec, page: () => const RightUnExecPage()),
     GetPage(name: cash_can, page: () => const CashCanAdvPage()),
     GetPage(name: get_account_info, page: () => const GetAccountInfoPage()),
-
   ];
 }
 
@@ -76,5 +75,6 @@ class MainBinding extends Bindings {
     Get.lazyPut(() => HomeLogic());
     Get.lazyPut(() => OrderListLogic());
     Get.lazyPut(() => StockOrderLogic());
+    Get.lazyPut(() => NotificationLogic());
   }
 }

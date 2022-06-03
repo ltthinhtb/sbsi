@@ -66,7 +66,6 @@ class WalletLogic extends GetxController {
     }
   }
 
-
   Future<void> getPortfolio() async {
     ParamsObject _object = ParamsObject();
     _object.type = "string";
@@ -87,10 +86,33 @@ class WalletLogic extends GetxController {
     }
   }
 
-  void refresh(){
+  // công nợ margin
+  Future<void> getDebtForWeb() async {
+    var _tokenEntity = authService.token.value;
+    final RequestParams _requestParams = RequestParams(
+      group: "B",
+      user: _tokenEntity?.data?.user ?? "",
+      session: _tokenEntity?.data?.sid ?? "",
+    );
+
+    ParamsObject _object = ParamsObject();
+    _object.type = "cursor";
+    _object.cmd = "GetDebtForWeb";
+    _object.p1 = '${_tokenEntity?.data?.user}6';
+    _requestParams.data = _object;
+    try {
+      var response = await apiService.getDebtForWeb(_requestParams);
+      state.debtList.value = response;
+    } on ErrorException catch (error) {
+      AppSnackBar.showError(message: error.message);
+    }
+  }
+
+  void refresh() {
     getTotalAssets();
     getAccountStatus();
     getPortfolio();
+    getDebtForWeb();
   }
 
   @override
@@ -99,6 +121,7 @@ class WalletLogic extends GetxController {
     getTotalAssets();
     getAccountStatus();
     getPortfolio();
+    getDebtForWeb();
     super.onReady();
   }
 }

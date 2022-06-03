@@ -5,7 +5,9 @@ import 'package:get/get.dart' as get_x;
 import 'package:sbsi/configs/app_configs.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/entities/advance_withdraw.dart';
+import 'package:sbsi/model/entities/app_notification.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
+import 'package:sbsi/model/entities/debt_acc.dart';
 import 'package:sbsi/model/entities/economy.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
 import 'package:sbsi/model/entities/foreign.dart';
@@ -169,6 +171,10 @@ abstract class ApiClient {
   Future<GetAccountInfo> loadAccountInfo(RequestParams requestParams);
 
   Future<List<AppBanner>> loadBanner();
+
+  Future<List<AppNotification>> loadListNotificationAll();
+
+  Future<List<DebtAcc>> getDebtForWeb(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -1032,5 +1038,34 @@ class _ApiClient implements ApiClient {
       listBanner.add(AppBanner.fromJson(element));
     }
     return listBanner;
+  }
+
+  @override
+  Future<List<AppNotification>> loadListNotificationAll() async {
+    String path = AppConfigs.SIGN_UP_URL + 'monitor/notification';
+    Response _result = await _getApi(_dio.post(path));
+    var _mapData = _result.data;
+    var listMap = _mapData;
+    List<AppNotification> listNotify = [];
+    for (var element in listMap) {
+      listNotify.add(AppNotification.fromJson(element));
+    }
+    return listNotify;
+  }
+
+  @override
+  Future<List<DebtAcc>> getDebtForWeb(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<DebtAcc> listDebt = [];
+    for (var element in _mapData) {
+      listDebt.add(DebtAcc.fromJson(element));
+    }
+    return listDebt;
   }
 }
