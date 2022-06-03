@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sbsi/model/stock_data/stock_socket.dart';
+import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/services/index.dart';
 import 'package:sbsi/services/socket/socket.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
@@ -26,6 +27,8 @@ class HomeLogic extends GetxController {
       for (var element in state.listShortStock) {
         _socket.addStockSocket(element.stockCode ?? "");
       }
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
     } catch (e) {
       AppSnackBar.showError(message: e.toString());
     }
@@ -54,6 +57,17 @@ class HomeLogic extends GetxController {
     });
   }
 
+  //listBanner
+  Future<void> getBanner() async {
+    try {
+      state.listBanner.value = await apiService.getBanner();
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {
+      AppSnackBar.showError(message: e.toString());
+    }
+  }
+
   void disConnectSocket() {
     _socket.disconnectSocket();
   }
@@ -62,6 +76,7 @@ class HomeLogic extends GetxController {
   void onReady() {
     startSocket();
     getTopStockData(0);
+    getBanner();
     super.onReady();
   }
 

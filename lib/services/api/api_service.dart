@@ -28,6 +28,7 @@ import 'package:sbsi/networks/api_client.dart';
 import 'package:sbsi/networks/api_util.dart';
 import 'package:get/get.dart';
 
+import '../../model/entities/app_banner.dart';
 import '../../model/entities/bank.dart';
 import '../../model/entities/beneficiary_account.dart';
 import '../../model/entities/cash_account.dart';

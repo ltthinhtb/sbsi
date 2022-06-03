@@ -12,4 +12,8 @@ extension UserApiService on ApiService {
   Future sendToken(Map<String, dynamic> json) async {
     return await _apiClient.sendToken(json);
   }
+
+  Future<List<AppBanner>> getBanner() async {
+    return await _apiClient.loadBanner();
+  }
 }

@@ -34,6 +34,7 @@ import 'package:sbsi/ui/commons/app_dialog.dart';
 import 'package:sbsi/ui/commons/app_loading.dart';
 import 'package:sbsi/utils/error_message.dart';
 
+import '../model/entities/app_banner.dart';
 import '../model/entities/bank.dart';
 import '../model/entities/beneficiary_account.dart';
 import '../model/entities/cash_can_adv.dart';
@@ -166,6 +167,8 @@ abstract class ApiClient {
       RequestParams requestParams);
 
   Future<GetAccountInfo> loadAccountInfo(RequestParams requestParams);
+
+  Future<List<AppBanner>> loadBanner();
 }
 
 class _ApiClient implements ApiClient {
@@ -1016,5 +1019,18 @@ class _ApiClient implements ApiClient {
       listTopForeign.add(ForeignTrade.fromJson(element));
     }
     return listTopForeign;
+  }
+
+  @override
+  Future<List<AppBanner>> loadBanner() async {
+    String path = AppConfigs.SIGN_UP_URL + 'banners';
+    Response _result = await _getApi(_dio.post(path));
+    var _mapData = _result.data;
+    var listMap = _mapData;
+    List<AppBanner> listBanner = [];
+    for (var element in listMap) {
+      listBanner.add(AppBanner.fromJson(element));
+    }
+    return listBanner;
   }
 }
