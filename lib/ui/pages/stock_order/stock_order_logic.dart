@@ -228,7 +228,7 @@ class StockOrderLogic extends GetxController {
             (state.isBuy.value ? "B" : "S") +
             state.volController.text +
             "vpbs@456" +
-            '${'${_tokenEntity?.data?.defaultAcc}' + state.selectedStock.value.stockCode! + refId}');
+            '${'${state.account.value.accCode}' + state.selectedStock.value.stockCode! + refId}');
     final RequestParams _requestParams = RequestParams(
       group: "O",
       session: _tokenEntity?.data?.sid,
@@ -237,7 +237,7 @@ class StockOrderLogic extends GetxController {
       data: ParamsObject(
         type: "string",
         cmd: "Web.newOrder",
-        account: _tokenEntity?.data!.defaultAcc!,
+        account: state.account.value.accCode!,
         side: (state.isBuy.value ? "B" : "S"),
         symbol: state.selectedStock.value.stockCode!,
         volume:
@@ -327,6 +327,7 @@ class StockOrderLogic extends GetxController {
     var _tokenEntity = authService.token.value;
     var index = authService.listAccount.indexWhere(
         (element) => _tokenEntity?.data?.defaultAcc == element.accCode);
+
     if (index >= 0) {
       state.account.value = authService.listAccount[index];
       // load sổ lệnh nhanh
