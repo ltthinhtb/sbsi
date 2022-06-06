@@ -161,6 +161,8 @@ abstract class ApiClient {
   Future<List<ShareTransferHistory>> getListShareTransfer(
       RequestParams requestParams);
 
+  Future<num> getFeeOnline(RequestParams requestParams);
+
   Future updateShareTransferIn(RequestParams requestParams);
 
   Future<List<RightExc>> getListRightExc(RequestParams requestParams);
@@ -1099,5 +1101,18 @@ class _ApiClient implements ApiClient {
               headers: {"Content-Type": "application/x-www-form-urlencoded"}),
           data: request.toJson()),
     );
+  }
+
+  @override
+  Future<num> getFeeOnline(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    num cFee = _mapData.first['C_FEE_VALUE'];
+    return cFee;
   }
 }

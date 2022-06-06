@@ -6,6 +6,7 @@ import 'package:sbsi/ui/pages/money_transfer/enums/transfer_type.dart';
 import 'package:sbsi/ui/pages/otp/otp_page.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
+import 'package:sbsi/utils/money_utils.dart';
 import 'package:sbsi/utils/validator.dart';
 
 import '../../../../common/app_colors.dart';
@@ -39,6 +40,12 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
       : logic.updateCashTransferInternal();
 
   @override
+  void initState() {
+    logic.getCFeeOnline();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final headline6 = Theme.of(context).textTheme.headline6;
     final headline5 = Theme.of(context).textTheme.headline5;
@@ -70,7 +77,13 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                 ),
               ),
               const SizedBox(height: 16),
-              ColumnText(S.of(context).transfer_cFee, "10,000 VNĐ"),
+              Obx(() {
+                // nếu chuyển nội bộ thì phí bằng 0
+                if(state.type == TransfersType.internal){
+                  state.cFeeOnline.value = 0.0;
+                }
+                return ColumnText(S.of(context).transfer_cFee, MoneyFormat.formatMoneyRound('${state.cFeeOnline.value}')+" đ");
+              }),
               const SizedBox(height: 16),
               ColumnText(S.of(context).account_receiver, receiver),
               const SizedBox(height: 4),

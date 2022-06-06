@@ -224,6 +224,29 @@ class MoneyTransferLogic extends GetxController {
     }
   }
 
+  // getCFee
+  Future<void> getCFeeOnline() async {
+    final RequestParams _requestParams = RequestParams(
+      group: "B",
+      user: tokenEntity?.data?.user ?? "",
+      session: tokenEntity?.data?.sid ?? "",
+      data: ParamsObject(
+        type: 'cursor',
+        cmd: "GetFeeOnline",
+        p1: "NAPAS",
+        p2: state.bank.value.cBANKCODE,
+        p3: state.moneyController.numberValue.toString(),
+      ),
+    );
+    try {
+      state.cFeeOnline.value = await apiService.getFeeOnline(_requestParams);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // check pin
   Future<void> checkPin() async {
     final RequestParams _requestParams = RequestParams(

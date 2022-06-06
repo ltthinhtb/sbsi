@@ -61,4 +61,6 @@ class MoneyTransferState {
 
   final startDateController = TextEditingController();
   final endDateController = TextEditingController();
+
+  final Rx<num> cFeeOnline = 0.0.obs;
 }
