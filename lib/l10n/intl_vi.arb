@@ -363,5 +363,9 @@
   "language" : "Ngôn ngữ",
   "debt_margin" : "Công nợ",
   "risk_management" : "Quản trị rủi do",
-  "total_debt" : "Tổng nợ"
+  "total_debt" : "Tổng nợ",
+  "beneficiary" : "Người thụ hưởng",
+  "payment_title" : "Chuyển khoản tới một trong số TK sau",
+  "copy" : "Sao chép",
+  "payment_on_account" : "Nộp tiền vào tài khoản"
 }

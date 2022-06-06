@@ -32,6 +32,7 @@ import 'package:get/get.dart';
 
 import '../../model/entities/app_banner.dart';
 import '../../model/entities/bank.dart';
+import '../../model/entities/bank_acc.dart';
 import '../../model/entities/beneficiary_account.dart';
 import '../../model/entities/cash_account.dart';
 import '../../model/entities/economy.dart';

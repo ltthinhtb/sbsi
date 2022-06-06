@@ -5,7 +5,6 @@ import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/model/stock_data/stock_info.dart';
 import 'package:sbsi/ui/pages/stock_detail/stock_detail_logic.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../utils/logger.dart';
 import '../../../../utils/money_utils.dart';
 import '../../../commons/hoziontal_chart.dart';
 
@@ -28,7 +27,6 @@ class _OverViewTabState extends State<OverViewTab>
     return Obx(() {
       var stock = Get.find<StockDetailLogic>().state.selectedStockInfo.value;
       var listStockTrade = Get.find<StockDetailLogic>().state.listStockTrade;
-      logger.d(stock.toJson());
       return SingleChildScrollView(
         padding: EdgeInsets.zero,
         child: Column(

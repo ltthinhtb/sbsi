@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_shadows.dart';
@@ -38,7 +37,6 @@ class _AssetsTabBarState extends State<AssetsTabBar>
       double percent = (market_value / (money + market_value));
       double percentMoney = 100 - percent * 100;
       final body2 = Theme.of(context).textTheme.bodyText2;
-      Logger().d(assets.toJson());
       return RefreshIndicator(
         onRefresh: () async => logic.refresh(),
         child: ListView(

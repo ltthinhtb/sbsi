@@ -3699,6 +3699,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Beneficiary`
+  String get beneficiary {
+    return Intl.message(
+      'Beneficiary',
+      name: 'beneficiary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer to one of the following Accounts`
+  String get payment_title {
+    return Intl.message(
+      'Transfer to one of the following Accounts',
+      name: 'payment_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get copy {
+    return Intl.message(
+      'Copy',
+      name: 'copy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment on account`
+  String get payment_on_account {
+    return Intl.message(
+      'Payment on account',
+      name: 'payment_on_account',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

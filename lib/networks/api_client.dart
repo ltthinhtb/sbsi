@@ -38,6 +38,7 @@ import 'package:sbsi/utils/error_message.dart';
 
 import '../model/entities/app_banner.dart';
 import '../model/entities/bank.dart';
+import '../model/entities/bank_acc.dart';
 import '../model/entities/beneficiary_account.dart';
 import '../model/entities/cash_can_adv.dart';
 import '../model/entities/order_history.dart';
@@ -122,6 +123,8 @@ abstract class ApiClient {
   Future<List<Bank>> getLisBank(RequestParams requestParams);
 
   Future<List<Bank>> getLisBankSignUp(RequestParams requestParams);
+
+  Future<List<BankAcc>> getLisBankAcc();
 
   Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(
       RequestParams requestParams);
@@ -1067,5 +1070,21 @@ class _ApiClient implements ApiClient {
       listDebt.add(DebtAcc.fromJson(element));
     }
     return listDebt;
+  }
+
+  @override
+  Future<List<BankAcc>> getLisBankAcc() async {
+    Response _result = await _getApi(
+      _dio.post(
+        AppConfigs.SIGN_UP_URL + "banksAccount",
+      ),
+    );
+    List _mapData = _result.data;
+    List<BankAcc> listBank = [];
+    _mapData.forEach((element) {
+      var bank = BankAcc.fromJson(element);
+      listBank.add(bank);
+    });
+    return listBank;
   }
 }

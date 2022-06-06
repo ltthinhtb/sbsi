@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bank_choose": MessageLookupByLibrary.simpleMessage("Bank"),
         "bank_name": MessageLookupByLibrary.simpleMessage("Bank account"),
         "bank_transfer": MessageLookupByLibrary.simpleMessage("Bank transfer"),
+        "beneficiary": MessageLookupByLibrary.simpleMessage("Beneficiary"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
         "bond": MessageLookupByLibrary.simpleMessage("Bond"),
         "bond_assets": MessageLookupByLibrary.simpleMessage("Bond assets"),
@@ -155,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
         "content_transfer": MessageLookupByLibrary.simpleMessage("Content"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Continue"),
+        "copy": MessageLookupByLibrary.simpleMessage("Copy"),
         "coupon": MessageLookupByLibrary.simpleMessage("Coupon"),
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create account"),
@@ -319,6 +321,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "pay_type": MessageLookupByLibrary.simpleMessage("Payment type"),
         "payment": MessageLookupByLibrary.simpleMessage("Payment"),
         "payment_guide": MessageLookupByLibrary.simpleMessage("Payment"),
+        "payment_on_account":
+            MessageLookupByLibrary.simpleMessage("Payment on account"),
+        "payment_title": MessageLookupByLibrary.simpleMessage(
+            "Transfer to one of the following Accounts"),
         "permission_to_buy":
             MessageLookupByLibrary.simpleMessage("Permission buy"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
