@@ -4,6 +4,7 @@ import 'package:sbsi/ui/pages/get_account_info/get_account_info_view.dart';
 import 'package:sbsi/ui/pages/home/home_logic.dart';
 import 'package:sbsi/ui/pages/main/main_logic.dart';
 import 'package:sbsi/ui/pages/main/main_view.dart';
+import 'package:sbsi/ui/pages/menu/panel/setting/forgot_pass/forgot_pass_view.dart';
 import 'package:sbsi/ui/pages/menu/panel/setting/setting_page/setting_page.dart';
 import 'package:sbsi/ui/pages/money_transfer/money_transfer_view.dart';
 import 'package:sbsi/ui/pages/notification/notification_logic.dart';
@@ -42,6 +43,8 @@ class RouteConfig {
   static const String right_un_exec = '/right_un_exec';
   static const String cash_can = '/cash_can';
   static const String get_account_info = '/get_account_info';
+  static const String forgot_pass = '/forgot_pass';
+
 
   ///Alias ​​mapping page
   static final List<GetPage> getPages = [
@@ -61,6 +64,8 @@ class RouteConfig {
     GetPage(name: right_un_exec, page: () => const RightUnExecPage()),
     GetPage(name: cash_can, page: () => const CashCanAdvPage()),
     GetPage(name: get_account_info, page: () => const GetAccountInfoPage()),
+    GetPage(name: forgot_pass, page: () => const ForgotPassPage()),
+
   ];
 }
 

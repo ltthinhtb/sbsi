@@ -191,7 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "finance": MessageLookupByLibrary.simpleMessage("Finance"),
         "finish": MessageLookupByLibrary.simpleMessage("Finish"),
         "floor": MessageLookupByLibrary.simpleMessage("Floor"),
-        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
         "gain_loss_percent":
             MessageLookupByLibrary.simpleMessage("Gain loss (%)"),
@@ -343,6 +343,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please input email"),
         "please_input_full_name":
             MessageLookupByLibrary.simpleMessage("Please input full name"),
+        "please_input_identity":
+            MessageLookupByLibrary.simpleMessage("Please input identity"),
         "please_input_money":
             MessageLookupByLibrary.simpleMessage("Please input money"),
         "please_input_password":

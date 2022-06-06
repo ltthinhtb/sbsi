@@ -190,7 +190,7 @@ class MoneyTransferLogic extends GetxController {
         p5: state.otpController.text,
         p6: state.pinController.text,
         p7: "1",
-        p8: "1",
+        p8: state.account.value.lastCharacter == 1 ? "1" : "0",
       ),
     );
     try {

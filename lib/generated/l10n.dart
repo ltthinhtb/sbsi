@@ -340,10 +340,10 @@ class S {
     );
   }
 
-  /// `Forgot password?`
+  /// `Forgot password`
   String get forgot_pass {
     return Intl.message(
-      'Forgot password?',
+      'Forgot password',
       name: 'forgot_pass',
       desc: '',
       args: [],
@@ -3735,6 +3735,16 @@ class S {
     return Intl.message(
       'Payment on account',
       name: 'payment_on_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please input identity`
+  String get please_input_identity {
+    return Intl.message(
+      'Please input identity',
+      name: 'please_input_identity',
       desc: '',
       args: [],
     );

@@ -199,7 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "finance": MessageLookupByLibrary.simpleMessage("Tài chính"),
         "finish": MessageLookupByLibrary.simpleMessage("Hoàn tất"),
         "floor": MessageLookupByLibrary.simpleMessage("Sàn"),
-        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và tên"),
         "gain_loss_percent": MessageLookupByLibrary.simpleMessage("Lãi lỗ (%)"),
         "gain_loss_temporary":
@@ -357,6 +357,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập email"),
         "please_input_full_name":
             MessageLookupByLibrary.simpleMessage("Vui lòng điền họ tên"),
+        "please_input_identity":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập cmt/cccd"),
         "please_input_money":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập số tiền"),
         "please_input_password":

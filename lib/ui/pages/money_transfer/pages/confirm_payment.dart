@@ -66,8 +66,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                 child: Text(
                   state.moneyController.text + "VNĐ",
                   style: headline5?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 26),
+                      fontWeight: FontWeight.w700, fontSize: 26),
                 ),
               ),
               const SizedBox(height: 16),
@@ -163,12 +162,14 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                           ),
                                           Expanded(
                                               child: ButtonFill(
-                                                  voidCallback: () {
+                                                  voidCallback: () async {
                                                     state.otpController.clear();
-                                                    if(!state.pinKey.currentState!.validate()) return;
+                                                    if (!state
+                                                        .pinKey.currentState!
+                                                        .validate()) return;
                                                     try {
                                                       // check pin ok then
-                                                      logic.checkPin();
+                                                      await logic.checkPin();
                                                       // type transfer = bank
                                                       if (state.type ==
                                                           TransfersType.bank) {

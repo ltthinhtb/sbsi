@@ -45,6 +45,7 @@ import '../model/entities/order_history.dart';
 import '../model/entities/share_transaction.dart';
 import '../model/entities/share_transfer_history.dart';
 import '../model/entities/transfer_history.dart';
+import '../model/params/forgot_pass_request.dart';
 import '../model/response/branch_response.dart';
 import '../model/response/index_chart.dart';
 import '../model/response/market_depth_response.dart';
@@ -178,6 +179,8 @@ abstract class ApiClient {
   Future<List<AppNotification>> loadListNotificationAll();
 
   Future<List<DebtAcc>> getDebtForWeb(RequestParams requestParams);
+
+  Future forgotPass(ForgotPassRequest request);
 }
 
 class _ApiClient implements ApiClient {
@@ -1086,5 +1089,15 @@ class _ApiClient implements ApiClient {
       listBank.add(bank);
     });
     return listBank;
+  }
+
+  @override
+  Future forgotPass(ForgotPassRequest request) async {
+    await _requestApi(
+      _dio.post(AppConfigs.baseUrl + "ForgetPass",
+          options: Options(
+              headers: {"Content-Type": "application/x-www-form-urlencoded"}),
+          data: request.toJson()),
+    );
   }
 }

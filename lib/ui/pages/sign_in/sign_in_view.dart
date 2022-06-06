@@ -128,8 +128,10 @@ class _SignInPageState extends State<SignInPage> with Validator {
                         ),
                         const SizedBox(height: 16),
                         ButtonText(
-                          voidCallback: () {},
-                          title: S.of(context).forgot_pass,
+                          voidCallback: () {
+                            Get.toNamed(RouteConfig.forgot_pass);
+                          },
+                          title: '${S.of(context).forgot_pass}?',
                         )
                       ],
                     ),

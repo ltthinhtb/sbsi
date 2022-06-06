@@ -10,7 +10,6 @@ import 'package:sbsi/ui/commons/appbar.dart';
 import '../../../common/app_colors.dart';
 import '../../../generated/l10n.dart';
 import '../../../utils/money_utils.dart';
-import '../../commons/app_snackbar.dart';
 import '../wallet/wallet_logic.dart';
 import 'guide_payment_logic.dart';
 
