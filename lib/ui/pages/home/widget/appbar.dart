@@ -85,7 +85,7 @@ class AppBarHome extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Get.find<MainLogic>().switchTap(4);
               },
               child: Container(
@@ -123,9 +123,10 @@ class AppBarHome extends StatelessWidget {
 
                           return Text(
                             MoneyFormat.formatMoneyRound(
-                                '${accountStatus.totalNav}') + " đ",
-                            style:
-                                headline6?.copyWith(fontWeight: FontWeight.bold),
+                                    '${accountStatus.totalNav}') +
+                                " đ",
+                            style: headline6?.copyWith(
+                                fontWeight: FontWeight.bold),
                           );
                         })
                       ],

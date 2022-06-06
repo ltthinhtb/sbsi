@@ -100,4 +100,8 @@ extension StockOrderService on ApiService {
   Future updateShareTransferIn(RequestParams requestParams) async {
     return await _apiClient.updateShareTransferIn(requestParams);
   }
+
+  Future<num> getFeeOnline(RequestParams requestParams) async {
+    return await _apiClient.getFeeOnline(requestParams);
+  }
 }

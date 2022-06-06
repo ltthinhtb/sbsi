@@ -107,10 +107,18 @@ class Validator {
     }
   }
 
+  String? checkIdentity(String identity) {
+    if (identity.isEmpty) {
+      return S.current.please_input_identity;
+    } else {
+      return null;
+    }
+  }
+
   String? checkPin(String pin) {
     if (pin.isEmpty) {
       return S.current.please_input_pin;
-    } else if (pin.length > 6) {
+    } else if (pin.length < 6) {
       return S.current.pin_valid;
     } else {
       return null;

@@ -190,7 +190,7 @@ class MoneyTransferLogic extends GetxController {
         p5: state.otpController.text,
         p6: state.pinController.text,
         p7: "1",
-        p8: "1",
+        p8: state.account.value.lastCharacter == 1 ? "1" : "0",
       ),
     );
     try {
@@ -221,6 +221,29 @@ class MoneyTransferLogic extends GetxController {
       // load bank then load list beneficiary
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
+    }
+  }
+
+  // getCFee
+  Future<void> getCFeeOnline() async {
+    final RequestParams _requestParams = RequestParams(
+      group: "B",
+      user: tokenEntity?.data?.user ?? "",
+      session: tokenEntity?.data?.sid ?? "",
+      data: ParamsObject(
+        type: 'cursor',
+        cmd: "GetFeeOnline",
+        p1: "NAPAS",
+        p2: state.bank.value.cBANKCODE,
+        p3: state.moneyController.numberValue.toString(),
+      ),
+    );
+    try {
+      state.cFeeOnline.value = await apiService.getFeeOnline(_requestParams);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {
+      rethrow;
     }
   }
 

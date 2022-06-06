@@ -20,4 +20,8 @@ extension UserApiService on ApiService {
   Future<List<AppNotification>> loadListNotificationAll() async {
     return await _apiClient.loadListNotificationAll();
   }
+
+  Future forgotPass(ForgotPassRequest request) async {
+    return await _apiClient.forgotPass(request);
+  }
 }

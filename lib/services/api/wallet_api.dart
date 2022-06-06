@@ -61,4 +61,8 @@ extension WaletService on ApiService {
     return await _apiClient.getDebtForWeb(requestParams);
   }
 
+  Future<List<BankAcc>> getLisBankAcc() async {
+    return await _apiClient.getLisBankAcc();
+  }
+
 }

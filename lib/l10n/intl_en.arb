@@ -28,7 +28,7 @@
   "please_input_password": "Input password",
   "not_account": "Don't have account? ",
   "have_account": "Have account",
-  "forgot_pass": "Forgot password?",
+  "forgot_pass": "Forgot password",
   "register": "Register",
   "search": "Search",
   "empty_account": "Account is empty",
@@ -363,6 +363,11 @@
   "language": "Language",
   "debt_margin": "Debt margin",
   "risk_management": "Risk management",
-  "total_debt" : "Total debt"
+  "total_debt" : "Total debt",
+  "beneficiary" : "Beneficiary",
+  "payment_title" : "Transfer to one of the following Accounts",
+  "copy" : "Copy",
+  "payment_on_account" : "Payment on account",
+  "please_input_identity" : "Please input identity"
 
 }

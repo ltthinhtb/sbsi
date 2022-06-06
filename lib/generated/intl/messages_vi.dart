@@ -86,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tài khoản ngân hàng"),
         "bank_transfer":
             MessageLookupByLibrary.simpleMessage("Chuyển tiền ra ngân hàng"),
+        "beneficiary": MessageLookupByLibrary.simpleMessage("Người thụ hưởng"),
         "birthday": MessageLookupByLibrary.simpleMessage("Ngày sinh"),
         "bond": MessageLookupByLibrary.simpleMessage("Trái phiếu"),
         "bond_assets":
@@ -163,6 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "content_transfer":
             MessageLookupByLibrary.simpleMessage("Nội dung chuyển khoản"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
+        "copy": MessageLookupByLibrary.simpleMessage("Sao chép"),
         "coupon": MessageLookupByLibrary.simpleMessage("Lợi suất đầu tư"),
         "create_account": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
@@ -197,7 +199,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "finance": MessageLookupByLibrary.simpleMessage("Tài chính"),
         "finish": MessageLookupByLibrary.simpleMessage("Hoàn tất"),
         "floor": MessageLookupByLibrary.simpleMessage("Sàn"),
-        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu"),
         "full_name": MessageLookupByLibrary.simpleMessage("Họ và tên"),
         "gain_loss_percent": MessageLookupByLibrary.simpleMessage("Lãi lỗ (%)"),
         "gain_loss_temporary":
@@ -334,6 +336,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "payment": MessageLookupByLibrary.simpleMessage("Nộp tiền"),
         "payment_guide":
             MessageLookupByLibrary.simpleMessage("Hướng dẫn nộp tiền"),
+        "payment_on_account":
+            MessageLookupByLibrary.simpleMessage("Nộp tiền vào tài khoản"),
+        "payment_title": MessageLookupByLibrary.simpleMessage(
+            "Chuyển khoản tới một trong số TK sau"),
         "permission_to_buy": MessageLookupByLibrary.simpleMessage("Quyền mua"),
         "phone": MessageLookupByLibrary.simpleMessage("Số điện thoại"),
         "phone_not_valid":
@@ -351,6 +357,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập email"),
         "please_input_full_name":
             MessageLookupByLibrary.simpleMessage("Vui lòng điền họ tên"),
+        "please_input_identity":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập cmt/cccd"),
         "please_input_money":
             MessageLookupByLibrary.simpleMessage("Vui lòng nhập số tiền"),
         "please_input_password":

@@ -38,12 +38,14 @@ import 'package:sbsi/utils/error_message.dart';
 
 import '../model/entities/app_banner.dart';
 import '../model/entities/bank.dart';
+import '../model/entities/bank_acc.dart';
 import '../model/entities/beneficiary_account.dart';
 import '../model/entities/cash_can_adv.dart';
 import '../model/entities/order_history.dart';
 import '../model/entities/share_transaction.dart';
 import '../model/entities/share_transfer_history.dart';
 import '../model/entities/transfer_history.dart';
+import '../model/params/forgot_pass_request.dart';
 import '../model/response/branch_response.dart';
 import '../model/response/index_chart.dart';
 import '../model/response/market_depth_response.dart';
@@ -123,6 +125,8 @@ abstract class ApiClient {
 
   Future<List<Bank>> getLisBankSignUp(RequestParams requestParams);
 
+  Future<List<BankAcc>> getLisBankAcc();
+
   Future<List<BeneficiaryAccount>> getListBeneficiaryAccount(
       RequestParams requestParams);
 
@@ -157,6 +161,8 @@ abstract class ApiClient {
   Future<List<ShareTransferHistory>> getListShareTransfer(
       RequestParams requestParams);
 
+  Future<num> getFeeOnline(RequestParams requestParams);
+
   Future updateShareTransferIn(RequestParams requestParams);
 
   Future<List<RightExc>> getListRightExc(RequestParams requestParams);
@@ -175,6 +181,8 @@ abstract class ApiClient {
   Future<List<AppNotification>> loadListNotificationAll();
 
   Future<List<DebtAcc>> getDebtForWeb(RequestParams requestParams);
+
+  Future forgotPass(ForgotPassRequest request);
 }
 
 class _ApiClient implements ApiClient {
@@ -1067,5 +1075,44 @@ class _ApiClient implements ApiClient {
       listDebt.add(DebtAcc.fromJson(element));
     }
     return listDebt;
+  }
+
+  @override
+  Future<List<BankAcc>> getLisBankAcc() async {
+    Response _result = await _getApi(
+      _dio.post(
+        AppConfigs.SIGN_UP_URL + "banksAccount",
+      ),
+    );
+    List _mapData = _result.data;
+    List<BankAcc> listBank = [];
+    _mapData.forEach((element) {
+      var bank = BankAcc.fromJson(element);
+      listBank.add(bank);
+    });
+    return listBank;
+  }
+
+  @override
+  Future forgotPass(ForgotPassRequest request) async {
+    await _requestApi(
+      _dio.post(AppConfigs.baseUrl + "ForgetPass",
+          options: Options(
+              headers: {"Content-Type": "application/x-www-form-urlencoded"}),
+          data: request.toJson()),
+    );
+  }
+
+  @override
+  Future<num> getFeeOnline(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    num cFee = _mapData.first['C_FEE_VALUE'];
+    return cFee;
   }
 }

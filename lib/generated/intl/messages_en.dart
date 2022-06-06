@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bank_choose": MessageLookupByLibrary.simpleMessage("Bank"),
         "bank_name": MessageLookupByLibrary.simpleMessage("Bank account"),
         "bank_transfer": MessageLookupByLibrary.simpleMessage("Bank transfer"),
+        "beneficiary": MessageLookupByLibrary.simpleMessage("Beneficiary"),
         "birthday": MessageLookupByLibrary.simpleMessage("Birthday"),
         "bond": MessageLookupByLibrary.simpleMessage("Bond"),
         "bond_assets": MessageLookupByLibrary.simpleMessage("Bond assets"),
@@ -155,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
         "content_transfer": MessageLookupByLibrary.simpleMessage("Content"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Continue"),
+        "copy": MessageLookupByLibrary.simpleMessage("Copy"),
         "coupon": MessageLookupByLibrary.simpleMessage("Coupon"),
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create account"),
@@ -189,7 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "finance": MessageLookupByLibrary.simpleMessage("Finance"),
         "finish": MessageLookupByLibrary.simpleMessage("Finish"),
         "floor": MessageLookupByLibrary.simpleMessage("Floor"),
-        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot password"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full name"),
         "gain_loss_percent":
             MessageLookupByLibrary.simpleMessage("Gain loss (%)"),
@@ -319,6 +321,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "pay_type": MessageLookupByLibrary.simpleMessage("Payment type"),
         "payment": MessageLookupByLibrary.simpleMessage("Payment"),
         "payment_guide": MessageLookupByLibrary.simpleMessage("Payment"),
+        "payment_on_account":
+            MessageLookupByLibrary.simpleMessage("Payment on account"),
+        "payment_title": MessageLookupByLibrary.simpleMessage(
+            "Transfer to one of the following Accounts"),
         "permission_to_buy":
             MessageLookupByLibrary.simpleMessage("Permission buy"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
@@ -337,6 +343,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please input email"),
         "please_input_full_name":
             MessageLookupByLibrary.simpleMessage("Please input full name"),
+        "please_input_identity":
+            MessageLookupByLibrary.simpleMessage("Please input identity"),
         "please_input_money":
             MessageLookupByLibrary.simpleMessage("Please input money"),
         "please_input_password":

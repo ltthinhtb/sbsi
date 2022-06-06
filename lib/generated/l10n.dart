@@ -340,10 +340,10 @@ class S {
     );
   }
 
-  /// `Forgot password?`
+  /// `Forgot password`
   String get forgot_pass {
     return Intl.message(
-      'Forgot password?',
+      'Forgot password',
       name: 'forgot_pass',
       desc: '',
       args: [],
@@ -3695,6 +3695,56 @@ class S {
     return Intl.message(
       'Total debt',
       name: 'total_debt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Beneficiary`
+  String get beneficiary {
+    return Intl.message(
+      'Beneficiary',
+      name: 'beneficiary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transfer to one of the following Accounts`
+  String get payment_title {
+    return Intl.message(
+      'Transfer to one of the following Accounts',
+      name: 'payment_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copy`
+  String get copy {
+    return Intl.message(
+      'Copy',
+      name: 'copy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment on account`
+  String get payment_on_account {
+    return Intl.message(
+      'Payment on account',
+      name: 'payment_on_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please input identity`
+  String get please_input_identity {
+    return Intl.message(
+      'Please input identity',
+      name: 'please_input_identity',
       desc: '',
       args: [],
     );

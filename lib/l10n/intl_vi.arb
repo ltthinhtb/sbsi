@@ -28,7 +28,7 @@
   "please_input_password": "Nhập password",
   "not_account": "Bạn chưa có tài khoản? ",
   "have_account": "Đã có tài khoản",
-  "forgot_pass": "Quên mật khẩu?",
+  "forgot_pass": "Quên mật khẩu",
   "register": "Mở tài khoản",
   "search": "Tìm kiếm",
   "empty_account": "Vui lòng nhập tài khoản",
@@ -363,5 +363,10 @@
   "language" : "Ngôn ngữ",
   "debt_margin" : "Công nợ",
   "risk_management" : "Quản trị rủi do",
-  "total_debt" : "Tổng nợ"
+  "total_debt" : "Tổng nợ",
+  "beneficiary" : "Người thụ hưởng",
+  "payment_title" : "Chuyển khoản tới một trong số TK sau",
+  "copy" : "Sao chép",
+  "payment_on_account" : "Nộp tiền vào tài khoản",
+  "please_input_identity" : "Vui lòng nhập cmt/cccd"
 }
