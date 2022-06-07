@@ -374,7 +374,6 @@
   "sell_price" : "Order sell price",
   "number_of_order_buy" : "Order buy",
   "buy_price" : "Order buy price",
-  "price_cancel_order" : "Total amount"
-
-
+  "price_cancel_order" : "Total amount",
+  "notify_empty" :  "Notification empty"
 }

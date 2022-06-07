@@ -306,6 +306,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_found": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "notice": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "notification": MessageLookupByLibrary.simpleMessage("Thông báo"),
+        "notify_empty":
+            MessageLookupByLibrary.simpleMessage("Không có thông báo nào"),
         "number_of_order_buy":
             MessageLookupByLibrary.simpleMessage("Số lệnh mua"),
         "number_of_order_sell":

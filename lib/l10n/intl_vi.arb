@@ -374,5 +374,6 @@
   "sell_price" : "Giá trị lệnh bán",
   "number_of_order_buy" : "Số lệnh mua",
   "buy_price" : "Giá trị lệnh mua",
-  "price_cancel_order" : "Tổng giá trị hủy"
+  "price_cancel_order" : "Tổng giá trị hủy",
+  "notify_empty" :  "Không có thông báo nào"
 }

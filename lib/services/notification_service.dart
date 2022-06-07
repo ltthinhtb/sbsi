@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:flutter_local_notifications/src/platform_specifics/android/enums.dart'
     as enums;
 import 'package:sbsi/router/route_config.dart';
-import 'package:sbsi/ui/commons/app_dialog.dart';
 import 'package:sbsi/ui/pages/notification/notification_logic.dart';
 import 'package:sbsi/utils/logger.dart';
 

@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/notification/notification_logic.dart';
 import 'package:sbsi/ui/pages/notification/notify_widget.dart';
 
+import '../../../../generated/l10n.dart';
+
 class NotificationTabs extends StatefulWidget {
   const NotificationTabs({Key? key}) : super(key: key);
 
@@ -18,6 +20,11 @@ class _NotificationTabsState extends State<NotificationTabs>
   Widget build(BuildContext context) {
     super.build(context);
     return Obx(() {
+      if(state.listNotifyAll.isEmpty){
+        return Center(
+          child: Text(S.of(context).notify_empty,style: Theme.of(context).textTheme.bodyText1,),
+        );
+      }
       return ListView.separated(
           itemBuilder: (context, index) {
             var notify = state.listNotifyAll[index];

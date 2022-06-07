@@ -3809,6 +3809,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Notification empty`
+  String get notify_empty {
+    return Intl.message(
+      'Notification empty',
+      name: 'notify_empty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

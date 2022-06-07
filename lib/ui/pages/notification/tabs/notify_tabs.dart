@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../generated/l10n.dart';
 import '../notification_logic.dart';
 import '../notify_widget.dart';
 
@@ -18,6 +19,11 @@ class _NotifyTabsState extends State<NotifyTabs> with AutomaticKeepAliveClientMi
   Widget build(BuildContext context) {
     super.build(context);
     return Obx(() {
+      if(state.listNotifyAccount.isEmpty){
+        return Center(
+          child: Text(S.of(context).notify_empty,style: Theme.of(context).textTheme.bodyText1,),
+        );
+      }
       return ListView.separated(
           itemBuilder: (context, index) {
             var notify = state.listNotifyAccount[index];

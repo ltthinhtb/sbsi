@@ -292,6 +292,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_found": MessageLookupByLibrary.simpleMessage("Not found"),
         "notice": MessageLookupByLibrary.simpleMessage("Notice"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+        "notify_empty":
+            MessageLookupByLibrary.simpleMessage("Notification empty"),
         "number_of_order_buy":
             MessageLookupByLibrary.simpleMessage("Order buy"),
         "number_of_order_sell":
