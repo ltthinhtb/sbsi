@@ -35,9 +35,6 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
       ? state.userAccountController.text
       : (state.accountReceiver.value.accCode ?? "");
 
-  get onSubmit => widget.title == TransfersType.bank.name
-      ? logic.updateCashTransferOnline()
-      : logic.updateCashTransferInternal();
 
   @override
   void initState() {
@@ -188,7 +185,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                                           TransfersType.bank) {
                                                         Get.to(OtpPage(
                                                           onRequest: () {
-                                                            onSubmit();
+                                                            logic.updateCashTransferOnline();
                                                           },
                                                           pinPutController: state
                                                               .otpController,
@@ -196,7 +193,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                                         ));
                                                       } else {
                                                         // type transfer = internal
-                                                        onSubmit();
+                                                        logic.updateCashTransferInternal();
                                                       }
                                                     } on ErrorException catch (e) {
                                                       AppSnackBar.showError(

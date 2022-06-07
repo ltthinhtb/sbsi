@@ -168,6 +168,8 @@ class MoneyTransferLogic extends GetxController {
     );
     try {
       await apiService.updateCashTransferOnline(_requestParams);
+      Get.back(); // pop dialog
+      Get.to(const TransferSuccess());
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     }
