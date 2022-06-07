@@ -81,7 +81,8 @@ class OrderListLogic extends GetxController {
   }
 
   // hủy lệnh
-  Future<void> cancelOrder(IndayOrder order, String pin) async {
+  Future<void> cancelOrder(IndayOrder order, String pin,
+      {bool showDialog = true}) async {
     var _tokenEntity = authService.token.value;
     String refId =
         '${_tokenEntity?.data?.user}' + ".M." + OrderUtils.getRandom();
@@ -103,7 +104,29 @@ class OrderListLogic extends GetxController {
       await apiService.cancleOrder(_requestParams);
       getOrderList();
       Get.back(); // back dialog
+
+      // trường hợp cancel all thì k show dialog
+      if (showDialog) {
+        AppSnackBar.showSuccess(message: S.current.cancel_order_success);
+      }
+    } on ErrorException catch (e) {
+      if (showDialog) {
+        AppSnackBar.showError(message: e.message);
+      }
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
+  Future<void> cancelAll(String pin) async {
+    try {
+      await Future.wait(state.selectedListOrder
+          .map((element) => cancelOrder(element, pin, showDialog: false))
+          .toList());
+      getOrderList();
+      Get.back(); // back dialog
       AppSnackBar.showSuccess(message: S.current.cancel_order_success);
+      state.isSelectAll.value = false;
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     } catch (e) {
@@ -112,9 +135,11 @@ class OrderListLogic extends GetxController {
   }
 
   // select all or Clear
-  void selectAll() {
-    state.isSelectAll.value = !state.isSelectAll.value;
+  void selectAll({bool? isSelect}) {
+    // có thể bằng biến giá trị param truyền vào
+    state.isSelectAll.value = isSelect ?? (!state.isSelectAll.value);
     state.selectedListOrder.clear();
+    // nếu key là select all
     if (state.isSelectAll.value) {
       // check order canedit to add list
       state.listOrder.forEach((element) {

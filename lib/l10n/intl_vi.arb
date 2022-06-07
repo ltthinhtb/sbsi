@@ -369,5 +369,10 @@
   "copy" : "Sao chép",
   "payment_on_account" : "Nộp tiền vào tài khoản",
   "please_input_identity" : "Vui lòng nhập cmt/cccd",
-  "content" : "Nội dung"
+  "content" : "Nội dung",
+  "number_of_order_sell" : "Số lệnh bán",
+  "sell_price" : "Giá trị lệnh bán",
+  "number_of_order_buy" : "Số lệnh mua",
+  "buy_price" : "Giá trị lệnh mua",
+  "price_cancel_order" : "Tổng giá trị hủy"
 }

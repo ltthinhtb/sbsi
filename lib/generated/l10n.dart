@@ -3759,6 +3759,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Order sell`
+  String get number_of_order_sell {
+    return Intl.message(
+      'Order sell',
+      name: 'number_of_order_sell',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order sell price`
+  String get sell_price {
+    return Intl.message(
+      'Order sell price',
+      name: 'sell_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order buy`
+  String get number_of_order_buy {
+    return Intl.message(
+      'Order buy',
+      name: 'number_of_order_buy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order buy price`
+  String get buy_price {
+    return Intl.message(
+      'Order buy price',
+      name: 'buy_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total amount`
+  String get price_cancel_order {
+    return Intl.message(
+      'Total amount',
+      name: 'price_cancel_order',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

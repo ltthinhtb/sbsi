@@ -13,6 +13,52 @@ class OrderListState {
 
   var selectedListOrder = <IndayOrder>[].obs;
 
+  List<IndayOrder> get buyOrder {
+    var list = <IndayOrder>[];
+    selectedListOrder.forEach((element) {
+      if (element.side == "B") list.add(element);
+    });
+    return list;
+  }
+
+  num get totalBuy {
+    num _amount = 0;
+    buyOrder.forEach((element) {
+      _amount += double.parse(element.showPrice ?? "0") *
+          double.parse(element.volume ?? "0") *
+          1000;
+    });
+    return _amount;
+  }
+
+  List<IndayOrder> get sellOrder {
+    var list = <IndayOrder>[];
+    selectedListOrder.forEach((element) {
+      if (element.side != "B") list.add(element);
+    });
+    return list;
+  }
+
+  num get totalSell {
+    num _amount = 0;
+    sellOrder.forEach((element) {
+      _amount += double.parse(element.showPrice!) *
+          double.parse(element.volume!) *
+          1000;
+    });
+    return _amount;
+  }
+
+  num get totalAmount {
+    num _amount = 0;
+    selectedListOrder.forEach((element) {
+      _amount += double.parse(element.showPrice ?? "0") *
+          double.parse(element.volume ?? "0") *
+          1000;
+    });
+    return _amount;
+  }
+
   var listOrder = <IndayOrder>[].obs;
 
   final listOrderHistory = <OrderHistory>[].obs;

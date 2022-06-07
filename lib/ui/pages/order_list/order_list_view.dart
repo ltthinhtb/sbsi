@@ -39,20 +39,6 @@ class _OrderListPageState extends State<OrderListPage>
         title: S.of(context).order_note,
         isCenter: true,
         automaticallyImplyLeading: false,
-        action: [
-          Obx(() {
-            return Visibility(
-              visible: state.isSelectAll.value,
-              child: Center(
-                child: Text(
-                  S.of(context).cancel_all_orders,
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                      fontWeight: FontWeight.w700, color: AppColors.white),
-                ),
-              ),
-            );
-          })
-        ],
       ),
       backgroundColor: AppColors.whiteBack,
       body: Padding(

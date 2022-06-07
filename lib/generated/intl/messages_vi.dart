@@ -96,6 +96,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Các giao dịch gần đây"),
         "branch": MessageLookupByLibrary.simpleMessage("Chi nhánh"),
         "buy": MessageLookupByLibrary.simpleMessage("Mua"),
+        "buy_price": MessageLookupByLibrary.simpleMessage("Giá trị lệnh mua"),
         "c_authen_sign":
             MessageLookupByLibrary.simpleMessage("Phương thức xác thực"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy bỏ"),
@@ -305,6 +306,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_found": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "notice": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "notification": MessageLookupByLibrary.simpleMessage("Thông báo"),
+        "number_of_order_buy":
+            MessageLookupByLibrary.simpleMessage("Số lệnh mua"),
+        "number_of_order_sell":
+            MessageLookupByLibrary.simpleMessage("Số lệnh bán"),
         "old_password": MessageLookupByLibrary.simpleMessage("Mật khẩu cũ"),
         "old_pin": MessageLookupByLibrary.simpleMessage("Mã pin cũ"),
         "open_on": MessageLookupByLibrary.simpleMessage("Mở tại"),
@@ -379,6 +384,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pp": MessageLookupByLibrary.simpleMessage("Sức mua của mã"),
         "pp_1": MessageLookupByLibrary.simpleMessage("Sức mua"),
         "price": MessageLookupByLibrary.simpleMessage("Giá"),
+        "price_cancel_order":
+            MessageLookupByLibrary.simpleMessage("Tổng giá trị hủy"),
         "product": MessageLookupByLibrary.simpleMessage("Sản phẩm"),
         "profile_info":
             MessageLookupByLibrary.simpleMessage("Thông tin cá nhân"),
@@ -419,6 +426,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "select_product": MessageLookupByLibrary.simpleMessage("Chọn sản phẩm"),
         "sell": MessageLookupByLibrary.simpleMessage("Bán"),
         "sell_day": MessageLookupByLibrary.simpleMessage("Ngày bán"),
+        "sell_price": MessageLookupByLibrary.simpleMessage("Giá trị lệnh bán"),
         "sell_t0": MessageLookupByLibrary.simpleMessage("Chở về T0"),
         "sell_t1": MessageLookupByLibrary.simpleMessage("Chở về T1"),
         "sell_t2": MessageLookupByLibrary.simpleMessage("Chở về T2"),

@@ -90,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "bond_history": MessageLookupByLibrary.simpleMessage("Bond history"),
         "branch": MessageLookupByLibrary.simpleMessage("Branch"),
         "buy": MessageLookupByLibrary.simpleMessage("Buy"),
+        "buy_price": MessageLookupByLibrary.simpleMessage("Order buy price"),
         "c_authen_sign":
             MessageLookupByLibrary.simpleMessage("Authentication sign"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -291,6 +292,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "not_found": MessageLookupByLibrary.simpleMessage("Not found"),
         "notice": MessageLookupByLibrary.simpleMessage("Notice"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+        "number_of_order_buy":
+            MessageLookupByLibrary.simpleMessage("Order buy"),
+        "number_of_order_sell":
+            MessageLookupByLibrary.simpleMessage("Order sell"),
         "old_password": MessageLookupByLibrary.simpleMessage("Old password"),
         "old_pin": MessageLookupByLibrary.simpleMessage("Old pin"),
         "open_on": MessageLookupByLibrary.simpleMessage("Open on"),
@@ -364,6 +369,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pp": MessageLookupByLibrary.simpleMessage("PP"),
         "pp_1": MessageLookupByLibrary.simpleMessage("PP"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "price_cancel_order":
+            MessageLookupByLibrary.simpleMessage("Total amount"),
         "product": MessageLookupByLibrary.simpleMessage("Product"),
         "profile_info": MessageLookupByLibrary.simpleMessage("Profile info"),
         "profit": MessageLookupByLibrary.simpleMessage("Profit"),
@@ -401,6 +408,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select Product"),
         "sell": MessageLookupByLibrary.simpleMessage("Sell"),
         "sell_day": MessageLookupByLibrary.simpleMessage("Sell day"),
+        "sell_price": MessageLookupByLibrary.simpleMessage("Order sell price"),
         "sell_t0": MessageLookupByLibrary.simpleMessage("Sell T0"),
         "sell_t1": MessageLookupByLibrary.simpleMessage("Sell T1"),
         "sell_t2": MessageLookupByLibrary.simpleMessage("Sell T2"),

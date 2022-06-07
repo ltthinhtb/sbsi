@@ -369,5 +369,12 @@
   "copy" : "Copy",
   "payment_on_account" : "Payment on account",
   "please_input_identity" : "Please input identity",
-  "content" : "Content"
+  "content" : "Content",
+  "number_of_order_sell" : "Order sell",
+  "sell_price" : "Order sell price",
+  "number_of_order_buy" : "Order buy",
+  "buy_price" : "Order buy price",
+  "price_cancel_order" : "Total amount"
+
+
 }
