@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'appbar.dart';
@@ -8,8 +9,10 @@ import 'appbar.dart';
 class WebViewPage extends StatefulWidget {
   final String title;
   final String url;
+  final bool? rotation;
 
-  const WebViewPage({Key? key, required this.title, required this.url})
+  const WebViewPage(
+      {Key? key, required this.title, required this.url, this.rotation = false})
       : super(key: key);
 
   @override
@@ -18,10 +21,16 @@ class WebViewPage extends StatefulWidget {
 
 class _WebViewPageState extends State<WebViewPage> {
   bool loading = true;
+
   @override
   void initState() {
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
-    // TODO: implement initState
+    if (widget.rotation!) {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
+      ]);
+    }
     super.initState();
   }
 

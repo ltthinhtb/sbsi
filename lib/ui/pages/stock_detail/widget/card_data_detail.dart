@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:sbsi/model/stock_data/stock_info.dart';
+import 'package:sbsi/ui/commons/webview.dart';
 import 'package:sbsi/utils/money_utils.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
@@ -55,7 +58,20 @@ class CardDetail extends StatelessWidget {
                     ),
                   ],
                 )),
-                SvgPicture.asset(AppImages.chart)
+                GestureDetector(
+                    onTap: () {
+                      Get.to(WebViewPage(
+                              title: "Trading",
+                              url:
+                                  'https://info.sbsi.vn/chart/?symbol=${stock.stockCode}&language=vi&theme=light'))!
+                          .then((value) {
+                        SystemChrome.setPreferredOrientations([
+                          DeviceOrientation.portraitDown,
+                          DeviceOrientation.portraitUp,
+                        ]);
+                      });
+                    },
+                    child: SvgPicture.asset(AppImages.chart))
               ],
             ),
           ),
