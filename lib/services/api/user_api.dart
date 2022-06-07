@@ -24,4 +24,12 @@ extension UserApiService on ApiService {
   Future forgotPass(ForgotPassRequest request) async {
     return await _apiClient.forgotPass(request);
   }
+
+  Future<List<Notify>> getListNotify(NotifyRequest request) async {
+    return await _apiClient.getListNotify(request);
+  }
+
+  Future<void> makerReader(NotifyRequest request) async {
+    return await _apiClient.makerRead(request);
+  }
 }

@@ -13,10 +13,12 @@ import 'package:sbsi/model/entities/fee_withdraw.dart';
 import 'package:sbsi/model/entities/foreign.dart';
 import 'package:sbsi/model/entities/get_account_info.dart';
 import 'package:sbsi/model/entities/index.dart';
+import 'package:sbsi/model/entities/notify.dart';
 import 'package:sbsi/model/entities/right_exc.dart';
 import 'package:sbsi/model/entities/share_transfer.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/index.dart';
+import 'package:sbsi/model/params/notify_request.dart';
 import 'package:sbsi/model/response/account_info.dart';
 import 'package:sbsi/model/response/account_status.dart';
 import 'package:sbsi/model/response/index_detail.dart';
@@ -181,6 +183,10 @@ abstract class ApiClient {
   Future<List<AppNotification>> loadListNotificationAll();
 
   Future<List<DebtAcc>> getDebtForWeb(RequestParams requestParams);
+
+  Future<List<Notify>> getListNotify(NotifyRequest request);
+
+  Future<void> makerRead(NotifyRequest request);
 
   Future forgotPass(ForgotPassRequest request);
 }
@@ -1114,5 +1120,32 @@ class _ApiClient implements ApiClient {
     List _mapData = jsonDecode(_result.data)['data'];
     num cFee = _mapData.first['C_FEE_VALUE'];
     return cFee;
+  }
+
+  @override
+  Future<List<Notify>> getListNotify(NotifyRequest request) async {
+    Response _result = await _getApi(
+      _dio.post(
+        AppConfigs.NOTIFICATION + request.path!,
+        data: request.toJson(),
+      ),
+    );
+    List _mapData = _result.data;
+    List<Notify> listNotify = [];
+    _mapData.forEach((element) {
+      var bank = Notify.fromJson(element);
+      listNotify.add(bank);
+    });
+    return listNotify;
+  }
+
+  @override
+  Future<void> makerRead(NotifyRequest request) async {
+    await _getApi(
+      _dio.post(
+        AppConfigs.NOTIFICATION + request.path!,
+        data: request.toJson(),
+      ),
+    );
   }
 }

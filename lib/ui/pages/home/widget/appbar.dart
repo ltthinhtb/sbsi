@@ -1,7 +1,9 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/ui/pages/home/home_logic.dart';
+import 'package:sbsi/ui/pages/notification/notification_logic.dart';
 import 'package:sbsi/ui/pages/search/search_view.dart';
 import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
 import 'package:sbsi/utils/money_utils.dart';
@@ -72,11 +74,17 @@ class AppBarHome extends StatelessWidget {
                       },
                       child: SvgPicture.asset(AppImages.search_normal)),
                   const SizedBox(width: 20),
-                  GestureDetector(
-                      onTap: () {
-                        Get.toNamed(RouteConfig.notification);
-                      },
-                      child: SvgPicture.asset(AppImages.notification)),
+                  GestureDetector(onTap: () {
+                    Get.toNamed(RouteConfig.notification);
+                  }, child: Obx(() {
+                    var count = Get.find<NotificationLogic>().state.count;
+                    return Badge(
+                        position: const BadgePosition(bottom: 8, start: 10),
+                        badgeContent: Text('${count}',
+                            style: Theme.of(context).textTheme.caption),
+                        badgeColor: AppColors.yellow,
+                        child: SvgPicture.asset(AppImages.notification));
+                  })),
                   const SizedBox(width: 15),
                 ],
               ),

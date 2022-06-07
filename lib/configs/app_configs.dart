@@ -9,7 +9,7 @@ class AppConfigs {
   static const URL_DATA_FEED = 'https://sbboard.sbsi.vn/';
   static const INFO_SBSI = 'https://info.sbsi.vn/';
   static const ENDPOINT_CORE = 'TraditionalService';
-  static const NOTIFICATION = 'http://27.71.228.16:8998/';
+  static const NOTIFICATION = 'http://14.238.11.1:8998/';
   static const SIGN_UP_URL = 'http://14.238.11.1:8998/'; //Todo: change this
   static const socketUrl = 'https://sbboard.sbsi.vn/ps'; //Todo: change this
 

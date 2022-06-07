@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -129,6 +130,26 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                           var bank = state.listBankAcc[index];
                           return Row(
                             children: [
+                              CachedNetworkImage(
+                                height: 40,
+                                width: 40,
+                                imageUrl:
+                                    'http://14.238.11.1:8998/bank/${bank.bank?.toUpperCase() ?? ""}.png',
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: imageProvider,
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                placeholder: (context, url) =>
+                                    const CircularProgressIndicator(),
+                                errorWidget: (context, url, error) {
+                                  return const Icon(Icons.error);
+                                },
+                              ),
+                              const SizedBox(width: 10),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,7 +161,7 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                                     ),
                                     const SizedBox(height: 4),
                                     Text(
-                                      bank.branch ?? "",
+                                      '${bank.bank ?? ""} ${bank.branch}',
                                       style: caption?.copyWith(
                                           color: AppColors.textSecond),
                                     )
@@ -149,8 +170,8 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Clipboard.setData(ClipboardData(
-                                          text: bank.branch ?? ""))
+                                  Clipboard.setData(
+                                          ClipboardData(text: bank.stk ?? ""))
                                       .then((value) {
                                     Fluttertoast.showToast(
                                         msg:

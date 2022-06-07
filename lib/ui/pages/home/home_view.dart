@@ -31,8 +31,7 @@ class _HomePageState extends State<HomePage> {
       drawer: const UtilitiesPage(),
       body: Column(
         children: [
-          const AppBarHome(
-          ),
+          const AppBarHome(),
           const SizedBox(height: 16),
           Expanded(
             child: SingleChildScrollView(
