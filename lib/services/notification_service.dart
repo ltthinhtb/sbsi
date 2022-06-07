@@ -35,14 +35,14 @@ class NotificationService extends GetxService {
   void onDidReceiveLocalNotification(
       int id, String? title, String? body, String? payload) async {
     // display a dialog with the notification details, tap ok to go to another page
-    await AppDiaLog.showNoticeDialog(
-        middleText: "Ok",
-        onConfirm: () {
-          if (Get.isRegistered<NotificationLogic>())
-          {
-            Get.toNamed(RouteConfig.notification);
-          }
-        });
+    // await AppDiaLog.showNoticeDialog(
+    //     middleText: "Ok",
+    //     onConfirm: () {
+    //       if (Get.isRegistered<NotificationLogic>())
+    //       {
+    //         Get.toNamed(RouteConfig.notification);
+    //       }
+    //     });
   }
 
   Future<NotificationService> init() async {
@@ -78,10 +78,10 @@ class NotificationService extends GetxService {
   void setup() {
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       logger.i('Got a onMessageOpenedApp whilst in the foreground!');
-      if (Get.isRegistered<NotificationLogic>())
-        {
-          Get.toNamed(RouteConfig.notification);
-        }
+      if (Get.isRegistered<NotificationLogic>()) {
+        Get.find<NotificationLogic>().refresh();
+        Get.toNamed(RouteConfig.notification);
+      }
     });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       NotificationService().showNotification(message);
@@ -94,8 +94,8 @@ class NotificationService extends GetxService {
         await FirebaseMessaging.instance.getInitialMessage();
     if (initialMessage != null) {
       logger.i('Got a Terminal whilst in the foreground!');
-      if (Get.isRegistered<NotificationLogic>())
-      {
+      if (Get.isRegistered<NotificationLogic>()) {
+        Get.find<NotificationLogic>().refresh();
         Get.toNamed(RouteConfig.notification);
       }
     }
