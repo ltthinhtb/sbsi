@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:sbsi/model/entities/order_history.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
@@ -32,8 +33,7 @@ class OrderListLogic extends GetxController {
           p1: "1",
           p2: "30",
           p3: state.account.value.accCode,
-          p4: state.singingCharacter
-              .value(stockCode: state.stockCodeController.text.trim())),
+          p4: state.singingCharacter.value),
     );
     try {
       state.listOrder.value = await apiService.getIndayOrder(_requestParams);
@@ -172,10 +172,9 @@ class OrderListLogic extends GetxController {
       getOrderList();
       Get.back(); // back dialog
       AppSnackBar.showSuccess(message: S.current.change_order_success);
-    }on ErrorException catch(error){
+    } on ErrorException catch (error) {
       AppSnackBar.showError(message: error.message);
-    }
-    catch (e) {
+    } catch (e) {
       logger.e(e.toString());
     }
   }
@@ -198,21 +197,57 @@ class OrderListLogic extends GetxController {
     super.onClose();
   }
 
+  List<String> searchStockString(String stockCode) {
+    List<IndayOrder> searchResult = state.listOrder
+        .where(
+          (element) => element.symbol!.toLowerCase().startsWith(
+                stockCode.toLowerCase(),
+              ),
+        )
+        .toList();
+    return searchResult
+        .map((e) {
+          return e.symbol ?? "";
+        })
+        .toSet()
+        .toList();
+  }
+
   List<IndayOrder> searchStock(String stockCode) {
-    if (stockCode != '') {
-      List<IndayOrder> searchResult = state.listOrder
-          .where(
-            (element) => element.symbol!.toLowerCase().startsWith(
-                  stockCode.toLowerCase(),
-                ),
-          )
-          .toList();
-      if (searchResult.length > 10) {
-        searchResult = searchResult.sublist(0, 10);
-      }
-      return searchResult;
-    } else {
-      return [];
-    }
+    List<IndayOrder> searchResult = state.listOrder
+        .where(
+          (element) => element.symbol!.toLowerCase().startsWith(
+                stockCode.toLowerCase(),
+              ),
+        )
+        .toList();
+    return searchResult;
+  }
+
+  List<String> searchStockHistoryString(String stockCode) {
+    List<OrderHistory> searchResult = state.listOrderHistory
+        .where(
+          (element) => element.cSHARECODE!.toLowerCase().startsWith(
+                stockCode.toLowerCase(),
+              ),
+        )
+        .toList();
+    return searchResult
+        .map((e) {
+          return e.cSHARECODE ?? "";
+        })
+        .toSet()
+        .toList();
+  }
+
+  List<OrderHistory> searchStockHistory(String stockCode) {
+    List<OrderHistory> searchResult = state.listOrderHistory
+        .where(
+          (element) => element.cSHARECODE!.toLowerCase().startsWith(
+                stockCode.toLowerCase(),
+              ),
+        )
+        .toList();
+    return searchResult;
   }
 }

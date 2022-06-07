@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
+import 'package:sbsi/model/entities/order_history.dart';
 import '../../../common/app_text_styles.dart';
 import '../../../model/entities/bank.dart';
 import '../../../model/order_data/inday_order.dart';
@@ -55,6 +56,26 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
             child: Row(
               children: [
                 Text('${itemData.symbol}'),
+              ],
+            ),
+          );
+        }
+        if (itemData is OrderHistory) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text('${itemData.cSHARECODE}'),
+              ],
+            ),
+          );
+        }
+        if (itemData is String) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text(itemData),
               ],
             ),
           );

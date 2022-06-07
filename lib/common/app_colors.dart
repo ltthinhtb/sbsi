@@ -41,6 +41,7 @@ class AppColors {
   static const Color floor = Color(0xFF146FB4);
   static const Color table1 = Color(0xFFFFF8EB);
   static const Color table2 = Color(0xFFDDDDDD);
+  static const Color tableHover = Color.fromRGBO(221, 221, 221, 1);
   static const Color whiteEEE = Color(0xFFEEEEEE);
   static const Color accent_blue = Color(0xFF49D8DF);
   static const Color grey_cancel_order = Color(0xFF58586C);

@@ -161,6 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Thông tin liên hệ"),
         "contact_support":
             MessageLookupByLibrary.simpleMessage("Liên hệ hỗ trợ"),
+        "content": MessageLookupByLibrary.simpleMessage("Nội dung"),
         "content_transfer":
             MessageLookupByLibrary.simpleMessage("Nội dung chuyển khoản"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Tiếp tục"),
@@ -319,7 +320,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_number": MessageLookupByLibrary.simpleMessage("Số hiệu lệnh"),
         "order_number_short": MessageLookupByLibrary.simpleMessage("SHL"),
         "order_price": MessageLookupByLibrary.simpleMessage("Giá đặt"),
-        "order_source": MessageLookupByLibrary.simpleMessage("Nguồn gốc đặt"),
+        "order_source": MessageLookupByLibrary.simpleMessage("Kênh đặt"),
         "order_time": MessageLookupByLibrary.simpleMessage("Thời gian đặt"),
         "order_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng đặt"),
         "over_view": MessageLookupByLibrary.simpleMessage("Tổng quan"),

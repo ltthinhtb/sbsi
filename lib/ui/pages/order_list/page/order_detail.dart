@@ -2,17 +2,17 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
-import 'package:sbsi/common/app_text_styles.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/utils/error_message.dart';
-import 'package:sbsi/utils/stock_utils.dart';
+import 'package:sbsi/utils/money_utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../../../model/entities/order_history.dart';
+
 class OrderDetail extends StatefulWidget {
-  final IndayOrder data;
+  final OrderHistory data;
 
   const OrderDetail({
     Key? key,
@@ -35,7 +35,7 @@ class _OrderDetailState extends State<OrderDetail> {
     // TODO: implement initState
     super.initState();
     setState(() {
-      _status = MessageOrder.getStatusOrder(widget.data);
+      _status = MessageOrder.getStatusOrder1(widget.data);
       if (_status == "Khớp 1 phần" || _status == "Chờ khớp") {
         canFix = true;
       } else {
@@ -51,32 +51,37 @@ class _OrderDetailState extends State<OrderDetail> {
         title: S.of(context).order_detail,
         isCenter: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+      body: Container(
+        margin: const EdgeInsets.only(top: 16),
+        decoration: const BoxDecoration(
+          color: Color.fromRGBO(255, 248, 231, 1),
+          boxShadow: [
+            const BoxShadow(offset: Offset(0,4),blurRadius: 20,color: const Color.fromRGBO(0, 0, 0, 0.05))
+          ]
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            buildInfo(S.of(context).stock_code, widget.data.symbol ?? ""),
-            buildInfo(S.of(context).status, _status),
+            buildInfo(S.of(context).stock_code, widget.data.cSHARECODE ?? ""),
+            buildInfo(S.of(context).status, _status,textColor: MessageOrder.getColorStatus(
+                MessageOrder.statusHuySua1(widget.data))),
             buildInfo(
               S.of(context).orderType,
-              widget.data.side == "B" ? S.of(context).buy : S.of(context).sell,
+              widget.data.cSIDE == "B" ? S.of(context).buy : S.of(context).sell,
               textColor:
-                  widget.data.side == "B" ? AppColors.green : AppColors.red,
+                  widget.data.cSIDE == "B" ? AppColors.green : AppColors.red,
             ),
-            buildInfo(S.of(context).order_time, widget.data.orderTime ?? ""),
+            buildInfo(S.of(context).order_time, widget.data.cORDERDATE ?? ""),
             buildInfo(
               S.of(context).order_volumn,
-              StockUtil.formatVol(
-                double.parse(widget.data.volume ?? "0"),
-              ),
+              MoneyFormat.formatMoneyRound('${widget.data.cORDERVOLUME}'),
             ),
             buildInfo(
               S.of(context).order_price,
-              StockUtil.formatMoney(
-                double.parse(widget.data.orderPrice ?? "0") / 1000,
-              ),
+              MoneyFormat.formatMoneyRound('${widget.data.cORDERPRICE}'),
             ),
-            buildInfo(S.of(context).order_source, widget.data.channel ?? "-"),
+            buildInfo(S.of(context).order_source, widget.data.cCHANELNAME ?? "-"),
           ],
         ),
       ),
@@ -84,22 +89,23 @@ class _OrderDetailState extends State<OrderDetail> {
   }
 
   Widget buildInfo(String label, String value, {Color? textColor}) {
+    final body2 = Theme.of(context).textTheme.bodyText2;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       child: Row(
         children: [
           Expanded(
             flex: 3,
             child: Text(
               label,
-              style: AppTextStyle.caption2,
+              style: body2?.copyWith(color: AppColors.textSecond),
             ),
           ),
           Expanded(
             flex: 3,
             child: Text(
               value,
-              style: AppTextStyle.bodyText2.copyWith(color: textColor),
+              style: body2?.copyWith(fontWeight: FontWeight.w700,color: textColor),
               textAlign: TextAlign.right,
             ),
           ),

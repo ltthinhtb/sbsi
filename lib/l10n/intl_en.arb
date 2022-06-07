@@ -368,6 +368,6 @@
   "payment_title" : "Transfer to one of the following Accounts",
   "copy" : "Copy",
   "payment_on_account" : "Payment on account",
-  "please_input_identity" : "Please input identity"
-
+  "please_input_identity" : "Please input identity",
+  "content" : "Content"
 }

@@ -154,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Confirm pin"),
         "contact_info": MessageLookupByLibrary.simpleMessage("Contact info"),
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
+        "content": MessageLookupByLibrary.simpleMessage("Content"),
         "content_transfer": MessageLookupByLibrary.simpleMessage("Content"),
         "continue_step": MessageLookupByLibrary.simpleMessage("Continue"),
         "copy": MessageLookupByLibrary.simpleMessage("Copy"),

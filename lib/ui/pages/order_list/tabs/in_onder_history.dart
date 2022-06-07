@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:sbsi/common/app_images.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../model/order_data/inday_order.dart';
 import '../../../../utils/date_utils.dart';
 import '../../../widgets/dropdown/app_drop_down.dart';
 import '../../../widgets/textfields/app_text_field.dart';
@@ -152,14 +151,15 @@ class _InOrderHistoryState extends State<InOrderHistory>
           children: [
             Expanded(
               flex: 10,
-              child: AppTextTypeHead<IndayOrder>(
+              child: AppTextTypeHead<String>(
                 inputController: state.stockHistoryController,
                 hintText: "Thêm mã CK",
                 suggestionsCallback: (String pattern) {
-                  var list = logic.searchStock(pattern);
+                  var list = logic.searchStockHistoryString(pattern);
                   return list;
                 },
                 onSuggestionSelected: (suggestion) {
+                  state.stockHistoryController.text = suggestion;
                   FocusScope.of(context).unfocus();
                 },
               ),
@@ -232,13 +232,14 @@ class _InOrderHistoryState extends State<InOrderHistory>
   Widget buildListOrder() {
     return Obx(
       () {
+        var list = logic.searchStockHistory(state.stockHistoryController.text);
         return ListView.builder(
           shrinkWrap: true,
           padding: EdgeInsets.zero,
-          itemCount: state.listOrderHistory.length,
+          itemCount: list.length,
           itemBuilder: (context, idx) {
             return HistoryWidget(
-              history: state.listOrderHistory[idx],
+              history: list[idx],
               index: idx,
             );
           },

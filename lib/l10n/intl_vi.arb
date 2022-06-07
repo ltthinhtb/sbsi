@@ -194,7 +194,7 @@
   "order_price": "Giá đặt",
   "aver_match_price": "Giá khớp trung bình",
   "aver_short": "TB",
-  "order_source": "Nguồn gốc đặt",
+  "order_source": "Kênh đặt",
   "confirm_cancel_order": "Xác nhận huỷ lệnh",
   "cancel_order": "Huỷ lệnh",
   "cancel_chose_orders": "Huỷ lệnh đã chọn",
@@ -368,5 +368,6 @@
   "payment_title" : "Chuyển khoản tới một trong số TK sau",
   "copy" : "Sao chép",
   "payment_on_account" : "Nộp tiền vào tài khoản",
-  "please_input_identity" : "Vui lòng nhập cmt/cccd"
+  "please_input_identity" : "Vui lòng nhập cmt/cccd",
+  "content" : "Nội dung"
 }

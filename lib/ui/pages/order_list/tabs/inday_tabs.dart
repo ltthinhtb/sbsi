@@ -5,7 +5,6 @@ import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/ui/pages/order_list/widget/note_widget.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../model/order_data/inday_order.dart';
 import '../../../widgets/dropdown/app_drop_down.dart';
 import '../../../widgets/textfields/app_text_typehead.dart';
 import '../enums/order_enums.dart';
@@ -61,14 +60,15 @@ class _InDayTabState extends State<InDayTab>
           children: [
             Expanded(
               flex: 10,
-              child: AppTextTypeHead<IndayOrder>(
+              child: AppTextTypeHead<String>(
                 inputController: state.stockCodeController,
                 hintText: "Thêm mã CK",
                 suggestionsCallback: (String pattern) {
-                  var list = logic.searchStock(pattern);
+                  var list = logic.searchStockString(pattern);
                   return list;
                 },
                 onSuggestionSelected: (suggestion) {
+                  state.stockCodeController.text = suggestion;
                   FocusScope.of(context).unfocus();
                 },
               ),
@@ -156,13 +156,14 @@ class _InDayTabState extends State<InDayTab>
   Widget buildListOrder() {
     return Obx(
       () {
+        var list = logic.searchStock(state.stockCodeController.text);
         return ListView.builder(
           shrinkWrap: true,
           padding: EdgeInsets.zero,
-          itemCount: state.listOrder.length,
+          itemCount: list.length,
           itemBuilder: (context, idx) {
             return NoteWidget(
-              listOrder: state.listOrder[idx],
+              listOrder: list[idx],
               index: idx,
             );
           },
