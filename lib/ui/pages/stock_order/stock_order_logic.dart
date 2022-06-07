@@ -304,7 +304,39 @@ class StockOrderLogic extends GetxController {
     }
   }
 
-  void changePrice() {}
+  // sửa lệnh
+  Future<void> changeOrder(
+      {required IndayOrder data,
+        required int vol,
+        required String price,
+        required String pinController}) async {
+    var _tokenEntity = authService.token.value;
+    RequestParams _requestParams = RequestParams(
+      group: "O",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+        type: "string",
+        cmd: "Web.changeOrder",
+        orderNo: data.orderNo,
+        nvol: vol,
+        nprice: price,
+        fisID: "",
+        orderType: "1",
+        pin: pinController,
+      ),
+    );
+    try {
+      await apiService.changeOrder(_requestParams);
+      getOrderList();
+      Get.back(); // back dialog
+      AppSnackBar.showSuccess(message: S.current.change_order_success);
+    } on ErrorException catch (error) {
+      AppSnackBar.showError(message: error.message);
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
 
   @override
   void onInit() async {

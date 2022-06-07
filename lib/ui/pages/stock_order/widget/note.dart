@@ -9,6 +9,7 @@ import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/error_message.dart';
 import '../../../widgets/button/button_filled.dart';
+import '../../../widgets/textfields/appTextFieldNumber.dart';
 import '../../../widgets/textfields/app_text_field.dart';
 
 class NoteWidgetOrder extends StatefulWidget {
@@ -23,9 +24,12 @@ class NoteWidgetOrder extends StatefulWidget {
 }
 
 class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
-  void edit(BuildContext context) {}
   final TextEditingController pinController = TextEditingController();
   final logic = Get.find<StockOrderLogic>();
+
+  final _pinController = TextEditingController();
+  final priceController = TextEditingController();
+  final volumeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,12 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
         children: [
           SlidableAction(
             // An action can be bigger than the others.
-            onPressed: edit,
+            onPressed: (BuildContext context) {
+              _pinController.clear();
+              priceController.text = widget.note.showPrice ?? "";
+              volumeController.text = widget.note.volume ?? "";
+              editOrder(widget.note);
+            },
             backgroundColor: const Color.fromRGBO(251, 122, 4, 1),
             foregroundColor: Colors.white,
             icon: null,
@@ -45,6 +54,7 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
           ),
           SlidableAction(
             onPressed: (BuildContext context) {
+              _pinController.clear();
               cancelOrder(widget.note);
             },
             backgroundColor: AppColors.primary,
@@ -217,4 +227,200 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
       }),
     ));
   }
+
+  void editOrder(IndayOrder order) {
+    Get.dialog(Dialog(
+      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Builder(builder: (context) {
+        final body2 = Theme.of(context).textTheme.bodyText2;
+        final body1 = Theme.of(context).textTheme.bodyText1;
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+              color: AppColors.white, borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 16),
+              Text(
+                S.of(context).edit_note,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).stock_code,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    order.symbol ?? "",
+                    style: body1?.copyWith(fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    S.of(context).orderType,
+                    style: body2?.copyWith(color: AppColors.textSecond),
+                  ),
+                  Text(
+                    order.side == "B" ? S.of(context).buy : S.of(context).sell,
+                    style: body1?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: order.side == "B"
+                            ? AppColors.active
+                            : AppColors.deActive),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      S.of(context).price,
+                      style: body2?.copyWith(color: AppColors.textSecond),
+                    ),
+                  ),
+                  Expanded(
+                      child: AppTextFieldNumber(
+                        inputController: priceController,
+                        hintText: S.of(context).price,
+                        backColor: AppColors.PastelSecond2,
+                        minus: () {
+                          checkNullPrice(order);
+                          var value = priceController.numberValue;
+                          value = value - 0.05;
+                          priceController.updateValue(value);
+                        },
+                        plus: () {
+                          checkNullPrice(order);
+                          var value = priceController.numberValue;
+                          value = value + 0.05;
+                          priceController.updateValue(value);
+                        },
+                      ))
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text(
+                      S.of(context).volumn,
+                      style: body2?.copyWith(color: AppColors.textSecond),
+                    ),
+                  ),
+                  Expanded(
+                      child: AppTextFieldNumber(
+                        inputController: volumeController,
+                        hintText: S.of(context).volume,
+                        backColor: AppColors.PastelSecond2,
+                        minus: () {
+                          checkNullVol();
+                          var value = volumeController.numberValue;
+                          value = value - 100;
+                          volumeController.updateVol(value);
+                        },
+                        plus: () {
+                          checkNullVol();
+                          var value = volumeController.numberValue;
+                          value = value + 100;
+                          volumeController.updateVol(value);
+                        },
+                      ))
+                ],
+              ),
+              const SizedBox(height: 20),
+              AppTextFieldWidget(
+                validator: (pin) => checkPin(pin!),
+                hintText: S.of(context).input_pin,
+                inputController: _pinController,
+                obscureText: true,
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                      child: ButtonFill(
+                        voidCallback: () {
+                          Get.back();
+                        },
+                        title: S.of(context).cancel_short,
+                        style: ElevatedButton.styleFrom(
+                            onPrimary: AppColors.primary,
+                            primary: const Color.fromRGBO(255, 238, 238, 1)),
+                      )),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                      child: ButtonFill(
+                          voidCallback: () {
+                            logic.changeOrder(
+                                vol: volumeController.numberValue.toInt(),
+                                data: order,
+                                pinController: _pinController.text,
+                                price: priceController.text);
+                          },
+                          title: S.of(context).confirm))
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
+        );
+      }),
+    ));
+  }
+  void checkNullPrice(IndayOrder indayOrder) {
+    /// nếu giá không có thì sẽ lấy giá tham lastPrice
+    if (priceController.text.isEmpty) {
+      priceController.text = indayOrder.showPrice ?? "";
+    }
+  }
+
+  void checkNullVol() {
+    /// nếu khối lượng không có thì sẽ lấy giá 100
+    if (volumeController.text.isEmpty) {
+      volumeController.text = "100";
+    }
+  }
 }
+
+extension TextControllerExt on TextEditingController {
+  double get numberValue {
+    try {
+      return double.parse(text);
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  void updateValue(double value) {
+    try {
+      text = value.toStringAsFixed(2);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  void updateVol(double value) {
+    try {
+      text = value.toStringAsFixed(0);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+}
+
