@@ -36,7 +36,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
   Widget buildItem(ShareTransaction data) {
     final caption = Theme.of(context).textTheme.caption;
     return Container(
-      padding: const EdgeInsets.fromLTRB(18, 12, 0, 12),
+      padding: const EdgeInsets.fromLTRB(18, 12, 18, 12),
       decoration: BoxDecoration(
           color: widget.index % 2 == 0 ? AppColors.whiteF7 : AppColors.white),
       child: Row(
@@ -50,25 +50,33 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
           ),
           Expanded(
             flex: 79,
-            child: Text(
-              widget.transaction.cSHARECODE ?? "",
-              style: caption?.copyWith(fontWeight: FontWeight.w400),
+            child: Center(
+              child: Text(
+                widget.transaction.cSHARECODE ?? "",
+                style: caption?.copyWith(fontWeight: FontWeight.w400),
+              ),
             ),
           ),
           Expanded(
             flex: 79,
-            child: Text(
-              MoneyFormat.formatMoneyRound(
-                  widget.transaction.cSHAREIN.toString()),
-              style: caption?.copyWith(fontWeight: FontWeight.w400),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                MoneyFormat.formatMoneyRound(
+                    widget.transaction.cSHAREIN.toString()),
+                style: caption?.copyWith(fontWeight: FontWeight.w400),
+              ),
             ),
           ),
           Expanded(
             flex: 79,
-            child: Text(
-              MoneyFormat.formatMoneyRound(
-                  widget.transaction.cSHAREOUT.toString()),
-              style: caption?.copyWith(fontWeight: FontWeight.w400),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                MoneyFormat.formatMoneyRound(
+                    widget.transaction.cSHAREOUT.toString()),
+                style: caption?.copyWith(fontWeight: FontWeight.w400),
+              ),
             ),
           ),
         ],

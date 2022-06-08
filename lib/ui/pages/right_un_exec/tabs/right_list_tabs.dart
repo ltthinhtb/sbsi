@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:sbsi/ui/pages/right_un_exec/widget/right_widget.dart';
+import 'package:sbsi/ui/pages/right_un_exec/widget/deposit_expanded.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/money_utils.dart';
 import '../right_un_exec_logic.dart';
+import '../widget/stock_expaned.dart';
 
 class RightListTab extends StatefulWidget {
   const RightListTab({Key? key}) : super(key: key);
@@ -25,8 +26,7 @@ class _RightListTabState extends State<RightListTab>
     super.build(context);
     final body2 = Theme.of(context).textTheme.bodyText2;
     final headline6 = Theme.of(context).textTheme.headline6;
-    final caption = Theme.of(context).textTheme.caption;
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         children: [
           const SizedBox(height: 16),
@@ -72,64 +72,9 @@ class _RightListTabState extends State<RightListTab>
             ),
           ),
           const SizedBox(height: 16),
-          Expanded(
-            child: Container(
-              decoration: const BoxDecoration(color: AppColors.white),
-              child: Column(
-                children: [
-                  const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            flex: 62,
-                            child: Text(
-                              S.of(context).stock_code,
-                              style:
-                                  caption?.copyWith(fontWeight: FontWeight.w700),
-                            )),
-                        Expanded(
-                            flex: 130,
-                            child: Text(
-                              "Số CK hưởng quyền",
-                              style:
-                                  caption?.copyWith(fontWeight: FontWeight.w700),
-                            )),
-                        Expanded(
-                            flex: 53,
-                            child: Text(
-                              S.of(context).rate,
-                              style:
-                                  caption?.copyWith(fontWeight: FontWeight.w700),
-                            )),
-                        Expanded(
-                            flex: 94,
-                            child: Text(
-                              S.of(context).right_date,
-                              style:
-                                  caption?.copyWith(fontWeight: FontWeight.w700),
-                            )),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Expanded(child: Obx(() {
-                    var listRight = state.listRightExt;
-                    return ListView.builder(
-                        itemCount: listRight.length,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return RightWidget(
-                            index: index,
-                            right: listRight[index],
-                          );
-                        });
-                  }))
-                ],
-              ),
-            ),
-          ),
+          const StockExpanded(),
+          const SizedBox(height: 5),
+          const DepositExpanded()
         ],
       ),
     );

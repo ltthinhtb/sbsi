@@ -170,6 +170,17 @@ class OrderListLogic extends GetxController {
     }
   }
 
+  // switch tài khoản 1-6
+  void changeAccount() {
+    var index = authService.listAccount.indexWhere(
+            (element) => state.account.value.accCode != element.accCode);
+    if (index >= 0) {
+      state.account.value = authService.listAccount[index];
+      getOrderList();
+      getOrderListHistory();
+    }
+  }
+
   // sửa lệnh
   Future<void> changeOrder(
       {required IndayOrder data,

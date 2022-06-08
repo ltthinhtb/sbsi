@@ -49,7 +49,7 @@ class _TransactionWidgetState extends State<TransactionWidget> {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(18, 12, 0, 12),
+            padding: const EdgeInsets.fromLTRB(18, 12, 18, 12),
             decoration: BoxDecoration(
                 color: _isExpanded
                     ? AppColors.tableHover
@@ -60,7 +60,7 @@ class _TransactionWidgetState extends State<TransactionWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Text(
                     data.cTRANSACTIONDATE ?? "",
                     style: caption?.copyWith(
@@ -70,19 +70,20 @@ class _TransactionWidgetState extends State<TransactionWidget> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: Center(
-                    child: Text(
-                      MoneyFormat.formatMoneyRound("${data.balancerEnd}"),
-                      style: caption?.copyWith(
-                          fontWeight: FontWeight.w700, color: data.color),
-                    ),
+                  child: Text(
+                    MoneyFormat.formatMoneyRound("${data.balancerEnd}"),
+                    style: caption?.copyWith(
+                        fontWeight: FontWeight.w700, color: data.color),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: Text(
-                    MoneyFormat.formatMoneyRound("${widget.endBalancer}"),
-                    style: caption?.copyWith(fontWeight: FontWeight.w400),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      MoneyFormat.formatMoneyRound("${widget.endBalancer}"),
+                      style: caption?.copyWith(fontWeight: FontWeight.w400),
+                    ),
                   ),
                 ),
               ],

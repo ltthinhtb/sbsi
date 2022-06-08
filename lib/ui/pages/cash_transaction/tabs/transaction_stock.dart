@@ -135,6 +135,7 @@ class _TransactionStockState extends State<TransactionStock> {
     return Container(
       padding: const EdgeInsets.only(
         left: 18,
+        right: 18
       ),
       child: Row(
         children: [
@@ -147,23 +148,31 @@ class _TransactionStockState extends State<TransactionStock> {
           ),
           Expanded(
             flex: 79,
-            child: Text(
-              S.of(context).time,
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Center(
+              child: Text(
+                S.of(context).time,
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
           Expanded(
             flex: 79,
-            child: Text(
-              "PS tăng",
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "PS tăng",
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
           Expanded(
             flex: 79,
-            child: Text(
-              "PS giảm",
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "PS giảm",
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
         ],

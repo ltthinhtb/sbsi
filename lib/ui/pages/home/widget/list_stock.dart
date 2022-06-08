@@ -152,7 +152,7 @@ class ListStockView extends StatelessWidget {
                                         ),
                                       ),
                                       Text(
-                                          MoneyFormat.formatMoneyRound(
+                                          MoneyFormat.formatVol10(
                                               '${state.listShortStock[index].klgd}'),
                                           style: caption?.copyWith(
                                               fontSize: 12,

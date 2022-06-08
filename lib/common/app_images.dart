@@ -115,5 +115,7 @@ class AppImages {
   static String faceID_setting = 'assets/icon_svg/faceID-setting.svg';
   static String key_icon = 'assets/icon_svg/key.svg';
   static String email = 'assets/icon_svg/email.svg';
+  static String down = 'assets/icon_svg/down.svg';
+
 
 }

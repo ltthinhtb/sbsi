@@ -151,7 +151,7 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 80,
+                            flex: 50,
                             child: Text(
                               S.of(context).stock_code,
                               style: caption?.copyWith(fontWeight: FontWeight.w700),
@@ -159,7 +159,8 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                           ),
                           Expanded(
                             flex: 93,
-                            child: Center(
+                            child: Align(
+                              alignment: Alignment.centerRight,
                               child: Text(
                                 'KL giao dịch',
                                 style: caption?.copyWith(fontWeight: FontWeight.w700),
@@ -167,8 +168,9 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                             ),
                           ),
                           Expanded(
-                            flex: 88,
-                            child: Center(
+                            flex: 93,
+                            child: Align(
+                              alignment: Alignment.centerRight,
                               child: Text(
                                 'Giá cuối',
                                 style: caption?.copyWith(fontWeight: FontWeight.w700),

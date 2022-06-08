@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
-import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
 
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/money_utils.dart';
@@ -11,7 +10,6 @@ import '../../../../generated/l10n.dart';
 import '../../../../utils/debouncer.dart';
 import '../../../widgets/button/button_filled.dart';
 import '../../../widgets/textfields/appTextFieldNumber.dart';
-import '../../../widgets/textfields/app_text_typehead.dart';
 import '../stock_order_detail_logic.dart';
 import '../stock_order_detail_state.dart';
 
@@ -36,28 +34,12 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
       return Container(
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration:
-            const BoxDecoration(color: AppColors.PastelSecond2, boxShadow: [
+        const BoxDecoration(color: AppColors.PastelSecond2, boxShadow: [
           const BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 4),
           const BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 20)
         ]),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 12, right: 20),
-              child: AppTextTypeHead<StockCompanyData>(
-                key: state.searchCKKey,
-                hintText: S.of(context).stock_code,
-                inputController: state.stockController,
-                focusNode: state.stockNode,
-                suggestionsCallback: (String pattern) {
-                  return logic.searchStock(pattern);
-                },
-                onSuggestionSelected: (suggestion) {
-                  return logic.selectStock(suggestion);
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 20),
               child: Row(
@@ -91,38 +73,6 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                 ],
               ),
             ),
-            // const SizedBox(height: 16),
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 15, right: 20),
-            //   child: Row(
-            //     children: [
-            //       Expanded(
-            //         child: Text(
-            //           S.of(context).maxVolumeSellBuy,
-            //           style: bodyText2,
-            //         ),
-            //       ),
-            //       Text(
-            //         MoneyFormat.formatMoneyRound(
-            //             cashBalance.volumeAvaiable ?? ""),
-            //         style: bodyText2?.copyWith(
-            //             fontWeight: FontWeight.w700, color: AppColors.active),
-            //       ),
-            //       const SizedBox(
-            //         child: VerticalDivider(
-            //           color: AppColors.divider,
-            //           thickness: 1,
-            //         ),
-            //         height: 13,
-            //       ),
-            //       Text(
-            //         MoneyFormat.formatMoneyRound(cashBalance.balance ?? ""),
-            //         style: bodyText2?.copyWith(
-            //             fontWeight: FontWeight.w700, color: AppColors.deActive),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 20),
@@ -139,7 +89,7 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                         return Text(
                           MoneyFormat.formatMoneyRound('${value}'),
                           style:
-                              bodyText2?.copyWith(fontWeight: FontWeight.w700),
+                          bodyText2?.copyWith(fontWeight: FontWeight.w700),
                         );
                       }),
                 ],
@@ -152,65 +102,65 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                 children: [
                   Expanded(
                       child: AppTextFieldNumber(
-                    focusNode: state.priceNode,
-                    inputController: state.priceController,
-                    hintText: S.of(context).price,
-                    onChanged: (value) {
-                      _debouncer.run(() {
-                        logic.getCashBalance();
-                        logic.changeTotal();
-                      });
-                    },
-                    minus: () {
-                      /// bước nhảy step giá
-                      checkNullPrice();
-                      var step = state.selectedStockInfo.value.stepPrice!;
-                      var value = state.priceController.numberValue;
-                      if (value > step) {
-                        // đổi thành phiên LO
-                        state.tradingOrder.value = "LO";
-                        state.priceController.updateValue(value - step);
-                        logic.getCashBalance();
-                        logic.changeTotal();
-                      }
-                    },
-                    plus: () {
-                      /// bước nhảy step giá
-                      checkNullPrice();
-                      // đổi thành phiên LO
-                      state.tradingOrder.value = "LO";
-                      var step = state.selectedStockInfo.value.stepPrice!;
-                      var value = state.priceController.numberValue;
-                      state.priceController.updateValue(value + step);
-                      logic.getCashBalance();
-                      logic.changeTotal();
-                    },
-                  )),
+                        focusNode: state.priceNode,
+                        inputController: state.priceController,
+                        hintText: S.of(context).price,
+                        onChanged: (value) {
+                          _debouncer.run(() {
+                            logic.getCashBalance();
+                            logic.changeTotal();
+                          });
+                        },
+                        minus: () {
+                          /// bước nhảy step giá
+                          checkNullPrice();
+                          var step = state.selectedStockInfo.value.stepPrice!;
+                          var value = state.priceController.numberValue;
+                          if (value > step) {
+                            // đổi thành phiên LO
+                            state.tradingOrder.value = "LO";
+                            state.priceController.updateValue(value - step);
+                            logic.getCashBalance();
+                            logic.changeTotal();
+                          }
+                        },
+                        plus: () {
+                          /// bước nhảy step giá
+                          checkNullPrice();
+                          // đổi thành phiên LO
+                          state.tradingOrder.value = "LO";
+                          var step = state.selectedStockInfo.value.stepPrice!;
+                          var value = state.priceController.numberValue;
+                          state.priceController.updateValue(value + step);
+                          logic.getCashBalance();
+                          logic.changeTotal();
+                        },
+                      )),
                   const SizedBox(width: 16),
                   Expanded(
                       child: AppTextFieldNumber(
-                    inputController: state.volController,
-                    hintText: S.of(context).volume_short,
-                    onChanged: (value) {
-                      logic.changeTotal();
-                    },
-                    minus: () {
-                      /// bước nhảy step Khối lượng
-                      var step = 100;
-                      var value = state.volController.numberValue;
-                      if (value > step) {
-                        state.volController.updateValue(value - step);
-                        logic.changeTotal();
-                      }
-                    },
-                    plus: () {
-                      /// bước nhảy step Khối lượng
-                      var step = 100;
-                      var value = state.volController.numberValue;
-                      state.volController.updateValue(value + step);
-                      logic.changeTotal();
-                    },
-                  )),
+                        inputController: state.volController,
+                        hintText: S.of(context).volume_short,
+                        onChanged: (value) {
+                          logic.changeTotal();
+                        },
+                        minus: () {
+                          /// bước nhảy step Khối lượng
+                          var step = 100;
+                          var value = state.volController.numberValue;
+                          if (value > step) {
+                            state.volController.updateValue(value - step);
+                            logic.changeTotal();
+                          }
+                        },
+                        plus: () {
+                          /// bước nhảy step Khối lượng
+                          var step = 100;
+                          var value = state.volController.numberValue;
+                          state.volController.updateValue(value + step);
+                          logic.changeTotal();
+                        },
+                      )),
                 ],
               ),
             ),

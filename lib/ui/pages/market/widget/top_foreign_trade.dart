@@ -25,7 +25,7 @@ class TopForeignTrade extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                flex:80,
+                flex:50,
                 child: Text(
                   trade.sTOCKCODE ?? "",
                   style: caption?.copyWith(fontWeight: FontWeight.w700),
@@ -33,7 +33,8 @@ class TopForeignTrade extends StatelessWidget {
               ),
               Expanded(
                 flex: 93,
-                child: Center(
+                child: Align(
+                  alignment: Alignment.centerRight,
                   child: Text(
                     MoneyFormat.formatMoneyRound('${trade.kLGD}'),
                     style: caption?.copyWith(),
@@ -42,7 +43,9 @@ class TopForeignTrade extends StatelessWidget {
               ),
               Expanded(
                 flex: 88,
-                child: Center(
+                child: Align(
+                  alignment: Alignment.centerRight,
+
                   child: Text(
                     trade.pRICE?.toStringAsFixed(2) ?? "",
                     style: caption?.copyWith(

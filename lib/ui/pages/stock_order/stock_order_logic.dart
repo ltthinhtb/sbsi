@@ -49,6 +49,7 @@ class StockOrderLogic extends GetxController {
     if (index >= 0) {
       state.account.value = authService.listAccount[index];
       getCashBalance();
+      getOrderList();
     }
   }
 

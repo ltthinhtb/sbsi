@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/utils/money_utils.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../model/stock_company_data/stock_company_data.dart';
 import '../../../../model/stock_data/stock_info.dart';
+import '../../../widgets/textfields/app_text_typehead.dart';
+import '../../stock_order/stock_order_logic.dart';
 
 class CardData extends StatelessWidget {
   final StockCompanyData stock;
@@ -19,6 +22,8 @@ class CardData extends StatelessWidget {
     final bodyText1 = Theme.of(context).textTheme.bodyText1;
     final caption = Theme.of(context).textTheme.caption;
     final headline4 = Theme.of(context).textTheme.headline4;
+    final state = Get.find<StockOrderLogic>().state;
+    final logic = Get.find<StockOrderLogic>();
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
@@ -33,6 +38,22 @@ class CardData extends StatelessWidget {
           ]),
       child: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 6, right: 6),
+            child: AppTextTypeHead<StockCompanyData>(
+              key: state.searchCKKey,
+              hintText: S.of(context).stock_code,
+              inputController: state.stockController,
+              focusNode: state.stockNode,
+              suggestionsCallback: (String pattern) {
+                return logic.searchStock(pattern);
+              },
+              onSuggestionSelected: (suggestion) {
+                return logic.selectStock(suggestion);
+              },
+            ),
+          ),
+          const SizedBox(height: 16),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
