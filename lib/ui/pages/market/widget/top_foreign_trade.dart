@@ -25,34 +25,41 @@ class TopForeignTrade extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                flex: 93,
+                flex:80,
                 child: Text(
                   trade.sTOCKCODE ?? "",
                   style: caption?.copyWith(fontWeight: FontWeight.w700),
                 ),
               ),
               Expanded(
-                flex: 116,
-                child: Text(
-                  MoneyFormat.formatMoneyRound('${trade.kLGD}'),
-                  style: caption?.copyWith(),
-                ),
-              ),
-              Expanded(
-                flex: 88,
-                child: Text(
-                  trade.pRICE?.toStringAsFixed(2) ?? "",
-                  style: caption?.copyWith(
-                    color: trade.color
+                flex: 93,
+                child: Center(
+                  child: Text(
+                    MoneyFormat.formatMoneyRound('${trade.kLGD}'),
+                    style: caption?.copyWith(),
                   ),
                 ),
               ),
               Expanded(
-                flex: 46,
-                child: Text(
-                  trade.cHANGE?.toStringAsFixed(2) ?? "",
-                  style: caption?.copyWith(
+                flex: 88,
+                child: Center(
+                  child: Text(
+                    trade.pRICE?.toStringAsFixed(2) ?? "",
+                    style: caption?.copyWith(
                       color: trade.color
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 90,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    trade.cHANGE?.toStringAsFixed(2) ?? "",
+                    style: caption?.copyWith(
+                        color: trade.color
+                    ),
                   ),
                 ),
               )

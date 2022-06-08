@@ -279,27 +279,32 @@ class _AnalyticTabState extends State<AnalyticTab>
               child: Row(
                 children: [
                   Expanded(child: Text(text, style: body2)),
+
                   SvgPicture.asset(AppImages.moreCircle),
-                  const SizedBox(width: 32),
-                  Column(
+                  Expanded(child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(S.of(context).buy),
-                      Text(buy,
-                          style: body2?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.active)),
+                      Column(
+                        children: [
+                          Text(S.of(context).buy),
+                          Text(buy,
+                              style: body2?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.active)),
+                        ],
+                      ),
+                      const SizedBox(width: 51),
+                      Column(
+                        children: [
+                          Text(S.of(context).sell),
+                          Text(sell,
+                              style: body2?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.deActive)),
+                        ],
+                      ),
                     ],
-                  ),
-                  const SizedBox(width: 51),
-                  Column(
-                    children: [
-                      Text(S.of(context).sell),
-                      Text(sell,
-                          style: body2?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.deActive)),
-                    ],
-                  ),
+                  ))
                 ],
               ),
             );
@@ -326,26 +331,32 @@ class _AnalyticTabState extends State<AnalyticTab>
                 children: [
                   Expanded(child: Text(text, style: body2)),
                   SvgPicture.asset(AppImages.moreCircle),
-                  const SizedBox(width: 32),
-                  Column(
-                    children: [
-                      Text(S.of(context).buy),
-                      Text(buy,
-                          style: body2?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.active)),
-                    ],
-                  ),
-                  const SizedBox(width: 51),
-                  Column(
-                    children: [
-                      Text(S.of(context).sell),
-                      Text(sell,
-                          style: body2?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.deActive)),
-                    ],
-                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Column(
+                          children: [
+                            Text(S.of(context).buy),
+                            Text(buy,
+                                style: body2?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.active)),
+                          ],
+                        ),
+                        const SizedBox(width: 51),
+                        Column(
+                          children: [
+                            Text(S.of(context).sell),
+                            Text(sell,
+                                style: body2?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.deActive)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             );

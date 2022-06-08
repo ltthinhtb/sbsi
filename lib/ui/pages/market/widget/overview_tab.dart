@@ -151,31 +151,38 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 93,
+                            flex: 80,
                             child: Text(
                               S.of(context).stock_code,
                               style: caption?.copyWith(fontWeight: FontWeight.w700),
                             ),
                           ),
                           Expanded(
-                            flex: 116,
-                            child: Text(
-                              'KL giao dịch',
-                              style: caption?.copyWith(fontWeight: FontWeight.w700),
+                            flex: 93,
+                            child: Center(
+                              child: Text(
+                                'KL giao dịch',
+                                style: caption?.copyWith(fontWeight: FontWeight.w700),
+                              ),
                             ),
                           ),
                           Expanded(
                             flex: 88,
-                            child: Text(
-                              'Giá cuối',
-                              style: caption?.copyWith(fontWeight: FontWeight.w700),
+                            child: Center(
+                              child: Text(
+                                'Giá cuối',
+                                style: caption?.copyWith(fontWeight: FontWeight.w700),
+                              ),
                             ),
                           ),
                           Expanded(
-                            flex: 46,
-                            child: Text(
-                              '% Lãi/lỗ',
-                              style: caption?.copyWith(fontWeight: FontWeight.w700),
+                            flex: 90,
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                'Tăng/giảm',
+                                style: caption?.copyWith(fontWeight: FontWeight.w700),
+                              ),
                             ),
                           )
                         ],

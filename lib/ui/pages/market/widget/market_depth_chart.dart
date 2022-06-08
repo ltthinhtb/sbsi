@@ -98,7 +98,7 @@ class MarketDepthBarChart extends StatelessWidget {
     return Center(
         child: Text(text,
             style: AppTextStyle.H7Regular.copyWith(
-                color: AppColors.grayBorder, fontSize: 7)));
+                color: const Color.fromRGBO(204, 204, 204, 1), fontSize: 7)));
   }
 
   FlTitlesData get titlesData => FlTitlesData(
@@ -125,25 +125,25 @@ class MarketDepthBarChart extends StatelessWidget {
         show: false,
       );
 
-  LinearGradient _barsGradient(Color color) {
-    return LinearGradient(
-      colors: [
-        color.withOpacity(0.0),
-        color.withOpacity(0.1),
-        color.withOpacity(0.2),
-        color.withOpacity(0.3),
-        color.withOpacity(0.4),
-        color.withOpacity(0.5),
-        color.withOpacity(0.6),
-        color.withOpacity(0.7),
-        color.withOpacity(0.8),
-        color.withOpacity(0.9),
-      ],
-      stops: stops,
-      begin: Alignment.bottomCenter,
-      end: Alignment.topCenter,
-    );
-  }
+  // LinearGradient _barsGradient(Color color) {
+  //   return LinearGradient(
+  //     colors: [
+  //       color.withOpacity(0.0),
+  //       color.withOpacity(0.1),
+  //       color.withOpacity(0.2),
+  //       color.withOpacity(0.3),
+  //       color.withOpacity(0.4),
+  //       color.withOpacity(0.5),
+  //       color.withOpacity(0.6),
+  //       color.withOpacity(0.7),
+  //       color.withOpacity(0.8),
+  //       color.withOpacity(0.9),
+  //     ],
+  //     stops: stops,
+  //     begin: Alignment.bottomCenter,
+  //     end: Alignment.topCenter,
+  //   );
+  // }
 
   List<double> get stops => [
         0.0,
@@ -166,13 +166,23 @@ class MarketDepthBarChart extends StatelessWidget {
         barRods: [
           BarChartRodData(
               toY: data[i].sL?.toDouble() ?? 0,
-              borderRadius: const BorderRadius.only(
-                  topRight: const Radius.circular(5), topLeft: const Radius.circular(5)),
-              gradient: _barsGradient(i < 5
+              // borderSide: BorderSide(color: i < 5
+              //     ? AppColors.red
+              //     : i > 5
+              //     ? AppColors.green
+              //     : AppColors.yellow),
+              color: i < 5
                   ? AppColors.red
                   : i > 5
-                      ? AppColors.green
-                      : AppColors.yellow),
+                  ? AppColors.green
+                  : AppColors.yellow,
+              borderRadius: const BorderRadius.only(
+                  topRight: const Radius.circular(5), topLeft: const Radius.circular(5)),
+              // gradient: _barsGradient(i < 5
+              //     ? AppColors.red
+              //     : i > 5
+              //         ? AppColors.green
+              //         : AppColors.yellow),
               width: widthBar)
         ],
         showingTooltipIndicators: [0],

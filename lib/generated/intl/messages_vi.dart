@@ -418,7 +418,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "right_un_exec":
             MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),
         "risk_management":
-            MessageLookupByLibrary.simpleMessage("Quản trị rủi do"),
+            MessageLookupByLibrary.simpleMessage("Quản trị rủi ro"),
         "save_password": MessageLookupByLibrary.simpleMessage("Lưu mật khẩu"),
         "save_pin": MessageLookupByLibrary.simpleMessage("Lưu mã pin"),
         "search": MessageLookupByLibrary.simpleMessage("Tìm kiếm"),

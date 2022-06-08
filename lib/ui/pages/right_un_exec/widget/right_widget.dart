@@ -130,6 +130,28 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                   ],
                 ),
                 const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Số lượng được đăng ký", style: body2),
+                    Text(
+                      MoneyFormat.formatMoneyRound('${widget.right.cRIGHTVOLUME}'),
+                      style: body2?.copyWith(fontWeight: FontWeight.w700),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Số lượng được đăng ký", style: body2),
+                    Text(
+                      MoneyFormat.formatMoneyRound('${widget.right.cShareCL}'),
+                      style: body2?.copyWith(fontWeight: FontWeight.w700),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 12),
                 Visibility(
                   visible: widget.right.showAction,
                   child: Padding(
@@ -200,6 +222,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                           return;
                         }
                         state.pinController.clear();
+                        amountController.clear();
                         orderNew(widget.right);
                       },
                       style: ElevatedButton.styleFrom(
@@ -271,6 +294,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                 validator: (pin) => checkPin(pin!),
                 hintText: S.of(context).input_pin,
                 inputController: state.pinController,
+                obscureText: true,
               ),
               const SizedBox(height: 20),
               Row(

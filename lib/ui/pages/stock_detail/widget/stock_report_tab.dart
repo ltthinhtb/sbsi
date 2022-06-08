@@ -250,6 +250,7 @@ class _StockReportTabsState extends State<StockReportTabs>
                                       state.headList[index].termYear,
                                       value[index]);
                                 }),
+                                toStringAsFixed: 2,
                               );
                             }),
                           ),
