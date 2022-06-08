@@ -48,7 +48,6 @@ class _InOrderHistoryState extends State<InOrderHistory>
 
   @override
   Widget build(BuildContext context) {
-    final body1 = Theme.of(context).textTheme.bodyText1;
     super.build(context);
     return Column(
       children: [
@@ -119,18 +118,7 @@ class _InOrderHistoryState extends State<InOrderHistory>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    S.of(context).order_list_day_history,
-                    style: body1?.copyWith(fontWeight: FontWeight.w700),
-                  ),
-                ),
-                const Divider(
-                  thickness: 1,
-                  height: 16,
-                ),
-                const SizedBox(height: 10),
+
                 buildHeader(),
                 const SizedBox(height: 16),
                 Expanded(

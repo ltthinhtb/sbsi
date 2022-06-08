@@ -54,7 +54,6 @@ class _TransferHistoryState extends State<TransferHistory> {
 
   @override
   Widget build(BuildContext context) {
-    final body1 = Theme.of(context).textTheme.bodyText1;
     final caption = Theme.of(context).textTheme.bodyText1;
 
     return Scaffold(
@@ -146,22 +145,6 @@ class _TransferHistoryState extends State<TransferHistory> {
               ),
             ),
             const SizedBox(height: 24),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                S.of(context).list_history,
-                style: body1?.copyWith(fontWeight: FontWeight.w700),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Divider(
-                height: 16,
-                color: AppColors.grayF2,
-                thickness: 1,
-              ),
-            ),
-            const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Row(

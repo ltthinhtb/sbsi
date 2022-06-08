@@ -263,16 +263,6 @@ class _StockOrderPageState extends State<StockOrderPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      S.of(context).list_order,
-                      style: body1?.copyWith(fontWeight: FontWeight.w700),
-                    ),
-                    const Divider(
-                      thickness: 1,
-                      height: 16,
-                      color: Color.fromRGBO(242, 242, 242, 1),
-                    ),
-                    const SizedBox(height: 8),
                     Row(
                       children: [
                         Expanded(

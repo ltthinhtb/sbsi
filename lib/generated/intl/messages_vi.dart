@@ -303,6 +303,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nhập vào ô tìm kiếm để thêm mã\nđầu tiên vào danh mục"),
         "not_account":
             MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản? "),
+        "not_enough_transfer":
+            MessageLookupByLibrary.simpleMessage("Số tiền chuyển quá số dư"),
         "not_found": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "notice": MessageLookupByLibrary.simpleMessage("Thông báo"),
         "notification": MessageLookupByLibrary.simpleMessage("Thông báo"),
@@ -476,6 +478,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "stock_exchange":
             MessageLookupByLibrary.simpleMessage("Giao dịch chứng khoán"),
         "stock_market": MessageLookupByLibrary.simpleMessage("Bảng giá"),
+        "stock_transfer_success": MessageLookupByLibrary.simpleMessage(
+            "Chuyển chứng khoán thành công"),
         "success": MessageLookupByLibrary.simpleMessage("Thành công"),
         "success_title1": MessageLookupByLibrary.simpleMessage(
             "Yêu cầu sẽ được xử lý trong vòng 01 giờ làm việc"),

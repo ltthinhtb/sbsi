@@ -49,10 +49,9 @@ class CashBalance {
   String? accName;
   String? cashAvaiable;
 
-
   /// sức mua
   String get ppAccount {
-    if(accType == "M") return MoneyFormat.formatMoneyRound(pp ?? "");
+    if (accType == "M") return MoneyFormat.formatMoneyRound(pp ?? "");
     return MoneyFormat.formatMoneyRound(cashAvaiable ?? "");
   }
 
@@ -67,7 +66,8 @@ class CashBalance {
       this.volumeAvaiable,
       this.balance,
       this.color,
-      this.accName,this.cashAvaiable});
+      this.accName,
+      this.cashAvaiable});
 
   CashBalance.fromJson(Map<String, dynamic> json) {
     accCode = json['accCode'];

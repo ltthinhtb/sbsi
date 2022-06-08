@@ -102,7 +102,11 @@ class _MyAppState extends State<MyApp> {
         themeMode: ThemeMode.light,
         initialRoute: RouteConfig.login,
         getPages: RouteConfig.getPages,
-        builder: EasyLoading.init(),
+        builder: EasyLoading.init(builder: (context, child) {
+          return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 0.9),
+              child: child!);
+        }),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

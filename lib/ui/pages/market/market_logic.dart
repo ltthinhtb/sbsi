@@ -55,7 +55,7 @@ class MarketLogic extends GetxController {
       return response;
     } catch (e) {
       logger.e(e);
-      AppSnackBar.showError(message: e.toString());
+      //AppSnackBar.showError(message: e.toString());
       rethrow;
     }
   }

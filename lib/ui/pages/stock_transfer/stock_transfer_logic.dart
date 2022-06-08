@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:sbsi/model/entities/share_transfer.dart';
 import 'package:sbsi/model/response/portfolio.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../model/entities/token_entity.dart';
 import '../../../model/params/data_params.dart';
 import '../../../model/params/request_params.dart';
@@ -121,7 +122,8 @@ class StockTransferLogic extends GetxController {
       await apiService.updateShareTransferIn(_requestParams);
       await getShareTransfer();
       Get.back();
-      AppSnackBar.showSuccess(message: "Đặt lệnh thành công!");
+      AppSnackBar.showSuccess(message: S.current.stock_transfer_success);
+      state.amountController.clear();
     } on ErrorException catch (error) {
       AppSnackBar.showError(message: error.message);
     } catch (e) {

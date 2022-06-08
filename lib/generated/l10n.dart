@@ -3819,6 +3819,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Stock transfer success`
+  String get stock_transfer_success {
+    return Intl.message(
+      'Stock transfer success',
+      name: 'stock_transfer_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not enough transfer`
+  String get not_enough_transfer {
+    return Intl.message(
+      'Not enough transfer',
+      name: 'not_enough_transfer',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

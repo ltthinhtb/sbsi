@@ -35,7 +35,6 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
       ? state.userAccountController.text
       : (state.accountReceiver.value.accCode ?? "");
 
-
   @override
   void initState() {
     logic.getCFeeOnline();
@@ -76,10 +75,13 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
               const SizedBox(height: 16),
               Obx(() {
                 // nếu chuyển nội bộ thì phí bằng 0
-                if(state.type == TransfersType.internal){
+                if (state.type == TransfersType.internal) {
                   state.cFeeOnline.value = 0.0;
                 }
-                return ColumnText(S.of(context).transfer_cFee, MoneyFormat.formatMoneyRound('${state.cFeeOnline.value}')+" đ");
+                return ColumnText(
+                    S.of(context).transfer_cFee,
+                    MoneyFormat.formatMoneyRound('${state.cFeeOnline.value}') +
+                        " đ");
               }),
               const SizedBox(height: 16),
               ColumnText(S.of(context).account_receiver, receiver),
@@ -90,6 +92,19 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                     .textTheme
                     .bodyText2
                     ?.copyWith(height: 20 / 14),
+              ),
+              Visibility(
+                visible: state.type == TransfersType.bank,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(
+                    state.bank.value.cBANKNAME ?? "",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2
+                        ?.copyWith(height: 20 / 14),
+                  ),
+                ),
               ),
               const SizedBox(height: 16),
               ColumnText(S.of(context).transfer_content,
@@ -114,99 +129,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                       child: ButtonFill(
                           voidCallback: () {
                             state.pinController.clear();
-                            Get.dialog(
-                                Container(
-                                  alignment: Alignment.center,
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 14,
-                                      vertical: (248 / 812) *
-                                          MediaQuery.of(context).size.height),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15),
-                                  decoration: BoxDecoration(
-                                      color: AppColors.white,
-                                      borderRadius: BorderRadius.circular(12)),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        S.of(context).input_pin,
-                                        style: headline6?.copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            height: 24 / 20),
-                                      ),
-                                      const SizedBox(height: 16),
-                                      Text(
-                                        S.of(context).please_input_pin_verify,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1
-                                            ?.copyWith(height: 24 / 16),
-                                      ),
-                                      const SizedBox(height: 16),
-                                      Form(
-                                        key: state.pinKey,
-                                        child: AppTextFieldWidget(
-                                          hintText: S.of(context).input_pin,
-                                          validator: (pin) => checkPin(pin!),
-                                          inputController: state.pinController,
-                                          obscureText: true,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 32),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                              child: ButtonFill(
-                                            voidCallback: () {
-                                              Get.back();
-                                            },
-                                            title: S.of(context).cancel_short,
-                                            style: ElevatedButton.styleFrom(
-                                                onPrimary: AppColors.primary,
-                                                primary: const Color.fromRGBO(
-                                                    255, 238, 238, 1)),
-                                          )),
-                                          const SizedBox(
-                                            width: 16,
-                                          ),
-                                          Expanded(
-                                              child: ButtonFill(
-                                                  voidCallback: () async {
-                                                    state.otpController.clear();
-                                                    if (!state
-                                                        .pinKey.currentState!
-                                                        .validate()) return;
-                                                    try {
-                                                      // check pin ok then
-                                                      await logic.checkPin();
-                                                      // type transfer = bank
-                                                      if (state.type ==
-                                                          TransfersType.bank) {
-                                                        Get.to(OtpPage(
-                                                          onRequest: () {
-                                                            logic.updateCashTransferOnline();
-                                                          },
-                                                          pinPutController: state
-                                                              .otpController,
-                                                          phone: "0349949866",
-                                                        ));
-                                                      } else {
-                                                        // type transfer = internal
-                                                        logic.updateCashTransferInternal();
-                                                      }
-                                                    } on ErrorException catch (e) {
-                                                      AppSnackBar.showError(
-                                                          message: e.message);
-                                                    }
-                                                  },
-                                                  title: S.of(context).confirm))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                barrierDismissible: false);
+                            createTransfer();
                           },
                           title: S.of(context).confirm))
                 ],
@@ -216,6 +139,98 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
           ),
         ),
       ),
+    );
+  }
+
+  void createTransfer() {
+    final headline6 = Theme.of(context).textTheme.headline6;
+    Get.dialog(
+      Dialog(
+        insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Builder(builder: (context) {
+          return Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12)),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  S.of(context).input_pin,
+                  style: headline6?.copyWith(
+                      fontWeight: FontWeight.w700, height: 24 / 20),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  S.of(context).please_input_pin_verify,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      ?.copyWith(height: 24 / 16),
+                ),
+                const SizedBox(height: 16),
+                Form(
+                  key: state.pinKey,
+                  child: AppTextFieldWidget(
+                    hintText: S.of(context).input_pin,
+                    validator: (pin) => checkPin(pin!),
+                    inputController: state.pinController,
+                    obscureText: true,
+                  ),
+                ),
+                const SizedBox(height: 32),
+                Row(
+                  children: [
+                    Expanded(
+                        child: ButtonFill(
+                      voidCallback: () {
+                        Get.back();
+                      },
+                      title: S.of(context).cancel_short,
+                      style: ElevatedButton.styleFrom(
+                          onPrimary: AppColors.primary,
+                          primary: const Color.fromRGBO(255, 238, 238, 1)),
+                    )),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                        child: ButtonFill(
+                            voidCallback: () async {
+                              state.otpController.clear();
+                              if (!state.pinKey.currentState!.validate())
+                                return;
+                              try {
+                                // check pin ok then
+                                await logic.checkPin();
+                                // type transfer = bank
+                                if (state.type == TransfersType.bank) {
+                                  Get.to(OtpPage(
+                                    onRequest: () {
+                                      logic.updateCashTransferOnline();
+                                    },
+                                    pinPutController: state.otpController,
+                                    phone: "0349949866",
+                                  ));
+                                } else {
+                                  // type transfer = internal
+                                  logic.updateCashTransferInternal();
+                                }
+                              } on ErrorException catch (e) {
+                                AppSnackBar.showError(message: e.message);
+                              }
+                            },
+                            title: S.of(context).confirm))
+                  ],
+                ),
+                SizedBox(height: MediaQuery.of(context).viewInsets.bottom)
+              ],
+            ),
+          );
+        }),
+      ),
+      barrierDismissible: false,
     );
   }
 

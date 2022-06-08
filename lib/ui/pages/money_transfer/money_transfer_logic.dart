@@ -65,6 +65,8 @@ class MoneyTransferLogic extends GetxController {
             p1: state.account.value.accCode));
     try {
       state.cashAccount.value = await apiService.getCashAccount(_requestParams);
+      // cập nhật vailidate tiền
+      state.userMoneyKey.currentState?.validate();
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     }

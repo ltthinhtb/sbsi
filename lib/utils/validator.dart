@@ -92,10 +92,11 @@ class Validator {
     }
   }
 
-  String? checkMoney(String? money) {
+  String? checkMoney(String? money,int maxMoney) {
     if (money == null || money.isEmpty) return S.current.please_input_money;
     var value = double.parse(money);
     if (value <= 0) return S.current.money_valid;
+    if(value > maxMoney ) return S.current.not_enough_transfer;
     return null;
   }
 

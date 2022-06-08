@@ -41,7 +41,7 @@ class _DebtWidgetState extends State<DebtWidget> {
               children: [
                 Expanded(
                     child: Text(
-                  '${widget.index}',
+                  '${widget.index + 1}',
                   style: caption.copyWith(
                       fontWeight: FontWeight.w700, height: 16 / 12),
                 )),
@@ -96,10 +96,10 @@ class _DebtWidgetState extends State<DebtWidget> {
                         leftTitle: 'Ngày tính lãi'),
                     const SizedBox(height: 16),
                     rowData(
-                        rightValue: MoneyFormat.formatMoneyRound('${widget.debt.cFEE}'),
+                        rightValue:
+                            MoneyFormat.formatMoneyRound('${widget.debt.cFEE}'),
                         leftValue: widget.debt.totalDate,
-                        rightTitle:
-                            "Lãi phát sinh",
+                        rightTitle: "Lãi phát sinh",
                         leftTitle: 'Số ngày vay'),
                     const SizedBox(height: 16),
                     rowData(

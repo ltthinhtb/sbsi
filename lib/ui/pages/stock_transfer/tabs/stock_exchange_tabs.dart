@@ -183,7 +183,7 @@ class _StockExchangeTabState extends State<StockExchangeTab> with Validator {
             children: [
               const SizedBox(height: 16),
               Text(
-                S.of(context).order,
+                S.of(context).transfer_stock,
                 style: Theme.of(context)
                     .textTheme
                     .headline6
@@ -222,6 +222,7 @@ class _StockExchangeTabState extends State<StockExchangeTab> with Validator {
                 validator: (pin) => checkPin(pin!),
                 hintText: S.of(context).input_pin,
                 inputController: state.pinController,
+                obscureText: true,
               ),
               const SizedBox(height: 20),
               Row(
@@ -248,6 +249,7 @@ class _StockExchangeTabState extends State<StockExchangeTab> with Validator {
                 ],
               ),
               const SizedBox(height: 16),
+              SizedBox(height: MediaQuery.of(context).viewInsets.bottom)
             ],
           ),
         );

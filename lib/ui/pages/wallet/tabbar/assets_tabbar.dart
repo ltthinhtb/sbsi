@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/response/account_status.dart';
 import 'package:sbsi/utils/money_utils.dart';
 import '../wallet_logic.dart';
+import '../widget/pie_chart_widget.dart';
 
 class AssetsTabBar extends StatefulWidget {
   const AssetsTabBar({Key? key}) : super(key: key);
@@ -25,112 +25,16 @@ class _AssetsTabBarState extends State<AssetsTabBar>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final width = (139 / 375) * MediaQuery.of(context).size.width;
     return Obx(() {
       assets = state.assets.value;
 
-      // chứng khoán
-      var market_value = state.portfolioTotal.value.marketPriceValue;
-      // tiền
-      var money = state.assets.value.assetsValue;
-
-      double percent = (market_value / (money + market_value));
-      double percentMoney = 100 - percent * 100;
-      final body2 = Theme.of(context).textTheme.bodyText2;
       return RefreshIndicator(
         onRefresh: () async => logic.refresh(),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const SizedBox(height: 16),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                  color: AppColors.PastelCard,
-                  borderRadius: BorderRadius.circular(8)),
-              child: Row(
-                children: [
-                  CircularPercentIndicator(
-                    radius: width / 2,
-                    lineWidth: 27,
-                    animation: true,
-                    backgroundColor: AppColors.yellowStatus,
-                    percent: percent,
-                    startAngle: 0,
-                    center: Text(
-                      "100%",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6
-                          ?.copyWith(fontWeight: FontWeight.w700),
-                    ),
-                    circularStrokeCap: CircularStrokeCap.round,
-                    progressColor: AppColors.deActive,
-                  ),
-                  const SizedBox(width: 21),
-                  Expanded(
-                      child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 8,
-                            width: 8,
-                            decoration: BoxDecoration(
-                                color: AppColors.yellowStatus,
-                                borderRadius: BorderRadius.circular(1)),
-                          ),
-                          const SizedBox(width: 7.72),
-                          Text(
-                            '${S.of(context).money}:',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(),
-                          ),
-                          const SizedBox(
-                            width: 2.28,
-                          ),
-                          Text(
-                            '${percentMoney.toStringAsFixed(0)}%',
-                            style: body2?.copyWith(fontWeight: FontWeight.w700),
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 18),
-                      Row(
-                        children: [
-                          Container(
-                            height: 8,
-                            width: 8,
-                            decoration: BoxDecoration(
-                                color: AppColors.deActive,
-                                borderRadius: BorderRadius.circular(1)),
-                          ),
-                          const SizedBox(width: 7.72),
-                          Text(
-                            '${S.of(context).stock}:',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(),
-                          ),
-                          const SizedBox(
-                            width: 2.28,
-                          ),
-                          Text(
-                            '${(percent * 100).toStringAsFixed(0)}%',
-                            style: body2?.copyWith(fontWeight: FontWeight.w700),
-                          )
-                        ],
-                      ),
-                    ],
-                  ))
-                ],
-              ),
-            ),
+            const PieChartWidget(),
             const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.all(16),
@@ -188,9 +92,14 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                     height: 16,
                   ),
                   const SizedBox(height: 8),
-                  rowData(S.of(context).cash,
-                      '${MoneyFormat.formatMoneyRound(assets.cashBalance ?? "")} đ'),
-                  const SizedBox(height: 16),
+                  // Visibility(
+                  //   visible: state.account.value.lastCharacter == "6",
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.only(bottom: 16),
+                  //     child: rowData(S.of(context).cash,
+                  //         '${MoneyFormat.formatMoneyRound(assets.cashBalance ?? "")} đ'),
+                  //   ),
+                  // ),
                   rowData(S.of(context).withdraw_money,
                       '${MoneyFormat.formatMoneyRound(assets.cashAvai ?? "")} đ'),
                   const SizedBox(height: 16),
@@ -204,7 +113,6 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                 ],
               ),
             ),
-
             Visibility(
               visible: state.account.value.lastCharacter == "6",
               child: Container(
@@ -239,8 +147,7 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                     rowData("Phí lưu ký",
                         '${MoneyFormat.formatMoneyRound(assets.depositFee ?? "")} đ'),
                     const SizedBox(height: 16),
-                    rowData("Tỷ lệ an toàn",assets.marginRatio ?? ""),
-
+                    rowData("Tỷ lệ an toàn", assets.marginRatio ?? ""),
                   ],
                 ),
               ),
@@ -251,6 +158,7 @@ class _AssetsTabBarState extends State<AssetsTabBar>
       );
     });
   }
+
 
   Widget rowData(String left, String right) {
     return Row(

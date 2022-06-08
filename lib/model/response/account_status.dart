@@ -237,11 +237,38 @@ class AccountMStatus {
     }
   }
 
+  int get debtNum {
+    if (debt == null) return 0;
+    try {
+      return int.parse(debt!);
+    } catch (e) {
+      return 0;
+    }
+  }
+
   int get marginRatioInt {
     try{
        return int.parse(marginRatio!) * 100;
     }
   catch(e){
+      return 0;
+    }
+  }
+
+  int get lmvNum {
+    if (lmv == null) return 0;
+    try {
+      return int.parse(lmv!);
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  int get withdrawalCashNum {
+    if (withdrawalCash == null) return 0;
+    try {
+      return int.parse(withdrawalCash!);
+    } catch (e) {
       return 0;
     }
   }

@@ -289,6 +289,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nhập vào ô tìm kiếm để thêm mã\nđầu tiên vào danh mục"),
         "not_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have account? "),
+        "not_enough_transfer":
+            MessageLookupByLibrary.simpleMessage("Not enough transfer"),
         "not_found": MessageLookupByLibrary.simpleMessage("Not found"),
         "notice": MessageLookupByLibrary.simpleMessage("Notice"),
         "notification": MessageLookupByLibrary.simpleMessage("Notification"),
@@ -458,6 +460,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "stock_exchange":
             MessageLookupByLibrary.simpleMessage("Stock exchange"),
         "stock_market": MessageLookupByLibrary.simpleMessage("Stock market"),
+        "stock_transfer_success":
+            MessageLookupByLibrary.simpleMessage("Stock transfer success"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "success_title1": MessageLookupByLibrary.simpleMessage(
             "Yêu cầu sẽ được xử lý trong vòng 01 giờ làm việc"),

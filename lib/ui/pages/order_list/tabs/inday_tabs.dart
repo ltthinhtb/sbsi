@@ -55,37 +55,43 @@ class _InDayTabState extends State<InDayTab>
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Row(
-            children: [
-              Expanded(
-                child: ButtonFill(
-                  voidCallback: () {
-                    pinController.clear();
-                    logic.selectAll(isSelect: true);
-                    cancelAllOrder();
-                  },
-                  title: S.of(context).cancel_all_orders,
-                  style: ElevatedButton.styleFrom(
-                      primary: AppColors.grey_cancel_order),
-                ),
+        Obx(() {
+          return Visibility(
+            visible: state.selectedListOrder.isNotEmpty,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ButtonFill(
+                      voidCallback: () {
+                        pinController.clear();
+                        logic.selectAll(isSelect: true);
+                        cancelAllOrder();
+                      },
+                      title: S.of(context).cancel_all_orders,
+                      style: ElevatedButton.styleFrom(
+                          primary: AppColors.grey_cancel_order),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  Expanded(
+                    child: ButtonFill(
+                      voidCallback: () {
+                        pinController.clear();
+                        if (state.selectedListOrder.isNotEmpty)
+                          cancelAllOrder();
+                      },
+                      title: S.of(context).cancel_chose_orders,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                width: 16,
-              ),
-              Expanded(
-                child: ButtonFill(
-                  voidCallback: () {
-                    pinController.clear();
-                    if (state.selectedListOrder.isNotEmpty) cancelAllOrder();
-                  },
-                  title: S.of(context).cancel_chose_orders,
-                ),
-              ),
-            ],
-          ),
-        )
+            ),
+          );
+        })
       ],
     );
   }

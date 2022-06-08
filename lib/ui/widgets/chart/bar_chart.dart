@@ -29,7 +29,6 @@ class SimpleBarChart extends StatelessWidget {
             return new charts.TextStyleSpec(
                 color: charts.ColorUtil.fromDartColor(AppColors.textBlack));
           },
-          domainLowerBoundFn: ,
           //column color.
           data: seriesList,
         ),

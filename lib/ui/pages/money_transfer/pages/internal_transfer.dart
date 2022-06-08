@@ -98,8 +98,10 @@ class _InternalTransferState extends State<InternalTransfer> with Validator {
                           state.userMoneyKey.currentState?.validate();
                         },
                         validator: (money) {
-                          return checkMoney(state.moneyController.numberValue
-                              .toStringAsFixed(0));
+                          return checkMoney(
+                              state.moneyController.numberValue
+                                  .toStringAsFixed(0),
+                              state.cashAccount.value.cCASHBALANCE!.toInt());
                         },
                       ),
                     ),

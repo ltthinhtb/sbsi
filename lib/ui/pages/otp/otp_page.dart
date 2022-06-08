@@ -56,10 +56,20 @@ class _OtpPageState extends State<OtpPage> {
                     fontWeight: FontWeight.w700, height: 24 / 20)),
           ),
           const SizedBox(height: 16),
+
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 16),
+          //   child: Text(
+          //       'Mã OTP đã được gửi qua số điện thoại ${widget.phone.replaceRange(0, 7, "*** *** ")}',
+          //       style: body2?.copyWith(
+          //           fontWeight: FontWeight.w600,
+          //           height: 20 / 14,
+          //           color: const Color.fromRGBO(146, 146, 146, 1))),
+          // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
-                'Mã OTP đã được gửi qua số điện thoại ${widget.phone.replaceRange(0, 7, "*** *** ")}',
+                'Mã OTP đã được gửi qua số điện thoại',
                 style: body2?.copyWith(
                     fontWeight: FontWeight.w600,
                     height: 20 / 14,

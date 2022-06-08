@@ -375,5 +375,8 @@
   "number_of_order_buy" : "Số lệnh mua",
   "buy_price" : "Giá trị lệnh mua",
   "price_cancel_order" : "Tổng giá trị hủy",
-  "notify_empty" :  "Không có thông báo nào"
+  "notify_empty" :  "Không có thông báo nào",
+  "stock_transfer_success" : "Chuyển chứng khoán thành công",
+  "not_enough_transfer" : "Số tiền chuyển quá số dư"
+
 }

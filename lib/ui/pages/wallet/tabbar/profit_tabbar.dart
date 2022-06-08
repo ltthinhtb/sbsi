@@ -32,6 +32,11 @@ class _ProfitTabBarState extends State<ProfitTabBar>
             decoration: BoxDecoration(
                 color: AppColors.white, boxShadow: AppShadow.boxShadow),
             child: Obx(() {
+              if(walletState.account.value.lastCharacter == "1") {
+                return Center(
+                  child: Text(S.of(context).not_found,style: Theme.of(context).textTheme.bodyText1,),
+                );
+              }
               return Column(
                 children: [
                   Padding(

@@ -31,7 +31,6 @@ class _MenuTabBarState extends State<MenuTabBar>
         .textTheme
         .bodyText2!
         .copyWith(color: AppColors.textSecond);
-    final body1 = Theme.of(context).textTheme.bodyText1;
 
     final caption = Theme.of(context).textTheme.caption!;
     super.build(context);
@@ -79,24 +78,7 @@ class _MenuTabBarState extends State<MenuTabBar>
             child: Obx(() {
               return Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        S.of(context).statement_list,
-                        style: body1?.copyWith(fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: Divider(
-                      thickness: 1,
-                      height: 16,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Row(

@@ -151,8 +151,13 @@ class _BankTransferState extends State<BankTransfer> with Validator {
                         inputController: state.moneyController,
                         focusNode: state.userMoneyFocus,
                         enableBorder: true,
+                        onChanged: (value){
+                          state.userMoneyKey.currentState?.validate();
+                        },
                         validator: (money) {
-                          return checkMoney(state.moneyController.numberValue.toString());
+                          return checkMoney(
+                              state.moneyController.numberValue.toString(),
+                              state.cashAccount.value.cCASHBALANCE!.toInt());
                         },
                       ),
                     ),
