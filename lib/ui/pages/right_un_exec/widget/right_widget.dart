@@ -104,28 +104,54 @@ class _RightWidgetState extends State<RightWidget> with Validator {
             padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 12),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(S.of(context).start_day, style: body2),
-                    Text(
-                      widget.right.eXECUTEDATE,
-                      style: body2?.copyWith(fontWeight: FontWeight.w700),
-                    )
-                  ],
+                Visibility(
+                  visible: widget.isMoney!,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(S.of(context).right_date, style: body2),
+                        Text(
+                          widget.right.cCLOSEDATE ?? "",
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(S.of(context).end_day, style: body2),
-                    Text(
-                      widget.right.dueDATE,
-                      style: body2?.copyWith(fontWeight: FontWeight.w700),
-                    )
-                  ],
+                Visibility(
+                  visible: !widget.isMoney!,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(S.of(context).start_day, style: body2),
+                        Text(
+                          widget.right.cREGISTERFROMDATE ?? "",
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 12),
+                Visibility(
+                  visible: !widget.isMoney!,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(S.of(context).end_day, style: body2),
+                        Text(
+                          widget.right.cREGISTERTODATE ?? "",
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -140,7 +166,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Số lượng được đăng ký", style: body2),
+                    Text("Số CK hưởng quyền", style: body2),
                     Text(
                       MoneyFormat.formatMoneyRound(
                           '${widget.right.cRIGHTVOLUME}'),
@@ -152,9 +178,9 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Số lượng được đăng ký", style: body2),
+                    Text("Số CK được mua", style: body2),
                     Text(
-                      MoneyFormat.formatMoneyRound('${widget.right.cShareCL}'),
+                      widget.right.cShareCLString,
                       style: body2?.copyWith(fontWeight: FontWeight.w700),
                     )
                   ],
@@ -222,7 +248,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                         if (amountController.numberValue >
                             widget.right.cShareCL) {
                           AppSnackBar.showError(
-                              message: 'Khối lượng không hợp lệ');
+                              message: 'Khối lượng vượt quá khối lượng được mua');
                           return;
                         }
                         if (amountController.text.isEmpty) {
@@ -230,7 +256,6 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                           return;
                         }
                         state.pinController.clear();
-                        amountController.clear();
                         orderNew(widget.right);
                       },
                       style: ElevatedButton.styleFrom(
@@ -263,7 +288,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
             children: [
               const SizedBox(height: 16),
               Text(
-                S.of(context).order,
+                S.of(context).right_exc_register,
                 style: Theme.of(context)
                     .textTheme
                     .headline6
@@ -302,6 +327,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                 validator: (pin) => checkPin(pin!),
                 hintText: S.of(context).input_pin,
                 inputController: state.pinController,
+
                 obscureText: true,
               ),
               const SizedBox(height: 20),
@@ -325,7 +351,9 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                           voidCallback: () {
                             logic.updateShareTransferIn(
                                 amount: '${amountController.text}',
-                                pkRight: right.pKRIGHTSTOCKINFO ?? "");
+                                pkRight: right.pKRIGHTSTOCKINFO ?? "").then((value) {
+                              amountController.clear();
+                            });
                           },
                           title: S.of(context).confirm))
                 ],

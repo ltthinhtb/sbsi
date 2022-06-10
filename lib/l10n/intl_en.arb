@@ -377,6 +377,8 @@
   "price_cancel_order": "Total amount",
   "notify_empty": "Notification empty",
   "stock_transfer_success": "Stock transfer success",
-  "not_enough_transfer" : "Not enough transfer"
+  "not_enough_transfer" : "Not enough transfer",
+  "right_exc_register" : "Right exc register",
+  "amount" : "Amount"
 
 }

@@ -44,6 +44,7 @@ import '../model/entities/bank_acc.dart';
 import '../model/entities/beneficiary_account.dart';
 import '../model/entities/cash_can_adv.dart';
 import '../model/entities/order_history.dart';
+import '../model/entities/right_history.dart';
 import '../model/entities/share_transaction.dart';
 import '../model/entities/share_transfer_history.dart';
 import '../model/entities/transfer_history.dart';
@@ -168,6 +169,9 @@ abstract class ApiClient {
   Future updateShareTransferIn(RequestParams requestParams);
 
   Future<List<RightExc>> getListRightExc(RequestParams requestParams);
+
+  Future<List<RightHistory>> getListRightHistory(RequestParams requestParams);
+
 
   Future<List<CashCanAdv>> getListCashCanAdv(RequestParams requestParams);
 
@@ -1147,5 +1151,21 @@ class _ApiClient implements ApiClient {
         data: request.toJson(),
       ),
     );
+  }
+
+  @override
+  Future<List<RightHistory>> getListRightHistory(RequestParams requestParams) async {
+    Response _result = await _requestApi(
+      _dio.post(
+        AppConfigs.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
+    List _mapData = jsonDecode(_result.data)['data'];
+    List<RightHistory> listRight = [];
+    for (var element in _mapData) {
+      listRight.add(RightHistory.fromJson(element));
+    }
+    return listRight;
   }
 }

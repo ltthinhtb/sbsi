@@ -8,6 +8,7 @@ import 'package:sbsi/ui/pages/market/widget/overview_tab.dart';
 import '../../../generated/l10n.dart';
 import 'enum/fork_enums.dart';
 import 'widget/dropdown_market.dart';
+import 'widget/world_tabs.dart';
 
 class MarketPage extends StatefulWidget {
   const MarketPage({Key? key}) : super(key: key);
@@ -53,30 +54,44 @@ class _MarketPageState extends State<MarketPage>
           child: Column(
             children: [
               const SizedBox(height: 16),
-              TabBar(
-                  controller: _tabController,
-                  indicator: UnderlineTabIndicator(
-                      borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 3)),
-                  labelStyle: body1?.copyWith(fontWeight: FontWeight.w700),
-                  labelColor: Theme.of(context).primaryColor,
-                  unselectedLabelStyle: body1,
-                  indicatorPadding: EdgeInsets.zero,
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  indicatorColor: Theme.of(context).primaryColor,
-                  unselectedLabelColor: AppColors.textGrey,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  labelPadding: const EdgeInsets.only(bottom: 8),
-                  indicatorWeight: 0,
-                  onTap: (value) {},
-                  tabs: ForkEnum.values
-                      .map((e) => Center(child: Text(e.title(context))))
-                      .toList()),
+              Stack(
+                fit: StackFit.passthrough,
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(color: AppColors.grayF2, width: 2.0),
+                      ),
+                    ),
+                  ),
+                  TabBar(
+                      controller: _tabController,
+                      indicator: UnderlineTabIndicator(
+                          borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor, width: 3)),
+                      labelStyle: body1?.copyWith(fontWeight: FontWeight.w700),
+                      labelColor: Theme.of(context).primaryColor,
+                      unselectedLabelStyle: body1,
+                      indicatorPadding: EdgeInsets.zero,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicatorColor: Theme.of(context).primaryColor,
+                      unselectedLabelColor: AppColors.textGrey,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      labelPadding: const EdgeInsets.only(bottom: 8),
+                      indicatorWeight: 0,
+                      onTap: (value) {},
+                      tabs: ForkEnum.values
+                          .map((e) => Center(child: Text(e.title(context))))
+                          .toList()),
+                ],
+              ),
               Expanded(
                 child: TabBarView(controller: _tabController, children: [
-                  OverviewView(),
-                  MarketOption(),
-                  OverviewView(),
+                  const OverviewView(),
+                  const MarketOption(),
+                  const WorldTabs(),
                 ]),
               )
             ],

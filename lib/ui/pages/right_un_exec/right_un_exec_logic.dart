@@ -22,6 +22,9 @@ class RightUnExecLogic extends GetxController {
       getAccountStatus();
       // load danh sách quyền
       getListRight();
+
+      getListRightHistory();
+
     }
   }
 
@@ -35,6 +38,9 @@ class RightUnExecLogic extends GetxController {
       getAccountStatus();
       // load danh sách quyền
       getListRight();
+
+      getListRightHistory();
+
     }
   }
 
@@ -77,6 +83,32 @@ class RightUnExecLogic extends GetxController {
     }
   }
 
+  // danh sách lịch sử hưởng quyền
+  Future<void> getListRightHistory() async {
+    var _tokenEntity = authService.token.value;
+    final RequestParams _requestParams = RequestParams(group: "B");
+    _requestParams.session = _tokenEntity?.data?.sid ?? "";
+    _requestParams.user = _tokenEntity?.data?.user ?? "";
+    ParamsObject _object = ParamsObject();
+    _object.type = "cursor";
+    _object.cmd = "ListRightHistory";
+    _object.p1 = state.account.value.accCode ?? "";
+    _object.p2 = "";
+    _object.p3 = state.startDateController.text;
+    _object.p4 = state.endDateController.text;
+    _object.p5 = "";
+    _object.p6 = "1";
+    _object.p7 = "30";
+
+    _requestParams.data = _object;
+    try {
+      var response = await apiService.getListRightHistory(_requestParams);
+      state.listRightHistory.value = response;
+    } on ErrorException catch (error) {
+      AppSnackBar.showError(message: error.message);
+    }
+  }
+
   // chuyển chứng khoán
   Future<void> updateShareTransferIn(
       {required String pkRight, required String amount}) async {
@@ -103,7 +135,6 @@ class RightUnExecLogic extends GetxController {
 
       Get.back();
       AppSnackBar.showSuccess(message: "Thực hiện quyền thành công");
-
     } on ErrorException catch (error) {
       AppSnackBar.showError(message: error.message);
     } catch (e) {

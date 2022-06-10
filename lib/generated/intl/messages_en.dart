@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cash history"),
         "agree": MessageLookupByLibrary.simpleMessage("Agree"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "amount_max_valid":
             MessageLookupByLibrary.simpleMessage("Amount not valid max"),
         "amount_not_valid":
@@ -396,6 +397,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Remember account"),
         "resent": MessageLookupByLibrary.simpleMessage("Resent OTP"),
         "right_date": MessageLookupByLibrary.simpleMessage("Right date"),
+        "right_exc_register":
+            MessageLookupByLibrary.simpleMessage("Right exc register"),
         "right_history": MessageLookupByLibrary.simpleMessage("Right history"),
         "right_list": MessageLookupByLibrary.simpleMessage("Right list"),
         "right_un_exec":

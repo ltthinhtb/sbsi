@@ -8,6 +8,6 @@ class SearchState {
   var foundStock = <StockCompanyData>[].obs;
 
   SearchState({String? stockCode}) {
-    stockCodeController = TextEditingController(text: stockCode ?? 'APS');
+    stockCodeController = TextEditingController(text: stockCode ?? '');
   }
 }

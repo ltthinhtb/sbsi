@@ -22,13 +22,23 @@ import '../../../../model/entities/category_stock.dart';
 import '../../../widgets/textfields/app_text_typehead.dart';
 import '../market_logic.dart';
 
-class MarketOption extends StatelessWidget with Validator {
-  MarketOption({Key? key}) : super(key: key);
+class MarketOption extends StatefulWidget with Validator {
+  const MarketOption({Key? key}) : super(key: key);
 
+  @override
+  State<MarketOption> createState() => _MarketOptionState();
+}
+
+class _MarketOptionState extends State<MarketOption>
+    with AutomaticKeepAliveClientMixin {
   final logic = Get.find<MarketLogic>();
+
   final state = Get.find<MarketLogic>().state;
+
   final searchLogic = Get.find<SearchLogic>();
+
   final searchState = Get.find<SearchLogic>().state;
+
   final _searchController = TextEditingController();
 
   final store = Get.find<StoreService>();
@@ -38,7 +48,7 @@ class MarketOption extends StatelessWidget with Validator {
   @override
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption;
-
+    super.build(context);
     return SingleChildScrollView(
       padding: EdgeInsets.zero,
       child: Column(children: [
@@ -129,7 +139,6 @@ class MarketOption extends StatelessWidget with Validator {
                   ],
                 ),
               ),
-
             ],
           ),
         ),
@@ -159,7 +168,8 @@ class MarketOption extends StatelessWidget with Validator {
                         child: Center(
                           child: Text(
                             S.of(context).price,
-                            style: caption?.copyWith(fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           ),
                         )),
                     Expanded(
@@ -167,7 +177,8 @@ class MarketOption extends StatelessWidget with Validator {
                         child: Center(
                           child: Text(
                             '+/-',
-                            style: caption?.copyWith(fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           ),
                         )),
                     Expanded(
@@ -176,7 +187,8 @@ class MarketOption extends StatelessWidget with Validator {
                           alignment: Alignment.centerRight,
                           child: Text(
                             S.of(context).total_amount_1,
-                            style: caption?.copyWith(fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           ),
                         )),
                   ],
@@ -291,4 +303,8 @@ class MarketOption extends StatelessWidget with Validator {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

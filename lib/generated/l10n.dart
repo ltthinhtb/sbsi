@@ -3839,6 +3839,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Right exc register`
+  String get right_exc_register {
+    return Intl.message(
+      'Right exc register',
+      name: 'right_exc_register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount {
+    return Intl.message(
+      'Amount',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

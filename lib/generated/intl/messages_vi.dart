@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lịch sử ứng"),
         "agree": MessageLookupByLibrary.simpleMessage("Đồng ý"),
         "all": MessageLookupByLibrary.simpleMessage("Tất cả"),
+        "amount": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "amount_max_valid": MessageLookupByLibrary.simpleMessage(
             "Khối lượng lớn hơn khối lượng tối đa"),
         "amount_not_valid":
@@ -415,6 +416,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
         "resent": MessageLookupByLibrary.simpleMessage("Gửi lại mã"),
         "right_date": MessageLookupByLibrary.simpleMessage("Ngày chốt quyền"),
+        "right_exc_register":
+            MessageLookupByLibrary.simpleMessage("Đăng ký quyền mua"),
         "right_history": MessageLookupByLibrary.simpleMessage("Lịch sử quyền"),
         "right_list": MessageLookupByLibrary.simpleMessage("Danh sách quyền"),
         "right_un_exec":

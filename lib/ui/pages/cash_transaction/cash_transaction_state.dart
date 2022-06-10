@@ -13,11 +13,11 @@ class CashTransactionState {
 
   final listShare = <ShareTransaction>[].obs;
 
-  final startDateController = TextEditingController(text: "12/01/2021");
-  final endDateController = TextEditingController(text: "28/02/2021");
+  final startDateController = TextEditingController();
+  final endDateController = TextEditingController();
 
-  final startDateController1 = TextEditingController(text: "12/01/2021");
-  final endDateController1 = TextEditingController(text: "28/02/2021");
+  final startDateController1 = TextEditingController();
+  final endDateController1 = TextEditingController();
 
   CashTransactionState() {
     ///Initialize variables

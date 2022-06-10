@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:sbsi/common/app_colors.dart';
+
 class TotalAssets {
   String? totalNav;
   String? totalCash;
@@ -5,6 +8,20 @@ class TotalAssets {
   String? vmEnquity;
   String? vmEnquityPer;
   List<ListAssets>? listAssets;
+
+  bool get isIncrease {
+    if(vmEnquityPer?.contains("-") ?? true){
+      return false;
+    }
+    return true;
+  }
+
+  Color get color {
+    if(isIncrease) {
+      return AppColors.active;
+    }
+    return AppColors.deActive;
+  }
 
   TotalAssets(
       {this.totalNav,

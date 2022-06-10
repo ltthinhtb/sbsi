@@ -117,5 +117,6 @@ class AppImages {
   static String email = 'assets/icon_svg/email.svg';
   static String down = 'assets/icon_svg/down.svg';
 
-
+  static String increase = 'assets/icon_svg/growing 1.svg';
+  static String decrease = 'assets/icon_svg/degrowing.svg';
 }

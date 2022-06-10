@@ -59,11 +59,27 @@ class _MenuTabBarState extends State<MenuTabBar>
                       style: body2.copyWith(height: 20 / 14),
                     ),
                     const SizedBox(height: 6),
-                    Text(
-                      MoneyFormat.formatMoneyRound(
-                          '${walletState.portfolioTotal.value.marketPriceValue}'),
-                      style: headline6.copyWith(
-                          height: 24 / 20, fontWeight: FontWeight.w700),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          MoneyFormat.formatMoneyRound(
+                              '${walletState.portfolioTotal.value.marketPriceValue}'),
+                          style: headline6.copyWith(
+                              height: 24 / 20, fontWeight: FontWeight.w700),
+                        ),
+                        const Spacer(),
+                        Text(
+                          '(${walletState.portfolioTotal.value.gainLossPer ?? ""}%)',
+                          style: Theme.of(context).textTheme.button?.copyWith(
+                              color: walletState.portfolioTotal.value.glColor),
+                        ),
+                        const SizedBox(width: 5.69),
+                        SvgPicture.asset(
+                            walletState.portfolioTotal.value.gl == "g"
+                                ? AppImages.increase
+                                : AppImages.decrease)
+                      ],
                     ),
                   ],
                 ))
@@ -78,7 +94,6 @@ class _MenuTabBarState extends State<MenuTabBar>
             child: Obx(() {
               return Column(
                 children: [
-
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Row(
@@ -90,53 +105,54 @@ class _MenuTabBarState extends State<MenuTabBar>
                               fontWeight: FontWeight.w700, height: 16 / 12),
                         )),
                         Expanded(
-                          flex: 2,
+                            flex: 2,
                             child: Center(
                               child: Text(
                                 S.of(context).volume_short,
                                 style: caption.copyWith(
-                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                                    fontWeight: FontWeight.w700,
+                                    height: 16 / 12),
                               ),
                             )),
                         Expanded(
                             flex: 2,
-
                             child: Center(
                               child: Text(
                                 S.of(context).avg_price_short,
                                 style: caption.copyWith(
-                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                                    fontWeight: FontWeight.w700,
+                                    height: 16 / 12),
                               ),
                             )),
                         Expanded(
                             flex: 2,
-
                             child: Center(
                               child: Text(
                                 'Giá TT',
                                 style: caption.copyWith(
-                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                                    fontWeight: FontWeight.w700,
+                                    height: 16 / 12),
                               ),
                             )),
                         Expanded(
                             flex: 2,
-
                             child: Center(
                               child: Text(
                                 "%Lãi/lỗ",
                                 style: caption.copyWith(
-                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                                    fontWeight: FontWeight.w700,
+                                    height: 16 / 12),
                               ),
                             )),
                         Expanded(
                             flex: 2,
-
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
                                 "Lãi/lỗ",
                                 style: caption.copyWith(
-                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                                    fontWeight: FontWeight.w700,
+                                    height: 16 / 12),
                               ),
                             )),
                       ],
@@ -148,7 +164,8 @@ class _MenuTabBarState extends State<MenuTabBar>
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (BuildContext context, int index) {
                       var portfolio = walletState.portfolioList[index];
-                      return PortfolioWidget(portfolio: portfolio,index: index);
+                      return PortfolioWidget(
+                          portfolio: portfolio, index: index);
                     },
                     separatorBuilder: (BuildContext context, int index) {
                       return const SizedBox(height: 0);

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:sbsi/model/enums/gender_type.dart';
 import '../../../model/entities/bank.dart';
 import '../../../model/params/open_account_request.dart';
 import '../../../model/params/request_params.dart';
@@ -157,7 +158,8 @@ class SignUpLogic extends GetxController {
           cCONTACTADDRESS:
               state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
           cEMAIL: state.emailController.text,
-          cGENDER: state.orcResponse?.gender ?? "",
+          cGENDER:
+              state.orcResponse?.gender == GenderType.male.vnText ? "M" : "F",
           cISSUEPLACE: state.orcResponse?.issuePlace ?? "",
           cMOBILE: state.phoneController.text,
           cMOBILETRADINGPASSWORD: state.passPinController.text,

@@ -11,6 +11,7 @@ import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../router/route_config.dart';
+import '../../../../utils/logger.dart';
 import '../../main/main_logic.dart';
 
 class AppBarHome extends StatelessWidget {
@@ -115,29 +116,49 @@ class AppBarHome extends StatelessWidget {
                   children: [
                     SvgPicture.asset(AppImages.amount),
                     const SizedBox(width: 15),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          S.of(context).total_assets,
-                          style: body2?.copyWith(
-                            color: AppColors.textSecond,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            S.of(context).total_assets,
+                            style: body2?.copyWith(
+                              color: AppColors.textSecond,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 6),
-                        Obx(() {
-                          var accountStatus =
-                              Get.find<WalletLogic>().state.totalAssets.value;
-
-                          return Text(
-                            MoneyFormat.formatMoneyRound(
-                                    '${accountStatus.totalNav}') +
-                                " đ",
-                            style: headline6?.copyWith(
-                                fontWeight: FontWeight.bold),
-                          );
-                        })
-                      ],
+                          const SizedBox(height: 6),
+                          Obx(() {
+                            var accountStatus =
+                                Get.find<WalletLogic>().state.totalAssets.value;
+                            logger.d(accountStatus.toJson());
+                            return Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  MoneyFormat.formatMoneyRound(
+                                          '${accountStatus.totalNav}') +
+                                      " đ",
+                                  style: headline6?.copyWith(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const Spacer(),
+                                Text(
+                                  '(${accountStatus.vmEnquityPer ?? ""}%)',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .button
+                                      ?.copyWith(color: accountStatus.color),
+                                ),
+                                const SizedBox(width: 5.69),
+                                SvgPicture.asset(accountStatus.isIncrease
+                                    ? AppImages.increase
+                                    : AppImages.decrease)
+                                //Text(accountStatus)
+                              ],
+                            );
+                          })
+                        ],
+                      ),
                     )
                   ],
                 ),

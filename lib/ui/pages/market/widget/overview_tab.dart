@@ -11,13 +11,14 @@ import 'stock_exchanges .dart';
 import 'top_foreign_trade.dart';
 
 class OverviewView extends StatefulWidget {
-  OverviewView({Key? key}) : super(key: key);
+  const OverviewView({Key? key}) : super(key: key);
 
   @override
   State<OverviewView> createState() => _OverviewViewState();
 }
 
-class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClientMixin {
+class _OverviewViewState extends State<OverviewView>
+    with AutomaticKeepAliveClientMixin {
   final state = Get.find<MarketLogic>().state;
 
   @override
@@ -72,9 +73,11 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                       Container(
                           margin: const EdgeInsets.only(top: 4, bottom: 30),
                           child: Text(
-                              S.of(context).total + " ${state.marketDepthTotal}",
+                              S.of(context).total +
+                                  " ${state.marketDepthTotal}",
                               style: caption?.copyWith(
-                                  color: const Color.fromRGBO(204, 204, 204, 1))),
+                                  color:
+                                      const Color.fromRGBO(204, 204, 204, 1))),
                           width: MediaQuery.of(context).size.width),
                       Expanded(
                           child: Visibility(
@@ -85,28 +88,34 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                       Row(children: [
                         Container(
                             height: 4,
-                            width: (MediaQuery.of(context).size.width - 16 * 3) *
-                                pDown,
+                            width:
+                                (MediaQuery.of(context).size.width - 16 * 3) *
+                                    pDown,
                             decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30)),
                               color: AppColors.decrease,
                             )),
                         const Spacer(),
                         Container(
                             height: 4,
-                            width: (MediaQuery.of(context).size.width - 16 * 3) *
-                                (1 - pDown - pUp),
+                            width:
+                                (MediaQuery.of(context).size.width - 16 * 3) *
+                                    (1 - pDown - pUp),
                             decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30)),
                               color: AppColors.yellow,
                             )),
                         const Spacer(),
                         Container(
                             height: 4,
-                            width: (MediaQuery.of(context).size.width - 16 * 3) *
-                                pUp,
+                            width:
+                                (MediaQuery.of(context).size.width - 16 * 3) *
+                                    pUp,
                             decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30)),
                               color: AppColors.increase,
                             )),
                         const Spacer(),
@@ -154,7 +163,8 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                             flex: 50,
                             child: Text(
                               S.of(context).stock_code,
-                              style: caption?.copyWith(fontWeight: FontWeight.w700),
+                              style: caption?.copyWith(
+                                  fontWeight: FontWeight.w700),
                             ),
                           ),
                           Expanded(
@@ -163,7 +173,8 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                               alignment: Alignment.centerRight,
                               child: Text(
                                 'KL giao dịch',
-                                style: caption?.copyWith(fontWeight: FontWeight.w700),
+                                style: caption?.copyWith(
+                                    fontWeight: FontWeight.w700),
                               ),
                             ),
                           ),
@@ -173,7 +184,8 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                               alignment: Alignment.centerRight,
                               child: Text(
                                 'Giá cuối',
-                                style: caption?.copyWith(fontWeight: FontWeight.w700),
+                                style: caption?.copyWith(
+                                    fontWeight: FontWeight.w700),
                               ),
                             ),
                           ),
@@ -183,7 +195,8 @@ class _OverviewViewState extends State<OverviewView>with AutomaticKeepAliveClien
                               alignment: Alignment.centerRight,
                               child: Text(
                                 'Tăng/giảm',
-                                style: caption?.copyWith(fontWeight: FontWeight.w700),
+                                style: caption?.copyWith(
+                                    fontWeight: FontWeight.w700),
                               ),
                             ),
                           )

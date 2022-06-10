@@ -8,6 +8,7 @@ import 'package:sbsi/model/entities/get_account_info.dart';
 import 'package:sbsi/model/entities/index.dart';
 import 'package:sbsi/model/entities/notify.dart';
 import 'package:sbsi/model/entities/right_exc.dart';
+import 'package:sbsi/model/entities/right_history.dart';
 import 'package:sbsi/model/entities/share_transfer_history.dart';
 import 'package:sbsi/model/entities/transfer_history.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';

@@ -52,7 +52,7 @@ class _RightListTabState extends State<RightListTab>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      S.of(context).total_assets,
+                      S.of(context).cash_availability,
                       style: body2?.copyWith(
                         color: AppColors.textSecond,
                       ),
@@ -62,7 +62,7 @@ class _RightListTabState extends State<RightListTab>
                       var accountStatus = state.assets.value;
                       return Text(
                         MoneyFormat.formatMoneyRound(
-                                '${accountStatus.assets}') +
+                                '${accountStatus.cashAvai}') +
                             " đ",
                         style: headline6?.copyWith(fontWeight: FontWeight.bold),
                       );
