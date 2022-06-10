@@ -168,6 +168,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "debt_margin": MessageLookupByLibrary.simpleMessage("Debt margin"),
         "decrease": MessageLookupByLibrary.simpleMessage("Decrease"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "delete_category":
+            MessageLookupByLibrary.simpleMessage("Delete category"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Deposit fee"),
         "domestic": MessageLookupByLibrary.simpleMessage("Trong nước"),
         "edit": MessageLookupByLibrary.simpleMessage("edit"),

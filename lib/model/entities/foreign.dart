@@ -31,9 +31,9 @@ class ForeignTrade {
       return Colors.transparent;
     }
     return cOLOR == "red"
-        ? AppColors.active
-        : cOLOR == "green"
         ? AppColors.deActive
+        : cOLOR == "green"
+        ? AppColors.active
         : AppColors.yellow;
   }
 

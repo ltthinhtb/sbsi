@@ -93,9 +93,8 @@ class _MarketOptionState extends State<MarketOption>
                                         Text(e.title),
                                         GestureDetector(
                                             onTap: () {
-                                              logic.deleteCategory(e.title);
-                                              Navigator.pop(
-                                                  dropdownKey.currentContext!);
+                                              showDialogDeleteCategory(
+                                                  context, e.title);
                                             },
                                             child: SvgPicture.asset(
                                                 AppImages.close))
@@ -302,6 +301,51 @@ class _MarketOptionState extends State<MarketOption>
         ),
       ),
     );
+  }
+
+  void showDialogDeleteCategory(BuildContext context, String title) {
+    AppDiaLog.showDialog(
+      title: S.of(context).delete_category,
+      content: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32),
+          child: Column(
+            children: [
+              Text(
+                "Bạn có muốn xóa danh mục!",
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  Expanded(
+                      child: ButtonFill(
+                    title: S.of(context).cancel_short,
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: AppColors.primary,
+                        primary: const Color.fromRGBO(255, 238, 238, 1)),
+                    voidCallback: () {
+                      Get.back();
+                    },
+                  )),
+                  const SizedBox(width: 20),
+                  Expanded(
+                      child: ButtonFill(
+                    title: S.of(context).delete,
+                    voidCallback: () async {
+                      await logic.deleteCategory(title);
+                    },
+                  ))
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    ).then((value) {
+      Navigator.pop(dropdownKey.currentContext!);
+    });
   }
 
   @override

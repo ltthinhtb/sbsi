@@ -175,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "debt_margin": MessageLookupByLibrary.simpleMessage("Công nợ"),
         "decrease": MessageLookupByLibrary.simpleMessage("Giảm giá"),
         "delete": MessageLookupByLibrary.simpleMessage("Xóa"),
+        "delete_category": MessageLookupByLibrary.simpleMessage("Xóa danh mục"),
         "deposit_fee": MessageLookupByLibrary.simpleMessage("Tổng phí"),
         "domestic": MessageLookupByLibrary.simpleMessage("Trong nước"),
         "edit": MessageLookupByLibrary.simpleMessage("Sửa"),
@@ -418,7 +419,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "right_date": MessageLookupByLibrary.simpleMessage("Ngày chốt quyền"),
         "right_exc_register":
             MessageLookupByLibrary.simpleMessage("Đăng ký quyền mua"),
-        "right_history": MessageLookupByLibrary.simpleMessage("Lịch sử quyền"),
+        "right_history":
+            MessageLookupByLibrary.simpleMessage("Lịch sử hưởng quyền"),
         "right_list": MessageLookupByLibrary.simpleMessage("Danh sách quyền"),
         "right_un_exec":
             MessageLookupByLibrary.simpleMessage("Thực hiện quyền"),

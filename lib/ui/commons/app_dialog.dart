@@ -8,8 +8,9 @@ import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'app_loading.dart';
 
 class AppDiaLog {
-  static void showDialog({String? title, String? middleText, Widget? content}) {
-    Get.defaultDialog(
+  static Future showDialog(
+      {String? title, String? middleText, Widget? content}) {
+    return Get.defaultDialog(
       radius: 15,
       title: title ?? "",
       middleText: middleText ?? "",
@@ -21,7 +22,10 @@ class AppDiaLog {
   }
 
   static Future<void> showNoticeDialog(
-      {String? title, String? middleText, VoidCallback? onConfirm,String? buttonText}) async {
+      {String? title,
+      String? middleText,
+      VoidCallback? onConfirm,
+      String? buttonText}) async {
     AppLoading.disMissLoading();
     await Get.defaultDialog(
         title: title ?? "Thông báo",
@@ -31,7 +35,8 @@ class AppDiaLog {
         barrierDismissible: false,
         confirm: ButtonFill(
           title: buttonText ?? "OK",
-          style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(vertical: 5)),
+          style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 5)),
           voidCallback: onConfirm ??
               () {
                 Get.back();

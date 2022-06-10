@@ -329,7 +329,7 @@
   "internal" : "Nội bộ",
   "right_un_exec" : "Thực hiện quyền",
   "right_list" : "Danh sách quyền",
-  "right_history" : "Lịch sử quyền",
+  "right_history" : "Lịch sử hưởng quyền",
   "rate" : "Tỷ lệ",
   "right_date" : "Ngày chốt quyền",
   "advance_money_history" : "Lịch sử ứng",
@@ -379,5 +379,6 @@
   "stock_transfer_success" : "Chuyển chứng khoán thành công",
   "not_enough_transfer" : "Số tiền chuyển quá số dư",
   "right_exc_register" : "Đăng ký quyền mua",
-  "amount" : "Số lượng"
+  "amount" : "Số lượng",
+  "delete_category"  : "Xóa danh mục"
 }

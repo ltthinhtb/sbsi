@@ -144,6 +144,8 @@ class MarketLogic extends GetxController {
 
   Future<void> deleteCategory(String title) async {
     await storeService.deleteCategory(title);
+    await selectCategory(state.category_default);
+    Get.back();
   }
 
   Future<void> addStockDB(String stock) async {

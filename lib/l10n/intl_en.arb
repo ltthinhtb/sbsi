@@ -379,6 +379,8 @@
   "stock_transfer_success": "Stock transfer success",
   "not_enough_transfer" : "Not enough transfer",
   "right_exc_register" : "Right exc register",
-  "amount" : "Amount"
+  "amount" : "Amount",
+  "delete_category"  : "Delete category"
+
 
 }

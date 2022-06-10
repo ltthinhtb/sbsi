@@ -3859,6 +3859,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete category`
+  String get delete_category {
+    return Intl.message(
+      'Delete category',
+      name: 'delete_category',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
