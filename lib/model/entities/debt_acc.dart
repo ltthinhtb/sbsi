@@ -30,6 +30,14 @@ class DebtAcc {
     return DateTime.now().difference(deliverDate).inDays.toString();
   }
 
+  num get amountDebt {
+    return cLOANIN! + cFEEIN!;
+  }
+
+  num get debtLoan {
+    return cLOANIN! + cFEEIN! - cLOANOUT! - cFEEOUT!;
+  }
+
   DebtAcc(
       {this.cLOANID,
       this.cACCOUNTCODE,

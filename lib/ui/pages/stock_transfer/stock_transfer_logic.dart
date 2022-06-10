@@ -116,7 +116,7 @@ class StockTransferLogic extends GetxController {
     _object.p4 = state.amountController.text;
     _object.p5 = "Chuyen chung khoan";
     _object.p6 = state.pinController.text;
-    _object.p7 = state.otpController.text;
+    _object.p7 = state.pinController.text;
     _requestParams.data = _object;
     try {
       await apiService.updateShareTransferIn(_requestParams);

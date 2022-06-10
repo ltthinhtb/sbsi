@@ -113,6 +113,16 @@ class _MenuTabBarState extends State<MenuTabBar>
 
                             child: Center(
                               child: Text(
+                                'Giá TT',
+                                style: caption.copyWith(
+                                    fontWeight: FontWeight.w700, height: 16 / 12),
+                              ),
+                            )),
+                        Expanded(
+                            flex: 2,
+
+                            child: Center(
+                              child: Text(
                                 "%Lãi/lỗ",
                                 style: caption.copyWith(
                                     fontWeight: FontWeight.w700, height: 16 / 12),

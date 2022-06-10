@@ -95,10 +95,7 @@ class _TransactionWidgetState extends State<TransactionWidget> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text(widget.transaction.cCONTENT ?? "")],
-                    ),
+                    child: Text(widget.transaction.cCONTENT ?? ""),
                   )
                 ],
               ))

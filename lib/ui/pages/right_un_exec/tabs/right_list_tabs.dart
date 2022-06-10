@@ -8,6 +8,7 @@ import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/money_utils.dart';
 import '../right_un_exec_logic.dart';
+import '../widget/money_expaneded.dart';
 import '../widget/stock_expaned.dart';
 
 class RightListTab extends StatefulWidget {
@@ -74,7 +75,9 @@ class _RightListTabState extends State<RightListTab>
           const SizedBox(height: 16),
           const StockExpanded(),
           const SizedBox(height: 5),
-          const DepositExpanded()
+          const MoneyExpanded(),
+          const SizedBox(height: 5),
+          const DepositExpanded(),
         ],
       ),
     );

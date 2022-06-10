@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:sbsi/model/response/portfolio.dart';
 import 'package:sbsi/ui/pages/main/main_logic.dart';
 import 'package:sbsi/ui/pages/stock_order/stock_order_logic.dart';
@@ -29,6 +30,7 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
   @override
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption!;
+    Logger().d(widget.portfolio.toJson());
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -74,10 +76,20 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                         height: 16 / 12,
                         color: widget.portfolio.glColor),
                 ),
+                    )),  Expanded(
+                    flex: 2,
+                    child: Center(
+                      child: Text(
+                        widget.portfolio.marketPrice.toString().trim(),
+                        textAlign: TextAlign.start,
+                        style: caption.copyWith(
+                            fontWeight: FontWeight.w700,
+                            height: 16 / 12,
+                            color: widget.portfolio.glColor),
+                      ),
                     )),
                 Expanded(
                     flex: 2,
-
                     child: Center(
                       child: Text(
                   widget.portfolio.gainLossPer ?? "",
@@ -89,7 +101,6 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                     )),
                 Expanded(
                     flex: 2,
-
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(

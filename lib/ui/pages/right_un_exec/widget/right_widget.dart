@@ -15,8 +15,13 @@ import '../../../../generated/l10n.dart';
 class RightWidget extends StatefulWidget {
   final RightExc right;
   final int index;
+  final bool? isMoney;
 
-  const RightWidget({Key? key, required this.right, required this.index})
+  const RightWidget(
+      {Key? key,
+      required this.right,
+      required this.index,
+      this.isMoney = false})
       : super(key: key);
 
   @override
@@ -72,13 +77,15 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                 Expanded(
                     flex: 53,
                     child: Text(
-                      widget.right.cRIGHTRATE?.trim() ?? "",
+                      widget.isMoney!
+                          ? "0%"
+                          : (widget.right.cRIGHTRATE?.trim() ?? ""),
                       style: caption,
                     )),
                 Expanded(
                     flex: 94,
                     child: Text(
-                      widget.right.cCLOSEDATE ?? "",
+                      widget.isMoney! ? "-" : (widget.right.cCLOSEDATE ?? ""),
                       style: caption,
                     )),
               ],
@@ -135,7 +142,8 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                   children: [
                     Text("Số lượng được đăng ký", style: body2),
                     Text(
-                      MoneyFormat.formatMoneyRound('${widget.right.cRIGHTVOLUME}'),
+                      MoneyFormat.formatMoneyRound(
+                          '${widget.right.cRIGHTVOLUME}'),
                       style: body2?.copyWith(fontWeight: FontWeight.w700),
                     )
                   ],

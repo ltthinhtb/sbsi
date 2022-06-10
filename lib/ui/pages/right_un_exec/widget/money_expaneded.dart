@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/ui/pages/right_un_exec/widget/right_widget.dart';
+
 import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../model/entities/right_exc.dart';
 import '../../../widgets/animation_widget/expanded_widget.dart';
 import '../right_un_exec_logic.dart';
-import 'right_widget.dart';
 
-class DepositExpanded extends StatefulWidget {
-  const DepositExpanded({Key? key}) : super(key: key);
+class MoneyExpanded extends StatefulWidget {
+  const MoneyExpanded({Key? key}) : super(key: key);
 
   @override
-  State<DepositExpanded> createState() => _DepositExpandedState();
+  State<MoneyExpanded> createState() => _MoneyExpandedState();
 }
 
-class _DepositExpandedState extends State<DepositExpanded> {
+class _MoneyExpandedState extends State<MoneyExpanded> {
   bool _isExpanded = false;
 
   final state = Get.find<RightUnExecLogic>().state;
@@ -48,7 +49,7 @@ class _DepositExpandedState extends State<DepositExpanded> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Quyền cổ tức bằng chứng khoán',
+                  'Quyền cổ tức bằng tiền',
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
@@ -75,29 +76,29 @@ class _DepositExpandedState extends State<DepositExpanded> {
                           flex: 62,
                           child: Text(
                             S.of(context).stock_code,
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 130,
                           child: Text(
                             "Số CK hưởng quyền",
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 53,
                           child: Text(
-                            S.of(context).rate,
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                            '%${S.of(context).rate}',
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 94,
                           child: Text(
-                            S.of(context).right_date,
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                            "Số tiền nhận được",
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                     ],
                   ),
@@ -118,6 +119,7 @@ class _DepositExpandedState extends State<DepositExpanded> {
                         return RightWidget(
                           index: index,
                           right: listRight[index],
+                          isMoney: true,
                         );
                       });
                 })

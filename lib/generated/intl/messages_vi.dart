@@ -229,7 +229,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hướng dẫn nộp tiền"),
         "instructions_transfers":
             MessageLookupByLibrary.simpleMessage("Hướng dẫn chuyển tiền"),
-        "interest": MessageLookupByLibrary.simpleMessage("Lãi xuất"),
+        "interest": MessageLookupByLibrary.simpleMessage("Lãi suất"),
         "interest_expect": MessageLookupByLibrary.simpleMessage("Lãi dự kiến"),
         "interest_money": MessageLookupByLibrary.simpleMessage("Tiền lãi"),
         "interest_now": MessageLookupByLibrary.simpleMessage("Đầu tư ngay"),

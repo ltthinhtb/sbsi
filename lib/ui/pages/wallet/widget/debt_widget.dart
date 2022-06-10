@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:sbsi/model/entities/debt_acc.dart';
 import 'package:sbsi/ui/widgets/animation_widget/expanded_widget.dart';
 
@@ -22,6 +23,7 @@ class _DebtWidgetState extends State<DebtWidget> {
   @override
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption!;
+    Logger().d(widget.debt.toJson());
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
@@ -57,7 +59,7 @@ class _DebtWidgetState extends State<DebtWidget> {
                     flex: 2,
                     child: Center(
                       child: Text(
-                        MoneyFormat.formatMoneyRound('${widget.debt.cLOAN}'),
+                        MoneyFormat.formatMoneyRound('${widget.debt.debtLoan}'),
                         textAlign: TextAlign.start,
                         style: caption.copyWith(
                             fontWeight: FontWeight.w700, height: 16 / 12),
@@ -89,7 +91,7 @@ class _DebtWidgetState extends State<DebtWidget> {
                         leftTitle: 'Nguồn'),
                     const SizedBox(height: 16),
                     rowData(
-                        rightValue: widget.debt.cINTERESTDATE ?? "",
+                        rightValue: MoneyFormat.formatMoneyRound('${widget.debt.cLOANIN}'),
                         leftValue: MoneyFormat.formatMoneyRound(
                             '${widget.debt.cLOANID}'),
                         rightTitle: 'Dư nợ gốc',
@@ -138,14 +140,14 @@ class _DebtWidgetState extends State<DebtWidget> {
                 leftTitle,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .caption
                     ?.copyWith(color: AppColors.textSecond),
               )),
               Text(
                 leftValue,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .caption
                     ?.copyWith(color: leftColor, fontWeight: FontWeight.w700),
               ),
             ],
@@ -159,14 +161,14 @@ class _DebtWidgetState extends State<DebtWidget> {
                 rightTitle,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .caption
                     ?.copyWith(color: AppColors.textSecond),
               )),
               Text(
                 rightValue,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .caption
                     ?.copyWith(color: rightColor, fontWeight: FontWeight.w700),
               ),
             ],
