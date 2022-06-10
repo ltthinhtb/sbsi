@@ -50,6 +50,12 @@ class _GetAccountInfoPageState extends State<GetAccountInfoPage> {
                     ),
                     const SizedBox(height: 16),
                     rowString(
+                        S.of(context).full_name, account.cCUSTFULLNAME ?? ""),
+                    const SizedBox(height: 16),
+                    rowString(
+                        S.of(context).user_name, account.cCUSTOMERCODE ?? ""),
+                    const SizedBox(height: 16),
+                    rowString(
                         S.of(context).identity_card, account.cCARDID ?? ""),
                     const SizedBox(height: 16),
                     rowString(S.of(context).issue_date_cmt,

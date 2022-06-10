@@ -12,6 +12,7 @@ import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../model/response/list_account_response.dart';
 import '../../../../services/auth_service.dart';
+import '../../../commons/app_snackbar.dart';
 import '../../../widgets/dropdown/app_drop_down.dart';
 import '../money_transfer_logic.dart';
 
@@ -105,7 +106,6 @@ class _TransferHistoryState extends State<TransferHistory> {
                             DateTimeUtils.toDateString(date,
                                 format: "dd/MM/yyyy");
                         checkTime();
-
                       }
                     },
                     inputController: state.startDateController,
@@ -234,10 +234,12 @@ class _TransferHistoryState extends State<TransferHistory> {
   }
 
   void checkTime() {
-    if(state.startDateController.text.isNotEmpty &&
+    if (state.startDateController.text.isNotEmpty &&
         state.endDateController.text.isNotEmpty &&
         statDate.difference(endDate).inDays <= 0) {
       logic.getTransfersHistory();
-    };
+    } else {
+      AppSnackBar.showError(message: S.of(context).day_error);
+    }
   }
 }

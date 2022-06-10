@@ -5,6 +5,7 @@ import 'package:sbsi/common/app_images.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/date_utils.dart';
+import '../../../commons/app_snackbar.dart';
 import '../../../widgets/dropdown/app_drop_down.dart';
 import '../../../widgets/textfields/app_text_field.dart';
 import '../../../widgets/textfields/app_text_typehead.dart';
@@ -241,6 +242,9 @@ class _InOrderHistoryState extends State<InOrderHistory>
         state.endDateController.text.isNotEmpty &&
         statDate.difference(endDate).inDays <= 0) {
       logic.getOrderListHistory();
+    }
+    else{
+      AppSnackBar.showError(message: S.of(context).day_error);
     }
   }
 

@@ -56,27 +56,26 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                 )),
                 Expanded(
                     flex: 2,
-
                     child: Center(
                       child: Text(
-                  MoneyFormat.formatMoneyRound(
-                        '${widget.portfolio.actualVol ?? ""}'),
-                  style: caption.copyWith(height: 16 / 12),
-                ),
+                        MoneyFormat.formatMoneyRound(
+                            '${widget.portfolio.actualVol ?? ""}'),
+                        style: caption.copyWith(height: 16 / 12),
+                      ),
                     )),
                 Expanded(
                     flex: 2,
-
                     child: Center(
                       child: Text(
-                  widget.portfolio.avgPrice1.trim(),
-                  textAlign: TextAlign.start,
-                  style: caption.copyWith(
-                        fontWeight: FontWeight.w700,
-                        height: 16 / 12,
-                        color: widget.portfolio.glColor),
-                ),
-                    )),  Expanded(
+                        widget.portfolio.avgPrice1.trim(),
+                        textAlign: TextAlign.start,
+                        style: caption.copyWith(
+                            fontWeight: FontWeight.w700,
+                            height: 16 / 12,
+                            color: widget.portfolio.glColor),
+                      ),
+                    )),
+                Expanded(
                     flex: 2,
                     child: Center(
                       child: Text(
@@ -92,23 +91,25 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                     flex: 2,
                     child: Center(
                       child: Text(
-                  widget.portfolio.gainLossPer ?? "",
-                  style: caption.copyWith(
-                        fontWeight: FontWeight.w700,
-                        height: 16 / 12,
-                        color: widget.portfolio.glColor),
-                ),
+                        widget.portfolio.gainLossPer ?? "",
+                        style: caption.copyWith(
+                            fontWeight: FontWeight.w700,
+                            height: 16 / 12,
+                            color: widget.portfolio.glColor),
+                      ),
                     )),
                 Expanded(
                     flex: 2,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                  MoneyFormat.formatMoneyRound(
-                        '${widget.portfolio.gainLossValue}'),
-                  style: caption.copyWith(
-                        fontWeight: FontWeight.w700, height: 16 / 12),
-                ),
+                        MoneyFormat.formatMoneyRound(
+                            '${widget.portfolio.gainLossValue}'),
+                        style: caption.copyWith(
+                            fontWeight: FontWeight.w700,
+                            height: 16 / 12,
+                            color: widget.portfolio.glColor),
+                      ),
                     )),
               ],
             ),

@@ -164,6 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create account"),
         "day": MessageLookupByLibrary.simpleMessage("Day"),
+        "day_error": MessageLookupByLibrary.simpleMessage("Day not valid"),
         "debt": MessageLookupByLibrary.simpleMessage("Debt"),
         "debt_margin": MessageLookupByLibrary.simpleMessage("Debt margin"),
         "decrease": MessageLookupByLibrary.simpleMessage("Decrease"),

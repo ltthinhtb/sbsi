@@ -171,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "coupon": MessageLookupByLibrary.simpleMessage("Lợi suất đầu tư"),
         "create_account": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
+        "day_error": MessageLookupByLibrary.simpleMessage("Ngày không hợp lệ"),
         "debt": MessageLookupByLibrary.simpleMessage("Nợ"),
         "debt_margin": MessageLookupByLibrary.simpleMessage("Công nợ"),
         "decrease": MessageLookupByLibrary.simpleMessage("Giảm giá"),

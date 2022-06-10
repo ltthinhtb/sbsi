@@ -21,7 +21,6 @@ class _OverViewTabState extends State<OverViewTab>
   Widget build(BuildContext context) {
     super.build(context);
     final body1 = Theme.of(context).textTheme.bodyText1;
-    final body2 = Theme.of(context).textTheme.bodyText2;
     final caption = Theme.of(context).textTheme.caption;
 
     return Obx(() {
@@ -46,8 +45,6 @@ class _OverViewTabState extends State<OverViewTab>
                     children: [
                       Text(S.of(context).step_price,
                           style: body1?.copyWith(fontWeight: FontWeight.w700)),
-                      Text(S.of(context).more,
-                          style: body2?.copyWith(color: AppColors.textSecond)),
                     ],
                   ),
                   const Divider(

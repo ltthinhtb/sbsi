@@ -380,7 +380,9 @@
   "not_enough_transfer" : "Not enough transfer",
   "right_exc_register" : "Right exc register",
   "amount" : "Amount",
-  "delete_category"  : "Delete category"
+  "delete_category"  : "Delete category",
+  "day_error" : "Day not valid"
+
 
 
 }

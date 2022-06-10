@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/ui/pages/market/market_logic.dart';
 import 'package:sbsi/utils/money_utils.dart';

@@ -380,5 +380,6 @@
   "not_enough_transfer" : "Số tiền chuyển quá số dư",
   "right_exc_register" : "Đăng ký quyền mua",
   "amount" : "Số lượng",
-  "delete_category"  : "Xóa danh mục"
+  "delete_category"  : "Xóa danh mục",
+  "day_error" : "Ngày không hợp lệ"
 }

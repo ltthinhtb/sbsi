@@ -3869,6 +3869,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Day not valid`
+  String get day_error {
+    return Intl.message(
+      'Day not valid',
+      name: 'day_error',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

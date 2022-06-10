@@ -136,6 +136,28 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
                       },
                       title: S.of(context).advance_action,
                       button: AppImages.communicate),
+
+                  const SizedBox(height: 16),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            Container(
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  boxShadow: AppShadow.boxShadow, color: AppColors.white),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      S.of(context).statement,
+                      style: body1?.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                  ),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Divider(
@@ -154,6 +176,7 @@ class _UtilitiesPageState extends State<UtilitiesPage> {
               ),
             ),
             const SizedBox(height: 16),
+
             //
             Container(
               width: MediaQuery.of(context).size.width,

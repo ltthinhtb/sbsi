@@ -17,7 +17,7 @@ class _NotificationPageState extends State<NotificationPage> {
   final state = Get.find<NotificationLogic>().state;
 
   List<String> listTabs(BuildContext context) =>
-      [S.of(context).notice, S.of(context).news];
+      [S.of(context).account, S.of(context).news];
 
   @override
   void initState() {

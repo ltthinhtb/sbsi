@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
+import 'package:sbsi/ui/commons/app_snackbar.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/date_utils.dart';
@@ -217,6 +218,9 @@ class _HistoryCashTabState extends State<HistoryCashTab>
         state.endDateController.text.isNotEmpty &&
         statDate.difference(endDate).inDays <= 0) {
       logic.getListCashHistory();
+    }
+    else{
+      AppSnackBar.showError(message: S.of(context).day_error);
     }
   }
 

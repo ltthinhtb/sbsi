@@ -6,6 +6,7 @@ import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/date_utils.dart';
+import '../../../commons/app_snackbar.dart';
 import '../../../widgets/textfields/app_text_field.dart';
 import '../stock_transfer_logic.dart';
 import '../widget/shareTransferWidget.dart';
@@ -192,6 +193,9 @@ class _StockExchangeHistoryState extends State<StockExchangeHistory> with Automa
         state.endDateController.text.isNotEmpty &&
         statDate.difference(endDate).inDays <= 0) {
       logic.getListShareTransfer();
+    }
+    else{
+      AppSnackBar.showError(message: S.of(context).day_error);
     }
   }
 
