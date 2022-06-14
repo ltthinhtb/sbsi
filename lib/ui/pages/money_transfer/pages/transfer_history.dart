@@ -50,7 +50,6 @@ class _TransferHistoryState extends State<TransferHistory> {
   @override
   void initState() {
     super.initState();
-    checkTime();
   }
 
   @override
@@ -239,7 +238,7 @@ class _TransferHistoryState extends State<TransferHistory> {
         statDate.difference(endDate).inDays <= 0) {
       logic.getTransfersHistory();
     } else {
-      AppSnackBar.showError(message: S.of(context).day_error);
+      AppSnackBar.showError(message: S.current.day_error);
     }
   }
 }

@@ -4,6 +4,7 @@ import 'package:sbsi/model/entities/beneficiary_account.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
 import 'package:sbsi/model/entities/transfer_history.dart';
 import 'package:sbsi/model/response/list_account_response.dart';
+import 'package:sbsi/utils/date_utils.dart';
 
 import '../../../model/entities/bank.dart';
 import '../../commons/money_text_controller.dart';
@@ -59,8 +60,12 @@ class MoneyTransferState {
   final pinController = TextEditingController();
   final pinKey = GlobalKey<FormState>();
 
-  final startDateController = TextEditingController();
-  final endDateController = TextEditingController();
+  final startDateController = TextEditingController(
+    text: DateTimeUtils.toDateString(DateTime.now(),format: "dd/MM/yyyy")
+  );
+  final endDateController = TextEditingController(
+      text: DateTimeUtils.toDateString(DateTime.now().subtract(const Duration(days: -30)),format: "dd/MM/yyyy")
+  );
 
   final Rx<num> cFeeOnline = 0.0.obs;
 }

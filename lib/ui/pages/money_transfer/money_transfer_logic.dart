@@ -276,6 +276,7 @@ class MoneyTransferLogic extends GetxController {
     loadAccount();
     getCashAccountInfo();
     getListBank();
+    getTransfersHistory();
     super.onReady();
   }
 
