@@ -36,6 +36,7 @@ class StockResponse {
 
 class StockDataShort {
   String? stockCode;
+  num? lastPrice;
   num? klgd;
   num? gtgd;
   String? stockName;
@@ -44,6 +45,23 @@ class StockDataShort {
   String? color;
   String? chart;
   num? price;
+
+  num get lastPricePP => (price != null)
+      ? price!
+      : lastPrice != null
+          ? lastPrice!
+          : 0;
+
+  num get rPrice {
+    final num pricePP = (price != null)
+        ? price!
+        : lastPrice != null
+            ? lastPrice!
+            : 0;
+    final num changePP = (change != null) ? change! : 0;
+
+    return pricePP - changePP;
+  }
 
   StockDataShort(
       {this.stockCode,
@@ -54,7 +72,8 @@ class StockDataShort {
       this.percentChange,
       this.color,
       this.chart,
-      this.price});
+      this.price,
+      this.lastPrice});
 
   StockDataShort copyWith(SocketStock socket) {
     return StockDataShort(
@@ -105,6 +124,7 @@ class StockDataShort {
 
   StockDataShort.fromJson(Map<String, dynamic> json) {
     stockCode = json['STOCK_CODE'];
+    lastPrice = json['LAST_PRICE'];
     klgd = json['KLGD'];
     gtgd = json['GTGD'];
     stockName = json['STOCK_NAME'];
@@ -118,6 +138,7 @@ class StockDataShort {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['STOCK_CODE'] = this.stockCode;
+    data['LAST_PRICE'] = this.lastPrice;
     data['KLGD'] = this.klgd;
     data['GTGD'] = this.gtgd;
     data['STOCK_NAME'] = this.stockName;

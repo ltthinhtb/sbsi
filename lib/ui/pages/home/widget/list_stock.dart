@@ -82,12 +82,6 @@ class _ListStockViewState extends State<ListStockView> with SingleTickerProvider
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
-                    double sumChart = state.listShortStock[index].listChart
-                        .cast<double>()
-                        .fold(0, (pr, e) => (pr + e));
-                    var lengthChart = state.listShortStock[index].listChart
-                        .cast<double>()
-                        .length;
                     return IntrinsicHeight(
                       child: GestureDetector(
                         onTap: () {
@@ -142,7 +136,7 @@ class _ListStockViewState extends State<ListStockView> with SingleTickerProvider
                                       child: SizedBox(
                                         height: 27,
                                         child: CustomLineChart(
-                                            drawPoint: (sumChart / lengthChart),
+                                            drawPoint: state.listShortStock[index].rPrice.toDouble(),
                                             color: state.listShortStock[index]
                                                 .colorStock,
                                             data: state
