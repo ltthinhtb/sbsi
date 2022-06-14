@@ -13,13 +13,26 @@ import 'package:sbsi/utils/money_utils.dart';
 
 import '../../../../router/route_config.dart';
 
-class ListStockView extends StatelessWidget {
+class ListStockView extends StatefulWidget {
   const ListStockView({Key? key}) : super(key: key);
 
   @override
+  State<ListStockView> createState() => _ListStockViewState();
+}
+
+class _ListStockViewState extends State<ListStockView> with SingleTickerProviderStateMixin {
+  final state = Get.find<HomeLogic>().state;
+  final homeLogic = Get.find<HomeLogic>();
+
+  @override
+  void initState() {
+    state.tabController = new TabController(vsync: this, length: StockEnum.values.length);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final state = Get.find<HomeLogic>().state;
-    final homeLogic = Get.find<HomeLogic>();
+
     final caption = Theme.of(context).textTheme.caption?.copyWith(fontSize: 13);
     final headline4 = Theme.of(context).textTheme.headline4;
     final bodyText2 = Theme.of(context).textTheme.bodyText2;
@@ -53,6 +66,7 @@ class ListStockView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TabBar(
                   padding: EdgeInsets.zero,
+                  controller: state.tabController,
                   onTap: (index) {
                     homeLogic.getTopStockData(index);
                   },

@@ -4,6 +4,7 @@ import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/services/index.dart';
 import 'package:sbsi/services/socket/socket.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
+import 'package:sbsi/ui/pages/wallet/wallet_logic.dart';
 
 import 'home_state.dart';
 
@@ -78,6 +79,12 @@ class HomeLogic extends GetxController {
     getTopStockData(0);
     getBanner();
     super.onReady();
+  }
+
+  void onRefresh() async {
+    await getTopStockData(state.tabController.index);
+    await getBanner();
+    Get.find<WalletLogic>().getTotalAssets();
   }
 
   @override

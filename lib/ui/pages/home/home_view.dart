@@ -34,15 +34,20 @@ class _HomePageState extends State<HomePage> {
           const AppBarHome(),
           const SizedBox(height: 16),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const BannerHome(),
-                  const SizedBox(height: 16),
-                  const CardIcon(),
-                  const SizedBox(height: 16),
-                  const ListStockView(),
-                ],
+            child: RefreshIndicator(
+              onRefresh: ()  async {
+                  logic.onRefresh();
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const BannerHome(),
+                    const SizedBox(height: 16),
+                    const CardIcon(),
+                    const SizedBox(height: 16),
+                    const ListStockView(),
+                  ],
+                ),
               ),
             ),
           ),

@@ -11,4 +11,6 @@ class HomeState {
   final listShortStock = <StockDataShort>[].obs;
 
   final listBanner = <AppBanner>[].obs;
+
+  late TabController tabController;
 }
