@@ -17,7 +17,6 @@ class CardData extends StatelessWidget {
   const CardData({Key? key, required this.stock, required this.stockInfo})
       : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     final bodyText1 = Theme.of(context).textTheme.bodyText1;
@@ -33,46 +32,53 @@ class CardData extends StatelessWidget {
           color: AppColors.white,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
-            const BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 4),
-            const BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 20)
+            const BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 4),
+            const BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 20)
           ]),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 6, right: 6),
-            child: AppTextTypeHead<StockCompanyData>(
-              key: state.searchCKKey,
-              hintText: S.of(context).stock_code,
-              inputController: state.stockController,
-              focusNode: state.stockNode,
-              suggestionsCallback: (String pattern) {
-                return logic.searchStock(pattern);
-              },
-              onSuggestionSelected: (suggestion) {
-                return logic.selectStock(suggestion);
-              },
-            ),
-          ),
-          const SizedBox(height: 16),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            decoration: BoxDecoration(
-              color: AppColors.grayF2.withOpacity(0.6),
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                    child: Column(
+          Obx(() {
+            return Visibility(
+              visible: state.isSearch,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 6, right: 6, bottom: 16),
+                child: AppTextTypeHead<StockCompanyData>(
+                  key: state.searchCKKey,
+                  hintText: S.of(context).stock_code,
+                  inputController: state.stockController,
+                  focusNode: state.stockNode,
+                  suggestionsCallback: (String pattern) {
+                    return logic.searchStock(pattern);
+                  },
+                  onSuggestionSelected: (suggestion) {
+                    return logic.selectStock(suggestion);
+                  },
+                ),
+              ),
+            );
+          }),
+          Obx(() {
+            return Visibility(
+              visible: !state.isSearch,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                decoration: BoxDecoration(
+                  color: AppColors.grayF2.withOpacity(0.6),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           stock.stockCode != null
                               ? "${stock.stockCode ?? ""} ( ${stock.postTo ?? ""} )"
                               : "",
-                          style: bodyText1?.copyWith(fontWeight: FontWeight.w700),
+                          style:
+                              bodyText1?.copyWith(fontWeight: FontWeight.w700),
                         ),
                         Text(
                           "${stock.nameVn ?? ""}",
@@ -80,10 +86,16 @@ class CardData extends StatelessWidget {
                         ),
                       ],
                     )),
-                SvgPicture.asset(AppImages.chart)
-              ],
-            ),
-          ),
+                    GestureDetector(
+                      onTap: (){
+                        logic.cleanStock();
+                      },
+                        child: SvgPicture.asset(AppImages.close))
+                  ],
+                ),
+              ),
+            );
+          }),
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -140,8 +152,7 @@ class CardData extends StatelessWidget {
                       Text(
                         '${('${stockInfo.c ?? ""}')}',
                         style: caption?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.ceil),
+                            fontWeight: FontWeight.w700, color: AppColors.ceil),
                       ),
                     ],
                   )),

@@ -17,6 +17,7 @@ class AppTextTypeHead<T> extends StatefulWidget {
   final SuggestionsCallback<T> suggestionsCallback;
   final SuggestionSelectionCallback<T> onSuggestionSelected;
   final String? errorText;
+  final Widget? suffixIcon;
 
   const AppTextTypeHead(
       {Key? key,
@@ -25,7 +26,9 @@ class AppTextTypeHead<T> extends StatefulWidget {
       this.hintText,
       required this.suggestionsCallback,
       required this.onSuggestionSelected,
-      this.focusNode, this.errorText})
+      this.focusNode,
+      this.errorText,
+      this.suffixIcon})
       : super(key: key);
 
   @override
@@ -124,17 +127,17 @@ class _AppTextTypeHeadState<T> extends State<AppTextTypeHead<T>> {
                 const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
             suffixIcon: Padding(
               padding: const EdgeInsets.only(right: 12),
-              child: SvgPicture.asset(
-                AppImages.search_normal,
-                color: AppColors.gray7E,
-              ),
+              child: widget.suffixIcon ??
+                  SvgPicture.asset(
+                    AppImages.search_normal,
+                    color: AppColors.gray7E,
+                  ),
             ),
             suffixIconConstraints: const BoxConstraints(maxHeight: 24),
           )),
       noItemsFoundBuilder: (context) {
         var errorText = "Chúng khoán không hợp lệ";
-        if(T is Bank)
-          errorText = "Ngân hàng không hợp lệ";
+        if (T is Bank) errorText = "Ngân hàng không hợp lệ";
         return Padding(
           padding: const EdgeInsets.all(8),
           child: Text(

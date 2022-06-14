@@ -46,6 +46,22 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     return market_value + debt + money;
   }
 
+  // % tiền
+  num get moneyPercent {
+    if (sum == 0) {
+      return 0;
+    }
+    return (money / sum) * 100;
+  }
+
+  // % chứng khoán
+  num get stockPercent {
+    if (sum == 0) {
+      return 0;
+    }
+    return (market_value / sum) * 100;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -105,7 +121,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                       width: 2.28,
                     ),
                     Text(
-                      '${((money / sum) * 100).toStringAsFixed(0)}%',
+                      '${(moneyPercent).toStringAsFixed(0)}%',
                       style: body2?.copyWith(fontWeight: FontWeight.w700),
                     )
                   ],
@@ -129,12 +145,11 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                       width: 2.28,
                     ),
                     Text(
-                      '${((market_value / sum) * 100).toStringAsFixed(0)}%',
+                      '${(stockPercent).toStringAsFixed(0)}%',
                       style: body2?.copyWith(fontWeight: FontWeight.w700),
                     )
                   ],
                 ),
-
                 Visibility(
                   visible: state.account.value.lastCharacter == "6",
                   child: Padding(
@@ -151,7 +166,8 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                         const SizedBox(width: 7.72),
                         Text(
                           '${S.of(context).debt}:',
-                          style: Theme.of(context).textTheme.bodyText2?.copyWith(),
+                          style:
+                              Theme.of(context).textTheme.bodyText2?.copyWith(),
                         ),
                         const SizedBox(
                           width: 2.28,
@@ -192,7 +208,8 @@ class _PieChartWidgetState extends State<PieChartWidget> {
         case 1:
           return PieChartSectionData(
             color: AppColors.blue,
-            value: money.toDouble(),
+            // nếu sum bằng 0 thì tiền bằng 1 để fake data hiển thị chart
+            value: sum == 0 ? 1 : money.toDouble(),
             title: '',
             radius: radius,
             titleStyle: TextStyle(

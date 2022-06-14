@@ -14,6 +14,8 @@ import 'package:sbsi/utils/logger.dart';
 import 'package:sbsi/utils/order_utils.dart';
 import '../../../generated/l10n.dart';
 import '../../../model/order_data/inday_order.dart';
+import '../../../model/stock_data/cash_balance.dart';
+import '../../../model/stock_data/stock_info.dart';
 import '../../../model/stock_data/stock_socket.dart';
 import 'stock_order_detail_state.dart';
 
@@ -40,6 +42,17 @@ class StockOrderPageLogic extends GetxController {
     } else {
       return [];
     }
+  }
+
+  void cleanStock(){
+    state.selectedStock.value = StockCompanyData();
+    state.stockController.clear();
+    state.selectedStockInfo.value = StockInfo();
+    state.selectedCashBalance.value = CashBalance();
+    state.priceController.clear();
+    state.volController.clear();
+    state.tradingOrderList.clear();
+    state.tradingOrder.value = "";
   }
 
   // switch tài khoản 1-6

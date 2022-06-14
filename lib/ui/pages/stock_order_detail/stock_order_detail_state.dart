@@ -15,6 +15,10 @@ class StockOrderPageState {
 
   final FocusNode priceNode = FocusNode();
 
+  bool get isSearch {
+    return selectedStock.value.stockCode?.isEmpty ?? true;
+  }
+
   /// lệnh giao dịch theo từng sàn
   final tradingOrderList = ['ATO', 'ATC', 'MP', "LO"].obs;
 

@@ -61,11 +61,11 @@ class MoneyTransferState {
   final pinKey = GlobalKey<FormState>();
 
   final startDateController = TextEditingController(
-    text: DateTimeUtils.toDateString(DateTime.now(),format: "dd/MM/yyyy")
-  );
+      text: DateTimeUtils.toDateString(
+          DateTime.now().subtract(const Duration(days: 90)),
+          format: "dd/MM/yyyy"));
   final endDateController = TextEditingController(
-      text: DateTimeUtils.toDateString(DateTime.now().subtract(const Duration(days: -30)),format: "dd/MM/yyyy")
-  );
+      text: DateTimeUtils.toDateString(DateTime.now(), format: "dd/MM/yyyy"));
 
   final Rx<num> cFeeOnline = 0.0.obs;
 }

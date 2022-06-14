@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:sbsi/model/params/data_params.dart';
 import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/model/stock_company_data/stock_company_data.dart';
+import 'package:sbsi/model/stock_data/cash_balance.dart';
+import 'package:sbsi/model/stock_data/stock_info.dart';
 import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/services/index.dart';
 import 'package:sbsi/services/socket/socket.dart';
@@ -377,6 +379,17 @@ class StockOrderLogic extends GetxController {
     }
   }
 
+  void cleanStock(){
+    state.selectedStock.value = StockCompanyData();
+    state.stockController.clear();
+    state.selectedStockInfo.value = StockInfo();
+    state.selectedCashBalance.value = CashBalance();
+    state.priceController.clear();
+    state.volController.clear();
+    state.tradingOrderList.clear();
+    state.tradingOrder.value = "";
+  }
+
   Future<void> validateInfo() async {
     if (state.selectedStock.value.stockCode == null) {
       throw 0;
@@ -402,15 +415,6 @@ class StockOrderLogic extends GetxController {
     return;
   }
 
-  String getChangePc() {
-    try {
-      var per = double.parse(state.selectedStockInfo.value.ot!) /
-          state.selectedStockInfo.value.r!;
-      return per.toStringAsFixed(2) + "%";
-    } catch (e) {
-      return "0.0%";
-    }
-  }
 
   double getSumBuyVol() {
     num _sum = state.selectedStockInfo.value.g1!.volumn! +

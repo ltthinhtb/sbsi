@@ -4,6 +4,7 @@ import 'package:sbsi/model/params/index.dart';
 import 'package:sbsi/networks/error_exception.dart';
 import 'package:sbsi/services/index.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
+import '../../../model/response/portfolio.dart';
 import 'wallet_state.dart';
 
 class WalletLogic extends GetxController {
@@ -74,6 +75,9 @@ class WalletLogic extends GetxController {
     _requestParams.data = _object;
     try {
       var response = await apiService.getPortfolio(_requestParams);
+      state.portfolioList.clear();
+      state.portfolioTotal.value = PortfolioStatus();
+
       if (response!.data!.isNotEmpty) {
         state.portfolioTotal.value = response.data!.first;
         if (response.data!.length > 1) {

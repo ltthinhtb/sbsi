@@ -8,7 +8,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../model/stock_company_data/stock_company_data.dart';
 import '../../../../model/stock_data/stock_info.dart';
 import '../../../widgets/textfields/app_text_typehead.dart';
-import '../../stock_order/stock_order_logic.dart';
+import '../stock_order_detail_logic.dart';
 
 class CardData extends StatelessWidget {
   final StockCompanyData stock;
@@ -22,8 +22,9 @@ class CardData extends StatelessWidget {
     final bodyText1 = Theme.of(context).textTheme.bodyText1;
     final caption = Theme.of(context).textTheme.caption;
     final headline4 = Theme.of(context).textTheme.headline4;
-    final state = Get.find<StockOrderLogic>().state;
-    final logic = Get.find<StockOrderLogic>();
+    final state = Get.find<StockOrderPageLogic>().state;
+    final logic = Get.find<StockOrderPageLogic>();
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
@@ -31,57 +32,70 @@ class CardData extends StatelessWidget {
           color: AppColors.white,
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
-            const BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 4),
-            const BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 20)
+            const BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 4),
+            const BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.1), blurRadius: 20)
           ]),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 6, right: 6),
-            child: AppTextTypeHead<StockCompanyData>(
-              key: state.searchCKKey,
-              hintText: S.of(context).stock_code,
-              inputController: state.stockController,
-              focusNode: state.stockNode,
-              suggestionsCallback: (String pattern) {
-                return logic.searchStock(pattern);
-              },
-              onSuggestionSelected: (suggestion) {
-                return logic.selectStock(suggestion);
-              },
-            ),
-          ),
-          const SizedBox(height: 16),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-            decoration: BoxDecoration(
-              color: AppColors.grayF2.withOpacity(0.6),
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          stock.stockCode != null
-                              ? "${stock.stockCode ?? ""} ( ${stock.postTo ?? ""} )"
-                              : "",
-                          style: bodyText1?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                        Text(
-                          "${stock.nameVn ?? ""}",
-                          style: caption?.copyWith(color: AppColors.textSecond),
-                        ),
-                      ],
-                    )),
-                SvgPicture.asset(AppImages.chart)
-              ],
-            ),
-          ),
+          Obx(() {
+            return Visibility(
+              visible: state.isSearch,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 6, right: 6, bottom: 16),
+                child: AppTextTypeHead<StockCompanyData>(
+                  key: state.searchCKKey,
+                  hintText: S.of(context).stock_code,
+                  inputController: state.stockController,
+                  focusNode: state.stockNode,
+                  suggestionsCallback: (String pattern) {
+                    return logic.searchStock(pattern);
+                  },
+                  onSuggestionSelected: (suggestion) {
+                    return logic.selectStock(suggestion);
+                  },
+                ),
+              ),
+            );
+          }),
+          Obx(() {
+            return Visibility(
+              visible: !state.isSearch,
+              child: Container(
+                padding:
+                const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                decoration: BoxDecoration(
+                  color: AppColors.grayF2.withOpacity(0.6),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              stock.stockCode != null
+                                  ? "${stock.stockCode ?? ""} ( ${stock.postTo ?? ""} )"
+                                  : "",
+                              style:
+                              bodyText1?.copyWith(fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              "${stock.nameVn ?? ""}",
+                              style: caption?.copyWith(color: AppColors.textSecond),
+                            ),
+                          ],
+                        )),
+                    GestureDetector(
+                        onTap: (){
+                          logic.cleanStock();
+                        },
+                        child: SvgPicture.asset(AppImages.close))
+                  ],
+                ),
+              ),
+            );
+          }),
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -138,8 +152,7 @@ class CardData extends StatelessWidget {
                       Text(
                         '${('${stockInfo.c ?? ""}')}',
                         style: caption?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.ceil),
+                            fontWeight: FontWeight.w700, color: AppColors.ceil),
                       ),
                     ],
                   )),
