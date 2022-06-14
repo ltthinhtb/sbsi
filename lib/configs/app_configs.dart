@@ -104,7 +104,7 @@ extension FlavorExt on Flavor {
   String get NOTIFICATION {
     switch (this) {
       case Flavor.PROD:
-        return "http://14.238.11.1:8998/";
+        return "http://eky.sbsi.vn:8998/";
       case Flavor.TEST:
         return "http://14.238.11.1:8998/";
     }
@@ -113,7 +113,7 @@ extension FlavorExt on Flavor {
   String get SIGN_UP_URL {
     switch (this) {
       case Flavor.PROD:
-        return "http://14.238.11.1:8998/";
+        return "http://eky.sbsi.vn:8998/";
       case Flavor.TEST:
         return "http://14.238.11.1:8998/";
     }
