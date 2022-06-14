@@ -1,19 +1,19 @@
-class AppConfigs {
+
+class flavor {
   static const String appName = 'VFtrade';
+  // ///DEV
 
-  ///DEV
-
-  ///STAGING
-  static const envName = "Staging";
-  static const baseUrl = "http://14.238.11.1:9999/";
-  static const URL_DATA_FEED = 'https://sbboard.sbsi.vn/';
-  static const INFO_SBSI = 'https://info.sbsi.vn/';
-  static const ENDPOINT_CORE = 'TraditionalService';
-  static const NOTIFICATION = 'http://14.238.11.1:8998/';
-  static const SIGN_UP_URL = 'http://14.238.11.1:8998/'; //Todo: change this
-  static const socketUrl = 'https://sbboard.sbsi.vn/ps'; //Todo: change this
-
+  // ///STAGING
+  // static const envName = "Staging";
+  // static const baseUrl = "http://14.238.11.1:9999/";
+  // static const URL_DATA_FEED = 'https://sbboard.sbsi.vn/';
+  // static const INFO_SBSI = 'https://info.sbsi.vn/';
+  // static const ENDPOINT_CORE = 'TraditionalService';
+  // static const NOTIFICATION = 'http://14.238.11.1:8998/';
+  // static const SIGN_UP_URL = 'http://14.238.11.1:8998/'; //Todo: change this
+  // static const socketUrl = 'https://sbboard.sbsi.vn/ps'; //Todo: change this
   ///PRODUCTION
+
 
   ///Paging
   static const pageSize = 20;
@@ -52,4 +52,79 @@ class FirebaseConfig {
 class DatabaseConfig {
   //Todo
   static const int version = 1;
+}
+
+enum Flavor { PROD, TEST }
+
+extension FlavorExt on Flavor {
+  String get name {
+    switch (this) {
+      case Flavor.PROD:
+        return "Product";
+      case Flavor.TEST:
+        return "Test";
+    }
+  }
+  String get baseUrl {
+    switch (this) {
+      case Flavor.PROD:
+        return "https://sbtrade.sbsi.vn/";
+      case Flavor.TEST:
+        return "http://14.238.11.1:9999/";
+    }
+  }
+
+  String get URL_DATA_FEED {
+    switch (this) {
+      case Flavor.PROD:
+        return "https://sbboard.sbsi.vn/";
+      case Flavor.TEST:
+        return "https://sbboard.sbsi.vn/";
+    }
+  }
+
+  String get INFO_SBSI {
+    switch (this) {
+      case Flavor.PROD:
+        return "https://info.sbsi.vn/";
+      case Flavor.TEST:
+        return "https://info.sbsi.vn/";
+    }
+  }
+
+  String get ENDPOINT_CORE {
+    switch (this) {
+      case Flavor.PROD:
+        return "TraditionalService";
+      case Flavor.TEST:
+        return "TraditionalService";
+    }
+  }
+
+  String get NOTIFICATION {
+    switch (this) {
+      case Flavor.PROD:
+        return "http://14.238.11.1:8998/";
+      case Flavor.TEST:
+        return "http://14.238.11.1:8998/";
+    }
+  }
+
+  String get SIGN_UP_URL {
+    switch (this) {
+      case Flavor.PROD:
+        return "http://14.238.11.1:8998/";
+      case Flavor.TEST:
+        return "http://14.238.11.1:8998/";
+    }
+  }
+
+  String get socketUrl {
+    switch (this) {
+      case Flavor.PROD:
+        return "https://sbboard.sbsi.vn/ps";
+      case Flavor.TEST:
+        return "https://sbboard.sbsi.vn/ps";
+    }
+  }
 }

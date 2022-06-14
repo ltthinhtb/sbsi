@@ -3,12 +3,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
+import 'package:sbsi/configs/app_configs.dart';
 import 'package:sbsi/generated/l10n.dart';
-import 'package:sbsi/services/auth_service.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
 import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/validator.dart';
 import '../../../router/route_config.dart';
+import '../../../services/index.dart';
 import '../../widgets/button/button_text.dart';
 import 'sign_in_logic.dart';
 
@@ -24,6 +25,8 @@ class _SignInPageState extends State<SignInPage> with Validator {
   final state = Get.find<SignInLogic>().state;
   bool isChecked = false;
   final String version = "1.0.0 + 15";
+
+  bool isTest = true;
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +116,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
                               ),
                               const SizedBox(width: 23.17),
                               GestureDetector(
-                                onTap: (){
+                                onTap: () {
                                   Get.find<AuthService>().authenticate();
                                 },
                                 child: SvgPicture.asset(
@@ -174,15 +177,84 @@ class _SignInPageState extends State<SignInPage> with Validator {
               alignment: Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20, right: 5),
-                child: Text(
-                  version,
-                  style: const TextStyle(
-                      color: AppColors.white, fontWeight: FontWeight.w700),
-                ),
-              ))
+                child: Obx(() {
+                  var flavor = Get.find<SettingService>().flavor;
+                  var stringVersion = version + " " + flavor.value.name;
+                  if (!isTest) {
+                    stringVersion = version;
+                  }
+                  return Text(
+                    stringVersion,
+                    style: const TextStyle(
+                        color: AppColors.white, fontWeight: FontWeight.w700),
+                  );
+                }),
+              )),
+          Visibility(
+            visible: isTest,
+            child: Align(
+                alignment: Alignment.bottomLeft,
+                child: GestureDetector(
+                  onTap: () {
+                    showDialog();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 20, left: 10),
+                    child: SvgPicture.asset(AppImages.setting),
+                  ),
+                )),
+          )
         ],
       ),
     );
+  }
+
+  void showDialog() {
+    Get.dialog(Dialog(
+      child: Builder(builder: (context) {
+        var flavor = Get.find<SettingService>().flavor;
+        return Obx(() {
+          return Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12)),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Thay đổi phiên bản",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                Text(
+                    "Phiên bản hiện tại của bạn là $version ${flavor.value.name}"),
+                const Text("Chỉ thay đổi được ở phiên bản thử nghiệm"),
+                RadioListTile<Flavor>(
+                  groupValue: Flavor.TEST,
+                  value: flavor.value,
+                  title: Text(Flavor.TEST.name),
+                  onChanged: (_flavor) {
+                    Get.find<SettingService>().changeFlavor(Flavor.TEST);
+                    Get.back();
+                  },
+                ),
+                RadioListTile<Flavor>(
+                  groupValue: Flavor.PROD,
+                  value: flavor.value,
+                  title: Text(Flavor.PROD.name),
+                  onChanged: (_flavor) {
+                    Get.find<SettingService>().changeFlavor(Flavor.PROD);
+                    Get.back();
+                  },
+                )
+              ],
+            ),
+          );
+        });
+      }),
+    )).then((value) {
+      setState(() {});
+    });
   }
 
   @override

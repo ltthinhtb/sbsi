@@ -5,6 +5,8 @@ import 'package:sbsi/generated/l10n.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../configs/app_configs.dart';
+
 extension ThemeModeExtension on ThemeMode {
   String get code {
     switch (this) {
@@ -38,17 +40,27 @@ class SettingService extends GetxService {
 
   late SharedPreferences prefs;
 
+  late Rx<Flavor> flavor = Flavor.TEST.obs;
+
   Future<SettingService> init() async {
     prefs = await SharedPreferences.getInstance();
 
+    ///Flavor
+    String flavorString = prefs.getString("flavor") ?? Flavor.TEST.name;
+    flavor.value = Flavor.values.firstWhere((element) => element.name == flavorString,
+        orElse: () {
+      return Flavor.TEST;
+    });
+
     ///ThemeMode
-    String themeModeCode = prefs.getString("themeModeCode") ?? ThemeMode.light.code;
+    String themeModeCode =
+        prefs.getString("themeModeCode") ?? ThemeMode.light.code;
     final themeMode = ThemeModeExtension.fromCode(themeModeCode);
     currentThemeMode.value = themeMode;
     Get.changeThemeMode(themeMode);
 
     ///Language
-    String languageCode = prefs.getString("languageCode") ??  'vi';
+    String languageCode = prefs.getString("languageCode") ?? 'vi';
     var locale = S.delegate.supportedLocales.firstWhere(
       (element) => element.languageCode == languageCode,
       orElse: () => const Locale.fromSubtags(languageCode: "en"),
@@ -57,6 +69,11 @@ class SettingService extends GetxService {
     await Get.updateLocale(locale);
 
     return this;
+  }
+
+  void changeFlavor(Flavor _flavor) async {
+    await prefs.setString('flavor', _flavor.name);
+    flavor.value = _flavor;
   }
 
   void changeThemeMode(ThemeMode themeMode) async {

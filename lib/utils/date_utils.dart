@@ -8,7 +8,7 @@ class DateTimeUtils {
   }
 
   static String toDateString(DateTime dateTime,
-      {String format = AppConfigs.dateDisplayFormat}) {
+      {String format = flavor.dateDisplayFormat}) {
     try {
       return DateFormat(format).format(dateTime.toLocal());
     } catch (e) {
@@ -17,7 +17,7 @@ class DateTimeUtils {
   }
 
   static String toDateTimeString(DateTime dateTime,
-      {String format = AppConfigs.dateTimeDisplayFormat}) {
+      {String format = flavor.dateTimeDisplayFormat}) {
     try {
       return DateFormat(format).format(dateTime.toLocal());
     } catch (e) {
@@ -26,7 +26,7 @@ class DateTimeUtils {
   }
 
   static String toDateAPIString(DateTime dateTime,
-      {String format = AppConfigs.dateAPIFormat}) {
+      {String format = flavor.dateAPIFormat}) {
     try {
       return DateFormat(format).format(dateTime);
     } catch (e) {
@@ -35,7 +35,7 @@ class DateTimeUtils {
   }
 
   static String toDateTimeAPIString(DateTime dateTime,
-      {String format = AppConfigs.dateTimeAPIFormat}) {
+      {String format = flavor.dateTimeAPIFormat}) {
     try {
       return dateTime.toIso8601String();
     } catch (e) {
@@ -76,7 +76,7 @@ extension DateTimeExtension on DateTime {
     return null;
   }
 
-  String toDateString({String format = AppConfigs.dateDisplayFormat}) {
+  String toDateString({String format = flavor.dateDisplayFormat}) {
     try {
       return DateFormat(format).format(this);
     } catch (e) {
@@ -84,7 +84,7 @@ extension DateTimeExtension on DateTime {
     }
   }
 
-  String toDateTimeString({String format = AppConfigs.dateTimeDisplayFormat}) {
+  String toDateTimeString({String format = flavor.dateTimeDisplayFormat}) {
     try {
       return DateFormat(format).format(toLocal());
     } catch (e) {
@@ -92,7 +92,7 @@ extension DateTimeExtension on DateTime {
     }
   }
 
-  String toDateAPIString({String format = AppConfigs.dateAPIFormat}) {
+  String toDateAPIString({String format = flavor.dateAPIFormat}) {
     try {
       return DateFormat(format).format(this);
     } catch (e) {
@@ -100,7 +100,7 @@ extension DateTimeExtension on DateTime {
     }
   }
 
-  String toDateTimeAPIString({String format = AppConfigs.dateTimeAPIFormat}) {
+  String toDateTimeAPIString({String format = flavor.dateTimeAPIFormat}) {
     try {
       return toIso8601String();
     } catch (e) {

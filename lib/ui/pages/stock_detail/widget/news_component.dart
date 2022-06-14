@@ -99,7 +99,7 @@ class NewsComponent extends StatelessWidget {
                         const SizedBox(height: 8),
                         Text(
                           DateTimeUtils.toDateString(news.time,
-                              format: AppConfigs.dateTimeDisplayFormat),
+                              format: flavor.dateTimeDisplayFormat),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.caption?.copyWith(

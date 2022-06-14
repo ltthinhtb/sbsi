@@ -44,11 +44,11 @@ void main() async {
 Future initServices() async {
   /// Here is where you put get_storage, hive, shared_pref initialization.
   /// or moor connection, or whatever that's async.
+  await Get.putAsync(() => SettingService().init());
   await Get.putAsync(() => ApiService().init());
   await Get.putAsync(() => AuthService().init());
   await Get.putAsync(() => StoreService().init());
   await Get.putAsync(() => CacheService().init());
-  await Get.putAsync(() => SettingService().init());
   await Get.putAsync(() => NotificationService().init());
   FlutterNativeSplash.remove();
 }

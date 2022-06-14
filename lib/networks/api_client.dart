@@ -56,11 +56,12 @@ import '../model/response/stock_follow_branch_response.dart';
 import '../model/response/stock_report.dart';
 import '../model/response/totalAssets.dart';
 import '../model/response/transaction_new.dart';
+import '../services/index.dart';
 import '../ui/pages/sign_up/enum/enums.dart';
 import 'error_exception.dart';
 
 abstract class ApiClient {
-  factory ApiClient(Dio dio, {String? baseUrl}) = _ApiClient;
+  factory ApiClient(Dio dio) = _ApiClient;
 
   Future<TokenEntity> authLogin(RequestParams requestParams);
 
@@ -172,7 +173,6 @@ abstract class ApiClient {
 
   Future<List<RightHistory>> getListRightHistory(RequestParams requestParams);
 
-
   Future<List<CashCanAdv>> getListCashCanAdv(RequestParams requestParams);
 
   Future<FeeAdvanceWithdraw> getFeeAdvanceWithdraw(RequestParams requestParams);
@@ -196,13 +196,13 @@ abstract class ApiClient {
 }
 
 class _ApiClient implements ApiClient {
-  _ApiClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://vftrade.vn/';
-  }
+  _ApiClient(this._dio);
 
   final Dio _dio;
 
-  String? baseUrl;
+  Flavor get flavor {
+    return get_x.Get.find<SettingService>().flavor.value;
+  }
 
   Future<Response> _requestApi(Future<Response> request) async {
     try {
@@ -344,13 +344,13 @@ class _ApiClient implements ApiClient {
   Future<TokenEntity> authLogin(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
     var _mapData = _decodeMap(_result.data!);
     // var _result = await http.post(
-    //   Uri.parse(baseUrl! + AppConfigs.ENDPOINT_CORE),
+    //   Uri.parse(baseUrl! + flavor.baseUrl +flavor.ENDPOINT_CORE),
     //   body: requestParams.toJson(),
     // );
     // var res = jsonDecode(const Utf8Codec().decode(_result.bodyBytes));
@@ -361,8 +361,9 @@ class _ApiClient implements ApiClient {
   @override
   Future<AccountInfo> getAccountInfo(RequestParams requestParams) async {
     try {
-      Response _result = await _requestApi(
-          _dio.post(AppConfigs.ENDPOINT_CORE, data: requestParams.toJson()));
+      Response _result = await _requestApi(_dio.post(
+          flavor.baseUrl + flavor.ENDPOINT_CORE,
+          data: requestParams.toJson()));
       var _mapData = _decodeMap(_result.data!);
       final value = AccountInfo.fromJson(_mapData['data'][0]);
       return value;
@@ -374,8 +375,8 @@ class _ApiClient implements ApiClient {
   @override
   Future<void> changePassword(RequestParams requestParams) async {
     try {
-      await _requestApi(
-          _dio.post(AppConfigs.ENDPOINT_CORE, data: requestParams.toJson()));
+      await _requestApi(_dio.post(flavor.baseUrl + flavor.ENDPOINT_CORE,
+          data: requestParams.toJson()));
       return;
     } catch (e) {
       rethrow;
@@ -384,8 +385,9 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<AccountStatus> getAccountStatus(RequestParams requestParams) async {
-    Response _result = await _requestApi(
-        _dio.post(AppConfigs.ENDPOINT_CORE, data: requestParams.toJson()));
+    Response _result = await _requestApi(_dio.post(
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
+        data: requestParams.toJson()));
     var _mapData = _decodeMap(_result.data!);
     final value = AccountStatus.fromJson(_mapData);
     return value;
@@ -393,8 +395,9 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<AccountMStatus> getAccountMStatus(RequestParams requestParams) async {
-    Response _result = await _requestApi(
-        _dio.post(AppConfigs.ENDPOINT_CORE, data: requestParams.toJson()));
+    Response _result = await _requestApi(_dio.post(
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
+        data: requestParams.toJson()));
     var _mapData = _decodeMap(_result.data!);
     final value = AccountMStatus.fromJson(_mapData['data']);
     return value;
@@ -402,8 +405,9 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<List<Account>?> getListAccount(RequestParams requestParams) async {
-    Response _result = await _requestApi(
-        _dio.post(AppConfigs.ENDPOINT_CORE, data: requestParams.toJson()));
+    Response _result = await _requestApi(_dio.post(
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
+        data: requestParams.toJson()));
 
     var _mapData = _decodeMap(_result.data!);
     final value = ListAccountResponse.fromJson(_mapData);
@@ -412,8 +416,9 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<Portfolio> getPortfolio(RequestParams requestParams) async {
-    Response _result = await _requestApi(
-        _dio.post(AppConfigs.ENDPOINT_CORE, data: requestParams.toJson()));
+    Response _result = await _requestApi(_dio.post(
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
+        data: requestParams.toJson()));
     var _mapData = _decodeMap(_result.data!);
     final value = Portfolio.fromJson(_mapData);
     return value;
@@ -423,7 +428,7 @@ class _ApiClient implements ApiClient {
   Future<List<StockCompanyData>> getAllStockCompanyData() async {
     try {
       Response _result =
-          await _getApi(_dio.get(AppConfigs.URL_DATA_FEED + "getlistallstock"));
+          await _getApi(_dio.get(flavor.URL_DATA_FEED + "getlistallstock"));
       final value = _result.data
           .map<StockCompanyData>((e) => StockCompanyData.fromJson(e))
           .toList();
@@ -438,7 +443,7 @@ class _ApiClient implements ApiClient {
     try {
       Response _result = await _requestApi(
         _dio.post(
-          AppConfigs.ENDPOINT_CORE,
+          flavor.baseUrl + flavor.ENDPOINT_CORE,
           data: requestParams.toJson(),
         ),
       );
@@ -455,7 +460,7 @@ class _ApiClient implements ApiClient {
     try {
       Response _result = await _requestApi(
         _dio.post(
-          AppConfigs.ENDPOINT_CORE,
+          flavor.baseUrl + flavor.ENDPOINT_CORE,
           data: requestParams.toJson(),
         ),
       );
@@ -472,7 +477,7 @@ class _ApiClient implements ApiClient {
     try {
       Response _result = await _requestApi(
         _dio.post(
-          AppConfigs.ENDPOINT_CORE,
+          flavor.baseUrl + flavor.ENDPOINT_CORE,
           data: requestParams.toJson(),
         ),
       );
@@ -488,7 +493,8 @@ class _ApiClient implements ApiClient {
   Future newOrderRequest(RequestParams requestParams) async {
     try {
       var response = await _requestOrderApi(
-        _dio.post(AppConfigs.ENDPOINT_CORE, data: requestParams.toJson()),
+        _dio.post(flavor.baseUrl + flavor.ENDPOINT_CORE,
+            data: requestParams.toJson()),
       );
       return response.data;
     } catch (e) {
@@ -501,7 +507,7 @@ class _ApiClient implements ApiClient {
     try {
       await _requestOrderApi(
         _dio.post(
-          AppConfigs.ENDPOINT_CORE,
+          flavor.baseUrl + flavor.ENDPOINT_CORE,
           data: requestParams.toJson(),
         ),
       );
@@ -516,7 +522,7 @@ class _ApiClient implements ApiClient {
     try {
       await _requestOrderApi(
         _dio.post(
-          AppConfigs.ENDPOINT_CORE,
+          flavor.baseUrl + flavor.ENDPOINT_CORE,
           data: requestParams.toJson(),
         ),
       );
@@ -530,7 +536,7 @@ class _ApiClient implements ApiClient {
   Future<List<IndayOrder>> getIndayOrder(RequestParams requestParams) async {
     try {
       Response _result = await _requestApi(_dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ));
       List<dynamic> _listDataDynamic = _decodeMap(_result.data!)['data'];
@@ -546,7 +552,7 @@ class _ApiClient implements ApiClient {
   Future<List<StockData>> getStockData(String stockCode) async {
     try {
       Response _result = await _getApi(
-          _dio.get(AppConfigs.URL_DATA_FEED + "getliststockdata/$stockCode"));
+          _dio.get(flavor.URL_DATA_FEED + "getliststockdata/$stockCode"));
       List _mapData = _result.data;
       List<StockData> listStock = [];
       for (var element in _mapData) {
@@ -561,7 +567,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<List<IndexDetail>> getListIndexDetail(String listIndex) async {
     Response _result = await _getApi(
-        _dio.get(AppConfigs.URL_DATA_FEED + 'getlistindexdetail/' + listIndex));
+        _dio.get(flavor.URL_DATA_FEED + 'getlistindexdetail/' + listIndex));
     List _mapData = _result.data;
     List<IndexDetail> listStock = [];
     for (var element in _mapData) {
@@ -573,7 +579,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<String> getListStockCode(String market) async {
     Response _result = await _getApi(_dio.get(
-      AppConfigs.INFO_SBSI + 'list30.pt',
+      flavor.INFO_SBSI + 'list30.pt',
       queryParameters: {"market": market},
     ));
     var _mapData = _result.data;
@@ -583,7 +589,7 @@ class _ApiClient implements ApiClient {
   @override
   Future sendToken(Map<String, dynamic> json) async {
     Response _result = await _getApi(
-        _dio.post(AppConfigs.SIGN_UP_URL + 'monitor/deviceManage', data: json));
+        _dio.post(flavor.SIGN_UP_URL + 'monitor/deviceManage', data: json));
     var _mapData = _result.data;
     return _mapData;
   }
@@ -593,14 +599,13 @@ class _ApiClient implements ApiClient {
     try {
       var path = "";
       if (type == 0)
-        path =
-            "${AppConfigs.INFO_SBSI}topStockInterested?count=10&type=&catId=";
+        path = "${flavor.INFO_SBSI}topStockInterested?count=10&type=&catId=";
       else if (type == 1)
-        path = "${AppConfigs.INFO_SBSI}topStockChange?count=10&type=i&catId=";
+        path = "${flavor.INFO_SBSI}topStockChange?count=10&type=i&catId=";
       else if (type == 2)
-        path = "${AppConfigs.INFO_SBSI}topStockChange?count=10&type=d&catId=";
+        path = "${flavor.INFO_SBSI}topStockChange?count=10&type=d&catId=";
       else
-        path = "${AppConfigs.INFO_SBSI}topStockTrade?count=10&type=i&catId=";
+        path = "${flavor.INFO_SBSI}topStockTrade?count=10&type=i&catId=";
       Response _result = await _getApi(_dio.get(path));
       final value = StockResponse.fromJson(_result.data);
       return value.data ?? [];
@@ -612,15 +617,14 @@ class _ApiClient implements ApiClient {
   @override
   Future<ListStockTrade> getListStockTrade(String stock, String type) async {
     Response _result = await _getApi(
-        _dio.get(AppConfigs.INFO_SBSI + type, queryParameters: {"sc": stock}));
+        _dio.get(flavor.INFO_SBSI + type, queryParameters: {"sc": stock}));
     var data = ListStockTrade.fromJson(_result.data);
     return data;
   }
 
   @override
   Future<List<NewsStock>> getListStockNews(String stock) async {
-    Response _result = await _getApi(_dio.get(
-        AppConfigs.INFO_SBSI + 'stockNews.pt',
+    Response _result = await _getApi(_dio.get(flavor.INFO_SBSI + 'stockNews.pt',
         queryParameters: {"symbol": stock}));
     List _mapData = _result.data;
     List<NewsStock> listStock = [];
@@ -632,9 +636,8 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<NewsDetail> getNewsDetail(int ID) async {
-    Response _result = await _getApi(_dio.get(
-        AppConfigs.INFO_SBSI + "newsDetail.pt",
-        queryParameters: {"id": ID}));
+    Response _result = await _getApi(_dio
+        .get(flavor.INFO_SBSI + "newsDetail.pt", queryParameters: {"id": ID}));
     var data = NewsDetail.fromJson(_result.data);
     return data;
   }
@@ -642,14 +645,14 @@ class _ApiClient implements ApiClient {
   @override
   Future<BranchResponse> getStockBranch() async {
     Response _result =
-        await _getApi(_dio.get(AppConfigs.INFO_SBSI + "listIndustry"));
+        await _getApi(_dio.get(flavor.INFO_SBSI + "listIndustry"));
     return BranchResponse.fromJson(_result.data);
   }
 
   @override
   Future<List<StockBranch>> getDetailStockBranch() async {
     Response _result = await _getApi(
-        _dio.get(AppConfigs.INFO_SBSI + "listIndustryHeatMap?top=10"));
+        _dio.get(flavor.INFO_SBSI + "listIndustryHeatMap?top=10"));
     if (_result.data is String)
       return StockBranchResponse.fromJson(json.decode(_result.data)).stockData;
     else
@@ -658,7 +661,7 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<List<MarketDepth>> getMarketDepth() async {
-    String path = AppConfigs.INFO_SBSI + 'marketDepth';
+    String path = flavor.INFO_SBSI + 'marketDepth';
     Response _result = await _getApi(_dio.get(path));
     List<MarketDepth> value =
         _result.data.map<MarketDepth>((e) => MarketDepth.fromJson(e)).toList();
@@ -668,7 +671,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<IndexChartResponse> getChartIndex(String indexCode) async {
     Response _result = await _getApi(
-        _dio.get(AppConfigs.URL_DATA_FEED + 'getchartindexdata/' + indexCode));
+        _dio.get(flavor.URL_DATA_FEED + 'getchartindexdata/' + indexCode));
     return IndexChartResponse.fromJson(_result.data);
   }
 
@@ -676,7 +679,7 @@ class _ApiClient implements ApiClient {
   Future<CashAccount> getCashAccount(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -688,7 +691,7 @@ class _ApiClient implements ApiClient {
   Future<List<Bank>> getLisBank(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -705,7 +708,7 @@ class _ApiClient implements ApiClient {
       RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -721,7 +724,7 @@ class _ApiClient implements ApiClient {
   Future updateCashTransferOnline(RequestParams requestParams) async {
     await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -731,7 +734,7 @@ class _ApiClient implements ApiClient {
   Future checkPin(RequestParams requestParams) async {
     await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -742,7 +745,7 @@ class _ApiClient implements ApiClient {
       RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -757,7 +760,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<List<EconomyRow>> getListEconomyRow(
       String stock, String timeLine) async {
-    String path = AppConfigs.INFO_SBSI + 'ptkt';
+    String path = flavor.INFO_SBSI + 'ptkt';
     Response _result = await _getApi(_dio.get(path,
         queryParameters: {"symbol": stock, "period": "1${timeLine}"}));
     List _mapData = json.decode(_result.data);
@@ -771,7 +774,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<ReportStockResponse> getStockReport(
       String stock, String ternType) async {
-    String path = AppConfigs.INFO_SBSI + 'stockReport.pt';
+    String path = flavor.INFO_SBSI + 'stockReport.pt';
     Response _result = await _getApi(_dio.get(path, queryParameters: {
       "symbol": stock,
       "termtype": "${ternType}",
@@ -787,7 +790,7 @@ class _ApiClient implements ApiClient {
   Future<List<OrderHistory>> getListOrder(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -804,7 +807,7 @@ class _ApiClient implements ApiClient {
       RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -817,7 +820,7 @@ class _ApiClient implements ApiClient {
       RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -834,7 +837,7 @@ class _ApiClient implements ApiClient {
   Future<TotalAssets> getTotalAssets(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -845,7 +848,7 @@ class _ApiClient implements ApiClient {
   Future<List<Bank>> getLisBankSignUp(RequestParams requestParams) async {
     Response _result = await _requestSignApi(
       _dio.post(
-        AppConfigs.SIGN_UP_URL + "core",
+        flavor.SIGN_UP_URL + "core",
         data: requestParams.toJson(),
       ),
     );
@@ -872,7 +875,7 @@ class _ApiClient implements ApiClient {
   Future<String> getSaleID(RequestParams requestParams) async {
     Response _result = await _requestSignApi(
       _dio.post(
-        AppConfigs.SIGN_UP_URL + "core",
+        flavor.SIGN_UP_URL + "core",
         data: requestParams.toJson(),
       ),
     );
@@ -884,7 +887,7 @@ class _ApiClient implements ApiClient {
   Future checkAccount(RequestParams requestParams) async {
     Response _result = await _requestSignApi(
       _dio.post(
-        AppConfigs.SIGN_UP_URL + "core",
+        flavor.SIGN_UP_URL + "core",
         data: requestParams.toJson(),
       ),
     );
@@ -904,7 +907,7 @@ class _ApiClient implements ApiClient {
       ]);
     }
     Response _result =
-        await _dio.post(AppConfigs.SIGN_UP_URL + '/uploadFile', data: formData);
+        await _dio.post(flavor.SIGN_UP_URL + '/uploadFile', data: formData);
     return _result.data['data'];
   }
 
@@ -912,7 +915,7 @@ class _ApiClient implements ApiClient {
   Future<ShareTransfer> getShareTransfer(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -924,7 +927,7 @@ class _ApiClient implements ApiClient {
   Future updateShareTransferIn(RequestParams requestParams) async {
     await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -935,7 +938,7 @@ class _ApiClient implements ApiClient {
       RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -951,7 +954,7 @@ class _ApiClient implements ApiClient {
   Future<List<RightExc>> getListRightExc(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -968,7 +971,7 @@ class _ApiClient implements ApiClient {
       RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -985,7 +988,7 @@ class _ApiClient implements ApiClient {
       RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -1002,7 +1005,7 @@ class _ApiClient implements ApiClient {
       RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -1018,7 +1021,7 @@ class _ApiClient implements ApiClient {
   Future<GetAccountInfo> loadAccountInfo(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -1033,7 +1036,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<List<ForeignTrade>> getTopForeignTrade(
       String count, String type) async {
-    String path = AppConfigs.INFO_SBSI + 'topForeignTrade';
+    String path = flavor.INFO_SBSI + 'topForeignTrade';
     Response _result = await _getApi(
         _dio.get(path, queryParameters: {"count": count, "type": type}));
     var _mapData = (_result.data);
@@ -1047,7 +1050,7 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<List<AppBanner>> loadBanner() async {
-    String path = AppConfigs.SIGN_UP_URL + 'banners';
+    String path = flavor.SIGN_UP_URL + 'banners';
     Response _result = await _getApi(_dio.post(path));
     var _mapData = _result.data;
     var listMap = _mapData;
@@ -1060,7 +1063,7 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<List<AppNotification>> loadListNotificationAll() async {
-    String path = AppConfigs.SIGN_UP_URL + 'monitor/notification';
+    String path = flavor.SIGN_UP_URL + 'monitor/notification';
     Response _result = await _getApi(_dio.post(path));
     var _mapData = _result.data;
     var listMap = _mapData;
@@ -1075,7 +1078,7 @@ class _ApiClient implements ApiClient {
   Future<List<DebtAcc>> getDebtForWeb(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -1091,7 +1094,7 @@ class _ApiClient implements ApiClient {
   Future<List<BankAcc>> getLisBankAcc() async {
     Response _result = await _getApi(
       _dio.post(
-        AppConfigs.SIGN_UP_URL + "banksAccount",
+        flavor.SIGN_UP_URL + "banksAccount",
       ),
     );
     List _mapData = _result.data;
@@ -1106,7 +1109,7 @@ class _ApiClient implements ApiClient {
   @override
   Future forgotPass(ForgotPassRequest request) async {
     await _requestApi(
-      _dio.post(AppConfigs.baseUrl + "ForgetPass",
+      _dio.post("ForgetPass",
           options: Options(
               headers: {"Content-Type": "application/x-www-form-urlencoded"}),
           data: request.toJson()),
@@ -1117,7 +1120,7 @@ class _ApiClient implements ApiClient {
   Future<num> getFeeOnline(RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
@@ -1130,7 +1133,7 @@ class _ApiClient implements ApiClient {
   Future<List<Notify>> getListNotify(NotifyRequest request) async {
     Response _result = await _getApi(
       _dio.post(
-        AppConfigs.NOTIFICATION + request.path!,
+        flavor.NOTIFICATION + request.path!,
         data: request.toJson(),
       ),
     );
@@ -1147,17 +1150,18 @@ class _ApiClient implements ApiClient {
   Future<void> makerRead(NotifyRequest request) async {
     await _getApi(
       _dio.post(
-        AppConfigs.NOTIFICATION + request.path!,
+        flavor.NOTIFICATION + request.path!,
         data: request.toJson(),
       ),
     );
   }
 
   @override
-  Future<List<RightHistory>> getListRightHistory(RequestParams requestParams) async {
+  Future<List<RightHistory>> getListRightHistory(
+      RequestParams requestParams) async {
     Response _result = await _requestApi(
       _dio.post(
-        AppConfigs.ENDPOINT_CORE,
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
       ),
     );
