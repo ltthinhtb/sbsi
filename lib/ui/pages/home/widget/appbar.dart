@@ -11,7 +11,6 @@ import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../router/route_config.dart';
-import '../../../../utils/logger.dart';
 import '../../main/main_logic.dart';
 
 class AppBarHome extends StatelessWidget {
@@ -130,7 +129,6 @@ class AppBarHome extends StatelessWidget {
                           Obx(() {
                             var accountStatus =
                                 Get.find<WalletLogic>().state.totalAssets.value;
-                            logger.d(accountStatus.toJson());
                             return Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [

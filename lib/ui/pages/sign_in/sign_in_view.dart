@@ -31,8 +31,6 @@ class _SignInPageState extends State<SignInPage> with Validator {
   @override
   Widget build(BuildContext context) {
     final headline6 = Theme.of(context).textTheme.headline6;
-    final body1 =
-        Theme.of(context).textTheme.bodyText1?.copyWith(color: AppColors.white);
 
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -163,11 +161,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
                                 ),
                               )))),
                   const SizedBox(height: 24),
-                  ButtonText(
-                    voidCallback: () {},
-                    title: S.of(context).policy_use,
-                    textStyle: body1,
-                  ),
+
                   const SizedBox(height: 48),
                 ],
               ),

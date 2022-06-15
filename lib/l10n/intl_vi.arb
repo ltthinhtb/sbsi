@@ -381,5 +381,7 @@
   "right_exc_register" : "Đăng ký quyền mua",
   "amount" : "Số lượng",
   "delete_category"  : "Xóa danh mục",
-  "day_error" : "Ngày không hợp lệ"
+  "day_error" : "Ngày không hợp lệ",
+  "reset_pass_success" : "Mật khẩu đã được gửi về tin nhắn"
+
 }

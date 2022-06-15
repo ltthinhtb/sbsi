@@ -417,6 +417,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "remember_account":
             MessageLookupByLibrary.simpleMessage("Ghi nhớ tài khoản"),
         "resent": MessageLookupByLibrary.simpleMessage("Gửi lại mã"),
+        "reset_pass_success": MessageLookupByLibrary.simpleMessage(
+            "Mật khẩu đã được gửi về tin nhắn"),
         "right_date": MessageLookupByLibrary.simpleMessage("Ngày chốt quyền"),
         "right_exc_register":
             MessageLookupByLibrary.simpleMessage("Đăng ký quyền mua"),

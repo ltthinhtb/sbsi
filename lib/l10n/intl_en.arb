@@ -381,8 +381,6 @@
   "right_exc_register" : "Right exc register",
   "amount" : "Amount",
   "delete_category"  : "Delete category",
-  "day_error" : "Day not valid"
-
-
-
+  "day_error" : "Day not valid",
+  "reset_pass_success" : "reset_pass_success"
 }

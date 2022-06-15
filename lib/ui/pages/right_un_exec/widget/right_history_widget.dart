@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:sbsi/model/entities/right_history.dart';
 
 import '../../../../common/app_colors.dart';
@@ -26,6 +27,7 @@ class _RightHistoryWidgetState extends State<RightHistoryWidget> {
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption;
     final body2 = Theme.of(context).textTheme.bodyText2;
+    Logger().d(widget.history.toJson());
     return Column(
       children: [
         GestureDetector(

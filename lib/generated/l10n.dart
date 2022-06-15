@@ -3879,6 +3879,16 @@ class S {
       args: [],
     );
   }
+
+  /// `reset_pass_success`
+  String get reset_pass_success {
+    return Intl.message(
+      'reset_pass_success',
+      name: 'reset_pass_success',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

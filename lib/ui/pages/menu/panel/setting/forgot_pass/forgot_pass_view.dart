@@ -37,6 +37,8 @@ class _ForgotPassPageState extends State<ForgotPassPage> with Validator {
               key: state.formAccount,
               child: AppTextFieldWidget(
                 maxLength: 6,
+                label: S.of(context).user_name,
+                isShowLabel: false,
                 hintText: S.of(context).user_name,
                 inputController: state.accountController,
                 focusNode: state.focusNodeAccount,
@@ -56,6 +58,8 @@ class _ForgotPassPageState extends State<ForgotPassPage> with Validator {
               key: state.formIdentity,
               child: AppTextFieldWidget(
                 hintText: S.of(context).identity_card,
+                label: S.of(context).identity_card,
+                isShowLabel: false,
                 inputController: state.identityController,
                 focusNode: state.focusNodeIdentity,
                 validator: (identity) {
@@ -74,6 +78,8 @@ class _ForgotPassPageState extends State<ForgotPassPage> with Validator {
               child: AppTextFieldWidget(
                 hintText: S.of(context).phone,
                 inputController: state.phoneNumberController,
+                label: S.of(context).phone,
+                isShowLabel: false,
                 focusNode: state.focusNodePhone,
                 textInputType: TextInputType.number,
                 validator: (phone) {
@@ -89,7 +95,6 @@ class _ForgotPassPageState extends State<ForgotPassPage> with Validator {
               width: MediaQuery.of(context).size.width,
               child: ButtonFill(
                   voidCallback: () {
-
                     if (!state.formAccount.currentState!.validate()) {
                       return;
                     }
@@ -99,8 +104,7 @@ class _ForgotPassPageState extends State<ForgotPassPage> with Validator {
                     if (!state.formPhone.currentState!.validate()) {
                       return;
                     }
-                    print('ádsa');
-                    logic.forgotPass();
+                    logic.forgotPass(context);
                   },
                   title: S.of(context).confirm),
             ),

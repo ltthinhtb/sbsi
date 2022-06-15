@@ -152,17 +152,22 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Giá mua", style: body2),
-                    Text(
-                      MoneyFormat.formatMoneyRound('${widget.right.cBUYPRICE}'),
-                      style: body2?.copyWith(fontWeight: FontWeight.w700),
-                    )
-                  ],
+                Visibility(
+                  visible: !widget.isMoney!,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Giá mua", style: body2),
+                        Text(
+                          MoneyFormat.formatMoneyRound('${widget.right.cBUYPRICE}'),
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -210,35 +215,45 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Tổng giá trị thực hiện quyền", style: body2),
-                    Text(
-                      MoneyFormat.formatMoneyRound(
-                          '${widget.right.cCASHBUYALL}'),
-                      style: body2?.copyWith(fontWeight: FontWeight.w700),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Giá trị thực hiện quyền', style: body2),
-                    ValueListenableBuilder<num>(
-                      valueListenable: amount,
-                      builder: (context, value, child) {
-                        return Text(
+                Visibility(
+                  visible: !widget.isMoney!,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Tổng giá trị thực hiện quyền", style: body2),
+                        Text(
                           MoneyFormat.formatMoneyRound(
-                              value.toStringAsFixed(0)),
+                              '${widget.right.cCASHBUYALL}'),
                           style: body2?.copyWith(fontWeight: FontWeight.w700),
-                        );
-                      },
+                        )
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-                const SizedBox(height: 12),
+                Visibility(
+                  visible: !widget.isMoney!,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Giá trị thực hiện quyền', style: body2),
+                        ValueListenableBuilder<num>(
+                          valueListenable: amount,
+                          builder: (context, value, child) {
+                            return Text(
+                              MoneyFormat.formatMoneyRound(
+                                  value.toStringAsFixed(0)),
+                              style: body2?.copyWith(fontWeight: FontWeight.w700),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Visibility(
                   visible: widget.right.showAction,
                   child: SizedBox(

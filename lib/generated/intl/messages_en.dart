@@ -399,6 +399,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "remember_account":
             MessageLookupByLibrary.simpleMessage("Remember account"),
         "resent": MessageLookupByLibrary.simpleMessage("Resent OTP"),
+        "reset_pass_success":
+            MessageLookupByLibrary.simpleMessage("reset_pass_success"),
         "right_date": MessageLookupByLibrary.simpleMessage("Right date"),
         "right_exc_register":
             MessageLookupByLibrary.simpleMessage("Right exc register"),

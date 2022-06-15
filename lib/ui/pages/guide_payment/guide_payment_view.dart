@@ -11,6 +11,7 @@ import 'package:sbsi/ui/commons/appbar.dart';
 import '../../../common/app_colors.dart';
 import '../../../generated/l10n.dart';
 import '../../../utils/money_utils.dart';
+import '../../../utils/utils.dart';
 import '../wallet/wallet_logic.dart';
 import 'guide_payment_logic.dart';
 
@@ -110,7 +111,7 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                     ),
                     const SizedBox(height: 7),
                     Text(
-                      'CTCP Chung khoan SBSI',
+                      'CONG TY CO PHAN CHUNG KHOAN STANLEY BROTHERS',
                       style: body2?.copyWith(fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(height: 4),
@@ -235,7 +236,8 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              "${S.of(context).payment_on_account} 088C${account?.data?.user ?? ""}",
+                              Utils.convertVNtoText(
+                                  "${S.of(context).payment_on_account} 088C${account?.data?.user ?? ""}"),
                               style: caption?.copyWith(
                                   color: AppColors.textSecond),
                             )
@@ -245,8 +247,8 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                       GestureDetector(
                         onTap: () {
                           Clipboard.setData(ClipboardData(
-                                  text:
-                                      "${S.of(context).payment_on_account} 088C${account?.data?.user ?? ""}"))
+                                  text: Utils.convertVNtoText(
+                                      "${S.of(context).payment_on_account} 088C${account?.data?.user ?? ""}")))
                               .then((value) {
                             Fluttertoast.showToast(
                                 msg:
