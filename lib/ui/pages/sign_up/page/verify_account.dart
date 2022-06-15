@@ -408,16 +408,18 @@ class _VerifyAccountState extends State<VerifyAccount> {
       state.orcResponse =
           OrcResponse.fromJson(jsonDecode(mapData['jsonInfo'])['object']);
 
-      COMPARE_RESULT compare_result =
-          COMPARE_RESULT.fromJson(jsonDecode(mapData['jsonCompareFace']));
 
-      /// lỗi khuôn mặt k đúng
-      if (compare_result.object?.msg == "NOMATCH" ||
-          compare_result.object?.msg == "NOTHING" ||
-          compare_result.statusCode == 400) {
-        state.orcResponse = null;
-        throw ErrorException(400, compare_result.object?.result ?? "");
-      }
+        COMPARE_RESULT compare_result =
+        COMPARE_RESULT.fromJson(jsonDecode(mapData['jsonCompareFace']));
+
+        /// lỗi khuôn mặt k đúng
+        if (compare_result.object?.msg == "NOMATCH" ||
+            compare_result.object?.msg == "NOTHING" ||
+            compare_result.statusCode == 400) {
+          state.orcResponse = null;
+          throw ErrorException(400, compare_result.object?.result ?? "");
+        }
+
 
       await logic.checkIdentity();
       await logic.uploadUrlImage(

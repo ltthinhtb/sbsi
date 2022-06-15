@@ -19,11 +19,11 @@ class Validator {
   String? checkPass(String value) {
     if (value.trim().isEmpty) {
       return S.current.please_input_password;
-    } else if (!hasMinNumericChar(value, 1)) {
+    } else if (!hasMinNumericChar(value, 0)) {
       return "Phải có ít nhất một ký tự số";
-    } else if (!hasMinNormalChar(value, 1)) {
+    } else if (!hasMinNormalChar(value, 0)) {
       return "Phải có ít nhất một ký tự chữ";
-    } else if (value.trim().length < 8) {
+    } else if (value.trim().length < 6) {
       return S.current.pass_short_valid;
     } else {
       return null;
