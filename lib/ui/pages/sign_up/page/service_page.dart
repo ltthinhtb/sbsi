@@ -147,7 +147,7 @@ class _ServicePageState extends State<ServicePage> with Validator {
                       child: Form(
                         key: state.formKeyPassPin,
                         child: AppTextFieldWidget(
-                          validator: (pass) => checkPass(pass!),
+                          validator: (pass) => checkNewPass(pass!),
                           inputController: state.passPinController,
                           hintText: "Đăng ký mật khẩu giao dịch qua điện thoại",
                           onChanged: (pass) {
@@ -207,7 +207,7 @@ class _ServicePageState extends State<ServicePage> with Validator {
                       children: [
                         Text(
                           'Loại tài khoản',
-                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                          style: body1?.copyWith(fontWeight: FontWeight.w700),
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -297,6 +297,7 @@ class _ServicePageState extends State<ServicePage> with Validator {
                             suggestionsCallback: (String bank) {
                               return logic.searchBank(bank);
                             },
+                            label: S.of(context).bank,
                             onSuggestionSelected: (suggestion) {
                               // chọn ngân hàng
                               state.bankController.text =
@@ -315,6 +316,8 @@ class _ServicePageState extends State<ServicePage> with Validator {
                             hintText: S.of(context).bank_account,
                             inputController: state.bankAccountController,
                             textInputType: TextInputType.number,
+                            label: S.of(context).bank_account,
+                            isShowLabel: false,
                             onChanged: (account) {
                               state.formKeyBankAccount.currentState?.validate();
                             },
@@ -327,6 +330,8 @@ class _ServicePageState extends State<ServicePage> with Validator {
                         AppTextFieldWidget(
                           inputController: state.bankBranhController,
                           hintText: S.of(context).branch,
+                          label: S.of(context).branch,
+                          isShowLabel: false,
                         ),
                       ],
                     ),

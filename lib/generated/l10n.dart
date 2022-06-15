@@ -3420,13 +3420,13 @@ class S {
     );
   }
 
-  /// `Password short`
-  String get pass_short_valid {
+  /// `Minimum {count} in length`
+  String pass_short_valid(Object count) {
     return Intl.message(
-      'Password short',
+      'Minimum $count in length',
       name: 'pass_short_valid',
       desc: '',
-      args: [],
+      args: [count],
     );
   }
 

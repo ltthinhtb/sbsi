@@ -336,7 +336,7 @@
   "sell_day" : "Ngày bán",
   "action" : "Thực hiện",
   "advance_amount" : "Số tiền ứng",
-  "pass_short_valid" : "Mật khẩu phải lớn hơn 8 ký tự",
+  "pass_short_valid" : "Mật khẩu phải lớn hơn {count} ký tự",
   "please_input_account" : "Vui lòng nhập số tài khoản",
   "cash" : "Tiền mặt",
   "withdraw_money" : "Tiền được rút",

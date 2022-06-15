@@ -127,7 +127,7 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                   isShowLabel: false,
                   obscureText: true,
                   focusNode: state.focusNodePass,
-                  validator: (pass) => checkPass(pass!),
+                  validator: (pass) => checkNewPass(pass!),
                   onChanged: (pass) {
                     state.formKeyPass.currentState?.validate();
                   },

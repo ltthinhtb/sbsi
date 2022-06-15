@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'vi';
 
+  static String m0(count) => "Mật khẩu phải lớn hơn ${count} ký tự";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Financial_details":
@@ -339,8 +341,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "partial_matched": MessageLookupByLibrary.simpleMessage("Khớp 1 phần"),
         "pass_not_match":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp"),
-        "pass_short_valid": MessageLookupByLibrary.simpleMessage(
-            "Mật khẩu phải lớn hơn 8 ký tự"),
+        "pass_short_valid": m0,
         "passport": MessageLookupByLibrary.simpleMessage("Hộ chiếu Việt Nam"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "pay": MessageLookupByLibrary.simpleMessage("Thanh toán"),

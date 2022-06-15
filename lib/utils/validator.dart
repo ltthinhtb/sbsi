@@ -24,7 +24,22 @@ class Validator {
     } else if (!hasMinNormalChar(value, 0)) {
       return "Phải có ít nhất một ký tự chữ";
     } else if (value.trim().length < 6) {
-      return S.current.pass_short_valid;
+      return S.current.pass_short_valid(6);
+    } else {
+      return null;
+    }
+  }
+
+
+  String? checkNewPass(String value) {
+    if (value.trim().isEmpty) {
+      return S.current.please_input_password;
+    } else if (!hasMinNumericChar(value, 1)) {
+      return "Phải có ít nhất một ký tự số";
+    } else if (!hasMinNormalChar(value, 1)) {
+      return "Phải có ít nhất một ký tự chữ";
+    } else if (value.trim().length < 8) {
+      return S.current.pass_short_valid(8);
     } else {
       return null;
     }

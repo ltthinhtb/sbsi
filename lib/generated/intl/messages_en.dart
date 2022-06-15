@@ -20,6 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(count) => "Minimum ${count} in length";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Financial_details":
@@ -327,8 +329,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Partial matched"),
         "pass_not_match":
             MessageLookupByLibrary.simpleMessage("Password not match"),
-        "pass_short_valid":
-            MessageLookupByLibrary.simpleMessage("Password short"),
+        "pass_short_valid": m0,
         "passport": MessageLookupByLibrary.simpleMessage("Passport"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),

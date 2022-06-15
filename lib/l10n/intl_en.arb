@@ -336,7 +336,7 @@
   "sell_day": "Sell day",
   "action": "Action",
   "advance_amount": "Advance amount",
-  "pass_short_valid": "Password short",
+  "pass_short_valid": "Minimum {count} in length",
   "please_input_account": "Please input account",
   "cash": "Cash",
   "withdraw_money": "Withdraw money",
