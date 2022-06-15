@@ -32,7 +32,7 @@ class SignUpLogic extends GetxController {
 
   Future<void> getListBank() async {
     final RequestParams _requestParams =
-    RequestParams(user: "back", cmd: "LIST_BANK", session: "", param: {});
+        RequestParams(user: "back", cmd: "LIST_BANK", session: "", param: {});
     try {
       state.listBank = await apiService.getListBankSignUp(_requestParams);
     } on ErrorException catch (e) {
@@ -43,11 +43,10 @@ class SignUpLogic extends GetxController {
   List<Bank> searchBank(String stockCode) {
     List<Bank> searchResult = state.listBank
         .where(
-          (element) =>
-          element.cBANKCODE!.toLowerCase().startsWith(
-            stockCode.toLowerCase(),
-          ),
-    )
+          (element) => element.cBANKCODE!.toLowerCase().startsWith(
+                stockCode.toLowerCase(),
+              ),
+        )
         .toList();
     return searchResult;
   }
@@ -97,25 +96,24 @@ class SignUpLogic extends GetxController {
 
   // check cmt cmnd
   Future<void> checkIdentity() async {
-    final RequestParams _requestParams = RequestParams(
-        user: "back",
-        cmd: "CHECK_CARDID",
-        param: {
-          "C_CARD_ID": state.orcResponse?.id ?? "",
-          "C_ISSUE_DATE": state.orcResponse?.issueDate ?? "",
-        });
+    final RequestParams _requestParams =
+        RequestParams(user: "back", cmd: "CHECK_CARDID", param: {
+      "C_CARD_ID": state.orcResponse?.id ?? "",
+      "C_ISSUE_DATE": state.orcResponse?.issueDate ?? "",
+    });
     try {
       await apiService.checkAccount(_requestParams);
     } on ErrorException catch (e) {
       logger.e(e.toString());
-      rethrow ;
+      rethrow;
     }
   }
 
   /// upload IdentityCard
-  Future<void> uploadUrlImage({required List<int> frontIDByte,
-    required List<int> backIDByte,
-    required List<int> faceByte}) async {
+  Future<void> uploadUrlImage(
+      {required List<int> frontIDByte,
+      required List<int> backIDByte,
+      required List<int> faceByte}) async {
     try {
       /// upload ảnh mặt trước và ảnh mặt sau
       var listResponse = await apiService.uploadMultipleFile([
@@ -128,6 +126,8 @@ class SignUpLogic extends GetxController {
       state.cardFrontUrl = listResponse[EKYC_image.frontCard.value];
       state.cardBackUrl = listResponse[EKYC_image.backCard.value];
       state.faceUrl = listResponse[EKYC_image.face1.value];
+    } on ErrorException {
+      rethrow;
     } catch (e) {
       logger.e(e.toString());
     } finally {
@@ -166,17 +166,17 @@ class SignUpLogic extends GetxController {
           cISSUEDATE: state.orcResponse?.issueDate ?? "",
           cISSUEEXPIRE: state.orcResponse?.validDate ?? "",
           cADDRESS:
-          state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
+              state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
           cANHCHANDUNG: state.faceUrl,
           cANHCHUKY: state.signatureUrl,
           cANHMATSAU: state.cardBackUrl,
           cANHMATTRUOC: state.cardFrontUrl,
           cBANKCODE: state.bankController.text,
           cCONTACTADDRESS:
-          state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
+              state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
           cEMAIL: state.emailController.text,
           cGENDER:
-          state.orcResponse?.gender == GenderType.male.vnText ? "M" : "F",
+              state.orcResponse?.gender == GenderType.male.vnText ? "M" : "F",
           cISSUEPLACE: state.orcResponse?.issuePlace ?? "",
           cMOBILE: state.phoneController.text,
           cMOBILETRADINGPASSWORD: state.passPinController.text,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'page/referral_page.dart';
-import 'page/service_page.dart';
 import 'sign_up_logic.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -18,7 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const ServicePage();
+    return const ReferralPage();
   }
 
   @override

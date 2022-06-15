@@ -9,7 +9,8 @@
         android:name="android.hardware.nfc"
         android:requestLegacyExternalStorage="true"
         android:required="false"
-        tools:targetApi="eclair" />
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m" />
     <application
         tools:replace="android:label"
         android:icon="@mipmap/launcher_icon"
