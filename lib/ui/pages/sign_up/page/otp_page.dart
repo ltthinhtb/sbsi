@@ -72,7 +72,7 @@ class _OtpValidateState extends State<OtpValidate> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Mã OTP đã được gửi qua số điện thoại ${state.phoneController.text.replaceRange(0, 7, "*** *** ")}',
+                'Mã OTP đã được gửi qua số điện thoại ${state.phoneController.text.replaceRange(0, 7, "**** *** ")}',
                 style: headline6?.copyWith(
                     fontSize: 16,
                     height: 24 / 16,
@@ -115,9 +115,11 @@ class _OtpValidateState extends State<OtpValidate> {
                   child: ValueListenableBuilder<bool>(
                     builder: (context, value, child) {
                       return ButtonFill(
-                          voidCallback: value ? () {
-                            Get.to(const VerifyAccount());
-                          } : null,
+                          voidCallback: value
+                              ? () {
+                                  Get.to(const VerifyAccount());
+                                }
+                              : null,
                           title: S.of(context).continue_step);
                     },
                     valueListenable: check,

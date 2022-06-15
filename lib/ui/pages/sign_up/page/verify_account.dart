@@ -418,16 +418,23 @@ class _VerifyAccountState extends State<VerifyAccount> {
         state.orcResponse = null;
         throw ErrorException(400, compare_result.object?.result ?? "");
       }
+
+      await logic.checkIdentity();
       await logic.uploadUrlImage(
           frontIDByte: frontImage.value.toList(),
           backIDByte: backImage.value.toList(),
           faceByte: faceImage.value.toList());
     } on PlatformException catch (e) {
+      state.orcResponse == null;
       Logger().e(e.toString());
     } on ErrorException catch (error) {
+      state.orcResponse = null;
       AppDiaLog.showNoticeDialog(
           middleText: error.message, buttonText: "Thử lại");
     } catch (e) {
+      Logger().e(e.runtimeType);
+      Logger().e(e.toString());
+      state.orcResponse = null;
       AppDiaLog.showNoticeDialog(
           middleText: "Lỗi xác thực khuôn mặt", buttonText: "Thử lại");
     } finally {

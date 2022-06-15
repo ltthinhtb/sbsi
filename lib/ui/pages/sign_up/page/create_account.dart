@@ -78,6 +78,8 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                   inputController: state.phoneController,
                   hintText: S.of(context).phone,
                   focusNode: state.focusNodePhone,
+                  label: S.of(context).phone,
+                  isShowLabel: false,
                   validator: (phone) => checkPhoneNumber(phone!),
                   onChanged: (phone) {
                     state.formKeyPhone.currentState?.validate();
@@ -98,6 +100,8 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                 child: AppTextFieldWidget(
                   inputController: state.emailController,
                   hintText: S.of(context).email,
+                  label: S.of(context).email,
+                  isShowLabel: false,
                   focusNode: state.focusNodeEmail,
                   validator: (email) => checkEmail(email!),
                   onChanged: (email) {
@@ -119,6 +123,8 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                 child: AppTextFieldWidget(
                   inputController: state.passController,
                   hintText: S.of(context).password,
+                  label: S.of(context).password,
+                  isShowLabel: false,
                   obscureText: true,
                   focusNode: state.focusNodePass,
                   validator: (pass) => checkPass(pass!),
@@ -142,6 +148,8 @@ class _CreateAccountState extends State<CreateAccount> with Validator {
                 child: AppTextFieldWidget(
                   inputController: state.rePassController,
                   hintText: S.of(context).confirm_new_password,
+                  label: S.of(context).confirm_new_password,
+                  isShowLabel: false,
                   obscureText: true,
                   focusNode: state.focusNodeRePass,
                   onChanged: (rePass) {

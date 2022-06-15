@@ -19,9 +19,13 @@ class Validator {
   String? checkPass(String value) {
     if (value.trim().isEmpty) {
       return S.current.please_input_password;
-    } else if(value.trim().length < 6){
+    } else if (!hasMinNumericChar(value, 1)) {
+      return "Phải có ít nhất một ký tự số";
+    } else if (!hasMinNormalChar(value, 1)) {
+      return "Phải có ít nhất một ký tự chữ";
+    } else if (value.trim().length < 8) {
       return S.current.pass_short_valid;
-    }else {
+    } else {
       return null;
     }
   }
@@ -92,11 +96,11 @@ class Validator {
     }
   }
 
-  String? checkMoney(String? money,int maxMoney) {
+  String? checkMoney(String? money, int maxMoney) {
     if (money == null || money.isEmpty) return S.current.please_input_money;
     var value = double.parse(money);
     if (value <= 0) return S.current.money_valid;
-    if(value > maxMoney ) return S.current.not_enough_transfer;
+    if (value > maxMoney) return S.current.not_enough_transfer;
     return null;
   }
 
@@ -124,5 +128,17 @@ class Validator {
     } else {
       return null;
     }
+  }
+
+  // check nếu có ít nhất n số
+  bool hasMinNumericChar(String password, int numericCount) {
+    String pattern = '^(.*?[0-9]){' + numericCount.toString() + ',}';
+    return password.contains(new RegExp(pattern));
+  }
+
+  // check nếu có ít nhất n ký tự
+  bool hasMinNormalChar(String password, int normalCount) {
+    String pattern = '^(.*?[A-Z]){' + normalCount.toString() + ',}';
+    return password.toUpperCase().contains(new RegExp(pattern));
   }
 }

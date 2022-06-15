@@ -46,6 +46,7 @@ import FinalSDK
             objCamera.isCheckLivenessCard = true
             objCamera.isCheckMaskFace = true
             objCamera.isAddFace = true
+        objCamera.isCompare = true;
             objCamera.isCheckLivenessFace = true
             objCamera.languageApplication = "vi"
             objCamera.isValidatePostcode = true
@@ -63,6 +64,8 @@ import FinalSDK
             let backData = backImage.jpegData(compressionQuality: 1)
             let faceData = faceFront.jpegData(compressionQuality: 1)
             
+            print("JsonCompareFace: \(SaveData.shared().jsonCompareFace)")
+
             let milesToPoint = [
                 "jsonInfo" :SaveData.shared().jsonInfo,
                 "imageFront" : fontData?.base64EncodedString(options: .endLineWithLineFeed) ?? "",

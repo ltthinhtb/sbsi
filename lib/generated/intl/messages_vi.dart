@@ -340,7 +340,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pass_not_match":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp"),
         "pass_short_valid": MessageLookupByLibrary.simpleMessage(
-            "Mật khẩu phải lớn hơn 6 ký tự"),
+            "Mật khẩu phải lớn hơn 8 ký tự"),
         "passport": MessageLookupByLibrary.simpleMessage("Hộ chiếu Việt Nam"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "pay": MessageLookupByLibrary.simpleMessage("Thanh toán"),
