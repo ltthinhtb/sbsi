@@ -14,6 +14,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
   final String? label;
   final bool isExpanded;
   final DropdownButtonBuilder? selectedItemBuilder;
+  final Color? iconDisabledColor ;
 
   const AppDropDownWidget(
       {Key? key,
@@ -22,7 +23,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
       this.hintText,
       this.onChanged,
       this.label,
-      this.isExpanded = false, this.selectedItemBuilder})
+      this.isExpanded = false, this.selectedItemBuilder, this.iconDisabledColor})
       : super(key: key);
 
   @override
@@ -43,12 +44,14 @@ class AppDropDownWidget<T> extends StatelessWidget {
               ),
             )),
         DropdownButtonHideUnderline(
+
           child: DropdownButtonFormField(
             alignment: Alignment.bottomCenter,
             isDense: true,
             value: value,
             onChanged: onChanged,
             isExpanded: isExpanded,
+            iconDisabledColor: iconDisabledColor,
             selectedItemBuilder: selectedItemBuilder,
             decoration: InputDecoration(
               isDense: true,

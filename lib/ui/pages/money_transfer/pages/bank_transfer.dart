@@ -121,6 +121,7 @@ class _BankTransferState extends State<BankTransfer> with Validator {
                         value: checkBank ? state.bank.value : null,
                         hintText: S.of(context).bank,
                         onChanged: null,
+
                       );
                     }),
                     const SizedBox(height: 16),
@@ -151,7 +152,7 @@ class _BankTransferState extends State<BankTransfer> with Validator {
                         inputController: state.moneyController,
                         focusNode: state.userMoneyFocus,
                         enableBorder: true,
-                        onChanged: (value){
+                        onChanged: (value) {
                           state.userMoneyKey.currentState?.validate();
                         },
                         validator: (money) {

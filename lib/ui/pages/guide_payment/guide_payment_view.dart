@@ -237,7 +237,7 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                             const SizedBox(height: 4),
                             Text(
                               Utils.convertVNtoText(
-                                  "${S.of(context).payment_on_account} 088C${account?.data?.user ?? ""}"),
+                                  "${S.of(context).payment_on_account} 088C${account?.data?.user ?? ""} \n${account?.data?.name ?? ""}"),
                               style: caption?.copyWith(
                                   color: AppColors.textSecond),
                             )
@@ -248,7 +248,7 @@ class _GuidePaymentPageState extends State<GuidePaymentPage> {
                         onTap: () {
                           Clipboard.setData(ClipboardData(
                                   text: Utils.convertVNtoText(
-                                      "${S.of(context).payment_on_account} 088C${account?.data?.user ?? ""}")))
+                                      "${S.of(context).payment_on_account} 088C${account?.data?.user ?? ""} \n${account?.data?.name ?? ""}")))
                               .then((value) {
                             Fluttertoast.showToast(
                                 msg:

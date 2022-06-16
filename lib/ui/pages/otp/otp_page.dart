@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sbsi/common/app_colors.dart';
+import 'package:sbsi/model/params/data_params.dart';
+import 'package:sbsi/networks/error_exception.dart';
+import 'package:sbsi/services/api/api_service.dart';
+import 'package:sbsi/services/auth_service.dart';
+import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/widgets/button/button_filled.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../model/params/index.dart';
 import 'count_down.dart';
 
 class OtpPage extends StatefulWidget {
@@ -32,7 +39,7 @@ class _OtpPageState extends State<OtpPage> {
 
   @override
   void initState() {
-    // load otp
+    getOtp();
     super.initState();
   }
 
@@ -68,8 +75,7 @@ class _OtpPageState extends State<OtpPage> {
           // ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-                'Mã OTP đã được gửi qua số điện thoại',
+            child: Text('Mã OTP đã được gửi qua số điện thoại',
                 style: body2?.copyWith(
                     fontWeight: FontWeight.w600,
                     height: 20 / 14,
@@ -99,7 +105,7 @@ class _OtpPageState extends State<OtpPage> {
           Center(
             child: TimeCountDown(
               voidCallback: () {
-                //load otp
+                getOtp();
               },
               duration: const Duration(seconds: 30),
               textStyle: body2!.copyWith(color: AppColors.primary),
@@ -148,4 +154,19 @@ class _OtpPageState extends State<OtpPage> {
       borderRadius: BorderRadius.circular(5),
     ),
   );
+
+  Future<void> getOtp() async {
+    var token = Get.find<AuthService>().token.value;
+    var param = RequestParams(
+        group: "S",
+        user: token?.data?.user ?? "",
+        session: token?.data?.sid ?? "",
+        data: ParamsObject(type: "string", cmd: "GetOTP"));
+
+    try {
+      await Get.find<ApiService>().getOtp(param);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {}
+  }
 }

@@ -32,4 +32,8 @@ extension UserApiService on ApiService {
   Future<void> makerReader(NotifyRequest request) async {
     return await _apiClient.makerRead(request);
   }
+
+  Future getOtp(RequestParams requestParams) async {
+    return await _apiClient.getOtp(requestParams);
+  }
 }

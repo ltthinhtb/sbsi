@@ -193,6 +193,8 @@ abstract class ApiClient {
   Future<void> makerRead(NotifyRequest request);
 
   Future forgotPass(ForgotPassRequest request);
+
+  Future getOtp(RequestParams requestParams);
 }
 
 class _ApiClient implements ApiClient {
@@ -1171,5 +1173,15 @@ class _ApiClient implements ApiClient {
       listRight.add(RightHistory.fromJson(element));
     }
     return listRight;
+  }
+
+  @override
+  Future getOtp(RequestParams requestParams) async {
+    await _requestApi(
+      _dio.post(
+        flavor.baseUrl + flavor.ENDPOINT_CORE,
+        data: requestParams.toJson(),
+      ),
+    );
   }
 }

@@ -40,7 +40,7 @@ class NotifyWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 1),
                   Text(
-                    notify.bodyShort ?? "",
+                    notify.bodyDetail ?? "",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: body2,
