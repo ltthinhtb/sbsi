@@ -5,6 +5,7 @@ import 'package:sbsi/model/entities/cash_can_adv.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
 
 import '../../../model/response/list_account_response.dart';
+import '../../../utils/date_utils.dart';
 
 class CashCanAdvState {
   final account = Account().obs;
@@ -17,11 +18,14 @@ class CashCanAdvState {
 
   final listAdvance = <AdvanceWithdraw>[].obs;
 
-
   final formPin = GlobalKey<FormState>();
 
-  final startDateController = TextEditingController();
-  final endDateController = TextEditingController();
+  final startDateController = TextEditingController(
+      text: DateTimeUtils.toDateString(
+          DateTime.now().subtract(const Duration(days: 90)),
+          format: "dd/MM/yyyy"));
+  final endDateController = TextEditingController(
+      text: DateTimeUtils.toDateString(DateTime.now(), format: "dd/MM/yyyy"));
 
   CashCanAdvState() {
     ///Initialize variables

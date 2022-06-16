@@ -4,6 +4,7 @@ import 'package:sbsi/model/entities/order_history.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 
 import '../../../model/response/list_account_response.dart';
+import '../../../utils/date_utils.dart';
 import 'enums/order_enums.dart';
 
 class OrderListState {
@@ -71,8 +72,12 @@ class OrderListState {
 
   final isSelectAll = false.obs;
 
-  final startDateController = TextEditingController();
-  final endDateController = TextEditingController();
+  final startDateController = TextEditingController(
+      text: DateTimeUtils.toDateString(
+          DateTime.now().subtract(const Duration(days: 90)),
+          format: "dd/MM/yyyy"));
+  final endDateController = TextEditingController(
+      text: DateTimeUtils.toDateString(DateTime.now(), format: "dd/MM/yyyy"));
 
   OrderListState() {
     stockCodeController = TextEditingController();

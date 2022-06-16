@@ -24,7 +24,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
   final logic = Get.put(SignInLogic());
   final state = Get.find<SignInLogic>().state;
   bool isChecked = false;
-  final String version = "1.0.0 + 19";
+  final String version = "1.0.0 + 20";
 
   bool isTest = true;
 
