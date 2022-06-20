@@ -1111,7 +1111,7 @@ class _ApiClient implements ApiClient {
   @override
   Future forgotPass(ForgotPassRequest request) async {
     await _requestApi(
-      _dio.post("ForgetPass",
+      _dio.post(flavor.baseUrl + "ForgetPass",
           options: Options(
               headers: {"Content-Type": "application/x-www-form-urlencoded"}),
           data: request.toJson()),

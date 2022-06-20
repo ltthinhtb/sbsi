@@ -142,12 +142,15 @@ class _GetAccountInfoPageState extends State<GetAccountInfoPage> {
               .bodyText2
               ?.copyWith(color: AppColors.textSecond),
         ),
-        Text(
-          value,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText2
-              ?.copyWith(fontWeight: FontWeight.w700),
+        const SizedBox(width: 20),
+        Flexible(
+          child: Text(
+            value,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2
+                ?.copyWith(fontWeight: FontWeight.w700),
+          ),
         )
       ],
     );

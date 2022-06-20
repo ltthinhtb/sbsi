@@ -33,7 +33,7 @@ class ForgotPassLogic extends GetxController {
       // đổi step
       if (state.step.value == 1) {
         state.step.value = 2;
-        Get.to(OtpPage(
+        return Get.to(OtpPage(
             onRequest: () {
               forgotPass(context);
             },

@@ -14,9 +14,13 @@ import '../../../widgets/button/button_filled.dart';
 class PortfolioWidget extends StatefulWidget {
   final int index;
   final PortfolioStatus portfolio;
+  final ValueNotifier<bool> isPercent;
 
   const PortfolioWidget(
-      {Key? key, required this.index, required this.portfolio})
+      {Key? key,
+      required this.index,
+      required this.portfolio,
+      required this.isPercent})
       : super(key: key);
 
   @override
@@ -85,29 +89,36 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                             color: widget.portfolio.glColor),
                       ),
                     )),
+                // Expanded(
+                //     flex: 2,
+                //     child: Center(
+                //       child: Text(
+                //         widget.portfolio.gainLossPer ?? "",
+                //         style: caption.copyWith(
+                //             fontWeight: FontWeight.w700,
+                //             height: 16 / 12,
+                //             color: widget.portfolio.glColor),
+                //       ),
+                //     )),
                 Expanded(
                     flex: 2,
-                    child: Center(
-                      child: Text(
-                        widget.portfolio.gainLossPer ?? "",
-                        style: caption.copyWith(
-                            fontWeight: FontWeight.w700,
-                            height: 16 / 12,
-                            color: widget.portfolio.glColor),
-                      ),
-                    )),
-                Expanded(
-                    flex: 2,
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        MoneyFormat.formatMoneyRound(
-                            '${widget.portfolio.gainLossValue}'),
-                        style: caption.copyWith(
-                            fontWeight: FontWeight.w700,
-                            height: 16 / 12,
-                            color: widget.portfolio.glColor),
-                      ),
+                    child: ValueListenableBuilder<bool>(
+                      valueListenable: widget.isPercent,
+                      builder: (BuildContext context, value, Widget? child) {
+                        return Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            value
+                                ? (widget.portfolio.gainLossPer ?? "")
+                                : MoneyFormat.formatMoneyRound(
+                                    '${widget.portfolio.gainLossValue}'),
+                            style: caption.copyWith(
+                                fontWeight: FontWeight.w700,
+                                height: 16 / 12,
+                                color: widget.portfolio.glColor),
+                          ),
+                        );
+                      },
                     )),
               ],
             ),
