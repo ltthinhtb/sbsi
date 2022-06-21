@@ -39,7 +39,7 @@ class AppDropDownWidget<T> extends StatelessWidget {
                 label ?? "",
                 style: Theme.of(context)
                     .textTheme
-                    .headline6!
+                    .bodyText1!
                     .copyWith(fontWeight: FontWeight.w700),
               ),
             )),

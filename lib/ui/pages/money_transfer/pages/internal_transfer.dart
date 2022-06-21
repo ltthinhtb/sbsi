@@ -79,11 +79,13 @@ class _InternalTransferState extends State<InternalTransfer> with Validator {
                     Form(
                       key: state.userReceiverKey,
                       child: AppTextFieldWidget(
-                        hintText: S.of(context).money_transfer,
+                        hintText: S.of(context).account_receiver,
                         inputController: state.userReceiverController,
                         focusNode: state.userReceiverFocus,
                         enableBorder: true,
                         readOnly: true,
+                        label: S.of(context).account_receiver,
+                        isShowLabel: false,
                       ),
                     ),
                     const SizedBox(height: 16),
@@ -94,6 +96,8 @@ class _InternalTransferState extends State<InternalTransfer> with Validator {
                         inputController: state.moneyController,
                         focusNode: state.userMoneyFocus,
                         enableBorder: true,
+                        label: S.of(context).money_transfer,
+                        isShowLabel: false,
                         onChanged: (money) {
                           state.userMoneyKey.currentState?.validate();
                         },

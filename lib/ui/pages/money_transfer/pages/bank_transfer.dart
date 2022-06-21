@@ -131,6 +131,8 @@ class _BankTransferState extends State<BankTransfer> with Validator {
                         hintText: S.of(context).user_name,
                         inputController: state.userAccountController,
                         focusNode: state.userAccountFocus,
+                        label: S.of(context).user_name,
+                        isShowLabel: false,
                         readOnly: true,
                       ),
                     ),
@@ -141,6 +143,8 @@ class _BankTransferState extends State<BankTransfer> with Validator {
                         hintText: S.of(context).account_name,
                         inputController: state.userNameController,
                         focusNode: state.userNameFocus,
+                        label: S.of(context).account_name,
+                        isShowLabel: false,
                         readOnly: true,
                       ),
                     ),
@@ -152,6 +156,8 @@ class _BankTransferState extends State<BankTransfer> with Validator {
                         inputController: state.moneyController,
                         focusNode: state.userMoneyFocus,
                         enableBorder: true,
+                        label: S.of(context).money_transfer,
+                        isShowLabel: false,
                         onChanged: (value) {
                           state.userMoneyKey.currentState?.validate();
                         },
@@ -172,6 +178,8 @@ class _BankTransferState extends State<BankTransfer> with Validator {
                         inputController: state.transferContentController,
                         focusNode: state.transferContentFocus,
                         enableBorder: true,
+                        label: S.of(context).transfer_content,
+                        isShowLabel: false,
                       ),
                     )
                   ],

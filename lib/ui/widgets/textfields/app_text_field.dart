@@ -85,6 +85,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final body1 = Theme.of(context).textTheme.bodyText1;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,10 +96,7 @@ class _AppTextFieldWidgetState extends State<AppTextFieldWidget> {
               padding: const EdgeInsets.only(bottom: 5),
               child: Text(
                 widget.label ?? "",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .copyWith(fontWeight: FontWeight.w700),
+                style: body1?.copyWith(fontWeight: FontWeight.w700),
               ),
             )),
         TextFormField(
