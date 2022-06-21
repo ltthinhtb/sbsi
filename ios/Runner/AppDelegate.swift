@@ -1,6 +1,7 @@
 import UIKit
 import Flutter
 import FinalSDK
+import Firebase
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate,ICEkycCameraDelegate {
@@ -10,7 +11,25 @@ import FinalSDK
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+      FirebaseApp.configure()
       GeneratedPluginRegistrant.register(with: self)
+      if #available(iOS 10.0, *) {
+        // For iOS 10 display notification (sent via APNS)
+        UNUserNotificationCenter.current().delegate = self
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+          options: authOptions,
+          completionHandler: { _, _ in }
+        )
+      } else {
+        let settings: UIUserNotificationSettings =
+          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+      }
+
+      application.registerForRemoteNotifications()
+
       SaveData.shared().sdTokenId = "dbe4ff86-d763-3bcb-e053-62199f0a9b08"
       SaveData.shared().sdTokenKey = "MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIbU3eVRT3GHbhc+2rEaCWVRCg+Dm4sJtMSIbgD6lZome5EHAiyWknZPQZvOeFfa09bCJC3vAXHJnjkzrum+TOkCAwEAAQ=="
       SaveData.shared().sdAuthorization = "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmU0ZmRlZC05YjZhLTQwZDktZTA1My02MjE5OWYwYWExMWQiLCJhdWQiOlsicmVzdHNlcnZpY2UiXSwidXNlcl9uYW1lIjoieHVhbnBuQHNic2kudm4iLCJzY29wZSI6WyJyZWFkIl0sImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0IiwibmFtZSI6Inh1YW5wbkBzYnNpLnZuIiwidXVpZF9hY2NvdW50IjoiZGJlNGZkZWQtOWI2YS00MGQ5LWUwNTMtNjIxOTlmMGFhMTFkIiwiYXV0aG9yaXRpZXMiOlsiVVNFUiJdLCJqdGkiOiJmYzU4MDM4ZS0xYjE5LTQzZjAtYTJkMC0xNGIwNTgyYjdlMGMiLCJjbGllbnRfaWQiOiJhZG1pbmFwcCJ9.gv9GIcxuJjXwQ0eWVw0IvgnTRnhH3IHrPQicW4RereLSpK6piyAKRJcfOQCZ87hCh_I-GIuKXyAh2Wes4EJiRFTKNUPSGkZFM7ZeFAVQAUy2XXo8yid7pOGZbYshDu8P_p1PvcMQ8zhe-8_y9QsH0v7bQJ22bMM3GDX1gX5UfWYKXLuZMTa5QYAlRBXExCUzXERh2Xenz9vXHDtDR26By_yhpEIjxR9gfyND5Py96ec0C4o8-ClmvnoT6TV69VFgeK3TLwYKjjuxaXVl06lGbVAe3lPxZFtaBUanUeWbtEdf4k3AV4FJPaPQGGvzJQd89VO6oGFx_p_cBtTgYcP_Uw"
