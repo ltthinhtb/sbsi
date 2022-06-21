@@ -27,7 +27,6 @@ class _AssetsTabBarState extends State<AssetsTabBar>
     super.build(context);
     return Obx(() {
       assets = state.assets.value;
-
       return RefreshIndicator(
         onRefresh: () async => logic.refresh(),
         child: ListView(
@@ -109,7 +108,7 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                   rowData(S.of(context).cash_advance_avai,
                       '${MoneyFormat.formatMoneyRound(assets.cashAdvanceAvai ?? "")} đ'),
                   const SizedBox(height: 16),
-                  rowData("Cổ tức tiền", '-'),
+                  rowData("Cổ tức tiền", MoneyFormat.formatMoneyRound(assets.collateral ?? "")),
                 ],
               ),
             ),

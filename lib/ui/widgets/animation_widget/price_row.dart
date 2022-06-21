@@ -84,7 +84,7 @@ class _PricePercentRowState extends State<PricePercentRow>
       ..addListener(() {
         setState(() {});
       });
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       print(widget.value > 0);
       if (widget.value > 0) {
         _animationController.forward();

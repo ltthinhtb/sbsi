@@ -107,7 +107,7 @@ class _MoneyExpandedState extends State<MoneyExpanded> {
                 Obx(() {
                   List<RightExc> listRight = [];
                   state.listRightExt.forEach((element) {
-                    if (element.cRIGHTTYPENAMEEN != "Right buy") {
+                    if (element.cRIGHTTYPENAMEEN != "Right buy" && element.cCASHVOLUME !=0) {
                       listRight.add(element);
                     }
                   });

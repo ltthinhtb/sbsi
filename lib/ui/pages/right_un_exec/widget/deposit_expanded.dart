@@ -95,7 +95,7 @@ class _DepositExpandedState extends State<DepositExpanded> {
                       Expanded(
                           flex: 94,
                           child: Text(
-                            S.of(context).right_date,
+                            "Số CK được nhận",
                             style: caption?.copyWith(
                                 fontWeight: FontWeight.w700),
                           )),
@@ -106,7 +106,7 @@ class _DepositExpandedState extends State<DepositExpanded> {
                 Obx(() {
                   List<RightExc> listRight = [];
                   state.listRightExt.forEach((element) {
-                    if (element.cRIGHTTYPENAMEEN != "Right buy") {
+                    if (element.cRIGHTTYPENAMEEN != "Right buy" && element.cRIGHTRATE != "null") {
                       listRight.add(element);
                     }
                   });

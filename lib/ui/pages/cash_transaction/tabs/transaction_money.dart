@@ -141,7 +141,7 @@ class _TransactionMoneyState extends State<TransactionMoney> {
       child: Row(
         children: [
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Text(
               S.of(context).time,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
@@ -149,13 +149,16 @@ class _TransactionMoneyState extends State<TransactionMoney> {
           ),
           Expanded(
             flex: 2,
-            child: Text(
-              'PS tăng/giảm',
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                'PS tăng/giảm',
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(

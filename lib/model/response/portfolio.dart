@@ -75,6 +75,13 @@ class PortfolioStatus {
     }
   }
 
+  String get gainLossPerString {
+    if(gainLossPer!.startsWith(".")) {
+      return '0${gainLossPer}';
+    }
+    return gainLossPer ?? "";
+  }
+
   int get marketPriceValue {
     if (marketValue == null) return 0;
     try {

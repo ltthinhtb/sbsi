@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/model/entities/right_exc.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
@@ -42,6 +43,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption;
     final body2 = Theme.of(context).textTheme.bodyText2;
+    Logger().d(widget.right.toJson());
     return Column(
       children: [
         GestureDetector(
@@ -78,15 +80,24 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     flex: 53,
                     child: Text(
                       widget.isMoney!
-                          ? "0%"
-                          : (widget.right.cRIGHTRATE?.trim() ?? ""),
+                          ? '${widget.right.cCASHRECEIVERATE?.toStringAsFixed(0)}%'
+                          : (widget.right.cRightRate),
                       style: caption,
                     )),
                 Expanded(
                     flex: 94,
-                    child: Text(
-                      widget.isMoney! ? "-" : (widget.right.cCLOSEDATE ?? ""),
-                      style: caption,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        (widget.right.cRIGHTTYPENAMEEN == "Right buy")
+                            ? (widget.right.cCLOSEDATE ?? "")
+                            : (widget.isMoney!
+                                ? MoneyFormat.formatMoneyRound(
+                                    '${widget.right.cCASHVOLUME}')
+                                : MoneyFormat.formatMoneyRound(
+                                    '${widget.right.cSHAREDIVIDENT}')),
+                        style: caption,
+                      ),
                     )),
               ],
             ),
@@ -105,7 +116,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
             child: Column(
               children: [
                 Visibility(
-                  visible: widget.isMoney!,
+                  visible: widget.right.cRIGHTTYPENAMEEN != "Right buy",
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Row(
@@ -121,7 +132,39 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                   ),
                 ),
                 Visibility(
-                  visible: !widget.isMoney!,
+                  visible: widget.right.cRIGHTTYPENAMEEN != "Right buy",
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Ngày giao dịch", style: body2),
+                        Text(
+                          widget.right.cDueDate,
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.right.cRIGHTTYPENAMEEN != "Right buy",
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Ngày thực hiện", style: body2),
+                        Text(
+                          widget.right.eXECUTEDATE1,
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: widget.right.cRIGHTTYPENAMEEN == "Right buy",
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Row(
@@ -137,7 +180,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                   ),
                 ),
                 Visibility(
-                  visible: !widget.isMoney!,
+                  visible: widget.right.cRIGHTTYPENAMEEN == "Right buy",
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Row(
@@ -153,7 +196,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                   ),
                 ),
                 Visibility(
-                  visible: !widget.isMoney!,
+                  visible: widget.right.cRIGHTTYPENAMEEN == "Right buy",
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Row(
@@ -161,36 +204,65 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                       children: [
                         Text("Giá mua", style: body2),
                         Text(
-                          MoneyFormat.formatMoneyRound('${widget.right.cBUYPRICE}'),
+                          MoneyFormat.formatMoneyRound(
+                              '${widget.right.cBUYPRICE}'),
                           style: body2?.copyWith(fontWeight: FontWeight.w700),
                         )
                       ],
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Số CK hưởng quyền", style: body2),
-                    Text(
-                      MoneyFormat.formatMoneyRound(
-                          '${widget.right.cRIGHTVOLUME}'),
-                      style: body2?.copyWith(fontWeight: FontWeight.w700),
-                    )
-                  ],
+                Visibility(
+                  visible: widget.right.cRIGHTTYPENAMEEN == "Right buy",
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Số CK hưởng quyền", style: body2),
+                        Text(
+                          MoneyFormat.formatMoneyRound(
+                              '${widget.right.cRIGHTVOLUME}'),
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Số CK được mua", style: body2),
-                    Text(
-                      widget.right.cShareCLString,
-                      style: body2?.copyWith(fontWeight: FontWeight.w700),
-                    )
-                  ],
+                Visibility(
+                  visible: widget.right.cRIGHTTYPENAMEEN == "Right buy",
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Số CK đã đăng ký mua", style: body2),
+                        Text(
+                          MoneyFormat.formatMoneyRound(
+                              '${widget.right.cSHAREBUY}'),
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 12),
+                Visibility(
+                  visible: widget.right.cRIGHTTYPENAMEEN == "Right buy",
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Số CK được mua", style: body2),
+                        Text(
+                          MoneyFormat.formatMoneyRound(
+                              '${widget.right.cSHARERIGHT}'),
+                          style: body2?.copyWith(fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
                 Visibility(
                   visible: widget.right.showAction,
                   child: Padding(
@@ -216,7 +288,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                   ),
                 ),
                 Visibility(
-                  visible: !widget.isMoney!,
+                  visible: widget.right.cRIGHTTYPENAMEEN == "Right buy",
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Row(
@@ -233,7 +305,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                   ),
                 ),
                 Visibility(
-                  visible: !widget.isMoney!,
+                  visible: widget.right.cRIGHTTYPENAMEEN == "Right buy",
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Row(
@@ -246,7 +318,8 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                             return Text(
                               MoneyFormat.formatMoneyRound(
                                   value.toStringAsFixed(0)),
-                              style: body2?.copyWith(fontWeight: FontWeight.w700),
+                              style:
+                                  body2?.copyWith(fontWeight: FontWeight.w700),
                             );
                           },
                         ),
@@ -263,7 +336,8 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                         if (amountController.numberValue >
                             widget.right.cShareCL) {
                           AppSnackBar.showError(
-                              message: 'Khối lượng vượt quá khối lượng được mua');
+                              message:
+                                  'Khối lượng vượt quá khối lượng được mua');
                           return;
                         }
                         if (amountController.text.isEmpty) {
@@ -342,7 +416,6 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                 validator: (pin) => checkPin(pin!),
                 hintText: S.of(context).input_pin,
                 inputController: state.pinController,
-
                 obscureText: true,
               ),
               const SizedBox(height: 20),
@@ -364,9 +437,11 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                   Expanded(
                       child: ButtonFill(
                           voidCallback: () {
-                            logic.updateShareTransferIn(
-                                amount: '${amountController.text}',
-                                pkRight: right.pKRIGHTSTOCKINFO ?? "").then((value) {
+                            logic
+                                .updateShareTransferIn(
+                                    amount: '${amountController.text}',
+                                    pkRight: right.pKRIGHTSTOCKINFO ?? "")
+                                .then((value) {
                               amountController.clear();
                             });
                           },

@@ -66,7 +66,7 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                     style: bodyText2,
                   ),
                   Text(
-                    "-",
+                    state.selectedStockInfo.value.mr ?? "",
                     style: bodyText2?.copyWith(fontWeight: FontWeight.w700),
                   ),
                 ],

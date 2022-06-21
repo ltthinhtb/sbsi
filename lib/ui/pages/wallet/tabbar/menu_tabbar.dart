@@ -61,7 +61,6 @@ class _MenuTabBarState extends State<MenuTabBar>
                         S.of(context).total_transfer,
                         style: body2.copyWith(height: 20 / 14),
                       ),
-                      const SizedBox(height: 6),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -72,13 +71,27 @@ class _MenuTabBarState extends State<MenuTabBar>
                                 height: 24 / 20, fontWeight: FontWeight.w700),
                           ),
                           const Spacer(),
-                          Text(
-                            walletState.portfolioTotal.value.gainLossPer
-                                    ?.trim() ??
-                                "",
-                            style: Theme.of(context).textTheme.button?.copyWith(
-                                color:
-                                    walletState.portfolioTotal.value.glColor),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                walletState.portfolioTotal.value.gainLossPer
+                                        ?.trim() ??
+                                    "",
+                                style: Theme.of(context).textTheme.button?.copyWith(
+                                    color:
+                                        walletState.portfolioTotal.value.glColor),
+                              ),
+                              // Text(
+                              //   walletState.portfolioTotal.value.gainLossValue
+                              //       ?.trim() ??
+                              //       "",
+                              //   style: Theme.of(context).textTheme.button?.copyWith(
+                              //       color:
+                              //       walletState.portfolioTotal.value.glColor),
+                              // ),
+                            ],
                           ),
                           const SizedBox(width: 5.69),
                           SvgPicture.asset(
@@ -148,16 +161,23 @@ class _MenuTabBarState extends State<MenuTabBar>
                             return Expanded(
                                 flex: 2,
                                 child: GestureDetector(
-                                  onTap: (){
+                                  onTap: () {
                                     isPercent.value = !isPercent.value;
                                   },
                                   child: Align(
                                     alignment: Alignment.centerRight,
-                                    child: Text(
-                                      value ? "%Lãi/lỗ" : "Lãi/lỗ",
-                                      style: caption.copyWith(
-                                          fontWeight: FontWeight.w700,
-                                          height: 16 / 12),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        SvgPicture.asset(AppImages.down_arrow),
+                                        const SizedBox(width: 3),
+                                        Text(
+                                          value ? "%Lãi/lỗ" : "Lãi/lỗ",
+                                          style: caption.copyWith(
+                                              fontWeight: FontWeight.w700,
+                                              height: 16 / 12),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ));
@@ -173,7 +193,10 @@ class _MenuTabBarState extends State<MenuTabBar>
                     itemBuilder: (BuildContext context, int index) {
                       var portfolio = walletState.portfolioList[index];
                       return PortfolioWidget(
-                          portfolio: portfolio, index: index, isPercent: isPercent,);
+                        portfolio: portfolio,
+                        index: index,
+                        isPercent: isPercent,
+                      );
                     },
                     separatorBuilder: (BuildContext context, int index) {
                       return const SizedBox(height: 0);

@@ -143,7 +143,7 @@ class _TransactionStockState extends State<TransactionStock> {
           Expanded(
             flex: 62,
             child: Text(
-              S.of(context).stock_code,
+              S.of(context).time,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
             ),
           ),

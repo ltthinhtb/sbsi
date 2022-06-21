@@ -109,7 +109,7 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                           alignment: Alignment.centerRight,
                           child: Text(
                             value
-                                ? (widget.portfolio.gainLossPer ?? "")
+                                ? (widget.portfolio.gainLossPerString )
                                 : MoneyFormat.formatMoneyRound(
                                     '${widget.portfolio.gainLossValue}'),
                             style: caption.copyWith(

@@ -50,7 +50,10 @@ class _StockExpandedState extends State<StockExpanded> {
               children: [
                 Text(
                   'Quyền mua cổ phiếu',
-                  style: Theme.of(context).textTheme.bodyText2?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2
+                      ?.copyWith(fontWeight: FontWeight.w600),
                 ),
                 SvgPicture.asset(AppImages.down)
               ],
@@ -73,29 +76,32 @@ class _StockExpandedState extends State<StockExpanded> {
                           flex: 62,
                           child: Text(
                             S.of(context).stock_code,
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 130,
                           child: Text(
                             "Số CK hưởng quyền",
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 53,
                           child: Text(
                             S.of(context).rate,
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                            style:
+                                caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 94,
-                          child: Text(
-                            S.of(context).right_date,
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              S.of(context).right_date,
+                              style: caption?.copyWith(
+                                  fontWeight: FontWeight.w700),
+                            ),
                           )),
                     ],
                   ),

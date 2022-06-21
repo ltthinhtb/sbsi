@@ -60,7 +60,7 @@ class _TransactionWidgetState extends State<TransactionWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  flex: 2,
+                  flex: 1,
                   child: Text(
                     data.cTRANSACTIONDATE ?? "",
                     style: caption?.copyWith(
@@ -70,14 +70,17 @@ class _TransactionWidgetState extends State<TransactionWidget> {
                 ),
                 Expanded(
                   flex: 2,
-                  child: Text(
-                    MoneyFormat.formatMoneyRound("${data.balancerEnd}"),
-                    style: caption?.copyWith(
-                        fontWeight: FontWeight.w700, color: data.color),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      MoneyFormat.formatMoneyRound("${data.balancerEnd}"),
+                      style: caption?.copyWith(
+                          fontWeight: FontWeight.w700, color: data.color),
+                    ),
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(

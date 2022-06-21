@@ -132,7 +132,7 @@ class _TotalVolumnPercentRowState extends State<TotalVolumnPercentRow>
             setState(() {});
           });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       if (widget.buyValue > 0 || widget.sellValue > 0) {
         _animationController.forward();
         setState(() {});

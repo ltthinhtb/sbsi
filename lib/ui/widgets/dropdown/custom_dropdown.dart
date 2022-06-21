@@ -361,7 +361,7 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
                 child: Scrollbar(
                   radius: widget.scrollbarRadius,
                   thickness: widget.scrollbarThickness,
-                  thumbVisibility: widget.scrollbarAlwaysShow,
+                  trackVisibility: widget.scrollbarAlwaysShow,
                   child: ListView(
                     padding: widget.dropdownPadding ?? kMaterialListPadding,
                     shrinkWrap: true,
@@ -1244,16 +1244,16 @@ class _CustomDropdownButtonState<T> extends State<CustomDropdownButton<T>>
       ),
     };
     focusNode!.addListener(_handleFocusChanged);
-    final FocusManager focusManager = WidgetsBinding.instance.focusManager;
+    final FocusManager focusManager = WidgetsBinding.instance!.focusManager;
     _focusHighlightMode = focusManager.highlightMode;
     focusManager.addHighlightModeListener(_handleFocusHighlightModeChange);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance!.removeObserver(this);
     _removeDropdownRoute();
-    WidgetsBinding.instance.focusManager
+    WidgetsBinding.instance!.focusManager
         .removeHighlightModeListener(_handleFocusHighlightModeChange);
     focusNode!.removeListener(_handleFocusChanged);
     _internalNode?.dispose();

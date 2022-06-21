@@ -35,11 +35,11 @@ class Validator {
     if (value.trim().isEmpty) {
       return S.current.please_input_password;
     } else if (!hasMinNumericChar(value, 1)) {
-      return "Phải có ít nhất một ký tự số";
+      return "Phải có ít nhất 8 ký tự bao gồm chữ và số";
     } else if (!hasMinNormalChar(value, 1)) {
-      return "Phải có ít nhất một ký tự chữ";
+      return "Phải có ít nhất 8 ký tự bao gồm chữ và số";
     } else if (value.trim().length < 8) {
-      return S.current.pass_short_valid(8);
+      return "Phải có ít nhất 8 ký tự bao gồm chữ và số";
     } else {
       return null;
     }

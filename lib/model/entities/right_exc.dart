@@ -38,6 +38,8 @@ class RightExc {
   num? cSHARERIGHT;
   num? cCASHBUYALL;
 
+
+
   bool get showAction {
     if (cSHAREBUY == null) return false;
     if (cSHARERIGHT == null) return false;
@@ -68,10 +70,22 @@ class RightExc {
   }
 
 
-  String get eXECUTEDATE {
+  String get eXECUTEDATE1 {
     if (cEXECUTEDATE == null) return "";
     if (cEXECUTEDATE == "null") return "";
     return cEXECUTEDATE!;
+  }
+
+  String get cDueDate {
+    if (cDUEDATE == null) return "";
+    if (cDUEDATE == "null") return "";
+    return cDUEDATE!;
+  }
+
+  String get cRightRate {
+    if (cRIGHTRATE == null) return "";
+    if (cRIGHTRATE == "null") return "";
+    return cRIGHTRATE!;
   }
 
   String get dueDATE {

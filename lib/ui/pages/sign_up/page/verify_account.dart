@@ -387,7 +387,7 @@ class _VerifyAccountState extends State<VerifyAccount> {
     const platform = MethodChannel('com.vnpt.ekyc/sdk');
     try {
       // clear image cache
-      imageCache.clear();
+      imageCache!.clear();
       String result = await platform.invokeMethod('startEKYC');
       AppLoading.showLoading();
       var mapData = jsonDecode(result);
