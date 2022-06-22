@@ -1,12 +1,16 @@
+import 'package:flutter/cupertino.dart';
+
+import '../../../generated/l10n.dart';
+
 enum StockFast { waiting, matching }
 
 extension StockFastExt on StockFast {
-  String get name {
+  String name(BuildContext context) {
     switch (this) {
       case StockFast.waiting:
-        return "Chờ khớp";
+        return S.of(context).waiting;
       case StockFast.matching:
-        return "Đã khớp";
+        return S.of(context).matched;
     }
   }
 

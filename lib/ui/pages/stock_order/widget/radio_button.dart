@@ -54,7 +54,7 @@ class _RadioButtonState extends State<RadioButton> {
             ),
             const SizedBox(width: 8),
             Text(
-              widget.stockFast.name,
+              widget.stockFast.name(context),
               style: Theme.of(context).textTheme.bodyText2,
             )
           ],
