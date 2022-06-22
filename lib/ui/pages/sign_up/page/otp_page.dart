@@ -5,6 +5,12 @@ import 'package:pinput/pinput.dart';
 
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../model/params/data_params.dart';
+import '../../../../model/params/request_params.dart';
+import '../../../../networks/error_exception.dart';
+import '../../../../services/api/api_service.dart';
+import '../../../../services/auth_service.dart';
+import '../../../commons/app_snackbar.dart';
 import '../../../commons/appbar.dart';
 import '../../../widgets/button/button_filled.dart';
 import '../../otp/count_down.dart';
@@ -32,7 +38,23 @@ class _OtpValidateState extends State<OtpValidate> {
 
   @override
   void initState() {
+    getOtp();
     super.initState();
+  }
+
+  Future<void> getOtp() async {
+    var token = Get.find<AuthService>().token.value;
+    var param = RequestParams(
+        group: "S",
+        user: token?.data?.user ?? "",
+        session: token?.data?.sid ?? "",
+        data: ParamsObject(type: "string", cmd: "GetOTP"));
+
+    try {
+      await Get.find<ApiService>().getOtp(param);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {}
   }
 
   @override
