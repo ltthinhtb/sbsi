@@ -38,7 +38,7 @@ class _OtpValidateState extends State<OtpValidate> {
 
   @override
   void initState() {
-    getOtp();
+    //getOtp();
     super.initState();
   }
 
@@ -52,6 +52,15 @@ class _OtpValidateState extends State<OtpValidate> {
 
     try {
       await Get.find<ApiService>().getOtp(param);
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {}
+  }
+
+  Future<void> checkOtp() async {
+    try {
+      await Get.find<ApiService>()
+          .checkOtp(state.phoneController.text, pinController.text);
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     } catch (e) {}

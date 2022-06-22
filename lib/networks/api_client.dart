@@ -195,6 +195,8 @@ abstract class ApiClient {
   Future forgotPass(ForgotPassRequest request);
 
   Future getOtp(RequestParams requestParams);
+
+  Future checkOtp(String phone, String otp);
 }
 
 class _ApiClient implements ApiClient {
@@ -1181,6 +1183,16 @@ class _ApiClient implements ApiClient {
       _dio.post(
         flavor.baseUrl + flavor.ENDPOINT_CORE,
         data: requestParams.toJson(),
+      ),
+    );
+  }
+
+  @override
+  Future checkOtp(String phone, String otp) async {
+    await _requestApi(
+      _dio.post(
+        flavor.SIGN_UP_URL + 'verifySmsOtp',
+        data: {"mobile": phone, "otp": otp},
       ),
     );
   }

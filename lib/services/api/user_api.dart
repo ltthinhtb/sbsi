@@ -36,4 +36,8 @@ extension UserApiService on ApiService {
   Future getOtp(RequestParams requestParams) async {
     return await _apiClient.getOtp(requestParams);
   }
+
+  Future checkOtp(String phone,String otp) async {
+    return await _apiClient.checkOtp(phone,otp);
+  }
 }
