@@ -37,6 +37,7 @@ class ForgotPassLogic extends GetxController {
             onRequest: () {
               forgotPass(context);
             },
+            isGetOtp: false,
             pinPutController: state.otpController,
             phone: state.phoneNumberController.text));
       }

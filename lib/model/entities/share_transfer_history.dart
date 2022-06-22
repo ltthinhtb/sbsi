@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
+import 'package:sbsi/services/index.dart';
 
 class ShareTransferHistory {
   num? rOWNUM;
@@ -26,6 +28,14 @@ class ShareTransferHistory {
   Color get statusColor {
     if (cSTATUSNAMEEN == "Approved") return AppColors.active;
     return AppColors.deActive;
+  }
+
+  String get status {
+    var isEn = Get.find<SettingService>().currentLocate.value == const Locale.fromSubtags(languageCode: "en");
+    if(isEn) {
+      return cSTATUSNAMEEN ?? "";
+    }
+    return cSTATUSNAME ?? "";
   }
 
   ShareTransferHistory(

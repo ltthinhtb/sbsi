@@ -145,22 +145,31 @@ class _RightHistoryTabState extends State<RightHistoryTab>
                 style: caption?.copyWith(fontWeight: FontWeight.w700),
               )),
           Expanded(
-              flex: 130,
-              child: Text(
-                "Số CK hưởng quyền",
-                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              flex: 80,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "Số CK hưởng quyền",
+                  style: caption?.copyWith(fontWeight: FontWeight.w700),
+                ),
               )),
           Expanded(
-              flex: 53,
-              child: Text(
-                S.of(context).rate,
-                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              flex: 62,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  S.of(context).rate,
+                  style: caption?.copyWith(fontWeight: FontWeight.w700),
+                ),
               )),
           Expanded(
-              flex: 94,
-              child: Text(
-                "Ngày thực hiện",
-                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              flex: 80,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "Ngày thực hiện",
+                  style: caption?.copyWith(fontWeight: FontWeight.w700),
+                ),
               )),
         ],
       ),

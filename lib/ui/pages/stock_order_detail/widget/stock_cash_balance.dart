@@ -80,7 +80,7 @@ class _StockCashBalanceState extends State<StockCashBalance> with Validator {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Tổng giá trị",
+                    S.of(context).total_price,
                     style: bodyText2,
                   ),
                   ValueListenableBuilder<num>(

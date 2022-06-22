@@ -84,7 +84,7 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
             backgroundColor: AppColors.primary,
             foregroundColor: Colors.white,
             icon: null,
-            label: 'Hủy lệnh',
+            label: S.of(context).cancel_order,
           ),
         ],
       ),

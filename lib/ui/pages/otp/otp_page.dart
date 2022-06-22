@@ -18,12 +18,14 @@ class OtpPage extends StatefulWidget {
   final VoidCallback onRequest;
   final TextEditingController pinPutController;
   final String phone;
+  final bool? isGetOtp;
 
   const OtpPage(
       {Key? key,
       required this.onRequest,
       required this.pinPutController,
-      required this.phone})
+      required this.phone,
+      this.isGetOtp})
       : super(key: key);
 
   @override
@@ -39,7 +41,9 @@ class _OtpPageState extends State<OtpPage> {
 
   @override
   void initState() {
-    getOtp();
+    if (widget.isGetOtp!) {
+      getOtp();
+    }
     super.initState();
   }
 

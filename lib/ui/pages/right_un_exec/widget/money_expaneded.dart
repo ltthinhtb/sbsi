@@ -49,7 +49,7 @@ class _MoneyExpandedState extends State<MoneyExpanded> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Quyền cổ tức bằng tiền',
+                  S.of(context).cash_dividend,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
@@ -82,7 +82,7 @@ class _MoneyExpandedState extends State<MoneyExpanded> {
                       Expanded(
                           flex: 130,
                           child: Text(
-                            "Số CK hưởng quyền",
+                            S.of(context).right_stock_units_1,
                             style:
                                 caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
@@ -95,10 +95,13 @@ class _MoneyExpandedState extends State<MoneyExpanded> {
                           )),
                       Expanded(
                           flex: 94,
-                          child: Text(
-                            "Số tiền nhận được",
-                            style:
-                                caption?.copyWith(fontWeight: FontWeight.w700),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              S.of(context).amount_1,
+                              style:
+                                  caption?.copyWith(fontWeight: FontWeight.w700),
+                            ),
                           )),
                     ],
                   ),

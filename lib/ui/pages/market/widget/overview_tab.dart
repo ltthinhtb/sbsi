@@ -122,11 +122,11 @@ class _OverviewViewState extends State<OverviewView>
                       ]),
                       const SizedBox(height: 8),
                       Row(children: [
-                        Text("Giảm ${state.marketDepthNegativeInteger}",
+                        Text("${S.of(context).decrease} ${state.marketDepthNegativeInteger}",
                             style: AppTextStyle.H7Bold.copyWith(
                                 color: AppColors.decrease)),
                         const Spacer(),
-                        Text("Tăng ${state.marketDepthInteger}",
+                        Text("${S.of(context).increase} ${state.marketDepthInteger}",
                             style: AppTextStyle.H7Bold.copyWith(
                                 color: AppColors.increase)),
                       ]),
@@ -172,7 +172,7 @@ class _OverviewViewState extends State<OverviewView>
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                'KL giao dịch',
+                                S.of(context).amount_2,
                                 style: caption?.copyWith(
                                     fontWeight: FontWeight.w700),
                               ),
@@ -183,7 +183,7 @@ class _OverviewViewState extends State<OverviewView>
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                'Giá cuối',
+                                S.of(context).price,
                                 style: caption?.copyWith(
                                     fontWeight: FontWeight.w700),
                               ),
@@ -194,7 +194,7 @@ class _OverviewViewState extends State<OverviewView>
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                'Tăng/giảm',
+                                S.of(context).increase_decrease,
                                 style: caption?.copyWith(
                                     fontWeight: FontWeight.w700),
                               ),

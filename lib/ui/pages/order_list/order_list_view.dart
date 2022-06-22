@@ -130,7 +130,7 @@ class _OrderListPageState extends State<OrderListPage>
                         indicatorWeight: 0,
                         onTap: (value) {},
                         tabs: OderType.values
-                            .map((e) => Center(child: Text(e.name)))
+                            .map((e) => Center(child: Text(e.name(context))))
                             .toList()),
                   ],
                 ),

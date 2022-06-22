@@ -4,6 +4,7 @@ import 'package:sbsi/model/entities/debt_acc.dart';
 import 'package:sbsi/ui/widgets/animation_widget/expanded_widget.dart';
 
 import '../../../../common/app_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../utils/money_utils.dart';
 
 class DebtWidget extends StatefulWidget {
@@ -87,8 +88,8 @@ class _DebtWidgetState extends State<DebtWidget> {
                     rowData(
                         rightValue: widget.debt.cDELIVERDATE ?? "",
                         leftValue: widget.debt.cBANKCODE ?? "",
-                        rightTitle: 'Ngày vay',
-                        leftTitle: 'Nguồn'),
+                        rightTitle: S.of(context).cDELIVERDATE,
+                        leftTitle: S.of(context).bank_code),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue: MoneyFormat.formatMoneyRound('${widget.debt.cLOANIN}'),

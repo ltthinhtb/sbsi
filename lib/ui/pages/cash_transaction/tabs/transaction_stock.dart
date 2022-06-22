@@ -161,7 +161,7 @@ class _TransactionStockState extends State<TransactionStock> {
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                "PS tăng",
+                S.of(context).deposit,
                 style: caption?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
@@ -171,7 +171,7 @@ class _TransactionStockState extends State<TransactionStock> {
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                "PS giảm",
+                S.of(context).widthraw,
                 style: caption?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),

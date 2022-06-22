@@ -63,7 +63,7 @@ class _ProfitTabBarState extends State<ProfitTabBar>
                             flex: 2,
                             child: Center(
                               child: Text(
-                                "Tổng nợ phải trả",
+                                S.of(context).total_hole,
                                 style: caption.copyWith(
                                     fontWeight: FontWeight.w700,
                                     height: 16 / 12),
@@ -73,7 +73,7 @@ class _ProfitTabBarState extends State<ProfitTabBar>
                             flex: 2,
                             child: Center(
                               child: Text(
-                                "Ngày hết hạn",
+                                S.of(context).expired_date,
                                 style: caption.copyWith(
                                     fontWeight: FontWeight.w700,
                                     height: 16 / 12),

@@ -42,7 +42,7 @@ class TopForeignTrade extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 88,
+                  flex: 93,
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(

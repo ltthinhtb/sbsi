@@ -152,7 +152,7 @@ class _TransactionMoneyState extends State<TransactionMoney> {
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                'PS tăng/giảm',
+                S.of(context).deposit_width,
                 style: caption?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
@@ -162,7 +162,7 @@ class _TransactionMoneyState extends State<TransactionMoney> {
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                "Số dư cuối kỳ",
+                S.of(context).end_balance,
                 style: caption?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),

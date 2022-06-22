@@ -105,7 +105,7 @@ class _InDayTabState extends State<InDayTab>
               flex: 10,
               child: AppTextTypeHead<String>(
                 inputController: state.stockCodeController,
-                hintText: "Thêm mã CK",
+                hintText: S.of(context).add_stock_1,
                 suggestionsCallback: (String pattern) {
                   var list = logic.searchStockString(pattern);
                   return list;
@@ -124,7 +124,7 @@ class _InDayTabState extends State<InDayTab>
                   return DropdownMenuItem(
                     value: e,
                     child: Container(
-                      child: Text(e.name),
+                      child: Text(e.name(context)),
                     ),
                   );
                 }).toList(),
@@ -170,7 +170,7 @@ class _InDayTabState extends State<InDayTab>
           Expanded(
             flex: 96,
             child: Text(
-              'Đặt\n(KL/Giá)',
+              S.of(context).order_1,
               textAlign: TextAlign.center,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
             ),
@@ -178,7 +178,7 @@ class _InDayTabState extends State<InDayTab>
           Expanded(
             flex: 95,
             child: Text(
-              'Khớp\n(KL/Giá)',
+              S.of(context).match_1,
               textAlign: TextAlign.center,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
             ),
@@ -186,7 +186,7 @@ class _InDayTabState extends State<InDayTab>
           Expanded(
             flex: 95,
             child: Text(
-              'KL còn lại\nTrạng thái',
+              S.of(context).remain_status,
               textAlign: TextAlign.center,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
             ),

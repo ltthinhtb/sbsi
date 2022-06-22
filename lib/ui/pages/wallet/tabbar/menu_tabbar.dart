@@ -148,7 +148,7 @@ class _MenuTabBarState extends State<MenuTabBar>
                             flex: 2,
                             child: Center(
                               child: Text(
-                                'Giá TT',
+                                S.of(context).price_tt,
                                 style: caption.copyWith(
                                     fontWeight: FontWeight.w700,
                                     height: 16 / 12),
@@ -171,11 +171,15 @@ class _MenuTabBarState extends State<MenuTabBar>
                                       children: [
                                         SvgPicture.asset(AppImages.down_arrow),
                                         const SizedBox(width: 3),
-                                        Text(
-                                          value ? "%Lãi/lỗ" : "Lãi/lỗ",
-                                          style: caption.copyWith(
-                                              fontWeight: FontWeight.w700,
-                                              height: 16 / 12),
+                                        Flexible(
+                                          child: Text(
+                                            value ? "%${S.of(context).increase_hole}" : "${S.of(context).increase_hole}",
+                                            maxLines: 1,
+                                            style: caption.copyWith(
+                                                fontWeight: FontWeight.w700,
+                                                overflow: TextOverflow.ellipsis,
+                                                height: 16 / 12),
+                                          ),
                                         ),
                                       ],
                                     ),

@@ -147,7 +147,6 @@ class _MarketOptionState extends State<MarketOption>
           decoration: const BoxDecoration(color: AppColors.white),
           child: Column(
             children: [
-              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: buildSearchStock(context),
@@ -209,7 +208,7 @@ class _MarketOptionState extends State<MarketOption>
         suggestionsCallback: (String pattern) {
           return searchLogic.searchStockCompany(pattern);
         },
-        hintText: "Thêm mã CK",
+        hintText: S.of(context).add_stock,
         onSuggestionSelected: (suggestion) {
           FocusScope.of(context).unfocus();
           if (suggestion.stockCode != null) {

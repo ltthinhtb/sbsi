@@ -48,7 +48,7 @@ class ShareTransferWidget extends StatelessWidget {
           Expanded(
             flex: 96,
             child: Text(
-              history.cSTATUSNAME ?? "",
+              history.status,
               style: caption?.copyWith(
                   fontWeight: FontWeight.w600, color: history.statusColor),
             ),

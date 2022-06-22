@@ -129,7 +129,7 @@ class CardData extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'KL',
+                        S.of(context).volume_short,
                         style: caption?.copyWith(color: AppColors.textSecond),
                       ),
                       const SizedBox(height: 1),

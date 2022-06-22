@@ -1000,10 +1000,10 @@ class S {
     );
   }
 
-  /// `Code`
+  /// `Stock`
   String get code {
     return Intl.message(
-      'Code',
+      'Stock',
       name: 'code',
       desc: '',
       args: [],
@@ -2650,10 +2650,10 @@ class S {
     );
   }
 
-  /// `Giá TB`
+  /// `Avg price`
   String get avg_price_short {
     return Intl.message(
-      'Giá TB',
+      'Avg price',
       name: 'avg_price_short',
       desc: '',
       args: [],
@@ -3370,10 +3370,10 @@ class S {
     );
   }
 
-  /// `Right date`
+  /// `Close date`
   String get right_date {
     return Intl.message(
-      'Right date',
+      'Close date',
       name: 'right_date',
       desc: '',
       args: [],
@@ -3885,6 +3885,406 @@ class S {
     return Intl.message(
       'reset_pass_success',
       name: 'reset_pass_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price_buy {
+    return Intl.message(
+      'Price',
+      name: 'price_buy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registered Units`
+  String get registered_units {
+    return Intl.message(
+      'Registered Units',
+      name: 'registered_units',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount_stock {
+    return Intl.message(
+      'Amount',
+      name: 'amount_stock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Right Stock Units`
+  String get right_stock_units {
+    return Intl.message(
+      'Right Stock Units',
+      name: 'right_stock_units',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Right Stock Units`
+  String get right_stock_units_1 {
+    return Intl.message(
+      'Right Stock Units',
+      name: 'right_stock_units_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount_1 {
+    return Intl.message(
+      'Amount',
+      name: 'amount_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price_1 {
+    return Intl.message(
+      'Price',
+      name: 'price_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Right value`
+  String get right_value {
+    return Intl.message(
+      'Right value',
+      name: 'right_value',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expected Implementation Date`
+  String get expected_implementation_date {
+    return Intl.message(
+      'Expected Implementation Date',
+      name: 'expected_implementation_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Due date`
+  String get due_date {
+    return Intl.message(
+      'Due date',
+      name: 'due_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock Dividend`
+  String get stock_dividend {
+    return Intl.message(
+      'Stock Dividend',
+      name: 'stock_dividend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash dividend`
+  String get cash_dividend {
+    return Intl.message(
+      'Cash dividend',
+      name: 'cash_dividend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock Purchase Right`
+  String get stock_purchase_right {
+    return Intl.message(
+      'Stock Purchase Right',
+      name: 'stock_purchase_right',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deposit`
+  String get deposit {
+    return Intl.message(
+      'Deposit',
+      name: 'deposit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Widthraw`
+  String get widthraw {
+    return Intl.message(
+      'Widthraw',
+      name: 'widthraw',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End balance`
+  String get end_balance {
+    return Intl.message(
+      'End balance',
+      name: 'end_balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deposit/widthraw`
+  String get deposit_width {
+    return Intl.message(
+      'Deposit/widthraw',
+      name: 'deposit_width',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount_2 {
+    return Intl.message(
+      'Amount',
+      name: 'amount_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Increase/Decrease`
+  String get increase_decrease {
+    return Intl.message(
+      'Increase/Decrease',
+      name: 'increase_decrease',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Increase`
+  String get increase_1 {
+    return Intl.message(
+      'Increase',
+      name: 'increase_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decrease`
+  String get decrease_1 {
+    return Intl.message(
+      'Decrease',
+      name: 'decrease_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get total_price {
+    return Intl.message(
+      'Price',
+      name: 'total_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Inday order`
+  String get inday_order {
+    return Intl.message(
+      'Inday order',
+      name: 'inday_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order history`
+  String get order_history {
+    return Intl.message(
+      'Order history',
+      name: 'order_history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add stock`
+  String get add_stock_1 {
+    return Intl.message(
+      'Add stock',
+      name: 'add_stock_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiting`
+  String get waiting {
+    return Intl.message(
+      'Waiting',
+      name: 'waiting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edited`
+  String get edited {
+    return Intl.message(
+      'Edited',
+      name: 'edited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order\n(Amount/price)`
+  String get order_1 {
+    return Intl.message(
+      'Order\n(Amount/price)',
+      name: 'order_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Matched\n(Amount/price)`
+  String get match_1 {
+    return Intl.message(
+      'Matched\n(Amount/price)',
+      name: 'match_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remain amount\nStatus`
+  String get remain_status {
+    return Intl.message(
+      'Remain amount\nStatus',
+      name: 'remain_status',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Collateral`
+  String get collateral {
+    return Intl.message(
+      'Collateral',
+      name: 'collateral',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DepositFee`
+  String get depositFee {
+    return Intl.message(
+      'DepositFee',
+      name: 'depositFee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MarginRatio`
+  String get marginRatio {
+    return Intl.message(
+      'MarginRatio',
+      name: 'marginRatio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Interest`
+  String get interest_1 {
+    return Intl.message(
+      'Interest',
+      name: 'interest_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price_tt {
+    return Intl.message(
+      'Price',
+      name: 'price_tt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Increase/hole`
+  String get increase_hole {
+    return Intl.message(
+      'Increase/hole',
+      name: 'increase_hole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total hole`
+  String get total_hole {
+    return Intl.message(
+      'Total hole',
+      name: 'total_hole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expired Date`
+  String get expired_date {
+    return Intl.message(
+      'Expired Date',
+      name: 'expired_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deliver date`
+  String get cDELIVERDATE {
+    return Intl.message(
+      'Deliver date',
+      name: 'cDELIVERDATE',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bank`
+  String get bank_code {
+    return Intl.message(
+      'Bank',
+      name: 'bank_code',
       desc: '',
       args: [],
     );

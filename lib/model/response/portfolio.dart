@@ -61,7 +61,6 @@ class PortfolioStatus {
   String? relized;
   String? plg;
 
-
   Color get glColor => gl == "g" ? AppColors.increase : AppColors.decrease;
 
   String get avgPrice1 {
@@ -69,14 +68,14 @@ class PortfolioStatus {
       return "";
     }
     try {
-      return double.parse(avgPrice!).toStringAsFixed(2);
+      return double.parse(avgPrice!).toStringAsFixed(3);
     } catch (e) {
       return avgPrice ?? "";
     }
   }
 
   String get gainLossPerString {
-    if(gainLossPer!.startsWith(".")) {
+    if (gainLossPer!.startsWith(".")) {
       return '0${gainLossPer}';
     }
     return gainLossPer ?? "";

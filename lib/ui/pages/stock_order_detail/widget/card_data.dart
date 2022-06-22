@@ -62,7 +62,7 @@ class CardData extends StatelessWidget {
               visible: !state.isSearch,
               child: Container(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                 decoration: BoxDecoration(
                   color: AppColors.grayF2.withOpacity(0.6),
                   borderRadius: BorderRadius.circular(4),
@@ -71,23 +71,23 @@ class CardData extends StatelessWidget {
                   children: [
                     Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              stock.stockCode != null
-                                  ? "${stock.stockCode ?? ""} ( ${stock.postTo ?? ""} )"
-                                  : "",
-                              style:
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          stock.stockCode != null
+                              ? "${stock.stockCode ?? ""} ( ${stock.postTo ?? ""} )"
+                              : "",
+                          style:
                               bodyText1?.copyWith(fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              "${stock.nameVn ?? ""}",
-                              style: caption?.copyWith(color: AppColors.textSecond),
-                            ),
-                          ],
-                        )),
+                        ),
+                        Text(
+                          "${stock.nameVn ?? ""}",
+                          style: caption?.copyWith(color: AppColors.textSecond),
+                        ),
+                      ],
+                    )),
                     GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           logic.cleanStock();
                         },
                         child: SvgPicture.asset(AppImages.close))
@@ -129,7 +129,7 @@ class CardData extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'KL',
+                        S.of(context).volume_short,
                         style: caption?.copyWith(color: AppColors.textSecond),
                       ),
                       const SizedBox(height: 1),

@@ -26,7 +26,7 @@ class _RightHistoryWidgetState extends State<RightHistoryWidget> {
   @override
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption;
-    final body2 = Theme.of(context).textTheme.bodyText2;
+    final body2 = Theme.of(context).textTheme.caption;
     Logger().d(widget.history.toJson());
     return Column(
       children: [
@@ -54,21 +54,31 @@ class _RightHistoryWidgetState extends State<RightHistoryWidget> {
                       style: caption?.copyWith(fontWeight: FontWeight.w700),
                     )),
                 Expanded(
-                    flex: 130,
-                    child: Text(
-                      MoneyFormat.formatMoneyRound(
-                          '${widget.history.cRIGHTVOLUME}'),
-                      style: caption,
+                    flex: 80,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        MoneyFormat.formatMoneyRound(
+                            '${widget.history.cRIGHTVOLUME}'),
+                        style: caption,
+                      ),
                     )),
                 Expanded(
-                    flex: 53,
-                    child: Text(widget.history.cRIGHTRATE?.trim() ?? "",
-                      style: caption,
+                    flex: 62,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+
+                      child: Text(widget.history.cRIGHTRATE?.trim() ?? "",
+                        style: caption,
+                      ),
                     )),
                 Expanded(
-                    flex: 94,
-                    child: Text(widget.history.cEXECUTEDATE ?? "",
-                      style: caption,
+                    flex: 80,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(widget.history.cEXECUTEDATE ?? "",
+                        style: caption,
+                      ),
                     )),
               ],
             ),
@@ -90,7 +100,7 @@ class _RightHistoryWidgetState extends State<RightHistoryWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Giá mua", style: body2),
-                    Text('${widget.history.cBUYPRICE}',
+                    Text(MoneyFormat.formatMoneyRound('${widget.history.cBUYPRICE}'),
                       style: body2?.copyWith(fontWeight: FontWeight.w700),
                     )
                   ],

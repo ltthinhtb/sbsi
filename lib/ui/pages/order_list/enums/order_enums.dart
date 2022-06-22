@@ -1,17 +1,21 @@
+import 'package:flutter/cupertino.dart';
+
+import '../../../../generated/l10n.dart';
+
 enum SingingCharacter { all, waiting, matched, cancel }
 
 extension SingingExt on SingingCharacter {
-  get name => _mapName[this];
+  String name(BuildContext context) => _mapName(context)[this]!;
 
   String get value {
     return _mapValue[this]!;
   }
 
-  Map<SingingCharacter, String> get _mapName => {
-        SingingCharacter.waiting: "Chờ khớp",
-        SingingCharacter.matched: 'Đã khớp',
-        SingingCharacter.all: 'Tất cả',
-        SingingCharacter.cancel: 'Hủy',
+  Map<SingingCharacter, String>  _mapName(context) => {
+        SingingCharacter.waiting: S.of(context).waiting,
+        SingingCharacter.matched: S.of(context).matched,
+        SingingCharacter.all: S.of(context).all,
+        SingingCharacter.cancel: S.of(context).cancelled,
       };
 
   Map<SingingCharacter, String> get _mapValue => {
@@ -25,18 +29,18 @@ extension SingingExt on SingingCharacter {
 enum inOrderHisTabs { all, waiting, matched, fixed, cancel }
 
 extension inOrderHisTabsExt on inOrderHisTabs {
-  get name => _mapName[this];
+  String name(BuildContext context) => _mapName(context)[this]!;
 
   get value {
     return _mapValue[this];
   }
 
-  Map<inOrderHisTabs, String> get _mapName => {
-        inOrderHisTabs.waiting: "Chờ khớp",
-        inOrderHisTabs.matched: 'Đã khớp',
-        inOrderHisTabs.all: 'Tất cả',
-        inOrderHisTabs.cancel: 'Hủy',
-        inOrderHisTabs.fixed: 'Đã sửa',
+  Map<inOrderHisTabs, String>  _mapName(BuildContext context) => {
+        inOrderHisTabs.waiting: S.of(context).waiting,
+        inOrderHisTabs.matched: S.of(context).matched,
+        inOrderHisTabs.all: S.of(context).all,
+        inOrderHisTabs.cancel: S.of(context).cancelled,
+        inOrderHisTabs.fixed: S.of(context).edited,
       };
 
   Map<inOrderHisTabs, String> get _mapValue => {
@@ -51,12 +55,12 @@ extension inOrderHisTabsExt on inOrderHisTabs {
 enum OderType { inDay, history }
 
 extension OderTypeExt on OderType {
-  String get name {
+  String  name(BuildContext context) {
     switch (this) {
       case OderType.inDay:
-        return 'Sổ lệnh trong ngày';
+        return S.of(context).inday_order;
       case OderType.history:
-        return 'Lịch sử lệnh';
+        return S.of(context).order_history;
     }
   }
 }

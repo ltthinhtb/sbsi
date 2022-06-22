@@ -48,7 +48,7 @@ class _DepositExpandedState extends State<DepositExpanded> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Quyền cổ tức bằng chứng khoán',
+                  S.of(context).stock_dividend,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
@@ -81,7 +81,7 @@ class _DepositExpandedState extends State<DepositExpanded> {
                       Expanded(
                           flex: 130,
                           child: Text(
-                            "Số CK hưởng quyền",
+                            S.of(context).right_stock_units,
                             style: caption?.copyWith(
                                 fontWeight: FontWeight.w700),
                           )),
@@ -94,10 +94,13 @@ class _DepositExpandedState extends State<DepositExpanded> {
                           )),
                       Expanded(
                           flex: 94,
-                          child: Text(
-                            "Số CK được nhận",
-                            style: caption?.copyWith(
-                                fontWeight: FontWeight.w700),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              S.of(context).right_stock_units_1,
+                              style: caption?.copyWith(
+                                  fontWeight: FontWeight.w700),
+                            ),
                           )),
                     ],
                   ),

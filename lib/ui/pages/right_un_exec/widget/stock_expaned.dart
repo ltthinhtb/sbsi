@@ -49,7 +49,7 @@ class _StockExpandedState extends State<StockExpanded> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Quyền mua cổ phiếu',
+                  S.of(context).stock_purchase_right,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2
@@ -82,7 +82,7 @@ class _StockExpandedState extends State<StockExpanded> {
                       Expanded(
                           flex: 130,
                           child: Text(
-                            "Số CK hưởng quyền",
+                            S.of(context).right_stock_units,
                             style:
                                 caption?.copyWith(fontWeight: FontWeight.w700),
                           )),

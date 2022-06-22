@@ -49,7 +49,7 @@ class _WorldTabsState extends State<WorldTabs>
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          'KL giao dịch',
+                          S.of(context).amount_2,
                           style: caption?.copyWith(
                               fontWeight: FontWeight.w700),
                         ),
@@ -60,7 +60,7 @@ class _WorldTabsState extends State<WorldTabs>
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          'Giá cuối',
+                          S.of(context).price,
                           style: caption?.copyWith(
                               fontWeight: FontWeight.w700),
                         ),
@@ -71,7 +71,7 @@ class _WorldTabsState extends State<WorldTabs>
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          'Tăng/giảm',
+                          S.of(context).increase_decrease,
                           style: caption?.copyWith(
                               fontWeight: FontWeight.w700),
                         ),

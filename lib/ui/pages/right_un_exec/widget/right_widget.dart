@@ -42,7 +42,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
   @override
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption;
-    final body2 = Theme.of(context).textTheme.bodyText2;
+    final body2 = Theme.of(context).textTheme.caption;
     Logger().d(widget.right.toJson());
     return Column(
       children: [
@@ -138,7 +138,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Ngày giao dịch", style: body2),
+                        Text(S.of(context).due_date, style: body2),
                         Text(
                           widget.right.cDueDate,
                           style: body2?.copyWith(fontWeight: FontWeight.w700),
@@ -154,7 +154,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Ngày thực hiện", style: body2),
+                        Text(S.of(context).expected_implementation_date, style: body2),
                         Text(
                           widget.right.eXECUTEDATE1,
                           style: body2?.copyWith(fontWeight: FontWeight.w700),
@@ -202,7 +202,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Giá mua", style: body2),
+                        Text(S.of(context).price_buy, style: body2),
                         Text(
                           MoneyFormat.formatMoneyRound(
                               '${widget.right.cBUYPRICE}'),
@@ -219,7 +219,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Số CK hưởng quyền", style: body2),
+                        Text(S.of(context).right_stock_units, style: body2),
                         Text(
                           MoneyFormat.formatMoneyRound(
                               '${widget.right.cRIGHTVOLUME}'),
@@ -236,7 +236,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Số CK đã đăng ký mua", style: body2),
+                        Text(S.of(context).registered_units, style: body2),
                         Text(
                           MoneyFormat.formatMoneyRound(
                               '${widget.right.cSHAREBUY}'),
@@ -253,7 +253,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Số CK được mua", style: body2),
+                        Text(S.of(context).amount_stock, style: body2),
                         Text(
                           MoneyFormat.formatMoneyRound(
                               '${widget.right.cSHARERIGHT}'),
@@ -294,7 +294,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Tổng giá trị thực hiện quyền", style: body2),
+                        Text(S.of(context).price_1, style: body2),
                         Text(
                           MoneyFormat.formatMoneyRound(
                               '${widget.right.cCASHBUYALL}'),
@@ -311,7 +311,7 @@ class _RightWidgetState extends State<RightWidget> with Validator {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Giá trị thực hiện quyền', style: body2),
+                        Text(S.of(context).right_value, style: body2),
                         ValueListenableBuilder<num>(
                           valueListenable: amount,
                           builder: (context, value, child) {

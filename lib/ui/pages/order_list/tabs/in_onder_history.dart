@@ -142,7 +142,7 @@ class _InOrderHistoryState extends State<InOrderHistory>
               flex: 10,
               child: AppTextTypeHead<String>(
                 inputController: state.stockHistoryController,
-                hintText: "Thêm mã CK",
+                hintText: S.of(context).add_stock_1,
                 suggestionsCallback: (String pattern) {
                   var list = logic.searchStockHistoryString(pattern);
                   return list;
@@ -161,7 +161,7 @@ class _InOrderHistoryState extends State<InOrderHistory>
                   return DropdownMenuItem(
                     value: e,
                     child: Container(
-                      child: Text(e.name),
+                      child: Text(e.name(context)),
                     ),
                   );
                 }).toList(),
@@ -195,14 +195,14 @@ class _InOrderHistoryState extends State<InOrderHistory>
           Expanded(
             flex: 96,
             child: Text(
-              'Đặt (KL/Giá)',
+              S.of(context).order_1.replaceAll("\n", " "),
               style: caption?.copyWith(fontWeight: FontWeight.w700),
             ),
           ),
           Expanded(
             flex: 95,
             child: Text(
-              'Khớp (KL/Giá)',
+              S.of(context).match_1.replaceAll("\n", " "),
               style: caption?.copyWith(fontWeight: FontWeight.w700),
             ),
           ),
