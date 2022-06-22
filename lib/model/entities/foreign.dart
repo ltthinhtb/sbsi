@@ -3,28 +3,26 @@ import 'package:flutter/material.dart';
 import '../../common/app_colors.dart';
 
 class ForeignTrade {
-  String? sTOCKCODE;
-  num? cFOREIGNBUY;
-  num? cFOREIGNSELL;
-  num? kLGD;
-  num? gTGD;
-  String? sTOCKNAME;
-  num? cHANGE;
-  num? pERCENTCHANGE;
+  String? nAME;
+  String? lASTPOINT;
+  String? cHANGE;
+  String? pERCENTCHANGE;
   String? cOLOR;
-  num? pRICE;
+  num? iSSHOW;
+  num? sTT;
+  num? iDSYMBOL;
+  num? iSDEFAULT;
 
   ForeignTrade(
-      {this.sTOCKCODE,
-        this.cFOREIGNBUY,
-        this.cFOREIGNSELL,
-        this.kLGD,
-        this.gTGD,
-        this.sTOCKNAME,
+      {this.nAME,
+        this.lASTPOINT,
         this.cHANGE,
         this.pERCENTCHANGE,
         this.cOLOR,
-        this.pRICE});
+        this.iSSHOW,
+        this.sTT,
+        this.iDSYMBOL,
+        this.iSDEFAULT});
 
   Color get color {
     if(cOLOR == null){
@@ -38,30 +36,28 @@ class ForeignTrade {
   }
 
   ForeignTrade.fromJson(Map<String, dynamic> json) {
-    sTOCKCODE = json['STOCK_CODE'];
-    cFOREIGNBUY = json['C_FOREIGN_BUY'];
-    cFOREIGNSELL = json['C_FOREIGN_SELL'];
-    kLGD = json['KLGD'];
-    gTGD = json['GTGD'];
-    sTOCKNAME = json['STOCK_NAME'];
+    nAME = json['NAME'];
+    lASTPOINT = json['LAST_POINT'];
     cHANGE = json['CHANGE'];
     pERCENTCHANGE = json['PERCENT_CHANGE'];
     cOLOR = json['COLOR'];
-    pRICE = json['PRICE'];
+    iSSHOW = json['IS_SHOW'];
+    sTT = json['STT'];
+    iDSYMBOL = json['ID_SYMBOL'];
+    iSDEFAULT = json['IS_DEFAULT'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['STOCK_CODE'] = this.sTOCKCODE;
-    data['C_FOREIGN_BUY'] = this.cFOREIGNBUY;
-    data['C_FOREIGN_SELL'] = this.cFOREIGNSELL;
-    data['KLGD'] = this.kLGD;
-    data['GTGD'] = this.gTGD;
-    data['STOCK_NAME'] = this.sTOCKNAME;
+    data['NAME'] = this.nAME;
+    data['LAST_POINT'] = this.lASTPOINT;
     data['CHANGE'] = this.cHANGE;
     data['PERCENT_CHANGE'] = this.pERCENTCHANGE;
     data['COLOR'] = this.cOLOR;
-    data['PRICE'] = this.pRICE;
+    data['IS_SHOW'] = this.iSSHOW;
+    data['STT'] = this.sTT;
+    data['ID_SYMBOL'] = this.iDSYMBOL;
+    data['IS_DEFAULT'] = this.iSDEFAULT;
     return data;
   }
 }

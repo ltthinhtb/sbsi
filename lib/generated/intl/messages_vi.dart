@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Financial_details":
             MessageLookupByLibrary.simpleMessage("Chi tiết tài chính"),
+        "Overbought": MessageLookupByLibrary.simpleMessage("Dư mua"),
         "Profitability":
             MessageLookupByLibrary.simpleMessage("Khả năng sinh lời"),
         "Statement": MessageLookupByLibrary.simpleMessage("Sao kê"),
@@ -86,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Giá khớp trung bình"),
         "aver_short": MessageLookupByLibrary.simpleMessage("TB"),
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Giá TB"),
+        "back_to_home": MessageLookupByLibrary.simpleMessage("Về trang chủ"),
         "bank": MessageLookupByLibrary.simpleMessage("Chọn ngân hàng nhận"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
         "bank_choose": MessageLookupByLibrary.simpleMessage("Chọn ngân hàng"),
@@ -105,6 +107,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "branch": MessageLookupByLibrary.simpleMessage("Chi nhánh"),
         "buy": MessageLookupByLibrary.simpleMessage("Mua"),
         "buy_price": MessageLookupByLibrary.simpleMessage("Giá trị lệnh mua"),
+        "by_date": MessageLookupByLibrary.simpleMessage("Theo ngày"),
+        "by_hour": MessageLookupByLibrary.simpleMessage("Theo giờ"),
         "cDELIVERDATE": MessageLookupByLibrary.simpleMessage("Ngày vay"),
         "c_authen_sign":
             MessageLookupByLibrary.simpleMessage("Phương thức xác thực"),
@@ -218,6 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "expected_implementation_date":
             MessageLookupByLibrary.simpleMessage("Ngày thực hiện"),
         "expired_date": MessageLookupByLibrary.simpleMessage("Ngày hết hạn"),
+        "exponential": MessageLookupByLibrary.simpleMessage("Lũy thừa"),
         "faceID_login_fail": MessageLookupByLibrary.simpleMessage(
             "Đăng nhập vân tay/ khuôn mặt thất bại"),
         "failed": MessageLookupByLibrary.simpleMessage("Thất bại"),
@@ -305,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "match_time": MessageLookupByLibrary.simpleMessage("Thời gian khớp"),
         "match_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng khớp"),
         "matched": MessageLookupByLibrary.simpleMessage("Đã khớp"),
+        "matched_order": MessageLookupByLibrary.simpleMessage("Khớp lệnh"),
         "maxVolumeBuyAvaiable": MessageLookupByLibrary.simpleMessage(
             "Khối lượng tối đa có thể mua"),
         "maxVolumeSellAvaiable": MessageLookupByLibrary.simpleMessage(
@@ -316,6 +322,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Số tiền đầu tư tối thiểu"),
         "money": MessageLookupByLibrary.simpleMessage("Tiền"),
         "money_1": MessageLookupByLibrary.simpleMessage("Số tiền"),
+        "money_adv": MessageLookupByLibrary.simpleMessage("Số tiền có thể ứng"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Giao dịch tiền"),
         "money_payment":
@@ -367,6 +374,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_time": MessageLookupByLibrary.simpleMessage("Thời gian đặt"),
         "order_volumn": MessageLookupByLibrary.simpleMessage("Khối lượng đặt"),
         "over_view": MessageLookupByLibrary.simpleMessage("Tổng quan"),
+        "oversold": MessageLookupByLibrary.simpleMessage("Dư bán"),
         "partial_matched": MessageLookupByLibrary.simpleMessage("Khớp 1 phần"),
         "pass_not_match":
             MessageLookupByLibrary.simpleMessage("Mật khẩu không trùng khớp"),
@@ -503,6 +511,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_title": MessageLookupByLibrary.simpleMessage("Cài đặt"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),
+        "simple": MessageLookupByLibrary.simpleMessage("Đơn giản"),
         "splash_sub1": MessageLookupByLibrary.simpleMessage(
             "Giao dịch tiết kiệm với mức phí rẻ nhất thị trường"),
         "splash_sub2": MessageLookupByLibrary.simpleMessage(
@@ -550,8 +559,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Điều khoản và điều kiện"),
         "terms_and_condition_valid": MessageLookupByLibrary.simpleMessage(
             "Vui lòng đồng ý điều khoản và điều kiện"),
+        "tern": MessageLookupByLibrary.simpleMessage("Kỳ"),
         "the_world": MessageLookupByLibrary.simpleMessage("Ngoài nước"),
         "time": MessageLookupByLibrary.simpleMessage("Thời gian"),
+        "time_1": MessageLookupByLibrary.simpleMessage("Thời gian thực hiện"),
         "tks": MessageLookupByLibrary.simpleMessage("Cảm ơn bạn"),
         "today": MessageLookupByLibrary.simpleMessage("Hôm nay"),
         "top_foreign":
@@ -576,6 +587,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nội dung chuyển"),
         "transfer_information":
             MessageLookupByLibrary.simpleMessage("Thông tin giao dịch"),
+        "transfer_momey_success":
+            MessageLookupByLibrary.simpleMessage("Chuyển tiền thành công"),
         "transfer_payment":
             MessageLookupByLibrary.simpleMessage("Thanh toán chuyển khoản"),
         "transfer_stock":

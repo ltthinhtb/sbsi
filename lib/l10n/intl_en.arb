@@ -421,8 +421,19 @@
   "increase_hole": "Increase/hole",
   "total_hole": "Total hole",
   "expired_date": "Expired Date",
-  "cDELIVERDATE" : "Deliver date",
-  "bank_code" : "Bank"
-
+  "cDELIVERDATE": "Deliver date",
+  "bank_code": "Bank",
+  "transfer_momey_success": "Money transfer success",
+  "time_1": "Time",
+  "back_to_home": "Back to home",
+  "money_adv": "Money adv",
+  "matched_order": "Match order",
+  "Overbought": "Overbought",
+  "oversold": "Oversold",
+  "by_date": "By date",
+  "by_hour": "By hour",
+  "tern": "Tern",
+  "simple": "Simple",
+  "exponential" : "Exponential"
 
 }

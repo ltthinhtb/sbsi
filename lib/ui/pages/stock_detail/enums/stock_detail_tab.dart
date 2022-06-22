@@ -25,9 +25,9 @@ extension StockTimelineEXT on StockTimeline {
   String name(BuildContext context) {
     switch (this) {
       case StockTimeline.day:
-        return "Theo ngày";
+        return S.of(context).by_date;
       case StockTimeline.hour:
-        return "Theo giờ";
+        return S.of(context).by_hour;
     }
   }
 

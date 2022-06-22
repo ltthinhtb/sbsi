@@ -27,7 +27,6 @@ class _TransferSuccessState extends State<TransferSuccess> {
       ? state.userAccountController.text
       : (state.accountReceiver.value.accCode ?? "");
 
-
   var date = DateTime.now();
 
   @override
@@ -50,7 +49,7 @@ class _TransferSuccessState extends State<TransferSuccess> {
                 const SizedBox(height: 24),
                 Center(
                     child: Text(
-                  'Chuyển tiền thành công',
+                  S.of(context).transfer_momey_success,
                   style: headline6?.copyWith(fontWeight: FontWeight.w700),
                 )),
                 const SizedBox(height: 16),
@@ -61,7 +60,7 @@ class _TransferSuccessState extends State<TransferSuccess> {
                 )),
                 const SizedBox(height: 16),
                 Text(
-                  'Tài khoản nhận',
+                  S.of(context).account_receiver,
                   style: body2?.copyWith(
                       color: const Color.fromRGBO(225, 137, 150, 1)),
                 ),
@@ -79,12 +78,16 @@ class _TransferSuccessState extends State<TransferSuccess> {
                   height: 32,
                 ),
                 Text(
-                  'Thời gian thực hiện',
+                  S.of(context).time_1,
                   style: body2?.copyWith(
                       color: const Color.fromRGBO(225, 137, 150, 1)),
                 ),
                 const SizedBox(height: 12),
-                Text(DateTimeUtils.toDateString(date,format: "HH:mm:ss dd/MM/yyyy"),style: body2?.copyWith(fontWeight: FontWeight.w700),),
+                Text(
+                  DateTimeUtils.toDateString(date,
+                      format: "HH:mm:ss dd/MM/yyyy"),
+                  style: body2?.copyWith(fontWeight: FontWeight.w700),
+                ),
                 const Divider(
                   height: 32,
                 ),
@@ -94,7 +97,10 @@ class _TransferSuccessState extends State<TransferSuccess> {
                       color: const Color.fromRGBO(225, 137, 150, 1)),
                 ),
                 const SizedBox(height: 12),
-                Text(state.transferContentController.text,style: body2?.copyWith(),),
+                Text(
+                  state.transferContentController.text,
+                  style: body2?.copyWith(),
+                ),
                 const Spacer(),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
@@ -103,7 +109,7 @@ class _TransferSuccessState extends State<TransferSuccess> {
                         Navigator.of(context)
                             .popUntil((route) => route.isFirst);
                       },
-                      title: "Về trang chủ"),
+                      title: S.of(context).back_to_home),
                 ),
                 const SizedBox(
                   height: 32,

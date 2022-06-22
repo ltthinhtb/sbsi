@@ -1038,7 +1038,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<List<ForeignTrade>> getTopForeignTrade(
       String count, String type) async {
-    String path = flavor.INFO_SBSI + 'topForeignTrade';
+    String path = flavor.INFO_SBSI + 'worldIndex';
     Response _result = await _getApi(
         _dio.get(path, queryParameters: {"count": count, "type": type}));
     var _mapData = (_result.data);

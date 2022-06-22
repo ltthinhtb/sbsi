@@ -172,7 +172,7 @@ class _OverviewViewState extends State<OverviewView>
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                S.of(context).amount_2,
+                                S.of(context).price,
                                 style: caption?.copyWith(
                                     fontWeight: FontWeight.w700),
                               ),
@@ -183,7 +183,7 @@ class _OverviewViewState extends State<OverviewView>
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                S.of(context).price,
+                                S.of(context).increase_decrease,
                                 style: caption?.copyWith(
                                     fontWeight: FontWeight.w700),
                               ),
@@ -194,7 +194,7 @@ class _OverviewViewState extends State<OverviewView>
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                S.of(context).increase_decrease,
+                                '${S.of(context).increase_decrease}%',
                                 style: caption?.copyWith(
                                     fontWeight: FontWeight.w700),
                               ),

@@ -65,11 +65,11 @@ class _OverViewTabState extends State<OverViewTab>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        rowBuySell('Dư mua', '0',
+                        rowBuySell(S.of(context).Overbought, '0',
                             alignment: Alignment.centerLeft),
-                        rowBuySell('Dư bán', '0'),
-                        rowBuySell('NN mua', '${stock.fBVol}'),
-                        rowBuySell('NN bán', '${stock.fSVolume}',
+                        rowBuySell(S.of(context).oversold, '0'),
+                        rowBuySell('NN ${S.of(context).buy}', '${stock.fBVol}'),
+                        rowBuySell('NN ${S.of(context).sell}', '${stock.fSVolume}',
                             alignment: Alignment.centerRight)
                       ],
                     ),
@@ -92,7 +92,7 @@ class _OverViewTabState extends State<OverViewTab>
                     ),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Khớp lệnh',
+                      child: Text(S.of(context).matched_order,
                           style: body1?.copyWith(fontWeight: FontWeight.w700)),
                     ),
                   ),

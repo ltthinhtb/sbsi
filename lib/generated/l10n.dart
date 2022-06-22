@@ -4289,6 +4289,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Money transfer success`
+  String get transfer_momey_success {
+    return Intl.message(
+      'Money transfer success',
+      name: 'transfer_momey_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get time_1 {
+    return Intl.message(
+      'Time',
+      name: 'time_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to home`
+  String get back_to_home {
+    return Intl.message(
+      'Back to home',
+      name: 'back_to_home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Money adv`
+  String get money_adv {
+    return Intl.message(
+      'Money adv',
+      name: 'money_adv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Match order`
+  String get matched_order {
+    return Intl.message(
+      'Match order',
+      name: 'matched_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Overbought`
+  String get Overbought {
+    return Intl.message(
+      'Overbought',
+      name: 'Overbought',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Oversold`
+  String get oversold {
+    return Intl.message(
+      'Oversold',
+      name: 'oversold',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By date`
+  String get by_date {
+    return Intl.message(
+      'By date',
+      name: 'by_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By hour`
+  String get by_hour {
+    return Intl.message(
+      'By hour',
+      name: 'by_hour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tern`
+  String get tern {
+    return Intl.message(
+      'Tern',
+      name: 'tern',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Simple`
+  String get simple {
+    return Intl.message(
+      'Simple',
+      name: 'simple',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exponential`
+  String get exponential {
+    return Intl.message(
+      'Exponential',
+      name: 'exponential',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

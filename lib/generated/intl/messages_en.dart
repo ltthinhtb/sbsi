@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Financial_details":
             MessageLookupByLibrary.simpleMessage("Financial details"),
+        "Overbought": MessageLookupByLibrary.simpleMessage("Overbought"),
         "Profitability": MessageLookupByLibrary.simpleMessage("Profitability"),
         "Statement": MessageLookupByLibrary.simpleMessage("Statement"),
         "about_choose": MessageLookupByLibrary.simpleMessage("About choose"),
@@ -84,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Average match price"),
         "aver_short": MessageLookupByLibrary.simpleMessage("AVG"),
         "avg_price_short": MessageLookupByLibrary.simpleMessage("Avg price"),
+        "back_to_home": MessageLookupByLibrary.simpleMessage("Back to home"),
         "bank": MessageLookupByLibrary.simpleMessage("Bank"),
         "bank_account": MessageLookupByLibrary.simpleMessage("Bank account"),
         "bank_choose": MessageLookupByLibrary.simpleMessage("Bank"),
@@ -99,6 +101,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "branch": MessageLookupByLibrary.simpleMessage("Branch"),
         "buy": MessageLookupByLibrary.simpleMessage("Buy"),
         "buy_price": MessageLookupByLibrary.simpleMessage("Order buy price"),
+        "by_date": MessageLookupByLibrary.simpleMessage("By date"),
+        "by_hour": MessageLookupByLibrary.simpleMessage("By hour"),
         "cDELIVERDATE": MessageLookupByLibrary.simpleMessage("Deliver date"),
         "c_authen_sign":
             MessageLookupByLibrary.simpleMessage("Authentication sign"),
@@ -211,6 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "expected_implementation_date": MessageLookupByLibrary.simpleMessage(
             "Expected Implementation Date"),
         "expired_date": MessageLookupByLibrary.simpleMessage("Expired Date"),
+        "exponential": MessageLookupByLibrary.simpleMessage("Exponential"),
         "faceID_login_fail": MessageLookupByLibrary.simpleMessage(
             "Fingerprint/face login failed"),
         "failed": MessageLookupByLibrary.simpleMessage("Failed"),
@@ -296,6 +301,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "match_time": MessageLookupByLibrary.simpleMessage("Match time"),
         "match_volumn": MessageLookupByLibrary.simpleMessage("Match volumn"),
         "matched": MessageLookupByLibrary.simpleMessage("Matched"),
+        "matched_order": MessageLookupByLibrary.simpleMessage("Match order"),
         "maxVolumeBuyAvaiable": MessageLookupByLibrary.simpleMessage(
             "Maximum Available Buy Volumn"),
         "maxVolumeSellAvaiable": MessageLookupByLibrary.simpleMessage(
@@ -306,6 +312,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "min_VOLUME": MessageLookupByLibrary.simpleMessage("Min volume"),
         "money": MessageLookupByLibrary.simpleMessage("Money"),
         "money_1": MessageLookupByLibrary.simpleMessage("Money0"),
+        "money_adv": MessageLookupByLibrary.simpleMessage("Money adv"),
         "money_exchange":
             MessageLookupByLibrary.simpleMessage("Money exchange"),
         "money_payment": MessageLookupByLibrary.simpleMessage("Money payment"),
@@ -356,6 +363,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "order_time": MessageLookupByLibrary.simpleMessage("Order time"),
         "order_volumn": MessageLookupByLibrary.simpleMessage("Order volumn"),
         "over_view": MessageLookupByLibrary.simpleMessage("Over view"),
+        "oversold": MessageLookupByLibrary.simpleMessage("Oversold"),
         "partial_matched":
             MessageLookupByLibrary.simpleMessage("Partial matched"),
         "pass_not_match":
@@ -486,6 +494,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "simple": MessageLookupByLibrary.simpleMessage("Simple"),
         "splash_sub1": MessageLookupByLibrary.simpleMessage(
             "Saving transaction with the cheapest fee in the market"),
         "splash_sub2": MessageLookupByLibrary.simpleMessage(
@@ -533,8 +542,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Terms & condition"),
         "terms_and_condition_valid": MessageLookupByLibrary.simpleMessage(
             "Please agree terms & condition"),
+        "tern": MessageLookupByLibrary.simpleMessage("Tern"),
         "the_world": MessageLookupByLibrary.simpleMessage("Ngoài nước"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
+        "time_1": MessageLookupByLibrary.simpleMessage("Time"),
         "tks": MessageLookupByLibrary.simpleMessage("Thanks"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "top_foreign": MessageLookupByLibrary.simpleMessage("Top foreign"),
@@ -557,6 +568,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Transfer content"),
         "transfer_information":
             MessageLookupByLibrary.simpleMessage("Transfer information"),
+        "transfer_momey_success":
+            MessageLookupByLibrary.simpleMessage("Money transfer success"),
         "transfer_payment":
             MessageLookupByLibrary.simpleMessage("Transfer Payment"),
         "transfer_stock":

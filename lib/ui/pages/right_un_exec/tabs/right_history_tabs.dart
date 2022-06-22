@@ -149,7 +149,7 @@ class _RightHistoryTabState extends State<RightHistoryTab>
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "Số CK hưởng quyền",
+                  S.of(context).right_stock_units,
                   style: caption?.copyWith(fontWeight: FontWeight.w700),
                 ),
               )),
@@ -167,7 +167,8 @@ class _RightHistoryTabState extends State<RightHistoryTab>
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "Ngày thực hiện",
+                  S.of(context).expected_implementation_date,
+                  textAlign: TextAlign.right  ,
                   style: caption?.copyWith(fontWeight: FontWeight.w700),
                 ),
               )),

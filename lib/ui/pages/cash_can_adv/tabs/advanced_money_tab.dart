@@ -45,7 +45,7 @@ class _AdvancedMoneyTabState extends State<AdvancedMoneyTab>
                       Expanded(
                           flex: 170,
                           child: Text(
-                            "Số tiền có thể ứng",
+                            S.of(context).money_adv,
                             style:
                                 caption?.copyWith(fontWeight: FontWeight.w700),
                           )),

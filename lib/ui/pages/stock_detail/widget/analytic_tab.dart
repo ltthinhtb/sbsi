@@ -63,7 +63,7 @@ class _AnalyticTabState extends State<AnalyticTab>
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    'Khớp lệnh',
+                    S.of(context).matched_order,
                     style: body1?.copyWith(fontWeight: FontWeight.w700),
                   ),
                 ),
@@ -84,21 +84,21 @@ class _AnalyticTabState extends State<AnalyticTab>
                       Expanded(
                           flex: 114,
                           child: Text(
-                            "Kỳ",
+                            S.of(context).tern,
                             style:
                                 caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 145,
                           child: Text(
-                            "Đơn giản",
+                            S.of(context).tern,
                             style:
                                 caption?.copyWith(fontWeight: FontWeight.w700),
                           )),
                       Expanded(
                           flex: 98,
                           child: Text(
-                            "Lũy thừa",
+                            S.of(context).exponential,
                             style:
                                 caption?.copyWith(fontWeight: FontWeight.w700),
                           )),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/ui/pages/market/market_logic.dart';
-import 'package:sbsi/utils/money_utils.dart';
 
 class TopForeignTrade extends StatelessWidget {
   const TopForeignTrade({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class TopForeignTrade extends StatelessWidget {
                 Expanded(
                   flex: 50,
                   child: Text(
-                    trade.sTOCKCODE ?? "",
+                    trade.nAME ?? "",
                     style: caption?.copyWith(fontWeight: FontWeight.w700),
                   ),
                 ),
@@ -36,7 +35,7 @@ class TopForeignTrade extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      MoneyFormat.formatMoneyRound('${trade.kLGD}'),
+                      trade.lASTPOINT ?? "",
                       style: caption?.copyWith(),
                     ),
                   ),
@@ -46,7 +45,7 @@ class TopForeignTrade extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      trade.pRICE?.toStringAsFixed(2) ?? "",
+                      trade.cHANGE ?? "",
                       style: caption?.copyWith(color: trade.color),
                     ),
                   ),
@@ -56,7 +55,7 @@ class TopForeignTrade extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      trade.cHANGE?.toStringAsFixed(2) ?? "",
+                      trade.pERCENTCHANGE ?? "",
                       style: caption?.copyWith(color: trade.color),
                     ),
                   ),
