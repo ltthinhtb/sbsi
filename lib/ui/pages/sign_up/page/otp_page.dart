@@ -43,6 +43,7 @@ class _OtpValidateState extends State<OtpValidate> {
     try {
       await Get.find<ApiService>()
           .checkOtp(state.phoneController.text, pinController.text);
+      check.value = true;
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     } catch (e) {}
@@ -118,7 +119,7 @@ class _OtpValidateState extends State<OtpValidate> {
                 duration: const Duration(seconds: 30),
                 textStyle: body2!.copyWith(color: AppColors.primary),
                 voidCallback: () {
-
+                  logic.checkPhone();
                 },
               ),
             ),
@@ -151,7 +152,6 @@ class _OtpValidateState extends State<OtpValidate> {
     if (pinController.text.length < 6) {
       check.value = false;
     } else {
-      check.value = true;
       checkOtp();
     }
   }

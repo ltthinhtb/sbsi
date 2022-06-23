@@ -81,6 +81,7 @@ class SignUpLogic extends GetxController {
     final RequestParams _requestParams = RequestParams(
         user: "back",
         cmd: "CHECK_OPENACC",
+        enPoint: "verifyPhoneEmail",
         param: {
           "C_MOBILE": state.phoneController.text,
           "C_EMAIL": state.emailController.text
@@ -157,6 +158,7 @@ class SignUpLogic extends GetxController {
   Future openAccount() async {
     AppLoading.showLoading();
     final RequestParams _requestParams = RequestParams(
+        enPoint: "openAccount",
         user: "back",
         cmd: "OPEN_INDI_ACCOUNT",
         param: OpenAccountRequest(
@@ -193,8 +195,7 @@ class SignUpLogic extends GetxController {
       Get.to(const SuccessPage());
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
-    }
-    finally {
+    } finally {
       AppLoading.disMissLoading();
     }
   }
