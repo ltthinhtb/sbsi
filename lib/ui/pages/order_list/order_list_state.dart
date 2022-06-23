@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sbsi/model/entities/order_history.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 
+import '../../../model/entities/confirm_order.dart';
 import '../../../model/response/list_account_response.dart';
 import '../../../utils/date_utils.dart';
 import 'enums/order_enums.dart';
@@ -12,7 +13,11 @@ class OrderListState {
 
   late TextEditingController stockHistoryController;
 
+  late TextEditingController stockCodeConfirmController;
+
   var selectedListOrder = <IndayOrder>[].obs;
+
+  var selectedListConfirmOrder = <OrderConfirm>[].obs;
 
   List<IndayOrder> get buyOrder {
     var list = <IndayOrder>[];
@@ -21,6 +26,7 @@ class OrderListState {
     });
     return list;
   }
+
 
   num get totalBuy {
     num _amount = 0;
@@ -64,6 +70,8 @@ class OrderListState {
 
   final listOrderHistory = <OrderHistory>[].obs;
 
+  var listOrderConfirm = <OrderConfirm>[].obs;
+
   SingingCharacter singingCharacter = SingingCharacter.all;
 
   inOrderHisTabs singingCharacterHistory = inOrderHisTabs.all;
@@ -72,6 +80,9 @@ class OrderListState {
 
   final isSelectAll = false.obs;
 
+  final isSelectAllConfirmOrder = false.obs;
+
+
   final startDateController = TextEditingController(
       text: DateTimeUtils.toDateString(
           DateTime.now().subtract(const Duration(days: 90)),
@@ -79,8 +90,16 @@ class OrderListState {
   final endDateController = TextEditingController(
       text: DateTimeUtils.toDateString(DateTime.now(), format: "dd/MM/yyyy"));
 
+  final startDateController1 = TextEditingController(
+      text: DateTimeUtils.toDateString(
+          DateTime.now().subtract(const Duration(days: 90)),
+          format: "dd/MM/yyyy"));
+  final endDateController1 = TextEditingController(
+      text: DateTimeUtils.toDateString(DateTime.now(), format: "dd/MM/yyyy"));
+
   OrderListState() {
     stockCodeController = TextEditingController();
     stockHistoryController = TextEditingController();
+    stockCodeConfirmController = TextEditingController();
   }
 }

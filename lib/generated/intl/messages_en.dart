@@ -156,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "command": MessageLookupByLibrary.simpleMessage("Command"),
         "complete": MessageLookupByLibrary.simpleMessage("Complete request"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "confirm_all": MessageLookupByLibrary.simpleMessage("Confirm all"),
         "confirm_cancel_order":
             MessageLookupByLibrary.simpleMessage("Cancel order confirmation"),
         "confirm_change_order":
@@ -164,12 +165,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_new_pin":
             MessageLookupByLibrary.simpleMessage("Confirm new pin"),
+        "confirm_order": MessageLookupByLibrary.simpleMessage("Confirm order"),
+        "confirm_order_success":
+            MessageLookupByLibrary.simpleMessage("Confirm order success"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Confirm OTP"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
         "confirm_payment":
             MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Confirm pin"),
+        "confirm_select":
+            MessageLookupByLibrary.simpleMessage("Confirm select"),
         "contact_info": MessageLookupByLibrary.simpleMessage("Contact info"),
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
         "content": MessageLookupByLibrary.simpleMessage("Content"),
@@ -365,6 +371,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Order list day"),
         "order_list_day_history":
             MessageLookupByLibrary.simpleMessage("Order list day history"),
+        "order_no": MessageLookupByLibrary.simpleMessage("Order no."),
         "order_note": MessageLookupByLibrary.simpleMessage("Order note"),
         "order_number": MessageLookupByLibrary.simpleMessage("Order Number"),
         "order_number_short": MessageLookupByLibrary.simpleMessage("OrdN"),

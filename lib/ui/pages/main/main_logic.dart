@@ -21,11 +21,13 @@ class MainLogic extends GetxController {
   void switchTap(int index) {
     state.selectedIndex.value = index;
     // load sổ lệnh màn sổ lệnh
-    if(index == 3) {
+    if (index == 3) {
       Get.find<OrderListLogic>().getOrderList();
+      Get.find<OrderListLogic>().getListOrderConfirm();
+      Get.find<OrderListLogic>().getOrderListHistory();
     }
     // load sổ lệnh màn đặt lệnh
-    if(index == 2) {
+    if (index == 2) {
       Get.find<StockOrderLogic>().getOrderList();
     }
   }
@@ -36,7 +38,7 @@ class MainLogic extends GetxController {
 
   Future<void> sendToken() async {
     try {
-     await apiService.sendToken({
+      await apiService.sendToken({
         "cmd": "add",
         "account": Get.find<AuthService>().token.value!.data!.user,
         "token": Get.find<NotificationService>().token,

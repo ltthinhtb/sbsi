@@ -7,6 +7,7 @@ import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/tabs/inday_tabs.dart';
 import '../../../services/index.dart';
 import 'enums/order_enums.dart';
+import 'tabs/confirm_tab.dart';
 import 'tabs/in_onder_history.dart';
 
 class OrderListPage extends StatefulWidget {
@@ -135,7 +136,7 @@ class _OrderListPageState extends State<OrderListPage>
                   ],
                 ),
                 const Expanded(
-                  child: TabBarView(children: [InDayTab(), InOrderHistory()]),
+                  child: TabBarView(children: [InDayTab(), InOrderHistory(),ConfirmTab()]),
                 )
               ],
             ),

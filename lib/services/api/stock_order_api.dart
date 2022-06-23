@@ -54,6 +54,12 @@ extension StockOrderService on ApiService {
     return await _apiClient.getIndayOrder(requestParams);
   }
 
+  Future<List<OrderConfirm>> getListOrderConfirm(RequestParams requestParams) async {
+    return await _apiClient.getListOrderConfirm(requestParams);
+  }
+
+
+
   Future<List<EconomyRow>> getListEconomyRow(
       String stock, String timeLine) async {
     return await _apiClient.getListEconomyRow(stock, timeLine);

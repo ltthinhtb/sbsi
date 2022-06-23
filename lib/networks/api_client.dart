@@ -7,6 +7,7 @@ import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/entities/advance_withdraw.dart';
 import 'package:sbsi/model/entities/app_notification.dart';
 import 'package:sbsi/model/entities/cash_account.dart';
+import 'package:sbsi/model/entities/confirm_order.dart';
 import 'package:sbsi/model/entities/debt_acc.dart';
 import 'package:sbsi/model/entities/economy.dart';
 import 'package:sbsi/model/entities/fee_withdraw.dart';
@@ -197,6 +198,9 @@ abstract class ApiClient {
   Future getOtp(RequestParams requestParams);
 
   Future checkOtp(String phone, String otp);
+
+  Future<List<OrderConfirm>> getListOrderConfirm(RequestParams requestParams);
+
 }
 
 class _ApiClient implements ApiClient {
@@ -1195,5 +1199,17 @@ class _ApiClient implements ApiClient {
         data: {"mobile": phone, "otp": otp},
       ),
     );
+  }
+
+  @override
+  Future<List<OrderConfirm>> getListOrderConfirm(RequestParams requestParams) async {
+    Response _result = await _requestApi(_dio.post(
+      flavor.baseUrl + flavor.ENDPOINT_CORE,
+      data: requestParams.toJson(),
+    ));
+    List<dynamic> _listDataDynamic = _decodeMap(_result.data!)['data'];
+    List<OrderConfirm> _listData =
+    _listDataDynamic.map((e) => OrderConfirm.fromJson(e)).toList();
+    return _listData;
   }
 }

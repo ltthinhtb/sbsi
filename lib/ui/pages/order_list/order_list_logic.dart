@@ -12,6 +12,7 @@ import 'package:sbsi/ui/pages/order_list/order_list_state.dart';
 import 'package:sbsi/utils/error_message.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../model/entities/confirm_order.dart';
 import '../../../utils/logger.dart';
 import '../../../utils/order_utils.dart';
 
@@ -68,6 +69,31 @@ class OrderListLogic extends GetxController {
     }
   }
 
+  // load list order confirm
+  void getListOrderConfirm() async {
+    var _tokenEntity = authService.token.value;
+    final RequestParams _requestParams = RequestParams(
+      group: "B",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+          type: "cursor",
+          cmd: "ListOrderConfirm",
+          p1: state.account.value.accCode,
+          p2: "",
+          p3: state.startDateController1.text,
+          p4: state.endDateController1.text,
+          p6: "1",
+          p7: "30"),
+    );
+    try {
+      state.listOrderConfirm.value =
+          await apiService.getListOrderConfirm(_requestParams);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   // filter theo trạng thái lệnh
   void changeOrderListStatus(SingingCharacter character) {
     state.singingCharacter = character;
@@ -98,6 +124,39 @@ class OrderListLogic extends GetxController {
         refId: refId,
         orderType: "1",
         pin: pin,
+      ),
+    );
+    try {
+      await apiService.cancleOrder(_requestParams);
+      getOrderList();
+      Get.back(); // back dialog
+
+      // trường hợp cancel all thì k show dialog
+      if (showDialog) {
+        AppSnackBar.showSuccess(message: S.current.cancel_order_success);
+      }
+    } on ErrorException catch (e) {
+      if (showDialog) {
+        AppSnackBar.showError(message: e.message);
+      }
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
+  // xác nhận lệnh
+  Future<void> confirmOrder(OrderConfirm order, String pin,
+      {bool showDialog = true}) async {
+    var _tokenEntity = authService.token.value;
+    RequestParams _requestParams = RequestParams(
+      group: "B",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+        type: "string",
+        cmd: "UpdateOrderConfirm",
+        p1: order.pKORDER ?? "",
+        p3: pin,
       ),
     );
     try {
@@ -150,6 +209,37 @@ class OrderListLogic extends GetxController {
     }
   }
 
+
+  Future<void> cancelAllOrderConfirm(String pin) async {
+    try {
+      await Future.wait(state.selectedListConfirmOrder
+          .map((element) => confirmOrder(element, pin, showDialog: false))
+          .toList());
+      getListOrderConfirm();
+      Get.back(); // back dialog
+      AppSnackBar.showSuccess(message: S.current.confirm_order_success);
+      state.isSelectAllConfirmOrder.value = false;
+    } on ErrorException catch (e) {
+      AppSnackBar.showError(message: e.message);
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
+  // select all or Clear
+  void selectAllConfirm({bool? isSelect}) {
+    // có thể bằng biến giá trị param truyền vào
+    state.isSelectAllConfirmOrder.value = isSelect ?? (!state.isSelectAllConfirmOrder.value);
+    state.selectedListConfirmOrder.clear();
+    // nếu key là select all
+    if (state.isSelectAllConfirmOrder.value) {
+      // check order canedit to add list
+      state.listOrderConfirm.forEach((element) {
+        state.selectedListConfirmOrder.add(element);
+      });
+    }
+  }
+
   // add order to list select
   void addSelectOrder(IndayOrder order) {
     state.selectedListOrder.add(order);
@@ -158,6 +248,16 @@ class OrderListLogic extends GetxController {
   // remove order to list select
   void removeSelectOrder(IndayOrder order) {
     state.selectedListOrder.remove(order);
+  }
+
+  // add order to list select
+  void addSelectOrderConfirm(OrderConfirm order) {
+    state.selectedListConfirmOrder.add(order);
+  }
+
+  // remove order to list select
+  void removeSelectConfirm(OrderConfirm order) {
+    state.selectedListConfirmOrder.remove(order);
   }
 
   // load tài khoản mặc định
@@ -173,11 +273,12 @@ class OrderListLogic extends GetxController {
   // switch tài khoản 1-6
   void changeAccount() {
     var index = authService.listAccount.indexWhere(
-            (element) => state.account.value.accCode != element.accCode);
+        (element) => state.account.value.accCode != element.accCode);
     if (index >= 0) {
       state.account.value = authService.listAccount[index];
       getOrderList();
       getOrderListHistory();
+      getListOrderConfirm();
     }
   }
 
@@ -221,6 +322,7 @@ class OrderListLogic extends GetxController {
     loadAccount();
     getOrderList();
     getOrderListHistory();
+    getListOrderConfirm();
   }
 
   @override
@@ -283,6 +385,33 @@ class OrderListLogic extends GetxController {
                 stockCode.toLowerCase(),
               ),
         )
+        .toList();
+    return searchResult;
+  }
+
+  List<String> searchStockConfirmString(String stockCode) {
+    List<OrderConfirm> searchResult = state.listOrderConfirm
+        .where(
+          (element) => element.cSHARECODE!.toLowerCase().startsWith(
+        stockCode.toLowerCase(),
+      ),
+    )
+        .toList();
+    return searchResult
+        .map((e) {
+      return e.cSHARECODE ?? "";
+    })
+        .toSet()
+        .toList();
+  }
+
+  List<OrderConfirm> searchStockConfirm(String stockCode) {
+    List<OrderConfirm> searchResult = state.listOrderConfirm
+        .where(
+          (element) => element.cSHARECODE!.toLowerCase().startsWith(
+        stockCode.toLowerCase(),
+      ),
+    )
         .toList();
     return searchResult;
   }

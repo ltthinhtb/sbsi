@@ -162,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "complete":
             MessageLookupByLibrary.simpleMessage("Bạn đã hoàn tất yêu cầu"),
         "confirm": MessageLookupByLibrary.simpleMessage("Xác nhận"),
+        "confirm_all": MessageLookupByLibrary.simpleMessage("Xác nhận tất cả"),
         "confirm_cancel_order":
             MessageLookupByLibrary.simpleMessage("Xác nhận huỷ lệnh"),
         "confirm_change_order":
@@ -170,12 +171,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_new_pin":
             MessageLookupByLibrary.simpleMessage("Xác nhận mã pin mới"),
+        "confirm_order": MessageLookupByLibrary.simpleMessage("Xác nhận lệnh"),
+        "confirm_order_success":
+            MessageLookupByLibrary.simpleMessage("Xác nhận lệnh thành công"),
         "confirm_otp": MessageLookupByLibrary.simpleMessage("Xác nhận OTP"),
         "confirm_pass":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu"),
         "confirm_payment":
             MessageLookupByLibrary.simpleMessage("Xác thực giao dịch"),
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Xác nhận mã pin"),
+        "confirm_select":
+            MessageLookupByLibrary.simpleMessage("Xác nhận các lệnh được chọn"),
         "contact_info":
             MessageLookupByLibrary.simpleMessage("Thông tin liên hệ"),
         "contact_support":
@@ -375,6 +381,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Danh sách số lệnh trong ngày"),
         "order_list_day_history":
             MessageLookupByLibrary.simpleMessage("Danh sách lịch sử lệnh"),
+        "order_no": MessageLookupByLibrary.simpleMessage("SHL"),
         "order_note": MessageLookupByLibrary.simpleMessage("Sổ lệnh"),
         "order_number": MessageLookupByLibrary.simpleMessage("Số hiệu lệnh"),
         "order_number_short": MessageLookupByLibrary.simpleMessage("SHL"),

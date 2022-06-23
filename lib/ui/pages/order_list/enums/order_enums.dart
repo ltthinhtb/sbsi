@@ -52,7 +52,7 @@ extension inOrderHisTabsExt on inOrderHisTabs {
       };
 }
 
-enum OderType { inDay, history }
+enum OderType { inDay, history,confirmOrder }
 
 extension OderTypeExt on OderType {
   String  name(BuildContext context) {
@@ -61,6 +61,8 @@ extension OderTypeExt on OderType {
         return S.of(context).inday_order;
       case OderType.history:
         return S.of(context).order_history;
+      case OderType.confirmOrder:
+       return S.of(context).confirm_order;
     }
   }
 }

@@ -443,6 +443,12 @@
   "c_loan_out": "Dư nợ đã trả",
   "total_profit_loss": "Tổng tiền lãi/lỗ",
   "fee_type": "Loại phí",
-  "fee_title" : "Phí do người nhận trả"
+  "fee_title" : "Phí do người nhận trả",
+  "confirm_order": "Xác nhận lệnh",
+  "confirm_all" : "Xác nhận tất cả",
+  "confirm_select" : "Xác nhận các lệnh được chọn",
+  "confirm_order_success" : "Xác nhận lệnh thành công",
+  "order_no" : "SHL"
+
 
 }

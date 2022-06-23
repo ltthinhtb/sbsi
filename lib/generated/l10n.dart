@@ -4499,6 +4499,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Confirm order`
+  String get confirm_order {
+    return Intl.message(
+      'Confirm order',
+      name: 'confirm_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm all`
+  String get confirm_all {
+    return Intl.message(
+      'Confirm all',
+      name: 'confirm_all',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm select`
+  String get confirm_select {
+    return Intl.message(
+      'Confirm select',
+      name: 'confirm_select',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm order success`
+  String get confirm_order_success {
+    return Intl.message(
+      'Confirm order success',
+      name: 'confirm_order_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order no.`
+  String get order_no {
+    return Intl.message(
+      'Order no.',
+      name: 'order_no',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

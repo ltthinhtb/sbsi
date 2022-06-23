@@ -443,6 +443,10 @@
   "c_loan_out": "Loan out",
   "total_profit_loss": "Total profit/loss",
   "fee_type": "Fee type",
-  "fee_title" : "Fees to be paid by the recipient"
-
+  "fee_title": "Fees to be paid by the recipient",
+  "confirm_order": "Confirm order",
+  "confirm_all": "Confirm all",
+  "confirm_select": "Confirm select",
+  "confirm_order_success": "Confirm order success",
+  "order_no": "Order no."
 }
