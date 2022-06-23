@@ -4479,6 +4479,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Fee type`
+  String get fee_type {
+    return Intl.message(
+      'Fee type',
+      name: 'fee_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fees to be paid by the recipient`
+  String get fee_title {
+    return Intl.message(
+      'Fees to be paid by the recipient',
+      name: 'fee_title',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

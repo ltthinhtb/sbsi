@@ -224,6 +224,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "failed": MessageLookupByLibrary.simpleMessage("Failed"),
         "fee": MessageLookupByLibrary.simpleMessage("Fee"),
         "fee_1": MessageLookupByLibrary.simpleMessage("Fee"),
+        "fee_title": MessageLookupByLibrary.simpleMessage(
+            "Fees to be paid by the recipient"),
+        "fee_type": MessageLookupByLibrary.simpleMessage("Fee type"),
         "finance": MessageLookupByLibrary.simpleMessage("Finance"),
         "finish": MessageLookupByLibrary.simpleMessage("Finish"),
         "floor": MessageLookupByLibrary.simpleMessage("Floor"),

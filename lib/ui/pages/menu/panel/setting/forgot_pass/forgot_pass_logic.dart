@@ -38,6 +38,9 @@ class ForgotPassLogic extends GetxController {
               forgotPass(context);
             },
             isGetOtp: false,
+            getBackOtp: () async {
+              await apiService.forgotPass(request);
+            },
             pinPutController: state.otpController,
             phone: state.phoneNumberController.text));
       }

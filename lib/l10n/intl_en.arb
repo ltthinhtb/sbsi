@@ -441,5 +441,8 @@
   "loan_number_day": "Loan number days",
   "c_fee_out": "Fee out",
   "c_loan_out": "Loan out",
-  "total_profit_loss": "Total profit/loss"
+  "total_profit_loss": "Total profit/loss",
+  "fee_type": "Fee type",
+  "fee_title" : "Fees to be paid by the recipient"
+
 }

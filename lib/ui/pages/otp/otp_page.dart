@@ -19,13 +19,15 @@ class OtpPage extends StatefulWidget {
   final TextEditingController pinPutController;
   final String phone;
   final bool? isGetOtp;
+  final VoidCallback? getBackOtp;
 
   const OtpPage(
       {Key? key,
       required this.onRequest,
       required this.pinPutController,
       required this.phone,
-      this.isGetOtp = true})
+      this.isGetOtp = true,
+      this.getBackOtp})
       : super(key: key);
 
   @override
@@ -109,7 +111,11 @@ class _OtpPageState extends State<OtpPage> {
           Center(
             child: TimeCountDown(
               voidCallback: () {
-                getOtp();
+                if (!widget.isGetOtp!) {
+                  widget.getBackOtp;
+                } else {
+                  getOtp();
+                }
               },
               duration: const Duration(seconds: 30),
               textStyle: body2!.copyWith(color: AppColors.primary),

@@ -231,6 +231,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "failed": MessageLookupByLibrary.simpleMessage("Thất bại"),
         "fee": MessageLookupByLibrary.simpleMessage("Phí đầu tư"),
         "fee_1": MessageLookupByLibrary.simpleMessage("Lãi phát sinh"),
+        "fee_title":
+            MessageLookupByLibrary.simpleMessage("Phí do người nhận trả"),
+        "fee_type": MessageLookupByLibrary.simpleMessage("Loại phí"),
         "finance": MessageLookupByLibrary.simpleMessage("Tài chính"),
         "finish": MessageLookupByLibrary.simpleMessage("Hoàn tất"),
         "floor": MessageLookupByLibrary.simpleMessage("Sàn"),

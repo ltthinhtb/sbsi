@@ -108,6 +108,9 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
               const SizedBox(height: 16),
               ColumnText(S.of(context).transfer_content,
                   state.transferContentController.text),
+              const SizedBox(height: 16),
+              ColumnText(S.of(context).fee_type,
+                  S.of(context).fee_title),
               const Spacer(),
               Row(
                 children: [
