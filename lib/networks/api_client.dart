@@ -1189,7 +1189,7 @@ class _ApiClient implements ApiClient {
 
   @override
   Future checkOtp(String phone, String otp) async {
-    await _requestApi(
+    await _getApi(
       _dio.post(
         flavor.SIGN_UP_URL + 'verifySmsOtp',
         data: {"mobile": phone, "otp": otp},

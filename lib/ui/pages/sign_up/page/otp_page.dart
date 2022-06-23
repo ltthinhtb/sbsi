@@ -150,9 +150,9 @@ class _OtpValidateState extends State<OtpValidate> {
   void onRequestCheck() {
     if (pinController.text.length < 6) {
       check.value = false;
-      checkOtp();
     } else {
       check.value = true;
+      checkOtp();
     }
   }
 

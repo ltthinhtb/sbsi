@@ -155,6 +155,7 @@ class SignUpLogic extends GetxController {
   }
 
   Future openAccount() async {
+    AppLoading.showLoading();
     final RequestParams _requestParams = RequestParams(
         user: "back",
         cmd: "OPEN_INDI_ACCOUNT",
@@ -192,6 +193,9 @@ class SignUpLogic extends GetxController {
       Get.to(const SuccessPage());
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
+    }
+    finally {
+      AppLoading.disMissLoading();
     }
   }
 }
