@@ -211,6 +211,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> with Validator {
                                     },
                                     pinPutController: state.otpController,
                                     phone: "0349949866",
+                                    isGetOtp: true,
                                   ));
                                 } else {
                                   // type transfer = internal

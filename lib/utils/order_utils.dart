@@ -7,6 +7,7 @@ import 'package:sbsi/model/stock_data/stock_info.dart';
 import 'package:sbsi/ui/commons/app_snackbar.dart';
 
 import '../model/stock_data/cash_balance.dart';
+import 'logger.dart';
 
 class OrderUtils {
   static String getRandom() {
@@ -28,6 +29,8 @@ class OrderUtils {
     var _c = ((stock.c ?? 0) * 1000).round();
     var _f = ((stock.f ?? 0) * 1000).round();
     try {
+      print(_c);
+      print(_f);
       var vPrice = double.parse(price);
       if ((vPrice * 1000).round() > _c) {
         AppSnackBar.showError(message: "Giá không được quá giá trần $_c");
@@ -85,14 +88,23 @@ class OrderUtils {
     }
   }
 
+  static num parseNumber(String value) {
+    try {
+      return num.parse(value);
+    } catch (e) {
+      return 0;
+    }
+  }
+
   static bool checkVol(StockInfo stock,
       {required num vol,
       required CashBalance cashBalance,
       required bool isBuy}) {
     try {
       num volume = vol;
-      num maxVolBuy = num.parse('${cashBalance.volumeAvaiable}');
-      num maxVolSell = num.parse('${cashBalance.balance}');
+
+      num maxVolBuy = parseNumber('${cashBalance.volumeAvaiable}');
+      num maxVolSell = parseNumber('${cashBalance.balance}');
 
       bool validate = false;
       if (stock.mc == "HO") {
@@ -119,6 +131,7 @@ class OrderUtils {
         return validate;
       }
     } catch (e) {
+      logger.e(e.toString());
       return false;
     }
   }
