@@ -12,6 +12,8 @@ class RequestParams {
   String? ekyc;
   Map<String, dynamic>? param;
 
+  String? enPoint;
+
   RequestParams(
       {this.group,
       this.user,
@@ -22,7 +24,8 @@ class RequestParams {
       this.otp,
       this.cmd,
       this.param,
-      this.ekyc});
+      this.ekyc,
+      this.enPoint = "core"});
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};

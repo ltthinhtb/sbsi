@@ -891,7 +891,7 @@ class _ApiClient implements ApiClient {
   Future checkAccount(RequestParams requestParams) async {
     Response _result = await _requestSignApi(
       _dio.post(
-        flavor.SIGN_UP_URL + "core",
+        flavor.SIGN_UP_URL + requestParams.enPoint!,
         data: requestParams.toJson(),
       ),
     );
@@ -1189,7 +1189,7 @@ class _ApiClient implements ApiClient {
 
   @override
   Future checkOtp(String phone, String otp) async {
-    await _getApi(
+    await _requestSignApi(
       _dio.post(
         flavor.SIGN_UP_URL + 'verifySmsOtp',
         data: {"mobile": phone, "otp": otp},
