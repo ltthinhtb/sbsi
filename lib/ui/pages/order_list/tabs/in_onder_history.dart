@@ -181,12 +181,12 @@ class _InOrderHistoryState extends State<InOrderHistory>
     final caption = Theme.of(context).textTheme.caption;
     return Container(
       padding: const EdgeInsets.only(
-        left: 18,
+        left: 18,right: 18
       ),
       child: Row(
         children: [
           Expanded(
-            flex: 126,
+            flex: 96,
             child: Text(
               S.of(context).code,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
@@ -194,23 +194,32 @@ class _InOrderHistoryState extends State<InOrderHistory>
           ),
           Expanded(
             flex: 96,
-            child: Text(
-              S.of(context).order_1.replaceAll("\n", " "),
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Center(
+              child: Text(
+                S.of(context).order_1.replaceAll("\n", " "),
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
           Expanded(
             flex: 95,
-            child: Text(
-              S.of(context).match_1.replaceAll("\n", " "),
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Center(
+              child: Text(
+                S.of(context).match_1.replaceAll("\n", " "),
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
           Expanded(
             flex: 95,
-            child: Text(
-              S.of(context).time,
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Align(
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  S.of(context).time,
+                  style: caption?.copyWith(fontWeight: FontWeight.w700),
+                ),
+              ),
             ),
           ),
         ],

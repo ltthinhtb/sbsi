@@ -144,7 +144,7 @@ class _InDayTabState extends State<InDayTab>
     final caption = Theme.of(context).textTheme.caption;
     return Container(
       padding: const EdgeInsets.only(
-        left: 18,
+        left: 18,right: 18
       ),
       child: Row(
         children: [
@@ -161,7 +161,7 @@ class _InDayTabState extends State<InDayTab>
           ),
           const SizedBox(width: 20),
           Expanded(
-            flex: 110,
+            flex: 96,
             child: Text(
               S.of(context).code,
               style: caption?.copyWith(fontWeight: FontWeight.w700),
@@ -169,26 +169,33 @@ class _InDayTabState extends State<InDayTab>
           ),
           Expanded(
             flex: 96,
-            child: Text(
-              S.of(context).order_1,
-              textAlign: TextAlign.center,
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Center(
+              child: Text(
+                S.of(context).order_1,
+                textAlign: TextAlign.center,
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
           Expanded(
             flex: 95,
-            child: Text(
-              S.of(context).match_1,
-              textAlign: TextAlign.center,
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Center(
+              child: Text(
+                S.of(context).match_1,
+                textAlign: TextAlign.center,
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
           Expanded(
             flex: 95,
-            child: Text(
-              S.of(context).remain_status,
-              textAlign: TextAlign.center,
-              style: caption?.copyWith(fontWeight: FontWeight.w700),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                S.of(context).remain_status,
+                textAlign: TextAlign.center,
+                style: caption?.copyWith(fontWeight: FontWeight.w700),
+              ),
             ),
           ),
         ],

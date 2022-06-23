@@ -42,14 +42,14 @@ class _HistoryWidgetState extends State<HistoryWidget> {
         Get.to(OrderDetail(data: data,));
       },
       child: Container(
-        padding: const EdgeInsets.fromLTRB(18, 10, 0, 3),
+        padding: const EdgeInsets.fromLTRB(18, 10, 18, 3),
         decoration: BoxDecoration(
             color: widget.index % 2 == 0 ? AppColors.whiteF7 : AppColors.white),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              flex: 126,
+              flex: 96,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -88,45 +88,52 @@ class _HistoryWidgetState extends State<HistoryWidget> {
             ),
             Expanded(
               flex: 96,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    MoneyFormat.formatMoneyRound('${data.cORDERVOLUME}'),
-                    style: caption?.copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    '${data.cORDERPRICE ?? ""}',
-                    style: caption?.copyWith(
-                        fontWeight: FontWeight.w400, color: data.colorBack),
-                  ),
-                ],
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      MoneyFormat.formatMoneyRound('${data.cORDERVOLUME}'),
+                      style: caption?.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      '${data.cORDERPRICE ?? ""}',
+                      style: caption?.copyWith(
+                          fontWeight: FontWeight.w400, color: data.colorBack),
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
               flex: 95,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    MoneyFormat.formatMoneyRound('${data.cMATCHVOL}'),
-                    style: caption?.copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    '${data.matchPrice}',
-                    style: caption?.copyWith(
-                        fontWeight: FontWeight.w400, color: data.colorBack),
-                  ),
-                ],
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      MoneyFormat.formatMoneyRound('${data.cMATCHVOL}'),
+                      style: caption?.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      '${data.matchPrice}',
+                      style: caption?.copyWith(
+                          fontWeight: FontWeight.w400, color: data.colorBack),
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
               flex: 95,
-              child: Text(
-                '${data.cORDERTIME?.split(" ").first ?? ""}',
-                style: caption?.copyWith(fontWeight: FontWeight.w600),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  '${data.cORDERTIME?.split(" ").first ?? ""}',
+                  style: caption?.copyWith(fontWeight: FontWeight.w600),
+                ),
               ),
             ),
           ],

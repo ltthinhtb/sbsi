@@ -89,7 +89,7 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
         ],
       ),
       child: Container(
-        padding: const EdgeInsets.fromLTRB(18, 10, 0, 3),
+        padding: const EdgeInsets.fromLTRB(18, 10, 18, 3),
         decoration: BoxDecoration(
             color: widget.index % 2 == 0 ? AppColors.whiteF7 : AppColors.white),
         child: Row(
@@ -118,7 +118,7 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
                     )),
             const SizedBox(width: 20),
             Expanded(
-              flex: 110,
+              flex: 96,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -166,57 +166,64 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
             ),
             Expanded(
               flex: 96,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    MoneyFormat.formatMoneyRound('${data.volume}'),
-                    style: caption?.copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    data.showPrice ?? "",
-                    style: caption?.copyWith(
-                        fontWeight: FontWeight.w400, color: data.colorBack),
-                  ),
-                ],
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      MoneyFormat.formatMoneyRound('${data.volume}'),
+                      style: caption?.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      data.showPrice ?? "",
+                      style: caption?.copyWith(
+                          fontWeight: FontWeight.w400, color: data.colorBack),
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
               flex: 95,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    MoneyFormat.formatMoneyRound('${data.matchVolume}'),
-                    style: caption?.copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    '${data.matchPrice}',
-                    style: caption?.copyWith(
-                        fontWeight: FontWeight.w400, color: data.colorBack),
-                  ),
-                ],
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      MoneyFormat.formatMoneyRound('${data.matchVolume}'),
+                      style: caption?.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      '${data.matchPrice}',
+                      style: caption?.copyWith(
+                          fontWeight: FontWeight.w400, color: data.colorBack),
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
               flex: 95,
-              child: Column(
-                children: [
-                  Text(
-                    '${data.reVolume}',
-                    style: caption?.copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    _status,
-                    textAlign: TextAlign.center,
-                    style: caption?.copyWith(
-                        color: MessageOrder.getColorStatus(
-                            MessageOrder.statusHuySua(data))),
-                  ),
-                ],
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Column(
+                  children: [
+                    Text(
+                      '${data.reVolume}',
+                      style: caption?.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      _status,
+                      textAlign: TextAlign.center,
+                      style: caption?.copyWith(
+                          color: MessageOrder.getColorStatus(
+                              MessageOrder.statusHuySua(data))),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
