@@ -59,12 +59,12 @@ import Firebase
             objCamera.isType = cmt
             objCamera.cameraDelegate = self
             objCamera.stepNow = stepFront
-            objCamera.isShowResult = true
+            objCamera.isShowResult = false
             objCamera.isShowHelp = true
             objCamera.isShowTrademark = true
             objCamera.isCheckLivenessCard = true
             objCamera.isCheckMaskFace = true
-            objCamera.isAddFace = true
+            objCamera.isAddFace = false
         objCamera.isCompare = true
             objCamera.isCheckLivenessFace = true
             objCamera.languageApplication = "vi"
