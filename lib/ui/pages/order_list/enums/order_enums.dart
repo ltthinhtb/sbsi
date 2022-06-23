@@ -11,7 +11,7 @@ extension SingingExt on SingingCharacter {
     return _mapValue[this]!;
   }
 
-  Map<SingingCharacter, String>  _mapName(context) => {
+  Map<SingingCharacter, String> _mapName(context) => {
         SingingCharacter.waiting: S.of(context).waiting,
         SingingCharacter.matched: S.of(context).matched,
         SingingCharacter.all: S.of(context).all,
@@ -35,7 +35,7 @@ extension inOrderHisTabsExt on inOrderHisTabs {
     return _mapValue[this];
   }
 
-  Map<inOrderHisTabs, String>  _mapName(BuildContext context) => {
+  Map<inOrderHisTabs, String> _mapName(BuildContext context) => {
         inOrderHisTabs.waiting: S.of(context).waiting,
         inOrderHisTabs.matched: S.of(context).matched,
         inOrderHisTabs.all: S.of(context).all,
@@ -52,17 +52,43 @@ extension inOrderHisTabsExt on inOrderHisTabs {
       };
 }
 
-enum OderType { inDay, history,confirmOrder }
+enum OderCmd { all,buy, sell }
+
+extension OderCmdExt on OderCmd {
+  String name(BuildContext context) {
+    switch (this) {
+      case OderCmd.buy:
+        return S.of(context).buy;
+      case OderCmd.sell:
+        return S.of(context).sell;
+      case OderCmd.all:
+        return S.of(context).all;
+    }
+  }
+
+  String get value {
+    switch (this) {
+      case OderCmd.buy:
+        return "B";
+      case OderCmd.sell:
+        return "S";
+      case OderCmd.all:
+        return "";
+    }
+  }
+}
+
+enum OderType { inDay, history, confirmOrder }
 
 extension OderTypeExt on OderType {
-  String  name(BuildContext context) {
+  String name(BuildContext context) {
     switch (this) {
       case OderType.inDay:
         return S.of(context).inday_order;
       case OderType.history:
         return S.of(context).order_history;
       case OderType.confirmOrder:
-       return S.of(context).confirm_order;
+        return S.of(context).confirm_order;
     }
   }
 }

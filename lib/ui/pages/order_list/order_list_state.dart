@@ -27,7 +27,6 @@ class OrderListState {
     return list;
   }
 
-
   num get totalBuy {
     num _amount = 0;
     buyOrder.forEach((element) {
@@ -76,12 +75,13 @@ class OrderListState {
 
   inOrderHisTabs singingCharacterHistory = inOrderHisTabs.all;
 
+  OderCmd cmd = OderCmd.all;
+
   final account = Account().obs;
 
   final isSelectAll = false.obs;
 
   final isSelectAllConfirmOrder = false.obs;
-
 
   final startDateController = TextEditingController(
       text: DateTimeUtils.toDateString(

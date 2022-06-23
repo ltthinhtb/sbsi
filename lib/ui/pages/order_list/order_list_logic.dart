@@ -83,6 +83,7 @@ class OrderListLogic extends GetxController {
           p2: "",
           p3: state.startDateController1.text,
           p4: state.endDateController1.text,
+          p5: state.cmd.value,
           p6: "1",
           p7: "30"),
     );
@@ -100,10 +101,18 @@ class OrderListLogic extends GetxController {
     getOrderList();
   }
 
+
+
   // filter history lịch sử lệnh
   void changeOrderHistoryListStatus(inOrderHisTabs character) {
     state.singingCharacterHistory = character;
     getOrderListHistory();
+  }
+
+  // filter theo trạng thái lệnh
+  void changeOrderConfirmListStatus(OderCmd cmd) {
+    state.cmd = cmd;
+    getListOrderConfirm();
   }
 
   // hủy lệnh
