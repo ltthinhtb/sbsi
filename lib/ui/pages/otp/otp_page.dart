@@ -25,7 +25,7 @@ class OtpPage extends StatefulWidget {
       required this.onRequest,
       required this.pinPutController,
       required this.phone,
-      this.isGetOtp})
+      this.isGetOtp = true})
       : super(key: key);
 
   @override
