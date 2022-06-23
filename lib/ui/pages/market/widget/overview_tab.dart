@@ -195,6 +195,7 @@ class _OverviewViewState extends State<OverviewView>
                               alignment: Alignment.centerRight,
                               child: Text(
                                 '${S.of(context).increase_decrease}%',
+                                textAlign: TextAlign.end,
                                 style: caption?.copyWith(
                                     fontWeight: FontWeight.w700),
                               ),

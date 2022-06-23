@@ -95,23 +95,23 @@ class _DebtWidgetState extends State<DebtWidget> {
                         rightValue: MoneyFormat.formatMoneyRound('${widget.debt.cLOANIN}'),
                         leftValue: MoneyFormat.formatMoneyRound(
                             '${widget.debt.cLOANID}'),
-                        rightTitle: 'Dư nợ gốc',
-                        leftTitle: 'Ngày tính lãi'),
+                        rightTitle: S.of(context).debit_root,
+                        leftTitle: S.of(context).loan_date),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue:
                             MoneyFormat.formatMoneyRound('${widget.debt.cFEE}'),
                         leftValue: widget.debt.totalDate,
-                        rightTitle: "Lãi phát sinh",
-                        leftTitle: 'Số ngày vay'),
+                        rightTitle: S.of(context).fee_1,
+                        leftTitle: S.of(context).loan_number_day),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue: MoneyFormat.formatMoneyRound(
                             '${widget.debt.cFEEOUT}'),
                         leftValue: MoneyFormat.formatMoneyRound(
                             '${widget.debt.cLOANOUT}'),
-                        rightTitle: 'Lãi đã trả',
-                        leftTitle: 'Dư nợ đã trả'),
+                        rightTitle: S.of(context).c_fee_out,
+                        leftTitle: S.of(context).c_loan_out),
                     const SizedBox(height: 16),
                   ],
                 ),

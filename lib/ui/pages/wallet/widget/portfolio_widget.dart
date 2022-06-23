@@ -135,30 +135,30 @@ class _PortfolioWidgetState extends State<PortfolioWidget> {
                             '${widget.portfolio.actualVol ?? ""}'),
                         leftValue: widget.portfolio.sellT0 ?? "",
                         leftColor: widget.portfolio.glColor,
-                        rightTitle: 'Tổng KL',
-                        leftTitle: 'Bán T0'),
+                        rightTitle: S.of(context).total_amount,
+                        leftTitle: '${S.of(context).sell} T0'),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue: MoneyFormat.formatMoneyRound(
                             '${widget.portfolio.avaiableVol ?? ""}'),
                         leftValue: widget.portfolio.buyT0 ?? "",
-                        rightTitle: 'KL khả dụng',
-                        leftTitle: 'Mua T0'),
+                        rightTitle: S.of(context).availability_amount,
+                        leftTitle: '${S.of(context).buy} T0'),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue: MoneyFormat.formatMoneyRound(
                             '${widget.portfolio.marketValue ?? ""}'),
                         leftValue: widget.portfolio.buyT1 ?? "",
-                        rightTitle: 'Giá trị TT',
-                        leftTitle: 'Mua T1'),
+                        rightTitle: S.of(context).price_tt,
+                        leftTitle: '${S.of(context).buy} T1'),
                     const SizedBox(height: 16),
                     rowData(
                         rightValue: MoneyFormat.formatMoneyRound(
                             '${widget.portfolio.gainLossValue ?? ""}'),
                         rightColor: widget.portfolio.glColor,
                         leftValue: widget.portfolio.buyT2 ?? "",
-                        rightTitle: 'Lãi/lỗ',
-                        leftTitle: 'Mua T2'),
+                        rightTitle: S.of(context).increase_hole,
+                        leftTitle: '${S.of(context).buy} T2'),
                     const SizedBox(height: 16),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),

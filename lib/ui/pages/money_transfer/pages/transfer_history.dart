@@ -54,7 +54,7 @@ class _TransferHistoryState extends State<TransferHistory> {
 
   @override
   Widget build(BuildContext context) {
-    final caption = Theme.of(context).textTheme.bodyText1;
+    final caption = Theme.of(context).textTheme.caption;
 
     return Scaffold(
       appBar: AppBarCustom(

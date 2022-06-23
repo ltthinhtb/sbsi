@@ -434,6 +434,12 @@
   "by_hour" : "Theo giờ",
   "tern" : "Kỳ",
   "simple" : "Đơn giản",
-  "exponential" : "Lũy thừa"
+  "exponential" : "Lũy thừa",
+  "loan_date" : "Ngày tính lãi",
+  "debit_root" : "Dư nợ gốc",
+  "fee_1" : "Lãi phát sinh",
+  "loan_number_day": "Số ngày vay",
+  "c_fee_out" : "Lãi đã trả",
+  "c_loan_out" : "Dư nợ đã trả"
 
 }

@@ -4409,6 +4409,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Date`
+  String get loan_date {
+    return Intl.message(
+      'Date',
+      name: 'loan_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Root debit`
+  String get debit_root {
+    return Intl.message(
+      'Root debit',
+      name: 'debit_root',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fee`
+  String get fee_1 {
+    return Intl.message(
+      'Fee',
+      name: 'fee_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loan number days`
+  String get loan_number_day {
+    return Intl.message(
+      'Loan number days',
+      name: 'loan_number_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fee out`
+  String get c_fee_out {
+    return Intl.message(
+      'Fee out',
+      name: 'c_fee_out',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loan out`
+  String get c_loan_out {
+    return Intl.message(
+      'Loan out',
+      name: 'c_loan_out',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

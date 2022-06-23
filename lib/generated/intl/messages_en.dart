@@ -106,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cDELIVERDATE": MessageLookupByLibrary.simpleMessage("Deliver date"),
         "c_authen_sign":
             MessageLookupByLibrary.simpleMessage("Authentication sign"),
+        "c_fee_out": MessageLookupByLibrary.simpleMessage("Fee out"),
+        "c_loan_out": MessageLookupByLibrary.simpleMessage("Loan out"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancel_all_orders":
             MessageLookupByLibrary.simpleMessage("Cancel all orders"),
@@ -179,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create account"),
         "day": MessageLookupByLibrary.simpleMessage("Day"),
         "day_error": MessageLookupByLibrary.simpleMessage("Day not valid"),
+        "debit_root": MessageLookupByLibrary.simpleMessage("Root debit"),
         "debt": MessageLookupByLibrary.simpleMessage("Debt"),
         "debt_margin": MessageLookupByLibrary.simpleMessage("Debt margin"),
         "decrease": MessageLookupByLibrary.simpleMessage("Decrease"),
@@ -220,6 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Fingerprint/face login failed"),
         "failed": MessageLookupByLibrary.simpleMessage("Failed"),
         "fee": MessageLookupByLibrary.simpleMessage("Fee"),
+        "fee_1": MessageLookupByLibrary.simpleMessage("Fee"),
         "finance": MessageLookupByLibrary.simpleMessage("Finance"),
         "finish": MessageLookupByLibrary.simpleMessage("Finish"),
         "floor": MessageLookupByLibrary.simpleMessage("Floor"),
@@ -285,6 +289,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "later": MessageLookupByLibrary.simpleMessage("Later"),
         "list_history": MessageLookupByLibrary.simpleMessage("List history"),
         "list_order": MessageLookupByLibrary.simpleMessage("List order"),
+        "loan_date": MessageLookupByLibrary.simpleMessage("Date"),
+        "loan_number_day":
+            MessageLookupByLibrary.simpleMessage("Loan number days"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "login_face_id":
             MessageLookupByLibrary.simpleMessage("Login by FaceID"),

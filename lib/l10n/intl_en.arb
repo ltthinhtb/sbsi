@@ -434,6 +434,12 @@
   "by_hour": "By hour",
   "tern": "Tern",
   "simple": "Simple",
-  "exponential" : "Exponential"
+  "exponential": "Exponential",
+  "loan_date": "Date",
+  "debit_root": "Root debit",
+  "fee_1": "Fee",
+  "loan_number_day": "Loan number days",
+  "c_fee_out": "Fee out",
+  "c_loan_out" : "Loan out"
 
 }

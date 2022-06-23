@@ -112,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "cDELIVERDATE": MessageLookupByLibrary.simpleMessage("Ngày vay"),
         "c_authen_sign":
             MessageLookupByLibrary.simpleMessage("Phương thức xác thực"),
+        "c_fee_out": MessageLookupByLibrary.simpleMessage("Lãi đã trả"),
+        "c_loan_out": MessageLookupByLibrary.simpleMessage("Dư nợ đã trả"),
         "cancel": MessageLookupByLibrary.simpleMessage("Hủy bỏ"),
         "cancel_all_orders":
             MessageLookupByLibrary.simpleMessage("Huỷ tất cả lệnh"),
@@ -187,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "create_account": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
         "day_error": MessageLookupByLibrary.simpleMessage("Ngày không hợp lệ"),
+        "debit_root": MessageLookupByLibrary.simpleMessage("Dư nợ gốc"),
         "debt": MessageLookupByLibrary.simpleMessage("Nợ"),
         "debt_margin": MessageLookupByLibrary.simpleMessage("Công nợ"),
         "decrease": MessageLookupByLibrary.simpleMessage("Giảm giá"),
@@ -227,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Đăng nhập vân tay/ khuôn mặt thất bại"),
         "failed": MessageLookupByLibrary.simpleMessage("Thất bại"),
         "fee": MessageLookupByLibrary.simpleMessage("Phí đầu tư"),
+        "fee_1": MessageLookupByLibrary.simpleMessage("Lãi phát sinh"),
         "finance": MessageLookupByLibrary.simpleMessage("Tài chính"),
         "finish": MessageLookupByLibrary.simpleMessage("Hoàn tất"),
         "floor": MessageLookupByLibrary.simpleMessage("Sàn"),
@@ -294,6 +298,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "list_history":
             MessageLookupByLibrary.simpleMessage("Danh sách lịch sử"),
         "list_order": MessageLookupByLibrary.simpleMessage("Danh sách lệnh"),
+        "loan_date": MessageLookupByLibrary.simpleMessage("Ngày tính lãi"),
+        "loan_number_day": MessageLookupByLibrary.simpleMessage("Số ngày vay"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "login_face_id":
             MessageLookupByLibrary.simpleMessage("Đăng nhập bằng FaceID"),
