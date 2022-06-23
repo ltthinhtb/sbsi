@@ -440,6 +440,6 @@
   "fee_1": "Fee",
   "loan_number_day": "Loan number days",
   "c_fee_out": "Fee out",
-  "c_loan_out" : "Loan out"
-
+  "c_loan_out": "Loan out",
+  "total_profit_loss": "Total profit/loss"
 }

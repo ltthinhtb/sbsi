@@ -41,6 +41,5 @@ class MarketState {
   Rx<CategoryStock> category =
       CategoryStock(title: CATEGORY_DEFAULT, uuid: const Uuid().v1()).obs;
 
-
   final topForeignTrade = <ForeignTrade>[].obs;
 }

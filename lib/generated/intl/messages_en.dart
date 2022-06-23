@@ -563,6 +563,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_debt": MessageLookupByLibrary.simpleMessage("Total debt"),
         "total_hole": MessageLookupByLibrary.simpleMessage("Total hole"),
         "total_price": MessageLookupByLibrary.simpleMessage("Price"),
+        "total_profit_loss":
+            MessageLookupByLibrary.simpleMessage("Total profit/loss"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Total transfer"),
         "transaction_money":

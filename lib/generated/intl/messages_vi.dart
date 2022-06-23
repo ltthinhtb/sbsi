@@ -581,6 +581,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "total_debt": MessageLookupByLibrary.simpleMessage("Tổng nợ"),
         "total_hole": MessageLookupByLibrary.simpleMessage("Tổng nợ phải trả"),
         "total_price": MessageLookupByLibrary.simpleMessage("Tổng giá trị"),
+        "total_profit_loss":
+            MessageLookupByLibrary.simpleMessage("Tổng tiền lãi/lỗ"),
         "total_transfer":
             MessageLookupByLibrary.simpleMessage("Tổng giá trị chứng khoán"),
         "transaction_money":

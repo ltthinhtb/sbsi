@@ -4469,6 +4469,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Total profit/loss`
+  String get total_profit_loss {
+    return Intl.message(
+      'Total profit/loss',
+      name: 'total_profit_loss',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

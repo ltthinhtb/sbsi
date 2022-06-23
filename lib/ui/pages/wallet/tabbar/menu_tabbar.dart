@@ -50,6 +50,7 @@ class _MenuTabBarState extends State<MenuTabBar>
                   color: AppColors.white,
                   boxShadow: AppShadow.boxShadow),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SvgPicture.asset(AppImages.assets_amount),
                   const SizedBox(width: 15),
@@ -61,37 +62,34 @@ class _MenuTabBarState extends State<MenuTabBar>
                         S.of(context).total_transfer,
                         style: body2.copyWith(height: 20 / 14),
                       ),
+                      Text(
+                        MoneyFormat.formatMoneyRound(
+                            '${walletState.portfolioTotal.value.marketPriceValue}'),
+                        style: headline6.copyWith(
+                            height: 24 / 20, fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(S.of(context).total_profit_loss,style: Theme.of(context).textTheme.bodyText2?.copyWith(color: AppColors.textSecond),),
+                      const SizedBox(height: 6),
+
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            MoneyFormat.formatMoneyRound(
-                                '${walletState.portfolioTotal.value.marketPriceValue}'),
-                            style: headline6.copyWith(
-                                height: 24 / 20, fontWeight: FontWeight.w700),
+                            MoneyFormat.formatMoneyRound('${walletState.portfolioTotal.value.gainLossValue.toString()}') +" ",
+                            style: Theme.of(context).textTheme.button?.copyWith(
+                                color:
+                                walletState.portfolioTotal.value.glColor),
                           ),
-                          const Spacer(),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                walletState.portfolioTotal.value.gainLossPer
-                                        ?.trim() ??
-                                    "",
-                                style: Theme.of(context).textTheme.button?.copyWith(
-                                    color:
-                                        walletState.portfolioTotal.value.glColor),
-                              ),
-                              // Text(
-                              //   walletState.portfolioTotal.value.gainLossValue
-                              //       ?.trim() ??
-                              //       "",
-                              //   style: Theme.of(context).textTheme.button?.copyWith(
-                              //       color:
-                              //       walletState.portfolioTotal.value.glColor),
-                              // ),
-                            ],
+                          const SizedBox(width: 30),
+
+                          Text(
+                            walletState.portfolioTotal.value.gainLossPer
+                                ?.trim() ??
+                                "",
+                            style: Theme.of(context).textTheme.button?.copyWith(
+                                color:
+                                walletState.portfolioTotal.value.glColor),
                           ),
                           const SizedBox(width: 5.69),
                           SvgPicture.asset(
@@ -99,7 +97,7 @@ class _MenuTabBarState extends State<MenuTabBar>
                                   ? AppImages.increase
                                   : AppImages.decrease)
                         ],
-                      ),
+                      )
                     ],
                   ))
                 ],

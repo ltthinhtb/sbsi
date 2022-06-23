@@ -42,27 +42,27 @@ class _AssetsTabBarState extends State<AssetsTabBar>
               child: Column(
                 children: [
                   rowData(S.of(context).cash_balance,
-                      '${MoneyFormat.formatMoneyRound(assets.assets ?? "")} đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.assets ?? "")} '),
                   const SizedBox(height: 16),
                   Visibility(
                     visible: state.account.value.lastCharacter == "6",
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 16),
                       child: rowData(S.of(context).pp_1,
-                          '${MoneyFormat.formatMoneyRound(assets.ee ?? "")} đ'),
+                          '${MoneyFormat.formatMoneyRound(assets.ee ?? "")} '),
                     ),
                   ),
                   Obx(() {
                     var portfolioTotal = state.portfolioTotal.value;
                     return rowData(S.of(context).total_transfer,
-                        '${MoneyFormat.formatMoneyRound(portfolioTotal.marketValue ?? "")} đ');
+                        '${MoneyFormat.formatMoneyRound(portfolioTotal.marketValue ?? "")} ');
                   }),
                   Visibility(
                     visible: state.account.value.lastCharacter == "6",
                     child: Padding(
                       padding: const EdgeInsets.only(top: 16),
                       child: rowData(S.of(context).debt,
-                          '${MoneyFormat.formatMoneyRound(assets.debt ?? "")} đ'),
+                          '${MoneyFormat.formatMoneyRound(assets.debt ?? "")} '),
                     ),
                   ),
                 ],
@@ -96,17 +96,17 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                   //   child: Padding(
                   //     padding: const EdgeInsets.only(bottom: 16),
                   //     child: rowData(S.of(context).cash,
-                  //         '${MoneyFormat.formatMoneyRound(assets.cashBalance ?? "")} đ'),
+                  //         '${MoneyFormat.formatMoneyRound(assets.cashBalance ?? "")} '),
                   //   ),
                   // ),
                   rowData(S.of(context).withdraw_money,
-                      '${MoneyFormat.formatMoneyRound(assets.cashAvai ?? "")} đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.cashAvai ?? "")} '),
                   const SizedBox(height: 16),
                   rowData(S.of(context).apT0,
-                      '${MoneyFormat.formatMoneyRound(assets.apT0 ?? "")} đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.apT0 ?? "")} '),
                   const SizedBox(height: 16),
                   rowData(S.of(context).cash_advance_avai,
-                      '${MoneyFormat.formatMoneyRound(assets.cashAdvanceAvai ?? "")} đ'),
+                      '${MoneyFormat.formatMoneyRound(assets.cashAdvanceAvai ?? "")} '),
                   const SizedBox(height: 16),
                   rowData(S.of(context).collateral, MoneyFormat.formatMoneyRound(assets.collateral ?? "")),
                 ],
@@ -138,13 +138,13 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                     ),
                     const SizedBox(height: 8),
                     rowData(S.of(context).total_debt,
-                        '${MoneyFormat.formatMoneyRound(assets.debt ?? "")} đ'),
+                        '${MoneyFormat.formatMoneyRound(assets.debt ?? "")} '),
                     const SizedBox(height: 16),
                     rowData(S.of(context).interest_1,
-                        '${MoneyFormat.formatMoneyRound("0")} đ'),
+                        '${MoneyFormat.formatMoneyRound("0")} '),
                     const SizedBox(height: 16),
                     rowData(S.of(context).depositFee,
-                        '${MoneyFormat.formatMoneyRound(assets.depositFee ?? "")} đ'),
+                        '${MoneyFormat.formatMoneyRound(assets.depositFee ?? "")} '),
                     const SizedBox(height: 16),
                     rowData(S.of(context).marginRatio, assets.marginRatio ?? ""),
                   ],
