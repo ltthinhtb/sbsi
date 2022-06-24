@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:902184476570:android:05a3d70ce20a3ac77fa423",
+        "mobilesdk_app_id": "1:902184476570:android:b6e5364ac90d7c817fa423",
         "android_client_info": {
-          "package_name": "com.sbsi.tradetest"
+          "package_name": "com.sbsi.etrading"
         }
       },
       "oauth_client": [

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:new_version/new_version.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_images.dart';
 import 'package:sbsi/configs/app_configs.dart';
@@ -10,6 +12,7 @@ import 'package:sbsi/ui/widgets/textfields/app_text_field.dart';
 import 'package:sbsi/utils/validator.dart';
 import '../../../router/route_config.dart';
 import '../../../services/index.dart';
+import '../../../utils/logger.dart';
 import '../../widgets/button/button_text.dart';
 import 'sign_in_logic.dart';
 
@@ -24,9 +27,46 @@ class _SignInPageState extends State<SignInPage> with Validator {
   final logic = Get.put(SignInLogic());
   final state = Get.find<SignInLogic>().state;
   bool isChecked = false;
-  final String version = "1.0.0 + 24";
+  String version = "";
 
-  bool isTest = true;
+  bool isTest = false;
+
+  void checkUpdate() async {
+    final newVersion = NewVersion(
+      iOSId: 'com.sbsi.etrading',
+      androidId: 'com.sbsi.etrading',
+    );
+
+    // You can let the plugin handle fetching the status and showing a dialog,
+    // or you can fetch the status and display your own dialog, or no dialog.
+    try {
+      final status = await newVersion.getVersionStatus();
+      print(status?.storeVersion);
+      print(status?.localVersion);
+      version = status?.localVersion ?? "";
+      if (status!.canUpdate) {
+        newVersion.showUpdateDialog(
+            context: context,
+            versionStatus: status,
+            dialogText: "Cập nhật phiên bản mới",
+            dismissButtonText: "Bỏ qua",
+            dialogTitle:
+                "Vui lòng cập nhật phiên bản mới để tiếp tục xử dụng ứng dụng",
+            dismissAction: () {
+              SystemNavigator.pop();
+            },
+            updateButtonText: "Cập nhật");
+      }
+    } catch (e) {
+      logger.e(e.toString());
+    }
+  }
+
+  @override
+  void initState() {
+    checkUpdate();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

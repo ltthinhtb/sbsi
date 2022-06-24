@@ -54,8 +54,6 @@ class MainLogic extends GetxController {
   @override
   void onReady() {
     notificationService.fcmSubscribe("all");
-    notificationService.fcmSubscribe("test");
-
     sendToken();
     super.onReady();
   }

@@ -46,10 +46,10 @@ class SettingService extends GetxService {
     prefs = await SharedPreferences.getInstance();
 
     ///Flavor
-    String flavorString = prefs.getString("flavor") ?? Flavor.TEST.name;
+    String flavorString = prefs.getString("flavor") ?? Flavor.PROD.name;
     flavor.value = Flavor.values.firstWhere((element) => element.name == flavorString,
         orElse: () {
-      return Flavor.TEST;
+      return Flavor.PROD;
     });
 
     ///ThemeMode
