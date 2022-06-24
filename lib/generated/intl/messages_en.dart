@@ -349,6 +349,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nhập vào ô tìm kiếm để thêm mã\nđầu tiên vào danh mục"),
         "not_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have account? "),
+        "not_edit_order":
+            MessageLookupByLibrary.simpleMessage("Not edit this order"),
         "not_enough_transfer":
             MessageLookupByLibrary.simpleMessage("Not enough transfer"),
         "not_found": MessageLookupByLibrary.simpleMessage("Not found"),

@@ -4569,6 +4569,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Not edit this order`
+  String get not_edit_order {
+    return Intl.message(
+      'Not edit this order',
+      name: 'not_edit_order',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

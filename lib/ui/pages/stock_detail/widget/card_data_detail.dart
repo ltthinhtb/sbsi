@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/model/stock_data/stock_data.dart';
 import 'package:sbsi/model/stock_data/stock_info.dart';
 import 'package:sbsi/ui/commons/webview.dart';
 import 'package:sbsi/utils/money_utils.dart';
@@ -13,8 +14,13 @@ import '../../../../model/stock_company_data/stock_company_data.dart';
 class CardDetail extends StatelessWidget {
   final StockCompanyData stock;
   final StockInfo stockInfo;
+  final StockData stockData;
 
-  const CardDetail({Key? key, required this.stock, required this.stockInfo})
+  const CardDetail(
+      {Key? key,
+      required this.stock,
+      required this.stockInfo,
+      required this.stockData})
       : super(key: key);
 
   @override
@@ -92,13 +98,13 @@ class CardDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '-',
-                    style: headline4?.copyWith(
+                    stockData.changePercent,
+                    style: caption?.copyWith(
                         fontWeight: FontWeight.w700, color: stockInfo.color),
                   ),
                   Text(
-                    '-',
-                    style: headline4?.copyWith(
+                    stockData.ot ?? "",
+                    style: caption?.copyWith(
                         fontWeight: FontWeight.w700, color: stockInfo.color),
                   ),
                 ],

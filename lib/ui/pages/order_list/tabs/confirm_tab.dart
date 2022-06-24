@@ -128,7 +128,11 @@ class _ConfirmTabState extends State<ConfirmTab>
                 buildHeader(),
                 const SizedBox(height: 16),
                 Expanded(
-                  child: buildListOrder(),
+                  child: RefreshIndicator(
+                      onRefresh: () async{
+                        logic.getListOrderConfirm();
+                      },
+                      child: buildListOrder()),
                 ),
               ],
             ),

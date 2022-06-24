@@ -68,6 +68,10 @@ class StockDetailLogic extends GetxController {
       );
       state.selectedStockInfo.value =
           await apiService.getStockInfo(_requestParams);
+      var list  = await apiService.getStockData(state.selectedStock.value.stockCode ?? "");
+      if(list.isNotEmpty){
+        state.stockData.value = list.first;
+      }
     } on ErrorException catch (e) {
       AppSnackBar.showError(message: e.message);
     } catch (error) {

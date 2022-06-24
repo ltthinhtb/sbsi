@@ -44,7 +44,7 @@ class StockOrderPageLogic extends GetxController {
     }
   }
 
-  void cleanStock(){
+  void cleanStock() {
     state.selectedStock.value = StockCompanyData();
     state.stockController.clear();
     state.selectedStockInfo.value = StockInfo();
@@ -319,9 +319,9 @@ class StockOrderPageLogic extends GetxController {
   // sửa lệnh
   Future<void> changeOrder(
       {required IndayOrder data,
-        required int vol,
-        required String price,
-        required String pinController}) async {
+      required int vol,
+      required String price,
+      required String pinController}) async {
     var _tokenEntity = authService.token.value;
     RequestParams _requestParams = RequestParams(
       group: "O",
@@ -343,6 +343,10 @@ class StockOrderPageLogic extends GetxController {
       getOrderList();
       Get.back(); // back dialog
       AppSnackBar.showSuccess(message: S.current.change_order_success);
+      // sau 2s loại lại lệnh
+      Future.delayed(const Duration(seconds: 2), () {
+        getOrderList();
+      });
     } on ErrorException catch (error) {
       AppSnackBar.showError(message: error.message);
     } catch (e) {
@@ -366,7 +370,6 @@ class StockOrderPageLogic extends GetxController {
     _socket.dispose();
     super.onClose();
   }
-
 
   void loadAccount() {
     var _tokenEntity = authService.token.value;

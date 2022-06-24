@@ -6,11 +6,14 @@ import 'package:sbsi/ui/pages/stock_detail/enums/stock_detail_tab.dart';
 import '../../../model/response/stock_report.dart';
 import '../../../model/stock_company_data/stock_company_data.dart';
 import '../../../model/stock_data/list_news_stock.dart';
+import '../../../model/stock_data/stock_data.dart';
 
 class StockDetailState {
   final String stockCode;
 
   var selectedStockInfo = StockInfo().obs;
+
+  var stockData = StockData().obs;
 
   List<StockCompanyData> allStockCompanyData = <StockCompanyData>[];
   var selectedStock = StockCompanyData().obs;

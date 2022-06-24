@@ -450,6 +450,8 @@
   "confirm_select": "Confirm select",
   "confirm_order_success": "Confirm order success",
   "order_no": "Order no.",
-  "confirm_history": "Confirm history order"
+  "confirm_history": "Confirm history order",
+  "not_edit_order" : "Not edit this order"
+
 
 }

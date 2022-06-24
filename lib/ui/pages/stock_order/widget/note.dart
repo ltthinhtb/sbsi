@@ -8,6 +8,7 @@ import 'package:sbsi/utils/validator.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/error_message.dart';
+import '../../../commons/app_snackbar.dart';
 import '../../../widgets/button/button_filled.dart';
 import '../../../widgets/textfields/appTextFieldNumber.dart';
 import '../../../widgets/textfields/app_text_field.dart';
@@ -31,6 +32,15 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
   final priceController = TextEditingController();
   final volumeController = TextEditingController();
 
+  bool get isLOCmd {
+    try {
+      num.parse(widget.note.showPrice ?? "");
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption;
@@ -45,7 +55,11 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
               _pinController.clear();
               priceController.text = widget.note.showPrice ?? "";
               volumeController.text = widget.note.volume ?? "";
-              editOrder(widget.note);
+              if (isLOCmd) {
+                editOrder(widget.note);
+              } else {
+                AppSnackBar.showError(message: S.of(context).not_edit_order);
+              }
             },
             backgroundColor: const Color.fromRGBO(251, 122, 4, 1),
             foregroundColor: Colors.white,
@@ -293,22 +307,22 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
                   ),
                   Expanded(
                       child: AppTextFieldNumber(
-                        inputController: priceController,
-                        hintText: S.of(context).price,
-                        backColor: AppColors.PastelSecond2,
-                        minus: () {
-                          checkNullPrice(order);
-                          var value = priceController.numberValue;
-                          value = value - 0.05;
-                          priceController.updateValue(value);
-                        },
-                        plus: () {
-                          checkNullPrice(order);
-                          var value = priceController.numberValue;
-                          value = value + 0.05;
-                          priceController.updateValue(value);
-                        },
-                      ))
+                    inputController: priceController,
+                    hintText: S.of(context).price,
+                    backColor: AppColors.PastelSecond2,
+                    minus: () {
+                      checkNullPrice(order);
+                      var value = priceController.numberValue;
+                      value = value - 0.05;
+                      priceController.updateValue(value);
+                    },
+                    plus: () {
+                      checkNullPrice(order);
+                      var value = priceController.numberValue;
+                      value = value + 0.05;
+                      priceController.updateValue(value);
+                    },
+                  ))
                 ],
               ),
               const SizedBox(height: 5),
@@ -323,22 +337,22 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
                   ),
                   Expanded(
                       child: AppTextFieldNumber(
-                        inputController: volumeController,
-                        hintText: S.of(context).volume,
-                        backColor: AppColors.PastelSecond2,
-                        minus: () {
-                          checkNullVol();
-                          var value = volumeController.numberValue;
-                          value = value - 100;
-                          volumeController.updateVol(value);
-                        },
-                        plus: () {
-                          checkNullVol();
-                          var value = volumeController.numberValue;
-                          value = value + 100;
-                          volumeController.updateVol(value);
-                        },
-                      ))
+                    inputController: volumeController,
+                    hintText: S.of(context).volume,
+                    backColor: AppColors.PastelSecond2,
+                    minus: () {
+                      checkNullVol();
+                      var value = volumeController.numberValue;
+                      value = value - 100;
+                      volumeController.updateVol(value);
+                    },
+                    plus: () {
+                      checkNullVol();
+                      var value = volumeController.numberValue;
+                      value = value + 100;
+                      volumeController.updateVol(value);
+                    },
+                  ))
                 ],
               ),
               const SizedBox(height: 20),
@@ -353,14 +367,14 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
                 children: [
                   Expanded(
                       child: ButtonFill(
-                        voidCallback: () {
-                          Get.back();
-                        },
-                        title: S.of(context).cancel_short,
-                        style: ElevatedButton.styleFrom(
-                            onPrimary: AppColors.primary,
-                            primary: const Color.fromRGBO(255, 238, 238, 1)),
-                      )),
+                    voidCallback: () {
+                      Get.back();
+                    },
+                    title: S.of(context).cancel_short,
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: AppColors.primary,
+                        primary: const Color.fromRGBO(255, 238, 238, 1)),
+                  )),
                   const SizedBox(
                     width: 16,
                   ),
@@ -383,6 +397,7 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
       }),
     ));
   }
+
   void checkNullPrice(IndayOrder indayOrder) {
     /// nếu giá không có thì sẽ lấy giá tham lastPrice
     if (priceController.text.isEmpty) {
@@ -423,4 +438,3 @@ extension TextControllerExt on TextEditingController {
     }
   }
 }
-

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/utils/money_utils.dart';
 import 'package:sbsi/utils/validator.dart';
@@ -55,6 +56,16 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
     return buildItem(widget.listOrder);
   }
 
+  /// check nếu lệnh LO
+  bool get isLOCmd {
+    try {
+      num.parse(widget.listOrder.showPrice ?? "");
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   Widget buildItem(IndayOrder data) {
     String _status = MessageOrder.getStatusOrder(data);
     final caption = Theme.of(context).textTheme.caption;
@@ -69,7 +80,11 @@ class _NoteWidgetState extends State<NoteWidget> with Validator {
               _pinController.clear();
               priceController.text = data.showPrice ?? "";
               volumeController.text = data.volume ?? "";
-              editOrder(data);
+              if (isLOCmd) {
+                editOrder(data);
+              } else{
+                AppSnackBar.showError(message: S.of(context).not_edit_order);
+              }
             },
             backgroundColor: const Color.fromRGBO(251, 122, 4, 1),
             foregroundColor: Colors.white,

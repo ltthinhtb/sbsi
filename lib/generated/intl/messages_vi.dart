@@ -281,7 +281,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "instructions_transfers":
             MessageLookupByLibrary.simpleMessage("Hướng dẫn chuyển tiền"),
         "interest": MessageLookupByLibrary.simpleMessage("Lãi suất"),
-        "interest_1": MessageLookupByLibrary.simpleMessage("Interest"),
+        "interest_1": MessageLookupByLibrary.simpleMessage("Lãi tạm tính"),
         "interest_expect": MessageLookupByLibrary.simpleMessage("Lãi dự kiến"),
         "interest_money": MessageLookupByLibrary.simpleMessage("Tiền lãi"),
         "interest_now": MessageLookupByLibrary.simpleMessage("Đầu tư ngay"),
@@ -361,6 +361,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nhập vào ô tìm kiếm để thêm mã\nđầu tiên vào danh mục"),
         "not_account":
             MessageLookupByLibrary.simpleMessage("Bạn chưa có tài khoản? "),
+        "not_edit_order":
+            MessageLookupByLibrary.simpleMessage("Không được sửa lệnh này"),
         "not_enough_transfer":
             MessageLookupByLibrary.simpleMessage("Số tiền chuyển quá số dư"),
         "not_found": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),

@@ -123,7 +123,11 @@ class _InOrderHistoryState extends State<InOrderHistory>
                 buildHeader(),
                 const SizedBox(height: 16),
                 Expanded(
-                  child: buildListOrder(),
+                  child: RefreshIndicator(
+                      onRefresh: () async{
+                        logic.getOrderListHistory();
+                      },
+                      child: buildListOrder()),
                 ),
               ],
             ),

@@ -93,61 +93,56 @@ class _OrderListPageState extends State<OrderListPage>
       backgroundColor: AppColors.whiteBack,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
-        child: RefreshIndicator(
-          onRefresh: () async {
-            logic.getOrderList();
-          },
-          child: DefaultTabController(
-            length: OderType.values.length,
-            child: Column(
-              children: [
-                Stack(
-                  fit: StackFit.passthrough,
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 16),
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom:
-                              BorderSide(color: AppColors.grayF2, width: 2.0),
-                        ),
+        child: DefaultTabController(
+          length: OderType.values.length,
+          child: Column(
+            children: [
+              Stack(
+                fit: StackFit.passthrough,
+                alignment: Alignment.bottomCenter,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(color: AppColors.grayF2, width: 2.0),
                       ),
                     ),
-                    TabBar(
-                        indicator: UnderlineTabIndicator(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
-                                width: 3)),
-                        labelStyle:
-                            body1?.copyWith(fontWeight: FontWeight.w700),
-                        labelColor: Theme.of(context).primaryColor,
-                        unselectedLabelStyle: body1,
-                        indicatorPadding: EdgeInsets.zero,
-                        indicatorSize: TabBarIndicatorSize.label,
-                        indicatorColor: Theme.of(context).primaryColor,
-                        isScrollable: true,
-                        unselectedLabelColor: AppColors.textGrey,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        labelPadding: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 10),
-                        indicatorWeight: 0,
-                        onTap: (value) {},
-                        tabs: OderType.values
-                            .map((e) => Center(child: Text(e.name(context))))
-                            .toList()),
-                  ],
-                ),
-                const Expanded(
-                  child: TabBarView(children: [
-                    InDayTab(),
-                    InOrderHistory(),
-                    ConfirmTab(),
-                    ConfirmHistoryTab()
-                  ]),
-                )
-              ],
-            ),
+                  ),
+                  TabBar(
+                      indicator: UnderlineTabIndicator(
+                          borderSide: BorderSide(
+                              color: Theme.of(context).primaryColor, width: 3)),
+                      labelStyle: body1?.copyWith(fontWeight: FontWeight.w700),
+                      labelColor: Theme.of(context).primaryColor,
+                      unselectedLabelStyle: body1,
+                      indicatorPadding: EdgeInsets.zero,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      indicatorColor: Theme.of(context).primaryColor,
+                      isScrollable: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      unselectedLabelColor: AppColors.textGrey,
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      labelPadding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 10),
+                      indicatorWeight: 0,
+                      onTap: (value) {},
+                      tabs: OderType.values
+                          .map((e) => Center(child: Text(e.name(context))))
+                          .toList()),
+                ],
+              ),
+              const Expanded(
+                child: TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
+                    children: [
+                  InDayTab(),
+                  InOrderHistory(),
+                  ConfirmTab(),
+                  ConfirmHistoryTab()
+                ]),
+              )
+            ],
           ),
         ),
       ),

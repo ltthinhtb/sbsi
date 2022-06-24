@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/response/account_status.dart';
 import 'package:sbsi/utils/money_utils.dart';
+import '../../../../utils/logger.dart';
 import '../wallet_logic.dart';
 import '../widget/pie_chart_widget.dart';
 
@@ -141,7 +143,7 @@ class _AssetsTabBarState extends State<AssetsTabBar>
                         '${MoneyFormat.formatMoneyRound(assets.debt ?? "")} '),
                     const SizedBox(height: 16),
                     rowData(S.of(context).interest_1,
-                        '${MoneyFormat.formatMoneyRound("0")} '),
+                        '${MoneyFormat.formatMoneyRound('${assets.loanFee}')} '),
                     const SizedBox(height: 16),
                     rowData(S.of(context).depositFee,
                         '${MoneyFormat.formatMoneyRound(assets.depositFee ?? "")} '),

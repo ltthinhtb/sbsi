@@ -7,6 +7,7 @@ import 'package:sbsi/utils/validator.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../utils/error_message.dart';
+import '../../../commons/app_snackbar.dart';
 import '../../../widgets/button/button_filled.dart';
 import '../../../widgets/textfields/appTextFieldNumber.dart';
 import '../../../widgets/textfields/app_text_field.dart';
@@ -31,6 +32,16 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
   final priceController = TextEditingController();
   final volumeController = TextEditingController();
 
+  /// check nếu lệnh LO
+  bool get isLOCmd {
+    try {
+      num.parse(widget.note.showPrice ?? "");
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final caption = Theme.of(context).textTheme.caption;
@@ -45,7 +56,11 @@ class _NoteWidgetOrderState extends State<NoteWidgetOrder> with Validator {
               _pinController.clear();
               priceController.text = widget.note.showPrice ?? "";
               volumeController.text = widget.note.volume ?? "";
-              editOrder(widget.note);
+              if (isLOCmd) {
+                editOrder(widget.note);
+              } else{
+                AppSnackBar.showError(message: S.of(context).not_edit_order);
+              }
             },
             backgroundColor: const Color.fromRGBO(251, 122, 4, 1),
             foregroundColor: Colors.white,

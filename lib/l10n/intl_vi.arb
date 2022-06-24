@@ -417,7 +417,7 @@
   "collateral": "Cổ tức tiền",
   "depositFee": "Phí lưu ký",
   "marginRatio": "Tỷ lệ an toàn",
-  "interest_1": "Interest",
+  "interest_1": "Lãi tạm tính",
   "price_tt": "Giá TT",
   "increase_hole": "Lãi/lỗ",
   "total_hole": "Tổng nợ phải trả",
@@ -450,5 +450,6 @@
   "confirm_select": "Xác nhận các lệnh được chọn",
   "confirm_order_success": "Xác nhận lệnh thành công",
   "order_no": "SHL",
-  "confirm_history": "Lịch sử xác nhận lệnh"
+  "confirm_history": "Lịch sử xác nhận lệnh",
+  "not_edit_order" : "Không được sửa lệnh này"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/ui/commons/appbar.dart';
 import 'package:sbsi/ui/pages/stock_detail/widget/news_tabs.dart';
@@ -42,9 +43,15 @@ class _StockDetailPageState extends State<StockDetailPage> {
               flexibleSpace: Obx(() {
                 var stock = state.selectedStock.value;
                 var stockInfo = state.selectedStockInfo.value;
+                var stockData = state.stockData.value;
+                Logger().d(stockData.toJson());
                 return SingleChildScrollView(
                     padding: const EdgeInsets.only(top: 16),
-                    child: CardDetail(stock: stock, stockInfo: stockInfo));
+                    child: CardDetail(
+                      stock: stock,
+                      stockInfo: stockInfo,
+                      stockData: stockData,
+                    ));
               }),
               pinned: false,
               expandedHeight: 220,

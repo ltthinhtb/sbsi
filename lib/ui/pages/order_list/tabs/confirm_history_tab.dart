@@ -121,7 +121,11 @@ class _ConfirmHistoryTabState extends State<ConfirmHistoryTab>
                 buildHeader(),
                 const SizedBox(height: 16),
                 Expanded(
-                  child: buildListOrder(),
+                  child: RefreshIndicator(
+                      onRefresh: () async {
+                        logic.getConfirmOrderListHistory();
+                      },
+                      child: buildListOrder()),
                 ),
               ],
             ),

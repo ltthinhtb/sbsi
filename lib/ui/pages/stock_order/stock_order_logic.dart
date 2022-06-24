@@ -334,6 +334,10 @@ class StockOrderLogic extends GetxController {
       getOrderList();
       Get.back(); // back dialog
       AppSnackBar.showSuccess(message: S.current.change_order_success);
+      // sau 2s loại lại lệnh
+      Future.delayed(const Duration(seconds: 2), () {
+        getOrderList();
+      });
     } on ErrorException catch (error) {
       AppSnackBar.showError(message: error.message);
     } catch (e) {
