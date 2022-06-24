@@ -188,6 +188,7 @@
   "order_time": "Thời gian đặt",
   "match_time": "Thời gian khớp",
   "cancel_time": "Thời gian huỷ",
+  "confirm_time": "Thời gian xác nhận",
   "order_volumn": "Khối lượng đặt",
   "match_volumn": "Khối lượng khớp",
   "cancel_volumn": "Khối lượng huỷ",
@@ -443,12 +444,11 @@
   "c_loan_out": "Dư nợ đã trả",
   "total_profit_loss": "Tổng tiền lãi/lỗ",
   "fee_type": "Loại phí",
-  "fee_title" : "Phí do người nhận trả",
+  "fee_title": "Phí do người nhận trả",
   "confirm_order": "Xác nhận lệnh",
-  "confirm_all" : "Xác nhận tất cả",
-  "confirm_select" : "Xác nhận các lệnh được chọn",
-  "confirm_order_success" : "Xác nhận lệnh thành công",
-  "order_no" : "SHL"
-
-
+  "confirm_all": "Xác nhận tất cả",
+  "confirm_select": "Xác nhận các lệnh được chọn",
+  "confirm_order_success": "Xác nhận lệnh thành công",
+  "order_no": "SHL",
+  "confirm_history": "Lịch sử xác nhận lệnh"
 }

@@ -161,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cancel order confirmation"),
         "confirm_change_order":
             MessageLookupByLibrary.simpleMessage("Change order confirmation"),
+        "confirm_history":
+            MessageLookupByLibrary.simpleMessage("Confirm history order"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_new_pin":
@@ -176,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Confirm pin"),
         "confirm_select":
             MessageLookupByLibrary.simpleMessage("Confirm select"),
+        "confirm_time": MessageLookupByLibrary.simpleMessage("Confirm time"),
         "contact_info": MessageLookupByLibrary.simpleMessage("Contact info"),
         "contact_support": MessageLookupByLibrary.simpleMessage("Support"),
         "content": MessageLookupByLibrary.simpleMessage("Content"),

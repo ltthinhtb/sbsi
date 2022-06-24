@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sbsi/model/entities/confirm_history_order.dart';
 import 'package:sbsi/model/entities/order_history.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 
@@ -14,6 +15,9 @@ class OrderListState {
   late TextEditingController stockHistoryController;
 
   late TextEditingController stockCodeConfirmController;
+
+  late TextEditingController stockCodeConfirmHistoryController;
+
 
   var selectedListOrder = <IndayOrder>[].obs;
 
@@ -71,11 +75,17 @@ class OrderListState {
 
   var listOrderConfirm = <OrderConfirm>[].obs;
 
+  final listOrderConfirmHistory = <OrderConfirmHistory>[].obs;
+
+
   SingingCharacter singingCharacter = SingingCharacter.all;
 
   inOrderHisTabs singingCharacterHistory = inOrderHisTabs.all;
 
   OderCmd cmd = OderCmd.all;
+
+  OderCmd cmd1 = OderCmd.all;
+
 
   final account = Account().obs;
 
@@ -97,9 +107,17 @@ class OrderListState {
   final endDateController1 = TextEditingController(
       text: DateTimeUtils.toDateString(DateTime.now(), format: "dd/MM/yyyy"));
 
+  final startDateController2 = TextEditingController(
+      text: DateTimeUtils.toDateString(
+          DateTime.now().subtract(const Duration(days: 90)),
+          format: "dd/MM/yyyy"));
+  final endDateController2 = TextEditingController(
+      text: DateTimeUtils.toDateString(DateTime.now(), format: "dd/MM/yyyy"));
+
   OrderListState() {
     stockCodeController = TextEditingController();
     stockHistoryController = TextEditingController();
     stockCodeConfirmController = TextEditingController();
+    stockCodeConfirmHistoryController = TextEditingController();
   }
 }

@@ -25,6 +25,8 @@ class MainLogic extends GetxController {
       Get.find<OrderListLogic>().getOrderList();
       Get.find<OrderListLogic>().getListOrderConfirm();
       Get.find<OrderListLogic>().getOrderListHistory();
+      Get.find<OrderListLogic>().getConfirmOrderListHistory();
+
     }
     // load sổ lệnh màn đặt lệnh
     if (index == 2) {

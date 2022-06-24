@@ -1960,6 +1960,16 @@ class S {
     );
   }
 
+  /// `Confirm time`
+  String get confirm_time {
+    return Intl.message(
+      'Confirm time',
+      name: 'confirm_time',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Order volumn`
   String get order_volumn {
     return Intl.message(
@@ -4545,6 +4555,16 @@ class S {
     return Intl.message(
       'Order no.',
       name: 'order_no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm history order`
+  String get confirm_history {
+    return Intl.message(
+      'Confirm history order',
+      name: 'confirm_history',
       desc: '',
       args: [],
     );

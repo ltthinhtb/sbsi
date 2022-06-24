@@ -190,6 +190,7 @@
   "order_time": "Order time",
   "match_time": "Match time",
   "cancel_time": "Cancel time",
+  "confirm_time": "Confirm time",
   "order_volumn": "Order volumn",
   "match_volumn": "Match volumn",
   "cancel_volumn": "Cancel volumn",
@@ -448,5 +449,7 @@
   "confirm_all": "Confirm all",
   "confirm_select": "Confirm select",
   "confirm_order_success": "Confirm order success",
-  "order_no": "Order no."
+  "order_no": "Order no.",
+  "confirm_history": "Confirm history order"
+
 }

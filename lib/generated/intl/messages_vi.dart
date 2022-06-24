@@ -167,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận huỷ lệnh"),
         "confirm_change_order":
             MessageLookupByLibrary.simpleMessage("Xác nhận sửa lệnh"),
+        "confirm_history":
+            MessageLookupByLibrary.simpleMessage("Lịch sử xác nhận lệnh"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "confirm_new_pin":
@@ -182,6 +184,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_pin": MessageLookupByLibrary.simpleMessage("Xác nhận mã pin"),
         "confirm_select":
             MessageLookupByLibrary.simpleMessage("Xác nhận các lệnh được chọn"),
+        "confirm_time":
+            MessageLookupByLibrary.simpleMessage("Thời gian xác nhận"),
         "contact_info":
             MessageLookupByLibrary.simpleMessage("Thông tin liên hệ"),
         "contact_support":

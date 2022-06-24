@@ -7,6 +7,7 @@ import 'package:sbsi/ui/pages/order_list/order_list_logic.dart';
 import 'package:sbsi/ui/pages/order_list/tabs/inday_tabs.dart';
 import '../../../services/index.dart';
 import 'enums/order_enums.dart';
+import 'tabs/confirm_history_tab.dart';
 import 'tabs/confirm_tab.dart';
 import 'tabs/in_onder_history.dart';
 
@@ -125,9 +126,11 @@ class _OrderListPageState extends State<OrderListPage>
                         indicatorPadding: EdgeInsets.zero,
                         indicatorSize: TabBarIndicatorSize.label,
                         indicatorColor: Theme.of(context).primaryColor,
+                        isScrollable: true,
                         unselectedLabelColor: AppColors.textGrey,
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        labelPadding: const EdgeInsets.only(bottom: 8),
+                        labelPadding: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 10),
                         indicatorWeight: 0,
                         onTap: (value) {},
                         tabs: OderType.values
@@ -136,7 +139,12 @@ class _OrderListPageState extends State<OrderListPage>
                   ],
                 ),
                 const Expanded(
-                  child: TabBarView(children: [InDayTab(), InOrderHistory(),ConfirmTab()]),
+                  child: TabBarView(children: [
+                    InDayTab(),
+                    InOrderHistory(),
+                    ConfirmTab(),
+                    ConfirmHistoryTab()
+                  ]),
                 )
               ],
             ),

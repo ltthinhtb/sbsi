@@ -78,7 +78,7 @@ extension OderCmdExt on OderCmd {
   }
 }
 
-enum OderType { inDay, history, confirmOrder }
+enum OderType { inDay, history, confirmOrder,confirmHistory }
 
 extension OderTypeExt on OderType {
   String name(BuildContext context) {
@@ -89,6 +89,8 @@ extension OderTypeExt on OderType {
         return S.of(context).order_history;
       case OderType.confirmOrder:
         return S.of(context).confirm_order;
+      case OderType.confirmHistory:
+        return S.of(context).confirm_history;
     }
   }
 }

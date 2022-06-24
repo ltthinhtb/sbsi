@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:sbsi/model/entities/confirm_history_order.dart';
 import 'package:sbsi/model/entities/order_history.dart';
 import 'package:sbsi/model/order_data/inday_order.dart';
 import 'package:sbsi/model/params/data_params.dart';
@@ -69,6 +70,32 @@ class OrderListLogic extends GetxController {
     }
   }
 
+  // load lịch sử lệnh xác nhận lệnh
+  void getConfirmOrderListHistory() async {
+    var _tokenEntity = authService.token.value;
+    final RequestParams _requestParams = RequestParams(
+      group: "B",
+      session: _tokenEntity?.data?.sid,
+      user: _tokenEntity?.data?.user,
+      data: ParamsObject(
+          type: "cursor",
+          cmd: "ListOrderConfirmHistory",
+          p6: "1",
+          p7: "30",
+          p1: state.account.value.accCode,
+          p3: state.startDateController2.text,
+          p4: state.endDateController2.text,
+          p5: state.cmd1.value,
+          p2: ""),
+    );
+    try {
+      state.listOrderConfirmHistory.value =
+          await apiService.getListCOrderConfirmHistory(_requestParams);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   // load list order confirm
   void getListOrderConfirm() async {
     var _tokenEntity = authService.token.value;
@@ -101,8 +128,6 @@ class OrderListLogic extends GetxController {
     getOrderList();
   }
 
-
-
   // filter history lịch sử lệnh
   void changeOrderHistoryListStatus(inOrderHisTabs character) {
     state.singingCharacterHistory = character;
@@ -113,6 +138,12 @@ class OrderListLogic extends GetxController {
   void changeOrderConfirmListStatus(OderCmd cmd) {
     state.cmd = cmd;
     getListOrderConfirm();
+  }
+
+  // filter history lịch sử lệnh
+  void changeOrderHistoryListStatusHistory(OderCmd cmd) {
+    state.cmd1 = cmd;
+    getConfirmOrderListHistory();
   }
 
   // hủy lệnh
@@ -218,7 +249,6 @@ class OrderListLogic extends GetxController {
     }
   }
 
-
   Future<void> cancelAllOrderConfirm(String pin) async {
     try {
       await Future.wait(state.selectedListConfirmOrder
@@ -238,7 +268,8 @@ class OrderListLogic extends GetxController {
   // select all or Clear
   void selectAllConfirm({bool? isSelect}) {
     // có thể bằng biến giá trị param truyền vào
-    state.isSelectAllConfirmOrder.value = isSelect ?? (!state.isSelectAllConfirmOrder.value);
+    state.isSelectAllConfirmOrder.value =
+        isSelect ?? (!state.isSelectAllConfirmOrder.value);
     state.selectedListConfirmOrder.clear();
     // nếu key là select all
     if (state.isSelectAllConfirmOrder.value) {
@@ -288,6 +319,7 @@ class OrderListLogic extends GetxController {
       getOrderList();
       getOrderListHistory();
       getListOrderConfirm();
+      getConfirmOrderListHistory();
     }
   }
 
@@ -332,6 +364,7 @@ class OrderListLogic extends GetxController {
     getOrderList();
     getOrderListHistory();
     getListOrderConfirm();
+    getConfirmOrderListHistory();
   }
 
   @override
@@ -402,14 +435,14 @@ class OrderListLogic extends GetxController {
     List<OrderConfirm> searchResult = state.listOrderConfirm
         .where(
           (element) => element.cSHARECODE!.toLowerCase().startsWith(
-        stockCode.toLowerCase(),
-      ),
-    )
+                stockCode.toLowerCase(),
+              ),
+        )
         .toList();
     return searchResult
         .map((e) {
-      return e.cSHARECODE ?? "";
-    })
+          return e.cSHARECODE ?? "";
+        })
         .toSet()
         .toList();
   }
@@ -418,9 +451,36 @@ class OrderListLogic extends GetxController {
     List<OrderConfirm> searchResult = state.listOrderConfirm
         .where(
           (element) => element.cSHARECODE!.toLowerCase().startsWith(
-        stockCode.toLowerCase(),
-      ),
-    )
+                stockCode.toLowerCase(),
+              ),
+        )
+        .toList();
+    return searchResult;
+  }
+
+  List<String> searchStockConfirmHistoryString(String stockCode) {
+    List<OrderConfirmHistory> searchResult = state.listOrderConfirmHistory
+        .where(
+          (element) => element.cSHARECODE!.toLowerCase().startsWith(
+                stockCode.toLowerCase(),
+              ),
+        )
+        .toList();
+    return searchResult
+        .map((e) {
+          return e.cSHARECODE ?? "";
+        })
+        .toSet()
+        .toList();
+  }
+
+  List<OrderConfirmHistory> searchStockConfirmHistory(String stockCode) {
+    List<OrderConfirmHistory> searchResult = state.listOrderConfirmHistory
+        .where(
+          (element) => element.cSHARECODE!.toLowerCase().startsWith(
+                stockCode.toLowerCase(),
+              ),
+        )
         .toList();
     return searchResult;
   }
