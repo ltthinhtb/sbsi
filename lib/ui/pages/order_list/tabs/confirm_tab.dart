@@ -158,18 +158,6 @@ class _ConfirmTabState extends State<ConfirmTab>
                           padding: const EdgeInsets.symmetric(vertical: 5)),
                     ),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: ButtonFill(
-                      voidCallback: () {
-                        _pinController.clear();
-                        confirmOrder();
-                      },
-                      title: S.of(context).confirm_all,
-                      style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 5)),
-                    ),
-                  ),
                 ],
               ),
             ),

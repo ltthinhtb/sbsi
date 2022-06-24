@@ -46,6 +46,7 @@ class Stock3Price extends StatelessWidget {
                     child: Column(
                       children: [
                         PricePercentRow(
+                          isBuy: true,
                           sum: state.sumBuyVol.value,
                           price: state.selectedStockInfo.value.g1?.price ?? "0.0",
                           value: state.selectedStockInfo.value.g1?.volumn

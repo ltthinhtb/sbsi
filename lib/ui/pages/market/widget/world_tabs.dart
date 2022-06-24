@@ -37,7 +37,7 @@ class _WorldTabsState extends State<WorldTabs>
                 child: Row(
                   children: [
                     Expanded(
-                      flex: 50,
+                      flex: 85,
                       child: Text(
                         S.of(context).stock_code,
                         style: caption?.copyWith(
@@ -47,7 +47,7 @@ class _WorldTabsState extends State<WorldTabs>
                     Expanded(
                       flex: 93,
                       child: Align(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.center,
                         child: Text(
                           S.of(context).price,
                           style: caption?.copyWith(
@@ -58,7 +58,7 @@ class _WorldTabsState extends State<WorldTabs>
                     Expanded(
                       flex: 93,
                       child: Align(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.center,
                         child: Text(
                           S.of(context).increase_decrease,
                           style: caption?.copyWith(

@@ -160,7 +160,7 @@ class _OverviewViewState extends State<OverviewView>
                       child: Row(
                         children: [
                           Expanded(
-                            flex: 50,
+                            flex: 85,
                             child: Text(
                               S.of(context).stock_code,
                               style: caption?.copyWith(
@@ -170,7 +170,7 @@ class _OverviewViewState extends State<OverviewView>
                           Expanded(
                             flex: 93,
                             child: Align(
-                              alignment: Alignment.centerRight,
+                              alignment: Alignment.center,
                               child: Text(
                                 S.of(context).price,
                                 style: caption?.copyWith(
@@ -181,7 +181,7 @@ class _OverviewViewState extends State<OverviewView>
                           Expanded(
                             flex: 93,
                             child: Align(
-                              alignment: Alignment.centerRight,
+                              alignment: Alignment.center,
                               child: Text(
                                 S.of(context).increase_decrease,
                                 style: caption?.copyWith(

@@ -24,7 +24,7 @@ class TopForeignTrade extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 50,
+                  flex: 85,
                   child: Text(
                     trade.nAME ?? "",
                     style: caption?.copyWith(fontWeight: FontWeight.w700),
@@ -33,7 +33,7 @@ class TopForeignTrade extends StatelessWidget {
                 Expanded(
                   flex: 93,
                   child: Align(
-                    alignment: Alignment.centerRight,
+                    alignment: Alignment.center,
                     child: Text(
                       trade.lASTPOINT ?? "",
                       style: caption?.copyWith(),
@@ -43,7 +43,7 @@ class TopForeignTrade extends StatelessWidget {
                 Expanded(
                   flex: 93,
                   child: Align(
-                    alignment: Alignment.centerRight,
+                    alignment: Alignment.center,
                     child: Text(
                       trade.cHANGE ?? "",
                       style: caption?.copyWith(color: trade.color),

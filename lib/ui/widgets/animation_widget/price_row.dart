@@ -47,7 +47,6 @@ class PricePercentRow extends StatefulWidget {
       required this.price,
       this.value = 0,
       required this.sum,
-      this.color = AppColors.primary,
       this.isBuy = true,
       this.padding = 3})
       : super(key: key);
@@ -55,7 +54,6 @@ class PricePercentRow extends StatefulWidget {
   final String price;
   final double value;
   final double sum;
-  final Color color;
   final double padding;
 
   @override
@@ -151,7 +149,7 @@ class _PricePercentRowState extends State<PricePercentRow>
                 child: CustomPaint(
                   painter: PricePercentPainter(
                     isBuy: widget.isBuy,
-                    color: AppColors.Pastel,
+                    color: AppColors.Pastel2,
                     value: _animation.value,
                     sum: widget.sum,
                   ),
@@ -161,7 +159,7 @@ class _PricePercentRowState extends State<PricePercentRow>
                     child: Text(
                       widget.price.toString(),
                       textDirection: TextDirection.rtl,
-                      style: caption?.copyWith(fontWeight: FontWeight.w600,color: AppColors.primary),
+                      style: caption?.copyWith(fontWeight: FontWeight.w600,color: AppColors.active),
                     ),
                   ),
                 ),
@@ -181,7 +179,7 @@ class _PricePercentRowState extends State<PricePercentRow>
                 child: CustomPaint(
                   painter: PricePercentPainter(
                     isBuy: widget.isBuy,
-                    color: AppColors.Pastel2,
+                    color: AppColors.Pastel,
                     value: _animation.value,
                     sum: widget.sum,
                   ),
@@ -191,7 +189,7 @@ class _PricePercentRowState extends State<PricePercentRow>
                     child: Text(
                       widget.price.toString(),
                       textDirection: TextDirection.ltr,
-                      style: caption?.copyWith(fontWeight: FontWeight.w600,color: AppColors.active),
+                      style: caption?.copyWith(fontWeight: FontWeight.w600,color: AppColors.deActive),
                     ),
                   ),
                 ),

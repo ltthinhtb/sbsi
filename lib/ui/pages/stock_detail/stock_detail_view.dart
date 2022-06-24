@@ -44,7 +44,6 @@ class _StockDetailPageState extends State<StockDetailPage> {
                 var stock = state.selectedStock.value;
                 var stockInfo = state.selectedStockInfo.value;
                 var stockData = state.stockData.value;
-                Logger().d(stockData.toJson());
                 return SingleChildScrollView(
                     padding: const EdgeInsets.only(top: 16),
                     child: CardDetail(
