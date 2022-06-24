@@ -188,6 +188,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "coupon": MessageLookupByLibrary.simpleMessage("Coupon"),
         "create_account":
             MessageLookupByLibrary.simpleMessage("Create account"),
+        "create_order_success":
+            MessageLookupByLibrary.simpleMessage("Create order success"),
         "day": MessageLookupByLibrary.simpleMessage("Day"),
         "day_error": MessageLookupByLibrary.simpleMessage("Day not valid"),
         "debit_root": MessageLookupByLibrary.simpleMessage("Root debit"),
@@ -393,6 +395,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pass_short_valid": m0,
         "passport": MessageLookupByLibrary.simpleMessage("Passport"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "password_validate": MessageLookupByLibrary.simpleMessage(
+            "Password with at least 8 characters, including letters and numbers"),
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),
         "pay_type": MessageLookupByLibrary.simpleMessage("Payment type"),
         "payment": MessageLookupByLibrary.simpleMessage("Payment"),

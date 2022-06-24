@@ -4579,6 +4579,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Create order success`
+  String get create_order_success {
+    return Intl.message(
+      'Create order success',
+      name: 'create_order_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password with at least 8 characters, including letters and numbers`
+  String get password_validate {
+    return Intl.message(
+      'Password with at least 8 characters, including letters and numbers',
+      name: 'password_validate',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -159,7 +159,8 @@ class _PricePercentRowState extends State<PricePercentRow>
                     child: Text(
                       widget.price.toString(),
                       textDirection: TextDirection.rtl,
-                      style: caption?.copyWith(fontWeight: FontWeight.w600,color: AppColors.active),
+                      style: caption?.copyWith(
+                          fontWeight: FontWeight.w600, color: AppColors.active),
                     ),
                   ),
                 ),
@@ -189,7 +190,9 @@ class _PricePercentRowState extends State<PricePercentRow>
                     child: Text(
                       widget.price.toString(),
                       textDirection: TextDirection.ltr,
-                      style: caption?.copyWith(fontWeight: FontWeight.w600,color: AppColors.deActive),
+                      style: caption?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.deActive),
                     ),
                   ),
                 ),

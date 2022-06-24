@@ -197,6 +197,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "copy": MessageLookupByLibrary.simpleMessage("Sao chép"),
         "coupon": MessageLookupByLibrary.simpleMessage("Lợi suất đầu tư"),
         "create_account": MessageLookupByLibrary.simpleMessage("Tạo tài khoản"),
+        "create_order_success":
+            MessageLookupByLibrary.simpleMessage("Đặt lệnh thành công!"),
         "day": MessageLookupByLibrary.simpleMessage("Ngày"),
         "day_error": MessageLookupByLibrary.simpleMessage("Ngày không hợp lệ"),
         "debit_root": MessageLookupByLibrary.simpleMessage("Dư nợ gốc"),
@@ -403,6 +405,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pass_short_valid": m0,
         "passport": MessageLookupByLibrary.simpleMessage("Hộ chiếu Việt Nam"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "password_validate": MessageLookupByLibrary.simpleMessage(
+            "Phải có ít nhất 8 ký tự bao gồm chữ và số"),
         "pay": MessageLookupByLibrary.simpleMessage("Thanh toán"),
         "pay_type":
             MessageLookupByLibrary.simpleMessage("Phương thức thanh toán"),

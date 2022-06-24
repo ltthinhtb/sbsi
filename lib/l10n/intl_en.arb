@@ -451,7 +451,8 @@
   "confirm_order_success": "Confirm order success",
   "order_no": "Order no.",
   "confirm_history": "Confirm history order",
-  "not_edit_order" : "Not edit this order"
-
+  "not_edit_order": "Not edit this order",
+  "create_order_success": "Create order success",
+  "password_validate" : "Password with at least 8 characters, including letters and numbers"
 
 }

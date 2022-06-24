@@ -272,7 +272,7 @@ class StockOrderPageLogic extends GetxController {
       // load lại sổ lệnh
       await getOrderList();
       Get.back();
-      AppSnackBar.showSuccess(message: "Đặt lệnh thành công!");
+      AppSnackBar.showSuccess(message: S.current.create_order_success);
       // sau khi đặt lệnh thành công tắt thông báo
 
     } on ErrorException catch (error) {

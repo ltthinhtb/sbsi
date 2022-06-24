@@ -451,5 +451,7 @@
   "confirm_order_success": "Xác nhận lệnh thành công",
   "order_no": "SHL",
   "confirm_history": "Lịch sử xác nhận lệnh",
-  "not_edit_order" : "Không được sửa lệnh này"
+  "not_edit_order" : "Không được sửa lệnh này",
+  "create_order_success" : "Đặt lệnh thành công!",
+  "password_validate" : "Phải có ít nhất 8 ký tự bao gồm chữ và số"
 }
