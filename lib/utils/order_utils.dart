@@ -114,7 +114,13 @@ class OrderUtils {
       if (stock.mc == "HA") {
         validate = validVolHnx(volume.toString());
       }
-
+      if(volume < 100 && validate){
+        if(stock.mc!= "LO"){
+          AppSnackBar.showError(
+              message: "Lệnh lô lẻ chỉ đặt giá LO");
+          return false;
+        }
+      }
       if (isBuy) {
         if (volume > maxVolBuy) {
           AppSnackBar.showError(
