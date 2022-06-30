@@ -41,8 +41,6 @@ class NotifyWidget extends StatelessWidget {
                   const SizedBox(height: 1),
                   Text(
                     notify.bodyDetail ?? "",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
                     style: body2,
                   ),
                   const SizedBox(height: 12),

@@ -19,7 +19,7 @@ class NotificationLogic extends GetxController {
       NotifyRequest request = NotifyRequest('monitor/notification',
           cmd: "listAll",
           page: 1,
-          records: 30,
+          records: 50,
           isPush: "done",
           type: "public",
           account: authService.token.value?.data?.user ?? "");
