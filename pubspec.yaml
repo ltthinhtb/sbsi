@@ -170,6 +170,8 @@ flutter:
 flutter_native_splash:
   color: "#ffffff"
   image: assets/image/logo.png
+  branding: assets/image/powered.png
+
 
 flutter_intl:
   enabled: true # Required. Must be set to true to activate the package. Default: false

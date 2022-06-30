@@ -141,8 +141,8 @@ class MoneyTransferLogic extends GetxController {
         p2: "NAPAS",
         // transferType
         p3: "TOACCOUNT",
-        p4: state.type.value(type: "NAPAS"),
-        // internal , napas , citad,
+        p4: state.type.value(type: "BANK"),
+        // internal , bank
         p5: state.beneficiary.value.cBANKCODE ?? "",
         // cBankCode,
         p6: state.userAccountController.text,

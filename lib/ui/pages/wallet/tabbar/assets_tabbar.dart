@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:sbsi/common/app_colors.dart';
 import 'package:sbsi/common/app_shadows.dart';
 import 'package:sbsi/generated/l10n.dart';
 import 'package:sbsi/model/response/account_status.dart';
 import 'package:sbsi/utils/money_utils.dart';
-import '../../../../utils/logger.dart';
 import '../wallet_logic.dart';
 import '../widget/pie_chart_widget.dart';
 
