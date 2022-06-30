@@ -5,6 +5,7 @@ import 'package:sbsi/utils/money_utils.dart';
 import '../../../../common/app_colors.dart';
 import '../../../../model/entities/order_history.dart';
 import '../../../../utils/error_message.dart';
+import '../../../../utils/logger.dart';
 import '../page/order_detail.dart';
 
 class HistoryWidget extends StatefulWidget {
@@ -37,6 +38,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
   Widget buildItem(OrderHistory data) {
     String _status = MessageOrder.getStatusOrder1(data);
     final caption = Theme.of(context).textTheme.caption;
+    logger.d(widget.history.toJson());
     return GestureDetector(
       onTap: (){
         Get.to(OrderDetail(data: data,));
