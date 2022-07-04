@@ -105,12 +105,11 @@ class OrderUtils {
 
       num maxVolBuy = parseNumber('${cashBalance.volumeAvaiable}');
       num maxVolSell = parseNumber('${cashBalance.balance}');
-
-      bool validate = false;
+      bool validate = true;
+      bool validateVol = true;
       if (stock.mc == "HO") {
         validate = validVolHouse(volume.toString());
       }
-
       if (stock.mc == "HA") {
         validate = validVolHnx(volume.toString());
       }
@@ -125,17 +124,17 @@ class OrderUtils {
         if (volume > maxVolBuy) {
           AppSnackBar.showError(
               message: "Khối lượng mua vượt khối lượng tối đa");
-          return false;
+          validateVol = false;
         }
-        return validate;
-      } else {
+      }
+      if(!isBuy){
         if (volume > maxVolSell) {
           AppSnackBar.showError(
               message: "Khối lượng bán vượt khối lượng tối đa");
-          return false;
+          validateVol = false;
         }
-        return validate;
       }
+      return validate && validateVol;
     } catch (e) {
       logger.e(e.toString());
       return false;
