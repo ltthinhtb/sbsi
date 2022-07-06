@@ -138,7 +138,7 @@ class MoneyTransferLogic extends GetxController {
         cmd: "UpdateCashTransferOnline",
         p1: state.account.value.accCode ?? "",
         // from account
-        p2: "NAPAS",
+        p2: "CITAD",
         // transferType
         p3: "TOACCOUNT",
         p4: state.type.value(type: "BANK"),
@@ -165,7 +165,7 @@ class MoneyTransferLogic extends GetxController {
         // otp ,
         p15: state.pinController.text,
         // pin ,
-        pOther: "1", // pin ,
+        pOther: "0", // pin ,
       ),
     );
     try {

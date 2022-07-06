@@ -26,12 +26,12 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> with Validator {
   final logic = Get.put(SignInLogic());
   final state = Get.find<SignInLogic>().state;
-  bool isChecked = false;
-  String version = "";
 
   bool isTest = false;
 
-  void checkUpdate() async {
+  String _version = "";
+
+  Future checkUpdate() async {
     final newVersion = NewVersion(
       iOSId: 'com.sbsi.etrading',
       androidId: 'com.sbsi.etrading',
@@ -41,9 +41,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
     // or you can fetch the status and display your own dialog, or no dialog.
     try {
       final status = await newVersion.getVersionStatus();
-      print(status?.storeVersion);
-      print(status?.localVersion);
-      version = status?.localVersion ?? "";
+      _version = status?.localVersion ?? "";
       if (status!.canUpdate) {
         newVersion.showUpdateDialog(
             context: context,
@@ -210,18 +208,36 @@ class _SignInPageState extends State<SignInPage> with Validator {
               alignment: Alignment.bottomRight,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20, right: 5),
-                child: Obx(() {
-                  var flavor = Get.find<SettingService>().flavor;
-                  var stringVersion = version + " " + flavor.value.name;
-                  if (!isTest) {
-                    stringVersion = version;
-                  }
-                  return Text(
-                    stringVersion,
-                    style: const TextStyle(
-                        color: AppColors.white, fontWeight: FontWeight.w700),
-                  );
-                }),
+                child: FutureBuilder<VersionStatus?>(
+                    future: NewVersion(
+                      iOSId: 'com.sbsi.etrading',
+                      androidId: 'com.sbsi.etrading',
+                    ).getVersionStatus(),
+                    builder: (context, snapshot) {
+                      String version = "";
+                      if (snapshot.hasData) {
+                        version = snapshot.data?.localVersion ?? "";
+                      }
+                      if(isTest){
+                        return Obx(() {
+                          var flavor = Get.find<SettingService>().flavor;
+                          var stringVersion =
+                              version + flavor.value.name;
+                          return Text(
+                            stringVersion,
+                            style: const TextStyle(
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w700),
+                          );
+                        });
+                      }
+                      return Text(
+                        version,
+                        style: const TextStyle(
+                            color: AppColors.white,
+                            fontWeight: FontWeight.w700),
+                      );
+                    }),
               )),
           Visibility(
             visible: isTest,
@@ -260,7 +276,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
                 Text(
-                    "Phiên bản hiện tại của bạn là $version ${flavor.value.name}"),
+                    "Phiên bản hiện tại của bạn là $_version ${flavor.value.name}"),
                 const Text("Chỉ thay đổi được ở phiên bản thử nghiệm"),
                 RadioListTile<Flavor>(
                   groupValue: Flavor.TEST,
