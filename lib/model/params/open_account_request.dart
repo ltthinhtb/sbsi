@@ -21,30 +21,38 @@ class OpenAccountRequest {
   String? cANHCHUKY;
   String? cPASSWORD;
   String? cOPENMARGIN;
+  String? C_ADVANCE_WITHDRAW;
+  String? C_FOLLOW_TRADING;
+  String? C_ONLINE_TRADING;
+  String? C_RECEIVE_EMAIL;
 
   OpenAccountRequest(
       {this.cCARDID,
-        this.cFULLNAME,
-        this.cCUSTBIRTHDAY,
-        this.cISSUEDATE,
-        this.cISSUEEXPIRE,
-        this.cISSUEPLACE,
-        this.cGENDER,
-        this.cPROVINCE,
-        this.cADDRESS,
-        this.cCONTACTADDRESS,
-        this.cMOBILE,
-        this.cEMAIL,
-        this.cMOBILETRADINGPASSWORD,
-        this.cBANKCODE,
-        this.cRECEIVEBANKACCOUNT,
-        this.cSALEID,
-        this.cANHMATTRUOC,
-        this.cANHMATSAU,
-        this.cANHCHANDUNG,
-        this.cANHCHUKY,
-        this.cPASSWORD,
-        this.cOPENMARGIN});
+      this.cFULLNAME,
+      this.cCUSTBIRTHDAY,
+      this.cISSUEDATE,
+      this.cISSUEEXPIRE,
+      this.cISSUEPLACE,
+      this.cGENDER,
+      this.cPROVINCE,
+      this.cADDRESS,
+      this.cCONTACTADDRESS,
+      this.cMOBILE,
+      this.cEMAIL,
+      this.cMOBILETRADINGPASSWORD,
+      this.cBANKCODE,
+      this.cRECEIVEBANKACCOUNT,
+      this.cSALEID,
+      this.cANHMATTRUOC,
+      this.cANHMATSAU,
+      this.cANHCHANDUNG,
+      this.cANHCHUKY,
+      this.cPASSWORD,
+      this.cOPENMARGIN,
+      this.C_ONLINE_TRADING,
+      this.C_ADVANCE_WITHDRAW,
+      this.C_FOLLOW_TRADING,
+      this.C_RECEIVE_EMAIL});
 
   OpenAccountRequest.fromJson(Map<String, dynamic> json) {
     cCARDID = json['C_CARD_ID'];
@@ -95,6 +103,10 @@ class OpenAccountRequest {
     data['C_ANH_CHU_KY'] = this.cANHCHUKY;
     data['C_PASSWORD'] = this.cPASSWORD;
     data['C_OPEN_MARGIN'] = this.cOPENMARGIN;
+    data['C_ADVANCE_WITHDRAW'] = this.C_ADVANCE_WITHDRAW;
+    data['C_FOLLOW_TRADING'] = this.C_FOLLOW_TRADING;
+    data['C_ONLINE_TRADING'] = this.C_ONLINE_TRADING;
+    data['C_RECEIVE_EMAIL'] = this.C_RECEIVE_EMAIL;
     return data;
   }
 }

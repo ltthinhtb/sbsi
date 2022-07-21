@@ -50,6 +50,18 @@ class SignUpState {
 
   bool isOpenMargin = false;
 
+  // ứng trước tiền bán chứng khoán
+  int C_ADVANCE_WITHDRAW = 0;
+
+  // giao dịch tổng đài
+  int C_FOLLOW_TRADING = 0;
+
+  //giao dịch trực tuyến
+  int C_ONLINE_TRADING = 0;
+
+  // nhận thông báo qua mail
+  int C_RECEIVE_EMAIL = 0;
+
   var listBank = <Bank>[];
 
   SignUpState() {}

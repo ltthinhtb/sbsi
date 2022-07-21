@@ -114,6 +114,7 @@ class _ServicePageState extends State<ServicePage> with Validator {
                             setState(() {
                               _internet = !_internet;
                             });
+                            state.C_ONLINE_TRADING = value ? 1 : 0;
                           },
                         )
                       ],
@@ -135,6 +136,7 @@ class _ServicePageState extends State<ServicePage> with Validator {
                             setState(() {
                               _hotline = !_hotline;
                             });
+                            state.C_FOLLOW_TRADING = value ? 1 : 0;
                           },
                         )
                       ],
@@ -173,6 +175,7 @@ class _ServicePageState extends State<ServicePage> with Validator {
                             setState(() {
                               isOpenPin = !isOpenPin;
                             });
+                            state.C_RECEIVE_EMAIL = value ? 1 : 0;
                           },
                         )
                       ],
@@ -194,6 +197,7 @@ class _ServicePageState extends State<ServicePage> with Validator {
                             setState(() {
                               _money = !_money;
                             });
+                            state.C_ADVANCE_WITHDRAW = value ? 1 : 0;
                           },
                         )
                       ],

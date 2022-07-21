@@ -163,33 +163,40 @@ class SignUpLogic extends GetxController {
         user: "back",
         cmd: "OPEN_INDI_ACCOUNT",
         param: OpenAccountRequest(
-          cCARDID: state.orcResponse?.id ?? "",
-          // cmt
-          cFULLNAME: state.orcResponse?.name ?? "",
-          cCUSTBIRTHDAY: state.orcResponse?.birthDay ?? "",
-          cISSUEDATE: state.orcResponse?.issueDate ?? "",
-          cISSUEEXPIRE: state.orcResponse?.validDate ?? "",
-          cADDRESS:
-              state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
-          cANHCHANDUNG: state.faceUrl,
-          cANHCHUKY: state.signatureUrl,
-          cANHMATSAU: state.cardBackUrl,
-          cANHMATTRUOC: state.cardFrontUrl,
-          cBANKCODE: state.bankController.text,
-          cCONTACTADDRESS:
-              state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "",
-          cEMAIL: state.emailController.text,
-          cGENDER:
-              state.orcResponse?.gender == GenderType.male.vnText ? "M" : "F",
-          cISSUEPLACE: state.orcResponse?.issuePlace ?? "",
-          cMOBILE: state.phoneController.text,
-          cMOBILETRADINGPASSWORD: state.passPinController.text,
-          cOPENMARGIN: state.isOpenMargin ? "1" : "0",
-          cPASSWORD: state.passController.text,
-          cPROVINCE: state.orcResponse?.postCode?.first.city?[1] ?? "",
-          cSALEID: state.referralController.text,
-          cRECEIVEBANKACCOUNT: state.bankAccountController.text,
-        ).toJson());
+                cCARDID: state.orcResponse?.id ?? "",
+                // cmt
+                cFULLNAME: state.orcResponse?.name ?? "",
+                cCUSTBIRTHDAY: state.orcResponse?.birthDay ?? "",
+                cISSUEDATE: state.orcResponse?.issueDate ?? "",
+                cISSUEEXPIRE: state.orcResponse?.validDate ?? "",
+                cADDRESS:
+                    state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ??
+                        "",
+                cANHCHANDUNG: state.faceUrl,
+                cANHCHUKY: state.signatureUrl,
+                cANHMATSAU: state.cardBackUrl,
+                cANHMATTRUOC: state.cardFrontUrl,
+                cBANKCODE: state.bankController.text,
+                cCONTACTADDRESS:
+                    state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ??
+                        "",
+                cEMAIL: state.emailController.text,
+                cGENDER: state.orcResponse?.gender == GenderType.male.vnText
+                    ? "M"
+                    : "F",
+                cISSUEPLACE: state.orcResponse?.issuePlace ?? "",
+                cMOBILE: state.phoneController.text,
+                cMOBILETRADINGPASSWORD: state.passPinController.text,
+                cOPENMARGIN: state.isOpenMargin ? "1" : "0",
+                cPASSWORD: state.passController.text,
+                cPROVINCE: state.orcResponse?.postCode?.first.city?[1] ?? "",
+                cSALEID: state.referralController.text,
+                cRECEIVEBANKACCOUNT: state.bankAccountController.text,
+                C_ADVANCE_WITHDRAW: state.C_ADVANCE_WITHDRAW.toString(),
+                C_RECEIVE_EMAIL: state.C_RECEIVE_EMAIL.toString(),
+                C_FOLLOW_TRADING: state.C_FOLLOW_TRADING.toString(),
+                C_ONLINE_TRADING: state.C_ONLINE_TRADING.toString())
+            .toJson());
     try {
       var response = await apiService.checkAccount(_requestParams);
       state.accountCode = response['SOTK'];
