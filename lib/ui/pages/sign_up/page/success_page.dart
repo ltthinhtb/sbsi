@@ -27,11 +27,11 @@ class _SuccessPageState extends State<SuccessPage> {
         children: [
           const SizedBox(height: 68),
           SvgPicture.asset(AppImages.tick_success),
-          const SizedBox(height: 40),
-          Text(
-            "Mở tài khoản thành công",
-            style: headline6?.copyWith(fontWeight: FontWeight.w700),
-          ),
+          // const SizedBox(height: 40),
+          // Text(
+          //   "Mở tài khoản thành công",
+          //   style: headline6?.copyWith(fontWeight: FontWeight.w700),
+          // ),
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -45,7 +45,7 @@ class _SuccessPageState extends State<SuccessPage> {
                     style: body1?.copyWith(
                         color: AppColors.primary, fontWeight: FontWeight.w700)),
                 TextSpan(
-                    text: " đã lựa chọn dịch của Công ty chứng khoán SBSI.",
+                    text: " đã lựa chọn dịch vụ của Công ty chứng khoán SBSI.",
                     style: body1?.copyWith(color: AppColors.textGrey4))
               ], style: body1),
               textAlign: TextAlign.center,
@@ -60,6 +60,15 @@ class _SuccessPageState extends State<SuccessPage> {
             state.accountCode,
             style: body1?.copyWith(
                 fontWeight: FontWeight.w700, color: AppColors.primary),
+          ),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              "Quý khách vui lòng kiểm tra lại Email đã đăng ký để hoàn thiện thủ tục mở tài khoản. Mọi thắc mắc xin liên hệ: (024) 33776699",
+              textAlign: TextAlign.center,
+              style: body1?.copyWith(color: AppColors.primary),
+            ),
           ),
           const Spacer(),
           Padding(
