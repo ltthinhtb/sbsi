@@ -68,8 +68,8 @@ class _ConfirmHistoryTabState extends State<ConfirmHistoryTab>
                   var date = await showDatePicker(
                       context: context,
                       locale: Get.locale,
-                      firstDate: DateTime.now().add(const Duration(days: -90)),
-                      lastDate: DateTime.now().add(const Duration(days: 30)),
+                      firstDate: statDate.add(const Duration(days: -365)),
+                      lastDate: DateTime.now().add(const Duration(days: 90)),
                       initialDate: statDate);
                   if (date != null) {
                     state.startDateController2.text =
@@ -92,8 +92,8 @@ class _ConfirmHistoryTabState extends State<ConfirmHistoryTab>
                   var date = await showDatePicker(
                       context: context,
                       locale: Get.locale,
-                      firstDate: statDate.add(const Duration(days: -90)),
-                      lastDate: DateTime.now().add(const Duration(days: 30)),
+                      firstDate: statDate.add(const Duration(days: -365)),
+                      lastDate: DateTime.now().add(const Duration(days: 90)),
                       initialDate: endDate);
                   if (date != null) {
                     state.endDateController2.text =
