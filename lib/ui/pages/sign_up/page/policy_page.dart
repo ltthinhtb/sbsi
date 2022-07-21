@@ -7,13 +7,11 @@ import 'package:get/get.dart';
 import 'package:native_pdf_view/native_pdf_view.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sbsi/common/app_images.dart';
+import 'package:sbsi/ui/commons/app_snackbar.dart';
 import 'package:sbsi/ui/pages/sign_up/sign_up_logic.dart';
 import 'package:signature/signature.dart';
-
 import '../../../../common/app_colors.dart';
-import '../../../../configs/app_configs.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../services/index.dart';
 import '../../../commons/appbar.dart';
 import '../../../widgets/button/button_filled.dart';
 import 'package:path_provider/path_provider.dart';
@@ -38,19 +36,18 @@ class _PolicyPageState extends State<PolicyPage> {
   void initState() {
     state.signatureUrl = "";
     state.signature.clear();
-    pdfController = PdfController(
-        document: PdfDocument.openAsset('assets/json/DKSD.pdf'),
-        viewportFraction: 2);
+    pdfController =
+        PdfController(document: PdfDocument.openAsset('assets/json/MTK.pdf'));
     super.initState();
   }
-
-  Flavor flavor = Get.find<SettingService>().flavor.value;
 
   @override
   void dispose() {
     pdfController.dispose();
     super.dispose();
   }
+
+  ValueNotifier<bool> isAccept = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -97,22 +94,28 @@ class _PolicyPageState extends State<PolicyPage> {
                       },
                       documentLoader: const CircularProgressIndicator(),
                       scrollDirection: bt.Axis.vertical,
-                      // pageBuilder: (
-                      //     Future<PdfPageImage> pageImage,
-                      //     int index,
-                      //     PdfDocument document,
-                      //     ) => PhotoViewGalleryPageOptions(
-                      //   imageProvider: PdfPageImageProvider(
-                      //     pageImage,
-                      //     index,
-                      //     document.id,
-                      //   ),
-                      //   minScale: PhotoViewComputedScale.contained * 1.0,
-                      //   maxScale: PhotoViewComputedScale.contained * 3.0,
-                      //   initialScale: PhotoViewComputedScale.contained * 1.0,
-                      //   heroAttributes: PhotoViewHeroAttributes(tag: '${document.id}-$index'),
-                      // ),
                     ),
+                  ),
+                  Row(
+                    children: [
+                      Theme(
+                        data: Theme.of(context).copyWith(
+                          unselectedWidgetColor: AppColors.primary,
+                          toggleableActiveColor: AppColors.primary,
+                        ),
+                        child: ValueListenableBuilder<bool>(
+                            builder:
+                                (BuildContext context, value, Widget? child) {
+                              return Checkbox(
+                                  value: value,
+                                  onChanged: (value) {
+                                    isAccept.value = value!;
+                                  });
+                            },
+                            valueListenable: isAccept),
+                      ),
+                      Flexible(child: Text(S.of(context).accept_policy_hint))
+                    ],
                   ),
                   const SizedBox(height: 32),
                   Padding(
@@ -121,7 +124,12 @@ class _PolicyPageState extends State<PolicyPage> {
                         width: MediaQuery.of(context).size.width,
                         child: ButtonFill(
                             voidCallback: () {
-                              showBottomSheet();
+                              if (isAccept.value) {
+                                showBottomSheet();
+                              } else {
+                                AppSnackBar.showError(
+                                    message: S.current.valid_accept);
+                              }
                             },
                             title: S.of(context).continue_step)),
                   ),

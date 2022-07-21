@@ -4599,6 +4599,26 @@ class S {
       args: [],
     );
   }
+
+  /// `You must agree to the terms`
+  String get valid_accept {
+    return Intl.message(
+      'You must agree to the terms',
+      name: 'valid_accept',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept policy`
+  String get accept_policy_hint {
+    return Intl.message(
+      'Accept policy',
+      name: 'accept_policy_hint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

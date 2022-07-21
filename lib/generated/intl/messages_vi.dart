@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Khả năng sinh lời"),
         "Statement": MessageLookupByLibrary.simpleMessage("Sao kê"),
         "about_choose": MessageLookupByLibrary.simpleMessage("Đã lựa chọn"),
+        "accept_policy_hint": MessageLookupByLibrary.simpleMessage(
+            "Tôi đã đọc và đồng ý với những Điều khoản nêu trên"),
         "account": MessageLookupByLibrary.simpleMessage("Tài khoản"),
         "account_info":
             MessageLookupByLibrary.simpleMessage("Thông tin tài khoản"),
@@ -629,6 +631,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "user_guide": MessageLookupByLibrary.simpleMessage("Hướng dẫn sử dụng"),
         "user_name": MessageLookupByLibrary.simpleMessage("Số tài khoản"),
         "utilities": MessageLookupByLibrary.simpleMessage("Tiện ích"),
+        "valid_accept":
+            MessageLookupByLibrary.simpleMessage("Bạn phải đổng ý điều khoản"),
         "variable": MessageLookupByLibrary.simpleMessage("Biến động"),
         "verify_account":
             MessageLookupByLibrary.simpleMessage("Xác thực tài khoản"),

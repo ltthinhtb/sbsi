@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Profitability": MessageLookupByLibrary.simpleMessage("Profitability"),
         "Statement": MessageLookupByLibrary.simpleMessage("Statement"),
         "about_choose": MessageLookupByLibrary.simpleMessage("About choose"),
+        "accept_policy_hint":
+            MessageLookupByLibrary.simpleMessage("Accept policy"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "account_info": MessageLookupByLibrary.simpleMessage("Account info"),
         "account_name": MessageLookupByLibrary.simpleMessage("Account name"),
@@ -610,6 +612,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "user_guide": MessageLookupByLibrary.simpleMessage("User guide"),
         "user_name": MessageLookupByLibrary.simpleMessage("Username"),
         "utilities": MessageLookupByLibrary.simpleMessage("Utilities"),
+        "valid_accept":
+            MessageLookupByLibrary.simpleMessage("You must agree to the terms"),
         "variable": MessageLookupByLibrary.simpleMessage("Variable"),
         "verify_account":
             MessageLookupByLibrary.simpleMessage("Verify account"),

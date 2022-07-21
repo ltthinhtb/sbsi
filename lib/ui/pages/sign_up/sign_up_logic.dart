@@ -131,6 +131,7 @@ class SignUpLogic extends GetxController {
       rethrow;
     } catch (e) {
       logger.e(e.toString());
+      rethrow;
     } finally {
       AppLoading.disMissLoading();
     }

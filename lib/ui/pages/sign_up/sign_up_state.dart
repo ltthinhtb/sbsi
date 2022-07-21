@@ -6,7 +6,7 @@ import '../../../model/entities/bank.dart';
 import '../../../model/entities/orc_model.dart';
 
 class SignUpState {
-  final referralController = TextEditingController();
+  final referralController = TextEditingController(text: "2003");
   Rxn<String> errorText = Rxn<String>();
   final referralNameController = TextEditingController();
 

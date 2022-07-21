@@ -14,6 +14,7 @@ import '../../../router/route_config.dart';
 import '../../../services/index.dart';
 import '../../../utils/logger.dart';
 import '../../widgets/button/button_text.dart';
+import 'page/policy.dart';
 import 'sign_in_logic.dart';
 
 class SignInPage extends StatefulWidget {
@@ -69,7 +70,7 @@ class _SignInPageState extends State<SignInPage> with Validator {
   @override
   Widget build(BuildContext context) {
     final headline6 = Theme.of(context).textTheme.headline6;
-
+    final body1 = Theme.of(context).textTheme.bodyText1;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -199,6 +200,15 @@ class _SignInPageState extends State<SignInPage> with Validator {
                                 ),
                               )))),
                   const SizedBox(height: 24),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(const PolicySignUpPage());
+                    },
+                    child: Text(
+                      S.of(context).policy_use,
+                      style: body1?.copyWith(color: AppColors.white),
+                    ),
+                  ),
                   const SizedBox(height: 48),
                 ],
               ),
@@ -218,11 +228,10 @@ class _SignInPageState extends State<SignInPage> with Validator {
                       if (snapshot.hasData) {
                         version = snapshot.data?.localVersion ?? "";
                       }
-                      if(isTest){
+                      if (isTest) {
                         return Obx(() {
                           var flavor = Get.find<SettingService>().flavor;
-                          var stringVersion =
-                              version + flavor.value.name;
+                          var stringVersion = version + flavor.value.name;
                           return Text(
                             stringVersion,
                             style: const TextStyle(
@@ -312,3 +321,4 @@ class _SignInPageState extends State<SignInPage> with Validator {
     super.dispose();
   }
 }
+

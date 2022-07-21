@@ -24,6 +24,12 @@ class _ReferralPageState extends State<ReferralPage> {
   final _debouncer = Debouncer(milliseconds: 500);
 
   @override
+  void initState() {
+    logic.getSaleID();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final headline6 = Theme.of(context).textTheme.headline6;
     return Scaffold(

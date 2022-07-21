@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sbsi/utils/validator.dart';
-
 import '../../../../common/app_colors.dart';
 import '../../../../common/app_images.dart';
 import '../../../../generated/l10n.dart';
@@ -15,7 +14,6 @@ import '../../../widgets/textfields/app_text_typehead.dart';
 import '../enums/order_enums.dart';
 import '../order_list_logic.dart';
 import 'package:intl/intl.dart' as la;
-
 import '../widget/order_confirm.dart';
 
 class ConfirmTab extends StatefulWidget {
