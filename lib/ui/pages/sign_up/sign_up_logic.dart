@@ -177,9 +177,7 @@ class SignUpLogic extends GetxController {
                 cANHMATSAU: state.cardBackUrl,
                 cANHMATTRUOC: state.cardFrontUrl,
                 cBANKCODE: state.bankController.text,
-                cCONTACTADDRESS:
-                    state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ??
-                        "",
+                cCONTACTADDRESS: state.addressController.text ?? "",
                 cEMAIL: state.emailController.text,
                 cGENDER: state.orcResponse?.gender == GenderType.male.vnText
                     ? "M"
@@ -196,7 +194,6 @@ class SignUpLogic extends GetxController {
                 C_RECEIVE_EMAIL: state.C_RECEIVE_EMAIL.toString(),
                 C_FOLLOW_TRADING: state.C_FOLLOW_TRADING.toString(),
                 C_SUB_BRANCH_BANK: state.bankBranhController.text,
-                C_CONTACT_ADDRESS: state.addressController.text,
                 C_ONLINE_TRADING: state.C_ONLINE_TRADING.toString())
             .toJson());
     try {
