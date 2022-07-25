@@ -29,7 +29,6 @@ class _EditInfoState extends State<EditInfo> {
   final cityController = TextEditingController();
   final districtController = TextEditingController();
   final wardController = TextEditingController();
-  final address = TextEditingController();
 
   bool get isEmptyGender {
     if (state.orcResponse?.gender == null) return true;
@@ -50,7 +49,7 @@ class _EditInfoState extends State<EditInfo> {
     districtController.text =
         state.orcResponse?.postCode?.first.district?[1] ?? "";
     wardController.text = state.orcResponse?.postCode?.first.ward?[1] ?? "";
-    address.text =
+    state.addressController.text =
         state.orcResponse?.recentLocation?.replaceAll("\n", ", ") ?? "";
 
     super.initState();
@@ -213,7 +212,7 @@ class _EditInfoState extends State<EditInfo> {
                           ),
                           const SizedBox(height: 16),
                           AppTextFieldWidget(
-                            inputController: address,
+                            inputController: state.addressController,
                             label: "Địa chỉ",
                             isShowLabel: false,
                             maxLines: 2,

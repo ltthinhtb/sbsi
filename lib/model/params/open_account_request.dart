@@ -25,6 +25,8 @@ class OpenAccountRequest {
   String? C_FOLLOW_TRADING;
   String? C_ONLINE_TRADING;
   String? C_RECEIVE_EMAIL;
+  String? C_SUB_BRANCH_BANK;
+  String? C_CONTRACT_ADDRESS;
 
   OpenAccountRequest(
       {this.cCARDID,
@@ -52,7 +54,9 @@ class OpenAccountRequest {
       this.C_ONLINE_TRADING,
       this.C_ADVANCE_WITHDRAW,
       this.C_FOLLOW_TRADING,
-      this.C_RECEIVE_EMAIL});
+      this.C_RECEIVE_EMAIL,
+      this.C_SUB_BRANCH_BANK,
+      this.C_CONTRACT_ADDRESS});
 
   OpenAccountRequest.fromJson(Map<String, dynamic> json) {
     cCARDID = json['C_CARD_ID'];
@@ -77,6 +81,8 @@ class OpenAccountRequest {
     cANHCHUKY = json['C_ANH_CHU_KY'];
     cPASSWORD = json['C_PASSWORD'];
     cOPENMARGIN = json['C_OPEN_MARGIN'];
+    C_SUB_BRANCH_BANK = json['C_SUB_BRANCH_BANK'];
+    C_CONTRACT_ADDRESS = json['C_CONTRACT_ADDRESS '];
   }
 
   Map<String, dynamic> toJson() {
@@ -107,6 +113,8 @@ class OpenAccountRequest {
     data['C_FOLLOW_TRADING'] = this.C_FOLLOW_TRADING;
     data['C_ONLINE_TRADING'] = this.C_ONLINE_TRADING;
     data['C_RECEIVE_EMAIL'] = this.C_RECEIVE_EMAIL;
+    data['C_SUB_BRANCH_BANK'] = this.C_SUB_BRANCH_BANK;
+    data['C_CONTRACT_ADDRESS '] = this.C_CONTRACT_ADDRESS;
     return data;
   }
 }

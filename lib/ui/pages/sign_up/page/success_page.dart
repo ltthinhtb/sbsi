@@ -20,7 +20,6 @@ class _SuccessPageState extends State<SuccessPage> {
 
   @override
   Widget build(BuildContext context) {
-    final headline6 = Theme.of(context).textTheme.headline6;
     final body1 = Theme.of(context).textTheme.bodyText1;
     return Scaffold(
       body: Column(
