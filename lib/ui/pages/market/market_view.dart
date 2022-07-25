@@ -17,7 +17,7 @@ class MarketPage extends StatefulWidget {
 }
 
 class _MarketPageState extends State<MarketPage>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   final logic = Get.find<MarketLogic>();
   final state = Get.find<MarketLogic>().state;
 
@@ -26,12 +26,20 @@ class _MarketPageState extends State<MarketPage>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance?.addObserver(this);
     _tabController = TabController(length: ForkEnum.values.length, vsync: this);
+  }
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      logic.onPing();
+    }
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance?.removeObserver(this);
     _tabController?.dispose();
     super.dispose();
   }
@@ -82,11 +90,14 @@ class _MarketPageState extends State<MarketPage>
             ],
           ),
           Expanded(
-            child: TabBarView(controller: _tabController,physics: const NeverScrollableScrollPhysics(), children: [
-              const OverviewView(),
-              const MarketOption(),
-              const WorldTabs(),
-            ]),
+            child: TabBarView(
+                controller: _tabController,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  const OverviewView(),
+                  const MarketOption(),
+                  const WorldTabs(),
+                ]),
           )
         ],
       ),

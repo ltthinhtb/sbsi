@@ -30,6 +30,12 @@ class Socket {
     socket.onConnectError(
             (data) => logger.e('socketkết nối thất bại ====>  $data'));
     socket.onDisconnect((_) => logger.w('disconnect'));
+    socket.onReconnect((data) => logger.i("reconnect"));
+    socket.onPing((_) {
+      final String msg =
+          "{\"action\":\"ping\",\"mode\":\"sync\",\"data\":\" \"}";
+      socket.emit("regs", msg);
+    });
   }
 
   void disconnectSocket(){

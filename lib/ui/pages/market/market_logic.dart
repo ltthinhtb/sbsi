@@ -233,6 +233,13 @@ class MarketLogic extends GetxController {
     });
   }
 
+  void onPing() {
+    for (var element
+        in state.listStock.map((element) => element.sym ?? "").toList()) {
+      _socket.addStockSocket(element);
+    }
+  }
+
   // lấy top mua bán thế giới
   Future<void> getTopForeignTrade() async {
     try {
