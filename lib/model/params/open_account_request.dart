@@ -68,7 +68,7 @@ class OpenAccountRequest {
     cGENDER = json['C_GENDER'];
     cPROVINCE = json['C_PROVINCE'];
     cADDRESS = json['C_ADDRESS'];
-    cCONTACTADDRESS = json['C_CONTACT_ADDRESS'];
+    cCONTACTADDRESS = json['C_CONTACT_C_CONTACT_ADDRESS'];
     cMOBILE = json['C_MOBILE'];
     cEMAIL = json['C_EMAIL'];
     cMOBILETRADINGPASSWORD = json['C_MOBILE_TRADING_PASSWORD'];
@@ -114,7 +114,6 @@ class OpenAccountRequest {
     data['C_ONLINE_TRADING'] = this.C_ONLINE_TRADING;
     data['C_RECEIVE_EMAIL'] = this.C_RECEIVE_EMAIL;
     data['C_SUB_BRANCH_BANK'] = this.C_SUB_BRANCH_BANK;
-    data['C_CONTRACT_ADDRESS '] = this.C_CONTACT_ADDRESS;
     return data;
   }
 }
