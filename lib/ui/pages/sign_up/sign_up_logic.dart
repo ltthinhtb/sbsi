@@ -177,7 +177,7 @@ class SignUpLogic extends GetxController {
                 cANHMATSAU: state.cardBackUrl,
                 cANHMATTRUOC: state.cardFrontUrl,
                 cBANKCODE: state.bankController.text,
-                cCONTACTADDRESS: state.addressController.text ?? "",
+                cCONTACTADDRESS: state.addressController.text,
                 cEMAIL: state.emailController.text,
                 cGENDER: state.orcResponse?.gender == GenderType.male.vnText
                     ? "M"
