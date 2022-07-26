@@ -173,14 +173,8 @@ class _PolicyPageState extends State<PolicyPage> {
                     text: TextSpan(children: [
                       TextSpan(
                           text:
-                              'Quý khách vui lòng chạm vào khung bên dưới và giữ để ký hoặc ',
-                          style: body1),
-                      TextSpan(
-                          text: 'Tải ảnh lên',
-                          style: body1?.copyWith(
-                              fontWeight: FontWeight.w700,
-                              decoration: TextDecoration.underline,
-                              color: AppColors.active))
+                              'Quý khách vui lòng chạm vào khung bên dưới và giữ để ký',
+                          style: body1)
                     ])),
                 const SizedBox(height: 24),
                 ClipRRect(
